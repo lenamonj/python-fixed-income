@@ -21,7 +21,7 @@ You know what a coupon, a spread, and a duration are. You live in Excel. You hav
 
 Most Python courses teach with shopping carts and movie ratings. This one teaches with a credit desk. You store a bond before you store anything else, your first loop totals a portfolio, and your first table is a holdings file. By the time a new idea arrives, you already know why a desk would want it.
 
-Course 1 is Python Foundations: four weeks, one notebook a day. <!-- count:ready -->6<!-- /count --> of its <!-- count:total -->18<!-- /count --> notebooks are ready, and the rest are being built in order.
+Course 1 is Python Foundations: four weeks, one notebook a day. <!-- count:ready -->7<!-- /count --> of its <!-- count:total -->18<!-- /count --> notebooks are ready, and the rest are being built in order.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -113,7 +113,7 @@ That last habit is the point of the course. You will use AI assistants to write 
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
 | 1 | [NumPy](week2/day1/06_numpy.ipynb) | Arrays, arithmetic on a whole portfolio at once, and pricing a bond from its cash flows | Ready |
-| 2 | pandas: Series and DataFrames | Tables with names, selecting, filtering, and sorting 200 holdings | Planned |
+| 2 | [pandas: Series and DataFrames](week2/day2/07_pandas_series_and_dataframes.ipynb) | Tables with names, selecting, filtering, and sorting 200 holdings | Ready |
 | 3 | pandas: Combining and Loading | Joining tables, reading and saving files, summaries, and dates | Planned |
 | 4 | Case Study: A First Look at the Data | Three linked tables: holdings, issuers, and ratings | Planned |
 | 5 | Case Study: Joining the Tables | Answering desk questions from the joined data | Planned |
