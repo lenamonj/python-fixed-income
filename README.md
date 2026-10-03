@@ -55,6 +55,7 @@ Nothing in this course asks you to forget Excel. Every new idea is introduced ne
 | Net buys against sells with two `SUMIFS`, and keep a running total | Sign the sells, group, and take a cumulative sum | Week 3, Day 5 |
 | Use `AVERAGEIF` on a column of 0s and 1s to get a rate by group | Group, then take the mean and the count together | Week 4, Day 1 |
 | Use `FIND`, `SUBSTITUTE`, `TRIM`, and Find and Replace on text | Search and clean text with patterns, across every row at once | Week 4, Day 2 |
+| Count words from a list with `SUMPRODUCT`, and standardize with `STANDARDIZE` | Score every document against a word list and compare the scores | Week 4, Day 3 |
 
 What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so tomorrow's file runs through the same steps without anyone dragging a formula or repointing a range.
 
