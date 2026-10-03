@@ -11,7 +11,7 @@
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-22C55E?style=for-the-badge)](LICENSE-CONTENT)
 
-**[Start here](#start-here)** &nbsp;·&nbsp; **[Course map](#course-map)** &nbsp;·&nbsp; **[How a day works](#how-a-day-works)** &nbsp;·&nbsp; **[The data](#the-data)** &nbsp;·&nbsp; **[License](#license)**
+**[Start here](#start-here)** &nbsp;·&nbsp; **[Coming from Excel](#if-you-know-excel-you-already-know-how-to-think-about-this)** &nbsp;·&nbsp; **[Course map](#course-map)** &nbsp;·&nbsp; **[How a day works](#how-a-day-works)** &nbsp;·&nbsp; **[The data](#the-data)** &nbsp;·&nbsp; **[License](#license)**
 
 ## A free course that teaches Python from zero to people who work in fixed income. Every example is a bond.
 
@@ -24,6 +24,23 @@ Most Python courses teach with shopping carts and movie ratings. This one teache
 Course 1 is Python Foundations: four weeks, one notebook a day. <!-- count:ready -->9<!-- /count --> of its <!-- count:total -->18<!-- /count --> notebooks are ready, and the rest are being built in order.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
+
+## If you know Excel, you already know how to think about this
+
+Nothing in this course asks you to forget Excel. Every new idea is introduced next to the Excel feature you would reach for today, with the formula written out, so you are translating something you know and not learning from nothing.
+
+| In Excel you would | In Python you will | Where |
+|:---|:---|:---|
+| Fill a formula down a column | Write the formula once, in a loop or on a whole array | Week 1, Day 1 and Week 2, Day 1 |
+| Write a nested `IF` | Write `if`, `elif`, `else`, one test per line | Week 1, Day 1 |
+| See `#N/A`, `#DIV/0!`, or `#NAME?` in a cell | Read an error that names the line and the cause | Week 1, Day 3 |
+| Turn on AutoFilter and sort a sheet | Filter and sort a table by condition | Week 2, Day 2 |
+| Use `SUMIF` and `COUNTIF` | Filter, then sum or count | Week 2, Day 2 |
+| Use `VLOOKUP` or `INDEX` and `MATCH` | Merge two tables on a shared column | Week 2, Day 3 |
+| Build a pivot table | Group by a column and summarize | Week 2, Day 3 |
+| Use `SUMPRODUCT` over `SUM` for a weighted average | Do the same arithmetic on two columns | Week 2, Day 3 |
+
+What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so tomorrow's file runs through the same steps without anyone dragging a formula or repointing a range.
 
 ## Start here
 
@@ -87,7 +104,7 @@ Four habits run through every day.
 
 | Habit | What it means |
 |:---|:---|
-| **Excel side by side** | Where an Excel function does the same job, it is shown next to the Python. |
+| **Excel side by side** | Wherever Excel has a function or feature for the job, it is shown next to the Python, formula included. |
 | **Errors on purpose** | Code that fails is run for real, and the error is read line by line. |
 | **Exercises you can check** | Each exercise has a check cell that tells you whether your answer is right. |
 | **The AI check** | Each day ends with code written in the style of an AI assistant. It has one bug. You find it by checking the output against a number you worked out yourself. |
