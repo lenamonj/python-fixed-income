@@ -23,7 +23,7 @@ You know what a coupon is. You understand spread, duration, yield, and credit. Y
 
 Most Python courses teach programming through shopping carts, movie ratings, and toy datasets. This one teaches Python through the work of a credit desk.
 
-Your first object is a bond. Your first loop totals a portfolio. Your first data table is a holdings file. Your first analysis answers a question you already know how to ask.
+Your first variables describe a bond: its ticker, its coupon, its maturity. Your first loop totals a portfolio. Your first data table is a holdings file. Your first analysis answers a question you already know how to ask.
 
 Nothing is abstracted away into contrived examples. Every programming concept is introduced in the context of fixed income, portfolio management, and credit analysis, so you learn the code and immediately understand why it matters.
 
