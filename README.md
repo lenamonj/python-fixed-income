@@ -13,7 +13,7 @@
 
 **[Start here](#start-here)** &nbsp;·&nbsp; **[Coming from Excel](#if-you-know-excel-you-already-know-how-to-think-about-this)** &nbsp;·&nbsp; **[The courses](#the-courses)** &nbsp;·&nbsp; **[How a day works](#how-a-day-works)** &nbsp;·&nbsp; **[The data](#the-data)** &nbsp;·&nbsp; **[License](#license)**
 
-## Free courses that teach Python from zero to people who work in fixed income. Every example is a bond.
+## From Fixed Income to Python: A Practical Guide for Fixed Income Professionals
 
 </div>
 
