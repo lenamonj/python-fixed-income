@@ -1,4 +1,4 @@
-"""Checks on the synthetic data files in data/. Run with: python -m pytest"""
+"""Checks on the data files in data/. Run with: python -m pytest"""
 import sys
 from datetime import date
 from pathlib import Path
@@ -140,3 +140,29 @@ def test_blotter_generator_is_deterministic(tmp_path: Path) -> None:
     first = (tmp_path / "first.csv").read_bytes()
     assert first == (tmp_path / "second.csv").read_bytes()
     assert first == (DATA / "trade_blotter.csv").read_bytes()
+
+
+@pytest.fixture(scope="module")
+def credit_cards() -> pd.DataFrame:
+    return pd.read_csv(DATA / "credit_card_default.csv")
+
+
+def test_credit_card_shape_and_ids(credit_cards: pd.DataFrame) -> None:
+    # the UCI file as published: 30,000 accounts, an ID, 23 features, and the outcome
+    assert credit_cards.shape == (30_000, 25)
+    assert credit_cards["ID"].is_unique
+    assert credit_cards.columns[0] == "ID"
+    assert credit_cards.columns[-1] == "default payment next month"
+    assert credit_cards.notna().all().all()
+
+
+def test_credit_card_outcome_is_zero_or_one(credit_cards: pd.DataFrame) -> None:
+    assert set(credit_cards["default payment next month"]) == {0, 1}
+
+
+def test_credit_card_quirks_are_kept(credit_cards: pd.DataFrame) -> None:
+    # codes the UCI page does not define are in the published file and must not be recoded away
+    assert set(credit_cards["EDUCATION"]) == {0, 1, 2, 3, 4, 5, 6}
+    assert set(credit_cards["MARRIAGE"]) == {0, 1, 2, 3}
+    assert {-2, 0} <= set(credit_cards["PAY_0"])
+    assert "PAY_1" not in credit_cards.columns
