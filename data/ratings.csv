@@ -1,0 +1,19 @@
+rating,score,bucket,grade
+AAA,1,AAA,Investment Grade
+AA+,2,AA,Investment Grade
+AA,3,AA,Investment Grade
+AA-,4,AA,Investment Grade
+A+,5,A,Investment Grade
+A,6,A,Investment Grade
+A-,7,A,Investment Grade
+BBB+,8,BBB,Investment Grade
+BBB,9,BBB,Investment Grade
+BBB-,10,BBB,Investment Grade
+BB+,11,BB,High Yield
+BB,12,BB,High Yield
+BB-,13,BB,High Yield
+B+,14,B,High Yield
+B,15,B,High Yield
+B-,16,B,High Yield
+CCC+,17,CCC,High Yield
+CCC,18,CCC,High Yield
