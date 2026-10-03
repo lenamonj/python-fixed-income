@@ -11,17 +11,17 @@
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-22C55E?style=for-the-badge)](LICENSE-CONTENT)
 
-**[Start here](#start-here)** &nbsp;·&nbsp; **[Coming from Excel](#if-you-know-excel-you-already-know-how-to-think-about-this)** &nbsp;·&nbsp; **[Course map](#course-map)** &nbsp;·&nbsp; **[How a day works](#how-a-day-works)** &nbsp;·&nbsp; **[The data](#the-data)** &nbsp;·&nbsp; **[License](#license)**
+**[Start here](#start-here)** &nbsp;·&nbsp; **[Coming from Excel](#if-you-know-excel-you-already-know-how-to-think-about-this)** &nbsp;·&nbsp; **[The courses](#the-courses)** &nbsp;·&nbsp; **[How a day works](#how-a-day-works)** &nbsp;·&nbsp; **[The data](#the-data)** &nbsp;·&nbsp; **[License](#license)**
 
-## A free course that teaches Python from zero to people who work in fixed income. Every example is a bond.
+## Free courses that teach Python from zero to people who work in fixed income. Every example is a bond.
 
 </div>
 
-You know what a coupon, a spread, and a duration are. You live in Excel. You have never written a line of code. This course starts there.
+You know what a coupon, a spread, and a duration are. You live in Excel. You have never written a line of code. This series starts there.
 
 Most Python courses teach with shopping carts and movie ratings. This one teaches with a credit desk. You store a bond before you store anything else, your first loop totals a portfolio, and your first table is a holdings file. By the time a new idea arrives, you already know why a desk would want it.
 
-Course 1 is Python Foundations: four weeks, one notebook a day. <!-- count:ready -->12<!-- /count --> of its <!-- count:total -->18<!-- /count --> notebooks are ready, and the rest are being built in order.
+The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day. It is being built in order, and its course map shows which days are ready.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -29,7 +29,7 @@ Course 1 is Python Foundations: four weeks, one notebook a day. <!-- count:ready
 
 Nothing in this course asks you to forget Excel. Every new idea is introduced next to the Excel feature you would reach for today, with the formula written out, so you are translating something you know and not learning from nothing.
 
-| In Excel you would | In Python you will | Where |
+| In Excel you would | In Python you will | Where in Course 1 |
 |:---|:---|:---|
 | Fill a formula down a column | Write the formula once, in a loop or on a whole array | Week 1, Day 1 and Week 2, Day 1 |
 | Write a nested `IF` | Write `if`, `elif`, `else`, one test per line | Week 1, Day 1 |
@@ -49,7 +49,7 @@ There are two ways to run the notebooks. Pick one.
 
 ### Run in Google Colab, with nothing to install
 
-Open any notebook in the [course map](#course-map) and click the **Open in Colab** badge at the top. Colab runs in your browser and needs only a Google account.
+Open any notebook in the [Course 1 map](course1_python_foundations/README.md#course-map) and click the **Open in Colab** badge at the top. Colab runs in your browser and needs only a Google account.
 
 Use Colab on a personal account, with the course data only. Do not upload anything from your employer.
 
@@ -65,12 +65,12 @@ git clone https://github.com/lenamonj/python-fixed-income.git
 cd python-fixed-income
 ```
 
-**Step 2.** Create an environment for the course and install what it needs.
+**Step 2.** Create an environment and install what Course 1 needs. Each course folder has its own `requirements.txt`.
 
 ```powershell
 python -m venv .venv
 .venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
+python -m pip install -r course1_python_foundations\requirements.txt
 ```
 
 **Step 3.** Open the folder in VS Code.
@@ -79,13 +79,13 @@ python -m pip install -r requirements.txt
 code .
 ```
 
-Open `week1\day1\01_python_for_fixed_income_intro.ipynb`, choose the `.venv` kernel in the top right, and run the first cell.
+Open `course1_python_foundations\week1\day1\01_python_for_fixed_income_intro.ipynb`, choose the `.venv` kernel in the top right, and run the first cell.
 
 If PowerShell says running scripts is disabled, run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once and repeat Step 2.
 
 ## How a day works
 
-Each day has its own folder, and each folder holds three files with the same name.
+Inside a course, each day has its own folder, and each folder holds three files with the same name.
 
 | File | What it is |
 |:---|:---|
@@ -112,56 +112,20 @@ Four habits run through every day.
 
 That last habit is the point of the course. You will use AI assistants to write code. Code that runs is not the same as code that is right, and the way to tell the difference is to know what the answer should be.
 
-## Course map
+## The courses
 
-<!-- map:start -->
+Each course has its own folder, its own course map, and its own list of what to install. Weeks start again at 1 in every course.
 
-### Week 1: Python foundations
+| Course | What it covers | Status |
+|:---:|:---|:---:|
+| 1 | [Python Foundations](course1_python_foundations/README.md): variables to pandas, charts, exploratory data analysis, and a project, in four weeks | In progress |
+| 2 | Bond Math: pricing, yield, duration, and convexity, built by hand and checked against Excel | Planned |
 
-| Day | Notebook | You learn | Status |
-|:---:|:---|:---|:---:|
-| 1 | [Introduction to Python](week1/day1/01_python_for_fixed_income_intro.ipynb) | Variables, lists, dictionaries, conditions, loops, and functions, on four bonds | Ready |
-| 2 | [Files and Folders](week1/day2/02_files_and_folders.ipynb) | Finding, creating, writing, and reading the desk's holdings file | Ready |
-| 3 | [Debugging](week1/day3/03_debugging.ipynb) | Reading an error, the common error types, and bugs that raise no error | Ready |
-| 4 | [Classes: A Bond Object](week1/day4/04_classes_a_bond_object.ipynb) | A bond that carries its own data and calculations | Ready |
-| 5 | [Case Study: Organizing a Small Portfolio](week1/day5/05_case_study_a_small_portfolio.ipynb) | One job from start to finish: an email of holdings becomes a table | Ready |
-
-### Week 2: NumPy and pandas
-
-| Day | Notebook | You learn | Status |
-|:---:|:---|:---|:---:|
-| 1 | [NumPy](week2/day1/06_numpy.ipynb) | Arrays, arithmetic on a whole portfolio at once, and pricing a bond from its cash flows | Ready |
-| 2 | [pandas: Series and DataFrames](week2/day2/07_pandas_series_and_dataframes.ipynb) | Tables with names, selecting, filtering, and sorting 200 holdings | Ready |
-| 3 | [pandas: Combining and Loading](week2/day3/08_pandas_combining_and_loading.ipynb) | Joining tables, reading and saving files, summaries, and dates | Ready |
-| 4 | [Case Study: A First Look at the Data](week2/day4/09_case_study_first_look_at_the_data.ipynb) | Three linked tables: positions, issuers, and ratings, checked before any join | Ready |
-| 5 | [Case Study: Joining the Tables](week2/day5/10_case_study_joining_the_tables.ipynb) | Joining the three tables, checking each join, and answering the desk's questions from the result | Ready |
-
-### Week 3: Visualization and exploratory data analysis
-
-| Day | Notebook | You learn | Status |
-|:---:|:---|:---|:---:|
-| 1 | [Visualization](week3/day1/11_visualization.ipynb) | Histograms, box plots, bar charts, line plots, scatter plots, pair plots, and heatmaps, on the 200 holdings | Ready |
-| 2 | [More Visualization](week3/day2/12_visualization_more.ipynb) | Regression plots, joint plots, violin, strip and swarm plots, interactive and 3D charts with plotly, and customizing a chart | Ready |
-| 3 | Exploratory Data Analysis | Sanity checks, distributions, relationships, missing values, and outliers | Planned |
-| 4 | Case Study: Treasury Yields | Yields by tenor and year, and how they changed over time | Planned |
-| 5 | Case Study: A Trade Blotter | A short guided analysis of a small set of trades | Planned |
-
-### Week 4: Consumer credit, text, and the project
-
-| Day | Notebook | You learn | Status |
-|:---:|:---|:---|:---:|
-| 1 | Case Study: Consumer Credit | A full analysis of a public credit card default dataset | Planned |
-| 2 | Analyzing Text | Cleaning text and turning it into numbers | Planned |
-| 3 | Case Study: Complaint Sentiment | Measuring sentiment in consumer credit complaints | Planned |
-| 4 and 5 | Course Project | A holdings file and a set of questions, answered on your own | Planned |
-
-<!-- map:end -->
-
-Python Foundations is the first course in a planned series. Bond Math comes next: pricing, yield, duration, and convexity, built by hand and checked against Excel.
+More courses are planned after these.
 
 ## The data
 
-Every issuer, ticker, CUSIP, price, and position in this course is invented. No real company and no real security appears in any holdings file.
+Every issuer, ticker, CUSIP, price, and position in this series is invented. The courses share one invented portfolio. No real company and no real security appears in any holdings file.
 
 | File | What it holds |
 |:---|:---|
@@ -187,13 +151,15 @@ The data is built to behave like a real portfolio.
 
 ```
 python-fixed-income/
-  week1/ ... week4/
-    day1/ ... day5/     the notebook, its solutions, and its overview PDF
-  data/                 the invented portfolio
+  course1_python_foundations/
+    README.md           the course map
+    requirements.txt    what the course's notebooks need
+    week1/ ... week4/
+      day1/ ... day5/   the notebook, its solutions, and its overview PDF
+  data/                 the invented portfolio, shared by every course
   tools/                the scripts that build the data and the notebook banner
   tests/                checks on the data
   assets/               fonts and images
-  requirements.txt      what the notebooks need
 ```
 
 ## License

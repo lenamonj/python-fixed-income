@@ -8,7 +8,7 @@ VS Code and Colab without the repo being public. A copy is saved in assets/heade
 
 Usage (from the repo root, with Pillow and nbformat installed):
 
-    python tools/notebook_header.py week1/day2/02_files_and_folders.ipynb --week 1 --day 2 --title "Files and Folders"
+    python tools/notebook_header.py course1_python_foundations/week1/day2/02_files_and_folders.ipynb --week 1 --day 2 --title "Files and Folders"
 """
 import argparse
 import base64
