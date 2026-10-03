@@ -53,6 +53,8 @@ Nothing in this course asks you to forget Excel. Every new idea is introduced ne
 | Use Remove Duplicates, `TRIM`, and `QUARTILE.INC` to clean and check a sheet | Find and fix the same problems in code, and print the totals before and after | Week 3, Day 3 |
 | Use `XLOOKUP` by date, and `AVERAGEIFS` by year | Select by date and group a time series by year | Week 3, Day 4 |
 | Net buys against sells with two `SUMIFS`, and keep a running total | Sign the sells, group, and take a cumulative sum | Week 3, Day 5 |
+| Use `AVERAGEIF` on a column of 0s and 1s to get a rate by group | Group, then take the mean and the count together | Week 4, Day 1 |
+| Use `FIND`, `SUBSTITUTE`, `TRIM`, and Find and Replace on text | Search and clean text with patterns, across every row at once | Week 4, Day 2 |
 
 What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so tomorrow's file runs through the same steps without anyone dragging a formula or repointing a range.
 
@@ -161,13 +163,15 @@ The data is built to behave like a real portfolio.
 | **Checked** | `python -m pytest` confirms the identifiers are valid and that each bond's price, accrued interest, and duration match its yield. |
 | **No real CUSIPs** | Every CUSIP uses an issuer number in the range reserved for internal use, with a valid check digit. |
 
-One file is real, public data, and it is not part of the portfolio.
+Three files are real, public data, and they are not part of the portfolio. Their values are unchanged.
 
-| File | What it holds |
-|:---|:---|
-| `data/treasury_par_yields.csv` | Daily Treasury par yield curve rates from 2015-01-02 to 2026-10-02, 14 tenors, as published by the U.S. Department of the Treasury |
+| File | What it holds | Source and terms |
+|:---|:---|:---|
+| `data/treasury_par_yields.csv` | Daily Treasury par yield curve rates, 2015-01-02 to 2026-10-02, 14 tenors | U.S. Department of the Treasury, [Daily Treasury Par Yield Curve Rates](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve). Listed by Treasury as public data under a public-domain dedication. |
+| `data/credit_card_default.csv` | 30,000 credit card accounts in Taiwan in 2005, with whether each defaulted the following month | Yeh, I. (2009). Default of Credit Card Clients [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C55S3H. Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Changes: the extra header row was dropped and the file was saved as CSV. |
+| `data/fomc_statements.csv` | The 46 FOMC post-meeting statements from 2021-01-27 to 2026-09-16 | Board of Governors of the Federal Reserve System, [federalreserve.gov](https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm). The Board states that information on its website is in the public domain unless otherwise indicated. Only white space was changed. |
 
-It comes from Treasury's [Daily Treasury Par Yield Curve Rates](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve), retrieved on 2026-10-03, and the values are unchanged. Treasury lists the series as public data under a public-domain dedication. `tools/get_treasury_yields.py` downloads it again from the same source.
+All three were retrieved on 2026-10-03. The scripts `tools/get_treasury_yields.py`, `tools/get_credit_card_default.py`, and `tools/get_fomc_statements.py` download each one again from the same source.
 
 ## What is in this repo
 
@@ -187,6 +191,8 @@ python-fixed-income/
 ## License
 
 Code is released under the [MIT License](LICENSE). The notebooks' written content, the slide overviews, and the videos are released under [CC BY 4.0](LICENSE-CONTENT): you may share and adapt them, including commercially, as long as you give credit.
+
+The three public data files keep their own terms, listed in [The data](#the-data). They are not relicensed by this repo.
 
 The fonts in `assets/fonts` are under the SIL Open Font License, and their license files sit beside them.
 

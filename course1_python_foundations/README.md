@@ -4,7 +4,7 @@
 
 This is the first course in [Python for Fixed Income](../README.md). It assumes you know what a coupon, a spread, and a duration are, and that you have never written a line of code.
 
-<!-- count:ready -->15<!-- /count --> of its <!-- count:total -->18<!-- /count --> notebooks are ready, and the rest are being built in order.
+<!-- count:ready -->17<!-- /count --> of its <!-- count:total -->18<!-- /count --> notebooks are ready, and the rest are being built in order.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -56,9 +56,9 @@ Each day's folder holds the notebook, a short overview PDF to read first, and a 
 
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
-| 1 | Case Study: Consumer Credit | A full analysis of a public credit card default dataset | Planned |
-| 2 | Analyzing Text | Cleaning text and turning it into numbers | Planned |
-| 3 | Case Study: Complaint Sentiment | Measuring sentiment in consumer credit complaints | Planned |
+| 1 | [Case Study: Consumer Credit](week4/day1/16_case_study_consumer_credit.ipynb) | A full analysis of a public credit card default dataset: 30,000 accounts, a yes or no outcome, and rates with their counts | Ready |
+| 2 | [Analyzing Text](week4/day2/17_analyzing_text.ipynb) | Regular expressions, cleaning, stopwords, stemming, and turning text into numbers, on FOMC statements | Ready |
+| 3 | Case Study: Statement Sentiment | Turning the wording of FOMC statements into a score, and how far to trust it | Planned |
 | 4 and 5 | Course Project | A holdings file and a set of questions, answered on your own | Planned |
 
 <!-- map:end -->
