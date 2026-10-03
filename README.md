@@ -35,10 +35,11 @@ Nothing in this course asks you to forget Excel. Every new idea is introduced ne
 | Write a nested `IF` | Write `if`, `elif`, `else`, one test per line | Week 1, Day 1 |
 | See `#N/A`, `#DIV/0!`, or `#NAME?` in a cell | Read an error that names the line and the cause | Week 1, Day 3 |
 | Turn on AutoFilter and sort a sheet | Filter and sort a table by condition | Week 2, Day 2 |
-| Use `SUMIF` and `COUNTIF` | Filter, then sum or count | Week 2, Day 2 |
-| Use `VLOOKUP` or `INDEX` and `MATCH` | Merge two tables on a shared column | Week 2, Day 3 |
-| Build a pivot table | Group by a column and summarize | Week 2, Day 3 |
-| Use `SUMPRODUCT` over `SUM` for a weighted average | Do the same arithmetic on two columns | Week 2, Day 3 |
+| Use `SUMIF` and `COUNTIF` | Filter, then sum or count | Week 2, Day 2 and Day 5 |
+| Use `COUNTBLANK` and Remove Duplicates | Count missing values and repeated rows in one line each | Week 2, Day 4 |
+| Use `VLOOKUP` or `INDEX` and `MATCH` | Merge two tables on a shared column | Week 2, Day 3 and Day 5 |
+| Build a pivot table | Group by a column and summarize | Week 2, Day 3 and Day 5 |
+| Use `SUMPRODUCT` over `SUM` for a weighted average | Do the same arithmetic on two columns | Week 2, Day 3 and Day 5 |
 
 What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so tomorrow's file runs through the same steps without anyone dragging a formula or repointing a range.
 
