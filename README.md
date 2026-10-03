@@ -48,6 +48,9 @@ Nothing in this course asks you to forget Excel. Every new idea is introduced ne
 | Use `VLOOKUP` or `INDEX` and `MATCH` | Merge two tables on a shared column | Week 2, Day 3 and Day 5 |
 | Build a pivot table | Group by a column and summarize | Week 2, Day 3 and Day 5 |
 | Use `SUMPRODUCT` over `SUM` for a weighted average | Do the same arithmetic on two columns | Week 2, Day 3 and Day 5 |
+| Insert a chart: Column, Line, Scatter, Histogram, Box and Whisker | Draw the same chart in a few lines, and redraw it on next month's file | Week 3, Day 1 |
+| Add a trendline, and use `SLOPE`, `INTERCEPT`, and `RSQ` | Fit the line and print its numbers with units | Week 3, Day 2 |
+| Use Remove Duplicates, `TRIM`, and `QUARTILE.INC` to clean and check a sheet | Find and fix the same problems in code, and print the totals before and after | Week 3, Day 3 |
 
 What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so tomorrow's file runs through the same steps without anyone dragging a formula or repointing a range.
 

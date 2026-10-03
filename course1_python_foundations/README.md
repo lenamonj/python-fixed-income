@@ -4,7 +4,7 @@
 
 This is the first course in [Python for Fixed Income](../README.md). It assumes you know what a coupon, a spread, and a duration are, and that you have never written a line of code.
 
-<!-- count:ready -->12<!-- /count --> of its <!-- count:total -->18<!-- /count --> notebooks are ready, and the rest are being built in order.
+<!-- count:ready -->13<!-- /count --> of its <!-- count:total -->18<!-- /count --> notebooks are ready, and the rest are being built in order.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -48,7 +48,7 @@ Each day's folder holds the notebook, a short overview PDF to read first, and a 
 |:---:|:---|:---|:---:|
 | 1 | [Visualization](week3/day1/11_visualization.ipynb) | Histograms, box plots, bar charts, line plots, scatter plots, pair plots, and heatmaps, on the 200 holdings | Ready |
 | 2 | [More Visualization](week3/day2/12_visualization_more.ipynb) | Regression plots, joint plots, violin, strip and swarm plots, interactive and 3D charts with plotly, and customizing a chart | Ready |
-| 3 | Exploratory Data Analysis | Sanity checks, distributions, relationships, missing values, and outliers | Planned |
+| 3 | [Exploratory Data Analysis](week3/day3/13_exploratory_data_analysis.ipynb) | Sanity checks, missing values, distributions, outliers, and relationships, on a holdings file with problems planted in it | Ready |
 | 4 | Case Study: Treasury Yields | Yields by tenor and year, and how they changed over time | Planned |
 | 5 | Case Study: A Trade Blotter | A short guided analysis of a small set of trades | Planned |
 
