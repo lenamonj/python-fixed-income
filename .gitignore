@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+.env
+
+# private recording materials: scripts and slide decks with speaker notes
+instructor/
+
+# private planning and working notes, kept on this machine only
+CLAUDE.md
+CURRICULUM.md
+COURSE1_SPEC.md
+DATA.md
+REVIEW_*.md
