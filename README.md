@@ -52,6 +52,7 @@ Nothing in this course asks you to forget Excel. Every new idea is introduced ne
 | Add a trendline, and use `SLOPE`, `INTERCEPT`, and `RSQ` | Fit the line and print its numbers with units | Week 3, Day 2 |
 | Use Remove Duplicates, `TRIM`, and `QUARTILE.INC` to clean and check a sheet | Find and fix the same problems in code, and print the totals before and after | Week 3, Day 3 |
 | Use `XLOOKUP` by date, and `AVERAGEIFS` by year | Select by date and group a time series by year | Week 3, Day 4 |
+| Net buys against sells with two `SUMIFS`, and keep a running total | Sign the sells, group, and take a cumulative sum | Week 3, Day 5 |
 
 What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so tomorrow's file runs through the same steps without anyone dragging a formula or repointing a range.
 
@@ -137,7 +138,7 @@ More courses are planned after these.
 
 ## The data
 
-Every issuer, ticker, CUSIP, price, and position in the portfolio files is invented. The courses share one invented portfolio. No real company and no real security appears in any holdings file.
+Every issuer, ticker, CUSIP, price, position, trade, and counterparty in the portfolio files is invented. The courses share one invented portfolio. No real company and no real security appears in any holdings file.
 
 | File | What it holds |
 |:---|:---|
@@ -148,6 +149,7 @@ Every issuer, ticker, CUSIP, price, and position in the portfolio files is inven
 | `data/positions.csv` | A lean version of the holdings, for joining to the other tables |
 | `data/holdings_messy.csv` | The holdings with problems planted on purpose, for the data cleaning lessons |
 | `data/holdings_messy_answer_key.md` | Every planted problem, listed |
+| `data/trade_blotter.csv` | 374 trades in September 2026, in bonds from the holdings, with invented counterparties |
 
 The data is built to behave like a real portfolio.
 
@@ -155,7 +157,7 @@ The data is built to behave like a real portfolio.
 |:---|:---|
 | **Price and yield always agree** | Each yield is a synthetic Treasury yield plus a spread, and each price is calculated from that yield. |
 | **One convention throughout** | Fixed-rate bullet bonds, semiannual coupons, 30/360 day count, modified duration. |
-| **Identical for every student** | One seeded script, `tools/make_holdings.py`, generates every file. |
+| **Identical for every student** | Seeded scripts generate every file: `tools/make_holdings.py` for the portfolio and `tools/make_blotter.py` for the trades. |
 | **Checked** | `python -m pytest` confirms the identifiers are valid and that each bond's price, accrued interest, and duration match its yield. |
 | **No real CUSIPs** | Every CUSIP uses an issuer number in the range reserved for internal use, with a valid check digit. |
 

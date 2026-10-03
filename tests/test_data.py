@@ -89,3 +89,54 @@ def test_treasury_rows_per_full_year(treasury: pd.DataFrame) -> None:
     # the last year in the file is still in progress
     full_years = rows.iloc[:-1]
     assert full_years.between(245, 255).all()
+
+
+@pytest.fixture(scope="module")
+def blotter() -> pd.DataFrame:
+    return pd.read_csv(DATA / "trade_blotter.csv", parse_dates=["trade_date", "settle_date"])
+
+
+def test_blotter_ids_are_unique_and_bonds_are_held(blotter: pd.DataFrame, holdings: pd.DataFrame) -> None:
+    assert blotter["trade_id"].is_unique
+    assert blotter.notna().all().all()
+    assert blotter["side"].isin(["BUY", "SELL"]).all()
+    # every trade is in a bond of the portfolio, under the same ticker
+    pairs = set(zip(holdings["cusip"], holdings["ticker"]))
+    assert set(zip(blotter["cusip"], blotter["ticker"])) <= pairs
+
+
+def test_blotter_dates(blotter: pd.DataFrame) -> None:
+    holiday = pd.Timestamp("2026-09-07")
+    for column in ["trade_date", "settle_date"]:
+        # Monday is 0, so 5 and 6 are Saturday and Sunday
+        assert (blotter[column].dt.dayofweek < 5).all()
+        assert (blotter[column] != holiday).all()
+    assert blotter["trade_date"].between("2026-09-01", pd.Timestamp(AS_OF)).all()
+    assert (blotter["settle_date"] > blotter["trade_date"]).all()
+    # T+1: no business day lies between the trade date and the settle date
+    business_days = pd.bdate_range("2026-09-01", "2026-10-09", freq="C", holidays=[holiday])
+    next_day = dict(zip(business_days[:-1], business_days[1:]))
+    assert (blotter["settle_date"] == blotter["trade_date"].map(next_day)).all()
+    # trade ids run in time order
+    assert blotter[["trade_date", "trade_time"]].apply(tuple, axis=1).is_monotonic_increasing
+
+
+def test_blotter_amounts(blotter: pd.DataFrame, holdings: pd.DataFrame) -> None:
+    assert (blotter["quantity"] > 0).all()
+    assert (blotter["quantity"] % 5_000 == 0).all()
+    # principal = quantity x price / 100, to the cent
+    assert ((blotter["principal"] - blotter["quantity"] * blotter["price"] / 100).abs() < 0.005).all()
+    # net buying of a bond never exceeds the par held at month end
+    signed = blotter["quantity"].where(blotter["side"] == "BUY", -blotter["quantity"])
+    net = signed.groupby(blotter["cusip"]).sum()
+    assert (net <= holdings.set_index("cusip")["par_held"].reindex(net.index)).all()
+
+
+def test_blotter_generator_is_deterministic(tmp_path: Path) -> None:
+    from make_blotter import write_blotter
+
+    write_blotter(tmp_path / "first.csv")
+    write_blotter(tmp_path / "second.csv")
+    first = (tmp_path / "first.csv").read_bytes()
+    assert first == (tmp_path / "second.csv").read_bytes()
+    assert first == (DATA / "trade_blotter.csv").read_bytes()

@@ -4,7 +4,7 @@
 
 This is the first course in [Python for Fixed Income](../README.md). It assumes you know what a coupon, a spread, and a duration are, and that you have never written a line of code.
 
-<!-- count:ready -->14<!-- /count --> of its <!-- count:total -->18<!-- /count --> notebooks are ready, and the rest are being built in order.
+<!-- count:ready -->15<!-- /count --> of its <!-- count:total -->18<!-- /count --> notebooks are ready, and the rest are being built in order.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -50,7 +50,7 @@ Each day's folder holds the notebook, a short overview PDF to read first, and a 
 | 2 | [More Visualization](week3/day2/12_visualization_more.ipynb) | Regression plots, joint plots, violin, strip and swarm plots, interactive and 3D charts with plotly, and customizing a chart | Ready |
 | 3 | [Exploratory Data Analysis](week3/day3/13_exploratory_data_analysis.ipynb) | Sanity checks, missing values, distributions, outliers, and relationships, on a holdings file with problems planted in it | Ready |
 | 4 | [Case Study: Treasury Yields](week3/day4/14_case_study_treasury_yields.ipynb) | A first time series: Treasury par yields by tenor and year, a spread between two tenors, and daily changes | Ready |
-| 5 | Case Study: A Trade Blotter | A short guided analysis of a small set of trades | Planned |
+| 5 | [Case Study: A Trade Blotter](week3/day5/15_case_study_trade_blotter.ipynb) | The week's capstone: a month of trades checked, summarized, joined to the holdings, and reported | Ready |
 
 ### Week 4: Consumer credit, text, and the project
 
