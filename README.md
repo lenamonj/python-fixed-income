@@ -51,6 +51,7 @@ Nothing in this course asks you to forget Excel. Every new idea is introduced ne
 | Insert a chart: Column, Line, Scatter, Histogram, Box and Whisker | Draw the same chart in a few lines, and redraw it on next month's file | Week 3, Day 1 |
 | Add a trendline, and use `SLOPE`, `INTERCEPT`, and `RSQ` | Fit the line and print its numbers with units | Week 3, Day 2 |
 | Use Remove Duplicates, `TRIM`, and `QUARTILE.INC` to clean and check a sheet | Find and fix the same problems in code, and print the totals before and after | Week 3, Day 3 |
+| Use `XLOOKUP` by date, and `AVERAGEIFS` by year | Select by date and group a time series by year | Week 3, Day 4 |
 
 What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so tomorrow's file runs through the same steps without anyone dragging a formula or repointing a range.
 
@@ -136,7 +137,7 @@ More courses are planned after these.
 
 ## The data
 
-Every issuer, ticker, CUSIP, price, and position in this series is invented. The courses share one invented portfolio. No real company and no real security appears in any holdings file.
+Every issuer, ticker, CUSIP, price, and position in the portfolio files is invented. The courses share one invented portfolio. No real company and no real security appears in any holdings file.
 
 | File | What it holds |
 |:---|:---|
@@ -158,6 +159,14 @@ The data is built to behave like a real portfolio.
 | **Checked** | `python -m pytest` confirms the identifiers are valid and that each bond's price, accrued interest, and duration match its yield. |
 | **No real CUSIPs** | Every CUSIP uses an issuer number in the range reserved for internal use, with a valid check digit. |
 
+One file is real, public data, and it is not part of the portfolio.
+
+| File | What it holds |
+|:---|:---|
+| `data/treasury_par_yields.csv` | Daily Treasury par yield curve rates from 2015-01-02 to 2026-10-02, 14 tenors, as published by the U.S. Department of the Treasury |
+
+It comes from Treasury's [Daily Treasury Par Yield Curve Rates](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve), retrieved on 2026-10-03, and the values are unchanged. Treasury lists the series as public data under a public-domain dedication. `tools/get_treasury_yields.py` downloads it again from the same source.
+
 ## What is in this repo
 
 ```
@@ -168,7 +177,7 @@ python-fixed-income/
     week1/ ... week4/
       day1/ ... day5/   the notebook, its solutions, and its overview PDF
   data/                 the invented portfolio, shared by every course
-  tools/                the scripts that build the data and the notebook banner
+  tools/                the scripts that build or download the data, and the notebook banner
   tests/                checks on the data
   assets/               fonts and images
 ```

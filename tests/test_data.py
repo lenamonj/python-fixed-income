@@ -63,3 +63,29 @@ def test_messy_file_has_the_planted_problems(holdings: pd.DataFrame) -> None:
     assert messy["cusip"].duplicated().sum() == 4
     assert messy["rating"].isna().sum() >= 5
     assert (messy["yield_pct"] < 1).sum() >= 2
+
+
+@pytest.fixture(scope="module")
+def treasury() -> pd.DataFrame:
+    return pd.read_csv(DATA / "treasury_par_yields.csv", parse_dates=["date"])
+
+
+def test_treasury_dates_are_unique_ascending_weekdays(treasury: pd.DataFrame) -> None:
+    assert treasury["date"].is_unique
+    assert treasury["date"].is_monotonic_increasing
+    # Monday is 0, so 5 and 6 are Saturday and Sunday
+    assert (treasury["date"].dt.dayofweek < 5).all()
+
+
+def test_treasury_yields_are_in_a_plausible_range(treasury: pd.DataFrame) -> None:
+    # percent. Blanks are tenors Treasury did not publish on that date and are left out by min and max.
+    yields = treasury.drop(columns="date")
+    assert yields.min().min() >= -1
+    assert yields.max().max() <= 20
+
+
+def test_treasury_rows_per_full_year(treasury: pd.DataFrame) -> None:
+    rows = treasury.groupby(treasury["date"].dt.year).size()
+    # the last year in the file is still in progress
+    full_years = rows.iloc[:-1]
+    assert full_years.between(245, 255).all()
