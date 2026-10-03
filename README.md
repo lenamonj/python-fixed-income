@@ -21,7 +21,7 @@ You know what a coupon, a spread, and a duration are. You live in Excel. You hav
 
 Most Python courses teach with shopping carts and movie ratings. This one teaches with a credit desk. You store a bond before you store anything else, your first loop totals a portfolio, and your first table is a holdings file. By the time a new idea arrives, you already know why a desk would want it.
 
-Course 1 is Python Foundations: four weeks, one notebook a day. <!-- count:ready -->9<!-- /count --> of its <!-- count:total -->18<!-- /count --> notebooks are ready, and the rest are being built in order.
+Course 1 is Python Foundations: four weeks, one notebook a day. <!-- count:ready -->10<!-- /count --> of its <!-- count:total -->18<!-- /count --> notebooks are ready, and the rest are being built in order.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -133,7 +133,7 @@ That last habit is the point of the course. You will use AI assistants to write 
 | 2 | [pandas: Series and DataFrames](week2/day2/07_pandas_series_and_dataframes.ipynb) | Tables with names, selecting, filtering, and sorting 200 holdings | Ready |
 | 3 | [pandas: Combining and Loading](week2/day3/08_pandas_combining_and_loading.ipynb) | Joining tables, reading and saving files, summaries, and dates | Ready |
 | 4 | [Case Study: A First Look at the Data](week2/day4/09_case_study_first_look_at_the_data.ipynb) | Three linked tables: positions, issuers, and ratings, checked before any join | Ready |
-| 5 | Case Study: Joining the Tables | Answering desk questions from the joined data | Planned |
+| 5 | [Case Study: Joining the Tables](week2/day5/10_case_study_joining_the_tables.ipynb) | Joining the three tables, checking each join, and answering the desk's questions from the result | Ready |
 
 ### Week 3: Visualization and exploratory data analysis
 
