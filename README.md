@@ -17,9 +17,17 @@
 
 </div>
 
-You know what a coupon, a spread, and a duration are. You live in Excel. You have never written a line of code. This series starts there.
+You know what a coupon is. You understand spread, duration, yield, and credit. You live in Excel. You understand the business, but you have never written a line of code.
 
-Most Python courses teach with shopping carts and movie ratings. This one teaches with a credit desk. You store a bond before you store anything else, your first loop totals a portfolio, and your first table is a holdings file. By the time a new idea arrives, you already know why a desk would want it.
+**That's exactly where this course begins.**
+
+Most Python courses teach programming through shopping carts, movie ratings, and toy datasets. This one teaches Python through the work of a credit desk.
+
+Your first object is a bond. Your first loop totals a portfolio. Your first data table is a holdings file. Your first analysis answers a question you already know how to ask.
+
+Nothing is abstracted away into contrived examples. Every programming concept is introduced in the context of fixed income, portfolio management, and credit analysis, so you learn the code and immediately understand why it matters.
+
+You already know the investment problem. **This course teaches you how to solve more of it with code.**
 
 The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day. It is being built in order, and its course map shows which days are ready.
 
