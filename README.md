@@ -29,7 +29,7 @@ Nothing is abstracted away into contrived examples. Every programming concept is
 
 You already know the investment problem. **This course teaches you how to solve more of it with code.**
 
-The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day. It is being built in order, and its course map shows which days are ready.
+The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day, 18 notebooks and a project. All of it is ready.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -134,7 +134,7 @@ Each course has its own folder, its own course map, and its own list of what to 
 
 | Course | What it covers | Status |
 |:---:|:---|:---:|
-| 1 | [Python Foundations](course1_python_foundations/README.md): variables to pandas, charts, exploratory data analysis, and a project, in four weeks | In progress |
+| 1 | [Python Foundations](course1_python_foundations/README.md): variables to pandas, charts, exploratory data analysis, text, and a project, in four weeks | Ready |
 | 2 | Bond Math: pricing, yield, duration, and convexity, built by hand and checked against Excel | Planned |
 
 More courses are planned after these.
