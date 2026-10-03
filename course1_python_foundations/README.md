@@ -16,7 +16,7 @@
 
 ## Course 1: Python Foundations
 
-**Python from zero, for people who work in fixed income. Four weeks, one notebook a day, every example a bond.**
+**Python from zero, for people who work in fixed income. Four weeks, one notebook a day, every example from fixed income and credit.**
 
 </div>
 
