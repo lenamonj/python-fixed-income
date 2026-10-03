@@ -152,6 +152,9 @@ Every issuer, ticker, CUSIP, price, position, trade, and counterparty in the por
 | `data/holdings_messy.csv` | The holdings with problems planted on purpose, for the data cleaning lessons |
 | `data/holdings_messy_answer_key.md` | Every planted problem, listed |
 | `data/trade_blotter.csv` | 374 trades in September 2026, in bonds from the holdings, with invented counterparties |
+| `data/project_holdings.csv` | The course project's extract: the same desk one month later, as of 2026-10-30, with new problems planted in it |
+| `data/project_cover_note.txt` | The cover note that comes with the project extract, with its control totals |
+| `data/project_answer_key.md` | Every problem planted in the project extract. Read it after you finish |
 
 The data is built to behave like a real portfolio.
 
@@ -159,7 +162,7 @@ The data is built to behave like a real portfolio.
 |:---|:---|
 | **Price and yield always agree** | Each yield is a synthetic Treasury yield plus a spread, and each price is calculated from that yield. |
 | **One convention throughout** | Fixed-rate bullet bonds, semiannual coupons, 30/360 day count, modified duration. |
-| **Identical for every student** | Seeded scripts generate every file: `tools/make_holdings.py` for the portfolio and `tools/make_blotter.py` for the trades. |
+| **Identical for every student** | Seeded scripts generate every file: `tools/make_holdings.py` for the portfolio, `tools/make_blotter.py` for the trades, and `tools/make_project_data.py` for the project extract. |
 | **Checked** | `python -m pytest` confirms the identifiers are valid and that each bond's price, accrued interest, and duration match its yield. |
 | **No real CUSIPs** | Every CUSIP uses an issuer number in the range reserved for internal use, with a valid check digit. |
 

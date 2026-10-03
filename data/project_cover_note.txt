@@ -1,0 +1,14 @@
+To: Credit desk
+From: Operations
+Subject: Month-end holdings extract, as of 2026-10-30
+
+The month-end extract is attached as project_holdings.csv.
+
+Control totals for the book:
+  Number of bonds:      206
+  Total face:           507,250,000 dollars
+  Total market value:   509,928,477.50 dollars
+
+Market value is face times clean price plus accrued interest, divided by 100.
+All positions are priced as of 2026-10-30.
+Please tell us if the extract does not agree with these totals.
