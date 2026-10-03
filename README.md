@@ -21,7 +21,7 @@ You know what a coupon, a spread, and a duration are. You live in Excel. You hav
 
 Most Python courses teach with shopping carts and movie ratings. This one teaches with a credit desk. You store a bond before you store anything else, your first loop totals a portfolio, and your first table is a holdings file. By the time a new idea arrives, you already know why a desk would want it.
 
-Course 1 is Python Foundations: four weeks, one notebook a day. <!-- count:ready -->11<!-- /count --> of its <!-- count:total -->18<!-- /count --> notebooks are ready, and the rest are being built in order.
+Course 1 is Python Foundations: four weeks, one notebook a day. <!-- count:ready -->12<!-- /count --> of its <!-- count:total -->18<!-- /count --> notebooks are ready, and the rest are being built in order.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -141,7 +141,7 @@ That last habit is the point of the course. You will use AI assistants to write 
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
 | 1 | [Visualization](week3/day1/11_visualization.ipynb) | Histograms, box plots, bar charts, line plots, scatter plots, pair plots, and heatmaps, on the 200 holdings | Ready |
-| 2 | More Visualization | Regression plots, joint plots, interactive charts, and customizing a chart | Planned |
+| 2 | [More Visualization](week3/day2/12_visualization_more.ipynb) | Regression plots, joint plots, violin, strip and swarm plots, interactive and 3D charts with plotly, and customizing a chart | Ready |
 | 3 | Exploratory Data Analysis | Sanity checks, distributions, relationships, missing values, and outliers | Planned |
 | 4 | Case Study: Treasury Yields | Yields by tenor and year, and how they changed over time | Planned |
 | 5 | Case Study: A Trade Blotter | A short guided analysis of a small set of trades | Planned |
