@@ -1,0 +1,11 @@
+# Keep every text file with LF line endings on every machine.
+# Without this, Git for Windows rewrites line endings on clone, which changes
+# the text inside data files and the numbers the notebooks print.
+* text=auto eol=lf
+
+*.png  binary
+*.pdf  binary
+*.ttf  binary
+*.otf  binary
+*.ipynb text eol=lf
+*.csv   text eol=lf
