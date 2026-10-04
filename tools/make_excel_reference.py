@@ -159,6 +159,16 @@ TVM_PV_BOND = [(5, 5.5, 3, 2), (6.25, 6, 5, 2), (4.5, 5.25, 10, 2), (7, 6.5, 30,
 # day 2: each week 1 bond priced at its yield on its coupon date, the running set then the exercise set.
 # Appended after the original rows, so their case_id values do not move.
 TVM_PV_BOND += [(c, y, n, 2) for _, c, y, n in WEEK1_BONDS + WEEK1_EXERCISE_BONDS]
+# day 3: each week 1 bond's semiannual yield restated as an annually compounded rate, running set then exercise
+# set. Written at the end of the file, after every earlier row, so no earlier row moves (day 2's notebook shows
+# row positions); their case_id values continue the EFFECT numbering.
+TVM_EFFECT_DAY3 = [(y, 2) for _, _, y, _ in WEEK1_BONDS + WEEK1_EXERCISE_BONDS]
+# day 3: PRICE with settlement on the coupon date 2026-09-30, at yields other than the bond's own:
+# (coupon_pct, yield_pct, years). The first running bond from 2.4 to 8.4 percent in 1-point steps (the
+# price-yield column), the other three running bonds and one exercise bond (99008IZA5) 1 point either side.
+TVM_PRICE = ([(5.25, y, 5) for y in (2.4, 3.4, 4.4, 5.4, 6.4, 7.4, 8.4)]
+             + [(6.125, 5.125, 7), (6.125, 7.125, 7), (4.75, 3.6, 3), (4.75, 5.6, 3), (7.5, 6.7, 10), (7.5, 8.7, 10),
+                (5.0, 4.35, 6), (5.0, 6.35, 6)])
 
 REFERENCE_COLUMNS = ["case_id", "group", "settlement", "maturity", "coupon_pct", "yield_pct", "frequency", "basis",
                      "couppcd", "coupncd", "coupnum", "coupdaybs", "coupdays", "coupdaysnc", "price", "accrued",
@@ -297,6 +307,11 @@ def tvm_cases() -> list[dict]:
     for coupon, yld, years, f in TVM_PV_BOND:
         add("PV_BOND", f"=-PV({num(yld)}/100/{f},{f}*{num(years)},{num(coupon)}/{f},100)",
             coupon_pct=coupon, rate_pct=yld, years=years, frequency=f)
+    for rate, f in TVM_EFFECT_DAY3:
+        add("EFFECT", f"=EFFECT({num(rate)}/100,{f})", rate_pct=rate, frequency=f)
+    for coupon, yld, years in TVM_PRICE:
+        add("PRICE", f"=PRICE(DATE(2026,9,30),DATE({2026 + years},9,30),{num(coupon)}/100,{num(yld)}/100,100,2,0)",
+            coupon_pct=coupon, rate_pct=yld, years=years, frequency=2)
     return cases
 
 
@@ -424,6 +439,75 @@ def confirm_behaviour(ws, app) -> None:
         print(f"  {cusip}: -PV {minus_pv!r}; =NPV({y}/100/2,B1:B{periods}) {npv!r}; column of B/(1+{y}/100/2)^A "
               f"summed {column_sum!r}; {ws.Range('E4').Formula} {price!r}: largest gap {gap!r}: "
               f"{'ok' if gap < 1e-9 else 'DIFFERS'}")
+        ws.Cells.Clear()
+
+    # week 1 day 3: a semiannual yield restated quarterly in two cells, EFFECT then NOMINAL, against the
+    # course formula ((1 + y/100/2)^2)^(1/4) - 1, times 4; and NOMINAL back to frequency 2 returns the yield
+    for cusip, _, yld, _ in WEEK1_BONDS:
+        y = num(yld)
+        ws.Range("A1").Formula = f"=EFFECT({y}/100,2)"
+        ws.Range("A2").Formula = "=NOMINAL(A1,4)*100"
+        ws.Range("A3").Formula = "=NOMINAL(A1,2)*100"
+        app.Calculate()
+        quarterly, back = ws.Range("A2").Value2, ws.Range("A3").Value2
+        expected = (((1 + yld / 100 / 2) ** 2) ** (1 / 4) - 1) * 4 * 100
+        ok = abs(quarterly - expected) < 1e-12 and abs(back - yld) < 1e-12
+        print(f"  {cusip}: =EFFECT({y}/100,2) in A1, =NOMINAL(A1,4)*100 {quarterly!r} (formula {expected!r}), "
+              f"=NOMINAL(A1,2)*100 {back!r}: {'ok' if ok else 'DIFFERS'}")
+        ws.Cells.Clear()
+
+    # week 1 day 3: the price-yield column for the first running bond, yields in A2:A8 under a header, PRICE
+    # filled down in B2:B8 reading the yield from column A, then a Scatter with Straight Lines chart made from the
+    # selected A1:B8, as a student would insert it. The column must equal the PRICE rows of the TVM file, and the
+    # chart's one series must take its x values from column A and its y values from column B.
+    _, coupon, _, years = WEEK1_BONDS[0]
+    grid = [y for c, y, n in TVM_PRICE if c == coupon and n == years]
+    ws.Range("A1").Value2 = "yield_pct"
+    ws.Range("B1").Value2 = "price"
+    for i, y in enumerate(grid, start=2):
+        ws.Cells(i, 1).Value2 = y
+    last = len(grid) + 1
+    ws.Range(f"B2:B{last}").Formula = f"=PRICE(DATE(2026,9,30),DATE({2026 + years},9,30),{num(coupon)}/100,A2/100,100,2,0)"
+    app.Calculate()
+    column = [ws.Cells(i, 2).Value2 for i in range(2, last + 1)]
+    direct = evaluate_keep(ws, app, [f"=PRICE(DATE(2026,9,30),DATE({2026 + years},9,30),{num(coupon)}/100,{num(y)}/100,100,2,0)"
+                                     for y in grid])
+    ws.Activate()
+    ws.Range(f"A1:B{last}").Select()
+    chart = ws.Shapes.AddChart2(-1, 74).Chart  # 74 is xlXYScatterLines, Scatter with Straight Lines
+    series = chart.SeriesCollection(1)
+    ok = (column == direct and chart.SeriesCollection().Count == 1 and list(series.XValues) == grid
+          and list(series.Values) == column and series.Name == "price")
+    print(f"  Price-yield column =PRICE(...,{num(coupon)}/100,A2/100,100,2,0) for {WEEK1_BONDS[0][0]} at {grid}: "
+          f"{column!r}; equal to the PRICE rows {column == direct}; Scatter with Straight Lines from A1:B{last}: "
+          f"{chart.SeriesCollection().Count} series named {series.Name!r}, x values {list(series.XValues)}: "
+          f"{'ok' if ok else 'DIFFERS'}")
+    chart.Parent.Delete()
+    ws.Cells.Clear()
+
+    # week 1 day 3: pull to par on coupon dates. Years left in column A (from the full term down to 0.5),
+    # =-PV(y/100/2,2*A1,c/2,100) in column B, against PRICE settled on the coupon date that leaves that many
+    # years (maturity 30 September is a month end, so coupons fall on 31 March and 30 September)
+    for cusip, coupon, yld, years in (WEEK1_BONDS[3], WEEK1_BONDS[2]):
+        c, y = num(coupon), num(yld)
+        rows = []
+        for k in range(2 * years, 0, -1):
+            months_back = 6 * k
+            year, month = 2026 + years - (months_back // 12), 9 - months_back % 12
+            if month <= 0:
+                year, month = year - 1, month + 12
+            day = 31 if month == 3 else 30
+            rows.append((k / 2, f"DATE({year},{month},{day})"))
+        for i, (left, settle) in enumerate(rows, start=1):
+            ws.Cells(i, 1).Value2 = left
+            ws.Cells(i, 2).Formula = f"=-PV({y}/100/2,2*A{i},{c}/2,100)"
+            ws.Cells(i, 3).Formula = f"=PRICE({settle},DATE({2026 + years},9,30),{c}/100,{y}/100,100,2,0)"
+        app.Calculate()
+        gap = max(abs(ws.Cells(i, 2).Value2 - ws.Cells(i, 3).Value2) for i in range(1, len(rows) + 1))
+        first, last_value = ws.Cells(1, 2).Value2, ws.Cells(len(rows), 2).Value2
+        print(f"  {cusip}: pull to par =-PV({y}/100/2,2*A1,{c}/2,100) over {len(rows)} coupon dates, {first!r} "
+              f"down to {last_value!r} at 0.5 years; against PRICE settled on each coupon date (first {rows[0][1]}), "
+              f"largest gap {gap!r}: {'ok' if gap < 1e-9 else 'DIFFERS'}")
         ws.Cells.Clear()
 
 
