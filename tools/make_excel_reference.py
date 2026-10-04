@@ -192,6 +192,14 @@ TVM_MROUND = [5.43, 5.69, 6.07, 9.08, 7.24, 4.55, 5.0625, 4.9375]
 # basis 0, semiannual. Group "week2", case_id the CUSIP. Appended after every earlier row of the dated file.
 WEEK2_SETTLEMENT = "2026-11-30"
 WEEK2_BONDS = [(cusip, coupon, yld, f"{2026 + years}-09-30") for cusip, coupon, yld, years in WEEK1_BONDS + WEEK1_EXERCISE_BONDS]
+# week 2 day 7: one trade in each exercise bond, settling between coupons on its own date, at the bond's issue
+# yield, basis 0, semiannual. Group "week2_trades", case_id "trade_" plus the CUSIP. Appended after every earlier row.
+# The last row must settle between 2026-09-30 and 2027-02-27: day 6's solutions notebook reuses the settlement of the
+# file's last row after its AI test loop (31 August and 30 September maturities), so a later date changes its output.
+WEEK2_TRADE_SETTLEMENTS = {"99005FZA4": "2027-02-28", "99007HZA8": "2027-03-01", "99008IZA5": "2026-12-31",
+                           "99009JZA2": "2027-01-15"}
+WEEK2_TRADES = [(cusip, WEEK2_TRADE_SETTLEMENTS[cusip], coupon, yld, maturity)
+                for cusip, coupon, yld, maturity in WEEK2_BONDS if cusip in WEEK2_TRADE_SETTLEMENTS]
 
 REFERENCE_COLUMNS = ["case_id", "group", "settlement", "maturity", "coupon_pct", "yield_pct", "frequency", "basis",
                      "couppcd", "coupncd", "coupnum", "coupdaybs", "coupdays", "coupdaysnc", "price", "accrued",
@@ -238,6 +246,9 @@ def build_cases() -> list[dict]:
                               coupon_pct=coupon, yield_pct=yld, frequency=frequency, basis=basis))
     for cusip, coupon, yld, maturity in WEEK2_BONDS:
         cases.append(dict(case_id=cusip, group="week2", settlement=WEEK2_SETTLEMENT, maturity=maturity,
+                          coupon_pct=coupon, yield_pct=yld, frequency=2, basis=0))
+    for cusip, settlement, coupon, yld, maturity in WEEK2_TRADES:
+        cases.append(dict(case_id=f"trade_{cusip}", group="week2_trades", settlement=settlement, maturity=maturity,
                           coupon_pct=coupon, yield_pct=yld, frequency=2, basis=0))
     if len({c["case_id"] for c in cases}) != len(cases):
         raise ValueError("case_id values are not unique")
@@ -700,7 +711,7 @@ def main() -> None:
 
     write_csv(DATA / "bondmath_excel_reference.csv", REFERENCE_COLUMNS, reference)
     write_csv(DATA / "bondmath_excel_reference_tvm.csv", TVM_COLUMNS, tvm)
-    groups = {g: sum(r["group"] == g for r in reference) for g in ("holdings", "edge", "frequency", "basis1", "week2")}
+    groups = {g: sum(r["group"] == g for r in reference) for g in ("holdings", "edge", "frequency", "basis1", "week2", "week2_trades")}
     blank_accrint = sum(r["accrint"] == "" for r in reference)
     print(f"bondmath_excel_reference.csv: {len(reference)} rows {groups}, accrint blank in {blank_accrint}")
     print(f"bondmath_excel_reference_tvm.csv: {len(tvm)} rows")

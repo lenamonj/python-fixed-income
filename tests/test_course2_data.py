@@ -230,8 +230,8 @@ def test_excel_reference_holdings_rows_equal_holdings_csv(reference: pd.DataFram
 def test_copied_math_agrees_with_excel(reference: pd.DataFrame) -> None:
     # the generator's math is 30/360 only, so it is checked on every basis 0 row (all frequencies)
     rows = reference[reference["basis"] == 0]
-    # 266 rows, plus the 8 week 2 rows added on day 6
-    assert len(rows) == 274
+    # 266 rows, plus the 8 week 2 rows added on day 6 and the 4 week 2 trade rows added on day 7
+    assert len(rows) == 278
     for row in rows.itertuples():
         s, m, c, y, f = d(row.settlement), d(row.maturity), row.coupon_pct, row.yield_pct, row.frequency
         dates = c2.coupon_dates(s, m, f)
