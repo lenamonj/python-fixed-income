@@ -147,7 +147,7 @@ Sources and terms for every file are in [The data](../README.md#the-data) on the
 
 ## What comes next
 
-Course 2 is Bond Math: pricing, yield, duration, and convexity, built by hand and checked against Excel.
+[Course 2 is Bond Math](../course2_bond_math/README.md): three weeks on pricing, yield, accrued interest, duration, convexity, and spread, built by hand and checked against Excel.
 
 ---
 
