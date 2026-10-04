@@ -6,7 +6,7 @@
 </picture>
 
 ![Course 1](https://img.shields.io/badge/Course_1-Python_Foundations-123D2F?style=for-the-badge)
-![Length](https://img.shields.io/badge/4_weeks-18_notebooks_%2B_project-1C7A57?style=for-the-badge)
+![Length](https://img.shields.io/badge/4_weeks-19_notebooks_%2B_project-1C7A57?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](../LICENSE)
@@ -35,7 +35,7 @@ Two habits run through all of it.
 
 You need no coding experience. You do need to know what a coupon, a spread, and a duration are. This is the first course in [Python for Fixed Income](../README.md).
 
-Status: <!-- count:ready -->18<!-- /count --> of <!-- count:total -->18<!-- /count --> notebooks are ready, and so is the course project.
+Status: <!-- count:ready -->19<!-- /count --> of <!-- count:total -->19<!-- /count --> notebooks are ready, and so is the course project.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -104,7 +104,8 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 | 1 | [Case Study: Consumer Credit](week4/day1/16_case_study_consumer_credit.ipynb) | A full analysis of a public credit card default dataset: 30,000 accounts, a yes or no outcome, and rates with their counts | Ready |
 | 2 | [Analyzing Text](week4/day2/17_analyzing_text.ipynb) | Regular expressions, cleaning, stopwords, stemming, and turning text into numbers, on FOMC statements | Ready |
 | 3 | [Case Study: Statement Sentiment](week4/day3/18_case_study_statement_sentiment.ipynb) | Turning the wording of FOMC statements into a score with three word lists, and how far to trust it | Ready |
-| 4 and 5 | [Course Project](week4/day4/course1_project.ipynb) | A new month-end extract and 40 numbered questions, answered on your own, ending in a written picture of the book. A [worked version](week4/day4/course1_project_solutions.ipynb) sits beside it | Ready |
+| 4 | [From Notebook to Module](week4/day4/19_from_notebook_to_module.ipynb) | Putting the cleaning and checking steps into a `.py` file, importing it, and running the same lines on a second file | Ready |
+| 5 | [Course Project](week4/day5/course1_project.ipynb) | A new month-end extract, answered on your own, ending in a written picture of the book. A [worked version](week4/day5/course1_project_solutions.ipynb) sits beside it | Ready |
 
 <!-- map:end -->
 
@@ -114,9 +115,9 @@ Days 4 and 5 of week 4 are yours. A new month-end extract arrives with a cover n
 
 | File | What it is |
 |:---|:---|
-| [`course1_project.ipynb`](week4/day4/course1_project.ipynb) | The brief, the questions, and a check cell for every answer that can be checked |
-| [`course1_project_overview.pdf`](week4/day4/course1_project_overview.pdf) | The brief as slides: the scenario, the files, the rules, and how the checks work |
-| [`course1_project_solutions.ipynb`](week4/day4/course1_project_solutions.ipynb) | The worked version, with every decision stated. Open it after you finish |
+| [`course1_project.ipynb`](week4/day5/course1_project.ipynb) | The brief, the questions, and a check cell for every answer that can be checked |
+| [`course1_project_overview.pdf`](week4/day5/course1_project_overview.pdf) | The brief as slides: the scenario, the files, the rules, and how the checks work |
+| [`course1_project_solutions.ipynb`](week4/day5/course1_project_solutions.ipynb) | The worked version, with every decision stated. Open it after you finish |
 
 The conclusion you write describes the data. It never recommends, ranks, or forecasts a bond, an issuer, or a sector.
 

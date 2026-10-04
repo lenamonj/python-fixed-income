@@ -29,7 +29,7 @@ Nothing is abstracted away into contrived examples. Every programming concept is
 
 You already know the investment problem. **This course teaches you how to solve more of it with code.**
 
-The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day, 18 notebooks and a project. All of it is ready.
+The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day, 19 notebooks and a project. All of it is ready.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
