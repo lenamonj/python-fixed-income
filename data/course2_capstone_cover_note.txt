@@ -1,0 +1,14 @@
+To: Credit desk
+From: Operations
+Subject: Month-end holdings extract, as of 2026-11-30
+
+The month-end extract is attached as course2_capstone_holdings.csv. It is the same layout as last month.
+
+Control totals for the book:
+  Number of bonds:      199
+  Total face:           493,000,000 dollars
+  Total market value:   496,372,835.00 dollars
+
+Market value is face times clean price plus accrued interest, divided by 100.
+All positions settle and are priced as of 2026-11-30. Analytics are semiannual, 30/360.
+Please tell us if the extract does not agree with these totals.
