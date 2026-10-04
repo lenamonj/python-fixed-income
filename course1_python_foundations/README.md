@@ -22,7 +22,7 @@
 
 On day one you store a bond: its ticker, its coupon, its maturity. Four weeks later a month-end holdings extract arrives that does not tie to its cover note. You find what is wrong with it, fix it, state every decision, and write up what the book holds and how it differs from its benchmark. Nobody walks you through it.
 
-**That is the course: the distance between those two days.**
+**That is the course: from storing one bond to reviewing a whole book on your own.**
 
 Every skill is taught on the job it does on a desk. Loops total a portfolio. Joins attach issuers and ratings to positions, with a check on the row count and the face amount around each one. Charts show where the spread and the duration sit. Your first time series is Treasury yields since 2015. Your first text analysis is on FOMC statements.
 
