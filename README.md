@@ -7,6 +7,7 @@
 
 ![Course 1](https://img.shields.io/badge/Course_1-Python_Foundations-123D2F?style=for-the-badge)
 ![Course 2](https://img.shields.io/badge/Course_2-Bond_Math-123D2F?style=for-the-badge)
+![Course 3](https://img.shields.io/badge/Course_3-Market_Data_and_Time_Series-123D2F?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](LICENSE)
@@ -30,9 +31,11 @@ Nothing is abstracted away into contrived examples. Every programming concept is
 
 You already know the investment problem. **This course teaches you how to solve more of it with code.**
 
-The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day, 19 notebooks and a project. [Course 2, Bond Math](course2_bond_math/README.md) follows: three weeks, 14 notebooks and a capstone, in which you build price, yield, accrued interest, duration, DV01, convexity, spread, and DTS yourself, test every function against Excel, and finish with a risk report on a whole book. Both are ready.
+The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day, 19 notebooks and a project. [Course 2, Bond Math](course2_bond_math/README.md) follows: three weeks, 14 notebooks and a capstone, in which you build price, yield, accrued interest, duration, DV01, convexity, spread, and DTS yourself, test every function against Excel, and finish with a risk report on a whole book. [Course 3, Market Data and Time Series](course3_market_data/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you pull market data from an API with a key that never leaks, clean it against the bond market's own calendar, compute changes, volatility, z-scores, percentile ranks, slopes, and butterflies with no lookahead, query the book with SQL, and finish with a daily market snapshot that runs again on any date. All three are ready.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
+
+*This product uses the FRED&reg; API but is not endorsed or certified by the Federal Reserve Bank of St. Louis.*
 
 ## If you know Excel, you already know how to think about this
 
@@ -77,6 +80,21 @@ Nothing in this course asks you to forget Excel. Wherever Excel has a feature fo
 | Divide two bumped `PRICE` cells for spread duration, multiply for DTS, and total buckets with `SUMIFS` | Write `spread_duration` and `dts`, and group each bond's share of the book's DTS | 2 | Week 3, Day 3 |
 | Add a calculated field to a pivot table, and run a What-If Data Table over a whole-book reprice | Group by sector and rating, and reprice the book under rate and spread scenarios | 2 | Week 3, Day 4 |
 | Check a risk report workbook with `SUM` and `SUMPRODUCT`, and price a month-end and a final-period bond with the `COUP` functions, `PRICE`, and `YIELD` | Clean, recompute, and reconcile a month-end extract, and write the risk report to Excel | 2 | Week 3, Day 5 |
+| Build a request URL in cells with `&` and `ENCODEURL`, and load a web CSV with Power Query From Web | Build the request in code, and read the key from `.env` so it is never typed into a cell or a file | 3 | Week 1, Day 1 |
+| Load JSON with Power Query, and turn FRED's `.` into `#N/A` with `IFERROR(VALUE(...),NA())` | Parse FRED's JSON, reading `.` as missing and never as 0 | 3 | Week 1, Day 2 |
+| Use `WEEKDAY`, `WORKDAY`, and `NETWORKDAYS` with a holiday list, and see `XLOOKUP` return `#N/A` on a date with no row | Take the market calendar from the data's own dates, and join two series inner or outer | 3 | Week 1, Day 3 |
+| Find a month's last market date with `EOMONTH` and `MAXIFS`, look up a value as of a date with `XLOOKUP` match mode -1, and group a pivot table by month | Take the last observation of each week or month, labelled by its own date, and the as-of value | 3 | Week 1, Day 4 |
+| Append and merge files with Power Query, and check a sheet with `SUMPRODUCT`, `UNIQUE`, and `COUNTBLANK` | Build one checked daily dataset from two files, and cache a download | 3 | Week 1, Day 5 |
+| Write `=(B3-B2)*100` for a change in bp, `XLOOKUP` with `EDATE` for a one-month change, and `MAX` with `XLOOKUP` for the date of the largest move | Compute changes in bp over rows and over calendar periods, and price returns in percent | 3 | Week 2, Day 1 |
+| Fill `STDEV.S` down a fixed-size range, with `STDEV.P`, `OFFSET`, and `*SQRT(252)` beside it | Compute rolling volatility over a trailing window of rows, and test that it uses no future data | 3 | Week 2, Day 2 |
+| Use `STANDARDIZE`, and `COUNTIF` over `COUNT` for a percentile rank, beside `PERCENTRANK.INC`, `RANK.EQ`, and `RANK.AVG` | Compute rolling z-scores and percentile ranks that match Excel row for row | 3 | Week 2, Day 3 |
+| Fill slope and butterfly formulas down the Treasury sheet, and weight a butterfly with `PRICE` and `MDURATION` | Compute slopes and butterflies in bp, and DV01-neutral weights from your own `bondmath` | 3 | Week 2, Day 4 |
+| Build a summary sheet for one date with `XMATCH`, `XLOOKUP`, `INDEX`, `OFFSET`, `STANDARDIZE`, and `COUNTIF` | Build every measure as of one date in one table that reads nothing after it | 3 | Week 2, Day 5 |
+| Use `COUNTIFS`, `SUMIFS`, `AVERAGEIFS`, `FILTER`, `TAKE` with `SORTBY`, and a pivot table | Write `WHERE`, `GROUP BY`, `HAVING`, `ORDER BY`, and `LIMIT` in SQL, each checked against pandas | 3 | Week 3, Day 1 |
+| Join with `XLOOKUP` or Power Query Merge, and find repeated keys with `COUNTIF` | Join tables in SQL, catch a join that duplicates rows, and use window functions for daily changes and month ends | 3 | Week 3, Day 2 |
+| Check a suggested formula, `PERCENTRANK.INC`, against `COUNTIF` over `COUNT`, and a DV01 built from cells | Test code written in the style of an AI assistant against your own functions and Excel's values | 3 | Week 3, Day 3 |
+| Open the snapshot workbook and check its numbers with `SUMIFS`, `STANDARDIZE`, and `COUNTIF` | Write a daily market snapshot to HTML and Excel from one function that runs on any date | 3 | Week 3, Day 4 |
+| Test a pasted extract's dates and units with `DATE`, `WEEKDAY`, `COUNTIF`, and `IFERROR(VALUE(...),NA())` | Clean a vendor extract with checks that stop, reconcile it, and run the snapshot on two dates | 3 | Week 3, Day 5 |
 
 What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so the same steps can be run again on tomorrow's file without anyone dragging a formula or repointing a range.
 
@@ -126,6 +144,12 @@ For Course 2, install its file into the same environment. Course 2 also uses git
 python -m pip install -r course2_bond_math\requirements.txt
 ```
 
+For Course 3, install its file too. Course 3 uses a free FRED API key of your own, kept in a `.env` file outside the course repo or in Colab's Secrets panel, never in the repo; every notebook runs without one. The [Course 3 README](course3_market_data/README.md#your-fred-key) explains.
+
+```powershell
+python -m pip install -r course3_market_data\requirements.txt
+```
+
 **Step 3.** Open the folder in VS Code.
 
 ```powershell
@@ -173,6 +197,7 @@ Each course has its own folder, its own course map, and its own list of what to 
 |:---:|:---|:---:|
 | 1 | [Python Foundations](course1_python_foundations/README.md): variables to pandas, charts, exploratory data analysis, text, and a project, in four weeks | Ready |
 | 2 | [Bond Math](course2_bond_math/README.md): price, yield, accrued interest, duration, DV01, convexity, spread, and DTS, built by hand in your own tested module, checked against Excel, and finished with a risk report, in three weeks | Ready |
+| 3 | [Market Data and Time Series](course3_market_data/README.md): an API key kept secret, FRED's JSON, market calendars, resampling, changes, volatility, z-scores, percentile ranks, slopes, butterflies, SQL, AI-written code reviewed with tests, and a daily market snapshot, in three weeks | Ready |
 
 More courses are planned after these.
 
@@ -199,6 +224,10 @@ Every issuer, ticker, CUSIP, price, position, trade, and counterparty in the por
 | `data/course2_capstone_holdings.csv` | The Course 2 capstone's extract: 201 rows, the desk as of 2026-11-30, with bond-math problems planted in it |
 | `data/course2_capstone_cover_note.txt` | The cover note that comes with the capstone extract, with its control totals |
 | `data/course2_capstone_answer_key.md` | Every problem planted in the capstone extract. Read it after you finish |
+| `data/course3_synthetic_spreads.csv` | 2,940 daily investment grade and high yield spreads in bp, one per date of the Treasury file. **Synthetic**: invented for Course 3, not ICE, Moody's, or any index |
+| `data/course3_capstone_extract.csv` | The Course 3 capstone's vendor extract: 69 rows, 2026-07-01 to 2026-10-02, four Treasury tenors and the two synthetic spreads, with data problems planted in it |
+| `data/course3_capstone_cover_note.txt` | The cover note that comes with the Course 3 extract, with its control figures |
+| `data/course3_capstone_answer_key.md` | Every problem planted in the Course 3 extract. Read it after you finish |
 
 The data is built to behave like a real portfolio.
 
@@ -206,7 +235,7 @@ The data is built to behave like a real portfolio.
 |:---|:---|
 | **Price and yield always agree** | Each yield is a synthetic Treasury yield plus a spread, and each price is calculated from that yield. |
 | **One convention throughout** | Fixed-rate bullet bonds, semiannual coupons, 30/360 day count, modified duration. |
-| **Identical for every student** | Seeded scripts generate every file: `tools/make_holdings.py` for the portfolio, `tools/make_blotter.py` for the trades, `tools/make_project_data.py` for the project extract, and `tools/make_course2_data.py` for the Course 2 curve and capstone. `tools/make_excel_reference.py` wrote the Excel values once, through desktop Excel on Windows. |
+| **Identical for every student** | Seeded scripts generate every file: `tools/make_holdings.py` for the portfolio, `tools/make_blotter.py` for the trades, `tools/make_project_data.py` for the project extract, `tools/make_course2_data.py` for the Course 2 curve and capstone, and `tools/make_course3_data.py` for the Course 3 spreads, FRED-format samples, and capstone. `tools/make_excel_reference.py` and `tools/make_course3_excel_reference.py` wrote the Excel values once, through desktop Excel on Windows. |
 | **Checked** | `python -m pytest` confirms the identifiers are valid and that each bond's price, accrued interest, and duration match its yield. |
 | **No real CUSIPs** | Every CUSIP uses an issuer number in the range reserved for internal use, with a valid check digit. |
 
@@ -220,6 +249,18 @@ Three files are real, public data, and they are not part of the portfolio. Their
 
 All three were retrieved on 2026-10-03. The scripts `tools/get_treasury_yields.py`, `tools/get_credit_card_default.py`, and `tools/get_fomc_statements.py` download each one again from the same source.
 
+Course 3 adds three files derived from the public Treasury file. They hold its values, unchanged or computed from them, and no data downloaded from FRED.
+
+| File | What it holds | Source and terms |
+|:---|:---|:---|
+| `data/course3_fred_format_dgs10.json` | 43 observations of the 10 Yr, 2026-08-03 to 2026-09-30, in the FRED API's response format, with `.` for 2026-09-07 | Values copied from `data/treasury_par_yields.csv`; the response format is FRED's structure, not FRED data |
+| `data/course3_fred_format_dgs2.json` | The same for the 2 Yr | As above |
+| `data/course3_excel_reference.csv` | 190 market dates of 2026: the 2, 5, 10, and 30 Yr, and Excel's results for changes, rolling volatility, z-scores, percentile ranks, 2s10s, and 2s5s10s, with each formula | Computed by desktop Excel from `data/treasury_par_yields.csv` |
+
+Nothing pulled from the FRED API is stored in this repo. Course 3's live cells pull public Treasury series with the student's own key, and pull ICE BofA and Moody's series only to the student's own screen: those are licensed, held in memory, and never cached, written to a file, or committed.
+
+*This product uses the FRED&reg; API but is not endorsed or certified by the Federal Reserve Bank of St. Louis.*
+
 ## What is in this repo
 
 ```
@@ -230,6 +271,11 @@ python-fixed-income/
     week1/ ... week4/
       day1/ ... day5/   the notebook, its solutions, and its overview PDF
   course2_bond_math/
+    README.md           the course map
+    requirements.txt    what the course's notebooks need
+    week1/ ... week3/
+      day1/ ... day5/   the notebook, its solutions, and its overview PDF
+  course3_market_data/
     README.md           the course map
     requirements.txt    what the course's notebooks need
     week1/ ... week3/

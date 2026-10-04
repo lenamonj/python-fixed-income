@@ -146,7 +146,7 @@ Sources and terms for every file are in [The data](../README.md#the-data) on the
 
 ## What comes next
 
-Later courses import the `bondmath` you built here.
+[Course 3 is Market Data and Time Series](../course3_market_data/README.md): three weeks on pulling market data with a key that never leaks, market calendars, changes, volatility, z-scores, slopes, butterflies, SQL, and a daily market snapshot, with your `bondmath` imported where bond math is needed.
 
 ---
 
