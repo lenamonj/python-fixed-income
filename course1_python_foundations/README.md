@@ -20,7 +20,7 @@
 
 </div>
 
-On day one you store a bond: its ticker, its coupon, its maturity. Four weeks later a month-end holdings extract arrives that does not tie to its cover note. You find what is wrong with it, fix it, state every decision, and write up what the book holds and how it differs from its benchmark. Nobody walks you through it.
+On day one you store a bond: its ticker, its coupon, its maturity. Four weeks later a month-end holdings extract arrives that does not tie to its cover note. You find what is wrong with it, fix it, state every decision, and write up what the book holds and how it differs from its benchmark. The project gives you the questions. The code and the conclusion are yours.
 
 **That is the course: from storing one bond to reviewing a whole book on your own.**
 

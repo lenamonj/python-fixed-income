@@ -35,7 +35,7 @@ The series starts with [Course 1, Python Foundations](course1_python_foundations
 
 ## If you know Excel, you already know how to think about this
 
-Nothing in this course asks you to forget Excel. Every new idea is introduced next to the Excel feature you would reach for today, with the formula written out, so you are translating something you know and not learning from nothing.
+Nothing in this course asks you to forget Excel. Wherever Excel has a feature for the job, the new idea is introduced next to it, with the formula written out, so you are translating something you know and not learning from nothing.
 
 | In Excel you would | In Python you will | Where in Course 1 |
 |:---|:---|:---|
@@ -48,7 +48,7 @@ Nothing in this course asks you to forget Excel. Every new idea is introduced ne
 | Use `VLOOKUP` or `INDEX` and `MATCH` | Merge two tables on a shared column | Week 2, Day 3 and Day 5 |
 | Build a pivot table | Group by a column and summarize | Week 2, Day 3 and Day 5 |
 | Use `SUMPRODUCT` over `SUM` for a weighted average | Do the same arithmetic on two columns | Week 2, Day 3 and Day 5 |
-| Insert a chart: Column, Line, Scatter, Histogram, Box and Whisker | Draw the same chart in a few lines, and redraw it on next month's file | Week 3, Day 1 |
+| Insert a chart: Column, Line, Scatter, Histogram, Box and Whisker | Draw the same chart in a few lines of code | Week 3, Day 1 |
 | Add a trendline, and use `SLOPE`, `INTERCEPT`, and `RSQ` | Fit the line and print its numbers with units | Week 3, Day 2 |
 | Use Remove Duplicates, `TRIM`, and `QUARTILE.INC` to clean and check a sheet | Find and fix the same problems in code, and print the totals before and after | Week 3, Day 3 |
 | Use `XLOOKUP` by date, and `AVERAGEIFS` by year | Select by date and group a time series by year | Week 3, Day 4 |
@@ -57,7 +57,7 @@ Nothing in this course asks you to forget Excel. Every new idea is introduced ne
 | Use `FIND`, `SUBSTITUTE`, `TRIM`, and Find and Replace on text | Search and clean text with patterns, across every row at once | Week 4, Day 2 |
 | Count words from a list with `SUMPRODUCT`, and standardize with `STANDARDIZE` | Score every document against a word list and compare the scores | Week 4, Day 3 |
 
-What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so tomorrow's file runs through the same steps without anyone dragging a formula or repointing a range.
+What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so the same steps can be run again on tomorrow's file without anyone dragging a formula or repointing a range.
 
 ## Start here
 
@@ -73,13 +73,23 @@ Use Colab on a personal account, with the course data only. Do not upload anythi
 
 You need [Python 3.13](https://www.python.org/downloads/), [VS Code](https://code.visualstudio.com/) with the Python and Jupyter extensions, and [git](https://git-scm.com/downloads). On a work machine, check your firm's policy before installing anything.
 
+Two things to get right before Step 1.
+
+| Check | What to do |
+|:---|:---|
+| **Python on the PATH** | In the Python installer, tick **Add python.exe to PATH** on the first screen. If `python` is still not found later, use `py -3.13` wherever a step says `python`. |
+| **Scripts allowed in PowerShell** | Run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once. Without it, Step 2 stops at `Activate.ps1` with a message that running scripts is disabled. |
+
 **Step 1.** Get the course and open its folder.
 
 ```powershell
+mkdir $HOME\projects -Force
 cd $HOME\projects
 git clone https://github.com/lenamonj/python-fixed-income.git
 cd python-fixed-income
 ```
+
+No git, or not allowed to install it? On the repo's GitHub page choose **Code**, then **Download ZIP**, unzip it into `projects`, and `cd` into the unzipped folder.
 
 **Step 2.** Create an environment and install what Course 1 needs. Each course folder has its own `requirements.txt`.
 
@@ -97,7 +107,7 @@ code .
 
 Open `course1_python_foundations\week1\day1\01_python_for_fixed_income_intro.ipynb`, choose the `.venv` kernel in the top right, and run the first cell.
 
-If PowerShell says running scripts is disabled, run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once and repeat Step 2.
+Two notebooks, Week 4 Days 2 and 3, download two small word lists the first time they run, so they need an internet connection once.
 
 ## How a day works
 
@@ -123,7 +133,7 @@ Four habits run through every day.
 |:---|:---|
 | **Excel side by side** | Wherever Excel has a function or feature for the job, it is shown next to the Python, formula included. |
 | **Errors on purpose** | Code that fails is run for real, and the error is read line by line. |
-| **Exercises you can check** | Each exercise has a check cell that tells you whether your answer is right. |
+| **Exercises you can check** | Each exercise has a check cell that tells you whether your number is right. |
 | **The AI check** | Each day ends with code written in the style of an AI assistant. It has one bug. You find it by checking the output against a number you worked out yourself. |
 
 That last habit is the point of the course. You will use AI assistants to write code. Code that runs is not the same as code that is right, and the way to tell the difference is to know what the answer should be.
