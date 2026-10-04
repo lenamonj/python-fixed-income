@@ -16,13 +16,26 @@
 
 ## Course 1: Python Foundations
 
-**Python from zero, for people who work in fixed income. Four weeks, one notebook a day, every example from fixed income and credit.**
+**Four weeks from your first line of code to a month-end portfolio review you run yourself.**
 
 </div>
 
-This is the first course in [Python for Fixed Income](../README.md). It assumes you know what a coupon, a spread, and a duration are, and that you have never written a line of code. It ends with you cleaning, describing, and reporting on a month-end holdings file on your own.
+On day one you store a bond: its ticker, its coupon, its maturity. Four weeks later a month-end holdings extract arrives that does not tie to its cover note. You find what is wrong with it, fix it, state every decision, and write up what the book holds and how it differs from its benchmark. Nobody walks you through it.
 
-All <!-- count:ready -->18<!-- /count --> of its <!-- count:total -->18<!-- /count --> notebooks and the course project are ready.
+**That is the course: the distance between those two days.**
+
+Every skill is taught on the job it does on a desk. Loops total a portfolio. Joins attach issuers and ratings to positions, with a check on the row count and the face amount around each one. Charts show where the spread and the duration sit. Your first time series is Treasury yields since 2015. Your first text analysis is on FOMC statements.
+
+Two habits run through all of it.
+
+| Habit | What it means |
+|:---|:---|
+| **The Excel bridge** | Every new idea sits beside the formula you would write today, so you are translating something you know. |
+| **Check before you trust** | You work out what the answer should be before you rely on code, yours or an AI assistant's. Each day ends with code that runs cleanly and is wrong, and you find the bug. |
+
+You need no coding experience. You do need to know what a coupon, a spread, and a duration are. This is the first course in [Python for Fixed Income](../README.md).
+
+Status: <!-- count:ready -->18<!-- /count --> of <!-- count:total -->18<!-- /count --> notebooks are ready, and so is the course project.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
