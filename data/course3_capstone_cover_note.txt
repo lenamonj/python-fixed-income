@@ -1,0 +1,20 @@
+To: Credit desk
+From: Market data vendor, client operations
+Subject: Daily extract, 2026-07-01 to 2026-10-02
+
+The extract is attached as course3_capstone_extract.csv, in the usual layout.
+
+Period:        2026-07-01 to 2026-10-02
+Market days:   66
+Columns:       date, 2 Yr, 5 Yr, 10 Yr, 30 Yr (par yields, percent), ig_spread_bp, hy_spread_bp (basis points)
+
+Last values sent, for 2026-10-02:
+  2 Yr     4.83 percent
+  5 Yr     5.06 percent
+  10 Yr    5.28 percent
+  30 Yr    5.63 percent
+  ig_spread_bp   97.0
+  hy_spread_bp   328.7
+
+The spread columns are synthetic course data, invented for this course. They are not ICE, Moody's, or any index.
+Please tell us if the extract does not agree with these figures.
