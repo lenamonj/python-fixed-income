@@ -32,6 +32,7 @@ COURSE_NAME = "Python for Fixed Income"
 COURSES = {
     1: ("COURSE 1 · PYTHON FOUNDATIONS", "Course 1: Python Foundations", ""),
     2: ("COURSE 2 · BOND MATH", "Course 2: Bond Math", "course2_"),
+    3: ("COURSE 3 · MARKET DATA AND TIME SERIES", "Course 3: Market Data and Time Series", "course3_"),
 }
 COURSE_LINE = COURSES[1][0]
 BYLINE_PREFIX = "Created by "
