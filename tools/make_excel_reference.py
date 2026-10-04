@@ -174,6 +174,19 @@ TVM_PRICE = ([(5.25, y, 5) for y in (2.4, 3.4, 4.4, 5.4, 6.4, 7.4, 8.4)]
 # continuing the RATE numbering) and from YIELD on the coupon date (a new function at the end of the file).
 WEEK1_QUOTES = [(5.25, 99.125, 5), (6.125, 100.5, 7), (4.75, 100.875, 3), (7.5, 97.75, 10),
                 (5.625, 99.5, 4), (4.375, 100.25, 2), (5.0, 98.375, 6), (8.25, 97.625, 8)]
+# day 5: a new issue calendar of eight invented issues settling on the coupon date 2026-09-30, and a second
+# calendar of five for the exercises (COURSE2_SPEC.md, "Day 5"): (cusip, coupon_pct, years, re-offer price).
+# New functions at the end of the file, so no earlier row moves and no earlier notebook's count changes:
+# CALENDAR_YIELD (YIELD of each re-offer price), CALENDAR_PRICE (PRICE of each issue at the common yield, then
+# the eight calendar issues again with the coupon 1/8 higher). MROUND to the nearest 1/8 is a behaviour check, not
+# rows: it has no frequency, and a blank frequency would turn that column to floats in earlier notebooks' displays.
+NEW_ISSUES = [("99010KZA6", 5.125, 5, 99.874), ("99011LZA3", 5.625, 10, 99.512), ("99012MZA0", 5.5, 7, 99.76),
+              ("99013NZA7", 4.625, 3, 99.942), ("99014OZA4", 7.875, 8, 100), ("99016QZA7", 7.0, 5, 99.0),
+              ("99017RZA4", 6.0, 30, 98.975), ("99020UZA2", 8.75, 6, 98.5)]
+NEW_ISSUES_EXERCISE = [("99021VZA9", 4.5, 4, 99.85), ("99022WZA6", 6.25, 7, 99.375), ("99023XZA3", 4.25, 2, 100),
+                       ("99024YZA0", 7.25, 8, 99.0), ("99026AZA0", 6.125, 12, 99.625)]
+COMMON_YIELD_PCT = 5.5
+TVM_MROUND = [5.43, 5.69, 6.07, 9.08, 7.24, 4.55, 5.0625, 4.9375]
 
 REFERENCE_COLUMNS = ["case_id", "group", "settlement", "maturity", "coupon_pct", "yield_pct", "frequency", "basis",
                      "couppcd", "coupncd", "coupnum", "coupdaybs", "coupdays", "coupdaysnc", "price", "accrued",
@@ -323,6 +336,13 @@ def tvm_cases() -> list[dict]:
     for coupon, quote, years in WEEK1_QUOTES:
         add("YIELD", f"=YIELD(DATE(2026,9,30),DATE({2026 + years},9,30),{num(coupon)}/100,{num(quote)},100,2,0)",
             coupon_pct=coupon, price=quote, years=years, frequency=2)
+    for _, coupon, years, reoffer in NEW_ISSUES + NEW_ISSUES_EXERCISE:
+        add("CALENDAR_YIELD", f"=YIELD(DATE(2026,9,30),DATE({2026 + years},9,30),{num(coupon)}/100,{num(reoffer)},100,2,0)",
+            coupon_pct=coupon, price=reoffer, years=years, frequency=2)
+    stepped = [(c + 0.125, n) for _, c, n, _ in NEW_ISSUES]
+    for coupon, years in [(c, n) for _, c, n, _ in NEW_ISSUES + NEW_ISSUES_EXERCISE] + stepped:
+        add("CALENDAR_PRICE", f"=PRICE(DATE(2026,9,30),DATE({2026 + years},9,30),{num(coupon)}/100,"
+            f"{num(COMMON_YIELD_PCT)}/100,100,2,0)", coupon_pct=coupon, rate_pct=COMMON_YIELD_PCT, years=years, frequency=2)
     return cases
 
 
@@ -571,6 +591,12 @@ def confirm_behaviour(ws, app) -> None:
           f"{ws.Range('B3').Formula} {ws.Range('C13').Formula} {ws.Range('D13').Formula}; largest gap to the "
           f"halving in Python {gap!r}: {'ok' if gap < 1e-12 else 'DIFFERS'}")
     ws.Cells.Clear()
+
+    # week 1 day 5: MROUND of a yield in percent to the nearest 1/8, against rounding half up; the last two are ties
+    values = evaluate(ws, app, [f"=MROUND({num(y)},0.125)" for y in TVM_MROUND])
+    expected = [int(y / 0.125 + 0.5) * 0.125 for y in TVM_MROUND]
+    pairs = ", ".join(f"MROUND({num(y)},0.125) {v!r}" for y, v in zip(TVM_MROUND, values))
+    print(f"  {pairs}: {'ok' if values == expected else 'DIFFERS'}")
 
 
 def evaluate_keep(ws, app, formulas: list[str]) -> list:
