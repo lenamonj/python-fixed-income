@@ -61,7 +61,7 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 | 1 | Python foundations | Write variables, loops, functions, and a class, read an error, and turn an email of holdings into a table |
 | 2 | NumPy and pandas | Hold a portfolio in a table, filter and group it, and join it to issuer and rating tables with checks around each join |
 | 3 | Visualization and exploratory data analysis | Draw finished charts, test a new file before trusting it, and work with a time series |
-| 4 | Consumer credit, text, and the project | Analyze a yes or no outcome, turn text into numbers, and report on a month-end extract on your own |
+| 4 | Consumer credit, text, and the project | Analyze a yes or no outcome, turn text into numbers, keep your work in a file you can run again, and report on a month-end extract on your own |
 
 ## Course map
 
@@ -71,9 +71,9 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
-| 1 | [Introduction to Python](week1/day1/01_python_for_fixed_income_intro.ipynb) | Variables, lists, dictionaries, conditions, loops, and functions, on four bonds | Ready |
+| 1 | [Introduction to Python](week1/day1/01_python_for_fixed_income_intro.ipynb) | Variables, f-strings, lists, dictionaries, conditions, loops, and functions, on four bonds | Ready |
 | 2 | [Files and Folders](week1/day2/02_files_and_folders.ipynb) | Finding, creating, writing, and reading the desk's holdings file | Ready |
-| 3 | [Debugging](week1/day3/03_debugging.ipynb) | Reading an error, the common error types, and bugs that raise no error | Ready |
+| 3 | [Debugging](week1/day3/03_debugging.ipynb) | Reading an error, the common error types, bugs that raise no error, and checks that stop the run with `assert` | Ready |
 | 4 | [Classes: A Bond Object](week1/day4/04_classes_a_bond_object.ipynb) | A bond that carries its own data and calculations | Ready |
 | 5 | [Case Study: Organizing a Small Portfolio](week1/day5/05_case_study_a_small_portfolio.ipynb) | One job from start to finish: an email of holdings becomes a table | Ready |
 
@@ -83,7 +83,7 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 |:---:|:---|:---|:---:|
 | 1 | [NumPy](week2/day1/06_numpy.ipynb) | Arrays, arithmetic on a whole portfolio at once, and pricing a bond from its cash flows | Ready |
 | 2 | [pandas: Series and DataFrames](week2/day2/07_pandas_series_and_dataframes.ipynb) | Tables with names, selecting, filtering, and sorting 200 holdings | Ready |
-| 3 | [pandas: Combining and Loading](week2/day3/08_pandas_combining_and_loading.ipynb) | Joining tables, reading and saving files, summaries, and dates | Ready |
+| 3 | [pandas: Combining and Loading](week2/day3/08_pandas_combining_and_loading.ipynb) | Joining tables, reading and saving CSV files and Excel workbooks, summaries, and dates | Ready |
 | 4 | [Case Study: A First Look at the Data](week2/day4/09_case_study_first_look_at_the_data.ipynb) | Three linked tables: positions, issuers, and ratings, checked before any join | Ready |
 | 5 | [Case Study: Joining the Tables](week2/day5/10_case_study_joining_the_tables.ipynb) | Joining the three tables, checking each join, and answering the desk's questions from the result | Ready |
 
@@ -127,6 +127,7 @@ The conclusion you write describes the data. It never recommends, ranks, or fore
 |:---|:---|:---|
 | NumPy | Arithmetic on whole columns at once | Week 2, Day 1 |
 | pandas | Tables: loading, filtering, grouping, joining | Week 2, Day 2 |
+| openpyxl | Reading and writing Excel workbooks from pandas | Week 2, Day 3 |
 | matplotlib and seaborn | Charts | Week 3, Day 1 |
 | plotly | Interactive and 3D charts | Week 3, Day 2 |
 | nltk | Stopwords, stemming, and a published sentiment word list | Week 4, Day 2 |
@@ -135,7 +136,7 @@ Exact versions are pinned in [`requirements.txt`](requirements.txt).
 
 | Data | Kind | Used in |
 |:---|:---|:---|
-| The desk's portfolio: holdings, benchmark, issuers, ratings, trades, and the project extract | Invented for this course | Weeks 1 to 3 and the project |
+| The desk's portfolio: holdings, benchmark, issuers, ratings, trades, and the project extract | Invented for this course | Weeks 1 to 3, Week 4, Day 4, and the project |
 | U.S. Treasury daily par yield curve rates | Real, public | Week 3, Day 4 and Week 4, Day 3 |
 | UCI Default of Credit Card Clients | Real, public, CC BY 4.0 | Week 4, Day 1 |
 | FOMC post-meeting statements | Real, public | Week 4, Days 2 and 3 |

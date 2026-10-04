@@ -40,13 +40,16 @@ Nothing in this course asks you to forget Excel. Wherever Excel has a feature fo
 | In Excel you would | In Python you will | Where in Course 1 |
 |:---|:---|:---|
 | Fill a formula down a column | Write the formula once, in a loop or on a whole array | Week 1, Day 1 and Week 2, Day 1 |
+| Wrap a number in `TEXT` and join it to a sentence with `&` | Write an f-string with a format code | Week 1, Day 1 |
 | Write a nested `IF` | Write `if`, `elif`, `else`, one test per line | Week 1, Day 1 |
 | See `#N/A`, `#DIV/0!`, or `#NAME?` in a cell | Read an error that names the line and the cause | Week 1, Day 3 |
+| Put an `IF` beside a total that shows OK or CHECK | Write an `assert` that stops the run when the total is wrong | Week 1, Day 3 |
 | Turn on AutoFilter and sort a sheet | Filter and sort a table by condition | Week 2, Day 2 |
 | Use `SUMIF` and `COUNTIF` | Filter, then sum or count | Week 2, Day 2 and Day 5 |
 | Use `COUNTBLANK` and Remove Duplicates | Count missing values and repeated rows in one line each | Week 2, Day 4 |
 | Use `VLOOKUP` or `INDEX` and `MATCH` | Merge two tables on a shared column | Week 2, Day 3 and Day 5 |
 | Build a pivot table | Group by a column and summarize | Week 2, Day 3 and Day 5 |
+| Open and save a workbook with several sheets | Read a sheet into a table, and write tables to the sheets of a new workbook | Week 2, Day 3 and Day 5 |
 | Use `SUMPRODUCT` over `SUM` for a weighted average | Do the same arithmetic on two columns | Week 2, Day 3 and Day 5 |
 | Insert a chart: Column, Line, Scatter, Histogram, Box and Whisker | Draw the same chart in a few lines of code | Week 3, Day 1 |
 | Add a trendline, and use `SLOPE`, `INTERCEPT`, and `RSQ` | Fit the line and print its numbers with units | Week 3, Day 2 |
@@ -56,6 +59,7 @@ Nothing in this course asks you to forget Excel. Wherever Excel has a feature fo
 | Use `AVERAGEIF` on a column of 0s and 1s to get a rate by group | Group, then take the mean and the count together | Week 4, Day 1 |
 | Use `FIND`, `SUBSTITUTE`, `TRIM`, and Find and Replace on text | Search and clean text with patterns, across every row at once | Week 4, Day 2 |
 | Count words from a list with `SUMPRODUCT`, and standardize with `STANDARDIZE` | Score every document against a word list and compare the scores | Week 4, Day 3 |
+| Paste next month's rows into last month's workbook and re-point every range | Keep the steps as functions in one file and run them on the new file | Week 4, Day 4 |
 
 What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so the same steps can be run again on tomorrow's file without anyone dragging a formula or repointing a range.
 
