@@ -4,7 +4,7 @@ The script drives desktop Excel for Windows through COM, has Excel compute every
 
 - data/bondmath_excel_reference.csv      one row per bond case: coupon dates, day counts, price, accrued,
                                           yield, durations, DV01, bumped prices, and a convexity estimate
-- data/bondmath_excel_reference_tvm.csv  week 1 rows: FV, PV, RATE, EFFECT, NOMINAL, and a bond priced
+- data/bondmath_excel_reference_tvm.csv  week 1 rows: FV, PV, RATE, EFFECT, NOMINAL, YIELD, and a bond priced
                                           with PV, each with the exact formula text Excel evaluated
 
 Nothing is typed by hand: every output value is read back from an Excel cell. Running it twice gives
@@ -169,6 +169,11 @@ TVM_EFFECT_DAY3 = [(y, 2) for _, _, y, _ in WEEK1_BONDS + WEEK1_EXERCISE_BONDS]
 TVM_PRICE = ([(5.25, y, 5) for y in (2.4, 3.4, 4.4, 5.4, 6.4, 7.4, 8.4)]
              + [(6.125, 5.125, 7), (6.125, 7.125, 7), (4.75, 3.6, 3), (4.75, 5.6, 3), (7.5, 6.7, 10), (7.5, 8.7, 10),
                 (5.0, 4.35, 6), (5.0, 6.35, 6)])
+# day 4: each week 1 bond quoted on price on its coupon date 2026-09-30, running set then exercise set:
+# (coupon_pct, quoted price, years). Their yields come back from RATE (rows appended after every earlier row,
+# continuing the RATE numbering) and from YIELD on the coupon date (a new function at the end of the file).
+WEEK1_QUOTES = [(5.25, 99.125, 5), (6.125, 100.5, 7), (4.75, 100.875, 3), (7.5, 97.75, 10),
+                (5.625, 99.5, 4), (4.375, 100.25, 2), (5.0, 98.375, 6), (8.25, 97.625, 8)]
 
 REFERENCE_COLUMNS = ["case_id", "group", "settlement", "maturity", "coupon_pct", "yield_pct", "frequency", "basis",
                      "couppcd", "coupncd", "coupnum", "coupdaybs", "coupdays", "coupdaysnc", "price", "accrued",
@@ -312,6 +317,12 @@ def tvm_cases() -> list[dict]:
     for coupon, yld, years in TVM_PRICE:
         add("PRICE", f"=PRICE(DATE(2026,9,30),DATE({2026 + years},9,30),{num(coupon)}/100,{num(yld)}/100,100,2,0)",
             coupon_pct=coupon, rate_pct=yld, years=years, frequency=2)
+    for coupon, quote, years in WEEK1_QUOTES:
+        add("RATE", f"=RATE(2*{num(years)},{num(coupon)}/2,-{num(quote)},100)*2",
+            coupon_pct=coupon, price=quote, years=years, frequency=2)
+    for coupon, quote, years in WEEK1_QUOTES:
+        add("YIELD", f"=YIELD(DATE(2026,9,30),DATE({2026 + years},9,30),{num(coupon)}/100,{num(quote)},100,2,0)",
+            coupon_pct=coupon, price=quote, years=years, frequency=2)
     return cases
 
 
@@ -509,6 +520,57 @@ def confirm_behaviour(ws, app) -> None:
               f"down to {last_value!r} at 0.5 years; against PRICE settled on each coupon date (first {rows[0][1]}), "
               f"largest gap {gap!r}: {'ok' if gap < 1e-9 else 'DIFFERS'}")
         ws.Cells.Clear()
+
+    # week 1 day 4: Goal Seek. A starting yield (percent) in A1, PRICE reading A1/100 in B1, then Range.GoalSeek,
+    # as Data, What-If Analysis, Goal Seek does with Set cell B1, To value the quote, By changing cell A1. Goal Seek
+    # stops close to the target, not on it, and where it stops depends on the start: each bond is run from 5 and
+    # from its own coupon. The check prints where it landed, how far the price is from the quote, and how far the
+    # yield is from YIELD's, and passes if the price is within 0.001.
+    for (cusip, _, _, _), (coupon, quote, years) in zip(WEEK1_BONDS, WEEK1_QUOTES):
+        for start in (5, coupon):
+            ws.Range("A1").Value2 = start
+            ws.Range("B1").Formula = f"=PRICE(DATE(2026,9,30),DATE({2026 + years},9,30),{num(coupon)}/100,A1/100,100,2,0)"
+            ws.Range("C1").Formula = f"=YIELD(DATE(2026,9,30),DATE({2026 + years},9,30),{num(coupon)}/100,{num(quote)},100,2,0)*100"
+            found = ws.Range("B1").GoalSeek(Goal=quote, ChangingCell=ws.Range("A1"))
+            app.Calculate()
+            landed, priced, excel_yield = ws.Range("A1").Value2, ws.Range("B1").Value2, ws.Range("C1").Value2
+            ok = found and abs(priced - quote) < 0.001
+            print(f"  {cusip}: Goal Seek from {num(start)} to price {num(quote)}: yield {landed!r}, price {priced!r} "
+                  f"(gap {priced - quote:+.2e}), YIELD {excel_yield!r} (gap {landed - excel_yield:+.2e}): "
+                  f"{'ok' if ok else 'DIFFERS'}")
+            ws.Cells.Clear()
+
+    # week 1 day 4: bisection by hand in a sheet, for the first running bond's quote. Headers in row 1, the bracket
+    # 5 to 6 in A2:B2, the middle =(A2+B2)/2 in C2 and PRICE at the middle in D2; in row 3 the half to keep,
+    # =IF(D2>quote,C2,A2) and =IF(D2>quote,B2,C2); then A3:D3 filled down to row 31. The middles must equal the
+    # same halving done in Python with the course formula, step for step.
+    coupon, quote, years = WEEK1_QUOTES[0]
+    ws.Range("A1:D1").Value2 = [["low_pct", "high_pct", "mid_pct", "price_at_mid"]]
+    ws.Range("A2:B2").Value2 = [[5, 6]]
+    ws.Range("C2").Formula = "=(A2+B2)/2"
+    ws.Range("D2").Formula = f"=PRICE(DATE(2026,9,30),DATE({2026 + years},9,30),{num(coupon)}/100,C2/100,100,2,0)"
+    ws.Range("A3").Formula = f"=IF(D2>{num(quote)},C2,A2)"
+    ws.Range("B3").Formula = f"=IF(D2>{num(quote)},B2,C2)"
+    ws.Range("C3:D3").FillDown()
+    ws.Range("A3:D31").FillDown()
+    app.Calculate()
+    middles = [ws.Cells(r, 3).Value2 for r in range(2, 32)]
+    low, high, expected = 5.0, 6.0, []
+    for _ in range(30):
+        mid = (low + high) / 2
+        expected.append(mid)
+        periods = 2 * years
+        p = sum((coupon / 2 + (100 if k == periods else 0)) / (1 + mid / 100 / 2) ** k for k in range(1, periods + 1))
+        low, high = (mid, high) if p > quote else (low, mid)
+    gap = max(abs(a - b) for a, b in zip(middles, expected))
+    ws.Range("F1").Formula = f"=YIELD(DATE(2026,9,30),DATE({2026 + years},9,30),{num(coupon)}/100,{num(quote)},100,2,0)*100"
+    app.Calculate()
+    excel_yield = ws.Range("F1").Value2
+    print(f"  {WEEK1_BONDS[0][0]}: bisection sheet from 5 to 6 for price {num(quote)}: C13 {middles[11]!r} (12th middle), "
+          f"C31 {middles[29]!r} (30th), YIELD {excel_yield!r}; formulas {ws.Range('A3').Formula} "
+          f"{ws.Range('B3').Formula} {ws.Range('C13').Formula} {ws.Range('D13').Formula}; largest gap to the "
+          f"halving in Python {gap!r}: {'ok' if gap < 1e-12 else 'DIFFERS'}")
+    ws.Cells.Clear()
 
 
 def evaluate_keep(ws, app, formulas: list[str]) -> list:
