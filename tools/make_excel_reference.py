@@ -156,6 +156,9 @@ TVM_NOMINAL = [(5.0625, 2), (5.0945, 4), (6.25, 2), (7.2, 4), (4, 1), (10.25, 2)
 TVM_PV_BOND = [(5, 5.5, 3, 2), (6.25, 6, 5, 2), (4.5, 5.25, 10, 2), (7, 6.5, 30, 2), (5.5, 5.5, 7, 2),
                (8, 7.75, 4, 1), (3.75, 4, 2, 4), (0, 5, 5, 2), (9.25, 11, 6, 2), (2, 6, 20, 2),
                (5, 6, 1, 2), (6, 6, 10, 4)]
+# day 2: each week 1 bond priced at its yield on its coupon date, the running set then the exercise set.
+# Appended after the original rows, so their case_id values do not move.
+TVM_PV_BOND += [(c, y, n, 2) for _, c, y, n in WEEK1_BONDS + WEEK1_EXERCISE_BONDS]
 
 REFERENCE_COLUMNS = ["case_id", "group", "settlement", "maturity", "coupon_pct", "yield_pct", "frequency", "basis",
                      "couppcd", "coupncd", "coupnum", "coupdaybs", "coupdays", "coupdaysnc", "price", "accrued",
@@ -400,6 +403,28 @@ def confirm_behaviour(ws, app) -> None:
     print(f"  Growth column =A1*(1+{num(yld)}/100/2) filled down {periods} periods: {last!r}, FV {fv!r}: "
           f"{'ok' if abs(last - fv) < 1e-12 else 'DIFFERS'}")
     ws.Cells.Clear()
+
+    # week 1 day 2: a bond priced on a coupon date three more ways, against -PV with the coupon, for each week 1
+    # running bond: NPV over a column of the cash flows (NPV discounts its first value by one full period);
+    # a column of each cash flow over (1+y/100/2)^period, summed; and PRICE with settlement on the coupon date
+    for cusip, coupon, yld, years in WEEK1_BONDS:
+        c, y, n = num(coupon), num(yld), num(years)
+        periods = 2 * years
+        for k in range(1, periods + 1):
+            ws.Cells(k, 1).Value2 = k
+            ws.Cells(k, 2).Formula = f"={c}/2+100" if k == periods else f"={c}/2"
+            ws.Cells(k, 3).Formula = f"=B{k}/(1+{y}/100/2)^A{k}"
+        ws.Range("E1").Formula = f"=NPV({y}/100/2,B1:B{periods})"
+        ws.Range("E2").Formula = f"=SUM(C1:C{periods})"
+        ws.Range("E3").Formula = f"=-PV({y}/100/2,2*{n},{c}/2,100)"
+        ws.Range("E4").Formula = f"=PRICE(DATE(2026,9,30),DATE({2026 + years},9,30),{c}/100,{y}/100,100,2,0)"
+        app.Calculate()
+        npv, column_sum, minus_pv, price = (ws.Range(f"E{i}").Value2 for i in range(1, 5))
+        gap = max(abs(npv - minus_pv), abs(column_sum - minus_pv), abs(price - minus_pv))
+        print(f"  {cusip}: -PV {minus_pv!r}; =NPV({y}/100/2,B1:B{periods}) {npv!r}; column of B/(1+{y}/100/2)^A "
+              f"summed {column_sum!r}; {ws.Range('E4').Formula} {price!r}: largest gap {gap!r}: "
+              f"{'ok' if gap < 1e-9 else 'DIFFERS'}")
+        ws.Cells.Clear()
 
 
 def evaluate_keep(ws, app, formulas: list[str]) -> list:
