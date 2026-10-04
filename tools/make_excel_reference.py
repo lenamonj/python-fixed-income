@@ -18,6 +18,7 @@ Basis is Excel's number: 0 is US 30/360, 1 is actual/actual.
 Author tool: Windows with desktop Excel, and Python with pywin32. Not part of the course requirements.
 Usage (from the repo root):  python tools/make_excel_reference.py
 """
+import calendar
 import csv
 import math
 from datetime import date, timedelta
@@ -187,6 +188,10 @@ NEW_ISSUES_EXERCISE = [("99021VZA9", 4.5, 4, 99.85), ("99022WZA6", 6.25, 7, 99.3
                        ("99024YZA0", 7.25, 8, 99.0), ("99026AZA0", 6.125, 12, 99.625)]
 COMMON_YIELD_PCT = 5.5
 TVM_MROUND = [5.43, 5.69, 6.07, 9.08, 7.24, 4.55, 5.0625, 4.9375]
+# week 2 (from day 6): the eight week 1 bonds settled between coupons on WEEK2_SETTLEMENT, at their issue yields,
+# basis 0, semiannual. Group "week2", case_id the CUSIP. Appended after every earlier row of the dated file.
+WEEK2_SETTLEMENT = "2026-11-30"
+WEEK2_BONDS = [(cusip, coupon, yld, f"{2026 + years}-09-30") for cusip, coupon, yld, years in WEEK1_BONDS + WEEK1_EXERCISE_BONDS]
 
 REFERENCE_COLUMNS = ["case_id", "group", "settlement", "maturity", "coupon_pct", "yield_pct", "frequency", "basis",
                      "couppcd", "coupncd", "coupnum", "coupdaybs", "coupdays", "coupdaysnc", "price", "accrued",
@@ -231,6 +236,9 @@ def build_cases() -> list[dict]:
         for case_id, settlement, maturity, coupon, yld, frequency in rows:
             cases.append(dict(case_id=case_id, group=group, settlement=settlement, maturity=maturity,
                               coupon_pct=coupon, yield_pct=yld, frequency=frequency, basis=basis))
+    for cusip, coupon, yld, maturity in WEEK2_BONDS:
+        cases.append(dict(case_id=cusip, group="week2", settlement=WEEK2_SETTLEMENT, maturity=maturity,
+                          coupon_pct=coupon, yield_pct=yld, frequency=2, basis=0))
     if len({c["case_id"] for c in cases}) != len(cases):
         raise ValueError("case_id values are not unique")
     return cases
@@ -598,6 +606,64 @@ def confirm_behaviour(ws, app) -> None:
     pairs = ", ".join(f"MROUND({num(y)},0.125) {v!r}" for y, v in zip(TVM_MROUND, values))
     print(f"  {pairs}: {'ok' if values == expected else 'DIFFERS'}")
 
+    # week 2 day 6: dates. A DATE formula holds a serial number; what the cell shows before and after the
+    # number format is set to General; subtracting two dates; the weekday by TEXT; the start of the serial count
+    # and 29 February 1900 (Microsoft documents that Excel treats 1900 as a leap year)
+    ws.Range("A1").Formula = "=DATE(2026,11,30)"
+    ws.Range("A2").Formula = "=DATE(2026,9,30)"
+    app.Calculate()
+    shown = [(ws.Range(c).Value2, ws.Range(c).Text, ws.Range(c).NumberFormat) for c in ("A1", "A2")]
+    ws.Range("A1:A2").NumberFormat = "General"
+    general = [ws.Range(c).Text for c in ("A1", "A2")]
+    ok = (shown[0][0] == serial(date(2026, 11, 30)) and shown[1][0] == serial(date(2026, 9, 30))
+          and general == [str(serial(date(2026, 11, 30))), str(serial(date(2026, 9, 30)))])
+    print(f"  =DATE(2026,11,30) and =DATE(2026,9,30): Value2 {shown[0][0]!r} and {shown[1][0]!r}, shown as "
+          f"{shown[0][1]!r} and {shown[1][1]!r} (format {shown[0][2]!r}); as General {general}: {'ok' if ok else 'DIFFERS'}")
+    ws.Cells.Clear()
+    formulas = ["=DATE(2026,11,30)-DATE(2026,9,30)", '=TEXT(DATE(2026,11,30),"dddd")', "=DATE(1900,1,1)",
+                "=DATE(1900,2,28)", "=DATE(1900,2,29)", "=DATE(1900,3,1)", '=TEXT(60,"yyyy-mm-dd")']
+    values = evaluate(ws, app, formulas)
+    expected = [61.0, "Monday", 1.0, 59.0, 60.0, 61.0, "1900-02-29"]
+    print("  " + ", ".join(f"{f} {v!r}" for f, v in zip(formulas, values)) + f": {'ok' if values == expected else 'DIFFERS'}")
+
+    # week 2 day 6: EDATE clamps the day to a short month; EOMONTH goes to the month end
+    cases = [("2031-08-31", -6, "2031-02-28"), ("2032-08-31", -6, "2032-02-29"), ("2027-01-31", 1, "2027-02-28"),
+             ("2026-11-15", 3, "2027-02-15"), ("2031-09-30", -6, "2031-03-30")]
+    formulas = [f"=EDATE(DATE({d[:4]},{int(d[5:7])},{int(d[8:])}),{m})" for d, m, _ in cases]
+    eomonth = [("2031-09-30", -6, "2031-03-31"), ("2031-09-30", -12, "2030-09-30"), ("2031-08-30", -6, "2031-02-28")]
+    formulas += [f"=EOMONTH(DATE({d[:4]},{int(d[5:7])},{int(d[8:])}),{m})" for d, m, _ in eomonth]
+    values = evaluate(ws, app, formulas)
+    got = [from_serial(v).isoformat() for v in values]
+    want = [e for _, _, e in cases + eomonth]
+    print("  " + ", ".join(f"{f} {g}" for f, g in zip(formulas, got)) + f": {'ok' if got == want else 'DIFFERS'}")
+
+    # week 2 day 6: a coupon column stepped from the cell above (=EDATE(A1,-6) filled down) against one counted
+    # from maturity (=EDATE($A$1,-6*C2), with k in column C), for a 30 August and a 31 August maturity
+    for maturity in (date(2031, 8, 30), date(2031, 8, 31)):
+        ws.Range("A1").Value2 = serial(maturity)
+        ws.Range("A2:A11").Formula = "=EDATE(A1,-6)"
+        for k in range(1, 11):
+            ws.Cells(k + 1, 3).Value2 = k
+        ws.Range("B2:B11").Formula = "=EDATE($A$1,-6*C2)"
+        app.Calculate()
+        stepped = [from_serial(ws.Cells(r, 1).Value2) for r in range(2, 12)]
+        anchored = [from_serial(ws.Cells(r, 2).Value2) for r in range(2, 12)]
+        python_stepped, d = [], maturity
+        for _ in range(10):
+            month_index = d.year * 12 + d.month - 1 - 6
+            y, m = divmod(month_index, 12)
+            d = date(y, m + 1, min(d.day, calendar.monthrange(y, m + 1)[1]))
+            python_stepped.append(d)
+        python_anchored = []
+        for k in range(1, 11):
+            month_index = maturity.year * 12 + maturity.month - 1 - 6 * k
+            y, m = divmod(month_index, 12)
+            python_anchored.append(date(y, m + 1, min(maturity.day, calendar.monthrange(y, m + 1)[1])))
+        ok = stepped == python_stepped and anchored == python_anchored
+        print(f"  maturity {maturity}: =EDATE(A1,-6) filled down {[x.isoformat() for x in stepped[:4]]}; "
+              f"=EDATE($A$1,-6*C2) {[x.isoformat() for x in anchored[:4]]}: {'ok' if ok else 'DIFFERS'}")
+        ws.Cells.Clear()
+
 
 def evaluate_keep(ws, app, formulas: list[str]) -> list:
     """Evaluate formulas in column L without clearing the rest of the sheet."""
@@ -634,7 +700,7 @@ def main() -> None:
 
     write_csv(DATA / "bondmath_excel_reference.csv", REFERENCE_COLUMNS, reference)
     write_csv(DATA / "bondmath_excel_reference_tvm.csv", TVM_COLUMNS, tvm)
-    groups = {g: sum(r["group"] == g for r in reference) for g in ("holdings", "edge", "frequency", "basis1")}
+    groups = {g: sum(r["group"] == g for r in reference) for g in ("holdings", "edge", "frequency", "basis1", "week2")}
     blank_accrint = sum(r["accrint"] == "" for r in reference)
     print(f"bondmath_excel_reference.csv: {len(reference)} rows {groups}, accrint blank in {blank_accrint}")
     print(f"bondmath_excel_reference_tvm.csv: {len(tvm)} rows")
