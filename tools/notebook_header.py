@@ -9,6 +9,11 @@ VS Code and Colab without the repo being public. A copy is saved in assets/heade
 Usage (from the repo root, with Pillow and nbformat installed):
 
     python tools/notebook_header.py course1_python_foundations/week1/day2/02_files_and_folders.ipynb --week 1 --day 2 --title "Files and Folders"
+
+Course 1 is the default. A later course passes --course, which changes the course line, the alt text,
+and the saved copy's name (assets/headers/course2_<notebook>.png), so it cannot collide with Course 1's:
+
+    python tools/notebook_header.py course2_bond_math/week1/day1/01_time_value_of_money.ipynb --course 2 --week 1 --day 1 --title "Time Value of Money"
 """
 import argparse
 import base64
@@ -23,7 +28,12 @@ FONTS = REPO / "assets" / "fonts"
 HEADERS = REPO / "assets" / "headers"
 
 COURSE_NAME = "Python for Fixed Income"
-COURSE_LINE = "COURSE 1 · PYTHON FOUNDATIONS"
+# course number: (course line on the banner, course in the alt text, prefix of the saved copy's file name)
+COURSES = {
+    1: ("COURSE 1 · PYTHON FOUNDATIONS", "Course 1: Python Foundations", ""),
+    2: ("COURSE 2 · BOND MATH", "Course 2: Bond Math", "course2_"),
+}
+COURSE_LINE = COURSES[1][0]
 BYLINE_PREFIX = "Created by "
 AUTHOR = "Jeff Lenamon"
 HEADER_TAG = "course-header"
@@ -79,7 +89,7 @@ def bezier(p0, p1, p2, p3, steps: int = 60) -> list:
     return points
 
 
-def draw_banner(week: int, day: int, title: str) -> Image.Image:
+def draw_banner(week: int, day: int, title: str, course: int = 1) -> Image.Image:
     image = Image.new("RGB", (WIDTH, HEIGHT), BACKGROUND)
     draw = ImageDraw.Draw(image)
 
@@ -93,7 +103,7 @@ def draw_banner(week: int, day: int, title: str) -> Image.Image:
 
     # course name and course line
     draw.text((456, 222), COURSE_NAME, font=serif(104, 600), fill=DARK_GREEN, anchor="ls")
-    draw_spaced(draw, 460, 296, COURSE_LINE, sans(38, 500), MUTED_GREEN, spacing=7)
+    draw_spaced(draw, 460, 296, COURSES[course][0], sans(38, 500), MUTED_GREEN, spacing=7)
 
     # byline: name only, no title and no employer
     prefix_font = sans(36, 400)
@@ -113,22 +123,24 @@ def draw_banner(week: int, day: int, title: str) -> Image.Image:
     return image
 
 
-def header_markdown(week: int, day: int, title: str, image: Image.Image) -> str:
+def header_markdown(week: int, day: int, title: str, image: Image.Image, course: int = 1) -> str:
     buffer = io.BytesIO()
     image.save(buffer, format="PNG", optimize=True)
     encoded = base64.b64encode(buffer.getvalue()).decode("ascii")
-    alt = f"{COURSE_NAME} | Course 1: Python Foundations | Created by {AUTHOR} | Week {week}, Day {day} | {title}"
+    alt = f"{COURSE_NAME} | {COURSES[course][1]} | Created by {AUTHOR} | Week {week}, Day {day} | {title}"
     return f"![{alt}](data:image/png;base64,{encoded})"
 
 
-def apply_header(notebook_path: Path, week: int, day: int, title: str) -> None:
+def apply_header(notebook_path: Path, week: int, day: int, title: str, course: int = 1) -> None:
     """Insert the banner as the first cell, replacing an earlier banner if there is one."""
-    image = draw_banner(week, day, title)
+    if course not in COURSES:
+        raise ValueError(f"course must be one of {sorted(COURSES)}, not {course}")
+    image = draw_banner(week, day, title, course)
     HEADERS.mkdir(parents=True, exist_ok=True)
-    image.save(HEADERS / f"{notebook_path.stem}.png", optimize=True)
+    image.save(HEADERS / f"{COURSES[course][2]}{notebook_path.stem}.png", optimize=True)
 
     nb = nbformat.read(notebook_path, as_version=4)
-    cell = nbformat.v4.new_markdown_cell(header_markdown(week, day, title, image))
+    cell = nbformat.v4.new_markdown_cell(header_markdown(week, day, title, image, course))
     cell.metadata["tags"] = [HEADER_TAG]
     if nb.cells and HEADER_TAG in nb.cells[0].metadata.get("tags", []):
         nb.cells[0] = cell
@@ -144,5 +156,6 @@ if __name__ == "__main__":
     parser.add_argument("--week", type=int, required=True)
     parser.add_argument("--day", type=int, required=True)
     parser.add_argument("--title", required=True)
+    parser.add_argument("--course", type=int, default=1, choices=sorted(COURSES))
     args = parser.parse_args()
-    apply_header(args.notebook, args.week, args.day, args.title)
+    apply_header(args.notebook, args.week, args.day, args.title, args.course)

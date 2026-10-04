@@ -137,6 +137,15 @@ BASIS1 = [
 # week 1 rows. FV and PV: (amount, rate_pct, years, frequency)
 TVM_FV_PV = [(100, 5, 3, 2), (100, 5, 3, 1), (100, 5, 3, 4), (1000000, 4.25, 10, 2), (250000, 6.5, 2.5, 2),
              (100, 7.125, 30, 2), (100, 0.5, 1, 4), (5000000, 3.8, 0.5, 2)]
+# the week 1 bonds (COURSE2_SPEC.md, "Week 1"), settling 2026-09-30 on a coupon date. (cusip, coupon_pct, yield_pct, years)
+WEEK1_BONDS = [("99001BZA7", 5.25, 5.4, 5), ("99002CZA4", 6.125, 6.125, 7), ("99003DZA1", 4.75, 4.6, 3),
+               ("99004EZA8", 7.5, 7.7, 10)]
+WEEK1_EXERCISE_BONDS = [("99005FZA4", 5.625, 5.8, 4), ("99007HZA8", 4.375, 4.3, 2), ("99008IZA5", 5.0, 5.35, 6),
+                        ("99009JZA2", 8.25, 8.6, 8)]
+# day 1: 100 of redemption grown and discounted at each bond's yield, semiannually, and the first bond's
+# at annual and quarterly compounding too. Appended after the original rows, so their case_id values do not move.
+TVM_FV_PV += [(100, y, n, 2) for _, _, y, n in WEEK1_BONDS + WEEK1_EXERCISE_BONDS]
+TVM_FV_PV += [(100, WEEK1_BONDS[0][2], WEEK1_BONDS[0][3], f) for f in (1, 4)]
 # RATE: (coupon_pct, price, years, frequency)
 TVM_RATE = [(5, 98.25, 3, 2), (6.25, 101.5, 5, 2), (4.5, 94.875, 10, 2), (7, 104, 30, 2), (5.5, 100, 7, 2),
             (8, 97, 4, 1), (3.75, 99.5, 2, 4), (0, 78.5, 5, 2), (9.25, 88, 6, 2), (2, 70, 20, 2)]
@@ -368,6 +377,28 @@ def confirm_behaviour(ws, app) -> None:
         gap = max(abs(a - b) for a, b in zip(table, direct))
         print(f"  Data Table over PRICE at yield {yld}: largest gap to direct PRICE {gap!r}: "
               f"{'ok' if gap == 0 else 'DIFFERS'} (table cell formula {ws.Range('J3').Formula})")
+    ws.Cells.Clear()
+
+    # week 1: the discount and growth formulas written out by hand, against PV and FV, for each week 1 bond
+    for cusip, _, yld, years in WEEK1_BONDS:
+        y, n = num(yld), num(years)
+        written_pv, minus_pv, written_fv, fv = evaluate(ws, app, [
+            f"=100/(1+{y}/100/2)^(2*{n})", f"=-PV({y}/100/2,2*{n},0,100)",
+            f"=100*(1+{y}/100/2)^(2*{n})", f"=FV({y}/100/2,2*{n},0,-100)"])
+        gap = max(abs(written_pv - minus_pv), abs(written_fv - fv))
+        print(f"  {cusip}: =100/(1+{y}/100/2)^(2*{n}) = {written_pv!r}, -PV {minus_pv!r}; "
+              f"=100*(1+{y}/100/2)^(2*{n}) = {written_fv!r}, FV {fv!r}: {'ok' if gap < 1e-12 else 'DIFFERS'}")
+
+    # week 1: a growth column filled down period by period ends on FV's value
+    _, _, yld, years = WEEK1_BONDS[0]
+    periods = 2 * years
+    ws.Range("A1").Value2 = 100
+    ws.Range(f"A2:A{periods + 1}").Formula = f"=A1*(1+{num(yld)}/100/2)"
+    ws.Range("C1").Formula = f"=FV({num(yld)}/100/2,2*{num(years)},0,-100)"
+    app.Calculate()
+    last, fv = ws.Range(f"A{periods + 1}").Value2, ws.Range("C1").Value2
+    print(f"  Growth column =A1*(1+{num(yld)}/100/2) filled down {periods} periods: {last!r}, FV {fv!r}: "
+          f"{'ok' if abs(last - fv) < 1e-12 else 'DIFFERS'}")
     ws.Cells.Clear()
 
 
