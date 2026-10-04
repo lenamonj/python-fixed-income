@@ -194,8 +194,6 @@ WEEK2_SETTLEMENT = "2026-11-30"
 WEEK2_BONDS = [(cusip, coupon, yld, f"{2026 + years}-09-30") for cusip, coupon, yld, years in WEEK1_BONDS + WEEK1_EXERCISE_BONDS]
 # week 2 day 7: one trade in each exercise bond, settling between coupons on its own date, at the bond's issue
 # yield, basis 0, semiannual. Group "week2_trades", case_id "trade_" plus the CUSIP. Appended after every earlier row.
-# The last row must settle between 2026-09-30 and 2027-02-27: day 6's solutions notebook reuses the settlement of the
-# file's last row after its AI test loop (31 August and 30 September maturities), so a later date changes its output.
 WEEK2_TRADE_SETTLEMENTS = {"99005FZA4": "2027-02-28", "99007HZA8": "2027-03-01", "99008IZA5": "2026-12-31",
                            "99009JZA2": "2027-01-15"}
 WEEK2_TRADES = [(cusip, WEEK2_TRADE_SETTLEMENTS[cusip], coupon, yld, maturity)

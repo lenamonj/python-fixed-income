@@ -6,6 +6,7 @@
 </picture>
 
 ![Course 1](https://img.shields.io/badge/Course_1-Python_Foundations-123D2F?style=for-the-badge)
+![Course 2](https://img.shields.io/badge/Course_2-Bond_Math-123D2F?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](LICENSE)
@@ -29,7 +30,7 @@ Nothing is abstracted away into contrived examples. Every programming concept is
 
 You already know the investment problem. **This course teaches you how to solve more of it with code.**
 
-The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day, 19 notebooks and a project. All of it is ready.
+The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day, 19 notebooks and a project. [Course 2, Bond Math](course2_bond_math/README.md) follows: three weeks, 14 notebooks and a capstone, in which you build price, yield, accrued interest, duration, DV01, convexity, spread, and DTS yourself, test every function against Excel, and finish with a risk report on a whole book. Both are ready.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -37,29 +38,45 @@ The series starts with [Course 1, Python Foundations](course1_python_foundations
 
 Nothing in this course asks you to forget Excel. Wherever Excel has a feature for the job, the new idea is introduced next to it, with the formula written out, so you are translating something you know and not learning from nothing.
 
-| In Excel you would | In Python you will | Where in Course 1 |
-|:---|:---|:---|
-| Fill a formula down a column | Write the formula once, in a loop or on a whole array | Week 1, Day 1 and Week 2, Day 1 |
-| Wrap a number in `TEXT` and join it to a sentence with `&` | Write an f-string with a format code | Week 1, Day 1 |
-| Write a nested `IF` | Write `if`, `elif`, `else`, one test per line | Week 1, Day 1 |
-| See `#N/A`, `#DIV/0!`, or `#NAME?` in a cell | Read an error that names the line and the cause | Week 1, Day 3 |
-| Put an `IF` beside a total that shows OK or CHECK | Write an `assert` that stops the run when the total is wrong | Week 1, Day 3 |
-| Turn on AutoFilter and sort a sheet | Filter and sort a table by condition | Week 2, Day 2 |
-| Use `SUMIF` and `COUNTIF` | Filter, then sum or count | Week 2, Day 2 and Day 5 |
-| Use `COUNTBLANK` and Remove Duplicates | Count missing values and repeated rows in one line each | Week 2, Day 4 |
-| Use `VLOOKUP` or `INDEX` and `MATCH` | Merge two tables on a shared column | Week 2, Day 3 and Day 5 |
-| Build a pivot table | Group by a column and summarize | Week 2, Day 3 and Day 5 |
-| Open and save a workbook with several sheets | Read a sheet into a table, and write tables to the sheets of a new workbook | Week 2, Day 3 and Day 5 |
-| Use `SUMPRODUCT` over `SUM` for a weighted average | Do the same arithmetic on two columns | Week 2, Day 3 and Day 5 |
-| Insert a chart: Column, Line, Scatter, Histogram, Box and Whisker | Draw the same chart in a few lines of code | Week 3, Day 1 |
-| Add a trendline, and use `SLOPE`, `INTERCEPT`, and `RSQ` | Fit the line and print its numbers with units | Week 3, Day 2 |
-| Use Remove Duplicates, `TRIM`, and `QUARTILE.INC` to clean and check a sheet | Find and fix the same problems in code, and print the totals before and after | Week 3, Day 3 |
-| Use `XLOOKUP` by date, and `AVERAGEIFS` by year | Select by date and group a time series by year | Week 3, Day 4 |
-| Net buys against sells with two `SUMIFS`, and keep a running total | Sign the sells, group, and take a cumulative sum | Week 3, Day 5 |
-| Use `AVERAGEIF` on a column of 0s and 1s to get a rate by group | Group, then take the mean and the count together | Week 4, Day 1 |
-| Use `FIND`, `SUBSTITUTE`, `TRIM`, and Find and Replace on text | Search and clean text with patterns, across every row at once | Week 4, Day 2 |
-| Count words from a list with `SUMPRODUCT`, and standardize with `STANDARDIZE` | Score every document against a word list and compare the scores | Week 4, Day 3 |
-| Paste next month's rows into last month's workbook and re-point every range | Keep the steps as functions in one file and run them on the new file | Week 4, Day 4 |
+| In Excel you would | In Python you will | Course | Where |
+|:---|:---|:---:|:---|
+| Fill a formula down a column | Write the formula once, in a loop or on a whole array | 1 | Week 1, Day 1 and Week 2, Day 1 |
+| Wrap a number in `TEXT` and join it to a sentence with `&` | Write an f-string with a format code | 1 | Week 1, Day 1 |
+| Write a nested `IF` | Write `if`, `elif`, `else`, one test per line | 1 | Week 1, Day 1 |
+| See `#N/A`, `#DIV/0!`, or `#NAME?` in a cell | Read an error that names the line and the cause | 1 | Week 1, Day 3 |
+| Put an `IF` beside a total that shows OK or CHECK | Write an `assert` that stops the run when the total is wrong | 1 | Week 1, Day 3 |
+| Turn on AutoFilter and sort a sheet | Filter and sort a table by condition | 1 | Week 2, Day 2 |
+| Use `SUMIF` and `COUNTIF` | Filter, then sum or count | 1 | Week 2, Day 2 and Day 5 |
+| Use `COUNTBLANK` and Remove Duplicates | Count missing values and repeated rows in one line each | 1 | Week 2, Day 4 |
+| Use `VLOOKUP` or `INDEX` and `MATCH` | Merge two tables on a shared column | 1 | Week 2, Day 3 and Day 5 |
+| Build a pivot table | Group by a column and summarize | 1 | Week 2, Day 3 and Day 5 |
+| Open and save a workbook with several sheets | Read a sheet into a table, and write tables to the sheets of a new workbook | 1 | Week 2, Day 3 and Day 5 |
+| Use `SUMPRODUCT` over `SUM` for a weighted average | Do the same arithmetic on two columns | 1 | Week 2, Day 3 and Day 5 |
+| Insert a chart: Column, Line, Scatter, Histogram, Box and Whisker | Draw the same chart in a few lines of code | 1 | Week 3, Day 1 |
+| Add a trendline, and use `SLOPE`, `INTERCEPT`, and `RSQ` | Fit the line and print its numbers with units | 1 | Week 3, Day 2 |
+| Use Remove Duplicates, `TRIM`, and `QUARTILE.INC` to clean and check a sheet | Find and fix the same problems in code, and print the totals before and after | 1 | Week 3, Day 3 |
+| Use `XLOOKUP` by date, and `AVERAGEIFS` by year | Select by date and group a time series by year | 1 | Week 3, Day 4 |
+| Net buys against sells with two `SUMIFS`, and keep a running total | Sign the sells, group, and take a cumulative sum | 1 | Week 3, Day 5 |
+| Use `AVERAGEIF` on a column of 0s and 1s to get a rate by group | Group, then take the mean and the count together | 1 | Week 4, Day 1 |
+| Use `FIND`, `SUBSTITUTE`, `TRIM`, and Find and Replace on text | Search and clean text with patterns, across every row at once | 1 | Week 4, Day 2 |
+| Count words from a list with `SUMPRODUCT`, and standardize with `STANDARDIZE` | Score every document against a word list and compare the scores | 1 | Week 4, Day 3 |
+| Paste next month's rows into last month's workbook and re-point every range | Keep the steps as functions in one file and run them on the new file | 1 | Week 4, Day 4 |
+| Use `FV` and `PV`, and read the minus sign `PV` returns | Write `future_value` and `present_value` and test them against Excel's values | 2 | Week 1, Day 1 |
+| Price a bond on a coupon date with `NPV` over a column of cash flows, `-PV` with a payment, or `PRICE` | List the cash flows and discount them in one function | 2 | Week 1, Day 2 |
+| Fill a column of `PRICE` formulas down a range of yields and chart it as a Scatter with Straight Lines | Price a grid of yields and plot the price-yield curve | 2 | Week 1, Day 3 |
+| Restate a yield with `EFFECT` and `NOMINAL` | Write `convert_yield` between any two compounding frequencies | 2 | Week 1, Day 3 |
+| Goal Seek a yield, halve a bracket with `IF` formulas, or use `RATE` and `YIELD` | Write a bisection loop that solves the yield from a price | 2 | Week 1, Day 4 |
+| Round a coupon with `MROUND`, and open a workbook of live `PRICE` and `YIELD` formulas | Find the coupon on a 1/8 grid, and write a workbook of live formulas with openpyxl | 2 | Week 1, Day 5 |
+| Read date serial numbers, and use `EDATE`, `EOMONTH`, `COUPPCD`, `COUPNCD`, and `COUPNUM` | Work with `date` values, add months, and build a coupon schedule back from maturity | 2 | Week 2, Day 1 |
+| Use `COUPDAYBS`, `COUPDAYS`, `COUPDAYSNC`, `ACCRINT`, and `YEARFRAC` beside `DAYS360` | Count days on US 30/360 and actual/actual, and compute accrued interest | 2 | Week 2, Day 2 |
+| Use `PRICE` between coupon dates, add accrued for the dirty price, use `YIELD`, and write the price out cell by cell | Write `price`, `dirty_price`, and `yield_to_maturity`, and invoice a month of trades | 2 | Week 2, Day 3 |
+| Use `DURATION` and `MDURATION`, build DV01 from cells, and bump the yield in two `PRICE` cells | Write duration and DV01 functions, and check DV01 by bumping the yield | 2 | Week 2, Day 4 |
+| Estimate convexity from three `PRICE` cells, and total a book's DV01 with `SUMPRODUCT` | Write `convexity`, and reprice a whole book with its DV01 and duration | 2 | Week 2, Day 5 |
+| Interpolate a curve with `FORECAST.LINEAR`, `INDEX`, and `MATCH`, and chart it as a Scatter | Write `interpolate_yield`, with flat ends, and compare it with `numpy.interp` | 2 | Week 3, Day 1 |
+| Use `YEARFRAC` for years to maturity, and subtract the curve yield for a spread | Measure every bond's spread to the curve, and reproduce the file's spread column | 2 | Week 3, Day 2 |
+| Divide two bumped `PRICE` cells for spread duration, multiply for DTS, and total buckets with `SUMIFS` | Write `spread_duration` and `dts`, and group each bond's share of the book's DTS | 2 | Week 3, Day 3 |
+| Add a calculated field to a pivot table, and run a What-If Data Table over a whole-book reprice | Group by sector and rating, and reprice the book under rate and spread scenarios | 2 | Week 3, Day 4 |
+| Check a risk report workbook with `SUM` and `SUMPRODUCT`, and price a month-end and a final-period bond with the `COUP` functions, `PRICE`, and `YIELD` | Clean, recompute, and reconcile a month-end extract, and write the risk report to Excel | 2 | Week 3, Day 5 |
 
 What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so the same steps can be run again on tomorrow's file without anyone dragging a formula or repointing a range.
 
@@ -103,6 +120,12 @@ python -m venv .venv
 python -m pip install -r course1_python_foundations\requirements.txt
 ```
 
+For Course 2, install its file into the same environment. Course 2 also uses git from the first day.
+
+```powershell
+python -m pip install -r course2_bond_math\requirements.txt
+```
+
 **Step 3.** Open the folder in VS Code.
 
 ```powershell
@@ -111,7 +134,7 @@ code .
 
 Open `course1_python_foundations\week1\day1\01_python_for_fixed_income_intro.ipynb`, choose the `.venv` kernel in the top right, and run the first cell.
 
-Two notebooks, Week 4 Days 2 and 3, download two small word lists the first time they run, so they need an internet connection once.
+Two Course 1 notebooks, Week 4 Days 2 and 3, download two small word lists the first time they run, so they need an internet connection once.
 
 ## How a day works
 
@@ -149,7 +172,7 @@ Each course has its own folder, its own course map, and its own list of what to 
 | Course | What it covers | Status |
 |:---:|:---|:---:|
 | 1 | [Python Foundations](course1_python_foundations/README.md): variables to pandas, charts, exploratory data analysis, text, and a project, in four weeks | Ready |
-| 2 | Bond Math: pricing, yield, duration, and convexity, built by hand and checked against Excel | Planned |
+| 2 | [Bond Math](course2_bond_math/README.md): price, yield, accrued interest, duration, DV01, convexity, spread, and DTS, built by hand in your own tested module, checked against Excel, and finished with a risk report, in three weeks | Ready |
 
 More courses are planned after these.
 
@@ -170,6 +193,12 @@ Every issuer, ticker, CUSIP, price, position, trade, and counterparty in the por
 | `data/project_holdings.csv` | The course project's extract: the same desk one month later, as of 2026-10-30, with new problems planted in it |
 | `data/project_cover_note.txt` | The cover note that comes with the project extract, with its control totals |
 | `data/project_answer_key.md` | Every problem planted in the project extract. Read it after you finish |
+| `data/bondmath_excel_reference.csv` | 306 bond cases priced by desktop Excel: coupon dates, day counts, price, accrued interest, yield, duration, DV01, and bumped prices, for Course 2's tests |
+| `data/bondmath_excel_reference_tvm.csv` | 153 week 1 cases from Excel: `FV`, `PV`, `RATE`, `EFFECT`, `NOMINAL`, `PRICE`, and `YIELD`, each with the exact formula |
+| `data/course2_treasury_curve.csv` | 10 tenors of the invented Treasury curve the holdings were built on |
+| `data/course2_capstone_holdings.csv` | The Course 2 capstone's extract: 201 rows, the desk as of 2026-11-30, with bond-math problems planted in it |
+| `data/course2_capstone_cover_note.txt` | The cover note that comes with the capstone extract, with its control totals |
+| `data/course2_capstone_answer_key.md` | Every problem planted in the capstone extract. Read it after you finish |
 
 The data is built to behave like a real portfolio.
 
@@ -177,7 +206,7 @@ The data is built to behave like a real portfolio.
 |:---|:---|
 | **Price and yield always agree** | Each yield is a synthetic Treasury yield plus a spread, and each price is calculated from that yield. |
 | **One convention throughout** | Fixed-rate bullet bonds, semiannual coupons, 30/360 day count, modified duration. |
-| **Identical for every student** | Seeded scripts generate every file: `tools/make_holdings.py` for the portfolio, `tools/make_blotter.py` for the trades, and `tools/make_project_data.py` for the project extract. |
+| **Identical for every student** | Seeded scripts generate every file: `tools/make_holdings.py` for the portfolio, `tools/make_blotter.py` for the trades, `tools/make_project_data.py` for the project extract, and `tools/make_course2_data.py` for the Course 2 curve and capstone. `tools/make_excel_reference.py` wrote the Excel values once, through desktop Excel on Windows. |
 | **Checked** | `python -m pytest` confirms the identifiers are valid and that each bond's price, accrued interest, and duration match its yield. |
 | **No real CUSIPs** | Every CUSIP uses an issuer number in the range reserved for internal use, with a valid check digit. |
 
@@ -199,6 +228,11 @@ python-fixed-income/
     README.md           the course map
     requirements.txt    what the course's notebooks need
     week1/ ... week4/
+      day1/ ... day5/   the notebook, its solutions, and its overview PDF
+  course2_bond_math/
+    README.md           the course map
+    requirements.txt    what the course's notebooks need
+    week1/ ... week3/
       day1/ ... day5/   the notebook, its solutions, and its overview PDF
   data/                 the invented portfolio, shared by every course
   tools/                the scripts that build or download the data, and the notebook banner
