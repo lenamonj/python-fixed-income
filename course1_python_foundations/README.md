@@ -111,11 +111,13 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 
 ## The project
 
-Days 4 and 5 of week 4 are yours. A new month-end extract arrives with a cover note, and 40 numbered questions take you from the structure of the file to a written picture of the book.
+Day 5 of week 4 is yours, and it is more than one sitting: plan on two or three. A new month-end extract arrives with a cover note, and 43 questions take you from the structure of the file to a written picture of the book. Nothing tells you what is wrong with the extract. You test it against the cover note and the desk's rules, fix what is an error, flag what you cannot fix, and keep what is real.
+
+You hand in four things: a cleaning function with checks that stop the run, an Excel workbook with the cleaned book and its summary, a short log of any AI assistant use, and a written conclusion.
 
 | File | What it is |
 |:---|:---|
-| [`course1_project.ipynb`](week4/day5/course1_project.ipynb) | The brief, the questions, and a check cell for every answer that can be checked |
+| [`course1_project.ipynb`](week4/day5/course1_project.ipynb) | The brief, the questions, and a check cell for every answer that can be checked. A check says correct or not yet, and never shows the answer |
 | [`course1_project_overview.pdf`](week4/day5/course1_project_overview.pdf) | The brief as slides: the scenario, the files, the rules, and how the checks work |
 | [`course1_project_solutions.ipynb`](week4/day5/course1_project_solutions.ipynb) | The worked version, with every decision stated. Open it after you finish |
 
