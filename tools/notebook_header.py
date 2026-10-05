@@ -14,6 +14,8 @@ Course 1 is the default. A later course passes --course, which changes the cours
 and the saved copy's name (assets/headers/course2_<notebook>.png), so it cannot collide with Course 1's:
 
     python tools/notebook_header.py course2_bond_math/week1/day1/01_time_value_of_money.ipynb --course 2 --week 1 --day 1 --title "Time Value of Money"
+
+Courses 1 to 4 are known (course 4 added 2026-10-04; the banners of Courses 1 to 3 are unchanged).
 """
 import argparse
 import base64
@@ -33,6 +35,7 @@ COURSES = {
     1: ("COURSE 1 · PYTHON FOUNDATIONS", "Course 1: Python Foundations", ""),
     2: ("COURSE 2 · BOND MATH", "Course 2: Bond Math", "course2_"),
     3: ("COURSE 3 · MARKET DATA AND TIME SERIES", "Course 3: Market Data and Time Series", "course3_"),
+    4: ("COURSE 4 · MACHINE LEARNING", "Course 4: Machine Learning", "course4_"),
 }
 COURSE_LINE = COURSES[1][0]
 BYLINE_PREFIX = "Created by "
