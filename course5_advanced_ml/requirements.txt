@@ -1,0 +1,14 @@
+imbalanced-learn==0.14.2
+ipykernel==7.4.0
+ipywidgets==8.1.9
+lightgbm==4.7.0
+matplotlib==3.11.2
+numpy==2.5.3
+openpyxl==3.1.5
+pandas==3.0.6
+pytest==9.1.1
+scikit-learn==1.9.1
+scipy==1.18.1
+shap==0.52.0
+statsmodels==0.15.0
+xgboost==3.4.1
