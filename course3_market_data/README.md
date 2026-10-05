@@ -162,7 +162,7 @@ Sources and terms for every file are in [The data](../README.md#the-data) on the
 
 ## What comes next
 
-Later courses import the `bondmath` and `marketdata` you built in Courses 2 and 3.
+[Course 4 is Machine Learning](../course4_machine_learning/README.md): three weeks of regression, classification, trees, walk-forward validation, clustering, and PCA on credit data, each model tested on rows it never saw and described, never forecast.
 
 ---
 

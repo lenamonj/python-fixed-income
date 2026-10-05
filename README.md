@@ -8,6 +8,7 @@
 ![Course 1](https://img.shields.io/badge/Course_1-Python_Foundations-123D2F?style=for-the-badge)
 ![Course 2](https://img.shields.io/badge/Course_2-Bond_Math-123D2F?style=for-the-badge)
 ![Course 3](https://img.shields.io/badge/Course_3-Market_Data_and_Time_Series-123D2F?style=for-the-badge)
+![Course 4](https://img.shields.io/badge/Course_4-Machine_Learning-123D2F?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](LICENSE)
@@ -31,7 +32,7 @@ Nothing is abstracted away into contrived examples. Every programming concept is
 
 You already know the investment problem. **This course teaches you how to solve more of it with code.**
 
-The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day, 19 notebooks and a project. [Course 2, Bond Math](course2_bond_math/README.md) follows: three weeks, 14 notebooks and a capstone, in which you build price, yield, accrued interest, duration, DV01, convexity, spread, and DTS yourself, test every function against Excel, and finish with a risk report on a whole book. [Course 3, Market Data and Time Series](course3_market_data/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you pull market data from an API with a key that never leaks, clean it against the bond market's own calendar, compute changes, volatility, z-scores, percentile ranks, slopes, and butterflies with no lookahead, query the book with SQL, and finish with a daily market snapshot that runs again on any date. All three are ready.
+The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day, 19 notebooks and a project. [Course 2, Bond Math](course2_bond_math/README.md) follows: three weeks, 14 notebooks and a capstone, in which you build price, yield, accrued interest, duration, DV01, convexity, spread, and DTS yourself, test every function against Excel, and finish with a risk report on a whole book. [Course 3, Market Data and Time Series](course3_market_data/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you pull market data from an API with a key that never leaks, clean it against the bond market's own calendar, compute changes, volatility, z-scores, percentile ranks, slopes, and butterflies with no lookahead, query the book with SQL, and finish with a daily market snapshot that runs again on any date. [Course 4, Machine Learning](course4_machine_learning/README.md) follows: three weeks, 14 notebooks and a capstone, in which you fit and read regressions and classifiers on credit data, choose a threshold on rows the test set never saw, prune a decision tree, validate on dated data with no lookahead, cluster bonds and issuers, describe the Treasury curve with PCA, and finish with a three-model comparison on a public file of company statements. Every model describes its dataset; nothing is a forecast, a rating, or a lending rule. All four are ready.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -95,6 +96,21 @@ Nothing in this course asks you to forget Excel. Wherever Excel has a feature fo
 | Check a suggested formula, `PERCENTRANK.INC`, against `COUNTIF` over `COUNT`, and a DV01 built from cells | Test code written in the style of an AI assistant against your own functions and Excel's values | 3 | Week 3, Day 3 |
 | Open the snapshot workbook and check its numbers with `SUMIFS`, `STANDARDIZE`, and `COUNTIF` | Write a daily market snapshot to HTML and Excel from one function that runs on any date | 3 | Week 3, Day 4 |
 | Test a pasted extract's dates and units with `DATE`, `WEEKDAY`, `COUNTIF`, and `IFERROR(VALUE(...),NA())` | Clean a vendor extract with checks that stop, reconcile it, and run the snapshot on two dates | 3 | Week 3, Day 5 |
+| Fit `SLOPE`, `INTERCEPT`, and `RSQ` on a training sheet, and score a test sheet with `AVERAGE(ABS(...))` and `SQRT(SUMXMY2(...)/COUNT(...))` | Split the rows, fit on the training rows, and measure the error in bp on rows the model never saw | 4 | Week 1, Day 1 |
+| Build dummy columns with `=--(D2="AAA")`, fit them with `LINEST`, and score the test rows with `TREND` | Encode ratings with a named reference level and fit a multiple regression | 4 | Week 1, Day 2 |
+| Read `LINEST`'s standard errors, and compute p-values with `T.DIST.2T`, intervals with `T.INV.2T`, a VIF with `1/(1-R2)`, and a joint F-test with `F.DIST.RT` | Read statsmodels' coefficient table, test sector jointly, and measure multicollinearity | 4 | Week 1, Day 3 |
+| Take `LN` and `EXP` of spreads, run Breusch-Pagan by hand with `LINEST` and `CHISQ.DIST.RT`, and compute Q-Q points with `NORM.S.INV` | Check a regression's assumptions with residual plots and tests, and model log spreads | 4 | Week 1, Day 4 |
+| Standardize with `STANDARDIZE` and `STDEV.P`, and solve ridge in closed form with `MMULT`, `MINVERSE`, and `MUNIT` | Fit ridge and lasso inside a pipeline that scales on the training rows only | 4 | Week 1, Day 5 |
+| Fill a logistic probability formula, sum a log-likelihood column, and maximise it with Solver, the non-negative box turned off | Fit a logistic regression and read odds ratios with `exp` | 4 | Week 2, Day 1 |
+| Count a confusion matrix with `COUNTIFS` against a threshold cell | Count the confusion matrix and compute precision, recall, and F1 for the default class | 4 | Week 2, Day 2 |
+| List thresholds with `SORT(UNIQUE(...))`, trace the ROC with `COUNTIFS`, take the AUC with `SUMPRODUCT`, and pick a threshold with `MAXIFS` | Draw ROC and precision-recall curves, and choose a threshold for a target recall on validation rows | 4 | Week 2, Day 3 |
+| Compute Gini with `COUNTIFS`, a leaf's default share with `AVERAGEIFS`, and write a small tree as nested `IF` | Grow, prune, and read a decision tree | 4 | Week 2, Day 4 |
+| Open the results workbook, recompute precision and recall, and find the best model with `INDEX` and `MATCH` | Compare three models on validation rows, open the test rows once, and write the comparison to Excel | 4 | Week 2, Day 5 |
+| Fill `SLOPE(OFFSET(...))` down a trailing window, fit one fold with `TREND`, and compare a whole-history `STANDARDIZE` with a trailing one | Validate on dated rows with walk-forward splits, and show lookahead in a feature | 4 | Week 3, Day 1 |
+| Measure distance to each centre with `SQRT(SUMXMY2(...))`, assign with `MATCH(MIN(...))`, and update the centres with `AVERAGEIF` | Scale the bonds and run K-means, with the elbow and the silhouette | 4 | Week 3, Day 2 |
+| Count clusters with a pivot table, and take medians with `MEDIAN(IF(...))`, which a pivot table cannot give | Build a hierarchical clustering, cut it, and profile the clusters in their own units | 4 | Week 3, Day 3 |
+| Build a `COVARIANCE.S` grid, and score each date with `MMULT` of the centred changes | Find level, slope, and curvature with PCA on the Treasury curve | 4 | Week 3, Day 4 |
+| Check the capstone's results workbook with `COUNTIFS` against its threshold | Compare three models on a new file, test once, and write the results to Excel | 4 | Week 3, Day 5 |
 
 What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so the same steps can be run again on tomorrow's file without anyone dragging a formula or repointing a range.
 
@@ -150,6 +166,12 @@ For Course 3, install its file too. Course 3 uses a free FRED API key of your ow
 python -m pip install -r course3_market_data\requirements.txt
 ```
 
+For Course 4, install its file too. It adds scikit-learn, statsmodels, and scipy, and needs no API key.
+
+```powershell
+python -m pip install -r course4_machine_learning\requirements.txt
+```
+
 **Step 3.** Open the folder in VS Code.
 
 ```powershell
@@ -198,6 +220,7 @@ Each course has its own folder, its own course map, and its own list of what to 
 | 1 | [Python Foundations](course1_python_foundations/README.md): variables to pandas, charts, exploratory data analysis, text, and a project, in four weeks | Ready |
 | 2 | [Bond Math](course2_bond_math/README.md): price, yield, accrued interest, duration, DV01, convexity, spread, and DTS, built by hand in your own tested module, checked against Excel, and finished with a risk report, in three weeks | Ready |
 | 3 | [Market Data and Time Series](course3_market_data/README.md): an API key kept secret, FRED's JSON, market calendars, resampling, changes, volatility, z-scores, percentile ranks, slopes, butterflies, SQL, AI-written code reviewed with tests, and a daily market snapshot, in three weeks | Ready |
+| 4 | [Machine Learning](course4_machine_learning/README.md): regression on the spread cross-section, logistic regression, thresholds, decision trees, walk-forward validation, clustering, PCA, and a three-model capstone, each model tested on rows it never saw and described, never forecast, in three weeks | Ready |
 
 More courses are planned after these.
 
@@ -228,6 +251,7 @@ Every issuer, ticker, CUSIP, price, position, trade, and counterparty in the por
 | `data/course3_capstone_extract.csv` | The Course 3 capstone's vendor extract: 69 rows, 2026-07-01 to 2026-10-02, four Treasury tenors and the two synthetic spreads, with data problems planted in it |
 | `data/course3_capstone_cover_note.txt` | The cover note that comes with the Course 3 extract, with its control figures |
 | `data/course3_capstone_answer_key.md` | Every problem planted in the Course 3 extract. Read it after you finish |
+| `data/course4_excel_reference.csv` | 294 values computed by desktop Excel for Course 4's tests: `LINEST` statistics, p-values, intervals, and VIFs on the benchmark, Breusch-Pagan by hand, ridge in closed form, Solver's logistic fits on the card file, `COUNTIFS` confusion counts, and a trapezoid ROC AUC, each with its formula |
 
 The data is built to behave like a real portfolio.
 
@@ -235,19 +259,20 @@ The data is built to behave like a real portfolio.
 |:---|:---|
 | **Price and yield always agree** | Each yield is a synthetic Treasury yield plus a spread, and each price is calculated from that yield. |
 | **One convention throughout** | Fixed-rate bullet bonds, semiannual coupons, 30/360 day count, modified duration. |
-| **Identical for every student** | Seeded scripts generate every file: `tools/make_holdings.py` for the portfolio, `tools/make_blotter.py` for the trades, `tools/make_project_data.py` for the project extract, `tools/make_course2_data.py` for the Course 2 curve and capstone, and `tools/make_course3_data.py` for the Course 3 spreads, FRED-format samples, and capstone. `tools/make_excel_reference.py` and `tools/make_course3_excel_reference.py` wrote the Excel values once, through desktop Excel on Windows. |
+| **Identical for every student** | Seeded scripts generate every file: `tools/make_holdings.py` for the portfolio, `tools/make_blotter.py` for the trades, `tools/make_project_data.py` for the project extract, `tools/make_course2_data.py` for the Course 2 curve and capstone, and `tools/make_course3_data.py` for the Course 3 spreads, FRED-format samples, and capstone. `tools/make_excel_reference.py`, `tools/make_course3_excel_reference.py`, and `tools/make_course4_excel_reference.py` wrote the Excel values once, through desktop Excel on Windows. |
 | **Checked** | `python -m pytest` confirms the identifiers are valid and that each bond's price, accrued interest, and duration match its yield. |
 | **No real CUSIPs** | Every CUSIP uses an issuer number in the range reserved for internal use, with a valid check digit. |
 
-Three files are real, public data, and they are not part of the portfolio. Their values are unchanged.
+Four files are real, public data, and they are not part of the portfolio. Their values are unchanged.
 
 | File | What it holds | Source and terms |
 |:---|:---|:---|
 | `data/treasury_par_yields.csv` | Daily Treasury par yield curve rates, 2015-01-02 to 2026-10-02, 14 tenors | U.S. Department of the Treasury, [Daily Treasury Par Yield Curve Rates](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve). Listed by Treasury as public data under a public-domain dedication. |
 | `data/credit_card_default.csv` | 30,000 credit card accounts in Taiwan in 2005, with whether each defaulted the following month | Yeh, I. (2009). Default of Credit Card Clients [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C55S3H. Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Changes: the extra header row was dropped and the file was saved as CSV. |
 | `data/fomc_statements.csv` | The 46 FOMC post-meeting statements from 2021-01-27 to 2026-09-16 | Board of Governors of the Federal Reserve System, [federalreserve.gov](https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm). The Board states that information on its website is in the public domain unless otherwise indicated. Only white space was changed. |
+| `data/polish_bankruptcy_5year.csv` | 5,910 financial statements of Polish companies, 64 financial ratios (`Attr1` to `Attr64`), and whether each company went bankrupt within a year: the 5th-year file of the dataset, anonymised | Tomczak, S. (2016). Polish Companies Bankruptcy [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5F600. Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Changes: `5year.arff` from the UCI zip converted to CSV, the missing marker `?` written as an empty cell, `class` decoded to 0 or 1, and every other value written as the shortest text that reads back to the same number. Nothing recoded, corrected, sorted, or dropped. |
 
-All three were retrieved on 2026-10-03. The scripts `tools/get_treasury_yields.py`, `tools/get_credit_card_default.py`, and `tools/get_fomc_statements.py` download each one again from the same source.
+The first three were retrieved on 2026-10-03 and the Polish file on 2026-10-04. The scripts `tools/get_treasury_yields.py`, `tools/get_credit_card_default.py`, `tools/get_fomc_statements.py`, and `tools/get_polish_bankruptcy.py` download each one again from the same source.
 
 Course 3 adds three files derived from the public Treasury file. They hold its values, unchanged or computed from them, and no data downloaded from FRED.
 
@@ -280,7 +305,12 @@ python-fixed-income/
     requirements.txt    what the course's notebooks need
     week1/ ... week3/
       day1/ ... day5/   the notebook, its solutions, and its overview PDF
-  data/                 the invented portfolio, shared by every course
+  course4_machine_learning/
+    README.md           the course map
+    requirements.txt    what the course's notebooks need
+    week1/ ... week3/
+      day1/ ... day5/   the notebook, its solutions, and its overview PDF
+  data/                 the invented portfolio and the public datasets, shared by every course
   tools/                the scripts that build or download the data, and the notebook banner
   tests/                checks on the data
   assets/               fonts and images
@@ -290,7 +320,7 @@ python-fixed-income/
 
 Code is released under the [MIT License](LICENSE). The notebooks' written content, the slide overviews, and the videos are released under [CC BY 4.0](LICENSE-CONTENT): you may share and adapt them, including commercially, as long as you give credit.
 
-The three public data files keep their own terms, listed in [The data](#the-data). They are not relicensed by this repo.
+The four public data files keep their own terms, listed in [The data](#the-data). They are not relicensed by this repo.
 
 The fonts in `assets/fonts` are under the SIL Open Font License, and their license files sit beside them.
 
