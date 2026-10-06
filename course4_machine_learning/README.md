@@ -148,7 +148,7 @@ The card accounts describe people, so the four columns about them (sex, educatio
 
 ## What comes next
 
-Later courses build on the `bondmath`, `marketdata`, and `mlkit` you wrote in Courses 2 to 4.
+[Course 5 is Advanced Machine Learning](../course5_advanced_ml/README.md): three weeks of bagging, random forests, AdaBoost, gradient boosting, XGBoost, LightGBM, stacking, honest tuning, feature engineering on financial ratios, rare events, and SHAP values, on Course 4's datasets with its test rows kept closed, and a four-model capstone on a new public file of company ratios. Your `mlkit` is imported by a new module, `ensemblekit`, and never changed.
 
 ---
 
