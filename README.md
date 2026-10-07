@@ -10,6 +10,7 @@
 ![Course 3](https://img.shields.io/badge/Course_3-Market_Data_and_Time_Series-123D2F?style=for-the-badge)
 ![Course 4](https://img.shields.io/badge/Course_4-Machine_Learning-123D2F?style=for-the-badge)
 ![Course 5](https://img.shields.io/badge/Course_5-Advanced_Machine_Learning-123D2F?style=for-the-badge)
+![Course 6](https://img.shields.io/badge/Course_6-Neural_Networks-123D2F?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](LICENSE)
@@ -33,7 +34,7 @@ Nothing is abstracted away into contrived examples. Every programming concept is
 
 You already know the investment problem. **This course teaches you how to solve more of it with code.**
 
-The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day, 19 notebooks and a project. [Course 2, Bond Math](course2_bond_math/README.md) follows: three weeks, 14 notebooks and a capstone, in which you build price, yield, accrued interest, duration, DV01, convexity, spread, and DTS yourself, test every function against Excel, and finish with a risk report on a whole book. [Course 3, Market Data and Time Series](course3_market_data/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you pull market data from an API with a key that never leaks, clean it against the bond market's own calendar, compute changes, volatility, z-scores, percentile ranks, slopes, and butterflies with no lookahead, query the book with SQL, and finish with a daily market snapshot that runs again on any date. [Course 4, Machine Learning](course4_machine_learning/README.md) follows: three weeks, 14 notebooks and a capstone, in which you fit and read regressions and classifiers on credit data, choose a threshold on rows the test set never saw, prune a decision tree, validate on dated data with no lookahead, cluster bonds and issuers, describe the Treasury curve with PCA, and finish with a three-model comparison on a public file of company statements. [Course 5, Advanced Machine Learning](course5_advanced_ml/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you fit and read bagging, random forests, AdaBoost, gradient boosting, XGBoost, and LightGBM, stack models on out-of-fold outputs, tune without fooling yourself, engineer features from financial ratios, handle a rare outcome with weights, resampling, or a threshold, describe a model with SHAP values, and finish with a four-model comparison on a public file of company ratios. Every model describes its dataset; nothing is a forecast, a rating, or a lending rule. All five are ready.
+The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day, 19 notebooks and a project. [Course 2, Bond Math](course2_bond_math/README.md) follows: three weeks, 14 notebooks and a capstone, in which you build price, yield, accrued interest, duration, DV01, convexity, spread, and DTS yourself, test every function against Excel, and finish with a risk report on a whole book. [Course 3, Market Data and Time Series](course3_market_data/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you pull market data from an API with a key that never leaks, clean it against the bond market's own calendar, compute changes, volatility, z-scores, percentile ranks, slopes, and butterflies with no lookahead, query the book with SQL, and finish with a daily market snapshot that runs again on any date. [Course 4, Machine Learning](course4_machine_learning/README.md) follows: three weeks, 14 notebooks and a capstone, in which you fit and read regressions and classifiers on credit data, choose a threshold on rows the test set never saw, prune a decision tree, validate on dated data with no lookahead, cluster bonds and issuers, describe the Treasury curve with PCA, and finish with a three-model comparison on a public file of company statements. [Course 5, Advanced Machine Learning](course5_advanced_ml/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you fit and read bagging, random forests, AdaBoost, gradient boosting, XGBoost, and LightGBM, stack models on out-of-fold outputs, tune without fooling yourself, engineer features from financial ratios, handle a rare outcome with weights, resampling, or a threshold, describe a model with SHAP values, and finish with a four-model comparison on a public file of company ratios. [Course 6, Neural Networks](course6_neural_networks/README.md) follows: three weeks, 14 notebooks and a capstone, in which you compute gradients by hand and check them against TensorFlow, show that one neuron is a logistic regression, train networks in Keras one setting at a time, score recurrent and convolutional networks on the Treasury curve against carrying the last value forward, and finish with a network measured against LightGBM on a public file of company ratios. Every model describes its dataset; nothing is a forecast, a rating, or a lending rule. All six are ready.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -127,6 +128,21 @@ Nothing in this course asks you to forget Excel. Wherever Excel has a feature fo
 | Rebuild one SMOTE row with `=x+u*(nb-x)`, correct a resampled score by formula, and compute a Brier score with `SUMXMY2` | Compare class weights, resampling, and a threshold on a rare outcome, and recalibrate the score | 5 | Week 3, Day 3 |
 | Add a SHAP row with `SUM` to the model's log-odds, turn it into a probability with `EXP`, and average absolute values with `AVERAGE(ABS(...))` | Split a company's score across its ratios with SHAP values, and never read a contribution as a cause | 5 | Week 3, Day 4 |
 | Check the capstone's confusion matrix with `COUNTIFS`, its interval with `PERCENTILE.INC`, and a SHAP row with `SUM` | Compare four models on a new file, test once, describe the chosen one with SHAP values, and write the results to Excel | 5 | Week 3, Day 5 |
+| Fill a neuron's output `=1/(1+EXP(-($H$1+$H$2*A2)))` down a column, take its gradient with `SUMPRODUCT` over `ROWS`, and fill a 100-step descent path | Compute a log loss and its gradient by hand, check them against `tf.GradientTape`, and take gradient steps | 6 | Week 1, Day 1 |
+| Maximise a log-likelihood with Solver, scale columns with `AVERAGE` and `STDEV.P`, and score a row with `SUMPRODUCT` and `EXP` | Fit one Keras neuron and show that it is a logistic regression, with the same odds ratios | 6 | Week 1, Day 2 |
+| Build a hidden layer from `SUMPRODUCT`, `MAX`, and `TANH`, and count a network's weights with `=19*32+32+32*1+1` | Add hidden layers, reproduce a network's output in numpy, and count its parameters | 6 | Week 1, Day 3 |
+| Count steps per epoch with `ROUNDUP`, and find the best epoch on a pasted loss column with `MATCH(MIN(...))` | Read loss curves, change the batch size, and stop early on rows carved from the training rows | 6 | Week 1, Day 4 |
+| Count a confusion matrix with `COUNTIFS` on a flag column, and read a bootstrap interval with `PERCENTILE.INC` | Put a network beside logistic regression and LightGBM, with thresholds from out-of-fold outputs and paired intervals | 6 | Week 1, Day 5 |
+| Compute MSE with `SUMXMY2`, MAE with `AVERAGE(ABS(...))`, a Huber row with `IF`, and standardize a column with `STDEV.P` | Fit regression networks with three losses, turn the target back to bp, and compare them with OLS by five folds | 6 | Week 2, Day 1 |
+| Fill a momentum path and three Adam steps with the bias correction, and a decaying learning rate with `=$B$1*$B$2^(A6/$B$3)` | Check momentum and Adam steps against Keras, and choose an optimizer and a learning rate on the stopping rows | 6 | Week 2, Day 2 |
+| Normalize a batch with `AVERAGE`, `VAR.P`, and `SQRT`, and compute Glorot's limit and He's spread with `SQRT` | Start a network from the right weights, see gradients vanish, and add batch normalization | 6 | Week 2, Day 3 |
+| Drop values with `=A2*(B2>=0.2)/(1-0.2)`, and compute an L2 penalty with `SUMSQ` | Brake overfitting with L2, dropout, and early stopping, scored by five folds | 6 | Week 2, Day 4 |
+| Compute balanced class weights with `ROWS` and `COUNTIF`, and a weighted log loss with `SUMPRODUCT` over `SUM` | Fit a class-weighted network, read its output as a score, and decide on weights by numbers | 6 | Week 2, Day 5 |
+| Write `=(B3-B2)*100` for a change in bp, average a 20-day window with `OFFSET`, and score zero change with `AVERAGE(ABS(...))` | Build windows of past changes with no lookahead, and score a network walk-forward against carrying the last value forward | 6 | Week 3, Day 1 |
+| Take a SimpleRNN and an LSTM step with `TANH`, `EXP`, and `MMULT`, and compare two spreads with `STDEV.P` | Fit SimpleRNN, LSTM, and GRU networks walk-forward, and check one LSTM step against Keras | 6 | Week 3, Day 2 |
+| Fill a weighted moving sum `=SUMPRODUCT(B2:B6,$K$2:$K$6)+$K$7` down a column, then pool with `MAX` and `AVERAGE` | Fit a one-dimensional convolution, feed all 11 tenors in as channels, and keep same-day changes out | 6 | Week 3, Day 3 |
+| Average errors by fold with `AVERAGEIFS`, and count the folds a rule wins with `COUNTIF` over `COUNT` | Choose a sequence model on the development years, open the held-out years once, and write the results to Excel | 6 | Week 3, Day 4 |
+| Check the capstone's workbook with `AVERAGE`, `STDEV.P`, paired differences, `COUNTIFS`, and `PERCENTILE.INC` | Compare a network with LightGBM by paired folds on three fold seeds, with intervals, and write the results to Excel | 6 | Week 3, Day 5 |
 
 What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so the same steps can be run again on tomorrow's file without anyone dragging a formula or repointing a range.
 
@@ -194,6 +210,12 @@ For Course 5, install its file too. It adds XGBoost, LightGBM, imbalanced-learn,
 python -m pip install -r course5_advanced_ml\requirements.txt
 ```
 
+For Course 6, install its file too. It adds TensorFlow and Keras and needs no API key. TensorFlow is a large download, about 350 MB and about 1.5 GB once installed, so allow time and disk space. If `import tensorflow` fails, the [Course 6 README](course6_neural_networks/README.md#before-you-start) says what to install.
+
+```powershell
+python -m pip install -r course6_neural_networks\requirements.txt
+```
+
 **Step 3.** Open the folder in VS Code.
 
 ```powershell
@@ -244,6 +266,7 @@ Each course has its own folder, its own course map, and its own list of what to 
 | 3 | [Market Data and Time Series](course3_market_data/README.md): an API key kept secret, FRED's JSON, market calendars, resampling, changes, volatility, z-scores, percentile ranks, slopes, butterflies, SQL, AI-written code reviewed with tests, and a daily market snapshot, in three weeks | Ready |
 | 4 | [Machine Learning](course4_machine_learning/README.md): regression on the spread cross-section, logistic regression, thresholds, decision trees, walk-forward validation, clustering, PCA, and a three-model capstone, each model tested on rows it never saw and described, never forecast, in three weeks | Ready |
 | 5 | [Advanced Machine Learning](course5_advanced_ml/README.md): bagging, random forests, impurity and permutation importance, AdaBoost, gradient boosting, XGBoost, LightGBM, stacking, honest tuning, feature engineering on financial ratios, rare events, SHAP values, and a four-model capstone, with Course 4's test rows kept closed, in three weeks | Ready |
+| 6 | [Neural Networks](course6_neural_networks/README.md): tensors and gradients by hand, one neuron as a logistic regression, dense networks in Keras trained one setting at a time, losses, optimizers, batch normalization, dropout, early stopping, class weights, sequence models on the Treasury curve described, never forecast, and a capstone against LightGBM, all on the CPU, in three weeks | Ready |
 
 More courses are planned after these.
 
@@ -335,6 +358,11 @@ python-fixed-income/
     week1/ ... week3/
       day1/ ... day5/   the notebook, its solutions, and its overview PDF
   course5_advanced_ml/
+    README.md           the course map
+    requirements.txt    what the course's notebooks need
+    week1/ ... week3/
+      day1/ ... day5/   the notebook, its solutions, and its overview PDF
+  course6_neural_networks/
     README.md           the course map
     requirements.txt    what the course's notebooks need
     week1/ ... week3/

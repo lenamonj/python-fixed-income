@@ -12,7 +12,7 @@
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](../LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-22C55E?style=for-the-badge)](../LICENSE-CONTENT)
 
-**[Before you start](#before-you-start)** &nbsp;·&nbsp; **[The three weeks](#the-three-weeks)** &nbsp;·&nbsp; **[Course map](#course-map)** &nbsp;·&nbsp; **[The capstone](#the-capstone)** &nbsp;·&nbsp; **[What it uses](#what-it-uses)** &nbsp;·&nbsp; **[Course 4](../course4_machine_learning/README.md)** &nbsp;·&nbsp; **[Series front page](../README.md)**
+**[Before you start](#before-you-start)** &nbsp;·&nbsp; **[The three weeks](#the-three-weeks)** &nbsp;·&nbsp; **[Course map](#course-map)** &nbsp;·&nbsp; **[The capstone](#the-capstone)** &nbsp;·&nbsp; **[What it uses](#what-it-uses)** &nbsp;·&nbsp; **[Course 4](../course4_machine_learning/README.md)** &nbsp;·&nbsp; **[Course 6](../course6_neural_networks/README.md)** &nbsp;·&nbsp; **[Series front page](../README.md)**
 
 ## Course 5: Advanced Machine Learning
 
@@ -154,7 +154,7 @@ Course 5 rebuilds Course 4's splits of the card, benchmark, and Polish files exa
 
 ## What comes next
 
-Later courses build on the `bondmath`, `marketdata`, `mlkit`, and `ensemblekit` you wrote in Courses 2 to 5. Course 6, Neural Networks, is planned next.
+[Course 6 is Neural Networks](../course6_neural_networks/README.md): three weeks of tensors and gradients by hand, one neuron as a logistic regression, networks in Keras trained one setting at a time, losses, optimizers, batch normalization, dropout, early stopping, and class weights, sequence models on the Treasury curve described, never forecast, and a capstone that measures a network against LightGBM on the Taiwanese file's training rows. Your `mlkit` and `ensemblekit` are imported by a new module, `netkit`, and never changed.
 
 ---
 
