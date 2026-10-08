@@ -202,5 +202,18 @@ def test_llm_responses() -> None:
     folder = DATA / "course7_llm_responses"
     for path in sorted(folder.rglob("*.json")) if folder.is_dir() else []:
         raw = path.read_text(encoding="utf-8")
-        json.loads(raw)
-        assert not re.search(r"sk-or-|Bearer|[Aa]uthorization|api[_-]?key", raw), path.name
+        record = json.loads(raw)
+        # no key-like string anywhere; the header and key words only in field names, since the request's messages
+        # carry indenture text, which may say "authorizations" (Boyd's definition of Gaming License)
+        assert not re.search(r"sk-or-|Bearer", raw), path.name
+
+        def field_names(value):
+            if isinstance(value, dict):
+                for name, inner in value.items():
+                    yield name
+                    yield from field_names(inner)
+            elif isinstance(value, list):
+                for inner in value:
+                    yield from field_names(inner)
+        assert not any(re.search(r"authorization|api[_-]?key|header|bearer", name, re.I)
+                       for name in field_names(record)), path.name
