@@ -1,0 +1,60 @@
+{
+ "content": "The Committee decided to raise the target range for the federal funds rate by 1/4 percentage point",
+ "finish_reason": "length",
+ "model": "nvidia/nemotron-3-super-120b-a12b:free",
+ "provider": "Nvidia",
+ "recorded": "2026-10-08",
+ "request": {
+  "messages": [
+   {
+    "content": "You extract information from the document text in the user message. Quote the text exactly, character for character, and give the number of the section each quote comes from. Write every number exactly as the text writes it. If the text does not answer the question, reply NOT IN TEXT. If the user asks for an opinion, a grade, a comparison of quality, an ordering of securities or issuers, advice about trading, or a view about the future, reply exactly: REFUSED: this course asks only what the document says",
+    "role": "system"
+   },
+   {
+    "content": "What does this statement say about the target range for the federal funds rate?\n\nFOMC statement of 2026-09-16:\nThe Federal Open Market Committee approved the following statement for release by a 12 - 0 vote:\nThe Committee decided to raise the target range for the federal funds rate by 1/4 percentage point to 3-3/4 to 4 percent, in support of the Federal Reserve's dual mandate. The Committee is continuing its policy of maintaining ample reserves in the banking system.\nEconomic activity is expanding at a solid pace. While uncertainty remains elevated owing, in part, to geopolitical developments, domestic spending has been resilient. Productivity growth is strong, and capital investment is robust. Job gains have kept pace with the workforce, and the unemployment rate has changed little.\nInflation remains elevated. Today's policy action will support a timelier return to the Committee's 2 percent goal. The Committee will deliver price stability.",
+    "role": "user"
+   }
+  ],
+  "model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "params": {
+   "extra_body": {
+    "reasoning": {
+     "enabled": false
+    }
+   },
+   "max_tokens": 20,
+   "response_format": null,
+   "seed": 42,
+   "temperature": 0.0
+  },
+  "provider": "openrouter"
+ },
+ "usage": {
+  "completion_tokens": 20,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": null,
+   "audio_tokens": 0,
+   "image_tokens": 0,
+   "reasoning_tokens": 0,
+   "rejected_prediction_tokens": null,
+   "text_tokens": null
+  },
+  "cost": 0,
+  "cost_details": {
+   "upstream_inference_completions_cost": 0,
+   "upstream_inference_cost": 0,
+   "upstream_inference_prompt_cost": 0
+  },
+  "is_byok": false,
+  "prompt_tokens": 323,
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 0,
+   "cached_tokens": 0,
+   "image_tokens": null,
+   "text_tokens": null,
+   "video_tokens": 0
+  },
+  "total_tokens": 343
+ }
+}
