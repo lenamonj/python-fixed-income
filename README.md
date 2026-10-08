@@ -11,6 +11,7 @@
 ![Course 4](https://img.shields.io/badge/Course_4-Machine_Learning-123D2F?style=for-the-badge)
 ![Course 5](https://img.shields.io/badge/Course_5-Advanced_Machine_Learning-123D2F?style=for-the-badge)
 ![Course 6](https://img.shields.io/badge/Course_6-Neural_Networks-123D2F?style=for-the-badge)
+![Course 7](https://img.shields.io/badge/Course_7-NLP_and_LLMs-123D2F?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](LICENSE)
@@ -34,7 +35,7 @@ Nothing is abstracted away into contrived examples. Every programming concept is
 
 You already know the investment problem. **This course teaches you how to solve more of it with code.**
 
-The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day, 19 notebooks and a project. [Course 2, Bond Math](course2_bond_math/README.md) follows: three weeks, 14 notebooks and a capstone, in which you build price, yield, accrued interest, duration, DV01, convexity, spread, and DTS yourself, test every function against Excel, and finish with a risk report on a whole book. [Course 3, Market Data and Time Series](course3_market_data/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you pull market data from an API with a key that never leaks, clean it against the bond market's own calendar, compute changes, volatility, z-scores, percentile ranks, slopes, and butterflies with no lookahead, query the book with SQL, and finish with a daily market snapshot that runs again on any date. [Course 4, Machine Learning](course4_machine_learning/README.md) follows: three weeks, 14 notebooks and a capstone, in which you fit and read regressions and classifiers on credit data, choose a threshold on rows the test set never saw, prune a decision tree, validate on dated data with no lookahead, cluster bonds and issuers, describe the Treasury curve with PCA, and finish with a three-model comparison on a public file of company statements. [Course 5, Advanced Machine Learning](course5_advanced_ml/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you fit and read bagging, random forests, AdaBoost, gradient boosting, XGBoost, and LightGBM, stack models on out-of-fold outputs, tune without fooling yourself, engineer features from financial ratios, handle a rare outcome with weights, resampling, or a threshold, describe a model with SHAP values, and finish with a four-model comparison on a public file of company ratios. [Course 6, Neural Networks](course6_neural_networks/README.md) follows: three weeks, 14 notebooks and a capstone, in which you compute gradients by hand and check them against TensorFlow, show that one neuron is a logistic regression, train networks in Keras one setting at a time, score recurrent and convolutional networks on the Treasury curve against carrying the last value forward, and finish with a network measured against LightGBM on a public file of company ratios. Every model describes its dataset; nothing is a forecast, a rating, or a lending rule. All six are ready.
+The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day, 19 notebooks and a project. [Course 2, Bond Math](course2_bond_math/README.md) follows: three weeks, 14 notebooks and a capstone, in which you build price, yield, accrued interest, duration, DV01, convexity, spread, and DTS yourself, test every function against Excel, and finish with a risk report on a whole book. [Course 3, Market Data and Time Series](course3_market_data/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you pull market data from an API with a key that never leaks, clean it against the bond market's own calendar, compute changes, volatility, z-scores, percentile ranks, slopes, and butterflies with no lookahead, query the book with SQL, and finish with a daily market snapshot that runs again on any date. [Course 4, Machine Learning](course4_machine_learning/README.md) follows: three weeks, 14 notebooks and a capstone, in which you fit and read regressions and classifiers on credit data, choose a threshold on rows the test set never saw, prune a decision tree, validate on dated data with no lookahead, cluster bonds and issuers, describe the Treasury curve with PCA, and finish with a three-model comparison on a public file of company statements. [Course 5, Advanced Machine Learning](course5_advanced_ml/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you fit and read bagging, random forests, AdaBoost, gradient boosting, XGBoost, and LightGBM, stack models on out-of-fold outputs, tune without fooling yourself, engineer features from financial ratios, handle a rare outcome with weights, resampling, or a threshold, describe a model with SHAP values, and finish with a four-model comparison on a public file of company ratios. [Course 6, Neural Networks](course6_neural_networks/README.md) follows: three weeks, 14 notebooks and a capstone, in which you compute gradients by hand and check them against TensorFlow, show that one neuron is a logistic regression, train networks in Keras one setting at a time, score recurrent and convolutional networks on the Treasury curve against carrying the last value forward, and finish with a network measured against LightGBM on a public file of company ratios. [Course 7, NLP and LLMs](course7_nlp_and_llms/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you read FOMC statements, 8-K filings, and real indentures with Python, turn text into TF-IDF vectors, word vectors, and sentence embeddings, classify and search it on the CPU, send requests to large language models with the key kept secret, extract an indenture's covenants with every number checked against the text, and finish with a covenant extraction tool run on an indenture you have never seen. Every model describes its dataset; nothing is a forecast, a rating, or a lending rule, and work on a real filing is descriptive extraction only. All seven are ready.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -143,6 +144,21 @@ Nothing in this course asks you to forget Excel. Wherever Excel has a feature fo
 | Fill a weighted moving sum `=SUMPRODUCT(B2:B6,$K$2:$K$6)+$K$7` down a column, then pool with `MAX` and `AVERAGE` | Fit a one-dimensional convolution, feed all 11 tenors in as channels, and keep same-day changes out | 6 | Week 3, Day 3 |
 | Average errors by fold with `AVERAGEIFS`, and count the folds a rule wins with `COUNTIF` over `COUNT` | Choose a sequence model on the development years, open the held-out years once, and write the results to Excel | 6 | Week 3, Day 4 |
 | Check the capstone's workbook with `AVERAGE`, `STDEV.P`, paired differences, `COUNTIFS`, and `PERCENTILE.INC` | Compare a network with LightGBM by paired folds on three fold seeds, with intervals, and write the results to Excel | 6 | Week 3, Day 5 |
+| Find a word with `SEARCH` and `FIND`, count it with `LEN` and `SUBSTITUTE` (a substring count), split a sentence with `TEXTSPLIT`, and pull the target range with `REGEXEXTRACT` | Normalize look-alike characters, pull numbers out of text with regular expressions, and split text into tokens | 7 | Week 1, Day 1 |
+| Count the statements that hold a word with `COUNTIF(range,"*inflation*")`, compute an IDF with `LN`, scale a row with `SQRT(SUMSQ(...))`, and a cosine with `SUMPRODUCT` | Build TF-IDF by hand, check it against scikit-learn, and compare documents by cosine similarity | 7 | Week 1, Day 2 |
+| Count a confusion matrix with `COUNTIFS` on item codes stored as text, and see `COUNTIF` count "2.1" as "2.10" where `EXACT` does not | Train a TF-IDF classifier on 8-K sections split by date, catch the heading leak, and report recall on the rare items | 7 | Week 1, Day 3 |
+| Compute the cosine of two pasted word vectors with `SUMPRODUCT` and `SUMSQ`, and see `MATCH` and `XLOOKUP` ignore case where `EXACT` does not | Find a word's nearest neighbours in pretrained vectors, and use mean vectors as classifier features | 7 | Week 1, Day 4 |
+| Count a statement's words from two named lists with `SUMPRODUCT`, `LEN`, and `SUBSTITUTE`, and score them per thousand words | Score every statement with a word list and with a classifier fitted only on earlier years, the label's own sentence removed first | 7 | Week 1, Day 5 |
+| Compute a question's score against a chunk as `SUMPRODUCT` over 384 pasted numbers, and check each vector's length with `SQRT(SUMSQ(...))` | Embed an indenture's chunks and search it by meaning | 7 | Week 2, Day 1 |
+| Read the item over a row's largest score with `INDEX`, `MATCH`, and `MAX`, and the share where two models agree with `SUMPRODUCT` | Score a zero-shot classifier and an embedding classifier against TF-IDF, reading every score by its label's name | 7 | Week 2, Day 2 |
+| Count risk factors by cluster and filing with `COUNTIFS` | Cluster risk factor embeddings with K-means and describe each cluster by its words and its counts | 7 | Week 2, Day 3 |
+| Cut an item out of pasted filing text with `TEXTBEFORE` and `TEXTAFTER`, and count its words with `TEXTSPLIT` | Turn an EDGAR filing into text and cut a 10-K into its items | 7 | Week 2, Day 4 |
+| Check three models' confusion matrices on the test rows with `COUNTIFS`, then recall, precision, F1, and `AVERAGE` | Open the test sections once and compare three models with paired bootstrap intervals | 7 | Week 2, Day 5 |
+| Price a request with `=B2*C2+B3*C3` on token counts and per-token prices, and see `SUMPRODUCT` treat prices pasted as text as 0 | Send a request to an LLM from code with the key kept secret, count its tokens, and price it | 7 | Week 3, Day 1 |
+| Check a quote against its section with `=LEN(C2)<>LEN(SUBSTITUTE(C2,B2,""))`, because `SEARCH` fails on long quotes and reads `*` and `?` as wildcards | Extract a covenant into a schema and check every quote and number against the indenture | 7 | Week 3, Day 2 |
+| Pull a grower basket out of a pasted sentence with `TEXTBEFORE(TEXTAFTER(A2,"greater of "),"%")`, and see a cell cut a long section at 32,767 characters | Check a model's baskets against a regular expression, put two indentures in one table, and read a PDF page as text and as an image | 7 | Week 3, Day 3 |
+| Score retrieval with `ISNUMBER(MATCH(B2,C2:G2,0))`, with the section numbers kept as text | Retrieve an indenture's chunks for a question, answer with citations, and judge each answer against the retrieved text | 7 | Week 3, Day 4 |
+| Check the capstone's workbook, whose quote and number checks are `SUBSTITUTE` and `SEARCH` formulas | Build a covenant extraction tool that runs on an indenture you have never seen, with a checked table, and write it to Excel | 7 | Week 3, Day 5 |
 
 What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so the same steps can be run again on tomorrow's file without anyone dragging a formula or repointing a range.
 
@@ -216,6 +232,12 @@ For Course 6, install its file too. It adds TensorFlow and Keras and needs no AP
 python -m pip install -r course6_neural_networks\requirements.txt
 ```
 
+For Course 7, install its file too. It adds PyTorch (the CPU build, about 125 MB to download), transformers, sentence-transformers, and the `openai` package; its two small models download into the Hugging Face cache, about 118 MB, the first time a notebook needs them. Week 3 asks for a free OpenRouter key of your own, kept in `my_bondmath\.env` or Colab's Secrets panel, never in the repo; an OpenAI key works as the alternative route, and with no key every week 3 notebook replays the course's saved responses. The [Course 7 README](course7_nlp_and_llms/README.md#your-openrouter-key) explains.
+
+```powershell
+python -m pip install -r course7_nlp_and_llms\requirements.txt
+```
+
 **Step 3.** Open the folder in VS Code.
 
 ```powershell
@@ -267,6 +289,7 @@ Each course has its own folder, its own course map, and its own list of what to 
 | 4 | [Machine Learning](course4_machine_learning/README.md): regression on the spread cross-section, logistic regression, thresholds, decision trees, walk-forward validation, clustering, PCA, and a three-model capstone, each model tested on rows it never saw and described, never forecast, in three weeks | Ready |
 | 5 | [Advanced Machine Learning](course5_advanced_ml/README.md): bagging, random forests, impurity and permutation importance, AdaBoost, gradient boosting, XGBoost, LightGBM, stacking, honest tuning, feature engineering on financial ratios, rare events, SHAP values, and a four-model capstone, with Course 4's test rows kept closed, in three weeks | Ready |
 | 6 | [Neural Networks](course6_neural_networks/README.md): tensors and gradients by hand, one neuron as a logistic regression, dense networks in Keras trained one setting at a time, losses, optimizers, batch normalization, dropout, early stopping, class weights, sequence models on the Treasury curve described, never forecast, and a capstone against LightGBM, all on the CPU, in three weeks | Ready |
+| 7 | [NLP and LLMs](course7_nlp_and_llms/README.md): regular expressions and tokens, TF-IDF, a text classifier on 8-K sections, word vectors, sentence embeddings and semantic search, zero-shot classification, EDGAR, requests to large language models through OpenRouter with the key kept secret, covenant extraction from real indentures with every number checked against the text, retrieval with citations, and a covenant extraction tool as the capstone, descriptive extraction only, in three weeks | Ready |
 
 More courses are planned after these.
 
@@ -331,6 +354,22 @@ Course 3 adds three files derived from the public Treasury file. They hold its v
 
 Nothing pulled from the FRED API is stored in this repo. Course 3's live cells pull public Treasury series with the student's own key, and pull ICE BofA and Moody's series only to the student's own screen: those are licensed, held in memory, and never cached, written to a file, or committed.
 
+Course 7 adds text: public statements, public filings written by real issuers, a public-domain word vector file, and outputs the course computed itself. Real issuers appear only as the authors of the documents, which are quoted for descriptive extraction only: what the document says, never a view on the issuer or its securities. The 46-row `data/fomc_statements.csv` is unchanged.
+
+| File | What it holds | Source and terms |
+|:---|:---|:---|
+| `data/course7_fomc_statements.csv` | 226 FOMC post-meeting statements, 2000-02-02 to 2026-09-16, 13 of them unscheduled | Board of Governors of the Federal Reserve System, [federalreserve.gov](https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm), public domain unless otherwise indicated. Only white space was changed. |
+| `data/course7_indentures/` | Three indentures as filed, each with its text: Boyd Gaming Corporation, 4.750% Senior Notes due 2031 (Exhibit 4.1 to the 8-K filed 2021-06-08); Levi Strauss & Co., 8-7/8% Senior Notes due 2016 (filed 2006-03-17); Lamar Media Corp., 6-5/8% Senior Subordinated Notes due 2015, Series C (filed 2007-10-16) | Public records on [sec.gov](https://www.sec.gov/about/privacy-information), which states that information on its site may be copied and distributed without the SEC's permission. Kept byte for byte; the `.txt` files are the course's text of each. |
+| `data/course7_boyd_2021_indenture.pdf` | The Boyd indenture printed to PDF by the course from the SEC copy, 132 pages | The SEC copy's text; the page layout is the browser's |
+| `data/course7_boyd_10k_2025.htm` | Boyd Gaming Corporation's Form 10-K for fiscal 2025, as filed | A public record on sec.gov |
+| `data/course7_risk_factors.csv` | 99 Item 1A risk factors from the fiscal 2025 10-Ks of Boyd Gaming Corporation, Levi Strauss & Co., and Lamar Media Corp. | Public records on sec.gov. Only white space was changed. |
+| `data/course7_8k_items.csv` | 5,126 item sections of Form 8-K current reports filed 2019 to 2025, eight items, each labelled by the item its filer chose, the bodies cut at 300 words | Public records on sec.gov; a sample drawn by `tools/get_8k_items.py` with a fixed seed |
+| `data/course7_glove_6b_100d.npz` | GloVe 6B word vectors, 44,558 words at 100 numbers each | Pennington, Socher, and Manning (2014), [nlp.stanford.edu/projects/glove](https://nlp.stanford.edu/projects/glove/), Public Domain Dedication and License v1.0. A subset of the published file. |
+| `data/course7_8k_minilm.npy`, `data/course7_8k_zero_shot.csv` | The two pinned models' outputs on the 8-K sections, computed once on one thread | The course's own, under the repo's MIT license |
+| `data/course7_llm_responses/` | 66 responses of large language models to the course's week 3 requests, one file per request, recorded on 2026-10-08 | The course's own, under the repo's MIT license. No key and no request header is stored. |
+
+The scripts `tools/get_fomc_history.py`, `tools/get_indentures.py`, `tools/get_edgar_filings.py`, `tools/get_8k_items.py`, `tools/make_indenture_pdf.py`, `tools/make_glove_subset.py`, and `tools/make_8k_model_outputs.py` made these files on 2026-10-07; the EDGAR scripts declare a contact in their requests and stay under the SEC's limit of 10 requests a second.
+
 *This product uses the FRED&reg; API but is not endorsed or certified by the Federal Reserve Bank of St. Louis.*
 
 ## What is in this repo
@@ -367,6 +406,11 @@ python-fixed-income/
     requirements.txt    what the course's notebooks need
     week1/ ... week3/
       day1/ ... day5/   the notebook, its solutions, and its overview PDF
+  course7_nlp_and_llms/
+    README.md           the course map
+    requirements.txt    what the course's notebooks need
+    week1/ ... week3/
+      day1/ ... day5/   the notebook, its solutions, and its overview PDF
   data/                 the invented portfolio and the public datasets, shared by every course
   tools/                the scripts that build or download the data, and the notebook banner
   tests/                checks on the data
@@ -377,7 +421,7 @@ python-fixed-income/
 
 Code is released under the [MIT License](LICENSE). The notebooks' written content, the slide overviews, and the videos are released under [CC BY 4.0](LICENSE-CONTENT): you may share and adapt them, including commercially, as long as you give credit.
 
-The four public data files keep their own terms, listed in [The data](#the-data). They are not relicensed by this repo.
+The public data files and documents keep their own terms, listed in [The data](#the-data). They are not relicensed by this repo.
 
 The fonts in `assets/fonts` are under the SIL Open Font License, and their license files sit beside them.
 

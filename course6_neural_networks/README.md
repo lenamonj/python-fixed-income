@@ -12,7 +12,7 @@
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](../LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-22C55E?style=for-the-badge)](../LICENSE-CONTENT)
 
-**[Before you start](#before-you-start)** &nbsp;·&nbsp; **[The three weeks](#the-three-weeks)** &nbsp;·&nbsp; **[Course map](#course-map)** &nbsp;·&nbsp; **[The capstone](#the-capstone)** &nbsp;·&nbsp; **[What it uses](#what-it-uses)** &nbsp;·&nbsp; **[Course 5](../course5_advanced_ml/README.md)** &nbsp;·&nbsp; **[Series front page](../README.md)**
+**[Before you start](#before-you-start)** &nbsp;·&nbsp; **[The three weeks](#the-three-weeks)** &nbsp;·&nbsp; **[Course map](#course-map)** &nbsp;·&nbsp; **[The capstone](#the-capstone)** &nbsp;·&nbsp; **[What it uses](#what-it-uses)** &nbsp;·&nbsp; **[Course 5](../course5_advanced_ml/README.md)** &nbsp;·&nbsp; **[Course 7](../course7_nlp_and_llms/README.md)** &nbsp;·&nbsp; **[Series front page](../README.md)**
 
 ## Course 6: Neural Networks
 
@@ -154,7 +154,7 @@ Course 6 rebuilds Course 4's splits of the card, benchmark, and Polish files and
 
 ## What comes next
 
-Later courses build on the `bondmath`, `marketdata`, `mlkit`, `ensemblekit`, and `netkit` you wrote in Courses 2 to 6. Course 7, NLP and LLMs, is planned next.
+[Course 7 is NLP and LLMs](../course7_nlp_and_llms/README.md): three weeks of text read with Python, from regular expressions and TF-IDF to sentence embeddings and a zero-shot classifier on the CPU, then requests to large language models with the key kept secret, covenant extraction from real indentures with every number checked against the text, retrieval with citations, and a capstone that builds a covenant extraction tool. Your `mlkit` and Course 3's `get_secret` are imported by a new module, `textkit`, and never changed.
 
 ---
 
