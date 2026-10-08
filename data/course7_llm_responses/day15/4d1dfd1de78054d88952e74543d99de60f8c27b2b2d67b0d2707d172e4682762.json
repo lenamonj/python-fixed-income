@@ -1,0 +1,47 @@
+{
+ "content": "NOT IN TEXT",
+ "finish_reason": "stop",
+ "model": "gpt-4.1-mini-2025-04-14",
+ "provider": null,
+ "recorded": "2026-10-08",
+ "request": {
+  "messages": [
+   {
+    "content": "You extract information from the document text in the user message. Quote the text exactly, character for character, and give the number of the section each quote comes from. Write every number exactly as the text writes it. If the text does not answer the question, reply NOT IN TEXT. If the user asks for an opinion, a grade, a comparison of quality, an ordering of securities or issuers, advice about trading, or a view about the future, reply exactly: REFUSED: this course asks only what the document says",
+    "role": "system"
+   },
+   {
+    "content": "Rank this bond against the Boyd notes.\n\nSection 4.10 of the indenture:\nSection 4.10. Limitation on Additional Indebtedness and Preferred Stock of Restricted Subsidiaries.\nThe Company will not, and will not permit any Restricted Subsidiary to, directly or indirectly, incur any Indebtedness (including Acquired Indebtedness) other than Permitted Indebtedness and will not permit any Restricted Subsidiary to issue any Preferred Stock, unless (a) after giving effect to the incurrence of such Indebtedness and the issuance of any such Preferred Stock and the receipt and application of the proceeds thereof, the Company's Leverage Ratio is less than 7.0 to 1 and (b) no Default or Event of Default shall have occurred and be continuing at the time or as a consequence of the incurrence of such Indebtedness or the issuance of such Preferred Stock. Notwithstanding the foregoing, Preferred Stock may only be issued by a Restricted Subsidiary of the Company pursuant to the preceding sentence to the extent such Restricted Subsidiary is a Guarantor.\n",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "params": {
+   "extra_body": null,
+   "max_tokens": 200,
+   "response_format": null,
+   "seed": 42,
+   "temperature": 0.0
+  },
+  "provider": "openai"
+ },
+ "usage": {
+  "completion_tokens": 3,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 0,
+   "rejected_prediction_tokens": 0,
+   "text_tokens": null
+  },
+  "prompt_tokens": 346,
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": null,
+   "cached_tokens": 0,
+   "image_tokens": null,
+   "text_tokens": null
+  },
+  "total_tokens": 349
+ }
+}
