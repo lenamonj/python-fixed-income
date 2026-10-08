@@ -1,0 +1,47 @@
+{
+ "content": "The Company may redeem the Notes in the twelve-month period beginning on June 15, 2027, at a redemption price of 101.583% of the principal amount plus accrued and unpaid interest and Additional Interest, if any, to the applicable redemption date. [Section 12.14]\n\nThis is confirmed by the table of redemption prices for the years indicated, where the year 2027 corresponds to 101.583%. [Section 3.07]",
+ "finish_reason": "stop",
+ "model": "gpt-4.1-mini-2025-04-14",
+ "provider": null,
+ "recorded": "2026-10-08",
+ "request": {
+  "messages": [
+   {
+    "content": "You extract information from the document text in the user message. Quote the text exactly, character for character, and give the number of the section each quote comes from. Write every number exactly as the text writes it. If the text does not answer the question, reply NOT IN TEXT. If the user asks for an opinion, a grade, a comparison of quality, an ordering of securities or issuers, advice about trading, or a view about the future, reply exactly: REFUSED: this course asks only what the document says",
+    "role": "system"
+   },
+   {
+    "content": "Answer the question using only the sections below. After each sentence of your answer, write the label of the section it comes from, for example [Section 4.12]. If the sections do not answer the question, reply NOT IN TEXT.\n\n[Section 12.14]\nJune 15, 2026. On or after June 15, 2026, the Company may redeem all or part of the Notes upon not less than 10 nor more than 60 days' notice, at the redemption prices (expressed as percentages of 3 principal amount) set forth below plus accrued and unpaid interest and Additional Interest, if any, on the Notes redeemed, to the applicable redemption date (subject to the rights of Holders of the Notes on any relevant record date to receive interest due on the relevant interest payment date occurring on or prior to the redemption date), if redeemed during the twelve-month period beginning on June 15 of the years indicated below: Year Percentage 2026 102.375 % 2027 101.583 % 2028 100.792 % 2029 and thereafter 100.000 % (b) At any time prior to June 15, 2024, the Company may on any one or more occasions redeem up to 40% of the aggregate principal amount of Notes at a redemption price of 104.750% of the principal amount thereof with the Net Cash Proceeds of one or more Equity Offerings, plus accrued and\n\n[Section 3.07]\nSection 3.07. Optional Redemption. (a) Except pursuant to clauses (b) and (c) of this Section 3.07 and Section 4.10(h), the Notes will not be redeemable prior to June 15, 2026. On or after June 15, 2026, the Company may redeem all or part of the Notes upon not less than 10 nor more than 60 days' notice, at the redemption prices (expressed as percentages of principal amount) set forth below plus accrued and unpaid interest and Additional Interest, if any, on the Notes redeemed, to the applicable redemption date (subject to the rights of Holders of the Notes on any relevant record date to receive interest due on the relevant interest payment date occurring on or prior to the redemption date), if redeemed during the twelve-month period beginning on June 15 of the years indicated below: Year Percentage 2026 102.375% 2027 101.583% 2028 100.792% 2029 and thereafter 100.000% 47 (b) At any time prior to June 15, 2024, the Company may on any one or more occasions redeem up to 40% of the aggregate principal amount of Notes at a\n\n[Section 12.14]\naggregate principal amount of Notes at a redemption price of 104.750% of the principal amount thereof with the Net Cash Proceeds of one or more Equity Offerings, plus accrued and unpaid interest and Additional Interest, if any, to the redemption date, subject to the rights of Holders of such Notes on any relevant record date to receive interest due on the relevant Interest Payment Date; provided that (i) at least 60% of the aggregate principal amount of the Notes remains outstanding immediately after the occurrence of such redemption (excluding Notes held by the Company and its Subsidiaries); and (ii) the redemption occurs within 180 days of the date of the closing of such Equity Offering. (c) At any time prior to June 15, 2026, the Company may also redeem all or a part of the Notes, upon not less than 10 nor more than 60 days' prior notice to the Holders, at a redemption price equal to 100% of the principal amount of the Notes redeemed plus the Applicable Premium as of the date of redemption, and accrued and unpaid\n\n[Section 3.07]\nAt any time prior to June 15, 2024, the Company may on any one or more occasions redeem up to 40% of the aggregate principal amount of Notes at a redemption price of 104.750% of the principal amount thereof with the Net Cash Proceeds of one or more Equity Offerings, plus accrued and unpaid interest and Additional Interest, if any, to the redemption date, subject to the rights of Holders of such Notes on any relevant record date to receive interest due on the relevant interest payment date; provided that: (i) at least 60% of the aggregate principal amount of the Notes remains outstanding immediately after the occurrence of such redemption (excluding Notes held by the Company and its Subsidiaries); and (ii) the redemption occurs within 180 days of the date of the closing of such Equity Offering. (c) At any time prior to June 15, 2026, the Company may also redeem all or a part of the Notes, upon not less than 10 nor more than 60 days' prior notice to the Holders, at a redemption price equal to\n\n[Section 3.07]\nalso redeem all or a part of the Notes, upon not less than 10 nor more than 60 days' prior notice to the Holders, at a redemption price equal to 100% of the principal amount of the Notes redeemed plus the Applicable Premium as of the date of redemption, and accrued and unpaid interest and Additional Interest, if any, to the date of redemption, subject to the rights of Holders of the Notes on any relevant record date to receive interest due on the relevant interest payment date occurring on or prior to the redemption date. (d) Any optional redemption pursuant to this Section 3.07 shall be made pursuant to the provisions of Section 3.01 through 3.06.\n\nQuestion: At what price can the company redeem the Notes in the twelve months beginning June 15, 2027?",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "params": {
+   "extra_body": null,
+   "max_tokens": 600,
+   "response_format": null,
+   "seed": 42,
+   "temperature": 0.0
+  },
+  "provider": "openai"
+ },
+ "usage": {
+  "completion_tokens": 94,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 0,
+   "rejected_prediction_tokens": 0,
+   "text_tokens": null
+  },
+  "prompt_tokens": 1320,
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": null,
+   "cached_tokens": 0,
+   "image_tokens": null,
+   "text_tokens": null
+  },
+  "total_tokens": 1414
+ }
+}

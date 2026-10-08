@@ -1,0 +1,47 @@
+{
+ "content": "The covenants that are suspended while the Notes have Investment Grade Status are the provisions described under Sections 4.11, 4.12, and 4.15, collectively referred to as the \"Suspended Covenants.\" [Section 4.20]",
+ "finish_reason": "stop",
+ "model": "gpt-4.1-mini-2025-04-14",
+ "provider": null,
+ "recorded": "2026-10-08",
+ "request": {
+  "messages": [
+   {
+    "content": "You extract information from the document text in the user message. Quote the text exactly, character for character, and give the number of the section each quote comes from. Write every number exactly as the text writes it. If the text does not answer the question, reply NOT IN TEXT. If the user asks for an opinion, a grade, a comparison of quality, an ordering of securities or issuers, advice about trading, or a view about the future, reply exactly: REFUSED: this course asks only what the document says",
+    "role": "system"
+   },
+   {
+    "content": "Answer the question using only the sections below. After each sentence of your answer, write the label of the section it comes from, for example [Section 4.12]. If the sections do not answer the question, reply NOT IN TEXT.\n\n[Section 4.20]\nSection 4.20. Certain Suspended Covenants. During any period of time that (a) the Notes have Investment Grade Status, and (b) no Default or Event of Default has occurred and is continuing under this Indenture with respect to the Notes, the Company 66 and its Restricted Subsidiaries will not be subject to the provisions of this Indenture described under Sections 4.11, 4.12, and 4.15 (collectively, the \"Suspended Covenants\"); provided that with respect to those covenants that will remain in effect (the \"Effective Covenants\"), references in such Effective Covenants to clauses in the Suspended Covenants will be deemed to continue to exist for purposes of interpretation of the Effective Covenants. In the event that the Company and its Restricted Subsidiaries are not subject to the Suspended Covenants for any period of time as a result of the preceding sentence and, subsequently, at least one of the two designated Rating Agencies withdraws its rating or assigns the Notes a rating below the required Investment Grade Ratings, then the Company and its Restricted Subsidiaries will thereafter again be subject to the Suspended Covenants for\n\n[Section 4.20]\nrating or assigns the Notes a rating below the required Investment Grade Ratings, then the Company and its Restricted Subsidiaries will thereafter again be subject to the Suspended Covenants for the benefit of the Notes. Calculations under the reinstated Section 4.15 covenant will be made as if such covenant had been in effect since the date of this Indenture except that no Default will be deemed to have occurred solely by reason of a Restricted Payment made while that covenant was suspended. Notice of the commencement or termination of any period of time during which the Company and its Restricted Subsidiaries are subject to the Suspended Covenants shall be promptly given to the Trustee; provided that failure to provide such notice will not affect the suspension of the Suspended Covenants pursuant to this Section 4.20. Neither the Trustee nor the Paying Agent shall have any duty or obligation to monitor the ratings of the Notes, neither shall be deemed to have any knowledge of the ratings of the Notes, and neither shall have a duty to notify the Holders if\n\n[Section 8.03]\nSection 8.03. Covenant Defeasance. Upon the Company's exercise under Section 8.01 of the option applicable to this Section 8.03, the Company shall, subject to the satisfaction of the conditions set forth in Section 8.04, be released from its obligations under the covenants contained in Sections 4.06 through the end of Article 4 and Article 5 and any other covenants specified in an indenture supplemental hereto with respect to the outstanding Notes on and after the date the conditions set forth in Section 8.04 are satisfied (hereinafter, \"Covenant Defeasance\"), and the Notes shall thereafter be deemed not \"outstanding\" for the purposes of any direction, waiver, consent or declaration or act of Holders of Notes (and the consequences of any thereof) in connection with such covenants, but shall continue to be deemed \"outstanding\" for all other purposes hereunder (it being understood that such Notes shall not be deemed outstanding for accounting purposes). For this purpose, Covenant Defeasance means that, with respect to the outstanding Notes, the Company may omit to comply with and shall have no liability in respect of any term,\n\n[Section 8.04]\nOpinion of Counsel confirming that the beneficial owners of the outstanding Notes will not recognize income, gain or loss for federal income tax purposes as a result of such Covenant Defeasance and will be subject to federal income tax on the same amounts, in the same manner and at the same times as would have been the case if such Covenant Defeasance had not occurred; (d) no Default or Event of Default shall have occurred and be continuing on the date of such deposit (other than a Default or Event of Default resulting from (i) the Incurrence of Indebtedness all or a portion of the proceeds of which will be used to defease Notes pursuant to this Article 8 concurrently with such Incurrence or (ii) the repayment of other Indebtedness being repaid concurrently); (e) such Legal Defeasance or Covenant Defeasance shall not result in a breach or violation of, or constitute a default under, any material agreement or instrument (other than this Indenture) to which the Company or any of the Guarantors is a party or by which the Company\n\n[Section 8.01]\nSection 8.01. Option to Effect Legal Defeasance or Covenant Defeasance. The Company may, at its option evidenced by an Officers' Certificate, at any time, elect to have either Section 8.02 or Section 8.03 be applied to all outstanding Notes and all obligations of the Guarantors discharged with respect to their Note Guarantees of such Notes, upon compliance with the conditions set forth below in this Article 8. 78\n\nQuestion: Which covenants are suspended while the Notes have Investment Grade Status?",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "params": {
+   "extra_body": null,
+   "max_tokens": 600,
+   "response_format": null,
+   "seed": 42,
+   "temperature": 0.0
+  },
+  "provider": "openai"
+ },
+ "usage": {
+  "completion_tokens": 53,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 0,
+   "rejected_prediction_tokens": 0,
+   "text_tokens": null
+  },
+  "prompt_tokens": 1230,
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": null,
+   "cached_tokens": 0,
+   "image_tokens": null,
+   "text_tokens": null
+  },
+  "total_tokens": 1283
+ }
+}

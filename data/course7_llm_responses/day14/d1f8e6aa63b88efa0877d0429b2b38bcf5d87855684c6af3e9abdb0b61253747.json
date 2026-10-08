@@ -1,0 +1,47 @@
+{
+ "content": "The company must make a Change of Control Offer to the holders after a change of control. [Section 4.10] \n\nThis Change of Control Offer may be made in advance of the Change of Control and conditioned upon such Change of Control if a definitive agreement is in place for the Change of Control at the time of making the offer. [Section 4.10]\n\nOn the Change of Control Payment Date, the company will, to the extent lawful: (i) accept for payment all Notes or portions of Notes properly tendered pursuant to the Change of Control Offer; (ii) deposit with the paying agent an amount equal to the Change of Control Payment in respect of all Notes or portions of Notes properly tendered; and (iii) deliver or cause to be delivered to the Trustee the Notes properly accepted together with an Officers' Certificate. [Section 4.10]\n\nThe company will comply with the requirements of Rule 14e-1 under the Exchange Act and any other applicable securities laws and regulations in connection with the repurchase of the Notes as a result of a Change of Control. [Section 4.10]\n\nAdditionally, the company will send a notice (which may be conditional) to each Holder regarding the Change of Control Offer at the earlier of the public announcement of a Change of Control or the company's intention to effect a Change of Control or Change of Control Triggering Event. [Section 12.14]\n\nThe Holder of a Note may elect to have the Note or a portion thereof purchased by completing the form entitled \"Option of Holder to Elect Purchase\" and tendering the Note pursuant to the Change of Control Offer. [Section 12.14]\n\nAny Note (or portion thereof) accepted for payment and for which payment has been duly provided on the Change of Control Payment Date shall cease to accrue interest after that date. [Section 12.14]",
+ "finish_reason": "stop",
+ "model": "gpt-4.1-mini-2025-04-14",
+ "provider": null,
+ "recorded": "2026-10-08",
+ "request": {
+  "messages": [
+   {
+    "content": "You extract information from the document text in the user message. Quote the text exactly, character for character, and give the number of the section each quote comes from. Write every number exactly as the text writes it. If the text does not answer the question, reply NOT IN TEXT. If the user asks for an opinion, a grade, a comparison of quality, an ordering of securities or issuers, advice about trading, or a view about the future, reply exactly: REFUSED: this course asks only what the document says",
+    "role": "system"
+   },
+   {
+    "content": "Answer the question using only the sections below. After each sentence of your answer, write the label of the section it comes from, for example [Section 4.12]. If the sections do not answer the question, reply NOT IN TEXT.\n\n[Section 1.01]\nCapital Lease Obligations shall be deemed secured by a Lien on the Property being leased; provided, that the Master Lease and any Additional Leases will be accounted for as an operating lease and not as a Capital Lease Obligation. \"Capital Stock\" means, with respect to any Person, any and all shares or other equivalents (however designated) of corporate stock, partnership interests or any other participation, right, warrants, options or other interest in the nature of an equity interest in such Person, but excluding any debt security convertible or exchangeable into such equity interest. 4 \"Change of Control\" shall be deemed to occur if: (a) any \"person\" or \"group\" (within the meaning of Sections 13(d)(3) and 14(d)(2) of the Exchange Act or any successor provision to either of the foregoing, including any group acting for the purpose of acquiring, holding or disposing of securities within the meaning of Rule 13d-5(b)(1) under the Exchange Act), other than the Permitted Holders and other than a Restricted Subsidiary, becomes the \"beneficial owner\" (as defined in Rule 13d-3 under the Exchange Act, except that a\n\n[Section 4.10]\nan election to tender Notes (or portions thereof) for payment. (c) A Change of Control Offer may be made in advance of a Change of Control, and conditioned upon such Change of Control, if a definitive agreement is in place for the Change of Control at the time of the making of the Change of Control Offer. In addition, the Company will not be required to make a Change of Control Offer upon a Change of Control if a third party makes the Change of Control Offer in the manner, at the time and otherwise in compliance with the requirements set forth in this 52 Indenture applicable to a Change of Control made by the Company and such third party purchases all Notes properly tendered and not withdrawn under such Change of Control Offer. (d) The Company shall comply with the requirements of Rule 14e-1 under the Exchange Act and any other securities laws and regulations thereunder to the extent those laws and regulations are applicable in connection with the repurchase of the Notes as a result of a Change\n\n[Section 4.17]\nsuch holder's ownership of Capital Stock of the Company); and (vii) transactions pursuant to agreements existing on the Issue Date and any modification thereto or any transaction contemplated thereby in any replacement agreement therefor so long as such modification or replacement is not more disadvantageous to the Company or any of its Restricted Subsidiaries in any material respect than the respective agreement existing on the Issue Date.\n\n[Section 4.10]\nany other securities laws and regulations thereunder to the extent those laws and regulations are applicable in connection with the repurchase of the Notes as a result of a Change of Control or Change of Control Triggering Event, as the case may be. To the extent that the provisions of any securities laws or regulations conflict with the Change of Control provisions of this Indenture, the Company will comply with the applicable securities laws and regulations and will not be deemed to have breached its obligations under the Change of Control provisions of this Indenture by virtue of such conflict. (e) On the Change of Control Payment Date, the Company will, to the extent lawful: (i) accept for payment all Notes or portions of Notes properly tendered pursuant to the Change of Control Offer; (ii) deposit with the paying agent an amount equal to the Change of Control Payment in respect of all Notes or portions of Notes properly tendered; and (iii) deliver or cause to be delivered to the Trustee the Notes properly accepted together with an Officers' Certificate\n\n[Section 12.14]\nhave Investment Grade Status at the earlier of the public announcement of (x) a Change of Control or (y) (if applicable) the Company's intention to effect a Change of Control, a Change of Control Triggering Event, the Company will send a notice (which notice may be conditional) to each Holder (with a copy to the Trustee) regarding the Change of Control Offer. The Holder of this Note may elect to have this Note or a portion hereof in an authorized denomination purchased by completing the form entitled \"Option of Holder to Elect Purchase\" appearing below and tendering this Note pursuant to the Change of Control Offer. Any Note (or portion thereof) accepted for payment (and for which payment has been duly provided on the Change of Control Payment Date) pursuant to the Change of Control Offer shall cease to accrue interest after the Change of Control Payment Date. If Holders of not less than 90% in aggregate principal amount of the outstanding Notes validly tender and do not withdraw such Notes in a Change of Control Offer and the Company,\n\nQuestion: What must the company offer holders after a change of control?",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "params": {
+   "extra_body": null,
+   "max_tokens": 600,
+   "response_format": null,
+   "seed": 42,
+   "temperature": 0.0
+  },
+  "provider": "openai"
+ },
+ "usage": {
+  "completion_tokens": 377,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 0,
+   "rejected_prediction_tokens": 0,
+   "text_tokens": null
+  },
+  "prompt_tokens": 1157,
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": null,
+   "cached_tokens": 0,
+   "image_tokens": null,
+   "text_tokens": null
+  },
+  "total_tokens": 1534
+ }
+}

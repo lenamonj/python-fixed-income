@@ -1,0 +1,47 @@
+{
+ "content": "The Notes are in registered form without coupons in minimum denominations of minimum principal amount of $2,000 or integral multiple of $1,000 in excess of $2,000. [Section 12.14]  \nNotes and portions of Notes selected shall be in minimum denominations of $2,000 or whole multiples of $1,000 in excess thereof. [Section 3.02]",
+ "finish_reason": "stop",
+ "model": "gpt-4.1-mini-2025-04-14",
+ "provider": null,
+ "recorded": "2026-10-08",
+ "request": {
+  "messages": [
+   {
+    "content": "You extract information from the document text in the user message. Quote the text exactly, character for character, and give the number of the section each quote comes from. Write every number exactly as the text writes it. If the text does not answer the question, reply NOT IN TEXT. If the user asks for an opinion, a grade, a comparison of quality, an ordering of securities or issuers, advice about trading, or a view about the future, reply exactly: REFUSED: this course asks only what the document says",
+    "role": "system"
+   },
+   {
+    "content": "Answer the question using only the sections below. After each sentence of your answer, write the label of the section it comes from, for example [Section 4.12]. If the sections do not answer the question, reply NOT IN TEXT.\n\n[Section 9.02]\nwill require the consent of the Holders of at least 66 2\u20443% in aggregate principal amount of the Notes then outstanding. For the avoidance of doubt, no amendment or deletion of any of the covenants contained in this Indenture in accordance with the provisions set forth herein or action taken in compliance with such provisions as in effect at the time of such action shall be deemed to make any change in the provisions or this Indenture relating to the contractual right of any holder of the Notes to receive payments of principal of, or interest or premium or Additional Interest, if any, on the Notes.\n\n[Section 3.02]\nSection 3.02. Selection of Notes to Be Redeemed. If less than all of the Notes are to be redeemed or purchased in an offer to purchase at any time, the Trustee shall select the Notes to be redeemed or purchased among the Holders of the Notes, as applicable, that are subject to such redemption or purchase, by lot unless otherwise required by law or applicable stock exchange requirements; provided that as long as DTC serves as Depositary for a Global Note, any redemption shall comply with DTC's procedural requirements. 45 The Trustee shall promptly notify the Company in writing of the Notes selected for redemption and, in the case of any Note selected for partial redemption, the principal amount thereof to be redeemed. Notes and portions of Notes selected shall be in minimum denominations of $2,000 or whole multiples of $1,000 in excess thereof, except that if all of the Notes of a Holder are to be redeemed, the entire outstanding amount of Notes held by such Holder, even if not a multiple of $1,000, shall be redeemed. Except as\n\n[Section 2.01]\nin the form of Exhibit A attached hereto, shall represent the outstanding Notes as shall be specified therein and each shall provide that it shall represent the aggregate principal amount of outstanding Notes from time to time endorsed thereon and that the aggregate principal amount of outstanding Notes represented thereby may from time to time be reduced or increased, as appropriate, to reflect exchanges and redemptions. Any endorsement of a Global Note to reflect the amount of any increase or decrease in the aggregate principal amount of outstanding Notes represented thereby shall be made by the Trustee or the Custodian, at the direction of the Trustee, in accordance with instructions given by the Holder thereof as required by Section 2.05. The aggregate 33 principal amount of the Regulation S Global Note and increases or decreases thereto shall also be recorded in the Note Register, as hereinafter provided. (c) 144A Notes. Notes offered and sold in reliance on Rule 144A shall be issued initially in the form of one or more Global Notes bearing the legends set forth on Exhibit B\n\n[Section 12.14]\nright of payment to the Notes or the Note Guarantees if required to be purchased pursuant to their respective terms and the amount of Excess Proceeds shall be reset to zero. 9. NOTICE OF REDEMPTION. At least 10 days but not more than 60 days before a redemption date, the Company shall send a notice of redemption to each Holder whose Notes are to be redeemed at its registered address, except that redemption notices may be sent more than 60 days prior to a redemption date if the notice issued is in connection with a defeasance of the Notes or a satisfaction and discharge of the Indenture. Notices of redemption may be conditional. Notes in denominations larger than $2,000 may be redeemed in part but only in whole multiples of $1,000, unless all of the Notes held by a Holder are to be redeemed. Unless the Company defaults in making such redemption payment, interest on Notes called for redemption ceases to accrue on and after the redemption date. 10. DENOMINATIONS, TRANSFER, EXCHANGE. The Notes are in registered form without coupons\n\n[Section 12.14]\nsuch redemption payment, interest on Notes called for redemption ceases to accrue on and after the redemption date. 10. DENOMINATIONS, TRANSFER, EXCHANGE. The Notes are in registered form without coupons in minimum denominations of minimum principal amount of $2,000 or integral multiple of $1,000 in excess of $2,000. The transfer of Notes may be registered and Notes may be exchanged as provided in the Indenture. The Registrar and the Trustee may require a Holder, among other things, to furnish appropriate endorsements and transfer documents. Holders will be required to pay all taxes due on transfer. The Company need not exchange or register the transfer of any Note or portion of a Note selected for redemption, except for the unredeemed portion of any Note being redeemed in part. The Company need not exchange or register the transfer of any Notes for a period of 15 days before a selection of Notes to be redeemed or during the period between a record date and the corresponding Interest Payment Date. 11. PERSONS DEEMED OWNERS. The registered Holder of a Note may be treated\n\nQuestion: What is the minimum denomination of the Notes?",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "params": {
+   "extra_body": null,
+   "max_tokens": 600,
+   "response_format": null,
+   "seed": 42,
+   "temperature": 0.0
+  },
+  "provider": "openai"
+ },
+ "usage": {
+  "completion_tokens": 79,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 0,
+   "rejected_prediction_tokens": 0,
+   "text_tokens": null
+  },
+  "prompt_tokens": 1204,
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": null,
+   "cached_tokens": 0,
+   "image_tokens": null,
+   "text_tokens": null
+  },
+  "total_tokens": 1283
+ }
+}

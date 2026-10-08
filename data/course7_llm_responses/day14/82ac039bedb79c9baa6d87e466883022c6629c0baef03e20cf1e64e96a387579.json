@@ -1,0 +1,47 @@
+{
+ "content": "The Company may incur Indebtedness if the Company's Consolidated Fixed Charge Coverage Ratio would have been at least 2.0 to 1.0, after giving effect to the incurrence of such Indebtedness as if it was incurred at the beginning of the Reference Period and other specified adjustments. [Section 4.12]",
+ "finish_reason": "stop",
+ "model": "gpt-4.1-mini-2025-04-14",
+ "provider": null,
+ "recorded": "2026-10-08",
+ "request": {
+  "messages": [
+   {
+    "content": "You extract information from the document text in the user message. Quote the text exactly, character for character, and give the number of the section each quote comes from. Write every number exactly as the text writes it. If the text does not answer the question, reply NOT IN TEXT. If the user asks for an opinion, a grade, a comparison of quality, an ordering of securities or issuers, advice about trading, or a view about the future, reply exactly: REFUSED: this course asks only what the document says",
+    "role": "system"
+   },
+   {
+    "content": "Answer the question using only the sections below. After each sentence of your answer, write the label of the section it comes from, for example [Section 4.12]. If the sections do not answer the question, reply NOT IN TEXT.\n\n[Section 1.01]\nany period pursuant to this clause (4) shall not (x) exceed 20.0% of Consolidated EBITDA for such period (after giving effect to this clause (4)) or (y) be duplicative of one another, all as determined on a consolidated basis for the Company and its Restricted Subsidiaries in conformity with GAAP. For all purposes of this Indenture, Consolidated EBITDA will be calculated taking into account adjustments consistent with those described in the definition of \"Pro Forma Basis\". \"Consolidated Fixed Charge Coverage Ratio\" means the ratio of Consolidated EBITDA during the Reference Period to the aggregate amount of Consolidated Fixed Charges during the Reference Period; provided that (other than for purposes of Section 4.12(b)(xiii)) no effect shall be given to (i) any Indebtedness (and associated Consolidated Fixed Charges) Incurred pursuant to Section 4.12(b) on the Calculation Date and (ii) the Discharge of any Indebtedness (and associated Consolidated Fixed Charges) to the extent such Discharge results from the application of the proceeds of any Indebtedness Incurred pursuant to Section 4.12(b) on the Calculation Date. 6 \"Consolidated Fixed Charges\" means, for any period, the\n\n[Section 4.12]\nSection 4.12. Limitation on Indebtedness. (a) The Company shall not, and shall not permit any Restricted Subsidiary to, Incur any Indebtedness; provided, however, that the Company or any Guarantor may Incur Indebtedness if the Company's Consolidated Fixed Charge Coverage Ratio would have been at least 2.0 to 1.0, after giving effect to: (i) the Incurrence of such Indebtedness as if such Indebtedness was Incurred at the beginning of the Reference Period and (if applicable) the application of the net proceeds thereof to repay or defease other Indebtedness as if the application of such proceeds occurred on the first day of the Reference Period; (ii) the Incurrence and retirement (including any Indebtedness that has been defeased) of any other Indebtedness since the first day of the Reference Period and prior to the date on which such calculation is to be made (the \"Calculation Date\") as if such Indebtedness was Incurred, repaid, repurchased, redeemed, defeased or otherwise discharged on the first day of the Reference Period; (iii) the execution or termination of any management agreement pursuant to which the Company or any\n\n[Section 4.12]\nany other Indebtedness incurred to finance a merger, consolidation or other acquisition; provided that on a Pro Forma Basis, either (A) the Company's Consolidated Fixed Charge Coverage Ratio would be equal to or greater than the Company's Consolidated Fixed Charge Coverage Ratio immediately prior to such merger, consolidation or other acquisition or (B) the Company would have been able to Incur at least $1.00 of additional Indebtedness under Section 4.12(a); (xiv) Indebtedness of the Company to the extent the net proceeds thereof are promptly deposited to defease the Notes as described below under Article 8; (xv) Indebtedness (including under the Credit Facility) of the Company or any Restricted Subsidiary not otherwise permitted to be Incurred pursuant to the provisions of this section in an aggregate amount outstanding as of the date of any Incurrence of such Indebtedness not to exceed the greater of (A) $430,000,000 and (B) 7.5% of the Company's Consolidated Total Assets, calculated on a Pro Forma Basis; (xvi) Permitted Refinancing Indebtedness Incurred by the Company or any Restricted Subsidiary in respect of Indebtedness of the Company or\n\n[Section 4.12]\nor the acquisition, cost of design, lease, construction, installation, renovation, expansion, refurbishment, repair, replacement or improvement of property (real or personal) or equipment (whether through the direct purchase of assets or the Capital Stock of any Person owning such assets) in an aggregate amount not to exceed the greater of (A) $285,000,000 and (B) 5.0% of the Company's Consolidated Total Assets, calculated on a Pro Forma Basis; (x) Indebtedness consisting of the financing of insurance premiums or take-or-pay obligations contained in supply arrangements; (xi) Indebtedness arising from agreements of the Company or any Restricted Subsidiary providing for indemnification, adjustment of purchase price or similar obligations, in 57 each case, incurred or assumed in connection with the acquisition or disposition of any business, assets or Person otherwise permitted by this Indenture; (xii) guarantees incurred in the ordinary course of business supporting obligations of suppliers, lessees and vendors; (xiii) Acquired Debt and any other Indebtedness incurred to finance a merger, consolidation or other acquisition; provided that on a Pro Forma Basis, either (A) the Company's Consolidated Fixed Charge Coverage Ratio would be\n\n[Section 4.15]\nStock represent all or a portion of the exercise price thereof; (xi) the repurchase of Capital Stock upon the vesting of restricted stock, restricted stock units or performance share units to the extent necessary to satisfy tax withholding obligations attributable to such vesting; (xii) Restricted Payments made on or after the Issue Date pursuant to this clause (xii) not to exceed $400,000,000 in the aggregate; and 62 (xiii) any Restricted Payment, so long as (A) immediately before and after giving effect to such Restricted Payment no Event of Default has occurred and is continuing and (B) after giving effect to such Restricted Payment, the Consolidated Net Leverage Ratio of the Company on a Pro Forma Basis does not exceed 4.00 to 1.00. (c) For purposes of determining compliance with this Section 4.15, in the event that a Restricted Payment or Investment (or a portion thereof) meets the criteria of more than one of the categories described in clauses (i) through (xiii) of Section 4.15(b) above, or is permitted pursuant to Section 4.15(a) or pursuant to the definition of \"Permitted Investment,\"\n\nQuestion: What coverage ratio must the company meet to incur debt under the ratio test?",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "params": {
+   "extra_body": null,
+   "max_tokens": 600,
+   "response_format": null,
+   "seed": 42,
+   "temperature": 0.0
+  },
+  "provider": "openai"
+ },
+ "usage": {
+  "completion_tokens": 69,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 0,
+   "rejected_prediction_tokens": 0,
+   "text_tokens": null
+  },
+  "prompt_tokens": 1510,
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": null,
+   "cached_tokens": 0,
+   "image_tokens": null,
+   "text_tokens": null
+  },
+  "total_tokens": 1579
+ }
+}

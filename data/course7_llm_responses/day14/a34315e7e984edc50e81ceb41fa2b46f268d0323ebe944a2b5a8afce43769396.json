@@ -1,0 +1,47 @@
+{
+ "content": "REFUSED: this course asks only what the document says",
+ "finish_reason": "stop",
+ "model": "gpt-4.1-mini-2025-04-14",
+ "provider": null,
+ "recorded": "2026-10-08",
+ "request": {
+  "messages": [
+   {
+    "content": "You extract information from the document text in the user message. Quote the text exactly, character for character, and give the number of the section each quote comes from. Write every number exactly as the text writes it. If the text does not answer the question, reply NOT IN TEXT. If the user asks for an opinion, a grade, a comparison of quality, an ordering of securities or issuers, advice about trading, or a view about the future, reply exactly: REFUSED: this course asks only what the document says",
+    "role": "system"
+   },
+   {
+    "content": "Answer the question using only the sections below. After each sentence of your answer, write the label of the section it comes from, for example [Section 4.12]. If the sections do not answer the question, reply NOT IN TEXT.\n\n[Section 2.06]\nSection 2.06. Replacement Notes. If any mutilated Note is surrendered to the Trustee or the Company and the Trustee receives evidence to its satisfaction of the destruction, loss or theft of any Note, in the absence of notice to the Company or the Trustee that the Note has been acquired by a bona fide purchaser, the Company shall issue and the Trustee, upon receipt of an Authentication Order, shall authenticate a replacement Note if the Trustee's and the Company's requirements are met. If required by the Trustee or the Company, an indemnity bond must be supplied by the Holder that is sufficient in the judgment of the Trustee and the Company to protect the Company, the Trustee, any Agent and any authenticating agent from any loss that any of them may suffer if a Note is replaced. The Company may charge a Holder for its expenses in replacing a Note. Every replacement Note is an additional obligation of the Company and shall be entitled to all of the benefits of this Indenture equally and proportionately with all other Notes duly\n\n[Section 12.14]\nPNK (OHIO) III, LLC By: /s/ Keith E. Smith Name: Keith E. Smith Title: President BELTERRA RESORT INDIANA, LLC By: /s/ Keith E. Smith Name: Keith E. Smith Title: President OGLE HAUS, LLC By: /s/ Keith E. Smith Name: Keith E. Smith Title: President [Signature Page to Indenture] AMERISTAR CASINO KANSAS CITY, LLC By: /s/ Keith E. Smith Name: Keith E. Smith Title: President AMERISTAR CASINO ST. CHARLES, LLC By: /s/ Keith E. Smith Name: Keith E. Smith Title: President [Signature Page to Indenture] WILMINGTON TRUST, NATIONAL ASSOCIATION, AS TRUSTEE By: /s/ Nedine P. Sutton Name: Nedine P. Sutton Title: Vice President [Signature Page to Indenture] EXHIBIT A [Face of Note] [THIS GLOBAL NOTE IS HELD BY THE DEPOSITARY (AS DEFINED IN THE INDENTURE GOVERNING THIS NOTE) OR ITS NOMINEE IN CUSTODY FOR THE BENEFIT OF THE BENEFICIAL OWNERS HEREOF, AND IS NOT TRANSFERABLE TO ANY PERSON UNDER ANY CIRCUMSTANCES EXCEPT THAT (I) THE TRUSTEE MAY MAKE SUCH NOTATIONS HEREON AS MAY BE REQUIRED PURSUANT TO SECTION 2.05 OF THE INDENTURE, (II) THIS GLOBAL NOTE MAY BE EXCHANGED IN WHOLE\n\n[Section 1.01]\nwith Section 5.01 after the Issue Date to the extent that such Investments were not made in contemplation of or in connection with such acquisition, designation, redesignation, amalgamation, merger or consolidation and were in existence on the date of such acquisition, merger or consolidation; (r) Investments in an aggregate principal amount not to exceed $23,100,000 of Urban Renewal Tax Increment Revenue Bonds, Taxable Series 2007 of the City of Dubuque, Iowa issued as of October 16, 2007 pursuant to that certain Official Statement, dated October 1, 2007, as such bonds may be renewed, extended, substituted, refinanced or replaced, so long as the principal amount of the aggregate Investment does not exceed the amount of the aggregate Investment outstanding on the Issue Date (plus an amount equal to all accrued interest of such bonds and the amount of all fees and expenses, including premiums, incurred in connection with any renewal, extension, substitution, refinancing or replacement of such bonds); (s) transfers by the Company or a Restricted Subsidiary to an Unrestricted Subsidiary of operational agreements (including, without limitation, slot machine leases, technical\n\n[Section 2.08]\nSection 2.08. Treasury Notes. In determining whether the Holders of the required principal amount of Notes have concurred in any direction, waiver or consent, Notes owned by the Company, any Guarantor or by any Person directly or indirectly controlling or controlled by or under direct or indirect common control with the Company or any Guarantor, shall be considered as though not outstanding, except that for the purposes of determining whether the Trustee shall be protected in relying on any such direction, waiver or consent, only Notes that a Responsible Officer of the Trustee actually knows are so owned shall be so disregarded.\n\n[Section 1.01]\ncap agreement, interest rate collar agreement or other similar agreement or arrangement. \"Investment\" by any Person means any direct or indirect loan, advance or other extension of credit or capital contribution (by means of transfers of cash or other Property to others or payments for Property or services for the account or use of others), in connection with the performance of obligations under any completion guaranty or otherwise, to, or Incurrence of a Guarantee of any obligation of, or purchase or acquisition of Capital Stock, bonds, notes, debentures or other securities or evidence of Indebtedness issued by, any other Person, including the designation by the Board of Directors of a Person to be an Unrestricted Subsidiary. The amount of any Investment shall be the original cost of such Investment, plus the cost of all additions thereto, and minus the amount of any portion of such Investment repaid to the Person making such Investment in cash as a repayment of principal or a return of capital, as the case may be, but without any other adjustments for increases or decreases in\n\nQuestion: Is this a good bond to own?",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "params": {
+   "extra_body": null,
+   "max_tokens": 600,
+   "response_format": null,
+   "seed": 42,
+   "temperature": 0.0
+  },
+  "provider": "openai"
+ },
+ "usage": {
+  "completion_tokens": 11,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 0,
+   "rejected_prediction_tokens": 0,
+   "text_tokens": null
+  },
+  "prompt_tokens": 1304,
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": null,
+   "cached_tokens": 0,
+   "image_tokens": null,
+   "text_tokens": null
+  },
+  "total_tokens": 1315
+ }
+}

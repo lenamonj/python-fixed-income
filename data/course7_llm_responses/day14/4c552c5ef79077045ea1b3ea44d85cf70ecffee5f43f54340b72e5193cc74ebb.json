@@ -1,0 +1,47 @@
+{
+ "content": "The Company shall not make, and shall not permit any Restricted Subsidiary to make, any Restricted Payment if ... (iii) the aggregate amount of such Restricted Payment and all other Restricted Payments made from and after July 22, 1997 ... would exceed an amount equal, without duplication, to the sum of: (A) 50% of the Consolidated Net Income accrued during the period (treated as one accounting period) from April 1, 1997 to the end of the most recent fiscal quarter ended immediately prior to [Section 4.15]",
+ "finish_reason": "stop",
+ "model": "gpt-4.1-mini-2025-04-14",
+ "provider": null,
+ "recorded": "2026-10-08",
+ "request": {
+  "messages": [
+   {
+    "content": "You extract information from the document text in the user message. Quote the text exactly, character for character, and give the number of the section each quote comes from. Write every number exactly as the text writes it. If the text does not answer the question, reply NOT IN TEXT. If the user asks for an opinion, a grade, a comparison of quality, an ordering of securities or issuers, advice about trading, or a view about the future, reply exactly: REFUSED: this course asks only what the document says",
+    "role": "system"
+   },
+   {
+    "content": "Answer the question using only the sections below. After each sentence of your answer, write the label of the section it comes from, for example [Section 4.12]. If the sections do not answer the question, reply NOT IN TEXT.\n\n[Section 4.15]\nSection 4.15. Limitation on Restricted Payments. (a) The Company shall not make, and shall not permit any Restricted Subsidiary to make, any Restricted Payment if at the time of, and after giving effect to, such proposed Restricted Payment: (i) a Default or an Event of Default shall have occurred and be continuing; (ii) the Company could not Incur at least $1.00 of additional Indebtedness pursuant to Section 4.12(a) on a Pro Forma Basis giving effect to the Restricted Payment; or (iii) the aggregate amount of such Restricted Payment and all other Restricted Payments made from and after July 22, 1997 (excluding Restricted Payments made pursuant to any clause other than clauses (i) and (xiii) of Section 4.15(b)) (the amount of any Restricted Payment, if made other than in cash, to be based upon Fair Market Value) would exceed an amount equal, without duplication, to the sum of: (A) 50% of the Consolidated Net Income accrued during the period (treated as one accounting period) from April 1, 1997 to the end of the most recent fiscal quarter ended immediately prior to\n\n[Section 4.15]\nthan one of the categories described in clauses (i) through (xiii) of Section 4.15(b) above, or is permitted pursuant to Section 4.15(a) or pursuant to the definition of \"Permitted Investment,\" the Company shall be entitled to divide or classify (or later divide, classify or reclassify in whole or in part in its sole discretion) such Restricted Payment or Investment (or, in each case, portion thereof) in any manner that complies with this covenant. (d) If any Person in which an Investment is made, which Investment constituted a Restricted Payment when made, thereafter becomes a Restricted Subsidiary in accordance with this Indenture, all such Investments previously made in such Person shall be Permitted Investments under clause (a) of the definition thereof, and for the avoidance of doubt, all such Investments shall no longer be counted as Restricted Payments pursuant to this Section 4.15 to the extent such Investments would otherwise have been so counted.\n\n[Section 4.17]\ntransactions between the Company and one or more of its Restricted Subsidiaries or between two or more of its Restricted Subsidiaries; (iv) the pledge of the Capital Stock of any Unrestricted Subsidiary or joint venture to secure the Indebtedness of any such Person; (v) the payment of compensation (including amounts paid pursuant to employee benefit plans) for the personal services of, indemnity provided on behalf of, and reimbursement of expense to, officers, directors, employees or consultants of the Company or any of its Restricted Subsidiaries; 65 (vi) any Permitted Investment and any other Investment made by the Company or any of its Restricted Subsidiaries other than an Investment in a holder of 10% or more of the Capital Stock of the Company or an Investment in an entity controlled by a holder of 10% or more of the Capital Stock of the Company (other than indirect control by reason of such holder's ownership of Capital Stock of the Company); and (vii) transactions pursuant to agreements existing on the Issue Date and any modification thereto or any transaction contemplated thereby in\n\n[Section 4.15]\nthan by means of payments by the Company or any Restricted Subsidiary) of obligations of other Persons which have been Guaranteed by the Company or any Restricted Subsidiary or (y) the redesignation of Unrestricted Subsidiaries as Restricted Subsidiaries, in each case such net reduction in Investments being (1) valued as provided in the definition of \"Investment\", (2) an amount not to exceed the aggregate amount of Investments previously made by the Company or any Restricted Subsidiary which were treated as a Restricted Payment when made and (3) included in this clause (D) only to the extent not included in Consolidated Net Income; (E) payments of dividends, repayments of loans or advances or other transfers of assets to the Company or any Restricted Subsidiary from the Borgata Joint Venture to the extent such dividends, repayments, advances or other transfers exceed $100,000,000, but only to the extent that any such payments are excluded from the computation of Consolidated Net Income and in an aggregate amount not in excess of the amount of Investments in the Borgata Joint Venture that were treated as\n\n[Section 4.16]\nSection 4.16. Limitation on Dividend and Other Payment Restrictions Affecting Restricted Subsidiaries. (a) The Company shall not, and shall not permit any Restricted Subsidiary to, directly or indirectly, create or otherwise cause or suffer to exist or become effective any encumbrance or restriction on the ability of any Restricted Subsidiary to: (i) pay dividends or make any other distributions to the Company or any other Restricted Subsidiary on its Capital Stock or with respect to any other interest or participation in, or measured by, its profits; (ii) pay any Indebtedness owed to the Company or any other Restricted Subsidiary; (iii) make loans or advances to the Company or any other Restricted Subsidiary; or (iv) transfer any of its Property to the Company or any other Restricted Subsidiary. (b) Notwithstanding clause (a) of this Section 4.16, the Company may, and may permit any Restricted Subsidiary to, directly or indirectly, create or otherwise suffer to exist or become effective such encumbrances or restrictions existing under or by reason of: (i) agreements in effect on the Issue Date; (ii) applicable law, including rules,\n\nQuestion: How much can the company pay under the general basket of the restricted payments covenant?",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "params": {
+   "extra_body": null,
+   "max_tokens": 600,
+   "response_format": null,
+   "seed": 42,
+   "temperature": 0.0
+  },
+  "provider": "openai"
+ },
+ "usage": {
+  "completion_tokens": 115,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 0,
+   "rejected_prediction_tokens": 0,
+   "text_tokens": null
+  },
+  "prompt_tokens": 1366,
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": null,
+   "cached_tokens": 0,
+   "image_tokens": null,
+   "text_tokens": null
+  },
+  "total_tokens": 1481
+ }
+}
