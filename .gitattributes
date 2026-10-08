@@ -13,3 +13,7 @@
 # The UCI Taiwan file is committed byte for byte as the zip holds it, CRLF line endings included, so its SHA-256
 # proves it is the UCI file (DATA.md). Git must not convert it.
 data/taiwan_bankruptcy.csv -text
+
+# Course 7's EDGAR documents are committed as filed, byte for byte, so their SHA-256 proves it (DATA.md).
+data/course7_indentures/*.htm -text
+data/course7_boyd_10k_2025.htm -text
