@@ -15,8 +15,8 @@ and the saved copy's name (assets/headers/course2_<notebook>.png), so it cannot 
 
     python tools/notebook_header.py course2_bond_math/week1/day1/01_time_value_of_money.ipynb --course 2 --week 1 --day 1 --title "Time Value of Money"
 
-Courses 1 to 7 are known (course 4 added 2026-10-04, course 5 added 2026-10-05, course 6 added 2026-10-06, course 7
-added 2026-10-07; the banners of the earlier courses are unchanged).
+Courses 1 to 8 are known (course 4 added 2026-10-04, course 5 added 2026-10-05, course 6 added 2026-10-06, course 7
+added 2026-10-07, course 8 added 2026-10-08; the banners of the earlier courses are unchanged).
 """
 import argparse
 import base64
@@ -40,6 +40,7 @@ COURSES = {
     5: ("COURSE 5 · ADVANCED MACHINE LEARNING", "Course 5: Advanced Machine Learning", "course5_"),
     6: ("COURSE 6 · NEURAL NETWORKS", "Course 6: Neural Networks", "course6_"),
     7: ("COURSE 7 · NLP AND LLMS", "Course 7: NLP and LLMs", "course7_"),
+    8: ("COURSE 8 · IMPLEMENTING AGENTIC AI", "Course 8: Implementing Agentic AI", "course8_"),
 }
 COURSE_LINE = COURSES[1][0]
 BYLINE_PREFIX = "Created by "
