@@ -27,9 +27,47 @@
     ]
    },
    {
-    "content": "{\"dts_years_bp\": 0.0, \"tool_call_id\": \"call_yIfwkj8f3hpnKWdtIRUwORkp\"}",
+    "content": "{\"error\": \"dts needs a spread duration and a spread, not 0.0 years and 0.0 bp: a 0 means an input was not given\", \"tool_call_id\": \"call_yIfwkj8f3hpnKWdtIRUwORkp\"}",
     "role": "tool",
     "tool_call_id": "call_yIfwkj8f3hpnKWdtIRUwORkp"
+   },
+   {
+    "content": null,
+    "role": "assistant",
+    "tool_calls": [
+     {
+      "function": {
+       "arguments": "{\"settlement\":\"2026-09-30\",\"maturity\":\"2032-06-18\",\"coupon_pct\":7,\"yield_pct\":5.606}",
+       "name": "spread_duration"
+      },
+      "id": "call_TbcOAwoBji3sHhwR51MlJzGF",
+      "type": "function"
+     }
+    ]
+   },
+   {
+    "content": "{\"spread_duration_years\": 4.626971, \"tool_call_id\": \"call_TbcOAwoBji3sHhwR51MlJzGF\"}",
+    "role": "tool",
+    "tool_call_id": "call_TbcOAwoBji3sHhwR51MlJzGF"
+   },
+   {
+    "content": null,
+    "role": "assistant",
+    "tool_calls": [
+     {
+      "function": {
+       "arguments": "{\"spread_duration_years\":4.626971,\"spread_bp\":0}",
+       "name": "dts"
+      },
+      "id": "call_tqlFWPpiNxqK0Ozb2mPaowxj",
+      "type": "function"
+     }
+    ]
+   },
+   {
+    "content": "{\"error\": \"dts needs a spread duration and a spread, not 4.626971 years and 0.0 bp: a 0 means an input was not given\", \"tool_call_id\": \"call_tqlFWPpiNxqK0Ozb2mPaowxj\"}",
+    "role": "tool",
+    "tool_call_id": "call_tqlFWPpiNxqK0Ozb2mPaowxj"
    }
   ],
   "model": "gpt-4.1-mini",
@@ -361,32 +399,32 @@
     "logprobs": null,
     "message": {
      "annotations": [],
-     "content": "{\"text\":\"The option-adjusted spread (OAS) in basis points (bp) of bond 99080CAE8, a 7.000% bullet bond settling on 2026-09-30 and maturing on 2032-06-18 with a yield of 5.606%, is not directly provided in the text. The calculation of the OAS requires additional data such as the spread duration and the spread itself, which are not given. Therefore, the OAS cannot be determined from the provided information.\",\"figures\":[],\"sources\":[\"2026-09-30\"]}",
+     "content": "{\"text\":\"The option-adjusted spread (OAS) in basis points (bp) for bond 99080CAE8 is not directly provided in the text. However, the spread duration of the bond is 4.627 years. To calculate the OAS, the spread in basis points is needed, which is not given in the text.\",\"figures\":[{\"name\":\"Spread duration of bond 99080CAE8\",\"value\":4.626971,\"unit\":\"years\",\"tool_call_id\":\"call_TbcOAwoBji3sHhwR51MlJzGF\"}],\"sources\":[\"2026-09-30\"]}",
      "refusal": null,
      "role": "assistant"
     }
    }
   ],
-  "created": 1791738626,
-  "id": "chatcmpl-EXrM25s6h8KViHNyPLksgtqgjXIi1",
+  "created": 1791748086,
+  "id": "chatcmpl-EXtocBZD7EQ9k7sp2WbRKOjye83jy",
   "model": "gpt-4.1-mini-2025-04-14",
   "object": "chat.completion",
   "service_tier": "default",
   "system_fingerprint": "fp_75022ca69a",
   "usage": {
-   "completion_tokens": 127,
+   "completion_tokens": 135,
    "completion_tokens_details": {
     "accepted_prediction_tokens": 0,
     "audio_tokens": 0,
     "reasoning_tokens": 0,
     "rejected_prediction_tokens": 0
    },
-   "prompt_tokens": 1408,
+   "prompt_tokens": 1616,
    "prompt_tokens_details": {
     "audio_tokens": 0,
-    "cached_tokens": 1152
+    "cached_tokens": 1408
    },
-   "total_tokens": 1535
+   "total_tokens": 1751
   }
  }
 }
