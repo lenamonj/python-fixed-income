@@ -445,15 +445,15 @@
         "arguments": "{\"cusip\":\"99000ZZZ0\"}",
         "name": "bond_lookup"
        },
-       "id": "call_VLnqXZ0UyWRnJsPF7LxP9T60",
+       "id": "call_ZYhOOkYtmqlxTmEKhutipUAh",
        "type": "function"
       }
      ]
     }
    }
   ],
-  "created": 1791741014,
-  "id": "chatcmpl-EXryY8BHdL3r3iNf1Wb1l5PcYFs6b",
+  "created": 1791742944,
+  "id": "chatcmpl-EXsTgOAWhBGwhFRVCkENQ15UJ0p1g",
   "model": "gpt-4.1-mini-2025-04-14",
   "object": "chat.completion",
   "service_tier": "default",

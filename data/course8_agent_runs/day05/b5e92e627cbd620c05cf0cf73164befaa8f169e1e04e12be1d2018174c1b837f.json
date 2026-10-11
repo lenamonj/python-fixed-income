@@ -445,15 +445,15 @@
         "arguments": "{}",
         "name": "portfolio_totals"
        },
-       "id": "call_oukRCVMFr0Gj1jnsbUWPbRA8",
+       "id": "call_GFZpt7zWWA1xwF24YL9Eebmc",
        "type": "function"
       }
      ]
     }
    }
   ],
-  "created": 1791740993,
-  "id": "chatcmpl-EXryD11uwgHLtGskaqp1VofuarvPP",
+  "created": 1791742922,
+  "id": "chatcmpl-EXsTKpPkzf4JnRKU5KJpcyAioAzAB",
   "model": "gpt-4.1-mini-2025-04-14",
   "object": "chat.completion",
   "service_tier": "default",
@@ -469,7 +469,7 @@
    "prompt_tokens": 1623,
    "prompt_tokens_details": {
     "audio_tokens": 0,
-    "cached_tokens": 0
+    "cached_tokens": 1408
    },
    "total_tokens": 1635
   }

@@ -445,15 +445,15 @@
         "arguments": "{\"measure\":\"position_dv01_usd\"}",
         "name": "sector_totals"
        },
-       "id": "call_owJqUss2HUz4rUWHNOhN6cJy",
+       "id": "call_lY6MUek26okvHFEiAEYYmEuE",
        "type": "function"
       }
      ]
     }
    }
   ],
-  "created": 1791740983,
-  "id": "chatcmpl-EXry3RZFNVMTFX3Yec0ZO1Xp1VpNW",
+  "created": 1791742911,
+  "id": "chatcmpl-EXsT9EsRDjjohfp4t5uGktBFOJM7i",
   "model": "gpt-4.1-mini-2025-04-14",
   "object": "chat.completion",
   "service_tier": "default",
