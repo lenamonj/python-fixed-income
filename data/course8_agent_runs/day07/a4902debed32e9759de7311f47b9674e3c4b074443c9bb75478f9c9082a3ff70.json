@@ -9,27 +9,8 @@
     "role": "system"
    },
    {
-    "content": "Which institution does the boyd_2021 indenture name as Trustee? Quote the words that name it, and cite the section in square brackets, as [Section N.NN], if a section states it.",
+    "content": "What target range for the federal funds rate does the FOMC post-meeting statement of 2026-09-16 state? Quote the sentence that states it.",
     "role": "user"
-   },
-   {
-    "content": null,
-    "role": "assistant",
-    "tool_calls": [
-     {
-      "function": {
-       "arguments": "{\"indenture\":\"boyd_2021\",\"number\":\"1.01\",\"max_chars\":1000}",
-       "name": "read_section"
-      },
-      "id": "call_47Z8dwHnetVyP4Rz7VqgByLJ",
-      "type": "function"
-     }
-    ]
-   },
-   {
-    "content": "{\"indenture\": \"boyd_2021\", \"section\": \"1.01\", \"text\": \"Section 1.01. Definitions.\\n\\\"144A Global Note\\\" means a global note substantially in the form of Exhibit A hereto bearing a Global Note Legend and deposited with or on behalf of, and registered in the name of, the Depositary or its nominee that will be issued in a denomination equal to the outstanding principal amount of the Notes sold in reliance on Rule 144A.\\n\\\"Acquired Debt\\\" means, with respect to any specified Person, (1) Indebtedness of another Person and any of such other Person's Subsidiaries existing at the time such other Person becomes a Subsidiary of the specified Person or at the time it merges or consolidates with the specified Person or any of the specified Person's Subsidiaries or is assumed by the specified Person or any Subsidiary of the specified Person in connection with the acquisition of assets from such other Person and (2) Indebtedness secured by a Lien encumbering any asset acquired by the specified Person, in each case, to the extent that such Indebtedness is not  [cut: 107,255 characters in all]\\nSource: Boyd Gaming Corporation, indenture for the 4.750% Senior Notes due 2031, Exhibit 4.1 to the 8-K filed 2021-06-08, accession 0001193125-21-185495, Section 1.01.\", \"title\": \"Definitions\", \"tool_call_id\": \"call_47Z8dwHnetVyP4Rz7VqgByLJ\"}",
-    "role": "tool",
-    "tool_call_id": "call_47Z8dwHnetVyP4Rz7VqgByLJ"
    }
   ],
   "model": "gpt-4.1-mini",
@@ -169,7 +150,7 @@
    },
    {
     "function": {
-     "description": "The k chunks of the indenture closest to a question, by rank, each with its section and text.",
+     "description": "The k chunks of the indenture closest to a question, closest first, each with its section, its text, and its source line.",
      "name": "search_indenture",
      "parameters": {
       "additionalProperties": false,
@@ -209,36 +190,36 @@
      "tool_calls": [
       {
        "function": {
-        "arguments": "{\"indenture\":\"boyd_2021\",\"number\":\"4.01\",\"max_chars\":1000}",
-        "name": "read_section"
+        "arguments": "{\"day\":\"2026-09-16\",\"max_chars\":4000}",
+        "name": "statement_text"
        },
-       "id": "call_D0lL0IdtienuAu1paAQxTwQ4",
+       "id": "call_JnqqLRZyzC9uI8HcjuiOqZg9",
        "type": "function"
       }
      ]
     }
    }
   ],
-  "created": 1791745573,
-  "id": "chatcmpl-EXtA5Nzzl7gVOYElcNW7ayiS50PQI",
+  "created": 1791749546,
+  "id": "chatcmpl-EXuCA0rxNMH3xQWrWWVA3RIW4lAD3",
   "model": "gpt-4.1-mini-2025-04-14",
   "object": "chat.completion",
   "service_tier": "default",
   "system_fingerprint": "fp_75022ca69a",
   "usage": {
-   "completion_tokens": 31,
+   "completion_tokens": 25,
    "completion_tokens_details": {
     "accepted_prediction_tokens": 0,
     "audio_tokens": 0,
     "reasoning_tokens": 0,
     "rejected_prediction_tokens": 0
    },
-   "prompt_tokens": 1157,
+   "prompt_tokens": 768,
    "prompt_tokens_details": {
     "audio_tokens": 0,
     "cached_tokens": 0
    },
-   "total_tokens": 1188
+   "total_tokens": 793
   }
  }
 }

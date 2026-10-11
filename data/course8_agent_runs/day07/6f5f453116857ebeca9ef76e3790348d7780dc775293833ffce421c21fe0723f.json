@@ -11,25 +11,6 @@
    {
     "content": "In the boyd_2021 indenture, what Consolidated Fixed Charge Coverage Ratio does Section 4.12 require before Indebtedness may be Incurred? Quote the words that state the ratio, and cite the section as [Section 4.12].",
     "role": "user"
-   },
-   {
-    "content": null,
-    "role": "assistant",
-    "tool_calls": [
-     {
-      "function": {
-       "arguments": "{\"indenture\":\"boyd_2021\",\"number\":\"4.12\",\"max_chars\":2000}",
-       "name": "read_section"
-      },
-      "id": "call_VpimFzH8pBFn0BdQtSkAaKnh",
-      "type": "function"
-     }
-    ]
-   },
-   {
-    "content": "{\"indenture\": \"boyd_2021\", \"section\": \"4.12\", \"text\": \"Section 4.12. Limitation on Indebtedness.\\n(a) The Company shall not, and shall not permit any Restricted Subsidiary to, Incur any Indebtedness; provided, however, that the Company or any Guarantor may Incur Indebtedness if the Company's Consolidated Fixed Charge Coverage Ratio would have been at least 2.0 to 1.0, after giving effect to:\\n(i) the Incurrence of such Indebtedness as if such Indebtedness was Incurred at the beginning of the Reference Period and (if applicable) the application of the net proceeds thereof to repay or defease other Indebtedness as if the application of such proceeds occurred on the first day of the Reference Period;\\n(ii) the Incurrence and retirement (including any Indebtedness that has been defeased) of any other Indebtedness since the first day of the Reference Period and prior to the date on which such calculation is to be made (the \\\"Calculation Date\\\") as if such Indebtedness was Incurred, repaid, repurchased, redeemed, defeased or otherwise discharged on the first day of the Reference Period;\\n(iii) the execution or termination of any management agreement pursuant to which the Company or any Restricted Subsidiary was or will be paid a management fee since the first day of the Reference Period including any execution or termination which will be effective on the Calculation Date, as if such execution or termination occurred on the first day of the Reference Period;\\n(iv) the acquisition or disposition of any Property or any company or business by the Company or any Restricted Subsidiary (including the execution, amendment, modification, termination or waiver of the Master Lease or any Additional Lease) since the first day of the Reference Period including any acquisition or disposition which will be consummated contemporaneously with the Calculation Date and as if such acquisition or disposition occurred on the first day of the Reference Period (including, without limitation, any net reduction of lease payments in connection with any acqui [cut: 11,868 characters in all]\\nSource: Boyd Gaming Corporation, indenture for the 4.750% Senior Notes due 2031, Exhibit 4.1 to the 8-K filed 2021-06-08, accession 0001193125-21-185495, Section 4.12.\", \"title\": \"Limitation on Indebtedness\", \"tool_call_id\": \"call_VpimFzH8pBFn0BdQtSkAaKnh\"}",
-    "role": "tool",
-    "tool_call_id": "call_VpimFzH8pBFn0BdQtSkAaKnh"
    }
   ],
   "model": "gpt-4.1-mini",
@@ -169,7 +150,7 @@
    },
    {
     "function": {
-     "description": "The k chunks of the indenture closest to a question, by rank, each with its section and text.",
+     "description": "The k chunks of the indenture closest to a question, closest first, each with its section, its text, and its source line.",
      "name": "search_indenture",
      "parameters": {
       "additionalProperties": false,
@@ -198,37 +179,47 @@
  "response": {
   "choices": [
    {
-    "finish_reason": "stop",
+    "finish_reason": "tool_calls",
     "index": 0,
     "logprobs": null,
     "message": {
      "annotations": [],
-     "content": "The Consolidated Fixed Charge Coverage Ratio required by Section 4.12 before Indebtedness may be Incurred is stated as follows:\n\n\"the Company or any Guarantor may Incur Indebtedness if the Company's Consolidated Fixed Charge Coverage Ratio would have been at least 2.0 to 1.0, after giving effect to: ...\" [Section 4.12]",
+     "content": null,
      "refusal": null,
-     "role": "assistant"
+     "role": "assistant",
+     "tool_calls": [
+      {
+       "function": {
+        "arguments": "{\"indenture\":\"boyd_2021\",\"number\":\"4.12\",\"max_chars\":6000}",
+        "name": "read_section"
+       },
+       "id": "call_MoBqf9vhavBNXRKKyLBYdZli",
+       "type": "function"
+      }
+     ]
     }
    }
   ],
-  "created": 1791745518,
-  "id": "chatcmpl-EXt9CBSKsmDGgzIdV1XyVEnPsQ4Km",
+  "created": 1791749548,
+  "id": "chatcmpl-EXuCCHBoRoO7icrIEGB24UEPYAvt9",
   "model": "gpt-4.1-mini-2025-04-14",
   "object": "chat.completion",
   "service_tier": "default",
   "system_fingerprint": "fp_75022ca69a",
   "usage": {
-   "completion_tokens": 82,
+   "completion_tokens": 31,
    "completion_tokens_details": {
     "accepted_prediction_tokens": 0,
     "audio_tokens": 0,
     "reasoning_tokens": 0,
     "rejected_prediction_tokens": 0
    },
-   "prompt_tokens": 1372,
+   "prompt_tokens": 789,
    "prompt_tokens_details": {
     "audio_tokens": 0,
     "cached_tokens": 0
    },
-   "total_tokens": 1454
+   "total_tokens": 820
   }
  }
 }

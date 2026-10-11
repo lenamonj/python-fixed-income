@@ -9,7 +9,7 @@
     "role": "system"
    },
    {
-    "content": "Which section of the boyd_2021 indenture limits Liens, and what does its first sentence state? Use the indenture search to find it, quote the sentence, and cite the section in square brackets, as [Section N.NN] with its number.",
+    "content": "Which institution does the boyd_2021 indenture name as Trustee? Quote the words that name it, and cite the section in square brackets, as [Section N.NN], if a section states it.",
     "role": "user"
    }
   ],
@@ -150,7 +150,7 @@
    },
    {
     "function": {
-     "description": "The k chunks of the indenture closest to a question, by rank, each with its section and text.",
+     "description": "The k chunks of the indenture closest to a question, closest first, each with its section, its text, and its source line.",
      "name": "search_indenture",
      "parameters": {
       "additionalProperties": false,
@@ -190,36 +190,36 @@
      "tool_calls": [
       {
        "function": {
-        "arguments": "{\"question\":\"limitation on liens\",\"k\":1}",
-        "name": "search_indenture"
+        "arguments": "{\"indenture\":\"boyd_2021\",\"number\":\"1.01\",\"max_chars\":1000}",
+        "name": "read_section"
        },
-       "id": "call_CjOi0OkBy9KeozNn2XdUe36e",
+       "id": "call_dFlaUQzRWltWfRGyPy7DjI5y",
        "type": "function"
       }
      ]
     }
    }
   ],
-  "created": 1791745519,
-  "id": "chatcmpl-EXt9DvwGjBo8A1BbC8Mx1sIJH5B0r",
+  "created": 1791749599,
+  "id": "chatcmpl-EXuD1hTuikA8mE8x3wxzJulgPnehe",
   "model": "gpt-4.1-mini-2025-04-14",
   "object": "chat.completion",
   "service_tier": "default",
-  "system_fingerprint": "fp_75022ca69a",
+  "system_fingerprint": "fp_c8f7b32faf",
   "usage": {
-   "completion_tokens": 22,
+   "completion_tokens": 31,
    "completion_tokens_details": {
     "accepted_prediction_tokens": 0,
     "audio_tokens": 0,
     "reasoning_tokens": 0,
     "rejected_prediction_tokens": 0
    },
-   "prompt_tokens": 783,
+   "prompt_tokens": 777,
    "prompt_tokens_details": {
     "audio_tokens": 0,
     "cached_tokens": 0
    },
-   "total_tokens": 805
+   "total_tokens": 808
   }
  }
 }

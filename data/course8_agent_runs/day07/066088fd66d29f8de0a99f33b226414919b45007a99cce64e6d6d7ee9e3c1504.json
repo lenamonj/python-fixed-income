@@ -9,8 +9,27 @@
     "role": "system"
    },
    {
-    "content": "What target range for the federal funds rate does the FOMC post-meeting statement of 2026-09-16 state? Quote the sentence that states it.",
+    "content": "In Item 2.03 of the Form 8-K with accession 0001104659-21-082904, what item title did the filer choose, and what principal amount, coupon, and maturity year does the section state? Quote the sentence that states them.",
     "role": "user"
+   },
+   {
+    "content": null,
+    "role": "assistant",
+    "tool_calls": [
+     {
+      "function": {
+       "arguments": "{\"accession\":\"0001104659-21-082904\",\"item\":\"2.03\",\"max_chars\":3000}",
+       "name": "eightk_section"
+      },
+      "id": "call_3fXezazYP1YB6bJL2odoK0jM",
+      "type": "function"
+     }
+    ]
+   },
+   {
+    "content": "{\"accession\": \"0001104659-21-082904\", \"item\": \"2.03\", \"item_title\": \"Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a Registrant\", \"text\": \"On June 15, 2021, Public Service Company of New Hampshire, doing business as Eversource Energy (the \\\"Company\\\"), issued $350,000,000 aggregate principal amount of its 2.20% First Mortgage Bonds, Series V, due 2031 (the \\\"Bonds\\\"), pursuant to an Underwriting Agreement, dated June 1, 2021, among J.P. Morgan Securities LLC, Mizuho Securities USA LLC, Morgan Stanley & Co. LLC and U.S. Bancorp Investments, Inc., as representatives of the underwriters named therein, and the Company (the \\\"Underwriting Agreement\\\"). The Bonds were issued under a Twenty-Fourth Supplemental Indenture, dated as of June 1, 2021, between the Company and U.S. Bank National Association, as Trustee, supplementing the First Mortgage Indenture, dated as of August 15, 1978, as supplemented, amended and restated effective as of June 1, 2011, between the Company and U.S. Bank National Association, as Trustee.\\nSection 9 Financial Statements and Exhibits\\nSource: PUBLIC SERVICE CO OF NEW HAMPSHIRE, Form 8-K filed 2021-06-21, accession 0001104659-21-082904, Item 2.03, https://www.sec.gov/Archives/edgar/data/315256/000110465921082904/tm2119911d1_8k.htm\", \"tool_call_id\": \"call_3fXezazYP1YB6bJL2odoK0jM\"}",
+    "role": "tool",
+    "tool_call_id": "call_3fXezazYP1YB6bJL2odoK0jM"
    }
   ],
   "model": "gpt-4.1-mini",
@@ -150,7 +169,7 @@
    },
    {
     "function": {
-     "description": "The k chunks of the indenture closest to a question, by rank, each with its section and text.",
+     "description": "The k chunks of the indenture closest to a question, closest first, each with its section, its text, and its source line.",
      "name": "search_indenture",
      "parameters": {
       "additionalProperties": false,
@@ -179,47 +198,37 @@
  "response": {
   "choices": [
    {
-    "finish_reason": "tool_calls",
+    "finish_reason": "stop",
     "index": 0,
     "logprobs": null,
     "message": {
      "annotations": [],
-     "content": null,
+     "content": "The filer chose the item title \"Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a Registrant\" in Item 2.03 of the Form 8-K with accession 0001104659-21-082904.\n\nThe section states: \"On June 15, 2021, Public Service Company of New Hampshire, doing business as Eversource Energy (the \\\"Company\\\"), issued $350,000,000 aggregate principal amount of its 2.20% First Mortgage Bonds, Series V, due 2031 (the \\\"Bonds\\\"), pursuant to an Underwriting Agreement, dated June 1, 2021, among J.P. Morgan Securities LLC, Mizuho Securities USA LLC, Morgan Stanley & Co. LLC and U.S. Bancorp Investments, Inc., as representatives of the underwriters named therein, and the Company (the \\\"Underwriting Agreement\\\").\" (Item 2.03)",
      "refusal": null,
-     "role": "assistant",
-     "tool_calls": [
-      {
-       "function": {
-        "arguments": "{\"day\":\"2026-09-16\",\"max_chars\":4000}",
-        "name": "statement_text"
-       },
-       "id": "call_9XRReMLwyARX2Q1cGDEwlDRC",
-       "type": "function"
-      }
-     ]
+     "role": "assistant"
     }
    }
   ],
-  "created": 1791745515,
-  "id": "chatcmpl-EXt99angvV09Mdn7wR2V4zwkbCtqL",
+  "created": 1791749555,
+  "id": "chatcmpl-EXuCJ2nybojcrGByvXx2VmdEkut7B",
   "model": "gpt-4.1-mini-2025-04-14",
   "object": "chat.completion",
   "service_tier": "default",
   "system_fingerprint": "fp_75022ca69a",
   "usage": {
-   "completion_tokens": 25,
+   "completion_tokens": 200,
    "completion_tokens_details": {
     "accepted_prediction_tokens": 0,
     "audio_tokens": 0,
     "reasoning_tokens": 0,
     "rejected_prediction_tokens": 0
    },
-   "prompt_tokens": 762,
+   "prompt_tokens": 1224,
    "prompt_tokens_details": {
     "audio_tokens": 0,
     "cached_tokens": 0
    },
-   "total_tokens": 787
+   "total_tokens": 1424
   }
  }
 }

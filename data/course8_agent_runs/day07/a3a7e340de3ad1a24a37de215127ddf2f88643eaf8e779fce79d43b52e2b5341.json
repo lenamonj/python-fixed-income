@@ -9,8 +9,27 @@
     "role": "system"
    },
    {
-    "content": "What does Section 4.99 of the boyd_2021 indenture state? Quote its first sentence.",
+    "content": "What target range for the federal funds rate does the FOMC post-meeting statement of 2026-09-16 state? Quote the sentence that states it.",
     "role": "user"
+   },
+   {
+    "content": null,
+    "role": "assistant",
+    "tool_calls": [
+     {
+      "function": {
+       "arguments": "{\"day\":\"2026-09-16\",\"max_chars\":4000}",
+       "name": "statement_text"
+      },
+      "id": "call_JnqqLRZyzC9uI8HcjuiOqZg9",
+      "type": "function"
+     }
+    ]
+   },
+   {
+    "content": "{\"date\": \"2026-09-16\", \"text\": \"The Federal Open Market Committee approved the following statement for release by a 12 - 0 vote:\\nThe Committee decided to raise the target range for the federal funds rate by 1/4 percentage point to 3-3/4 to 4 percent, in support of the Federal Reserve's dual mandate. The Committee is continuing its policy of maintaining ample reserves in the banking system.\\nEconomic activity is expanding at a solid pace. While uncertainty remains elevated owing, in part, to geopolitical developments, domestic spending has been resilient. Productivity growth is strong, and capital investment is robust. Job gains have kept pace with the workforce, and the unemployment rate has changed little.\\nInflation remains elevated. Today's policy action will support a timelier return to the Committee's 2 percent goal. The Committee will deliver price stability.\\nSource: FOMC post-meeting statement of 2026-09-16, Board of Governors of the Federal Reserve System, https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm\", \"tool_call_id\": \"call_JnqqLRZyzC9uI8HcjuiOqZg9\"}",
+    "role": "tool",
+    "tool_call_id": "call_JnqqLRZyzC9uI8HcjuiOqZg9"
    }
   ],
   "model": "gpt-4.1-mini",
@@ -150,7 +169,7 @@
    },
    {
     "function": {
-     "description": "The k chunks of the indenture closest to a question, by rank, each with its section and text.",
+     "description": "The k chunks of the indenture closest to a question, closest first, each with its section, its text, and its source line.",
      "name": "search_indenture",
      "parameters": {
       "additionalProperties": false,
@@ -179,47 +198,37 @@
  "response": {
   "choices": [
    {
-    "finish_reason": "tool_calls",
+    "finish_reason": "stop",
     "index": 0,
     "logprobs": null,
     "message": {
      "annotations": [],
-     "content": null,
+     "content": "The FOMC post-meeting statement of 2026-09-16 states the target range for the federal funds rate as follows: \n\n\"The Committee decided to raise the target range for the federal funds rate by 1/4 percentage point to 3-3/4 to 4 percent, in support of the Federal Reserve's dual mandate.\" (section: statement text)",
      "refusal": null,
-     "role": "assistant",
-     "tool_calls": [
-      {
-       "function": {
-        "arguments": "{\"indenture\":\"boyd_2021\",\"number\":\"4.99\",\"max_chars\":500}",
-        "name": "read_section"
-       },
-       "id": "call_5vsDxJ5wdBweFomXL2wwH4zb",
-       "type": "function"
-      }
-     ]
+     "role": "assistant"
     }
    }
   ],
-  "created": 1791745577,
-  "id": "chatcmpl-EXtA9NhPeMAiWM9CS80BgMgl6b6A6",
+  "created": 1791749547,
+  "id": "chatcmpl-EXuCB20UVAkb1k7mQmO8ZzGrqqrvS",
   "model": "gpt-4.1-mini-2025-04-14",
   "object": "chat.completion",
   "service_tier": "default",
   "system_fingerprint": "fp_75022ca69a",
   "usage": {
-   "completion_tokens": 30,
+   "completion_tokens": 78,
    "completion_tokens_details": {
     "accepted_prediction_tokens": 0,
     "audio_tokens": 0,
     "reasoning_tokens": 0,
     "rejected_prediction_tokens": 0
    },
-   "prompt_tokens": 751,
+   "prompt_tokens": 1061,
    "prompt_tokens_details": {
     "audio_tokens": 0,
     "cached_tokens": 0
    },
-   "total_tokens": 781
+   "total_tokens": 1139
   }
  }
 }

@@ -9,7 +9,7 @@
     "role": "system"
    },
    {
-    "content": "Which section of the boyd_2021 indenture limits Liens, and what does its first sentence state? Use the indenture search to find it, quote the sentence, and cite the section in square brackets, as [Section N.NN] with its number.",
+    "content": "Which institution does the boyd_2021 indenture name as Trustee? Quote the words that name it, and cite the section in square brackets, as [Section N.NN], if a section states it.",
     "role": "user"
    },
    {
@@ -18,18 +18,37 @@
     "tool_calls": [
      {
       "function": {
-       "arguments": "{\"question\":\"limitation on liens\",\"k\":1}",
-       "name": "search_indenture"
+       "arguments": "{\"indenture\":\"boyd_2021\",\"number\":\"1.01\",\"max_chars\":1000}",
+       "name": "read_section"
       },
-      "id": "call_CjOi0OkBy9KeozNn2XdUe36e",
+      "id": "call_dFlaUQzRWltWfRGyPy7DjI5y",
       "type": "function"
      }
     ]
    },
    {
-    "content": "{\"hits\": [{\"rank\": 1, \"section\": \"4.14\", \"text\": \"Section 4.14. Limitation on Liens. The Company shall not, and shall not permit any Guarantor to, directly or indirectly, Incur or suffer to exist, any Lien (other than Permitted Liens) upon any of its Property, whether owned at the Issue Date or thereafter acquired, or any interest therein or any income or profits therefrom, which secures Indebtedness that ranks pari passu with or is subordinated to the Notes unless: (a) if such Lien secures Indebtedness that ranks pari passu in right of payment with the Notes or any Note Guarantee, the Notes or such Note Guarantee are secured on an equal and ratable basis with the obligations so secured; or (b) if such Lien secures Indebtedness that is subordinate in right of payment to the Notes or any Note Guarantee, the Notes or such Note Guarantee are secured on a senior basis to the obligations so secured. Any Lien created for the benefit of the Holders pursuant to the preceding paragraph shall be (and shall provide by its terms that such Lien shall be) automatically and unconditionally released and discharged\"}], \"question\": \"limitation on liens\", \"tool_call_id\": \"call_CjOi0OkBy9KeozNn2XdUe36e\"}",
+    "content": "{\"indenture\": \"boyd_2021\", \"section\": \"1.01\", \"text\": \"Section 1.01. Definitions.\\n\\\"144A Global Note\\\" means a global note substantially in the form of Exhibit A hereto bearing a Global Note Legend and deposited with or on behalf of, and registered in the name of, the Depositary or its nominee that will be issued in a denomination equal to the outstanding principal amount of the Notes sold in reliance on Rule 144A.\\n\\\"Acquired Debt\\\" means, with respect to any specified Person, (1) Indebtedness of another Person and any of such other Person's Subsidiaries existing at the time such other Person becomes a Subsidiary of the specified Person or at the time it merges or consolidates with the specified Person or any of the specified Person's Subsidiaries or is assumed by the specified Person or any Subsidiary of the specified Person in connection with the acquisition of assets from such other Person and (2) Indebtedness secured by a Lien encumbering any asset acquired by the specified Person, in each case, to the extent that such Indebtedness is not  [cut: 107,255 characters in all]\\nSource: Boyd Gaming Corporation, indenture for the 4.750% Senior Notes due 2031, Exhibit 4.1 to the 8-K filed 2021-06-08, accession 0001193125-21-185495, Section 1.01.\", \"title\": \"Definitions\", \"tool_call_id\": \"call_dFlaUQzRWltWfRGyPy7DjI5y\"}",
     "role": "tool",
-    "tool_call_id": "call_CjOi0OkBy9KeozNn2XdUe36e"
+    "tool_call_id": "call_dFlaUQzRWltWfRGyPy7DjI5y"
+   },
+   {
+    "content": null,
+    "role": "assistant",
+    "tool_calls": [
+     {
+      "function": {
+       "arguments": "{\"indenture\":\"boyd_2021\",\"number\":\"4.01\",\"max_chars\":1000}",
+       "name": "read_section"
+      },
+      "id": "call_x9j6pEebORiyznYTjcpduE9g",
+      "type": "function"
+     }
+    ]
+   },
+   {
+    "content": "{\"indenture\": \"boyd_2021\", \"section\": \"4.01\", \"text\": \"Section 4.01. Payment of Notes.\\nThe Company shall pay or cause to be paid the principal of, premium, if any, interest and Additional Interest, if any, on the Notes on the dates and in the manner provided in the Notes. Principal, premium, if any, interest and Additional Interest, if any, shall be considered paid on the date due if the Paying Agent, if other than the Company or a Subsidiary thereof, holds as of 11:00 a.m. New York Time on the due date money deposited by the Company in immediately available funds and designated for and sufficient to pay all such amounts.\\nThe Company shall pay interest on overdue principal at the rate equal to 1% per annum in excess of the then applicable interest rate on the Notes to the extent lawful; it shall pay interest on overdue installments of interest at the same rate to the extent lawful.\\nSource: Boyd Gaming Corporation, indenture for the 4.750% Senior Notes due 2031, Exhibit 4.1 to the 8-K filed 2021-06-08, accession 0001193125-21-185495, Section 4.01.\", \"title\": \"Payment of Notes\", \"tool_call_id\": \"call_x9j6pEebORiyznYTjcpduE9g\"}",
+    "role": "tool",
+    "tool_call_id": "call_x9j6pEebORiyznYTjcpduE9g"
    }
   ],
   "model": "gpt-4.1-mini",
@@ -169,7 +188,7 @@
    },
    {
     "function": {
-     "description": "The k chunks of the indenture closest to a question, by rank, each with its section and text.",
+     "description": "The k chunks of the indenture closest to a question, closest first, each with its section, its text, and its source line.",
      "name": "search_indenture",
      "parameters": {
       "additionalProperties": false,
@@ -198,37 +217,47 @@
  "response": {
   "choices": [
    {
-    "finish_reason": "stop",
+    "finish_reason": "tool_calls",
     "index": 0,
     "logprobs": null,
     "message": {
      "annotations": [],
-     "content": "The section of the boyd_2021 indenture that limits Liens is Section 4.14. Its first sentence states: \"The Company shall not, and shall not permit any Guarantor to, directly or indirectly, Incur or suffer to exist, any Lien (other than Permitted Liens) upon any of its Property, whether owned at the Issue Date or thereafter acquired, or any interest therein or any income or profits therefrom, which secures Indebtedness that ranks pari passu with or is subordinated to the Notes unless:\" [Section 4.14]",
+     "content": null,
      "refusal": null,
-     "role": "assistant"
+     "role": "assistant",
+     "tool_calls": [
+      {
+       "function": {
+        "arguments": "{\"indenture\":\"boyd_2021\",\"number\":\"1.02\",\"max_chars\":1000}",
+        "name": "read_section"
+       },
+       "id": "call_jINy3iJxARDBOVYMVPSGeK7R",
+       "type": "function"
+      }
+     ]
     }
    }
   ],
-  "created": 1791745520,
-  "id": "chatcmpl-EXt9ElW1CTLoLtdrmFe1npsG6nKkI",
+  "created": 1791749600,
+  "id": "chatcmpl-EXuD2I3HrAMoCDVpdPy3PoCbPj4Sf",
   "model": "gpt-4.1-mini-2025-04-14",
   "object": "chat.completion",
   "service_tier": "default",
   "system_fingerprint": "fp_75022ca69a",
   "usage": {
-   "completion_tokens": 123,
+   "completion_tokens": 31,
    "completion_tokens_details": {
     "accepted_prediction_tokens": 0,
     "audio_tokens": 0,
     "reasoning_tokens": 0,
     "rejected_prediction_tokens": 0
    },
-   "prompt_tokens": 1107,
+   "prompt_tokens": 1499,
    "prompt_tokens_details": {
     "audio_tokens": 0,
-    "cached_tokens": 0
+    "cached_tokens": 1024
    },
-   "total_tokens": 1230
+   "total_tokens": 1530
   }
  }
 }

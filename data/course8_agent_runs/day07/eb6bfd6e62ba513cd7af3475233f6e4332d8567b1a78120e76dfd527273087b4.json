@@ -21,15 +21,15 @@
        "arguments": "{\"indenture\":\"boyd_2021\",\"number\":\"1.01\",\"max_chars\":1000}",
        "name": "read_section"
       },
-      "id": "call_47Z8dwHnetVyP4Rz7VqgByLJ",
+      "id": "call_dFlaUQzRWltWfRGyPy7DjI5y",
       "type": "function"
      }
     ]
    },
    {
-    "content": "{\"indenture\": \"boyd_2021\", \"section\": \"1.01\", \"text\": \"Section 1.01. Definitions.\\n\\\"144A Global Note\\\" means a global note substantially in the form of Exhibit A hereto bearing a Global Note Legend and deposited with or on behalf of, and registered in the name of, the Depositary or its nominee that will be issued in a denomination equal to the outstanding principal amount of the Notes sold in reliance on Rule 144A.\\n\\\"Acquired Debt\\\" means, with respect to any specified Person, (1) Indebtedness of another Person and any of such other Person's Subsidiaries existing at the time such other Person becomes a Subsidiary of the specified Person or at the time it merges or consolidates with the specified Person or any of the specified Person's Subsidiaries or is assumed by the specified Person or any Subsidiary of the specified Person in connection with the acquisition of assets from such other Person and (2) Indebtedness secured by a Lien encumbering any asset acquired by the specified Person, in each case, to the extent that such Indebtedness is not  [cut: 107,255 characters in all]\\nSource: Boyd Gaming Corporation, indenture for the 4.750% Senior Notes due 2031, Exhibit 4.1 to the 8-K filed 2021-06-08, accession 0001193125-21-185495, Section 1.01.\", \"title\": \"Definitions\", \"tool_call_id\": \"call_47Z8dwHnetVyP4Rz7VqgByLJ\"}",
+    "content": "{\"indenture\": \"boyd_2021\", \"section\": \"1.01\", \"text\": \"Section 1.01. Definitions.\\n\\\"144A Global Note\\\" means a global note substantially in the form of Exhibit A hereto bearing a Global Note Legend and deposited with or on behalf of, and registered in the name of, the Depositary or its nominee that will be issued in a denomination equal to the outstanding principal amount of the Notes sold in reliance on Rule 144A.\\n\\\"Acquired Debt\\\" means, with respect to any specified Person, (1) Indebtedness of another Person and any of such other Person's Subsidiaries existing at the time such other Person becomes a Subsidiary of the specified Person or at the time it merges or consolidates with the specified Person or any of the specified Person's Subsidiaries or is assumed by the specified Person or any Subsidiary of the specified Person in connection with the acquisition of assets from such other Person and (2) Indebtedness secured by a Lien encumbering any asset acquired by the specified Person, in each case, to the extent that such Indebtedness is not  [cut: 107,255 characters in all]\\nSource: Boyd Gaming Corporation, indenture for the 4.750% Senior Notes due 2031, Exhibit 4.1 to the 8-K filed 2021-06-08, accession 0001193125-21-185495, Section 1.01.\", \"title\": \"Definitions\", \"tool_call_id\": \"call_dFlaUQzRWltWfRGyPy7DjI5y\"}",
     "role": "tool",
-    "tool_call_id": "call_47Z8dwHnetVyP4Rz7VqgByLJ"
+    "tool_call_id": "call_dFlaUQzRWltWfRGyPy7DjI5y"
    },
    {
     "content": null,
@@ -40,15 +40,15 @@
        "arguments": "{\"indenture\":\"boyd_2021\",\"number\":\"4.01\",\"max_chars\":1000}",
        "name": "read_section"
       },
-      "id": "call_D0lL0IdtienuAu1paAQxTwQ4",
+      "id": "call_x9j6pEebORiyznYTjcpduE9g",
       "type": "function"
      }
     ]
    },
    {
-    "content": "{\"indenture\": \"boyd_2021\", \"section\": \"4.01\", \"text\": \"Section 4.01. Payment of Notes.\\nThe Company shall pay or cause to be paid the principal of, premium, if any, interest and Additional Interest, if any, on the Notes on the dates and in the manner provided in the Notes. Principal, premium, if any, interest and Additional Interest, if any, shall be considered paid on the date due if the Paying Agent, if other than the Company or a Subsidiary thereof, holds as of 11:00 a.m. New York Time on the due date money deposited by the Company in immediately available funds and designated for and sufficient to pay all such amounts.\\nThe Company shall pay interest on overdue principal at the rate equal to 1% per annum in excess of the then applicable interest rate on the Notes to the extent lawful; it shall pay interest on overdue installments of interest at the same rate to the extent lawful.\\nSource: Boyd Gaming Corporation, indenture for the 4.750% Senior Notes due 2031, Exhibit 4.1 to the 8-K filed 2021-06-08, accession 0001193125-21-185495, Section 4.01.\", \"title\": \"Payment of Notes\", \"tool_call_id\": \"call_D0lL0IdtienuAu1paAQxTwQ4\"}",
+    "content": "{\"indenture\": \"boyd_2021\", \"section\": \"4.01\", \"text\": \"Section 4.01. Payment of Notes.\\nThe Company shall pay or cause to be paid the principal of, premium, if any, interest and Additional Interest, if any, on the Notes on the dates and in the manner provided in the Notes. Principal, premium, if any, interest and Additional Interest, if any, shall be considered paid on the date due if the Paying Agent, if other than the Company or a Subsidiary thereof, holds as of 11:00 a.m. New York Time on the due date money deposited by the Company in immediately available funds and designated for and sufficient to pay all such amounts.\\nThe Company shall pay interest on overdue principal at the rate equal to 1% per annum in excess of the then applicable interest rate on the Notes to the extent lawful; it shall pay interest on overdue installments of interest at the same rate to the extent lawful.\\nSource: Boyd Gaming Corporation, indenture for the 4.750% Senior Notes due 2031, Exhibit 4.1 to the 8-K filed 2021-06-08, accession 0001193125-21-185495, Section 4.01.\", \"title\": \"Payment of Notes\", \"tool_call_id\": \"call_x9j6pEebORiyznYTjcpduE9g\"}",
     "role": "tool",
-    "tool_call_id": "call_D0lL0IdtienuAu1paAQxTwQ4"
+    "tool_call_id": "call_x9j6pEebORiyznYTjcpduE9g"
    },
    {
     "content": null,
@@ -59,15 +59,53 @@
        "arguments": "{\"indenture\":\"boyd_2021\",\"number\":\"1.02\",\"max_chars\":1000}",
        "name": "read_section"
       },
-      "id": "call_cPYkdtDvJBiYfJb65quQf2wP",
+      "id": "call_jINy3iJxARDBOVYMVPSGeK7R",
       "type": "function"
      }
     ]
    },
    {
-    "content": "{\"indenture\": \"boyd_2021\", \"section\": \"1.02\", \"text\": \"Section 1.02. Other Definitions.\\nTerm Defined in Section\\n\\\"Affiliate Transaction\\\" 4.17\\n\\\"Authentication Order\\\" 2.01\\n\\\"Calculation Date\\\" 4.12\\n\\\"Change of Control Offer\\\" 4.10\\n\\\"Change of Control Payment\\\" 4.10\\n\\\"Change of Control Payment Date\\\" 4.10\\n\\\"Covenant Defeasance\\\" 8.03\\n\\\"Cross-Payment Default\\\" 6.01\\n\\\"DTC\\\" 2.02\\n\\\"Effective Covenants\\\" 4.20\\n\\\"Event of Default\\\" 6.01\\n\\\"Excess Proceeds\\\" 4.11\\n\\\"Funding Guarantor\\\" 10.03\\n31\\nTerm Defined in Section\\n\\\"Guarantor Obligations\\\" 10.01\\n\\\"Legal Defeasance\\\" 8.02\\n\\\"Paying Agent\\\" 2.02\\n\\\"Prepayment Offer\\\" 4.11\\n\\\"Pro Forma Basis\\\" 4.12\\n\\\"Registrar\\\" 2.02\\n\\\"Successor\\\" 5.01\\n\\\"Suspended Covenants\\\" 4.20\\nSource: Boyd Gaming Corporation, indenture for the 4.750% Senior Notes due 2031, Exhibit 4.1 to the 8-K filed 2021-06-08, accession 0001193125-21-185495, Section 1.02.\", \"title\": \"Other Definitions\", \"tool_call_id\": \"call_cPYkdtDvJBiYfJb65quQf2wP\"}",
+    "content": "{\"indenture\": \"boyd_2021\", \"section\": \"1.02\", \"text\": \"Section 1.02. Other Definitions.\\nTerm Defined in Section\\n\\\"Affiliate Transaction\\\" 4.17\\n\\\"Authentication Order\\\" 2.01\\n\\\"Calculation Date\\\" 4.12\\n\\\"Change of Control Offer\\\" 4.10\\n\\\"Change of Control Payment\\\" 4.10\\n\\\"Change of Control Payment Date\\\" 4.10\\n\\\"Covenant Defeasance\\\" 8.03\\n\\\"Cross-Payment Default\\\" 6.01\\n\\\"DTC\\\" 2.02\\n\\\"Effective Covenants\\\" 4.20\\n\\\"Event of Default\\\" 6.01\\n\\\"Excess Proceeds\\\" 4.11\\n\\\"Funding Guarantor\\\" 10.03\\n31\\nTerm Defined in Section\\n\\\"Guarantor Obligations\\\" 10.01\\n\\\"Legal Defeasance\\\" 8.02\\n\\\"Paying Agent\\\" 2.02\\n\\\"Prepayment Offer\\\" 4.11\\n\\\"Pro Forma Basis\\\" 4.12\\n\\\"Registrar\\\" 2.02\\n\\\"Successor\\\" 5.01\\n\\\"Suspended Covenants\\\" 4.20\\nSource: Boyd Gaming Corporation, indenture for the 4.750% Senior Notes due 2031, Exhibit 4.1 to the 8-K filed 2021-06-08, accession 0001193125-21-185495, Section 1.02.\", \"title\": \"Other Definitions\", \"tool_call_id\": \"call_jINy3iJxARDBOVYMVPSGeK7R\"}",
     "role": "tool",
-    "tool_call_id": "call_cPYkdtDvJBiYfJb65quQf2wP"
+    "tool_call_id": "call_jINy3iJxARDBOVYMVPSGeK7R"
+   },
+   {
+    "content": null,
+    "role": "assistant",
+    "tool_calls": [
+     {
+      "function": {
+       "arguments": "{\"indenture\":\"boyd_2021\",\"number\":\"2.02\",\"max_chars\":1000}",
+       "name": "read_section"
+      },
+      "id": "call_hVwMHw1atlk5UGXbwMdnIFz3",
+      "type": "function"
+     }
+    ]
+   },
+   {
+    "content": "{\"indenture\": \"boyd_2021\", \"section\": \"2.02\", \"text\": \"Section 2.02. Registrar and Paying Agent.\\nThe Company shall maintain an office or agency where Notes may be presented for registration of transfer or for exchange (\\\"Registrar\\\") and an office or agency where Notes may be presented for payment (\\\"Paying Agent\\\"). The Registrar shall keep a register of the Notes and of their transfer and exchange. The Company may appoint one or more co-registrars and one or more additional paying agents. The term \\\"Registrar\\\" includes any co-registrar and the term \\\"Paying Agent\\\" includes any additional paying agent. The Company may change any Paying Agent or Registrar without notice to any Holder. The Company shall notify the Trustee in writing of the name and address of any Agent not a party to this Indenture. If the Company fails to appoint or maintain another entity as Registrar or Paying Agent, the Trustee shall act as such. The Company or any of its Subsidiaries may act as Paying Agent or Registrar.\\nThe Company initially appoints The Depository Trust Co [cut: 1,317 characters in all]\\nSource: Boyd Gaming Corporation, indenture for the 4.750% Senior Notes due 2031, Exhibit 4.1 to the 8-K filed 2021-06-08, accession 0001193125-21-185495, Section 2.02.\", \"title\": \"Registrar and Paying Agent\", \"tool_call_id\": \"call_hVwMHw1atlk5UGXbwMdnIFz3\"}",
+    "role": "tool",
+    "tool_call_id": "call_hVwMHw1atlk5UGXbwMdnIFz3"
+   },
+   {
+    "content": null,
+    "role": "assistant",
+    "tool_calls": [
+     {
+      "function": {
+       "arguments": "{\"indenture\":\"boyd_2021\",\"number\":\"1.03\",\"max_chars\":1000}",
+       "name": "read_section"
+      },
+      "id": "call_pvMBXIJeGphrrDeeV8DuQrTU",
+      "type": "function"
+     }
+    ]
+   },
+   {
+    "content": "{\"indenture\": \"boyd_2021\", \"section\": \"1.03\", \"text\": \"Section 1.03. [Reserved].\\nSource: Boyd Gaming Corporation, indenture for the 4.750% Senior Notes due 2031, Exhibit 4.1 to the 8-K filed 2021-06-08, accession 0001193125-21-185495, Section 1.03.\", \"title\": \"[Reserved]\", \"tool_call_id\": \"call_pvMBXIJeGphrrDeeV8DuQrTU\"}",
+    "role": "tool",
+    "tool_call_id": "call_pvMBXIJeGphrrDeeV8DuQrTU"
    }
   ],
   "model": "gpt-4.1-mini",
@@ -207,7 +245,7 @@
    },
    {
     "function": {
-     "description": "The k chunks of the indenture closest to a question, by rank, each with its section and text.",
+     "description": "The k chunks of the indenture closest to a question, closest first, each with its section, its text, and its source line.",
      "name": "search_indenture",
      "parameters": {
       "additionalProperties": false,
@@ -247,18 +285,18 @@
      "tool_calls": [
       {
        "function": {
-        "arguments": "{\"indenture\":\"boyd_2021\",\"number\":\"9.01\",\"max_chars\":1000}",
+        "arguments": "{\"indenture\":\"boyd_2021\",\"number\":\"1.04\",\"max_chars\":1000}",
         "name": "read_section"
        },
-       "id": "call_PIfyrmiSIjiDgOHPnjQYghvS",
+       "id": "call_ABvblYHaiywyaIO7bVIybmKD",
        "type": "function"
       }
      ]
     }
    }
   ],
-  "created": 1791745574,
-  "id": "chatcmpl-EXtA6rawKCJogkEbOhF6SOrS4Xc04",
+  "created": 1791749602,
+  "id": "chatcmpl-EXuD4nkU5P3IcRLXeBzdMVZrwnBaX",
   "model": "gpt-4.1-mini-2025-04-14",
   "object": "chat.completion",
   "service_tier": "default",
@@ -271,12 +309,12 @@
     "reasoning_tokens": 0,
     "rejected_prediction_tokens": 0
    },
-   "prompt_tokens": 1889,
+   "prompt_tokens": 2426,
    "prompt_tokens_details": {
     "audio_tokens": 0,
-    "cached_tokens": 0
+    "cached_tokens": 2176
    },
-   "total_tokens": 1920
+   "total_tokens": 2457
   }
  }
 }

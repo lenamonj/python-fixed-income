@@ -150,7 +150,7 @@
    },
    {
     "function": {
-     "description": "The k chunks of the indenture closest to a question, by rank, each with its section and text.",
+     "description": "The k chunks of the indenture closest to a question, closest first, each with its section, its text, and its source line.",
      "name": "search_indenture",
      "parameters": {
       "additionalProperties": false,
@@ -193,15 +193,15 @@
         "arguments": "{\"accession\":\"0001104659-21-082904\",\"item\":\"2.03\",\"max_chars\":3000}",
         "name": "eightk_section"
        },
-       "id": "call_5E889g0NwMYVet64mfa7AFzN",
+       "id": "call_3fXezazYP1YB6bJL2odoK0jM",
        "type": "function"
       }
      ]
     }
    }
   ],
-  "created": 1791745522,
-  "id": "chatcmpl-EXt9G136nb8o64NCXUPt5WIaoh7YS",
+  "created": 1791749554,
+  "id": "chatcmpl-EXuCIiXbXcOXlFsSVUXmnEGyFSdHP",
   "model": "gpt-4.1-mini-2025-04-14",
   "object": "chat.completion",
   "service_tier": "default",
@@ -214,12 +214,12 @@
     "reasoning_tokens": 0,
     "rejected_prediction_tokens": 0
    },
-   "prompt_tokens": 783,
+   "prompt_tokens": 789,
    "prompt_tokens_details": {
     "audio_tokens": 0,
     "cached_tokens": 0
    },
-   "total_tokens": 820
+   "total_tokens": 826
   }
  }
 }
