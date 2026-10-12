@@ -1,0 +1,10 @@
+recorded: 2026-10-12
+command: docker logs pfi-bond-service
+masked: account names, URLs, ids
+INFO:     <ip>:35092 - "GET /health HTTP/1.1" 200 OK
+INFO:     <ip>:35102 - "POST /dv01 HTTP/1.1" 200 OK
+
+INFO:     Started server process [7]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://<ip>:8000 (Press CTRL+C to quit)

@@ -1,0 +1,100 @@
+recorded: 2026-10-12
+command: docker build --no-cache --progress=plain -t pfi-bond-service .
+masked: account names, URLs, ids
+
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 343B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.13.16-slim
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 124B done
+#3 DONE 0.0s
+
+#4 [1/6] FROM docker.io/library/python:3.13.16-slim@sha256:70729b46c69b4f1e97c4822c1af3df53a1476cf5ddc6c087c0c10bc3a5678c2f
+#4 resolve docker.io/library/python:3.13.16-slim@sha256:70729b46c69b4f1e97c4822c1af3df53a1476cf5ddc6c087c0c10bc3a5678c2f 0.0s done
+#4 DONE 0.0s
+
+#5 [2/6] WORKDIR /app
+#5 CACHED
+
+#6 [internal] load build context
+#6 transferring context: 92.14kB 0.0s done
+#6 DONE 0.0s
+
+#7 [3/6] COPY requirements.txt .
+#7 DONE 0.0s
+
+#8 [4/6] RUN python -m pip install --no-cache-dir -r requirements.txt
+#8 1.325 Collecting fastapi==0.143.0 (from -r requirements.txt (line 1))
+#8 1.371   Downloading fastapi-0.143.0-py3-none-any.whl.metadata (26 kB)
+#8 1.394 Collecting uvicorn==0.54.0 (from -r requirements.txt (line 2))
+#8 1.402   Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+#8 1.421 Collecting starlette>=0.46.0 (from fastapi==0.143.0->-r requirements.txt (line 1))
+#8 1.444   Downloading starlette-1.7.0-py3-none-any.whl.metadata (6.6 kB)
+#8 1.519 Collecting pydantic>=2.9.0 (from fastapi==0.143.0->-r requirements.txt (line 1))
+#8 1.526   Downloading pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+#8 1.547 Collecting typing-extensions>=4.8.0 (from fastapi==0.143.0->-r requirements.txt (line 1))
+#8 1.552   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#8 1.562 Collecting typing-inspection>=0.4.2 (from fastapi==0.143.0->-r requirements.txt (line 1))
+#8 1.569   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+#8 1.578 Collecting annotated-doc>=0.0.2 (from fastapi==0.143.0->-r requirements.txt (line 1))
+#8 1.584   Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+#8 1.601 Collecting opentelemetry-api>=1.44.0 (from fastapi==0.143.0->-r requirements.txt (line 1))
+#8 1.606   Downloading opentelemetry_api-1.45.1-py3-none-any.whl.metadata (1.4 kB)
+#8 1.620 Collecting click>=7.0 (from uvicorn==0.54.0->-r requirements.txt (line 2))
+#8 1.627   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+#8 1.636 Collecting h11>=0.8 (from uvicorn==0.54.0->-r requirements.txt (line 2))
+#8 1.641   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#8 1.651 Collecting annotated-types>=0.6.0 (from pydantic>=2.9.0->fastapi==0.143.0->-r requirements.txt (line 1))
+#8 1.656   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+#8 2.150 Collecting pydantic-core==2.50.1 (from pydantic>=2.9.0->fastapi==0.143.0->-r requirements.txt (line 1))
+#8 2.159   Downloading pydantic_core-2.50.1-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.5 kB)
+#8 2.174 Collecting anyio<5,>=4.0.0 (from starlette>=0.46.0->fastapi==0.143.0->-r requirements.txt (line 1))
+#8 2.180   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+#8 2.193 Collecting idna>=2.8 (from anyio<5,>=4.0.0->starlette>=0.46.0->fastapi==0.143.0->-r requirements.txt (line 1))
+#8 2.200   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+#8 2.213 Downloading fastapi-0.143.0-py3-none-any.whl (144 kB)
+#8 2.226 Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+#8 2.236 Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+#8 2.242 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+#8 2.253 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#8 2.261 Downloading opentelemetry_api-1.45.1-py3-none-any.whl (60 kB)
+#8 2.268 Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+#8 2.292 Downloading pydantic_core-2.50.1-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+#8 2.371    ???????????????????????????????????????? 2.2/2.2 MB 27.5 MB/s  0:00:00
+#8 2.378 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+#8 2.386 Downloading starlette-1.7.0-py3-none-any.whl (78 kB)
+#8 2.396 Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+#8 2.404 Downloading idna-3.20-py3-none-any.whl (69 kB)
+#8 2.412 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#8 2.420 Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+#8 2.528 Installing collected packages: typing-extensions, idna, h11, click, annotated-types, annotated-doc, uvicorn, typing-inspection, pydantic-core, opentelemetry-api, anyio, starlette, pydantic, fastapi
+#8 3.294 
+#8 3.296 Successfully installed annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 click-8.5.0 fastapi-0.143.0 h11-0.16.0 idna-3.20 opentelemetry-api-1.45.1 pydantic-2.14.1 pydantic-core-2.50.1 starlette-1.7.0 typing-extensions-4.16.0 typing-inspection-0.4.4 uvicorn-0.54.0
+#8 3.296 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#8 DONE 3.4s
+
+#9 [5/6] COPY app.py bondmath.py deploykit.py ./
+#9 DONE 0.0s
+
+#10 [6/6] RUN useradd --create-home appuser
+#10 DONE 0.2s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 0.7s done
+#11 exporting manifest sha256:fbd93e4706810c29f97cd203e22d44fcc1eefc6facc57e4fbc3cef384adadaae done
+#11 exporting config sha256:e15c5a70178a731af60fbf32f6f19e04e4d64c1b342c356bd5971233eb06494b done
+#11 exporting attestation manifest sha256:4bc3adf7d91969eca182d553425a8f7416a6dace61e72a40a38d6fe4101e3fa6 0.0s done
+#11 exporting manifest list sha256:0eca51c68053bfc7ff73bc088f4aafdbd77fe8a2dfa5c99f1428c768c5c920b9 done
+#11 naming to docker.io/library/pfi-bond-service:latest done
+#11 unpacking to docker.io/library/pfi-bond-service:latest
+#11 unpacking to docker.io/library/pfi-bond-service:latest 0.3s done
+#11 DONE 1.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/rv2gnrmn3t7b8qgydcgdockk3

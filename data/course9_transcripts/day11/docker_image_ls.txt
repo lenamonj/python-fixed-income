@@ -1,0 +1,7 @@
+recorded: 2026-10-12
+command: docker image ls pfi-bond-service
+masked: account names, URLs, ids
+IMAGE                       ID             DISK USAGE   CONTENT SIZE   EXTRA
+pfi-bond-service:copy-all   bdfef1102da8        214MB           52MB        
+pfi-bond-service:full       ae8ad0507eba       1.64GB          423MB        
+pfi-bond-service:latest     0eca51c68053        214MB           52MB   U    

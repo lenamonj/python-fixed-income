@@ -1,0 +1,4 @@
+recorded: 2026-10-12
+command: docker run -d --rm -p 8000:8000 --name pfi-bond-service pfi-bond-service
+masked: account names, URLs, ids
+e6ff0197e7b323939991f565b0b5d37994a30a808003c76ba31b015b31646dda

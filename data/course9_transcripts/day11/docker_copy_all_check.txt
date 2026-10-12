@@ -1,0 +1,12 @@
+recorded: 2026-10-12
+command: docker run --rm pfi-bond-service:copy-all sh -c "ls -a /app; cat /app/.env"
+masked: account names, URLs, ids
+.
+..
+.env
+Dockerfile
+app.py
+bondmath.py
+deploykit.py
+requirements.txt
+PFI_DEMO_TOKEN=planted-not-a-real-token

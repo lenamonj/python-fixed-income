@@ -1,0 +1,7 @@
+recorded: 2026-10-12
+command: $body = @{settlement = "2026-10-02"; maturity = "2031-10-02"; coupon_pct = 5.0; yield_pct = 5.06; frequency = 2} | ConvertTo-Json; Invoke-RestMethod -Method Post -Uri "http://localhost:8000/dv01" -Body $body -ContentType "application/json"
+masked: account names, URLs, ids
+
+       dv01_per_100
+       ------------
+0.04362487919873952

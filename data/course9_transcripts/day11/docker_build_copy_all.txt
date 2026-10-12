@@ -1,0 +1,4 @@
+recorded: 2026-10-12
+command: docker build -q -t pfi-bond-service:copy-all .
+masked: account names, URLs, ids
+sha256:bdfef1102da8565d41e1b9dc0f4c7dc39ea38dc42427c388116939db207cf5a5

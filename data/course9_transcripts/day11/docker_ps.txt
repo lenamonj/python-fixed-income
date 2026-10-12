@@ -1,0 +1,5 @@
+recorded: 2026-10-12
+command: docker ps --filter name=pfi-bond-service --format "table {{.Image}}\t{{.Status}}\t{{.Ports}}"
+masked: account names, URLs, ids
+IMAGE              STATUS                  PORTS
+pfi-bond-service   Up Less than a second   <ip>:8000->8000/tcp, [::]:8000->8000/tcp
