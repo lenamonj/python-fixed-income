@@ -313,7 +313,7 @@ Each course has its own folder, its own course map, and its own list of what to 
 | 7 | [NLP and LLMs](course7_nlp_and_llms/README.md): regular expressions and tokens, TF-IDF, a text classifier on 8-K sections, word vectors, sentence embeddings and semantic search, zero-shot classification, EDGAR, requests to large language models through OpenRouter with the key kept secret, covenant extraction from real indentures with every number checked against the text, retrieval with citations, and a covenant extraction tool as the capstone, descriptive extraction only, in three weeks | Ready |
 | 8 | [Implementing Agentic AI](course8_agentic_ai/README.md): the first tool request by hand, the agent loop with a step limit, tools from your own `bondmath` module, structured answers with every figure traced to a tool result, market and document tools, MCP, the OpenAI Agents SDK, an orchestrator with four specialists, memory, evals with answer keys decided first, guardrails and a budget, and a multi-agent credit desk as the capstone, every run replayed from saved responses so no key is needed, in three weeks | Ready |
 
-Course 9, Deployment, follows, and a bonus course, Building Your Own Coding Agent, closes the series.
+Course 9, Deployment, follows, and a bonus course, Build Your Own Coding Agent, closes the series.
 
 ## The data
 
