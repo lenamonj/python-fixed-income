@@ -154,7 +154,7 @@ Course 6 rebuilds Course 4's splits of the card, benchmark, and Polish files and
 
 ## What comes next
 
-[Course 7 is NLP and LLMs](../course7_nlp_and_llms/README.md): three weeks of text read with Python, from regular expressions and TF-IDF to sentence embeddings and a zero-shot classifier on the CPU, then requests to large language models with the key kept secret, covenant extraction from real indentures with every number checked against the text, retrieval with citations, and a capstone that builds a covenant extraction tool. Your `mlkit` and Course 3's `get_secret` are imported by a new module, `textkit`, and never changed.
+[Course 7 is NLP, RAG, and LLMs](../course7_nlp_and_llms/README.md): three weeks of text read with Python, from regular expressions and TF-IDF to sentence embeddings and a zero-shot classifier on the CPU, then requests to large language models with the key kept secret, covenant extraction from real indentures with every number checked against the text, retrieval with citations, and a capstone that builds a covenant extraction tool. Your `mlkit` and Course 3's `get_secret` are imported by a new module, `textkit`, and never changed.
 
 ---
 

@@ -5,7 +5,7 @@
   <img src="../assets/readme/wordmark-light.png" alt="Python for Fixed Income" width="520">
 </picture>
 
-![Course 7](https://img.shields.io/badge/Course_7-NLP_and_LLMs-123D2F?style=for-the-badge)
+![Course 7](https://img.shields.io/badge/Course_7-NLP%2C_RAG%2C_and_LLMs-123D2F?style=for-the-badge)
 ![Length](https://img.shields.io/badge/3_weeks-14_notebooks_%2B_capstone-1C7A57?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)
@@ -14,7 +14,7 @@
 
 **[Before you start](#before-you-start)** &nbsp;·&nbsp; **[Your OpenRouter key](#your-openrouter-key)** &nbsp;·&nbsp; **[The three weeks](#the-three-weeks)** &nbsp;·&nbsp; **[Course map](#course-map)** &nbsp;·&nbsp; **[The capstone](#the-capstone)** &nbsp;·&nbsp; **[What it uses](#what-it-uses)** &nbsp;·&nbsp; **[Course 6](../course6_neural_networks/README.md)** &nbsp;·&nbsp; **[Course 8](../course8_agentic_ai/README.md)** &nbsp;·&nbsp; **[Series front page](../README.md)**
 
-## Course 7: NLP and LLMs
+## Course 7: NLP, RAG, and LLMs
 
 **Three weeks from a regular expression on an FOMC statement to a covenant extraction tool that reads a real indenture and checks every number it returns against the text.**
 
@@ -124,6 +124,8 @@ Week 3 reaches large language models through [OpenRouter](https://openrouter.ai)
 | 5 | [Course 7 Capstone](week3/day5/course7_capstone.ipynb) | Your own covenant extraction tool, run on an indenture the course never opened before and then on day 12's, with a checked table, the guardrail, the cost, a workbook, and a written description. A [worked version](week3/day5/course7_capstone_solutions.ipynb) sits beside it | Ready |
 
 <!-- map:end -->
+
+RAG, retrieval-augmented generation, runs through the course in three places. Day 6 cuts an indenture into chunks and searches it by meaning with sentence embeddings. Day 14 builds RAG over an indenture: retrieval scored without the model, a prompt that must cite its section, and a judge that checks each answer's grounding in the sections it cites. The capstone's tool searches an indenture it has never seen for each covenant's section and checks every value against that section's text.
 
 ## The capstone
 
