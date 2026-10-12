@@ -1,0 +1,4 @@
+recorded: 2026-10-12
+command: gh pr create --base main --head units-in-readme --title "State the module's units in the README" --body "Adds a Conventions section to the README, copied from the units in bondmath.py's docstring. No code changes."
+masked: account names, URLs, ids
+https://github.com/student/pfi-deploy-demo/pull/1

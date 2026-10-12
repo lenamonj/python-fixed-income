@@ -1,0 +1,18 @@
+recorded: 2026-10-12
+command: gh pr view 1
+masked: account names, URLs, ids
+title:	State the module's units in the README
+state:	OPEN
+author:	student (student)
+labels:	
+assignees:	
+reviewers:	
+projects:	
+milestone:	
+number:	1
+url:	https://github.com/student/pfi-deploy-demo/pull/1
+additions:	1473
+deletions:	1465
+auto-merge:	disabled
+--
+Adds a Conventions section to the README, copied from the units in bondmath.py's docstring. No code changes.
