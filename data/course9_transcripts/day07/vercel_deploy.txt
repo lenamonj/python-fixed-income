@@ -1,0 +1,43 @@
+recorded: 2026-10-12
+command: vercel deploy --prod --yes
+masked: account names, URLs, ids
+Vercel CLI 59.10.0 (Node.js 22.18.0)
+Loading teams?
+
+  Directory       ~\projects\pfi-bond-service
+
+Searching for existing projects?
+
+? Linked          student/pfi-bond-service
+Deploying student/pfi-bond-service
+  Inspect         https://vercel.com/student/pfi-bond-service/<id>
+  Production      https://student.vercel.app
+https://student.vercel.app
+Building?
+Building?
+Running build in Washington, D.C., USA (East) ? iad1
+Build machine configuration: 2 cores, 8 GB
+Retrieving list of deployment files...
+Downloading 6 deployment files...
+Restored build cache from previous deployment (<id>)
+Running "vercel build"
+Vercel CLI 62.7.0
+Using Python 3.13 from .python-version
+Using uv 0.10.11
+Installing required dependencies from requirements.txt...
+Compiling Python bytecode...
+Build Completed in /vercel/output [11s]
+Deploying outputs...
+  Production      https://student.vercel.app
+Completing?
+? Aliased         https://student.vercel.app
+
+? Ready in 24s
+
+Next steps:
+- Check the deployment response:
+  vercel curl https://student.vercel.app
+- View build logs:
+  vercel inspect student.vercel.app --logs
+- Create a new deployment from the same source:
+  vercel redeploy student.vercel.app

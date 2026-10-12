@@ -1,0 +1,5 @@
+recorded: 2026-10-12
+command: curl.exe -s -w "`nHTTP status %{http_code}`n" https://student.vercel.app/health
+masked: account names, URLs, ids
+{"status":"ok","version":"1.0","as_of":null}
+HTTP status 200

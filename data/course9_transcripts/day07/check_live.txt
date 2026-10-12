@@ -1,0 +1,8 @@
+recorded: 2026-10-12
+command: python check_live.py
+masked: account names, URLs, ids
+/price    here 99.7378446367698  deployed 99.7378446367698  equal: True
+/accrued  here 0.0  deployed 0.0  equal: True
+/dv01     here 0.04362487919873952  deployed 0.04362487919873952  equal: True
+/yield    here 5.060000000023592  deployed 5.060000000023592  equal: True
+every endpoint equal to bondmath here: True

@@ -1,0 +1,19 @@
+recorded: 2026-10-12
+command: vercel inspect https://student.vercel.app --logs
+masked: account names, URLs, ids
+Vercel CLI 59.10.0 (Node.js 22.18.0)
+Fetching deployment "student.vercel.app" in student
+2026-10-12T11:09:49.170Z  Running build in Washington, D.C., USA (East) ? iad1
+2026-10-12T11:09:49.172Z  Build machine configuration: 2 cores, 8 GB
+2026-10-12T11:09:49.218Z  Retrieving list of deployment files...
+2026-10-12T11:09:49.561Z  Downloading 6 deployment files...
+2026-10-12T11:09:50.463Z  Restored build cache from previous deployment (<id>)
+2026-10-12T11:09:50.966Z  Running "vercel build"
+2026-10-12T11:09:50.990Z  Vercel CLI 62.7.0
+2026-10-12T11:09:51.410Z  Using Python 3.13 from .python-version
+2026-10-12T11:09:51.505Z  Using uv 0.10.11
+2026-10-12T11:09:54.226Z  Installing required dependencies from requirements.txt...
+2026-10-12T11:10:00.054Z  Compiling Python bytecode...
+2026-10-12T11:10:02.133Z  Build Completed in /vercel/output [11s]
+2026-10-12T11:10:02.175Z  Deploying outputs...
+status	? Ready
