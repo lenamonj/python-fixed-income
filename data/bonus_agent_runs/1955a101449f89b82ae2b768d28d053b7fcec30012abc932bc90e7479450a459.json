@@ -1,0 +1,130 @@
+{
+ "path": "/v1/responses",
+ "recorded": "2026-10-12",
+ "request": {
+  "input": [
+   {
+    "content": "My name is Sam and I trade high yield.",
+    "role": "user"
+   },
+   {
+    "content": [
+     {
+      "annotations": [],
+      "logprobs": [],
+      "text": "Nice to meet you, Sam. I can help with high-yield credit analysis, relative value, spreads, covenants, capital structures, and market commentary. What are you looking at today?",
+      "type": "output_text"
+     }
+    ],
+    "id": "msg_0796e739707f3fc8016acd17276efc87d2b78d975c72e71fe1",
+    "phase": "final_answer",
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+   },
+   {
+    "content": "What is my name and what do I trade?",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-6.1-sol",
+  "parallel_tool_calls": false,
+  "prompt_cache_key": "bonus-coding-agent",
+  "store": false
+ },
+ "response": {
+  "access_programs": null,
+  "background": false,
+  "billing": {
+   "payer": "developer"
+  },
+  "completed_at": 1791825706,
+  "created_at": 1791825704,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "id": "resp_0796e739707f3fc8016acd1728d07c87d28e9e2afbbafe1e0c",
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "metadata": {},
+  "model": "gpt-6.1-sol",
+  "moderation": null,
+  "object": "response",
+  "output": [
+   {
+    "content": [
+     {
+      "annotations": [],
+      "logprobs": [],
+      "text": "Your name is Sam, and you trade high yield.",
+      "type": "output_text"
+     }
+    ],
+    "id": "msg_0796e739707f3fc8016acd1729f85487d2969b16c8926882ed",
+    "phase": "final_answer",
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+   }
+  ],
+  "parallel_tool_calls": false,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": "bonus-coding-agent",
+  "prompt_cache_retention": "24h",
+  "reasoning": {
+   "context": "all_turns",
+   "effort": "medium",
+   "mode": "standard",
+   "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "store": false,
+  "temperature": 1.0,
+  "text": {
+   "format": {
+    "type": "text"
+   },
+   "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+   "image_gen": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "image_tokens": 0,
+     "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "image_tokens": 0,
+     "text_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "web_search": {
+    "num_requests": 0
+   }
+  },
+  "tools": [],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "usage": {
+   "input_tokens": 75,
+   "input_tokens_details": {
+    "cache_write_tokens": 0,
+    "cached_tokens": 0
+   },
+   "output_tokens": 15,
+   "output_tokens_details": {
+    "reasoning_tokens": 0
+   },
+   "total_tokens": 90
+  },
+  "user": null
+ }
+}

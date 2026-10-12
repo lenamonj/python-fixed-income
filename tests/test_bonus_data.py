@@ -28,7 +28,9 @@ APP = REPO / "course_bonus_coding_agent" / "deploy" / "app.py"
 RUNS = REPO / "data" / "bonus_agent_runs"
 TRANSCRIPTS = REPO / "data" / "bonus_transcripts"
 TOKEN = re.compile(r"\bhf_[A-Za-z0-9]{8,}|\bghp_[A-Za-z0-9]{8,}|\bsk-(?:or-)?[A-Za-z0-9_-]{8,}|Bearer\s+\S+")
-HEADER_FIELD = re.compile(r"authorization|api[_-]?key|^x-|cookie|token", re.I)
+# Course 8's field names for a header or a key (tests/test_course8_data.py), plus "x-" headers; "token" alone is
+# not one: every Responses API usage block holds input_tokens and output_tokens
+HEADER_FIELD = re.compile(r"authorization|api[_-]?key|header|bearer|cookie|^x-", re.I)
 IPV4 = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
 EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
 UNMASKED_HOST = re.compile(r"\b(?!student\b)(?!student-)[a-z0-9-]+\.hf\.space\b")

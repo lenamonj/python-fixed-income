@@ -1,0 +1,147 @@
+{
+ "path": "/v1/responses",
+ "recorded": "2026-10-12",
+ "request": {
+  "input": [
+   {
+    "content": "Solve the riddle in desk_riddle.txt",
+    "role": "user"
+   }
+  ],
+  "instructions": "You are Desk Coder, a coding agent that works inside one folder called the workspace.\nYou can list files, read files, and edit files with your tools. All paths are relative to the workspace.\nRead a file before you edit it. Make the smallest edit that does the job.\nIf a tool returns an error, read the message and try a different approach.\nWhen you finish, say briefly what you did.\nDescribe only what the files hold. Never give a view on any bond, issuer, price, or yield.\nIf someone asks what powers you, say you run on an OpenAI model.",
+  "model": "gpt-6.1-sol",
+  "parallel_tool_calls": false,
+  "prompt_cache_key": "bonus-coding-agent",
+  "store": false,
+  "tools": [
+   {
+    "description": "Read the contents of a text file in the workspace. Use this to see what is inside a file before answering questions about it or editing it. Do not use it on directories.",
+    "name": "read_file",
+    "parameters": {
+     "additionalProperties": false,
+     "properties": {
+      "path": {
+       "description": "Relative path of the file inside the workspace, for example 'bonds.csv'.",
+       "type": "string"
+      }
+     },
+     "required": [
+      "path"
+     ],
+     "type": "object"
+    },
+    "strict": true,
+    "type": "function"
+   }
+  ]
+ },
+ "response": {
+  "access_programs": null,
+  "background": false,
+  "billing": {
+   "payer": "developer"
+  },
+  "completed_at": 1791825716,
+  "created_at": 1791825715,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "id": "resp_069ec95f9da15943016acd1733334087d294e2c93fd1654d56",
+  "incomplete_details": null,
+  "instructions": "You are Desk Coder, a coding agent that works inside one folder called the workspace.\nYou can list files, read files, and edit files with your tools. All paths are relative to the workspace.\nRead a file before you edit it. Make the smallest edit that does the job.\nIf a tool returns an error, read the message and try a different approach.\nWhen you finish, say briefly what you did.\nDescribe only what the files hold. Never give a view on any bond, issuer, price, or yield.\nIf someone asks what powers you, say you run on an OpenAI model.",
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "metadata": {},
+  "model": "gpt-6.1-sol",
+  "moderation": null,
+  "object": "response",
+  "output": [
+   {
+    "arguments": "{\"path\":\"desk_riddle.txt\"}",
+    "call_id": "call_lrpSk62UE0uT3xDhHsusuuqr",
+    "id": "fc_069ec95f9da15943016acd1734518887d2a5fb442ac0da0962",
+    "name": "read_file",
+    "status": "completed",
+    "type": "function_call"
+   }
+  ],
+  "parallel_tool_calls": false,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": "bonus-coding-agent",
+  "prompt_cache_retention": "24h",
+  "reasoning": {
+   "context": "all_turns",
+   "effort": "medium",
+   "mode": "standard",
+   "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "store": false,
+  "temperature": 1.0,
+  "text": {
+   "format": {
+    "type": "text"
+   },
+   "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+   "image_gen": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "image_tokens": 0,
+     "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "image_tokens": 0,
+     "text_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "web_search": {
+    "num_requests": 0
+   }
+  },
+  "tools": [
+   {
+    "description": "Read the contents of a text file in the workspace. Use this to see what is inside a file before answering questions about it or editing it. Do not use it on directories.",
+    "name": "read_file",
+    "output_schema": null,
+    "parameters": {
+     "additionalProperties": false,
+     "properties": {
+      "path": {
+       "description": "Relative path of the file inside the workspace, for example 'bonds.csv'.",
+       "type": "string"
+      }
+     },
+     "required": [
+      "path"
+     ],
+     "type": "object"
+    },
+    "strict": true,
+    "type": "function"
+   }
+  ],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "usage": {
+   "input_tokens": 302,
+   "input_tokens_details": {
+    "cache_write_tokens": 0,
+    "cached_tokens": 0
+   },
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "reasoning_tokens": 0
+   },
+   "total_tokens": 323
+  },
+  "user": null
+ }
+}
