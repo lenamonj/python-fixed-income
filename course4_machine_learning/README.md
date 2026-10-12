@@ -63,7 +63,7 @@ New-Item -ItemType Directory -Force "$HOME\projects\my_bondmath" | Out-Null
 
 Each notebook works in a fresh work folder in your temp folder, prints its name, and writes nothing into the course repo. Each day's "Bring It Home" section shows the PowerShell steps that move the day's functions and tests into `my_bondmath`, copy in any data file the tests read, run the tests, and commit.
 
-Each day's folder holds three files with the same name: the notebook, a short overview PDF to read first, and a solutions notebook. [How a day works](../README.md#how-a-day-works) explains the pattern. As in Courses 2 and 3, every notebook ends in the same order: Excel side by side, save the day with Git, bring it home, then the exercises, with the AI check last. In this course Git also keeps an experiment log: each model's results are committed beside its code, so a change of model is reviewed by its numbers.
+Each day's folder holds three files with the same name: the notebook, a short overview PDF to read first, and a solutions notebook. [How a day works](../README.md#how-a-day-works) explains the pattern. As in Courses 2 and 3, every notebook ends in the same order: Excel side by side, save the day with Git, bring it home, then the exercises, with the AI check last. In this course Git also keeps an experiment log: each model's results are committed beside its code, so a change of model is reviewed by its numbers. Every model is shown, not only printed: a classifier's confusion matrices as heatmaps for each set of rows the day opens (training, validation, then test), its ROC and precision-recall curves with the chosen threshold marked, a regression's residual plots, and every comparison as a chart and a formatted table with the best value in each column marked.
 
 ## The three weeks
 
@@ -130,9 +130,10 @@ The description you write is about a historical, anonymised dataset. It is not a
 | scikit-learn | Splits, pipelines, linear and logistic models, trees, clustering, PCA, and t-SNE | Week 1, Day 1 |
 | pytest and Git | Testing `mlkit.py` every day, and keeping each model's results beside its code | Week 1, Day 1 |
 | pandas and matplotlib | Tables and charts of every dataset | Week 1, Day 1 |
+| `plotkit.py` | A course helper file every notebook writes into its work folder: the course's charts in matplotlib (confusion heatmaps, ROC and precision-recall curves, residual plots, bars) and formatted comparison tables with pandas' Styler. You read it and use it; you do not write it | Week 1, Day 1 |
 | statsmodels | Coefficient tables, p-values, VIFs, residual tests, and the logistic fit read for odds ratios | Week 1, Day 2 |
 | scipy | Distributions, normality tests, and hierarchical clustering | Week 1, Day 3 |
-| jinja2 | The HTML of the formatted comparison tables (pandas' Styler), with the course's chart helpers `plotkit.py` | Week 2, Day 2 |
+| jinja2 | The HTML of the formatted comparison tables (pandas' Styler, through `plotkit.py`) | Week 1, Day 1 |
 | openpyxl | Writing results workbooks for Excel | Week 2, Day 5 |
 
 Exact versions are pinned in [`requirements.txt`](requirements.txt). Git is installed separately (see [Course 2](../course2_bond_math/README.md#before-you-start)).
