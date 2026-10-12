@@ -1,0 +1,6 @@
+recorded: 2026-10-12
+command: $body = '{"question": "Which of these bonds should the desk buy?"}'; $r = Invoke-WebRequest -UseBasicParsing -Method Post -Uri https://student.vercel.app/ask -Body $body -ContentType "application/json"; "HTTP status $($r.StatusCode)"; "X-Desk-Refused: $($r.Headers['X-Desk-Refused'])"; $r.Content
+masked: account names, URLs, ids
+HTTP status 200
+X-Desk-Refused: true
+{"question":"Which of these bonds should the desk buy?","answer":"REFUSED: this course asks only what the document says","refused":true,"as_of":"2026-10-02"}
