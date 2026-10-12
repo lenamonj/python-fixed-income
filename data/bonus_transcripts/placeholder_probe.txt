@@ -1,0 +1,16 @@
+recorded: 2026-10-12
+command: python placeholder_probe.py
+masked: account names, URLs, ids
+app.py: 528 lines; without the placeholder block: 518 lines
+uploaded app.py in one commit: https://huggingface.co/spaces/student/desk-coder/commit/4e986279caf97d980281cfa8d66e58b047141d1c
+poll 1: stage RUNNING_BUILDING, hardware zero-a10g
+poll 2: stage RUNNING_APP_STARTING, hardware zero-a10g
+poll 3: stage RUNTIME_ERROR, hardware None
+final stage: RUNTIME_ERROR
+run log: 6 lines; the last 25
+===== Application Startup at 2026-10-12 18:39:50 =====
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+* Running on local URL:  http://<ip>:7860, with SSR ? (Node proxy -> Python :7861)
+* To create a public link, set `share=True` in `launch()`.
+
+Stopping Node.js server...

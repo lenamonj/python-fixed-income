@@ -1,0 +1,11 @@
+recorded: 2026-10-12
+command: python deploy_space.py
+masked: account names, URLs, ids
+folder desk-coder: README.md, app.py, requirements.txt
+Space: https://huggingface.co/spaces/student/desk-coder
+secret set: OPENAI_API_KEY; variables set: PRODUCT_NAME, OPENAI_MODEL
+uploaded 3 files in one commit: https://huggingface.co/spaces/student/desk-coder/commit/07bc0501dad6ab5f634b406600d651d0617fb6d8
+poll 1: stage BUILDING, hardware None, requested zero-a10g
+poll 7: stage APP_STARTING, hardware None, requested zero-a10g
+poll 8: stage RUNNING, hardware zero-a10g, requested zero-a10g
+final stage: RUNNING

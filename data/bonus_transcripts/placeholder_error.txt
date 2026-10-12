@@ -1,0 +1,4 @@
+recorded: 2026-10-12
+command: python space_error.py
+masked: account names, URLs, ids
+stage RUNTIME_ERROR; the Hub's message: No @spaces.GPU function detected during startup
