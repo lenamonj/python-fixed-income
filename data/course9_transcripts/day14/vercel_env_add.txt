@@ -1,0 +1,11 @@
+recorded: 2026-10-12
+command: vercel env add DESK_MODE production --value replay --type config --yes --project pfi-desk-service
+masked: account names, URLs, ids
+Vercel CLI 59.10.0 (Node.js 22.18.0)
+Retrieving project?
+Saving?
+
+? Added           DESK_MODE
+  Project         student/pfi-desk-service
+  Environments    Production
+  Type            Config

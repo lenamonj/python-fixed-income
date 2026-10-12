@@ -1,0 +1,9 @@
+recorded: 2026-10-12
+command: vercel env ls --project pfi-desk-service
+masked: account names, URLs, ids
+Vercel CLI 59.10.0 (Node.js 22.18.0)
+Retrieving project?
+> Environment Variables found for student/pfi-desk-service [299ms]
+
+ name               value                       type      environments        created    
+ DESK_MODE          <encrypted>         Config    Production          17s ago    

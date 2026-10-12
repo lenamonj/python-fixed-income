@@ -1,0 +1,6 @@
+recorded: 2026-10-12
+command: vercel env ls --project pfi-desk-service
+masked: account names, URLs, ids
+Vercel CLI 59.10.0 (Node.js 22.18.0)
+Retrieving project?
+> No Environment Variables found for student/pfi-desk-service [267ms]

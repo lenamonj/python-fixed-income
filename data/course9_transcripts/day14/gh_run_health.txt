@@ -1,0 +1,40 @@
+recorded: 2026-10-12
+command: gh run view <run id> --log
+masked: account names, URLs, ids
+health	Set up job	?2026-10-12T12:45:29.9218136Z Current runner version: '2.337.0'
+health	Set up job	2026-10-12T12:45:29.9237250Z ##[group]Runner Image Provisioner
+health	Set up job	2026-10-12T12:45:29.9237834Z Hosted Compute Agent
+health	Set up job	2026-10-12T12:45:29.9238211Z Version: 20261002.596
+health	Set up job	2026-10-12T12:45:29.9238643Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+health	Set up job	2026-10-12T12:45:29.9239125Z Build Date: 2026-10-02T22:28:27Z
+health	Set up job	2026-10-12T12:45:29.9239560Z Worker ID: {ca5f8313-8231-4129-bbc5-19d42c6a5712}
+health	Set up job	2026-10-12T12:45:29.9239998Z Region: southcentralus
+health	Set up job	2026-10-12T12:45:29.9240345Z Cloud: Azure
+health	Set up job	2026-10-12T12:45:29.9240707Z ##[endgroup]
+health	Set up job	2026-10-12T12:45:29.9241729Z ##[group]Operating System
+health	Set up job	2026-10-12T12:45:29.9242087Z Ubuntu
+health	Set up job	2026-10-12T12:45:29.9242458Z 24.04.5
+health	Set up job	2026-10-12T12:45:29.9242799Z LTS
+health	Set up job	2026-10-12T12:45:29.9243157Z ##[endgroup]
+health	Set up job	2026-10-12T12:45:29.9243550Z ##[group]Runner Image
+health	Set up job	2026-10-12T12:45:29.9243896Z Image: ubuntu-24.04
+health	Set up job	2026-10-12T12:45:29.9244287Z Version: 20261004.327.1
+health	Set up job	2026-10-12T12:45:29.9244906Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+health	Set up job	2026-10-12T12:45:29.9245991Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+health	Set up job	2026-10-12T12:45:29.9246650Z ##[endgroup]
+health	Set up job	2026-10-12T12:45:29.9247436Z ##[group]GITHUB_TOKEN Permissions
+health	Set up job	2026-10-12T12:45:29.9248794Z Contents: read
+health	Set up job	2026-10-12T12:45:29.9249237Z Metadata: read
+health	Set up job	2026-10-12T12:45:29.9249577Z Packages: read
+health	Set up job	2026-10-12T12:45:29.9249939Z ##[endgroup]
+health	Set up job	2026-10-12T12:45:29.9251295Z Secret source: Actions
+health	Set up job	2026-10-12T12:45:29.9251896Z Cache mode: write
+health	Set up job	2026-10-12T12:45:29.9252498Z Prepare workflow directory
+health	Set up job	2026-10-12T12:45:29.9460654Z Prepare all required actions
+health	Set up job	2026-10-12T12:45:29.9527805Z Complete job name: health
+health	Run curl -sS --fail -o /dev/null -w "GET /health HTTP status %{http_code}" https://student.vercel.app/health	?2026-10-12T12:45:30.0013096Z ##[group]Run curl -sS --fail -o /dev/null -w "GET /health HTTP status %{http_code}" https://student.vercel.app/health
+health	Run curl -sS --fail -o /dev/null -w "GET /health HTTP status %{http_code}" https://student.vercel.app/health	2026-10-12T12:45:30.0014630Z [36;1mcurl -sS --fail -o /dev/null -w "GET /health HTTP status %{http_code}" https://student.vercel.app/health[0m
+health	Run curl -sS --fail -o /dev/null -w "GET /health HTTP status %{http_code}" https://student.vercel.app/health	2026-10-12T12:45:30.1198619Z shell: /usr/bin/bash -e {0}
+health	Run curl -sS --fail -o /dev/null -w "GET /health HTTP status %{http_code}" https://student.vercel.app/health	2026-10-12T12:45:30.1199418Z ##[endgroup]
+health	Run curl -sS --fail -o /dev/null -w "GET /health HTTP status %{http_code}" https://student.vercel.app/health	2026-10-12T12:45:30.3221204Z GET /health HTTP status 200
+health	Complete job	?2026-10-12T12:45:30.3320495Z Cleaning up orphan processes
