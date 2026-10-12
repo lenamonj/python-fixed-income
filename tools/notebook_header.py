@@ -17,7 +17,9 @@ and the saved copy's name (assets/headers/course2_<notebook>.png), so it cannot 
 
 Courses 1 to 9 are known (course 4 added 2026-10-04, course 5 added 2026-10-05, course 6 added 2026-10-06, course 7
 added 2026-10-07, course 8 added 2026-10-08, course 9 added 2026-10-12; the banners of the earlier courses are
-unchanged).
+unchanged). The Bonus course is --course bonus (added 2026-10-12; its saved copies are assets/headers/bonus_<notebook>.png):
+
+    python tools/notebook_header.py course_bonus_coding_agent/week1/day1/01_build_your_own_coding_agent.ipynb --course bonus --week 1 --day 1 --title "Build Your Own Coding Agent"
 """
 import argparse
 import base64
@@ -43,6 +45,7 @@ COURSES = {
     7: ("COURSE 7 · NLP AND LLMS", "Course 7: NLP and LLMs", "course7_"),
     8: ("COURSE 8 · IMPLEMENTING AGENTIC AI", "Course 8: Implementing Agentic AI", "course8_"),
     9: ("COURSE 9 \u00b7 DEPLOYMENT", "Course 9: Deployment", "course9_"),
+    "bonus": ("BONUS \u00b7 BUILD YOUR OWN CODING AGENT", "Bonus course: Build Your Own Coding Agent", "bonus_"),
 }
 COURSE_LINE = COURSES[1][0]
 BYLINE_PREFIX = "Created by "
@@ -100,7 +103,12 @@ def bezier(p0, p1, p2, p3, steps: int = 60) -> list:
     return points
 
 
-def draw_banner(week: int, day: int, title: str, course: int = 1) -> Image.Image:
+def course_key(text: str) -> int | str:
+    """The --course value: a course number (1 to 9) or the word bonus."""
+    return "bonus" if text.strip().lower() == "bonus" else int(text)
+
+
+def draw_banner(week: int, day: int, title: str, course: int | str = 1) -> Image.Image:
     image = Image.new("RGB", (WIDTH, HEIGHT), BACKGROUND)
     draw = ImageDraw.Draw(image)
 
@@ -134,7 +142,7 @@ def draw_banner(week: int, day: int, title: str, course: int = 1) -> Image.Image
     return image
 
 
-def header_markdown(week: int, day: int, title: str, image: Image.Image, course: int = 1) -> str:
+def header_markdown(week: int, day: int, title: str, image: Image.Image, course: int | str = 1) -> str:
     buffer = io.BytesIO()
     image.save(buffer, format="PNG", optimize=True)
     encoded = base64.b64encode(buffer.getvalue()).decode("ascii")
@@ -142,10 +150,10 @@ def header_markdown(week: int, day: int, title: str, image: Image.Image, course:
     return f"![{alt}](data:image/png;base64,{encoded})"
 
 
-def apply_header(notebook_path: Path, week: int, day: int, title: str, course: int = 1) -> None:
+def apply_header(notebook_path: Path, week: int, day: int, title: str, course: int | str = 1) -> None:
     """Insert the banner as the first cell, replacing an earlier banner if there is one."""
     if course not in COURSES:
-        raise ValueError(f"course must be one of {sorted(COURSES)}, not {course}")
+        raise ValueError(f"course must be one of {list(COURSES)}, not {course}")
     image = draw_banner(week, day, title, course)
     HEADERS.mkdir(parents=True, exist_ok=True)
     image.save(HEADERS / f"{COURSES[course][2]}{notebook_path.stem}.png", optimize=True)
@@ -167,6 +175,6 @@ if __name__ == "__main__":
     parser.add_argument("--week", type=int, required=True)
     parser.add_argument("--day", type=int, required=True)
     parser.add_argument("--title", required=True)
-    parser.add_argument("--course", type=int, default=1, choices=sorted(COURSES))
+    parser.add_argument("--course", type=course_key, default=1, choices=list(COURSES))
     args = parser.parse_args()
     apply_header(args.notebook, args.week, args.day, args.title, args.course)
