@@ -125,7 +125,7 @@ Week 3 reaches large language models through [OpenRouter](https://openrouter.ai)
 
 <!-- map:end -->
 
-RAG, retrieval-augmented generation, runs through the course in three places. Day 6 cuts an indenture into chunks and searches it by meaning with sentence embeddings. Day 14 builds RAG over an indenture: retrieval scored without the model, a prompt that must cite its section, and a judge that checks each answer's grounding in the sections it cites. The capstone's tool searches an indenture it has never seen for each covenant's section and checks every value against that section's text.
+RAG, retrieval-augmented generation, runs through the course in three places. Day 6 cuts an indenture into chunks and searches it by meaning with sentence embeddings. Day 14 builds RAG over an indenture: retrieval scored without the model, a prompt that must cite its section, and a judge that checks each answer's grounding in the sections it cites. The capstone's tool finds each covenant's section in an indenture it has never seen by its section title, extracts the terms, and checks every value against that section's text; Course 10, Implementing RAG, takes the retrieval side further.
 
 ## The capstone
 
