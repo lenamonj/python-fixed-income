@@ -5,7 +5,7 @@
   <img src="../assets/readme/wordmark-light.png" alt="Python for Fixed Income" width="325">
 </picture>
 
-![Course 1](https://img.shields.io/badge/Course_1-Python_Foundations-123D2F?style=for-the-badge)
+[![Course 1](https://img.shields.io/badge/Course_1-Python_Foundations-123D2F?style=for-the-badge)](../README.md)
 ![Length](https://img.shields.io/badge/4_weeks-19_notebooks_%2B_project-1C7A57?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)
