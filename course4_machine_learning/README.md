@@ -49,7 +49,7 @@ Setup is on the [series front page](../README.md#start-here). Course 4 runs in t
 
 | Step | What to do |
 |:---|:---|
-| **Install the course's packages** | With the course's `.venv` active, run the install line below. It adds scikit-learn, statsmodels, and scipy to Course 2's pins. |
+| **Install the course's packages** | With the course's `.venv` active, run the install line below. It adds scikit-learn, statsmodels, scipy, and jinja2 to Course 2's pins. |
 | **No API key** | This course needs no key and no account. Every dataset is in the repo. |
 | **Keep your folder** | Your `my_bondmath` folder, in your `projects` folder beside the course repo, gains `mlkit.py` and its tests. If you skipped the earlier courses, create it with the last line below. |
 | **Or use Colab** | Open any notebook in the [course map](#course-map) and click the **Open in Colab** badge. Colab's library versions can differ from the pins, so a printed number may differ in its last digits; the setup cell says so when it happens. At the end of each day, download your files from the Colab file browser. |
@@ -132,6 +132,7 @@ The description you write is about a historical, anonymised dataset. It is not a
 | pandas and matplotlib | Tables and charts of every dataset | Week 1, Day 1 |
 | statsmodels | Coefficient tables, p-values, VIFs, residual tests, and the logistic fit read for odds ratios | Week 1, Day 2 |
 | scipy | Distributions, normality tests, and hierarchical clustering | Week 1, Day 3 |
+| jinja2 | The HTML of the formatted comparison tables (pandas' Styler), with the course's chart helpers `plotkit.py` | Week 2, Day 2 |
 | openpyxl | Writing results workbooks for Excel | Week 2, Day 5 |
 
 Exact versions are pinned in [`requirements.txt`](requirements.txt). Git is installed separately (see [Course 2](../course2_bond_math/README.md#before-you-start)).
