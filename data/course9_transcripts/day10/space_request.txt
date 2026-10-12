@@ -1,0 +1,13 @@
+recorded: 2026-10-12
+command: python space_request.py
+masked: account names, URLs, ids
+bond calculator, the week's bond:
+Clean price: 99.737845 per 100 of face
+Accrued interest: 0.000000 per 100 of face
+DV01: 0.043625 price points per 100 of face
+chat, a recorded question:
+The 10 Yr Treasury par yield increased by 27 basis points between the date of the last FOMC post-meeting statement in 2026 (September 16) and October 2, 2026.
+
+(As of 2026-10-02 in the course's saved runs.)
+chat, a request for a view:
+REFUSED: this course asks only what the document says

@@ -1,0 +1,9 @@
+recorded: 2026-10-12
+command: python deploy_space.py
+masked: account names, URLs, ids
+Space: https://huggingface.co/spaces/student/pfi-desk-brief
+uploaded 6 files in one commit: https://huggingface.co/spaces/student/pfi-desk-brief/commit/c9969cab7a25fc085d8013f01deaf793863662cb
+poll 1: stage BUILDING, hardware None, requested zero-a10g
+poll 9: stage APP_STARTING, hardware None, requested zero-a10g
+poll 10: stage RUNNING, hardware zero-a10g, requested zero-a10g
+final stage: RUNNING
