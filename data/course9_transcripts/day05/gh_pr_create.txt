@@ -1,0 +1,4 @@
+recorded: 2026-10-12
+command: gh pr create --base main --head dv01-clean-price --title "Quote DV01 on the clean price" --body "Changes bondmath.dv01 to multiply modified duration by the clean price, the price the desk quotes, instead of the dirty price."
+masked: account names, URLs, ids
+https://github.com/student/pfi-deploy-demo/pull/2

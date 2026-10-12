@@ -1,0 +1,123 @@
+recorded: 2026-10-12
+command: gh run view 38239184167 --log-failed
+masked: account names, URLs, ids
+test (3.13)	Run python -m pytest -q test_bondmath.py	?2026-10-12T10:54:09.1053125Z ##[group]Run python -m pytest -q test_bondmath.py
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:09.1053540Z [36;1mpython -m pytest -q test_bondmath.py[0m
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:09.1122269Z shell: /usr/bin/bash -e {0}
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:09.1122536Z env:
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:09.1122814Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:09.1123250Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:09.1123669Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:09.1124064Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:09.1124451Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:09.1124989Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:09.1125319Z ##[endgroup]
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5233181Z .........................FF.............                                 [100%]
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5234207Z =================================== FAILURES ===================================
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5235336Z _______________________ test_dv01_matches_excel_formula ________________________
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5235986Z 
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5236297Z     def test_dv01_matches_excel_formula():
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5236973Z         for row in REFERENCE:
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5237515Z             result = bondmath.dv01(*bond_inputs(row))
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5238156Z             # Excel: MDURATION x (PRICE + accrued) / 10000
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5239403Z >           assert result == pytest.approx(float(row["dv01"]), abs=1e-8), row["case_id"]
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5240254Z E           AssertionError: 99080CAE8
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5241195Z E           assert 0.04938208094390383 == 0.050299763430504484 ? 1.0e-08
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5241842Z E             
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5242281Z E             comparison failed
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5242827Z E             Obtained: 0.04938208094390383
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5243497Z E             Expected: 0.050299763430504484 ? 1.0e-08
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5243903Z 
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5244517Z test_bondmath.py:295: AssertionError
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5245229Z ___________________________ test_dv01_close_to_bump ____________________________
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5245656Z 
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5245806Z     def test_dv01_close_to_bump():
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5246200Z         for row in REFERENCE:
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5246572Z             if row["coupnum"] == "1":
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5247192Z                 continue  # final period: simple interest, so the bump is not the same measure
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5247973Z             # Excel's PRICE 1 bp lower and 1 bp higher, half the difference
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5248711Z             bump = (float(row["price_down_1bp"]) - float(row["price_up_1bp"])) / 2
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5249557Z >           assert bondmath.dv01(*bond_inputs(row)) == pytest.approx(bump, abs=1e-6), row["case_id"]
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5250235Z E           AssertionError: 99080CAE8
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5250856Z E           assert 0.04938208094390383 == 0.050299766457797546 ? 1.0e-06
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5251370Z E             
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5251682Z E             comparison failed
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5252055Z E             Obtained: 0.04938208094390383
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5252563Z E             Expected: 0.050299766457797546 ? 1.0e-06
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5252856Z 
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5253020Z test_bondmath.py:304: AssertionError
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5253496Z =========================== short test summary info ============================
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5254319Z FAILED test_bondmath.py::test_dv01_matches_excel_formula - AssertionError: 99080CAE8
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5255325Z assert 0.04938208094390383 == 0.050299763430504484 ? 1.0e-08
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5255785Z   
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5256053Z   comparison failed
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5256368Z   Obtained: 0.04938208094390383
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5256811Z   Expected: 0.050299763430504484 ? 1.0e-08
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5257414Z FAILED test_bondmath.py::test_dv01_close_to_bump - AssertionError: 99080CAE8
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5258557Z assert 0.04938208094390383 == 0.050299766457797546 ? 1.0e-06
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5258997Z   
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5259266Z   comparison failed
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5259581Z   Obtained: 0.04938208094390383
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5260033Z   Expected: 0.050299766457797546 ? 1.0e-06
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5260461Z 2 failed, 38 passed in 1.89s
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:11.5571977Z ##[error]Process completed with exit code 1.
+test (3.12)	Run python -m pytest -q test_bondmath.py	?2026-10-12T10:54:08.8498247Z ##[group]Run python -m pytest -q test_bondmath.py
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:08.8499009Z [36;1mpython -m pytest -q test_bondmath.py[0m
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:08.8545835Z shell: /usr/bin/bash -e {0}
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:08.8546290Z env:
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:08.8546677Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:08.8547243Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:08.8547794Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:08.8548274Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:08.8548852Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:08.8549325Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:08.8549758Z ##[endgroup]
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9225218Z .........................FF.............                                 [100%]
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9226010Z =================================== FAILURES ===================================
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9226903Z _______________________ test_dv01_matches_excel_formula ________________________
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9227230Z 
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9227397Z     def test_dv01_matches_excel_formula():
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9227851Z         for row in REFERENCE:
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9228339Z             result = bondmath.dv01(*bond_inputs(row))
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9229109Z             # Excel: MDURATION x (PRICE + accrued) / 10000
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9230101Z >           assert result == pytest.approx(float(row["dv01"]), abs=1e-8), row["case_id"]
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9230603Z E           AssertionError: 99080CAE8
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9231301Z E           assert 0.04938208094390383 == 0.050299763430504484 ? 1.0e-08
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9231755Z E             
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9232071Z E             comparison failed
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9232485Z E             Obtained: 0.04938208094390383
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9232979Z E             Expected: 0.050299763430504484 ? 1.0e-08
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9233200Z 
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9233403Z test_bondmath.py:295: AssertionError
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9233924Z ___________________________ test_dv01_close_to_bump ____________________________
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9234202Z 
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9234380Z     def test_dv01_close_to_bump():
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9234750Z         for row in REFERENCE:
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9235101Z             if row["coupnum"] == "1":
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9235584Z                 continue  # final period: simple interest, so the bump is not the same measure
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9236233Z             # Excel's PRICE 1 bp lower and 1 bp higher, half the difference
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9236848Z             bump = (float(row["price_down_1bp"]) - float(row["price_up_1bp"])) / 2
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9237500Z >           assert bondmath.dv01(*bond_inputs(row)) == pytest.approx(bump, abs=1e-6), row["case_id"]
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9238019Z E           AssertionError: 99080CAE8
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9238667Z E           assert 0.04938208094390383 == 0.050299766457797546 ? 1.0e-06
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9239189Z E             
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9239512Z E             comparison failed
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9239867Z E             Obtained: 0.04938208094390383
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9240328Z E             Expected: 0.050299766457797546 ? 1.0e-06
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9240587Z 
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9240757Z test_bondmath.py:304: AssertionError
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9241247Z =========================== short test summary info ============================
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9241881Z FAILED test_bondmath.py::test_dv01_matches_excel_formula - AssertionError: 99080CAE8
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9242474Z assert 0.04938208094390383 == 0.050299763430504484 ? 1.0e-08
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9242864Z   
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9243151Z   comparison failed
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9243511Z   Obtained: 0.04938208094390383
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9243902Z   Expected: 0.050299763430504484 ? 1.0e-08
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9244439Z FAILED test_bondmath.py::test_dv01_close_to_bump - AssertionError: 99080CAE8
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9245216Z assert 0.04938208094390383 == 0.050299766457797546 ? 1.0e-06
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9245600Z   
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9245924Z   comparison failed
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9246244Z   Obtained: 0.04938208094390383
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9246623Z   Expected: 0.050299766457797546 ? 1.0e-06
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9247028Z 2 failed, 38 passed in 1.71s
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:54:10.9545937Z ##[error]Process completed with exit code 1.
