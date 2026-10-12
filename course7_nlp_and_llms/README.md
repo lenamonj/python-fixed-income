@@ -12,7 +12,7 @@
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](../LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-22C55E?style=for-the-badge)](../LICENSE-CONTENT)
 
-**[Before you start](#before-you-start)** &nbsp;·&nbsp; **[Your OpenRouter key](#your-openrouter-key)** &nbsp;·&nbsp; **[The three weeks](#the-three-weeks)** &nbsp;·&nbsp; **[Course map](#course-map)** &nbsp;·&nbsp; **[The capstone](#the-capstone)** &nbsp;·&nbsp; **[What it uses](#what-it-uses)** &nbsp;·&nbsp; **[Course 6](../course6_neural_networks/README.md)** &nbsp;·&nbsp; **[Series front page](../README.md)**
+**[Before you start](#before-you-start)** &nbsp;·&nbsp; **[Your OpenRouter key](#your-openrouter-key)** &nbsp;·&nbsp; **[The three weeks](#the-three-weeks)** &nbsp;·&nbsp; **[Course map](#course-map)** &nbsp;·&nbsp; **[The capstone](#the-capstone)** &nbsp;·&nbsp; **[What it uses](#what-it-uses)** &nbsp;·&nbsp; **[Course 6](../course6_neural_networks/README.md)** &nbsp;·&nbsp; **[Course 8](../course8_agentic_ai/README.md)** &nbsp;·&nbsp; **[Series front page](../README.md)**
 
 ## Course 7: NLP and LLMs
 
@@ -171,7 +171,7 @@ The 8-K sections are split by filing date: training 2019 to 2023, validation 202
 
 ## What comes next
 
-Later courses build on the `bondmath`, `marketdata`, `mlkit`, `ensemblekit`, `netkit`, and `textkit` you wrote in Courses 2 to 7. Course 8, Implementing Agentic AI, is planned next.
+[Course 8 is Implementing Agentic AI](../course8_agentic_ai/README.md): three weeks from one tool request sent by hand to a multi-agent credit desk, with the agent loop written yourself, your own bond math and documents as tools, every figure traced to the tool result it cites, MCP, the OpenAI Agents SDK, an orchestrator with four specialists, evals with answer keys decided first, and guardrails and a budget in code. Every agent run is recorded and replays without a key. Your `textkit`, `marketdata`, `bondmath`, and `mlkit` are imported by a new module, `agentkit`, and never changed.
 
 ---
 

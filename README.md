@@ -12,7 +12,7 @@
 ![Course 5](https://img.shields.io/badge/Course_5-Advanced_Machine_Learning-123D2F?style=for-the-badge)
 ![Course 6](https://img.shields.io/badge/Course_6-Neural_Networks-123D2F?style=for-the-badge)
 ![Course 7](https://img.shields.io/badge/Course_7-NLP_and_LLMs-123D2F?style=for-the-badge)
-![Course 8](https://img.shields.io/badge/Course_8-Implementing_Agentic_AI-D97706?style=for-the-badge)
+![Course 8](https://img.shields.io/badge/Course_8-Implementing_Agentic_AI-123D2F?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](LICENSE)
@@ -36,7 +36,7 @@ Nothing is abstracted away into contrived examples. Every programming concept is
 
 You already know the investment problem. **This course teaches you how to solve more of it with code.**
 
-The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day, 19 notebooks and a project. [Course 2, Bond Math](course2_bond_math/README.md) follows: three weeks, 14 notebooks and a capstone, in which you build price, yield, accrued interest, duration, DV01, convexity, spread, and DTS yourself, test every function against Excel, and finish with a risk report on a whole book. [Course 3, Market Data and Time Series](course3_market_data/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you pull market data from an API with a key that never leaks, clean it against the bond market's own calendar, compute changes, volatility, z-scores, percentile ranks, slopes, and butterflies with no lookahead, query the book with SQL, and finish with a daily market snapshot that runs again on any date. [Course 4, Machine Learning](course4_machine_learning/README.md) follows: three weeks, 14 notebooks and a capstone, in which you fit and read regressions and classifiers on credit data, choose a threshold on rows the test set never saw, prune a decision tree, validate on dated data with no lookahead, cluster bonds and issuers, describe the Treasury curve with PCA, and finish with a three-model comparison on a public file of company statements. [Course 5, Advanced Machine Learning](course5_advanced_ml/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you fit and read bagging, random forests, AdaBoost, gradient boosting, XGBoost, and LightGBM, stack models on out-of-fold outputs, tune without fooling yourself, engineer features from financial ratios, handle a rare outcome with weights, resampling, or a threshold, describe a model with SHAP values, and finish with a four-model comparison on a public file of company ratios. [Course 6, Neural Networks](course6_neural_networks/README.md) follows: three weeks, 14 notebooks and a capstone, in which you compute gradients by hand and check them against TensorFlow, show that one neuron is a logistic regression, train networks in Keras one setting at a time, score recurrent and convolutional networks on the Treasury curve against carrying the last value forward, and finish with a network measured against LightGBM on a public file of company ratios. [Course 7, NLP and LLMs](course7_nlp_and_llms/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you read FOMC statements, 8-K filings, and real indentures with Python, turn text into TF-IDF vectors, word vectors, and sentence embeddings, classify and search it on the CPU, send requests to large language models with the key kept secret, extract an indenture's covenants with every number checked against the text, and finish with a covenant extraction tool run on an indenture you have never seen. Every model describes its dataset; nothing is a forecast, a rating, or a lending rule, and work on a real filing is descriptive extraction only. All seven are ready.
+The series starts with [Course 1, Python Foundations](course1_python_foundations/README.md): four weeks, one notebook a day, 19 notebooks and a project. [Course 2, Bond Math](course2_bond_math/README.md) follows: three weeks, 14 notebooks and a capstone, in which you build price, yield, accrued interest, duration, DV01, convexity, spread, and DTS yourself, test every function against Excel, and finish with a risk report on a whole book. [Course 3, Market Data and Time Series](course3_market_data/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you pull market data from an API with a key that never leaks, clean it against the bond market's own calendar, compute changes, volatility, z-scores, percentile ranks, slopes, and butterflies with no lookahead, query the book with SQL, and finish with a daily market snapshot that runs again on any date. [Course 4, Machine Learning](course4_machine_learning/README.md) follows: three weeks, 14 notebooks and a capstone, in which you fit and read regressions and classifiers on credit data, choose a threshold on rows the test set never saw, prune a decision tree, validate on dated data with no lookahead, cluster bonds and issuers, describe the Treasury curve with PCA, and finish with a three-model comparison on a public file of company statements. [Course 5, Advanced Machine Learning](course5_advanced_ml/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you fit and read bagging, random forests, AdaBoost, gradient boosting, XGBoost, and LightGBM, stack models on out-of-fold outputs, tune without fooling yourself, engineer features from financial ratios, handle a rare outcome with weights, resampling, or a threshold, describe a model with SHAP values, and finish with a four-model comparison on a public file of company ratios. [Course 6, Neural Networks](course6_neural_networks/README.md) follows: three weeks, 14 notebooks and a capstone, in which you compute gradients by hand and check them against TensorFlow, show that one neuron is a logistic regression, train networks in Keras one setting at a time, score recurrent and convolutional networks on the Treasury curve against carrying the last value forward, and finish with a network measured against LightGBM on a public file of company ratios. [Course 7, NLP and LLMs](course7_nlp_and_llms/README.md) comes next: three weeks, 14 notebooks and a capstone, in which you read FOMC statements, 8-K filings, and real indentures with Python, turn text into TF-IDF vectors, word vectors, and sentence embeddings, classify and search it on the CPU, send requests to large language models with the key kept secret, extract an indenture's covenants with every number checked against the text, and finish with a covenant extraction tool run on an indenture you have never seen. [Course 8, Implementing Agentic AI](course8_agentic_ai/README.md) follows: three weeks, 14 notebooks and a capstone, in which you send a model its first tool request by hand, write the agent loop yourself, hand an agent your own bond math, the synthetic book, the Treasury curve, FOMC statements, and a real indenture as tools, reject any figure that is not the value of the tool result it cites, serve tools through MCP, rebuild the loop in the OpenAI Agents SDK, split the work between an orchestrator and four specialists, grade the desk against answer keys written first, stop it with guardrails and a budget, and finish with a multi-agent credit desk whose every number is traced; every agent run was recorded once and replays without a key. Every model describes its dataset; nothing is a forecast, a rating, or a lending rule, and work on a real filing is descriptive extraction only. All eight are ready.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -160,6 +160,20 @@ Nothing in this course asks you to forget Excel. Wherever Excel has a feature fo
 | Pull a grower basket out of a pasted sentence with `TEXTBEFORE(TEXTAFTER(A2,"greater of "),"%")`, and see a cell cut a long section at 32,767 characters | Check a model's baskets against a regular expression, put two indentures in one table, and read a PDF page as text and as an image | 7 | Week 3, Day 3 |
 | Score retrieval with `ISNUMBER(MATCH(B2,C2:G2,0))`, with the section numbers kept as text | Retrieve an indenture's chunks for a question, answer with citations, and judge each answer against the retrieved text | 7 | Week 3, Day 4 |
 | Check the capstone's workbook, whose quote and number checks are `SUBSTITUTE` and `SEARCH` formulas | Build a covenant extraction tool that runs on an indenture you have never seen, with a checked table, and write it to Excel | 7 | Week 3, Day 5 |
+| Build a DV01 from `PRICE`, `MDURATION`, and the accrued from `COUPDAYBS` over `COUPDAYS`, and price a run with `=B2*C2+B3*C3`, where `SUMPRODUCT` treats prices pasted as text as 0 | Hand a model your own `dv01` as a tool, run the tool it requests on your machine, and price the run from its token counts | 8 | Week 1, Day 1 |
+| Count a pasted trace table's rows for a tool with `COUNTIF(C2:C7,"price")`, its requests with `COUNTIFS`, and its tokens with `SUM` | Write the agent loop with a step limit, and read every run as a trace table before its answer | 8 | Week 1, Day 2 |
+| Use `PRICE`, `YIELD`, `MDURATION`, and `COUPDAYBS` over `COUPDAYS` on one bond, and build its DV01 from three cells | Offer Course 2's bond functions to a model as tools, each docstring stating its units, and check the tool results against Excel | 8 | Week 1, Day 3 |
+| Check a figure against its tool value with `=ROUND(B2,D2)=C2`, at the decimals the answer wrote | Ask for an answer in a schema, and reject any figure that is not the value of the tool result it cites | 8 | Week 1, Day 4 |
+| Total a sector with `SUMIFS` over a helper column, take the k-th largest with `LARGE`, weight by market value with `SUMPRODUCT` over `SUM`, and find a CUSIP with `INDEX` and `MATCH` | Compute every answer key with pandas first, then check a risk agent's figures on the synthetic book against them | 8 | Week 1, Day 5 |
+| Look up a yield and a change in bp with `INDEX` and `MATCH(...,0)`, and see `#N/A` for a date the file lacks | Give an agent the Treasury curve as tools that return an error for a missing date, never the nearest row | 8 | Week 2, Day 1 |
+| Check a cited section with `=ISNUMBER(MATCH(B2,C2:G2,0))`, the section numbers kept as text | Give an agent documents as tools, and check every section its answer cites against the sections the run read | 8 | Week 2, Day 2 |
+| Compute a change and a slope in bp as the difference of two `INDEX` and `MATCH` cells times 100 | Serve your market tools from an MCP server, and send the model exactly the requests it saw before | 8 | Week 2, Day 3 |
+| Write each curve change with `INDEX`, `MATCH`, and `*100`, and see the change in percent when `*100` is missing | Run a macro agent on the last two FOMC statements, and check its note's figures against pandas and its quotes against the statements | 8 | Week 2, Day 5 |
+| Total requests and tokens by agent with `SUMIF`, which matches `"pm"` to `PM` where pandas' `==` does not | Split the work between an orchestrator and four specialists, and keep the run log by agent | 8 | Week 3, Day 1 |
+| Look up a value by key and date with `=XLOOKUP(1,(A2:A4="10 Yr par yield")*(D2:D4="2026-10-02"),B2:B4,"no value for that date")` | Keep a desk memory that returns a value only for the date asked, never the latest one | 8 | Week 3, Day 2 |
+| Count passed rows by kind with `COUNTIFS`, and average requests with `AVERAGEIFS`, on the eval log | Grade an agent on questions whose answer keys were decided first, and keep the scorecard in Git | 8 | Week 3, Day 3 |
+| Check a request budget with `=IF(SUM(B2:B10)>=10,"stop","ok")`, where `>` lets one more request through | Stop a run in code, with guardrails and a budget checked before each request is sent | 8 | Week 3, Day 4 |
+| Check the capstone's workbook, whose figure checks are `=ROUND(G2,H2)=C2` and whose scorecard is `COUNTIFS` and `AVERAGEIFS` | Build a multi-agent credit desk with every figure traced and the guardrail asserted, and write its checks to Excel | 8 | Week 3, Day 5 |
 
 What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so the same steps can be run again on tomorrow's file without anyone dragging a formula or repointing a range.
 
@@ -239,6 +253,12 @@ For Course 7, install its file too. It adds PyTorch (the CPU build, about 125 MB
 python -m pip install -r course7_nlp_and_llms\requirements.txt
 ```
 
+For Course 8, install its file too. It adds two packages, the OpenAI Agents SDK (`openai-agents`) and `mcp`, about 53 MB once installed. No key is needed: every agent run of the course was recorded once and replays from the repo. An OpenAI or OpenRouter key of your own, kept in `my_bondmath\.env` or Colab's Secrets panel, lets a notebook go live. The [Course 8 README](course8_agentic_ai/README.md#no-key-needed-and-going-live) explains.
+
+```powershell
+python -m pip install -r course8_agentic_ai\requirements.txt
+```
+
 **Step 3.** Open the folder in VS Code.
 
 ```powershell
@@ -291,9 +311,9 @@ Each course has its own folder, its own course map, and its own list of what to 
 | 5 | [Advanced Machine Learning](course5_advanced_ml/README.md): bagging, random forests, impurity and permutation importance, AdaBoost, gradient boosting, XGBoost, LightGBM, stacking, honest tuning, feature engineering on financial ratios, rare events, SHAP values, and a four-model capstone, with Course 4's test rows kept closed, in three weeks | Ready |
 | 6 | [Neural Networks](course6_neural_networks/README.md): tensors and gradients by hand, one neuron as a logistic regression, dense networks in Keras trained one setting at a time, losses, optimizers, batch normalization, dropout, early stopping, class weights, sequence models on the Treasury curve described, never forecast, and a capstone against LightGBM, all on the CPU, in three weeks | Ready |
 | 7 | [NLP and LLMs](course7_nlp_and_llms/README.md): regular expressions and tokens, TF-IDF, a text classifier on 8-K sections, word vectors, sentence embeddings and semantic search, zero-shot classification, EDGAR, requests to large language models through OpenRouter with the key kept secret, covenant extraction from real indentures with every number checked against the text, retrieval with citations, and a covenant extraction tool as the capstone, descriptive extraction only, in three weeks | Ready |
-| 8 | Implementing Agentic AI: the agent loop by hand, tools from your own `bondmath` module, structured answers with every figure traced to a tool result, market and document tools, MCP, the OpenAI Agents SDK, an orchestrator with specialists, memory, evals, guardrails, and a covenant agent as the capstone, every run replayed from saved responses so no key is needed, in three weeks | In progress |
+| 8 | [Implementing Agentic AI](course8_agentic_ai/README.md): the first tool request by hand, the agent loop with a step limit, tools from your own `bondmath` module, structured answers with every figure traced to a tool result, market and document tools, MCP, the OpenAI Agents SDK, an orchestrator with four specialists, memory, evals with answer keys decided first, guardrails and a budget, and a multi-agent credit desk as the capstone, every run replayed from saved responses so no key is needed, in three weeks | Ready |
 
-More courses are planned after these.
+Two more courses follow: Course 9, Deployment, and Course 10, Building Your Own Coding Agent.
 
 ## The data
 
@@ -372,6 +392,14 @@ Course 7 adds text: public statements, public filings written by real issuers, a
 
 The scripts `tools/get_fomc_history.py`, `tools/get_indentures.py`, `tools/get_edgar_filings.py`, `tools/get_8k_items.py`, `tools/make_indenture_pdf.py`, `tools/make_glove_subset.py`, and `tools/make_8k_model_outputs.py` made these files on 2026-10-07; the EDGAR scripts declare a contact in their requests and stay under the SEC's limit of 10 requests a second.
 
+Course 8 adds no external data. Its agents read the files above (the synthetic holdings, the Treasury curve, the synthetic spreads, and Course 7's statements, indentures, and 8-K sections), and it adds three files of its own.
+
+| File | What it holds | Source and terms |
+|:---|:---|:---|
+| `data/course8_eval_set.csv` | 30 desk questions with answer keys decided before any request: 20 answerable, 3 whose answer is not in the data, 5 adversarial, and 2 with an instruction planted in a tool result | The course's own, under the repo's MIT license. The keys are computed from the committed files. |
+| `data/course8_synthetic_desk_memo.txt` | A 13-line desk memo about the synthetic book, with one planted instruction for the lesson on prompt injection | **Synthetic**: written for the course, under the repo's MIT license. It names no real issuer. |
+| `data/course8_agent_runs/` | 350 requests and responses of the course's agent runs, one file per request, recorded on `gpt-4.1-mini` from 2026-10-08 to 2026-10-11 | The course's own, under the repo's MIT license. No key, no request header, and no account identifier is stored, and every tool result inside a request is computed from the committed files. |
+
 *This product uses the FRED&reg; API but is not endorsed or certified by the Federal Reserve Bank of St. Louis.*
 
 ## What is in this repo
@@ -409,6 +437,11 @@ python-fixed-income/
     week1/ ... week3/
       day1/ ... day5/   the notebook, its solutions, and its overview PDF
   course7_nlp_and_llms/
+    README.md           the course map
+    requirements.txt    what the course's notebooks need
+    week1/ ... week3/
+      day1/ ... day5/   the notebook, its solutions, and its overview PDF
+  course8_agentic_ai/
     README.md           the course map
     requirements.txt    what the course's notebooks need
     week1/ ... week3/
