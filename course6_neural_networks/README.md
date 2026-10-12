@@ -49,7 +49,7 @@ Setup is on the [series front page](../README.md#start-here). Course 6 runs in t
 
 | Step | What to do |
 |:---|:---|
-| **Install the course's packages** | With the course's `.venv` active, run the install line below. It adds TensorFlow and Keras to Course 5's pins, and changes none of them. TensorFlow is large: the download is about 350 MB and it takes about 1.5 GB once installed, so allow time and disk space. |
+| **Install the course's packages** | With the course's `.venv` active, run the install line below. It adds TensorFlow, Keras, and jinja2 to Course 5's pins, and changes none of them. TensorFlow is large: the download is about 350 MB and it takes about 1.5 GB once installed, so allow time and disk space. |
 | **If `import tensorflow` fails** | If the last check line below stops with an `ImportError` or `OSError` about a DLL that could not be loaded, Windows is missing the Microsoft Visual C++ runtime, which TensorFlow's files rely on and pip does not install: install the Microsoft Visual C++ Redistributable for x64, a free download from Microsoft, and run the line again. The course has not tested this on a machine without that runtime. |
 | **No GPU needed** | Every notebook runs on the CPU within its time budget. TensorFlow has no GPU support on native Windows, and the notebooks say so. Colab offers GPU runtimes; the course names that switch and never requires it. |
 | **No API key** | This course needs no key and no account. Every dataset is in the repo. |
@@ -136,11 +136,12 @@ The description you write is about a historical, anonymised dataset. It is not a
 | LightGBM | The boosting model every network is compared with | Week 1, Day 1 |
 | pytest and Git | Testing `netkit.py` every day, and keeping each network's results beside its code | Week 1, Day 1 |
 | pandas and matplotlib | Tables, loss curves, and charts of every dataset | Week 1, Day 1 |
+| jinja2 | The HTML of the formatted comparison tables (pandas' Styler), with the series' chart helpers `plotkit.py` from Course 4 | Week 1, Day 1 |
 | openpyxl | Writing results workbooks for Excel | Week 1, Day 5 |
 | statsmodels and scipy | Not used directly; Course 4's `mlkit.py` imports them | Week 1, Day 1 |
 | XGBoost, imbalanced-learn, SHAP, ipywidgets | Not used; kept from Course 5's pins so one environment runs Courses 4 to 6 | |
 
-Exact versions are pinned in [`requirements.txt`](requirements.txt): TensorFlow 2.21.0 and Keras 3.15.1 on top of Course 5's pins, among them numpy 2.5.3, pandas 3.0.6, scikit-learn 1.9.1, LightGBM 4.7.0, and pytest 9.1.1. Git is installed separately (see [Course 2](../course2_bond_math/README.md#before-you-start)).
+Exact versions are pinned in [`requirements.txt`](requirements.txt): TensorFlow 2.21.0, Keras 3.15.1, and jinja2 3.1.6 on top of Course 5's pins, among them numpy 2.5.3, pandas 3.0.6, scikit-learn 1.9.1, LightGBM 4.7.0, and pytest 9.1.1. Git is installed separately (see [Course 2](../course2_bond_math/README.md#before-you-start)).
 
 | Data | Kind | Used in |
 |:---|:---|:---|
