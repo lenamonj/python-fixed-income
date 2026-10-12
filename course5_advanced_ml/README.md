@@ -132,6 +132,7 @@ The description you write is about a historical, anonymised dataset. It is not a
 | scikit-learn | Splits, pipelines, bagging, random forests, AdaBoost, gradient boosting, stacking, searches, permutation importance, and calibration | Week 1, Day 1 |
 | pytest and Git | Testing `ensemblekit.py` every day, and keeping each model's results beside its code | Week 1, Day 1 |
 | pandas and matplotlib | Tables and charts of every dataset | Week 1, Day 1 |
+| jinja2 | The HTML of the formatted comparison tables (pandas' Styler), with the course's chart helpers `plotkit.py` | Week 1, Day 1 |
 | XGBoost | Regularised gradient boosting with early stopping | Week 2, Day 3 |
 | LightGBM | Leaf-wise gradient boosting, and the model SHAP describes | Week 2, Day 4 |
 | openpyxl | Writing results workbooks for Excel | Week 2, Day 5 |
