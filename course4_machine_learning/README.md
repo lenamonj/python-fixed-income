@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../assets/readme/wordmark-dark.png">
-  <img src="../assets/readme/wordmark-light.png" alt="Python for Fixed Income" width="520">
+  <img src="../assets/readme/wordmark-light.png" alt="Python for Fixed Income" width="325">
 </picture>
 
 ![Course 4](https://img.shields.io/badge/Course_4-Machine_Learning-123D2F?style=for-the-badge)
