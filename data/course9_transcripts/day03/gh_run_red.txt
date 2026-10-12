@@ -1,0 +1,16 @@
+recorded: 2026-10-12
+command: gh run view 38236890266 --log-failed
+masked: account names, URLs, ids
+test (3.12)	Run python -m pip install -r requirements.txt	?2026-10-12T10:31:48.8566771Z ##[group]Run python -m pip install -r requirements.txt
+test (3.12)	Run python -m pip install -r requirements.txt	2026-10-12T10:31:48.8567327Z [36;1mpython -m pip install -r requirements.txt[0m
+test (3.12)	Run python -m pip install -r requirements.txt	2026-10-12T10:31:48.8633980Z shell: /usr/bin/bash -e {0}
+test (3.12)	Run python -m pip install -r requirements.txt	2026-10-12T10:31:48.8634323Z env:
+test (3.12)	Run python -m pip install -r requirements.txt	2026-10-12T10:31:48.8634795Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+test (3.12)	Run python -m pip install -r requirements.txt	2026-10-12T10:31:48.8635317Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+test (3.12)	Run python -m pip install -r requirements.txt	2026-10-12T10:31:48.8635814Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test (3.12)	Run python -m pip install -r requirements.txt	2026-10-12T10:31:48.8636277Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test (3.12)	Run python -m pip install -r requirements.txt	2026-10-12T10:31:48.8636723Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test (3.12)	Run python -m pip install -r requirements.txt	2026-10-12T10:31:48.8637206Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+test (3.12)	Run python -m pip install -r requirements.txt	2026-10-12T10:31:48.8637592Z ##[endgroup]
+test (3.12)	Run python -m pip install -r requirements.txt	2026-10-12T10:31:49.2656259Z ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'requirements.txt'
+test (3.12)	Run python -m pip install -r requirements.txt	2026-10-12T10:31:49.3023049Z ##[error]Process completed with exit code 1.

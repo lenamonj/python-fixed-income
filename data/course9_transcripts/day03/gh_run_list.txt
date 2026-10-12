@@ -1,0 +1,4 @@
+recorded: 2026-10-12
+command: gh run list --json databaseId,displayTitle,headBranch,event,status,conclusion,createdAt
+masked: account names, URLs, ids
+[{"conclusion":"success","createdAt":"2026-10-12T10:33:33Z","databaseId":38237082499,"displayTitle":"Add numpy, which one test imports","event":"push","headBranch":"main","status":"completed"},{"conclusion":"failure","createdAt":"2026-10-12T10:32:12Z","databaseId":38236944176,"displayTitle":"Add the requirements file the workflow installs","event":"push","headBranch":"main","status":"completed"},{"conclusion":"failure","createdAt":"2026-10-12T10:31:41Z","databaseId":38236890266,"displayTitle":"Run the tests on every push and pull request","event":"push","headBranch":"main","status":"completed"}]

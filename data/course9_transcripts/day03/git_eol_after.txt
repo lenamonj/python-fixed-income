@@ -1,0 +1,10 @@
+recorded: 2026-10-12
+command: git ls-files --eol
+masked: account names, URLs, ids
+i/lf    w/lf    attr/text=auto eol=lf 	.gitattributes
+i/lf    w/lf    attr/text=auto eol=lf 	.gitignore
+i/lf    w/lf    attr/text=auto eol=lf 	README.md
+i/lf    w/lf    attr/text=auto eol=lf 	bondmath.py
+i/lf    w/lf    attr/text=auto eol=lf 	bondmath_excel_reference.csv
+i/lf    w/lf    attr/text=auto eol=lf 	bondmath_excel_reference_tvm.csv
+i/lf    w/lf    attr/text=auto eol=lf 	test_bondmath.py

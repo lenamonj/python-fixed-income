@@ -1,0 +1,28 @@
+recorded: 2026-10-12
+command: gh run view 38236944176 --log-failed
+masked: account names, URLs, ids
+test (3.12)	Run python -m pytest -q test_bondmath.py	?2026-10-12T10:32:23.0984952Z ##[group]Run python -m pytest -q test_bondmath.py
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:23.0985435Z [36;1mpython -m pytest -q test_bondmath.py[0m
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:23.1050455Z shell: /usr/bin/bash -e {0}
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:23.1050943Z env:
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:23.1051285Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:23.1051863Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:23.1052435Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:23.1052946Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:23.1053465Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:23.1054005Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:23.1054472Z ##[endgroup]
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:25.5842652Z .............................F..........                                 [100%]
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:25.5844201Z =================================== FAILURES ===================================
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:25.5845966Z __________________________ test_matches_numpy_interp ___________________________
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:25.5847178Z 
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:25.5847672Z     def test_matches_numpy_interp():
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:25.5848696Z >       import numpy as np  # numpy is in the course requirements; bondmath itself does not use it
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:25.5849579Z         ^^^^^^^^^^^^^^^^^^
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:25.5850152Z E       ModuleNotFoundError: No module named 'numpy'
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:25.5850804Z 
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:25.5851054Z test_bondmath.py:327: ModuleNotFoundError
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:25.5851723Z =========================== short test summary info ============================
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:25.5852796Z FAILED test_bondmath.py::test_matches_numpy_interp - ModuleNotFoundError: No module named 'numpy'
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:25.5853653Z 1 failed, 39 passed in 2.18s
+test (3.12)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:32:25.6129901Z ##[error]Process completed with exit code 1.

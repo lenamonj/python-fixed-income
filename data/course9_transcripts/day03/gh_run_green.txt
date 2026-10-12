@@ -1,0 +1,228 @@
+recorded: 2026-10-12
+command: gh run view --job 114770291285 --log
+masked: account names, URLs, ids
+test (3.13)	Set up job	?2026-10-12T10:33:38.3058166Z Current runner version: '2.337.0'
+test (3.13)	Set up job	2026-10-12T10:33:38.3087024Z ##[group]Runner Image Provisioner
+test (3.13)	Set up job	2026-10-12T10:33:38.3088720Z Hosted Compute Agent
+test (3.13)	Set up job	2026-10-12T10:33:38.3089371Z Version: 20261002.596
+test (3.13)	Set up job	2026-10-12T10:33:38.3090096Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+test (3.13)	Set up job	2026-10-12T10:33:38.3090857Z Build Date: 2026-10-02T22:28:27Z
+test (3.13)	Set up job	2026-10-12T10:33:38.3091564Z Worker ID: {6d583649-5c79-409f-b64e-e02023787de1}
+test (3.13)	Set up job	2026-10-12T10:33:38.3092392Z Region: westus2
+test (3.13)	Set up job	2026-10-12T10:33:38.3093012Z Cloud: Azure
+test (3.13)	Set up job	2026-10-12T10:33:38.3093591Z ##[endgroup]
+test (3.13)	Set up job	2026-10-12T10:33:38.3095367Z ##[group]Operating System
+test (3.13)	Set up job	2026-10-12T10:33:38.3096063Z Ubuntu
+test (3.13)	Set up job	2026-10-12T10:33:38.3096683Z 24.04.5
+test (3.13)	Set up job	2026-10-12T10:33:38.3097250Z LTS
+test (3.13)	Set up job	2026-10-12T10:33:38.3098099Z ##[endgroup]
+test (3.13)	Set up job	2026-10-12T10:33:38.3098752Z ##[group]Runner Image
+test (3.13)	Set up job	2026-10-12T10:33:38.3099418Z Image: ubuntu-24.04
+test (3.13)	Set up job	2026-10-12T10:33:38.3100042Z Version: 20261004.327.1
+test (3.13)	Set up job	2026-10-12T10:33:38.3101199Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+test (3.13)	Set up job	2026-10-12T10:33:38.3103011Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+test (3.13)	Set up job	2026-10-12T10:33:38.3104034Z ##[endgroup]
+test (3.13)	Set up job	2026-10-12T10:33:38.3105274Z ##[group]GITHUB_TOKEN Permissions
+test (3.13)	Set up job	2026-10-12T10:33:38.3107604Z Contents: read
+test (3.13)	Set up job	2026-10-12T10:33:38.3108790Z Metadata: read
+test (3.13)	Set up job	2026-10-12T10:33:38.3109398Z Packages: read
+test (3.13)	Set up job	2026-10-12T10:33:38.3109942Z ##[endgroup]
+test (3.13)	Set up job	2026-10-12T10:33:38.3112340Z Secret source: Actions
+test (3.13)	Set up job	2026-10-12T10:33:38.3113349Z Cache mode: write
+test (3.13)	Set up job	2026-10-12T10:33:38.3114233Z Prepare workflow directory
+test (3.13)	Set up job	2026-10-12T10:33:38.3484581Z Prepare all required actions
+test (3.13)	Set up job	2026-10-12T10:33:38.3536773Z Getting action download info
+test (3.13)	Set up job	2026-10-12T10:33:38.7219542Z Download action repository 'actions/checkout@v7' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+test (3.13)	Set up job	2026-10-12T10:33:38.8164121Z Download action repository 'actions/setup-python@v7' (SHA:5fda3b95a4ea91299a34e894583c3862153e4b97)
+test (3.13)	Set up job	2026-10-12T10:33:39.0005216Z Complete job name: test (3.13)
+test (3.13)	Run actions/checkout@v7	?2026-10-12T10:33:39.0814910Z ##[group]Run actions/checkout@v7
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.0815854Z with:
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.0816332Z   repository: student/pfi-deploy-demo
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.0820577Z   token: ***
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.0821031Z   ssh-strict: true
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.0821478Z   ssh-user: git
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.0821927Z   persist-credentials: true
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.0822413Z   clean: true
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.0822897Z   sparse-checkout-cone-mode: true
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.0823428Z   fetch-depth: 1
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.0823863Z   fetch-tags: false
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.0824317Z   show-progress: true
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.0824763Z   lfs: false
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.0825166Z   submodules: false
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.0825613Z   set-safe-directory: true
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.0826119Z   allow-unsafe-pr-checkout: false
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.0826919Z ##[endgroup]
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.1853762Z Syncing repository: student/pfi-deploy-demo
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.1856551Z ##[group]Getting Git version info
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.1858251Z Working directory is '/home/runner/work/pfi-deploy-demo/pfi-deploy-demo'
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.1860358Z [command]/usr/bin/git version
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.1920867Z git version 2.55.0
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.1943792Z ##[endgroup]
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.1955619Z Temporarily overriding HOME='/home/runner/work/_temp/54d2417b-f5f0-4256-932c-906adbc0e5ac' before making global git config changes
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.1958375Z Adding repository directory to the temporary git global config as a safe directory
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.1963046Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/pfi-deploy-demo/pfi-deploy-demo
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2030486Z Deleting the contents of '/home/runner/work/pfi-deploy-demo/pfi-deploy-demo'
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2034471Z ##[group]Determining repository object format
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2036340Z ##[endgroup]
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2037969Z ##[group]Initializing the repository
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2042598Z [command]/usr/bin/git init /home/runner/work/pfi-deploy-demo/pfi-deploy-demo
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2153033Z hint: Using 'master' as the name for the initial branch. This default branch name
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2154224Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2155171Z hint: to use in all of your new repositories, which will suppress this warning,
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2155914Z hint: call:
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2156313Z hint:
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2156840Z hint: 	git config --global init.defaultBranch <name>
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2157751Z hint:
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2158349Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2159279Z hint: 'development'. The just-created branch can be renamed via this command:
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2160009Z hint:
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2160426Z hint: 	git branch -m <name>
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2160978Z hint:
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2161627Z hint: Disable this message with "git config set advice.defaultBranchName false"
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2168079Z Initialized empty Git repository in /home/runner/work/pfi-deploy-demo/pfi-deploy-demo/.git/
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2179790Z [command]/usr/bin/git remote add origin https://github.com/student/pfi-deploy-demo
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2231186Z ##[endgroup]
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2232454Z ##[group]Disabling automatic garbage collection
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2234805Z [command]/usr/bin/git config --local gc.auto 0
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2279104Z ##[endgroup]
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2281040Z ##[group]Setting up auth
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2282033Z Removing SSH command configuration
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2283374Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2321163Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2698206Z Removing HTTP extra header
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2714459Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.2769951Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.3003973Z Removing includeIf entries pointing to credentials config files
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.3009335Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.3045542Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.3283403Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-0891a23f-1127-4e3e-b7d0-a8d2bb43f2f8.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.3326149Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/pfi-deploy-demo/pfi-deploy-demo/.git.path /home/runner/work/_temp/git-credentials-0891a23f-1127-4e3e-b7d0-a8d2bb43f2f8.config
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.3362174Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/pfi-deploy-demo/pfi-deploy-demo/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-0891a23f-1127-4e3e-b7d0-a8d2bb43f2f8.config
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.3402965Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-0891a23f-1127-4e3e-b7d0-a8d2bb43f2f8.config
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.3439838Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-0891a23f-1127-4e3e-b7d0-a8d2bb43f2f8.config
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.3471003Z ##[endgroup]
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.3471829Z ##[group]Fetching the repository
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.3478055Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +4659120313f27c5f69c15dd90fdc317f7f430b47:refs/remotes/origin/main
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6388947Z From https://github.com/student/pfi-deploy-demo
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6391472Z  * [new ref]         4659120313f27c5f69c15dd90fdc317f7f430b47 -> origin/main
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6400969Z [command]/usr/bin/git branch --list --remote origin/main
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6433123Z   origin/main
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6443274Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6471274Z 4659120313f27c5f69c15dd90fdc317f7f430b47
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6475677Z ##[endgroup]
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6476699Z ##[group]Determining the checkout info
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6478105Z ##[endgroup]
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6480815Z [command]/usr/bin/git sparse-checkout disable
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6540107Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6575104Z ##[group]Checking out the ref
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6581271Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6651683Z Switched to a new branch 'main'
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6657490Z branch 'main' set up to track 'origin/main'.
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6663590Z ##[endgroup]
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6713029Z [command]/usr/bin/git log -1 --format=%H
+test (3.13)	Run actions/checkout@v7	2026-10-12T10:33:39.6742897Z 4659120313f27c5f69c15dd90fdc317f7f430b47
+test (3.13)	Run actions/setup-python@v7	?2026-10-12T10:33:39.7047534Z ##[group]Run actions/setup-python@v7
+test (3.13)	Run actions/setup-python@v7	2026-10-12T10:33:39.7048625Z with:
+test (3.13)	Run actions/setup-python@v7	2026-10-12T10:33:39.7049385Z   python-version: 3.13
+test (3.13)	Run actions/setup-python@v7	2026-10-12T10:33:39.7050232Z   check-latest: false
+test (3.13)	Run actions/setup-python@v7	2026-10-12T10:33:39.7058616Z   token: ***
+test (3.13)	Run actions/setup-python@v7	2026-10-12T10:33:39.7059455Z   update-environment: true
+test (3.13)	Run actions/setup-python@v7	2026-10-12T10:33:39.7060363Z   allow-prereleases: false
+test (3.13)	Run actions/setup-python@v7	2026-10-12T10:33:39.7061209Z   freethreaded: false
+test (3.13)	Run actions/setup-python@v7	2026-10-12T10:33:39.7062001Z ##[endgroup]
+test (3.13)	Run actions/setup-python@v7	2026-10-12T10:33:39.8291242Z ##[group]Installed versions
+test (3.13)	Run actions/setup-python@v7	2026-10-12T10:33:39.8378408Z Successfully set up CPython (3.13.16)
+test (3.13)	Run actions/setup-python@v7	2026-10-12T10:33:39.8379990Z ##[endgroup]
+test (3.13)	Run python -m pip install --upgrade pip	?2026-10-12T10:33:39.8651804Z ##[group]Run python -m pip install --upgrade pip
+test (3.13)	Run python -m pip install --upgrade pip	2026-10-12T10:33:39.8653104Z [36;1mpython -m pip install --upgrade pip[0m
+test (3.13)	Run python -m pip install --upgrade pip	2026-10-12T10:33:39.8981086Z shell: /usr/bin/bash -e {0}
+test (3.13)	Run python -m pip install --upgrade pip	2026-10-12T10:33:39.8982051Z env:
+test (3.13)	Run python -m pip install --upgrade pip	2026-10-12T10:33:39.8982685Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+test (3.13)	Run python -m pip install --upgrade pip	2026-10-12T10:33:39.8983658Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+test (3.13)	Run python -m pip install --upgrade pip	2026-10-12T10:33:39.8984610Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+test (3.13)	Run python -m pip install --upgrade pip	2026-10-12T10:33:39.8985480Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+test (3.13)	Run python -m pip install --upgrade pip	2026-10-12T10:33:39.8986350Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+test (3.13)	Run python -m pip install --upgrade pip	2026-10-12T10:33:39.8987388Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+test (3.13)	Run python -m pip install --upgrade pip	2026-10-12T10:33:39.8988154Z ##[endgroup]
+test (3.13)	Run python -m pip install --upgrade pip	2026-10-12T10:33:42.4129366Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages (26.2.1)
+test (3.13)	Run python -m pip install -r requirements.txt	?2026-10-12T10:33:42.6792087Z ##[group]Run python -m pip install -r requirements.txt
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:42.6792666Z [36;1mpython -m pip install -r requirements.txt[0m
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:42.6859169Z shell: /usr/bin/bash -e {0}
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:42.6859511Z env:
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:42.6859827Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:42.6860341Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:42.6860874Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:42.6861338Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:42.6861801Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:42.6862262Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:42.6862646Z ##[endgroup]
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.3360029Z Collecting numpy==2.5.3 (from -r requirements.txt (line 1))
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.3959841Z   Downloading numpy-2.5.3-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.4262610Z Collecting pytest==9.1.1 (from -r requirements.txt (line 2))
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.4338014Z   Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.4515463Z Collecting iniconfig>=1.0.1 (from pytest==9.1.1->-r requirements.txt (line 2))
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.4586602Z   Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.4776348Z Collecting packaging>=22 (from pytest==9.1.1->-r requirements.txt (line 2))
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.4849388Z   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.5056125Z Collecting pluggy<2,>=1.5 (from pytest==9.1.1->-r requirements.txt (line 2))
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.5127295Z   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.5348660Z Collecting pygments>=2.7.2 (from pytest==9.1.1->-r requirements.txt (line 2))
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.5418869Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.5535744Z Downloading numpy-2.5.3-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.6543659Z    ???????????????????????????????????????? 16.7/16.7 MB 204.4 MB/s  0:00:00
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.6623619Z Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.6737435Z Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.6846699Z Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.6960456Z Downloading packaging-26.3-py3-none-any.whl (129 kB)
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.7078475Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.7176981Z    ???????????????????????????????????????? 1.3/1.3 MB 164.6 MB/s  0:00:00
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:43.7852133Z Installing collected packages: pygments, pluggy, packaging, numpy, iniconfig, pytest
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:46.9309861Z 
+test (3.13)	Run python -m pip install -r requirements.txt	2026-10-12T10:33:46.9324533Z Successfully installed iniconfig-2.3.1 numpy-2.5.3 packaging-26.3 pluggy-1.6.0 pygments-2.21.0 pytest-9.1.1
+test (3.13)	Run python -m pytest -q test_bondmath.py	?2026-10-12T10:33:46.9932988Z ##[group]Run python -m pytest -q test_bondmath.py
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:33:46.9933427Z [36;1mpython -m pytest -q test_bondmath.py[0m
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:33:47.0000426Z shell: /usr/bin/bash -e {0}
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:33:47.0000700Z env:
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:33:47.0000964Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:33:47.0001416Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:33:47.0001858Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:33:47.0002252Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:33:47.0002675Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:33:47.0003066Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:33:47.0003399Z ##[endgroup]
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:33:49.6367984Z ........................................                                 [100%]
+test (3.13)	Run python -m pytest -q test_bondmath.py	2026-10-12T10:33:49.6369138Z 40 passed in 2.14s
+test (3.13)	Post Run actions/setup-python@v7	?2026-10-12T10:33:49.6861079Z Post job cleanup.
+test (3.13)	Post Run actions/checkout@v7	?2026-10-12T10:33:49.8231598Z Post job cleanup.
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9140333Z [command]/usr/bin/git version
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9188321Z git version 2.55.0
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9236345Z Temporarily overriding HOME='/home/runner/work/_temp/87ed1fd8-b414-4f33-ab28-239464f1ebc5' before making global git config changes
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9238292Z Adding repository directory to the temporary git global config as a safe directory
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9243626Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/pfi-deploy-demo/pfi-deploy-demo
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9283653Z Removing SSH command configuration
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9291695Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9335920Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9594901Z Removing HTTP extra header
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9601820Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9646436Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9914854Z Removing includeIf entries pointing to credentials config files
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9922238Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9960321Z includeif.gitdir:/home/runner/work/pfi-deploy-demo/pfi-deploy-demo/.git.path
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9963196Z includeif.gitdir:/home/runner/work/pfi-deploy-demo/pfi-deploy-demo/.git/worktrees/*.path
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9964741Z includeif.gitdir:/github/workspace/.git.path
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9966013Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:49.9977212Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/pfi-deploy-demo/pfi-deploy-demo/.git.path
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:50.0012025Z /home/runner/work/_temp/git-credentials-0891a23f-1127-4e3e-b7d0-a8d2bb43f2f8.config
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:50.0025129Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/pfi-deploy-demo/pfi-deploy-demo/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-0891a23f\-1127\-4e3e\-b7d0\-a8d2bb43f2f8\.config
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:50.0077088Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/pfi-deploy-demo/pfi-deploy-demo/.git/worktrees/*.path
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:50.0114538Z /home/runner/work/_temp/git-credentials-0891a23f-1127-4e3e-b7d0-a8d2bb43f2f8.config
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:50.0158694Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/pfi-deploy-demo/pfi-deploy-demo/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-0891a23f\-1127\-4e3e\-b7d0\-a8d2bb43f2f8\.config
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:50.0219899Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:50.0262555Z /github/runner_temp/git-credentials-0891a23f-1127-4e3e-b7d0-a8d2bb43f2f8.config
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:50.0284024Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-0891a23f\-1127\-4e3e\-b7d0\-a8d2bb43f2f8\.config
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:50.0343580Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:50.0375670Z /github/runner_temp/git-credentials-0891a23f-1127-4e3e-b7d0-a8d2bb43f2f8.config
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:50.0386254Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-0891a23f\-1127\-4e3e\-b7d0\-a8d2bb43f2f8\.config
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:50.0432684Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test (3.13)	Post Run actions/checkout@v7	2026-10-12T10:33:50.0695243Z Removing credentials config '/home/runner/work/_temp/git-credentials-0891a23f-1127-4e3e-b7d0-a8d2bb43f2f8.config'
+test (3.13)	Complete job	?2026-10-12T10:33:50.0886198Z Cleaning up orphan processes

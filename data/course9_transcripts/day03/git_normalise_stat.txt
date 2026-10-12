@@ -1,0 +1,12 @@
+recorded: 2026-10-12
+command: git show --stat --format=%s HEAD
+masked: account names, URLs, ids
+Normalise line endings
+
+ .gitattributes                   |    1 +
+ .gitignore                       |    8 +-
+ bondmath.py                      | 1144 +++++++++++++++++++-------------------
+ bondmath_excel_reference.csv     |  614 ++++++++++----------
+ bondmath_excel_reference_tvm.csv |  308 +++++-----
+ test_bondmath.py                 |  856 ++++++++++++++--------------
+ 6 files changed, 1466 insertions(+), 1465 deletions(-)
