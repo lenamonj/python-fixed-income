@@ -15,8 +15,8 @@
 [![Course 8](https://img.shields.io/badge/Course_8-Implementing_Agentic_AI-123D2F?style=for-the-badge)](course8_agentic_ai/README.md)
 [![Course 9](https://img.shields.io/badge/Course_9-Deployment-123D2F?style=for-the-badge)](course9_deployment/README.md)
 [![Bonus](https://img.shields.io/badge/Bonus-Build_Your_Own_Coding_Agent-123D2F?style=for-the-badge)](course_bonus_coding_agent/README.md)
-![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)
-![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)
+[![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)](#run-in-google-colab-with-nothing-to-install)
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-22C55E?style=for-the-badge)](LICENSE-CONTENT)
 
