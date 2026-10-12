@@ -1,0 +1,4 @@
+recorded: 2026-10-12
+command: gh repo create pfi-desk-app --public --description "Course 9 capstone: a descriptive desk brief from saved runs, as of 2026-10-02. Educational, synthetic book."
+masked: account names, URLs, ids
+https://github.com/student/pfi-desk-app

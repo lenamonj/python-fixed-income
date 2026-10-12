@@ -1,0 +1,5 @@
+recorded: 2026-10-12
+command: curl.exe -s -w "`nHTTP status %{http_code}, X-Desk-As-Of %header{x-desk-as-of}`n" https://student.vercel.app/health
+masked: account names, URLs, ids
+{"status":"ok","version":"1.0","as_of":"2026-10-02","mode":"replay"}
+HTTP status 200, X-Desk-As-Of 2026-10-02

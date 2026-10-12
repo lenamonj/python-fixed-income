@@ -1,0 +1,4 @@
+recorded: 2026-10-12
+command: gh pr create --base main --head readme-costs --title "README: what the app costs, and where else it runs" --body "Adds two sections to the README: the free tiers the app runs inside, with the pages and the date they were read, and the optional Hugging Face Space. No code changes."
+masked: account names, URLs, ids
+https://github.com/student/pfi-desk-app/pull/1

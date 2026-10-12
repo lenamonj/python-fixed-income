@@ -1,0 +1,35 @@
+recorded: 2026-10-12
+command: vercel logs --project pfi-desk-app --since 30m
+masked: account names, URLs, ids
+Vercel CLI 59.10.0 (Node.js 22.18.0)
+Fetching project "pfi-desk-app"
+Fetching logs...
+TIME         HOST                                    LEVEL                       
+13:37:59.34  student.vercel.app                 info   ? POST /ask          
+{"time_utc": "2026-10-12T13:37:59.453Z", "request_id": "6ffd393d8b2c8cfc", "path": "/ask", "status": 404, "latency_ms": 4.6, "bytes_out": 104, "refused": false}
+
+13:37:59.10  student.vercel.app                 info   ? POST /ask          
+{"time_utc": "2026-10-12T13:37:59.123Z", "request_id": "404857f0282d1ae4", "path": "/ask", "status": 200, "latency_ms": 3.3, "bytes_out": 157, "refused": true}
+
+13:37:58.88  student.vercel.app                 info   ? GET /checks        
+{"time_utc": "2026-10-12T13:37:58.902Z", "request_id": "b8880e3acea23fc9", "path": "/checks", "status": 200, "latency_ms": 1.5, "bytes_out": 8192, "refused": false}
+
+13:37:58.61  student.vercel.app                 info   ? GET /brief         
+{"time_utc": "2026-10-12T13:37:58.674Z", "request_id": "249d9a067cc6c722", "path": "/brief", "status": 200, "latency_ms": 1.8, "bytes_out": 8659, "refused": false}
+
+13:37:58.30  student.vercel.app                 info   ? GET /health        
+{"time_utc": "2026-10-12T13:37:58.365Z", "request_id": "1e08d8a6446d321e", "path": "/health", "status": 200, "latency_ms": 1.2, "bytes_out": 68, "refused": false}
+
+13:37:56.86  student.vercel.app                 info   ? GET /health        
+{"time_utc": "2026-10-12T13:37:56.996Z", "request_id": "dc171d44483d181e", "path": "/health", "status": 200, "latency_ms": 3.4, "bytes_out": 68, "refused": false}
+
+13:37:54.98  student.vercel.app  info   ? GET /              
+{"time_utc": "2026-10-12T13:37:56.067Z", "request_id": "a0fe0bd8798be912", "path": "/", "status": 404, "latency_ms": 0.8, "bytes_out": 22, "refused": false}
+
+13:37:54.98  student.vercel.app  info   ? GET /favicon.ico   
+{"time_utc": "2026-10-12T13:37:56.079Z", "request_id": "86679a549bcc77d3", "path": "/favicon.ico", "status": 404, "latency_ms": 0.7, "bytes_out": 22, "refused": false}
+
+13:37:54.97  student.vercel.app  info   ? GET /favicon.png   
+{"time_utc": "2026-10-12T13:37:56.135Z", "request_id": "15b42b234820a115", "path": "/favicon.png", "status": 404, "latency_ms": 0.8, "bytes_out": 22, "refused": false}
+
+Fetched 9 logs for student/pfi-desk-app

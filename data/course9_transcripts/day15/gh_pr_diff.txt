@@ -1,0 +1,19 @@
+recorded: 2026-10-12
+command: gh pr diff 1
+masked: account names, URLs, ids
+diff --git a/README.md b/README.md
+index 9313ad9..839e985 100644
+--- a/README.md
++++ b/README.md
+@@ -33,3 +33,11 @@ python -m uvicorn app:app --port 8000
+ ## What it is for
+ 
+ A course exercise: personal, educational, and non-commercial, which is the only use Vercel's free Hobby plan allows. Logs hold one line per request (time, path, status, latency, size, whether it was refused), never the question asked.
++
++## What it costs
++
++Nothing, inside the free tiers read on 2026-10-12: Vercel Hobby includes 1,000,000 function invocations, 4 CPU hours, and 100 GB of fast data transfer a month (vercel.com/docs/plans/hobby), and keeps runtime logs for 1 hour (vercel.com/docs/logs/runtime); GitHub Actions is free on a public repository. One process answers at most 1,000 requests in a UTC day; a serverless platform runs many processes, so the cap is a floor, not a guarantee. The app sends no request to a model, so it has no model bill.
++
++## Also on
++
++A Hugging Face Space, optional: the same snapshot as a Gradio app on ZeroGPU. A free account may host up to 2 ZeroGPU Spaces once it is older than 30 days with a verified email (huggingface.co/docs/hub/spaces-zerogpu, read 2026-10-12).

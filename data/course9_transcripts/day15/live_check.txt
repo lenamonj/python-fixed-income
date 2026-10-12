@@ -1,0 +1,9 @@
+recorded: 2026-10-12
+command: python live_check.py
+masked: account names, URLs, ids
+    request  status      as_of  same_as_here
+GET /health     200 2026-10-02          True
+ GET /brief     200 2026-10-02          True
+GET /checks     200 2026-10-02          True
+  POST /ask     200 2026-10-02          True
+  POST /ask     404 2026-10-02          True

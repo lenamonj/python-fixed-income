@@ -1,0 +1,11 @@
+recorded: 2026-10-12
+command: git push -u origin readme-costs
+masked: account names, URLs, ids
+branch 'readme-costs' set up to track 'origin/readme-costs'.
+
+remote: 
+remote: Create a pull request for 'readme-costs' on GitHub by visiting:        
+remote:      https://github.com/student/pfi-desk-app/pull/new/readme-costs        
+remote: 
+To https://github.com/student/pfi-desk-app.git
+ * [new branch]      readme-costs -> readme-costs

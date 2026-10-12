@@ -1,0 +1,51 @@
+recorded: 2026-10-12
+command: vercel deploy --prod --yes
+masked: account names, URLs, ids
+Vercel CLI 59.10.0 (Node.js 22.18.0)
+Loading teams?
+
+  Directory       ~\projects\pfi-desk-app
+
+Searching for existing projects?
+
+  Detected FastAPI (Output Directory: N/A)
+
+? Created         student/pfi-desk-app
+Deploying student/pfi-desk-app
+Uploading [--------------------] (0.0B/87.9KB)
+Uploading [======--------------] (26.5KB/87.9KB)
+Uploading [=============-------] (58.7KB/87.9KB)
+Uploading [=================---] (74.7KB/87.9KB)
+Uploading [====================] (87.9KB/87.9KB)
+  Inspect         https://vercel.com/student/pfi-desk-app/<id>
+  Production      https://student.vercel.app
+https://student.vercel.app
+Building?
+Building?
+Running build in Washington, D.C., USA (East) ? iad1
+Build machine configuration: 2 cores, 8 GB
+Retrieving list of deployment files...
+Previous build caches not available.
+Downloading 12 deployment files...
+Running "vercel build"
+Vercel CLI 62.7.0
+Using Python 3.13 from .python-version
+Using uv 0.10.11
+Creating virtual environment at "/vercel/path0/.vercel/python/.venv"...
+Installing required dependencies from requirements.txt...
+Compiling Python bytecode...
+Build Completed in /vercel/output [7s]
+Deploying outputs...
+  Production      https://student.vercel.app
+Completing?
+? Aliased         https://student.vercel.app
+
+? Ready in 25s
+
+Next steps:
+- Check the deployment response:
+  vercel curl https://student.vercel.app
+- View build logs:
+  vercel inspect student.vercel.app --logs
+- Create a new deployment from the same source:
+  vercel redeploy student.vercel.app

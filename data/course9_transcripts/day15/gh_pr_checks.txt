@@ -1,0 +1,7 @@
+recorded: 2026-10-12
+command: gh pr checks 1
+masked: account names, URLs, ids
+test (3.12)	pass	14s	https://github.com/student/pfi-desk-app/actions/runs/38256691968/job/114836483969	
+test (3.12)	pass	10s	https://github.com/student/pfi-desk-app/actions/runs/38256698413/job/114836505532	
+test (3.13)	pass	15s	https://github.com/student/pfi-desk-app/actions/runs/38256691968/job/114836483674	
+test (3.13)	pass	14s	https://github.com/student/pfi-desk-app/actions/runs/38256698413/job/114836505787	
