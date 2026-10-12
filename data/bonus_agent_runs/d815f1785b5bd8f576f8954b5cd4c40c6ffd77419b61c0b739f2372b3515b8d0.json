@@ -1,0 +1,174 @@
+{
+ "path": "/v1/responses",
+ "recorded": "2026-10-12",
+ "request": {
+  "input": [
+   {
+    "content": "Solve the riddle in desk_riddle.txt",
+    "role": "user"
+   },
+   {
+    "arguments": "{\"path\":\"desk_riddle.txt\"}",
+    "call_id": "call_AkDwD1Ydm01N2cv5RaQJluv5",
+    "id": "fc_0b0bcc345f853908016acd225f96f887d291456457e802c7e3",
+    "name": "read_file",
+    "status": "completed",
+    "type": "function_call"
+   },
+   {
+    "call_id": "call_AkDwD1Ydm01N2cv5RaQJluv5",
+    "output": "I pay you nothing for years, then everything at once.\nYou pay less than face for me and I never send a coupon.\nWhat am I?\n",
+    "type": "function_call_output"
+   }
+  ],
+  "instructions": "You are Desk Coder, a coding agent that works inside one folder called the workspace.\nYou can list files, read files, and edit files with your tools. All paths are relative to the workspace.\nRead a file before you edit it. Make the smallest edit that does the job.\nIf a tool returns an error, read the message and try a different approach.\nWhen you finish, say briefly what you did.\nDescribe only what the files hold. Never give a view on any bond, issuer, price, or yield.\nNever offer market commentary, trade ideas, views, or advice on what to hold.\nIf someone asks what powers you, say you run on an OpenAI model.",
+  "model": "gpt-6.1-sol",
+  "parallel_tool_calls": false,
+  "prompt_cache_key": "bonus-coding-agent",
+  "store": false,
+  "tools": [
+   {
+    "description": "Read the contents of a text file in the workspace. Use this to see what is inside a file before answering questions about it or editing it. Do not use it on directories.",
+    "name": "read_file",
+    "parameters": {
+     "additionalProperties": false,
+     "properties": {
+      "path": {
+       "description": "Relative path of the file inside the workspace, for example 'bonds.csv'.",
+       "type": "string"
+      }
+     },
+     "required": [
+      "path"
+     ],
+     "type": "object"
+    },
+    "strict": true,
+    "type": "function"
+   }
+  ]
+ },
+ "response": {
+  "access_programs": null,
+  "background": false,
+  "billing": {
+   "payer": "developer"
+  },
+  "completed_at": 1791828578,
+  "created_at": 1791828576,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "id": "resp_0b0bcc345f853908016acd2260226887d2a7aafc3f8ed97441",
+  "incomplete_details": null,
+  "instructions": "You are Desk Coder, a coding agent that works inside one folder called the workspace.\nYou can list files, read files, and edit files with your tools. All paths are relative to the workspace.\nRead a file before you edit it. Make the smallest edit that does the job.\nIf a tool returns an error, read the message and try a different approach.\nWhen you finish, say briefly what you did.\nDescribe only what the files hold. Never give a view on any bond, issuer, price, or yield.\nNever offer market commentary, trade ideas, views, or advice on what to hold.\nIf someone asks what powers you, say you run on an OpenAI model.",
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "metadata": {},
+  "model": "gpt-6.1-sol",
+  "moderation": null,
+  "object": "response",
+  "output": [
+   {
+    "content": [],
+    "encrypted_content": "gAAAAABqzSJiB_O0u3iIztj4LnDvmsoMS24siTBndeGW5r-KVJOcJ--5AuVTUcgy6l70rIFNxoWi4OTT7n4MYvKWOuybUIpLWSxfFIsohs8I4n4YNs6r0J4ePJBGJZ5vkK_cECFQTREcSqAV7pleL83xTQgf2kSUQVGpdcL-KnHYjjaVe8AonjVIKbW5AmjGOHnnXWkyAkwz8y8kq9BURpg3AOG11nHwEFhSRfwvEnvHC2n45LlCPTWMowwFEjg9lbVTH51uG-tBtxI1lXwyd-sUDLUSghKnS_0Jpj7OQRKbFGObcG44z9JyEVqjWrVf0yMupOwgfj283-0y57W5_2qcp-ZkHOE0-YsW-HNmic-QmYJJ3-YoRcAM0YMQhElAoF_YCgbLHITIcFvm5GALwx27YtP50Gc1WS-L3HEGx7v66EZqCYGHuhQPjfRE9IPKHw7OpxXSmoSOnKMMhUvUSAz0EuVqWIzlGSAzR1k5V14li5c6KLHuMBGIeZ-HwR4XK0iyMjAsU5KLdHTv_R1hGmEI_GlwsHUVMtvcXtGfgVVc257GucuGM4ym44jH05ViKsWyurdDUfh8Asz4V35Lc5QmlwWtpyuQ_sltLijWCxYoPvRuJcQWPWlUpwRPt3-PROI0bFhsNg63doFsZR1WFr7j5ZY1xSHUB8HVUun-X7UqjktsCfmtK9sr1wcEQ9hUqe5T9HzZ5_UnGSDbDNvty315Z23fseG_cJIWdYBu3sAW-MYuqoMTYaEiLlpXn7JwdK-57LSOMEfOi1b7lsjAfVEOnjLP0BCQLA8mzUbe5iF2i-jHd5xQnF6B5fl0TxB0jtiX8K27sEPV0ZKR85QVt72c2ZokLDM7o8Yq6yaYWSAdc0_xDSGUA9ER2lIs2oC0BIFjj29vV_E3uak4CYq-IePhcZTkaa3lC1x9dbz75rCCSQboiIH1GvWDPtTxZslBFKwddoAzl7lr_DwY5MU6dDX_DxaTO9v7w2kdR5Jz2__n4oyFL-bKIm_OicA7TbyWgXwTckJwGkGXG6XIMnBOQ9QfsVbye9lQyLwDn_gV3m4EFmRzzE2LLhtg054_sEOMJ1ZBPOGGXJNAE0i7KeMsZIBUw2V1zrTPiIuFx1vmfBCC3n-vel305FncYl9Rx2FPTi9ug6ecVrYqqLc1ODWk0gYGJw-0AxMCwMi0MayP6PhjRY_oVcCfGs4RKF0NbP2i_0CwIHbxO49sybvWR2qjuLFWvYE7YqWeMfamcySA6xnSQLGIBQdfz8U2hRD_CXykYnhPLPKfne0-qVvCi29sXRL5gKMkFcqLsl_uToqm8p78sEZEeWc4hRaBs2mAFmFzhvndamOC-gxvJ4JOeP-WAWjRhrmVohUK6ApndJJpp9fAg4H3HmaSYUkF31uuL76xSjLWxIRrsZ2h2SaSwxzMOLAQLrNGcOa1rt5x-YwbXhp317pKQfMoA3OY5KF-0dPXmRevwbf8aMJEk4-zOhmE7RY4EvoeWNPXGRmzRXsU3DzEi0ZZXa1StTpb0DI8PfftkwwNqZCdzB_uxqT86khzWkviMpOzs4PO07d5KKmSKeooYXlsCa-0dERsgm2H6WWhh2DfvTevrcc5cYHB1Tq50Ei-sWSm6BQFxfrHDDY0eZ9lYdPu0Bm0FPsqQZuuPOqbf2qXVcnyjI6paXvi5kYGHOPdHXQuk0nd89p-lC-5_QpP2n2mpghp3lb-erGXy2ipKdjRR-1aTo1G-sUpRoxjZgAfdYC1DjjmYgLTdxDlXAp5hEi5xK8lhH3bE8E7F_5Ubd65iy83IWn_IfXgTiatTdyU0D6Xu6011w==",
+    "id": "rs_0b0bcc345f853908016acd22610d4c87d2bb13deb909f9614d",
+    "summary": [],
+    "type": "reasoning"
+   },
+   {
+    "content": [
+     {
+      "annotations": [],
+      "logprobs": [],
+      "text": "The riddle describes a **zero-coupon bond**: it pays no coupons and pays its face value at maturity.",
+      "type": "output_text"
+     }
+    ],
+    "id": "msg_0b0bcc345f853908016acd22619ad487d2b155b64fa081ec5e",
+    "phase": "final_answer",
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+   }
+  ],
+  "parallel_tool_calls": false,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": "bonus-coding-agent",
+  "prompt_cache_retention": "24h",
+  "reasoning": {
+   "context": "all_turns",
+   "effort": "medium",
+   "mode": "standard",
+   "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "store": false,
+  "temperature": 1.0,
+  "text": {
+   "format": {
+    "type": "text"
+   },
+   "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+   "image_gen": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "image_tokens": 0,
+     "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "image_tokens": 0,
+     "text_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "web_search": {
+    "num_requests": 0
+   }
+  },
+  "tools": [
+   {
+    "description": "Read the contents of a text file in the workspace. Use this to see what is inside a file before answering questions about it or editing it. Do not use it on directories.",
+    "name": "read_file",
+    "output_schema": null,
+    "parameters": {
+     "additionalProperties": false,
+     "properties": {
+      "path": {
+       "description": "Relative path of the file inside the workspace, for example 'bonds.csv'.",
+       "type": "string"
+      }
+     },
+     "required": [
+      "path"
+     ],
+     "type": "object"
+    },
+    "strict": true,
+    "type": "function"
+   }
+  ],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "usage": {
+   "input_tokens": 381,
+   "input_tokens_details": {
+    "cache_write_tokens": 0,
+    "cached_tokens": 0
+   },
+   "output_tokens": 60,
+   "output_tokens_details": {
+    "reasoning_tokens": 30
+   },
+   "total_tokens": 441
+  },
+  "user": null
+ }
+}

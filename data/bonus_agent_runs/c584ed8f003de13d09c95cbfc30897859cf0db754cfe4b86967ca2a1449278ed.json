@@ -3,6 +3,7 @@
  "recorded": "2026-10-12",
  "request": {
   "input": "In one sentence, what is a bond's coupon?",
+  "instructions": "Never offer market commentary, trade ideas, views, or advice on what to hold.",
   "model": "gpt-6.1-sol",
   "parallel_tool_calls": false,
   "prompt_cache_key": "bonus-coding-agent",
@@ -14,13 +15,13 @@
   "billing": {
    "payer": "developer"
   },
-  "completed_at": 1791825695,
-  "created_at": 1791825693,
+  "completed_at": 1791828556,
+  "created_at": 1791828554,
   "error": null,
   "frequency_penalty": 0.0,
-  "id": "resp_026da879b8224d79016acd171d147487d2bd62f087a9295ddb",
+  "id": "resp_07ce1050a2481591016acd224a4ae487d29765108b2dd37a2f",
   "incomplete_details": null,
-  "instructions": null,
+  "instructions": "Never offer market commentary, trade ideas, views, or advice on what to hold.",
   "max_output_tokens": null,
   "max_tool_calls": null,
   "metadata": {},
@@ -33,11 +34,11 @@
      {
       "annotations": [],
       "logprobs": [],
-      "text": "A bond\u2019s coupon is the interest payment its issuer pays bondholders, usually expressed as an annual percentage of the bond\u2019s face value.",
+      "text": "A bond\u2019s coupon is the interest it pays, usually expressed as an annual percentage of its face value.",
       "type": "output_text"
      }
     ],
-    "id": "msg_026da879b8224d79016acd171e4cd887d2af3f6503e38e05bf",
+    "id": "msg_07ce1050a2481591016acd224b8de887d2894926eba06b28ab",
     "phase": "final_answer",
     "role": "assistant",
     "status": "completed",
@@ -90,16 +91,16 @@
   "top_p": 0.98,
   "truncation": "disabled",
   "usage": {
-   "input_tokens": 17,
+   "input_tokens": 38,
    "input_tokens_details": {
     "cache_write_tokens": 0,
     "cached_tokens": 0
    },
-   "output_tokens": 31,
+   "output_tokens": 25,
    "output_tokens_details": {
     "reasoning_tokens": 0
    },
-   "total_tokens": 48
+   "total_tokens": 63
   },
   "user": null
  }

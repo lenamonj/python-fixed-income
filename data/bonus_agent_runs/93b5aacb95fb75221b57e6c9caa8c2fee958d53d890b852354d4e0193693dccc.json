@@ -6,8 +6,28 @@
    {
     "content": "My name is Sam and I trade high yield.",
     "role": "user"
+   },
+   {
+    "content": [
+     {
+      "annotations": [],
+      "logprobs": [],
+      "text": "Nice to meet you, Sam. What can I help you with today?",
+      "type": "output_text"
+     }
+    ],
+    "id": "msg_08587ff0eccba609016acd225322e887d282e23eedea917f1d",
+    "phase": "final_answer",
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+   },
+   {
+    "content": "What is my name and what do I trade?",
+    "role": "user"
    }
   ],
+  "instructions": "Never offer market commentary, trade ideas, views, or advice on what to hold.",
   "model": "gpt-6.1-sol",
   "parallel_tool_calls": false,
   "prompt_cache_key": "bonus-coding-agent",
@@ -19,13 +39,13 @@
   "billing": {
    "payer": "developer"
   },
-  "completed_at": 1791825704,
-  "created_at": 1791825701,
+  "completed_at": 1791828564,
+  "created_at": 1791828563,
   "error": null,
   "frequency_penalty": 0.0,
-  "id": "resp_0796e739707f3fc8016acd1725e23887d29a2e9e0c25a3cc71",
+  "id": "resp_08587ff0eccba609016acd2253d2cc87d29f3de8a6a05bce60",
   "incomplete_details": null,
-  "instructions": null,
+  "instructions": "Never offer market commentary, trade ideas, views, or advice on what to hold.",
   "max_output_tokens": null,
   "max_tool_calls": null,
   "metadata": {},
@@ -38,11 +58,11 @@
      {
       "annotations": [],
       "logprobs": [],
-      "text": "Nice to meet you, Sam. I can help with high-yield credit analysis, relative value, spreads, covenants, capital structures, and market commentary. What are you looking at today?",
+      "text": "Your name is Sam, and you trade high yield.",
       "type": "output_text"
      }
     ],
-    "id": "msg_0796e739707f3fc8016acd17276efc87d2b78d975c72e71fe1",
+    "id": "msg_08587ff0eccba609016acd2254a8e887d2a8d285e85bfafb07",
     "phase": "final_answer",
     "role": "assistant",
     "status": "completed",
@@ -95,16 +115,16 @@
   "top_p": 0.98,
   "truncation": "disabled",
   "usage": {
-   "input_tokens": 16,
+   "input_tokens": 72,
    "input_tokens_details": {
     "cache_write_tokens": 0,
     "cached_tokens": 0
    },
-   "output_tokens": 43,
+   "output_tokens": 15,
    "output_tokens_details": {
     "reasoning_tokens": 0
    },
-   "total_tokens": 59
+   "total_tokens": 87
   },
   "user": null
  }

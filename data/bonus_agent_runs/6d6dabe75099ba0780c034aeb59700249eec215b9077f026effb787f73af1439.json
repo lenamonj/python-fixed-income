@@ -1,0 +1,114 @@
+{
+ "path": "/v1/responses",
+ "recorded": "2026-10-12",
+ "request": {
+  "input": "My name is Sam and I trade high yield.",
+  "instructions": "Never offer market commentary, trade ideas, views, or advice on what to hold.",
+  "model": "gpt-6.1-sol",
+  "parallel_tool_calls": false,
+  "prompt_cache_key": "bonus-coding-agent",
+  "store": false
+ },
+ "response": {
+  "access_programs": null,
+  "background": false,
+  "billing": {
+   "payer": "developer"
+  },
+  "completed_at": 1791828558,
+  "created_at": 1791828556,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "id": "resp_0edeb3ad9eb35742016acd224ca76c87d29510df7f9ee5474c",
+  "incomplete_details": null,
+  "instructions": "Never offer market commentary, trade ideas, views, or advice on what to hold.",
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "metadata": {},
+  "model": "gpt-6.1-sol",
+  "moderation": null,
+  "object": "response",
+  "output": [
+   {
+    "content": [],
+    "encrypted_content": "gAAAAABqzSJO5b9vi9HdpRd8kMB3SpMkwIbUKUJtHLYGvheauvHiDRxfVcx_DRn1g34KycjZVGgFch41cxp1VwExHn72C1HUZ2SNzRsM3tuYntaaZX3TO-_uh8qzFHcwayuLl-FZ9tudoZpgLvC1N6VZzRP44MGHQZT_-EYpvGk4hFAhlVvvp77ppZTWlvTM0T7m2XnFM9KoId8PeFzU8JE4MUt_uxLufQlPzobTTnC_xP2avrclQ2iuycGghKEbPO4cOCdPAtnJ55tjkNSnzSD4TJsmXSd18rGLGCrQBCNHSQ-9BjbvB6HGtmOkF_iCCwMH07NY4Lh_yjrflQdew9X4Jet9oWipTefXl0gE40OovxuxIiiMLPq6Ss84ZVYiF-e-9v5euuim87x0ou_mI5Tf7B02zaTE66yEAlh0IEFefvnpc5u6DtB8YLbaSzNTf2aTkoFGsS6ltHD9YuV9ej8TmAwgww5LBvmpeot82KkCi4k5F_PjewPwz_lWjU5tC50xpKZ_T8-Hoaa8xVz02rOndWQJeC1dIDz23xbIAZGHTzJJHlmjs-ZIn8PWkXmKzLb1qZQBLzVXYful3aPfA6eMx18IDqOpoIa2reGlhHSidQTS8mN8_qGk3sGM5UyYFZ3OXQ6jCcbEuApfflqvGY5SzGoBo5MUSevMFq4A_XXiu84UEPecPqHfHBUklBLU2c6V7DyVdBF9n7WFIIiH_wwjz6Z79HKu8cGk1seXl6-La9tOFXY7I7UTyv77RID9IfFO52CDwnvqEbJ-7vbJ_hICvHD4bLWnkUqX8NAbetiv2_MkxDzwOMhnFislATDG-AUyV2Az3Zlpk1XAz9NtLnWabwL02xHPdKVKIRp9O-RYtADjUALDx02aNQ3hmaHeQLrpSqazpZC5ckIX-PX2IDxfHo2AebkaBIGHx0N8rwX-IPAiMLSy1uvRzfRHY2PSyFecXKKzWXX3JwB1rh2HMXaNmanlqvG4LEtJxf3mP16PwTDYfiWHtpe9Iv7xFhfFLB3xIZhq5mlJwLD3-dBQgKYIk_bcmu2U2jZXWUnOM6K-evxFzklqN4pHnV2wETLTHfWyMO2ZzC_LJMqkjoo8GulpsrJxOzsjrP5ciyXM4eChsCmO1S6FwweTOzufPg6MDbxBqbQkQb1FU5DCR4ObKzUn56Ktor8nWh4Zntzp5c_WsqEerxgpGz6crt_Tdh6zJSnkyGWu-OFuu1S3LQaNL6RWLxl1ayO-h8MKWYLzMbv3xY-Orqe8te_Mz1zoagxLeynLkMFhuQ8PJTicbaPlofYd6b3HGqcz1zqYEL_9-90vLtDhPTT_BSUvqvreIEszBtS4K4HErXdR0V3jCOFYIHxnmxyemU7tPSacSIws84cWa_NGgNxqfpmSjSPOeP_-_NIR-5DzRUtoRABbZxLgOe400eDIPPLdkUcvijjKe2krlWSjhhzvZveeZz5jk6_lHNpfWdc9jRRn9PO3LinVJ09TZA0XsECyJ2ovseb1LkphxhsukVtfY5Ho5V8EBReAXfORSKiJ_6LKk0PuzRnTgl3ULjSRfjdNbMhsbUsqSc-8ove-IwGQO2Sev-AI47-e2CMNiI2Mi7fHbjjxpnqRvNNBiC1Ii9KixKxrnbwoH2C3gfBRS3fBYhb4hpb0yPpUl_yRcX2EbMvzgB-1yZNrQN7lCvLCoIQHjASFEXXlulyV5aqlKjENlSI=",
+    "id": "rs_0edeb3ad9eb35742016acd224dcfa087d2ae1ff785ea153fae",
+    "summary": [],
+    "type": "reasoning"
+   },
+   {
+    "content": [
+     {
+      "annotations": [],
+      "logprobs": [],
+      "text": "Nice to meet you, Sam. How can I help today?",
+      "type": "output_text"
+     }
+    ],
+    "id": "msg_0edeb3ad9eb35742016acd224e4ce087d29315fbd61c693e72",
+    "phase": "final_answer",
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+   }
+  ],
+  "parallel_tool_calls": false,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": "bonus-coding-agent",
+  "prompt_cache_retention": "24h",
+  "reasoning": {
+   "context": "all_turns",
+   "effort": "medium",
+   "mode": "standard",
+   "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "store": false,
+  "temperature": 1.0,
+  "text": {
+   "format": {
+    "type": "text"
+   },
+   "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+   "image_gen": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "image_tokens": 0,
+     "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "image_tokens": 0,
+     "text_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "web_search": {
+    "num_requests": 0
+   }
+  },
+  "tools": [],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "usage": {
+   "input_tokens": 37,
+   "input_tokens_details": {
+    "cache_write_tokens": 0,
+    "cached_tokens": 0
+   },
+   "output_tokens": 45,
+   "output_tokens_details": {
+    "reasoning_tokens": 26
+   },
+   "total_tokens": 82
+  },
+  "user": null
+ }
+}

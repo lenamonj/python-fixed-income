@@ -1,0 +1,164 @@
+{
+ "path": "/v1/responses",
+ "recorded": "2026-10-12",
+ "request": {
+  "input": [
+   {
+    "content": "You are a bond desk assistant. When I ask for the price of a bond, reply with exactly get_price(<bond_id>) and nothing else. I will then tell you the price. Understood?",
+    "role": "user"
+   },
+   {
+    "content": [],
+    "encrypted_content": "gAAAAABqzSJXC21TmBZkdBqcSDOHB0nfN1yyDVGu-1ELqkBCdOa3Li2Kf3q0WWycz6EbkVobjnX313BI0Mhhk8EZEqLJ1XXRegq3IRJ4w_cVzJ_mbdBaTIzx45mW1jw8AbEmV6LqhGkPfX4xa2GsKzH-T3gvRldE2PMaccLxBvuryzplHDSmFWOTVs61h7hlz-nUDiONbdiidzyoKCcZ_9KQnIBOk7XOR3E_ay7r7pWLfe0-DnnvRIuJmxoVlHXSKMllOKDPfz4xqB-F4nlgiamwcLPY7dG1EvAyVyNGDPPrK7KhtnuqrlN1_Ho23VhBFA6G2ebt3Ef76TW2ulEcDPVuZjB_IV3cb5bawENzFvHcEVI0MJyazsBnQWgMAdZIy6q71LfLq4nhloIYyX2hRspqPMkJNBmkaknvW-Y4JbZxc0HxmjYWGu8k0um9wobWVx1SKrxU_BanhmOzcWGrlITWFIhhFfUI00E3jhBnG46Crem3Zvz6hbc906xsaSblSPS2gMxIaimVIOjHwbDCcIsSteusGJscWCy_88UCjp7KD26MghZA5XLNm0PizP7P7ZAjNxSVG15j44zdENAzeHB1Y9gsD9LZSn5FPuckPPFzLPSgEFYc7DRbcFONVNQz4t0MKN94p3cYXQ3wSIw5hTWc3N-_lhe0cSkZAgXkLJsjIiL0cCSZukJtt6oR_HQlGkLA26ZgoO5YMiu38Veetmp28ugxPjKUSNsRXFo09fhJztm_aKOSWciHIve4YFo7ZLUSBy1P3Jb55I91no0bth2jdhLw7H65llNVHWF2xRCJFKbc2CDjk8zyjytmhHWyvXU0-2V3607Ti84qf9XBNpBuzR7zRsTpf8wijrrw87XbRqEi8WNXnygHEslDRPEK2KE77IHqae-R40XG4gdLPqLPbpmFSZ2uQ664pBZ0vD8kMWaGczBwxyp82E-LqZt5-HfPX5BMpcd6seWbtKx5Q0vxrJB1-12nMbkAjC-NePNLF_22cAZIUCkpZ4GjsJIk_5_MCm1_NaAGAo1Cn__SK9iddGh0mhrA1sL4T3a31Iff68DpD8JGcEKweAkMBA8VV8yaiDjYolBVGHrK3Xz08NwAi4YvgxCz1NfyEEV4xRF7um2EHLUhl-xaTc_1TfOAHXyyYXgUpJjc8cfxItr0aTWQPZqV-Xi654g-P14IoJnxcdCVheH0wxuiuBOq35aFApfnY308LU6N_1NPj8CZoqinFAOtHfSUkSTgjBX4WEWwn9J7XBbSk_aEMjfRsATytD_KqiYiNf80gZaQCfC33FCLjyMcdd6Rma0MJpr7Ujh5hvV5oIN4_0d4HNUTyRO8nWgN6w5QkqPbi6JmoKTrDVHPcoPcKGhozRaGQZYg19tgbm7cEEnEt1IE3Tmpix2BCIj8dBP-JRhqBFlnWiKbMrGVAPF_G5I_bQfUDGvBt6qVli_Sx2ySZHj40QGcPZcQBqj8emhHAu_ZHziO6Xt4Lcp6p36K0bP8u9GS72cmh20zjub5FckutsAphee911Sy_g-qUeyX63IRbf0OFSUCR9Guozl1kmm_WbqxgDcysSX9r_3gWCI_gBX7bVvav9fnrgh0iqNdFgpCKo_-xGQNYz7KqD5R0DDn4Y1UH7UwCBQMVhVnTWPxRXlXx4lv5bVWZdDvbWvj8H9G7K8GISyq6nGQ3RkeFRP0BPW3PHGEV0cihJdSlC_Ppd9TLpY4PDBpr90VnQb2AaxoqHBmvySLl0MY7CDfjdy0Ew==",
+    "id": "rs_039510520da87856016acd225658c087d2a55f1000a096f5a6",
+    "summary": [],
+    "type": "reasoning"
+   },
+   {
+    "content": [
+     {
+      "annotations": [],
+      "logprobs": [],
+      "text": "Understood.",
+      "type": "output_text"
+     }
+    ],
+    "id": "msg_039510520da87856016acd2256f2d087d2a20403844f817d32",
+    "phase": "final_answer",
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+   },
+   {
+    "content": "What is the price of bond B004?",
+    "role": "user"
+   },
+   {
+    "content": [
+     {
+      "annotations": [],
+      "logprobs": [],
+      "text": "get_price(B004)",
+      "type": "output_text"
+     }
+    ],
+    "id": "msg_039510520da87856016acd22585cd487d284b3f5cbeac4f173",
+    "phase": "final_answer",
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+   },
+   {
+    "content": "99.00",
+    "role": "user"
+   }
+  ],
+  "instructions": "Never offer market commentary, trade ideas, views, or advice on what to hold.",
+  "model": "gpt-6.1-sol",
+  "parallel_tool_calls": false,
+  "prompt_cache_key": "bonus-coding-agent",
+  "store": false
+ },
+ "response": {
+  "access_programs": null,
+  "background": false,
+  "billing": {
+   "payer": "developer"
+  },
+  "completed_at": 1791828572,
+  "created_at": 1791828569,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "id": "resp_039510520da87856016acd2258fddc87d2818bf21027bcdcba",
+  "incomplete_details": null,
+  "instructions": "Never offer market commentary, trade ideas, views, or advice on what to hold.",
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "metadata": {},
+  "model": "gpt-6.1-sol",
+  "moderation": null,
+  "object": "response",
+  "output": [
+   {
+    "content": [],
+    "encrypted_content": "gAAAAABqzSJcgOcIbJG0yS1CIaQv7QGgZvNEKQ_UbpW5z4Skw5oD0Q7VMa7a5NCJOfqrzzzDsFPsTpSNduLemrrpkLr8JCrAU7ovA_eFyA5fjC3XaBFvjFAT6iQ3yBauDch39zofsRdgkWtJZQblkRImTWFwERxCEjz0xIMh21gSlkPkG7nxUKw2C5dQeuxy0_EPB97_Q8IpSVCM24MLNCAswpcyFzXc0ODkJatbt9eq-pwUVTjaWEkTVTzJQfRrnDN8pL34nWwlTrw5PFADOlBSrSAZ86ix-BJ5BMgkxOBgUzKGBO6xaeEtNTGVD9uy_2mSEB31Mjauikz4AwHctpn8-GWXy3m0yc0sm_7CxD1leKzazJ8n6ysckISQO0x_iSxjwcBhaoXsmPLJKJ0L3pRdE6hoFKwkIoeN915BPLx42lNx7ufxtWrKYGPozXlpkbbOLFmNDuuLxmtrmrVSqUDf_sfxpo8nMQYbpJ_SPwx6m2b-2FA7LgmMMpgGieIAh-bDS43K4-pMM31HC5zmHk-rmNqyuBxNNLY7XuTjNrUPRhxf1Ub8-XfxWgM0-x3ISAnyZRDOMW2ys-xBKr83E7Jqtvqbr0nFPyLw2ouszRacf5Amf0Pd9W5LLXE-LByEMQMcOxLoQfZpclYzl24HNLZyAfh5MP7-B7AR2N7zb2mc9WgP0imRlSGLhEEyJS4Ih5phSXOF5hprZVEI54O93SxMA5SmKhYVmBEBWt0yhCkmZIwC4zPW-6z42GurUumnPulQemIlCzK85tNXbeAs7j987nv_glKltuNaLMxi4vBuIZLukdhRosCmcwZad0pqclK3jKrdgHvCi_-jvaPJ8a39112jPx9QRA1fKjcFhPBNPMX00IoRgdYB3sYGKUah3d-uRodgtLzN5pHmRxzgbAsOo0NH2Kl2Fvtdtw10a4cQ_qRXtRABvWyUQOzLWGQsUplUjKjjXNqrwOvRlmmKEBr-ukgu2zubr0a0kNRRqBhcVZED_o9OehKjJlDGScZSr6qvbOR86sL0rANZQMYhXAVurd-59JevRUAje_H2udjoGW-rVkQ_5NYbMOZ2yi1aD8B2mCrHy_uPDmW4xrUql4GpTas_aCR3bZOFSWuUwdB1CgFZuQ2A784I4yf4xS4oU4x3qoWuHSd0MioYoKuwOQxVPUsIz119XB_jjeXlX0Xy2yKC1fqcOryxJiagEhew2E8zVMpq2bixuWkMgv7ScJIXcQLa7wK9kasipaGHR3UU8xe5jGVrDl7WbWlumbHA2XvuEmyUfrEKgNmjF-DWTO6WybkLVqotzAHq0hPaEuxKiDbDtW2LpUIipwLcVBEtf4mhcwS9UZZhW3K6eiUSd1i15hHuyz3ndcZvaMQEz38ra4rkD58hLGNWUQ4Ul_NvAvLP7m1GYQh0iG--SXUvlGVU3xt2vaLj-Y8nXFWSl3nTRyD4Fzvajb9k3WqgDkskTpDc_yI-UuQD7OdF1U28XgcE61ZIfQKDACFCWoLTd6BT8rLIgPMf-Q6L6jS3_76uMrWi-B1xHP2DOnHm2pq1k19i-TW9mHYdO38kdblB-ZtAmIH8L4HF_mRFkrXqwmjZyN8dIm_nEvyAcjpJr0KaXG_WktC7SDEGMrNpRg0WAeRQ2m4UN5tELQL492-eTNYnmhKukxmiJerzQyMv4YdaH5srCGzwQT1Zuf3GDawGqRi0BkhMCArHXPjyteh6wAcnwbr8gWOhY0vjTY15JUHDddfNypToBtNsLaNfIWR2aVDAdJU5CtwZMbDdBpNeXz9UYe34NE1FL3nNQcdTt9SefwDAViu-LglTc0X8sRo_L0EI7jzdjKE6oWRrbmqWiV0Xl5cbi8aNcZ9F9zsQSKoq5lLYxIN45yElExMPABtjvbuJi8dycJa4fgFakr58MQqhxFYEj4e4YwUa1vvB3VNLrlFb5HL3GJi-DC7vVFfKDnXHeTU0X2JIjT_Q0w7E60ikUPB1VUw2IBGAPPePv2Sgj-wzlT6y73kV-JpGJ8IHr-yT4tQ6NLEpYXPaLCgZiNy8mehQ5EbxzUqp",
+    "id": "rs_039510520da87856016acd225ac8cc87d2915fc0be1c87d501",
+    "summary": [],
+    "type": "reasoning"
+   },
+   {
+    "content": [
+     {
+      "annotations": [],
+      "logprobs": [],
+      "text": "B004: 99.00.",
+      "type": "output_text"
+     }
+    ],
+    "id": "msg_039510520da87856016acd225bd87c87d2bbcafbf48d398ef3",
+    "phase": "final_answer",
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+   }
+  ],
+  "parallel_tool_calls": false,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": "bonus-coding-agent",
+  "prompt_cache_retention": "24h",
+  "reasoning": {
+   "context": "all_turns",
+   "effort": "medium",
+   "mode": "standard",
+   "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "store": false,
+  "temperature": 1.0,
+  "text": {
+   "format": {
+    "type": "text"
+   },
+   "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+   "image_gen": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "image_tokens": 0,
+     "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "image_tokens": 0,
+     "text_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "web_search": {
+    "num_requests": 0
+   }
+  },
+  "tools": [],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "usage": {
+   "input_tokens": 134,
+   "input_tokens_details": {
+    "cache_write_tokens": 0,
+    "cached_tokens": 0
+   },
+   "output_tokens": 72,
+   "output_tokens_details": {
+    "reasoning_tokens": 58
+   },
+   "total_tokens": 206
+  },
+  "user": null
+ }
+}

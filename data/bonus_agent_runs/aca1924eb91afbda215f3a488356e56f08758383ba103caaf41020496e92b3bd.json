@@ -1,0 +1,272 @@
+{
+ "path": "/v1/responses",
+ "recorded": "2026-10-12",
+ "request": {
+  "input": [
+   {
+    "content": "Solve the riddle in desk_riddle.txt",
+    "role": "user"
+   },
+   {
+    "arguments": "{\"path\":\"desk_riddle.txt\"}",
+    "call_id": "call_X22OToofVbxj8w91JuJZJECW",
+    "id": "fc_036eaf01bfb21929016acd2291fabc87d29286b0323aacb268",
+    "name": "read_file",
+    "status": "completed",
+    "type": "function_call"
+   },
+   {
+    "call_id": "call_X22OToofVbxj8w91JuJZJECW",
+    "output": "I pay you nothing for years, then everything at once.\nYou pay less than face for me and I never send a coupon.\nWhat am I?\n",
+    "type": "function_call_output"
+   }
+  ],
+  "instructions": "You are Desk Coder, a coding agent that works inside one folder called the workspace.\nYou can list files, read files, and edit files with your tools. All paths are relative to the workspace.\nRead a file before you edit it. Make the smallest edit that does the job.\nIf a tool returns an error, read the message and try a different approach.\nWhen you finish, say briefly what you did.\nDescribe only what the files hold. Never give a view on any bond, issuer, price, or yield.\nNever offer market commentary, trade ideas, views, or advice on what to hold.\nIf someone asks what powers you, say you run on an OpenAI model.",
+  "model": "gpt-6.1-sol",
+  "parallel_tool_calls": false,
+  "prompt_cache_key": "bonus-coding-agent",
+  "store": false,
+  "tools": [
+   {
+    "description": "Read the contents of a text file in the workspace. Use this to see what is inside a file before answering questions about it or editing it. Do not use it on directories.",
+    "name": "read_file",
+    "parameters": {
+     "additionalProperties": false,
+     "properties": {
+      "path": {
+       "description": "Relative path of the file inside the workspace, for example 'bonds.csv'.",
+       "type": "string"
+      }
+     },
+     "required": [
+      "path"
+     ],
+     "type": "object"
+    },
+    "strict": true,
+    "type": "function"
+   },
+   {
+    "description": "List every file and folder under a directory in the workspace. Folders end with a slash. Use this to get your bearings before reading or editing.",
+    "name": "list_files",
+    "parameters": {
+     "additionalProperties": false,
+     "properties": {
+      "path": {
+       "description": "Relative directory to list. Use '.' for the top of the workspace.",
+       "type": "string"
+      }
+     },
+     "required": [
+      "path"
+     ],
+     "type": "object"
+    },
+    "strict": true,
+    "type": "function"
+   },
+   {
+    "description": "Edit a text file by replacing old_str with new_str. old_str must appear exactly once in the file. To create a new file, pass a path that does not exist yet and set old_str to an empty string; new_str becomes the whole file.",
+    "name": "edit_file",
+    "parameters": {
+     "additionalProperties": false,
+     "properties": {
+      "new_str": {
+       "description": "Text that replaces old_str.",
+       "type": "string"
+      },
+      "old_str": {
+       "description": "Exact text to replace. Must match once and only once. Empty string when creating a new file.",
+       "type": "string"
+      },
+      "path": {
+       "description": "Relative path of the file inside the workspace.",
+       "type": "string"
+      }
+     },
+     "required": [
+      "path",
+      "old_str",
+      "new_str"
+     ],
+     "type": "object"
+    },
+    "strict": true,
+    "type": "function"
+   }
+  ]
+ },
+ "response": {
+  "access_programs": null,
+  "background": false,
+  "billing": {
+   "payer": "developer"
+  },
+  "completed_at": 1791828628,
+  "created_at": 1791828626,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "id": "resp_036eaf01bfb21929016acd22924ea087d2be9f584c2c9a371d",
+  "incomplete_details": null,
+  "instructions": "You are Desk Coder, a coding agent that works inside one folder called the workspace.\nYou can list files, read files, and edit files with your tools. All paths are relative to the workspace.\nRead a file before you edit it. Make the smallest edit that does the job.\nIf a tool returns an error, read the message and try a different approach.\nWhen you finish, say briefly what you did.\nDescribe only what the files hold. Never give a view on any bond, issuer, price, or yield.\nNever offer market commentary, trade ideas, views, or advice on what to hold.\nIf someone asks what powers you, say you run on an OpenAI model.",
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "metadata": {},
+  "model": "gpt-6.1-sol",
+  "moderation": null,
+  "object": "response",
+  "output": [
+   {
+    "content": [],
+    "encrypted_content": "gAAAAABqzSKUH3dY2NQUni8OKbKzFb1yCAjBDh57WHrt0pSYYVuIUTDROhxNxPvXdiAy4DsUDUPeUctG2G2a5bsur1645lL22AsU4xNkcI5lER_fdR0xDHPAYHR4r7_zEquY803s2Zx98UXRY0lT9SFhaagApJnswvReSvjxkHB9cBTquh2LtNyo33FcScndC0r8nPzlmFSpclYmWaYz2T5UThIoL33jwNwjAAcsCvY-V7JatUXMQkbJPKrQhA54aJ3laKhs01qEMwDL2wgPi1gp9F5uQCFCmEiOwswAPgTeiEnN2FU0oLNeBuVLLatbb4wS0jpLznViRteZe29d2Itg9PH9_o2ScQfYo6tBEPT2OEp1-eUSrvRmhtfW7NBAf1niRew6NTP1BShNAPKDyq8uZ9rjOKnH1vgBB6nqI2yH_Ato0rBEKjxFW9lL385kZYN3hz9S2bBd82qbcbObbaWOvtOymOuw94FdZQHOtJZbSJCXwtDVdhu9FIB3x8KFLxGxZ_5nB1M8ThpSivojueXo71zErw0eqJizMIvsSj60NSbCQl0Qr2Bljf6sn3BQSVKPPHD7PgUU9gt8EPXYLXQ4J9Q8MwdYiVmZyGia0sNQnZHqwZ6DwONYtlVxnVyGUx2_314bWtH6e5vJukwvRBmEpxI_oyQzGCM3Xb5CK9kPgT1IahMioKps-WP0VM8vbn-8KnsnTQGl1P-mfoADElvX4s-_HGheJedrQH83aVBNdoMppAE3EnsVN86DfivsAZgLLbsaS9qm2KLMJMSSUrq_1TifSYQfqS0GSmHU4nX2nGcUWyygUBDFTmPniXz5QC4Q00CowANfoGK7MBVO_aaj2piocRBpVGIG4EV6C6NX_T4SVGlYtYk8K9mkI0P3iyLon2BpVxzqlrplgrMKo8vIOqecx337SIRH-DSmPZeW-iORJ-VbuhsGPmdH5_BIHB1h2ayF3IXpCsB5-nO_2VYGIHjRimfGXVCe8LWHfVbmBwat_hDTPcVJYt8PN1JeJCQvptsLSkeijo3SSQ-Hx4nowp2kVFyj1_y3SdNBKCUyHmtMe43Ecwolch7doshnE6lLKfF0BxGJ8RKJ7HytNJMe72maKeb6GDsaVj1ajSUMT0nK49XX06D3e17mYdI_vtAcaPkxciN0pPNmHwIM50f6hMCY5rEGZNCn0TzFe2lmIDtN5pVDa9wCrY6XfQMuXo-jMNGh6IgbPktmB-fdAAtrajz6ajkqf31nuRBiIUP4CdLJrwaSZshlkjhWmgVkWtzxci5OaZ6g0o9on1AwqXoLFQ3cji4VhzM49W4PrOzrSRvuoxlcBKOWTLq40_jpRits6eHgX6Z1r-scGO2ImkaSSAv3WA2LLg_KpbqQA-NMa9Gq6ndKE_kww_RxXOY3Tj12eTjZTA1EyJ_CG8he9lqEsAiGizlxKR08_z18NgM9RcAs0FoGUoix625DlV9xdzS6kEu-dsYPPB9xztO-W7boN9Kx4CtDqRhQP2ba1aPEMSTqujB9xdEA8s-fwQoKaQ4qMAE6aah6WmjFJFFF1sQufW8RNkaRkkQvQnXwpzh3n1MNzTOhIS3bJEm3r9biiZK8oz3N0S5hQ6ln89yqoxIknbDlNZixuklJu7GBbVG40-TuOmZmKTr9oRJO2dPWSBnRlyn-z2Ho1_w_CFhm3j9eQnsHu2Yard1ns_okW8BYQhCxMHvKhEvJ_932FWEI4_M-eRBjlGHy69EXNZyoLB9adrtI2KPwGw==",
+    "id": "rs_036eaf01bfb21929016acd2293bc3c87d2885ffb0370c881b6",
+    "summary": [],
+    "type": "reasoning"
+   },
+   {
+    "content": [
+     {
+      "annotations": [],
+      "logprobs": [],
+      "text": "The riddle describes a **zero-coupon bond**: it is bought below face value, pays no periodic coupons, and pays its face value at maturity.",
+      "type": "output_text"
+     }
+    ],
+    "id": "msg_036eaf01bfb21929016acd2293ee2c87d28e5e51711eee853a",
+    "phase": "final_answer",
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+   }
+  ],
+  "parallel_tool_calls": false,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": "bonus-coding-agent",
+  "prompt_cache_retention": "24h",
+  "reasoning": {
+   "context": "all_turns",
+   "effort": "medium",
+   "mode": "standard",
+   "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "store": false,
+  "temperature": 1.0,
+  "text": {
+   "format": {
+    "type": "text"
+   },
+   "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+   "image_gen": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "image_tokens": 0,
+     "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "image_tokens": 0,
+     "text_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "web_search": {
+    "num_requests": 0
+   }
+  },
+  "tools": [
+   {
+    "description": "Read the contents of a text file in the workspace. Use this to see what is inside a file before answering questions about it or editing it. Do not use it on directories.",
+    "name": "read_file",
+    "output_schema": null,
+    "parameters": {
+     "additionalProperties": false,
+     "properties": {
+      "path": {
+       "description": "Relative path of the file inside the workspace, for example 'bonds.csv'.",
+       "type": "string"
+      }
+     },
+     "required": [
+      "path"
+     ],
+     "type": "object"
+    },
+    "strict": true,
+    "type": "function"
+   },
+   {
+    "description": "List every file and folder under a directory in the workspace. Folders end with a slash. Use this to get your bearings before reading or editing.",
+    "name": "list_files",
+    "output_schema": null,
+    "parameters": {
+     "additionalProperties": false,
+     "properties": {
+      "path": {
+       "description": "Relative directory to list. Use '.' for the top of the workspace.",
+       "type": "string"
+      }
+     },
+     "required": [
+      "path"
+     ],
+     "type": "object"
+    },
+    "strict": true,
+    "type": "function"
+   },
+   {
+    "description": "Edit a text file by replacing old_str with new_str. old_str must appear exactly once in the file. To create a new file, pass a path that does not exist yet and set old_str to an empty string; new_str becomes the whole file.",
+    "name": "edit_file",
+    "output_schema": null,
+    "parameters": {
+     "additionalProperties": false,
+     "properties": {
+      "new_str": {
+       "description": "Text that replaces old_str.",
+       "type": "string"
+      },
+      "old_str": {
+       "description": "Exact text to replace. Must match once and only once. Empty string when creating a new file.",
+       "type": "string"
+      },
+      "path": {
+       "description": "Relative path of the file inside the workspace.",
+       "type": "string"
+      }
+     },
+     "required": [
+      "path",
+      "old_str",
+      "new_str"
+     ],
+     "type": "object"
+    },
+    "strict": true,
+    "type": "function"
+   }
+  ],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "usage": {
+   "input_tokens": 552,
+   "input_tokens_details": {
+    "cache_write_tokens": 0,
+    "cached_tokens": 0
+   },
+   "output_tokens": 64,
+   "output_tokens_details": {
+    "reasoning_tokens": 26
+   },
+   "total_tokens": 616
+  },
+  "user": null
+ }
+}

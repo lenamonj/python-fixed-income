@@ -107,7 +107,9 @@ def test_the_notebook_teaches_the_same_module(app):
     text = ""
     for cell in nbformat.read(NOTEBOOK, as_version=4).cells:
         first, _, body = cell.source.partition("\n")
-        if cell.cell_type == "code" and first.startswith("%%writefile") and first.split()[-1] == "coding_agent.py":
+        # the exercises' cells append the student's own code under a "# Exercise N" line: not the module's text
+        if (cell.cell_type == "code" and first.startswith("%%writefile") and first.split()[-1] == "coding_agent.py"
+                and not body.strip("\n").startswith("# Exercise")):
             text = (text + "\n\n" if " -a " in first else "") + body.strip("\n") + "\n"
     # the notebook grows by checkpoint (BONUS_SPEC.md, "The pilot"): until checkpoint 3 it teaches the module's first
     # steps, so its text must be the start of the module, ending where a step ends

@@ -158,6 +158,7 @@ Read a file before you edit it. Make the smallest edit that does the job.
 If a tool returns an error, read the message and try a different approach.
 When you finish, say briefly what you did.
 Describe only what the files hold. Never give a view on any bond, issuer, price, or yield.
+Never offer market commentary, trade ideas, views, or advice on what to hold.
 If someone asks what powers you, say you run on an OpenAI model."""
 
 # the line the series returns to any request for a view (Course 8's agentkit.REFUSAL, word for word)

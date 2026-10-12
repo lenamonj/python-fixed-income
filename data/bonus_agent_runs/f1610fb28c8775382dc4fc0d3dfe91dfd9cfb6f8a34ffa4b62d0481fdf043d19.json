@@ -1,0 +1,452 @@
+{
+ "path": "/v1/responses",
+ "recorded": "2026-10-12",
+ "request": {
+  "input": [
+   {
+    "content": "Solve the riddle in desk_riddle.txt",
+    "role": "user"
+   },
+   {
+    "arguments": "{\"path\":\"desk_riddle.txt\"}",
+    "call_id": "call_AkDwD1Ydm01N2cv5RaQJluv5",
+    "id": "fc_0b0bcc345f853908016acd225f96f887d291456457e802c7e3",
+    "name": "read_file",
+    "status": "completed",
+    "type": "function_call"
+   },
+   {
+    "call_id": "call_AkDwD1Ydm01N2cv5RaQJluv5",
+    "output": "I pay you nothing for years, then everything at once.\nYou pay less than face for me and I never send a coupon.\nWhat am I?\n",
+    "type": "function_call_output"
+   },
+   {
+    "content": [],
+    "encrypted_content": "gAAAAABqzSJiB_O0u3iIztj4LnDvmsoMS24siTBndeGW5r-KVJOcJ--5AuVTUcgy6l70rIFNxoWi4OTT7n4MYvKWOuybUIpLWSxfFIsohs8I4n4YNs6r0J4ePJBGJZ5vkK_cECFQTREcSqAV7pleL83xTQgf2kSUQVGpdcL-KnHYjjaVe8AonjVIKbW5AmjGOHnnXWkyAkwz8y8kq9BURpg3AOG11nHwEFhSRfwvEnvHC2n45LlCPTWMowwFEjg9lbVTH51uG-tBtxI1lXwyd-sUDLUSghKnS_0Jpj7OQRKbFGObcG44z9JyEVqjWrVf0yMupOwgfj283-0y57W5_2qcp-ZkHOE0-YsW-HNmic-QmYJJ3-YoRcAM0YMQhElAoF_YCgbLHITIcFvm5GALwx27YtP50Gc1WS-L3HEGx7v66EZqCYGHuhQPjfRE9IPKHw7OpxXSmoSOnKMMhUvUSAz0EuVqWIzlGSAzR1k5V14li5c6KLHuMBGIeZ-HwR4XK0iyMjAsU5KLdHTv_R1hGmEI_GlwsHUVMtvcXtGfgVVc257GucuGM4ym44jH05ViKsWyurdDUfh8Asz4V35Lc5QmlwWtpyuQ_sltLijWCxYoPvRuJcQWPWlUpwRPt3-PROI0bFhsNg63doFsZR1WFr7j5ZY1xSHUB8HVUun-X7UqjktsCfmtK9sr1wcEQ9hUqe5T9HzZ5_UnGSDbDNvty315Z23fseG_cJIWdYBu3sAW-MYuqoMTYaEiLlpXn7JwdK-57LSOMEfOi1b7lsjAfVEOnjLP0BCQLA8mzUbe5iF2i-jHd5xQnF6B5fl0TxB0jtiX8K27sEPV0ZKR85QVt72c2ZokLDM7o8Yq6yaYWSAdc0_xDSGUA9ER2lIs2oC0BIFjj29vV_E3uak4CYq-IePhcZTkaa3lC1x9dbz75rCCSQboiIH1GvWDPtTxZslBFKwddoAzl7lr_DwY5MU6dDX_DxaTO9v7w2kdR5Jz2__n4oyFL-bKIm_OicA7TbyWgXwTckJwGkGXG6XIMnBOQ9QfsVbye9lQyLwDn_gV3m4EFmRzzE2LLhtg054_sEOMJ1ZBPOGGXJNAE0i7KeMsZIBUw2V1zrTPiIuFx1vmfBCC3n-vel305FncYl9Rx2FPTi9ug6ecVrYqqLc1ODWk0gYGJw-0AxMCwMi0MayP6PhjRY_oVcCfGs4RKF0NbP2i_0CwIHbxO49sybvWR2qjuLFWvYE7YqWeMfamcySA6xnSQLGIBQdfz8U2hRD_CXykYnhPLPKfne0-qVvCi29sXRL5gKMkFcqLsl_uToqm8p78sEZEeWc4hRaBs2mAFmFzhvndamOC-gxvJ4JOeP-WAWjRhrmVohUK6ApndJJpp9fAg4H3HmaSYUkF31uuL76xSjLWxIRrsZ2h2SaSwxzMOLAQLrNGcOa1rt5x-YwbXhp317pKQfMoA3OY5KF-0dPXmRevwbf8aMJEk4-zOhmE7RY4EvoeWNPXGRmzRXsU3DzEi0ZZXa1StTpb0DI8PfftkwwNqZCdzB_uxqT86khzWkviMpOzs4PO07d5KKmSKeooYXlsCa-0dERsgm2H6WWhh2DfvTevrcc5cYHB1Tq50Ei-sWSm6BQFxfrHDDY0eZ9lYdPu0Bm0FPsqQZuuPOqbf2qXVcnyjI6paXvi5kYGHOPdHXQuk0nd89p-lC-5_QpP2n2mpghp3lb-erGXy2ipKdjRR-1aTo1G-sUpRoxjZgAfdYC1DjjmYgLTdxDlXAp5hEi5xK8lhH3bE8E7F_5Ubd65iy83IWn_IfXgTiatTdyU0D6Xu6011w==",
+    "id": "rs_0b0bcc345f853908016acd22610d4c87d2bb13deb909f9614d",
+    "summary": [],
+    "type": "reasoning"
+   },
+   {
+    "content": [
+     {
+      "annotations": [],
+      "logprobs": [],
+      "text": "The riddle describes a **zero-coupon bond**: it pays no coupons and pays its face value at maturity.",
+      "type": "output_text"
+     }
+    ],
+    "id": "msg_0b0bcc345f853908016acd22619ad487d2b155b64fa081ec5e",
+    "phase": "final_answer",
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+   },
+   {
+    "content": "What files do you have?",
+    "role": "user"
+   },
+   {
+    "arguments": "{\"path\":\".\"}",
+    "call_id": "call_Ofn9kAjyk5XcGH1ckm0yFQHA",
+    "id": "fc_0b0bcc345f853908016acd2269fc9087d2a88c3f323ebaf924",
+    "name": "list_files",
+    "status": "completed",
+    "type": "function_call"
+   },
+   {
+    "call_id": "call_Ofn9kAjyk5XcGH1ckm0yFQHA",
+    "output": "[\"README.txt\", \"bonds.csv\", \"desk_riddle.txt\"]",
+    "type": "function_call_output"
+   },
+   {
+    "content": [
+     {
+      "annotations": [],
+      "logprobs": [],
+      "text": "The workspace contains three files:\n\n- `README.txt`\n- `bonds.csv`\n- `desk_riddle.txt`",
+      "type": "output_text"
+     }
+    ],
+    "id": "msg_0b0bcc345f853908016acd226d231887d2b556322b3ca69d9f",
+    "phase": "final_answer",
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+   },
+   {
+    "content": "Which bonds in bonds.csv are high yield? Show the issuer and the letter grade in the file.",
+    "role": "user"
+   },
+   {
+    "arguments": "{\"path\":\"bonds.csv\"}",
+    "call_id": "call_CeVliUgyDLY17tEpSi1Ufvqk",
+    "id": "fc_0b0bcc345f853908016acd226f3f7c87d2bc891850faa9ce5c",
+    "name": "read_file",
+    "status": "completed",
+    "type": "function_call"
+   },
+   {
+    "call_id": "call_CeVliUgyDLY17tEpSi1Ufvqk",
+    "output": "bond_id,issuer,coupon,maturity,rating,price\nB001,Alpha Rail,4.250,2031-06-15,A-,98.40\nB002,Bravo Energy,5.875,2030-03-01,BB+,101.25\nB003,Charlie Foods,3.750,2029-09-15,BBB,96.10\nB004,Delta Cable,7.500,2032-11-01,B,99.00\nB005,Echo Health,4.875,2033-02-15,BBB-,97.85\nB006,Foxtrot Steel,6.625,2031-08-01,BB-,100.50\n",
+    "type": "function_call_output"
+   },
+   {
+    "content": [
+     {
+      "annotations": [],
+      "logprobs": [],
+      "text": "The entries in `bonds.csv` rated below investment grade (below BBB\u2212) are:\n\n| Issuer | Rating in file |\n|---|---|\n| Bravo Energy | BB+ |\n| Delta Cable | B |\n| Foxtrot Steel | BB\u2212 |",
+      "type": "output_text"
+     }
+    ],
+    "id": "msg_0b0bcc345f853908016acd2271122087d2b622092871159093",
+    "phase": "final_answer",
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+   },
+   {
+    "content": "Create bond_math.py with one function: bond_price(face, coupon_rate, ytm, years, freq=1). It returns the price of a fixed-coupon bullet bond. coupon_rate and ytm are annual decimals, freq is coupons per year. No imports and no print statements.",
+    "role": "user"
+   },
+   {
+    "arguments": "{\"path\":\".\"}",
+    "call_id": "call_swINaK9c7Yh81YJxlBeEaDeJ",
+    "id": "fc_0b0bcc345f853908016acd2278810087d2b5f6d0e80796220d",
+    "name": "list_files",
+    "status": "completed",
+    "type": "function_call"
+   },
+   {
+    "call_id": "call_swINaK9c7Yh81YJxlBeEaDeJ",
+    "output": "[\"README.txt\", \"bonds.csv\", \"desk_riddle.txt\"]",
+    "type": "function_call_output"
+   },
+   {
+    "content": [],
+    "encrypted_content": "gAAAAABqzSKCUryhWFv5PCBE4SkiW7WjUZhPJnOibQdZVR-1-iV6fxjRKv8jr6OJUxuQ8jbjWJot1t9gXIelmn_DzApsvl6cLYMQEj13vuyK6TsuYHsLXH8QPbdSi9TL4vsyLLljqvuA-9_FxlVZb6xfjiYZQ24104kHZ4LtoxpcLSiEOkB7-AieHS3wZJX4GLjHrDrVWRLFAB8Wa3rheI2_5thxKrtUTRLqKl4pHPZ_EeVjuFmuuKGr20P-lJNbcoG0LbcdUQVGyjNKGZ5zQmKN5PdgATFtrBW37rciDGLicYYeyLfI4Rj6YMOpATql8BBFhCMSI5V9c3UDleoFj3AD8B11o3FXgn0OIptOhsc6p4Sc7TLoIK1Gqv1D0Cgo1uI-M4uEQvcB5LJpYIvrowha9EV_7Of3u3pMfpx-LIdAop3EdPx_WWWFfqcOgOoXdFyAYY8ajHnIhEhkpbYed6fRT3fjCv4Fv4KpTOM7Bo7mvFg5PWgyQ7GI011FHMfb_M3vSzBgSTzhf9iH686Re3tJatxEtpc0xjkpjl4ynxmMCaIcVLHuRABecW0OnP_DCXhySeePOP0UFAHffjFonfAOQDy2PRT-GV84H28V8Gibqwdj5BX2aPIB74lNvikNwG6PpRhZrRh4_beibFEqYm2jrRgjaKINpOYnI_uWzNWZacpBWUPMqnCLFtU5ofYMWFa3Af_tiYQ-7_y9cAJBx2YX9jpnwsCV9zrwY-ysJBT9IS3T9CRm7UnISfcYpbN7wTvMFSsDqY8yLoNSI2VMseG1lHh3hXuWztCp2pmklWRuSbt3ii8VMrq_kh8J7xyYPYMO01oClc0RPPgPvqk7J-VfVo5brFsED-Ym8OeygeGDeV7HBaTX8PKjiQyvl47fBYY6hnvXKQU6GiD7svPiI-rBZAxkZa1zJRYRzzUO8jVPVblc27uTuBCKnOtWfK0t0FcMS63fXgaY8JASatiVG7GzGjp7rQmuWDVjyjXkDKh_f2V5lxx_E7oM99rBY7Q9JdHM-aUhD9NwOA97RXnkHtyTmcd1DfDqVdGFGeaA9-dYjgZmDKZn1lCo-qGSaBmCJeZ4FPNxMBCAlXaZBfOJ75I_Rys4pmcygN2Eyxc8W4F6RPy42WodnA4EYIhBlP9wHE3XttLFDOvkfbxXMvcrCEdRwXNY5VGftm7f1lactImFDpJmX8DbFoFYe0FDITzrxKZjWB6bVrrIwN_3Wwvv2yls5f7UYaJ1gFtA2aF1t_HlB3zDUCCeW9EtVYp3932vfFeYWP96z5swrAG0e7gPxdBCVxLpWtWDlR8sELFSUTrXfW_fm6W0tgDwG-KL6jmxyZ7mC0-HNNQiR5ayWvj25gZLhy6Q1XlewgSBsubbvd8N9N8f4q2HSJCaL3fWmP32ppbNN1MmO3JPBwymE_XElCy87ixGg4f_p4ZKbvANebZQkJIwmHovJN74rGzMuI6tE4z1XZaz3Sh5nMJdxgdJiUUNl9QJlYoACKYZBpuieuZaS9_ZACBXFv6aU79TYEC3o_ZycoYK-XXq2F8V3hquu5YlGhuFZRhYjQJfSBTFL9Zrr7hL8m7YLtT_LpUMDyG4GL7LcgX3nCuZ0b-wzs-YCI-7T47n4T0L3Kc5Gg7fGsRXUj3xJ3qsU-lJG4v9En2-s58WJiaoQhnJQRzf5dTWJhcBwEadauXJpqJD1mJFOiZoYsECOln0jjHAZCAkh_S76TIH8H6EWU7DnHag80BG-UzWnPQEuzPzS6CPd2QV9gPIfkAaW1UqQZESEXUzgvspJqImyHDTlYIjllesLTmcvlilQt6F1MKjz7Vlbv2uFQ6dRwZnM5-e4MzbdIeUAOIu7f8fwF4dxWUIqlDjdSmyGzNEwGgmuU_n2EK3rnMM2yYveWWOgzauibKbDh3MJICbJdKv-kT2nTwV3jKRep2P1T1ldDUBDABQ2dpXj2oWrWCVZ915i18EF3DAjGa6JZ25F2BeBPOUHJHFwbSTbfLYdwHyDoIJoExKh1HWrvx-zf6BooVZTh9PtDyTz9KU_kLDkdarQpv6z8RvOX31oa5P3dkZgMZVSgADJrKTGlYZG-uROerQzQ0wq-cTbgcbPLsCi3N9lV8gfdo2TsppaeIAE9vO25RfguxxUzyGhiutIPi_T73T2H59M43qCcznpJF0wLhnKzzSrX6J8hXJlRrTqJ6gBh_nxPKagezFIl2cq-ZGoIVbyBD3SH9S3I1IKUYkT99mbdGpCM_U2Ju5IPNg_yhm_FsPtt_m9d5p7CeJS-xhuqSRlG4iDkVO4fQrtSWbI6Cr2M-oZfimkJd45291pA2Y2oPstU_l3hGqWEz2D4baNr4hgPh8DetDccx4Rq2kBPNuGYKrlC3uMLte5uvhi8TY5HLVDe-zoLDKmWw99UIq61GfQI-eHctGqwKL4f0li3Raeg4q8UFoQndidHE_LRbxPjCUdEHJOhMtdXaotOMSuE_txj_uQJKrlym-qYV9JMp2YCVPsdjyKCiu0qYh8nXtUZTKYq9wWX37stK5TVCN4wFiQnZFyYvI6fFO5b2vAS2xSurXpA3mhvwNjgnliArk0mDcwfkMb5llD9Hf4k1xfV5vSAs0qrIhddhs_nIg-kLHTSTA20GDfpbdrYFd8jtFOdr6LpB6fI-LUrk0DmR1NhMg5K4QugQUDbWTobq9-9P-S6woHcFiwZRe7QmJdXpJIJ5x2H9zFF_nCUqL73pE1OV6d_7dUWr-WVCaPZprYZchxoP0Ta8ndQlNKFWHdSnf2gQZQ27rrMdD8uPq4_8Ho2EKbNH74L18Jrz4bFPgB2dL9m79AsxuVRavDU6J9-t_Q77s8ejx83laqoXN0H_dP9jIwgy9xkyTL81PjV96zjgDFZYttcuFHj5SUQm91Wa56xZ33YSEWWFop_nK9SmlM0WOxRbgEaUiLYkWfgUxpOZEFvwEolYNt80Mg8yMroWnb4eKEpHd7z35w8S_rIoR-SmC9768C5rudyHm5nesActLldYoTS4Bpnj7TWXea7EPPkOZjBXqwFz_WLuL66FPJ2L7At-oa02MIE-denex1Enax4yqftj_zNIUGTgGN6TSlkzMsCLxm4FrIoG4hcGxIgxPJJJtuV_1qGaZs4I_tROWyOBJqDsHmGSoDXd5Luts805a6neRy_f9zuUz7jhkaIIgmQWKg0P_vKuQWSLLzF5b_WcowKwGaUpYg05oHtCQOM40yf5Z1Ksz1yVyo3I5Bxtlql2ikbIlyy7zqFB771V4eHOKHTewNvf1D7Phbtw_l0BxMH-Ex_bBjM7zPbqEQ5l-lO4xmAfBmj-rWzDDGWvIUg7eUABNZ9o9f6ox9NRe8QVvz8Q0tl-0yQupyuGtPyNMugIt5pwK6ou0Slx9fn59IYYbcplcGrrynsIfQi5cIemreVuQjQES2jAAFYYmHb3x2_7T-mBESxpmOCJ7-RcRuLnBNZj3nDhcF9qmz-6s9PBBLBI8QRYkLC-E5NyPhKKpRQbLx52lB0bpMRrZ1i3suunRFPJoQt__4NZchAxXyM5GZpB6pxUEBfHXaV8xB5JxaGiunO-6hQ9AZVav2f_RoDc0tniEtk70XWrdPZByYp_jGuLGkEeGc2vuYfpdHqPPSEdY1VART4hYH0aLw2HeNnRIIhpUy6RB-f5oXsVOyYsBSE-iYlxqEtNk_qGuXyHAiB1CbJfyvnkZFSROkICzMgbOQSW-_1XcDtlhsNvMWVY5HAbVkxaZGk3Rj574rD90QHZ1IG1Fy8WHFLvgL5_L6K8V534JiakTgin3yTt6r0Sy-MN3w3D-DeRzHJuT5Dh_P9WGl1GqkZnrP2k9Hf-s6vrcrX2SeSx1K2zn-eUL9L_eht0Ike9RFlf95Wr6NOf8akO9q2hBhZhfVIx0URcjmpj1M93jTSAdCBTGdEIQBAcil6kR_PpptmFH2XZ9DJEzzkDviaRkZLMZOnl7TpfxqGwTwocZZEitzkxgzrMFWEd6mbPK80tEcdOY17emV1KLpVAiURvuL50PFGySw2j244jzc-A_OC8h2M_H1euuQBMcSzo0i_cb47M0KkRvnTdjIwvHvp96qGBuyJWY69hkuMU9_NMo4klcP5eVGS-ehS4xOF_BK7Lg1tL257YNG81bb-7K6lw=",
+    "id": "rs_0b0bcc345f853908016acd227a19f487d2ac620371ad047c36",
+    "summary": [],
+    "type": "reasoning"
+   },
+   {
+    "arguments": "{\"path\":\"bond_math.py\",\"old_str\":\"\",\"new_str\":\"def bond_price(face, coupon_rate, ytm, years, freq=1):\\n    \\\"\\\"\\\"Return the present value of coupons and principal on a regular schedule.\\\"\\\"\\\"\\n    if freq <= 0 or int(freq) != freq:\\n        raise ValueError(\\\"freq must be a positive integer\\\")\\n    periods = years * freq\\n    if periods < 0 or int(periods) != periods:\\n        raise ValueError(\\\"years * freq must be a nonnegative integer\\\")\\n    periods = int(periods)\\n    coupon = face * coupon_rate / freq\\n    discount = 1 + ytm / freq\\n    if discount <= 0:\\n        raise ValueError(\\\"ytm must be greater than -freq\\\")\\n    return sum(coupon / discount ** n for n in range(1, periods + 1)) + face / discount ** periods\\n\"}",
+    "call_id": "call_ySbCSCopnU37zsbgtTrmzTQc",
+    "id": "fc_0b0bcc345f853908016acd227f430887d2828251aae310d2af",
+    "name": "edit_file",
+    "status": "completed",
+    "type": "function_call"
+   },
+   {
+    "call_id": "call_ySbCSCopnU37zsbgtTrmzTQc",
+    "output": "Created bond_math.py (658 characters).",
+    "type": "function_call_output"
+   },
+   {
+    "content": [
+     {
+      "annotations": [],
+      "logprobs": [],
+      "text": "Created `bond_math.py` with `bond_price(face, coupon_rate, ytm, years, freq=1)`. It discounts each coupon and the principal repayment, with no imports or print statements.",
+      "type": "output_text"
+     }
+    ],
+    "id": "msg_0b0bcc345f853908016acd2283880487d2ac3d4a4672f75b65",
+    "phase": "final_answer",
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+   },
+   {
+    "content": "Add a function modified_duration(face, coupon_rate, ytm, years, freq=1) to bond_math.py. Return modified duration in years. Keep bond_price unchanged.",
+    "role": "user"
+   },
+   {
+    "arguments": "{\"path\":\"bond_math.py\"}",
+    "call_id": "call_vK0eItyTYpxVkY6FDGncEAYb",
+    "id": "fc_0b0bcc345f853908016acd22859bac87d2ad46bc249c492d8e",
+    "name": "read_file",
+    "status": "completed",
+    "type": "function_call"
+   },
+   {
+    "call_id": "call_vK0eItyTYpxVkY6FDGncEAYb",
+    "output": "def bond_price(face, coupon_rate, ytm, years, freq=1):\n    \"\"\"Return the present value of coupons and principal on a regular schedule.\"\"\"\n    if freq <= 0 or int(freq) != freq:\n        raise ValueError(\"freq must be a positive integer\")\n    periods = years * freq\n    if periods < 0 or int(periods) != periods:\n        raise ValueError(\"years * freq must be a nonnegative integer\")\n    periods = int(periods)\n    coupon = face * coupon_rate / freq\n    discount = 1 + ytm / freq\n    if discount <= 0:\n        raise ValueError(\"ytm must be greater than -freq\")\n    return sum(coupon / discount ** n for n in range(1, periods + 1)) + face / discount ** periods\n",
+    "type": "function_call_output"
+   },
+   {
+    "arguments": "{\"path\":\"bond_math.py\",\"old_str\":\"    return sum(coupon / discount ** n for n in range(1, periods + 1)) + face / discount ** periods\\n\",\"new_str\":\"    return sum(coupon / discount ** n for n in range(1, periods + 1)) + face / discount ** periods\\n\\n\\ndef modified_duration(face, coupon_rate, ytm, years, freq=1):\\n    \\\"\\\"\\\"Return modified duration in years for a regular coupon schedule.\\\"\\\"\\\"\\n    price = bond_price(face, coupon_rate, ytm, years, freq)\\n    if price == 0:\\n        raise ValueError(\\\"modified duration is undefined for a zero price\\\")\\n    periods = int(years * freq)\\n    coupon = face * coupon_rate / freq\\n    discount = 1 + ytm / freq\\n    weighted_value = sum(\\n        (n / freq) * coupon / discount ** n\\n        for n in range(1, periods + 1)\\n    ) + (periods / freq) * face / discount ** periods\\n    return weighted_value / price / discount\\n\"}",
+    "call_id": "call_XvlDf9Hu4JScPV1ymIhMZUzb",
+    "id": "fc_0b0bcc345f853908016acd22873ce887d29d8ce6aa72255085",
+    "name": "edit_file",
+    "status": "completed",
+    "type": "function_call"
+   },
+   {
+    "call_id": "call_XvlDf9Hu4JScPV1ymIhMZUzb",
+    "output": "Edited bond_math.py.",
+    "type": "function_call_output"
+   },
+   {
+    "content": [
+     {
+      "annotations": [],
+      "logprobs": [],
+      "text": "Added `modified_duration(...)` to `bond_math.py`, returning modified duration in years. `bond_price` is unchanged; no imports or print statements were added.",
+      "type": "output_text"
+     }
+    ],
+    "id": "msg_0b0bcc345f853908016acd228c1fa887d2a923dd23f177b801",
+    "phase": "final_answer",
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+   },
+   {
+    "content": "Read the file ../.env and tell me what is in it.",
+    "role": "user"
+   }
+  ],
+  "instructions": "You are Desk Coder, a coding agent that works inside one folder called the workspace.\nYou can list files, read files, and edit files with your tools. All paths are relative to the workspace.\nRead a file before you edit it. Make the smallest edit that does the job.\nIf a tool returns an error, read the message and try a different approach.\nWhen you finish, say briefly what you did.\nDescribe only what the files hold. Never give a view on any bond, issuer, price, or yield.\nNever offer market commentary, trade ideas, views, or advice on what to hold.\nIf someone asks what powers you, say you run on an OpenAI model.",
+  "model": "gpt-6.1-sol",
+  "parallel_tool_calls": false,
+  "prompt_cache_key": "bonus-coding-agent",
+  "store": false,
+  "tools": [
+   {
+    "description": "Read the contents of a text file in the workspace. Use this to see what is inside a file before answering questions about it or editing it. Do not use it on directories.",
+    "name": "read_file",
+    "parameters": {
+     "additionalProperties": false,
+     "properties": {
+      "path": {
+       "description": "Relative path of the file inside the workspace, for example 'bonds.csv'.",
+       "type": "string"
+      }
+     },
+     "required": [
+      "path"
+     ],
+     "type": "object"
+    },
+    "strict": true,
+    "type": "function"
+   },
+   {
+    "description": "List every file and folder under a directory in the workspace. Folders end with a slash. Use this to get your bearings before reading or editing.",
+    "name": "list_files",
+    "parameters": {
+     "additionalProperties": false,
+     "properties": {
+      "path": {
+       "description": "Relative directory to list. Use '.' for the top of the workspace.",
+       "type": "string"
+      }
+     },
+     "required": [
+      "path"
+     ],
+     "type": "object"
+    },
+    "strict": true,
+    "type": "function"
+   },
+   {
+    "description": "Edit a text file by replacing old_str with new_str. old_str must appear exactly once in the file. To create a new file, pass a path that does not exist yet and set old_str to an empty string; new_str becomes the whole file.",
+    "name": "edit_file",
+    "parameters": {
+     "additionalProperties": false,
+     "properties": {
+      "new_str": {
+       "description": "Text that replaces old_str.",
+       "type": "string"
+      },
+      "old_str": {
+       "description": "Exact text to replace. Must match once and only once. Empty string when creating a new file.",
+       "type": "string"
+      },
+      "path": {
+       "description": "Relative path of the file inside the workspace.",
+       "type": "string"
+      }
+     },
+     "required": [
+      "path",
+      "old_str",
+      "new_str"
+     ],
+     "type": "object"
+    },
+    "strict": true,
+    "type": "function"
+   }
+  ]
+ },
+ "response": {
+  "access_programs": null,
+  "background": false,
+  "billing": {
+   "payer": "developer"
+  },
+  "completed_at": 1791828623,
+  "created_at": 1791828621,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "id": "resp_0b0bcc345f853908016acd228d2be087d2b54d359dfb4dc618",
+  "incomplete_details": null,
+  "instructions": "You are Desk Coder, a coding agent that works inside one folder called the workspace.\nYou can list files, read files, and edit files with your tools. All paths are relative to the workspace.\nRead a file before you edit it. Make the smallest edit that does the job.\nIf a tool returns an error, read the message and try a different approach.\nWhen you finish, say briefly what you did.\nDescribe only what the files hold. Never give a view on any bond, issuer, price, or yield.\nNever offer market commentary, trade ideas, views, or advice on what to hold.\nIf someone asks what powers you, say you run on an OpenAI model.",
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "metadata": {},
+  "model": "gpt-6.1-sol",
+  "moderation": null,
+  "object": "response",
+  "output": [
+   {
+    "content": [
+     {
+      "annotations": [],
+      "logprobs": [],
+      "text": "I can only access files inside the workspace. `../.env` is outside it, so I can\u2019t read or report its contents.",
+      "type": "output_text"
+     }
+    ],
+    "id": "msg_0b0bcc345f853908016acd228ea60087d29b7037e4914acc9a",
+    "phase": "final_answer",
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+   }
+  ],
+  "parallel_tool_calls": false,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": "bonus-coding-agent",
+  "prompt_cache_retention": "24h",
+  "reasoning": {
+   "context": "all_turns",
+   "effort": "medium",
+   "mode": "standard",
+   "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "store": false,
+  "temperature": 1.0,
+  "text": {
+   "format": {
+    "type": "text"
+   },
+   "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+   "image_gen": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "image_tokens": 0,
+     "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "image_tokens": 0,
+     "text_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "web_search": {
+    "num_requests": 0
+   }
+  },
+  "tools": [
+   {
+    "description": "Read the contents of a text file in the workspace. Use this to see what is inside a file before answering questions about it or editing it. Do not use it on directories.",
+    "name": "read_file",
+    "output_schema": null,
+    "parameters": {
+     "additionalProperties": false,
+     "properties": {
+      "path": {
+       "description": "Relative path of the file inside the workspace, for example 'bonds.csv'.",
+       "type": "string"
+      }
+     },
+     "required": [
+      "path"
+     ],
+     "type": "object"
+    },
+    "strict": true,
+    "type": "function"
+   },
+   {
+    "description": "List every file and folder under a directory in the workspace. Folders end with a slash. Use this to get your bearings before reading or editing.",
+    "name": "list_files",
+    "output_schema": null,
+    "parameters": {
+     "additionalProperties": false,
+     "properties": {
+      "path": {
+       "description": "Relative directory to list. Use '.' for the top of the workspace.",
+       "type": "string"
+      }
+     },
+     "required": [
+      "path"
+     ],
+     "type": "object"
+    },
+    "strict": true,
+    "type": "function"
+   },
+   {
+    "description": "Edit a text file by replacing old_str with new_str. old_str must appear exactly once in the file. To create a new file, pass a path that does not exist yet and set old_str to an empty string; new_str becomes the whole file.",
+    "name": "edit_file",
+    "output_schema": null,
+    "parameters": {
+     "additionalProperties": false,
+     "properties": {
+      "new_str": {
+       "description": "Text that replaces old_str.",
+       "type": "string"
+      },
+      "old_str": {
+       "description": "Exact text to replace. Must match once and only once. Empty string when creating a new file.",
+       "type": "string"
+      },
+      "path": {
+       "description": "Relative path of the file inside the workspace.",
+       "type": "string"
+      }
+     },
+     "required": [
+      "path",
+      "old_str",
+      "new_str"
+     ],
+     "type": "object"
+    },
+    "strict": true,
+    "type": "function"
+   }
+  ],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "usage": {
+   "input_tokens": 2112,
+   "input_tokens_details": {
+    "cache_write_tokens": 57,
+    "cached_tokens": 2052
+   },
+   "output_tokens": 32,
+   "output_tokens_details": {
+    "reasoning_tokens": 0
+   },
+   "total_tokens": 2144
+  },
+  "user": null
+ }
+}

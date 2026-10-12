@@ -1,0 +1,114 @@
+{
+ "path": "/v1/responses",
+ "recorded": "2026-10-12",
+ "request": {
+  "input": "What is my name and what do I trade?",
+  "instructions": "Never offer market commentary, trade ideas, views, or advice on what to hold.",
+  "model": "gpt-6.1-sol",
+  "parallel_tool_calls": false,
+  "prompt_cache_key": "bonus-coding-agent",
+  "store": false
+ },
+ "response": {
+  "access_programs": null,
+  "background": false,
+  "billing": {
+   "payer": "developer"
+  },
+  "completed_at": 1791828562,
+  "created_at": 1791828558,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "id": "resp_09897b71774c7dc1016acd224ef19c87d285d1a4d12d6c92f7",
+  "incomplete_details": null,
+  "instructions": "Never offer market commentary, trade ideas, views, or advice on what to hold.",
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "metadata": {},
+  "model": "gpt-6.1-sol",
+  "moderation": null,
+  "object": "response",
+  "output": [
+   {
+    "content": [],
+    "encrypted_content": "gAAAAABqzSJSpifwhnzC8Ab19qV8Pt0LMPPJhaS7Vn8LEn_nE-dgTu4Ft-YN1eYW5DGVyF0LUEvfQEFC4jj16YY6pi0lNggY40lXR2OJmX3glEzwNhEt9RDavXwddHTh06Q5QdHFMQL5J7yhizI__oMH96KhTYPKVTwB6RTy9G2AxgNaamgiFwy0xnqxAjCprw_JirUqW1Ls7eUK-B35FZxjZrTanVWaEq9KlBIwmhCbtr5-lwql5iow-UC0mopfPem9c6lFnTIEwp0wAbZHv9NvP_deq-8bVsxsu7AQMMf9v9hiysfeWG-JalEl8kGzaLpxCUbsVem23YPfaAACXHeaeMM2ch-VbPh5hAyo_ipoI1PvdJtJahZlc4mfqw6ApPGDfpe2rerW8GDWKkCxpPFtJJQ6Shgbt2QWkEAonP5-251U2HM7KO1x-Sndv9Kog3WTesB3Hlf-jB3Ox-GCb_d1seAjWEIrCbdi3_N4DSnty3eOaV1-cOi78oU8evg6tgApeiss58rNx9V0v_atXIONOCVp8DQpRjaQsGXg7BOJ2hbEL4RpFKZSPD-k9ulEjTSId-2aoFtBvWV_FmcWCdEeXM4CObGApaNFzDXAG37xv-ktcp11RVuMdPJ_ZP0LIbrWstFBJG6NqulbogCsLfBPnmYMNn80hGbiNw8uKiGW3jwSyGZ3g-xExgoqYT90HbpXR5oNp4nxmEejDJq0DyicbRD8I61qmvzy1Zyu9sZZiYSxIf-gHis-Sopcjd2Jbn-KhS4VR9_cUlrXmoKJ2aLqb2vKwXg1uyb-rpEWG6ZyVdxauWTU_LHMYFqNUDk585WpwDUiNT30OQdVyXKV1-vY-B8C5JFxiANvrsVhRzLZ80ebjsOA3M0RhzQpaDVP7iZWjU42YVdZ4Q6Qt7ZH36jd_0PSJpOFH5x07hNDDIYWUaG55EIyMJpF8H-CIK73eYB64jtnLwy8mNHCHmvowG2V3b-mQ_d4byJSaWcZc5a229kSL3B7p5UMHUZTsTexPxmiJ0kXLP1_ACOxD7CVS2IbV62DsbM0oGG0FknJk2aQlC6_3FivUdWk8q2TBpFaE_86VLmTlp2Z9mrBvpTEY4E1cu4Sw8c0XSKIkIrmieCXd8GCuDJBiY4H6nXJc0fgzLP4C16kN7mNH-WaVl_qjcdoMwQlBnbFWnQ_TGOtyf4qwb1h9hCmjz5jlSWU0lBbJkN6UwSP9Vlv7jwfR7B11LjIEZF5mSBtI9FkX0C8BL5OgrzM37eqB8EN0B-Vuvgs3VClbTEVCya4RDqBYPuqd7_xWwrilcHyEYpDxC3eUrLXLP4aHrl5ZR1Ynbr9W0NgjUjbM4nmn2FAgmD29Kr7QfGcX8gmhG5rcX57gVO5Sif6GVrv0C7ZEUpVWN0Wu2DzCUuELmKawF3g0vG4dJxrbMbk8Od6gr2Ji813NvO9hD8fTxdnMyoLh2qob7TpLXQX1fn21yuB_nQRvzYfLCuDUW5R2E9SDDh_O6XKLkwedFh5yAE-qAXZkywr4epkQcn_PcWg6xamdldcWbjsJOydh4iD2MDsLxNNS_PI2ESvWiEmmLOv1WjraaU99DhK-YMXQVcVx1UbPMfPvNmLJYzHFYmb8aeMkv_SFlni4tvRgjlMCh8-ZNscXFIbPjQiyuR5A5TWfOCIcYdIx7G9qBS4MpcRJxDzyhC2u4tME-Y5JNfGvL76c0etqa6UxCNaFvIDpWziTPRgpqQ-UfVUEnQ2cynREe1KJ6v0uZtdwHmL7YFxdwowSrSxUSThqMVHUs9EHaW3K_30rW57GFvTZio8Y7AlFhcbo4ml-bGyWlNf6cXE3gt-ySvF1tKGmFIe6ciTFMQD2OCMeGLO2LBGkHf4jiNQr1Bcnp_oVOpgg3MnhDht4UvUY8bXOcv_7sEJS7k6oM_xJW10mINzaSSw1pmCqs7CPNwtTTI0XVXELveEKIcoNAIdX3jbOcc=",
+    "id": "rs_09897b71774c7dc1016acd2250c15087d2930d306bbdaed1c5",
+    "summary": [],
+    "type": "reasoning"
+   },
+   {
+    "content": [
+     {
+      "annotations": [],
+      "logprobs": [],
+      "text": "I don\u2019t know your name or what you trade\u2014you haven\u2019t shared that information in this conversation.",
+      "type": "output_text"
+     }
+    ],
+    "id": "msg_09897b71774c7dc1016acd2251af9c87d2b0d6f0dd76724876",
+    "phase": "final_answer",
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+   }
+  ],
+  "parallel_tool_calls": false,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": "bonus-coding-agent",
+  "prompt_cache_retention": "24h",
+  "reasoning": {
+   "context": "all_turns",
+   "effort": "medium",
+   "mode": "standard",
+   "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "store": false,
+  "temperature": 1.0,
+  "text": {
+   "format": {
+    "type": "text"
+   },
+   "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+   "image_gen": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+     "image_tokens": 0,
+     "text_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+     "image_tokens": 0,
+     "text_tokens": 0
+    },
+    "total_tokens": 0
+   },
+   "web_search": {
+    "num_requests": 0
+   }
+  },
+  "tools": [],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "usage": {
+   "input_tokens": 37,
+   "input_tokens_details": {
+    "cache_write_tokens": 0,
+    "cached_tokens": 0
+   },
+   "output_tokens": 65,
+   "output_tokens_details": {
+    "reasoning_tokens": 39
+   },
+   "total_tokens": 102
+  },
+  "user": null
+ }
+}
