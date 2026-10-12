@@ -189,7 +189,7 @@ Every recorded run reads committed files only: no tool reads the clock, every qu
 
 ## What comes next
 
-Later courses build on the `bondmath`, `marketdata`, `mlkit`, `ensemblekit`, `netkit`, `textkit`, and `agentkit` you wrote in Courses 2 to 8. Course 9, Deployment, is planned next, and a bonus course, Build Your Own Coding Agent, closes the series. Course 9 deploys an app to Hugging Face, which hosts free apps only for accounts older than 30 days: create your free account at huggingface.co now, so it qualifies by the time you reach that lesson.
+Later courses build on the `bondmath`, `marketdata`, `mlkit`, `ensemblekit`, `netkit`, `textkit`, and `agentkit` you wrote in Courses 2 to 8. [Course 9 is Deployment](../course9_deployment/README.md): three weeks from your first remote to the credit desk's brief at a public address, with CI on every change, no key on the server, and every request for a view refused. The Bonus course, Build Your Own Coding Agent, closes the series. Course 9 deploys an app to Hugging Face, which hosts free apps only for accounts older than 30 days: create your free account at huggingface.co now, so it qualifies by the time you reach that lesson.
 
 ---
 
