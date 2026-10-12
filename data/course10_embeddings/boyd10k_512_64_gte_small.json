@@ -1,0 +1,18 @@
+{
+ "chunk_text_sha256": "682fe12cd0c80dbc165b00ade25158e04d1f79351c7abdc5ebc4f2b987c80209",
+ "chunker": {
+  "overlap": 64,
+  "size": 512
+ },
+ "chunks": 1158,
+ "documents": [
+  "boyd10k"
+ ],
+ "embed": "ragkit.embed_chunks (textkit.embed, batch 64, normalize_embeddings=True), one thread",
+ "matrix_sha256": "5084f30525ff8e84204653ad06ade8fc4675510e5bd7fd71c0a39302eb39a102",
+ "model": {
+  "id": "thenlper/gte-small",
+  "key": "gte_small",
+  "revision": "17e1f347d17fe144873b1201da91788898c639cd"
+ }
+}

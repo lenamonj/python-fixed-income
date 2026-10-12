@@ -1,0 +1,18 @@
+{
+ "chunk_text_sha256": "a5dfe5b27c251efdf4bf611ce5cc7425dd4293693b559a583ef71aafb314b925",
+ "chunker": {
+  "overlap": 128,
+  "size": 1024
+ },
+ "chunks": 520,
+ "documents": [
+  "boyd10k"
+ ],
+ "embed": "ragkit.embed_chunks (textkit.embed, batch 64, normalize_embeddings=True), one thread",
+ "matrix_sha256": "e8d5262915fce22a39f9725a35bddb3129757a0e584badd93b5acab19dc7e24f",
+ "model": {
+  "id": "sentence-transformers/all-MiniLM-L6-v2",
+  "key": "minilm",
+  "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+ }
+}

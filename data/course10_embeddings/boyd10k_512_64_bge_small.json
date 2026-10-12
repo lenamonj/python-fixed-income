@@ -1,0 +1,18 @@
+{
+ "chunk_text_sha256": "682fe12cd0c80dbc165b00ade25158e04d1f79351c7abdc5ebc4f2b987c80209",
+ "chunker": {
+  "overlap": 64,
+  "size": 512
+ },
+ "chunks": 1158,
+ "documents": [
+  "boyd10k"
+ ],
+ "embed": "ragkit.embed_chunks (textkit.embed, batch 64, normalize_embeddings=True), one thread",
+ "matrix_sha256": "24d93241f6ea505d099d5c38f2b990221ce2aeea250f4bac8ff2b9bc36c5e452",
+ "model": {
+  "id": "BAAI/bge-small-en-v1.5",
+  "key": "bge_small",
+  "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a"
+ }
+}

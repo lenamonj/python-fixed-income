@@ -12,8 +12,9 @@ Run with: python -m pytest
   10-K row's item among the items of its page; every number of an answer key inside its quotes; not_in_corpus and
   adversarial rows with no page and no quote; no question outside the adversarial rows holding a word of the prompt
   scan.
-- The committed embeddings (data/course10_embeddings/), when present: one unit-length float32 row per chunk, and the
-  sidecar's chunk-text hash equal to the reference recursive_split's chunks today.
+- The committed embeddings (data/course10_embeddings/, tools/make_course10_embeddings.py): the planned files, one
+  unit-length float32 row per chunk, the matrix's hash as recorded, and the sidecar's chunk-text hash equal to the
+  reference ragkit's chunks of the same documents today.
 - The recorded runs (data/course10_rag_runs/dayNN/), when present: Course 8's checks (the four fields, no header or
   key field, no sk- or Bearer string).
 - The human labels (data/course10_human_labels.csv), when present: every answer_key names a saved run file, labels
@@ -168,12 +169,18 @@ def test_embeddings(ragkit):
     files = sorted(EMBEDDINGS.glob("*.npy")) if EMBEDDINGS.is_dir() else []
     if not files:
         pytest.skip("no committed embeddings yet")
+    import make_course10_embeddings as maker
+    sets = maker.chunk_sets(ragkit)
+    assert {f"{name}_{model}" for name, models in maker.PLAN.items() for model in models} == {p.stem for p in files}
     for path in files:
         sidecar = json.loads(path.with_suffix(".json").read_text(encoding="utf-8"))
         matrix = np.load(path)
-        assert matrix.dtype == np.float32 and len(matrix) == sidecar["chunks"], path.name
+        chunks, _ = sets[path.stem.rsplit("_", 2)[0] if path.stem.endswith("_small") else path.stem.rsplit("_", 1)[0]]
+        assert matrix.dtype == np.float32 and len(matrix) == sidecar["chunks"] == len(chunks), path.name
         assert np.allclose(np.linalg.norm(matrix, axis=1), 1.0, atol=1e-6), path.name
         assert sidecar["model"]["revision"] == ragkit.EMBEDDERS[sidecar["model"]["key"]]["revision"], path.name
+        assert sidecar["chunk_text_sha256"] == ragkit._text_hash(chunks["text"]), path.name
+        assert sidecar["matrix_sha256"] == hashlib.sha256(matrix.tobytes()).hexdigest(), path.name
 
 
 def test_recorded_runs():
