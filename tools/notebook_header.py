@@ -42,7 +42,7 @@ COURSES = {
     4: ("COURSE 4 · MACHINE LEARNING", "Course 4: Machine Learning", "course4_"),
     5: ("COURSE 5 · ADVANCED MACHINE LEARNING", "Course 5: Advanced Machine Learning", "course5_"),
     6: ("COURSE 6 · NEURAL NETWORKS", "Course 6: Neural Networks", "course6_"),
-    7: ("COURSE 7 · NLP AND LLMS", "Course 7: NLP and LLMs", "course7_"),
+    7: ("COURSE 7 · NLP, RAG, AND LLMS", "Course 7: NLP, RAG, and LLMs", "course7_"),
     8: ("COURSE 8 · IMPLEMENTING AGENTIC AI", "Course 8: Implementing Agentic AI", "course8_"),
     9: ("COURSE 9 \u00b7 DEPLOYMENT", "Course 9: Deployment", "course9_"),
     "bonus": ("BONUS \u00b7 BUILD YOUR OWN CODING AGENT", "Bonus course: Build Your Own Coding Agent", "bonus_"),
