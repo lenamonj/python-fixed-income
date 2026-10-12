@@ -1,0 +1,5 @@
+recorded: 2026-10-12
+command: git remote -v
+masked: account names, URLs, ids
+origin	https://github.com/student/python-fixed-income.git (fetch)
+origin	https://github.com/student/python-fixed-income.git (push)
