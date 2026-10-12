@@ -154,9 +154,10 @@ The table you build describes what one public document says. It is not a credit 
 | pypdf and pypdfium2 | A PDF's text layer, and a page rendered as an image | Week 3, Day 3 |
 | pytest and Git | Testing `textkit.py` every day, and keeping each result and extracted value beside its code | Week 1, Day 1 |
 | pandas, matplotlib, and openpyxl | Tables, charts, and workbooks for Excel | Week 1, Day 1 |
+| jinja2 | The HTML of the formatted comparison tables (pandas' Styler), with Course 4's chart helpers `plotkit.py` | Week 1, Day 1 |
 | TensorFlow, Keras, XGBoost, LightGBM, and the rest of Course 6's pins | Not used; kept so one environment runs Courses 4 to 7 | |
 
-Exact versions are pinned in [`requirements.txt`](requirements.txt): torch 2.14.1, transformers 5.19.0, sentence-transformers 6.1.0, huggingface-hub 1.33.0, openai 3.26.0, pydantic 2.13.5, beautifulsoup4 4.15.0, pypdf 6.19.0, and pypdfium2 5.14.0 on top of Course 6's pins, among them numpy 2.5.3, pandas 3.0.6, scikit-learn 1.9.1, and pytest 9.1.1. The two Hugging Face models are loaded at pinned revisions, so a later upload to their pages cannot change a notebook's numbers. No framework and no vector database: retrieval over one indenture is a matrix product in numpy, and day 14 says why.
+Exact versions are pinned in [`requirements.txt`](requirements.txt): torch 2.14.1, transformers 5.19.0, sentence-transformers 6.1.0, huggingface-hub 1.33.0, openai 3.26.0, pydantic 2.13.5, beautifulsoup4 4.15.0, pypdf 6.19.0, and pypdfium2 5.14.0 on top of Course 6's pins, among them numpy 2.5.3, pandas 3.0.6, scikit-learn 1.9.1, pytest 9.1.1, and jinja2 3.1.6. The two Hugging Face models are loaded at pinned revisions, so a later upload to their pages cannot change a notebook's numbers. No framework and no vector database: retrieval over one indenture is a matrix product in numpy, and day 14 says why.
 
 | Data | Kind | Used in |
 |:---|:---|:---|
