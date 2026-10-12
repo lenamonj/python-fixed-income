@@ -1,0 +1,13 @@
+recorded: 2026-10-12
+command: python send_requests.py
+masked: account names, URLs, ids
+GET  /health  status 200
+POST /price   status 200
+POST /accrued status 200
+POST /dv01    status 200
+POST /yield   status 200
+POST /dv01    status 200
+POST /dv01    status 422
+GET  /status  status 404
+POST /price   status 200
+GET  /health  status 200

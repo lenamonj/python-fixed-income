@@ -1,0 +1,12 @@
+recorded: 2026-10-12
+command: vercel logs --project pfi-bond-service --since 30m --status-code 4xx
+masked: account names, URLs, ids
+Vercel CLI 59.10.0 (Node.js 22.18.0)
+Fetching project "pfi-bond-service"
+Fetching logs...
+TIME         HOST                         LEVEL                  
+12:16:31.38  student.vercel.app  info   ? GET /status   
+
+12:16:31.15  student.vercel.app  info   ? POST /dv01    
+
+Fetched 2 logs for student/pfi-bond-service
