@@ -27,12 +27,10 @@ def draw(badge_fill: str, badge_text: str, curve: str, name_fill: str) -> Image.
     for end in (line[0], line[-1]):
         canvas.ellipse((end[0] - 4, end[1] - 4, end[0] + 4, end[1] + 4), fill=curve)
 
-    # Two lines, centred on one axis, the block centred on the badge's middle (y = 165); Jeff, 2026-10-12
+    # Two lines, left-aligned beside the badge, the block centred on the badge's middle (y = 165); Jeff, 2026-10-12
     font = serif(110, 600)
-    lines = ("Python for", "Fixed Income")
-    axis = 350 + max(canvas.textlength(text, font=font) for text in lines) / 2
-    canvas.text((axis, 140), lines[0], font=font, fill=name_fill, anchor="ms")
-    canvas.text((axis, 260), lines[1], font=font, fill=name_fill, anchor="ms")
+    canvas.text((350, 140), "Python for", font=font, fill=name_fill, anchor="ls")
+    canvas.text((350, 260), "Fixed Income", font=font, fill=name_fill, anchor="ls")
     return image
 
 
