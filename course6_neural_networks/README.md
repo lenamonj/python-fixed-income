@@ -66,7 +66,7 @@ New-Item -ItemType Directory -Force "$HOME\projects\my_bondmath" | Out-Null
 
 Each notebook works in a fresh work folder in your temp folder, prints its name, and writes nothing into the course repo. Each day's "Bring It Home" section shows the PowerShell steps that move the day's functions and tests into `my_bondmath`, run the tests, and commit.
 
-Each day's folder holds three files with the same name: the notebook, a short overview PDF to read first, and a solutions notebook. [How a day works](../README.md#how-a-day-works) explains the pattern. As in Courses 2 to 5, every notebook ends in the same order: Excel side by side, save the day with Git, bring it home, then the exercises, with the AI check last. Git keeps the experiment log again: each network's results are committed beside its code.
+Each day's folder holds three files with the same name: the notebook, a short overview PDF to read first, and a solutions notebook. [How a day works](../README.md#how-a-day-works) explains the pattern. As in Courses 2 to 5, every notebook ends in the same order: Excel side by side, save the day with Git, bring it home, then the exercises, with the AI check last. Git keeps the experiment log again: each network's results are committed beside its code. Every model is shown, not only printed: a classifier's confusion matrices as heatmaps for each set of rows the day opens (fit and stopping rows, validation rows on the card file, out-of-fold rows on the bankruptcy files, never a closed test row), its ROC and precision-recall curves beside the other models' with the chosen threshold marked, every fit's loss curves on the fit and stopping rows with the early-stopping epoch marked, a regression's fitted-against-actual and residual plots in bp, starting weights as histograms and gradient norms by layer as bars, and every comparison of models, settings, folds, or seeds as a chart and a formatted table with the best value in each column marked.
 
 ## The three weeks
 
@@ -136,7 +136,8 @@ The description you write is about a historical, anonymised dataset. It is not a
 | LightGBM | The boosting model every network is compared with | Week 1, Day 1 |
 | pytest and Git | Testing `netkit.py` every day, and keeping each network's results beside its code | Week 1, Day 1 |
 | pandas and matplotlib | Tables, loss curves, and charts of every dataset | Week 1, Day 1 |
-| jinja2 | The HTML of the formatted comparison tables (pandas' Styler), with the series' chart helpers `plotkit.py` from Course 4 | Week 1, Day 1 |
+| `plotkit.py` | Course 4's helper file, which every notebook writes into its work folder unchanged: the course's charts in matplotlib (confusion heatmaps, ROC and precision-recall curves, loss curves, residual plots, bars) and formatted comparison tables with pandas' Styler. You read it and use it; you do not write it, and it is not part of `netkit.py` | Week 1, Day 1 |
+| jinja2 | The HTML of the formatted comparison tables (pandas' Styler, through `plotkit.py`) | Week 1, Day 1 |
 | openpyxl | Writing results workbooks for Excel | Week 1, Day 5 |
 | statsmodels and scipy | Not used directly; Course 4's `mlkit.py` imports them | Week 1, Day 1 |
 | XGBoost, imbalanced-learn, SHAP, ipywidgets | Not used; kept from Course 5's pins so one environment runs Courses 4 to 6 | |
