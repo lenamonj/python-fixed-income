@@ -1,0 +1,60 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 300,
+  "messages": [
+   {
+    "content": "You extract information from the document text in the user message. Quote the text exactly, character for character, and give the number of the section each quote comes from. Write every number exactly as the text writes it. If the text does not answer the question, reply NOT IN TEXT. If the user asks for an opinion, a grade, a comparison of quality, an ordering of securities or issuers, advice about trading, or a view about the future, reply exactly: REFUSED: this course asks only what the document says",
+    "role": "system"
+   },
+   {
+    "content": "The user message holds numbered chunks of one or more documents, each starting with its citation label in square brackets. Answer only from these chunks. End every sentence with the label of the chunk it comes from, written exactly as given, for example [boyd10k; Item 7; p. 37; c0412]. Where the rule above says NOT IN TEXT, reply exactly NOT IN CORPUS. When a chunk states what the company expects or plans, write that the document states it.",
+    "role": "system"
+   },
+   {
+    "content": "Chunk 1: [boyd10k; Item 7; p. 36; c0413]\n the Credit Facility for\n2024.\n31Table of Contents\nIndebtedness\nThe outstanding principal balances of long-term debt, before unamortized discounts and fees, and the changes in those balances, are as follows:\nDecember 31, December 31,\n(In millions) 2025 2024 Decrease\nCredit facility $ 160.7 $ 1,300.3 $ (1,139.6)\n4.750% senior notes due 2027 1,000.0 1,000.0 -\n4.750% senior notes due 2031 900.0 900.0 -\nTotal long-term debt 2,060.7 3,200.3 (1,139.6)\nLess current maturities - 44.0 (44.0)\n\n\nChunk 2: [boyd10k; Item 8; p. 78; c0863]\nty was $1,276.6 million.\nScheduled Maturities of Long-Term Debt\nThe scheduled maturities of long-term debt are as follows:\n(In thousands) Total\nFor the year ending December 31,\n2026 $ -\n2027 1,160,700\n2028 -\n2029 -\n2030 -\nThereafter 900,000\nTotal outstanding principal of long-term debt $ 2,060,700\nNOTE 8. INCOME TAXES\nDeferred Income Tax Assets and Liabilities\n\n\nChunk 3: [boyd10k; Item 7; p. 40; c0455]\nof our debt instruments.\nScheduled Maturities of Long-Term Debt\nThe scheduled maturities of long-term debt, as discussed above, are as follows:\n(In millions) Total\nYear Ending December 31,\n2026 $ -\n2027 1,160.7\n2028 -\n2029 -\n2030 -\nThereafter 900.0\nTotal outstanding principal of long-term debt $ 2,060.7\nGuarantor Financial Information\nIn connection with the issuance of our 4.750% Senior Notes due 2027 and our 4.750% Senior Notes due 2031 (collectively, the \"Guaranteed Notes\" or\n\n\nQuestion: What was the total principal of long-term debt at December 31, 2025?",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "The total principal of long-term debt at December 31, 2025 was $2,060.7 million [boyd10k; Item 7; p. 36; c0413].",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791876589,
+  "id": "chatcmpl-EYRFFl48BkD1KnYKXM65Ue0y2zKWN",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_6e6239600c",
+  "usage": {
+   "completion_tokens": 42,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 719,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 761
+  }
+ }
+}
