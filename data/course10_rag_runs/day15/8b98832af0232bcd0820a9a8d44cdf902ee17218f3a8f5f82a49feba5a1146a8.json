@@ -1,0 +1,60 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 300,
+  "messages": [
+   {
+    "content": "You extract information from the document text in the user message. Quote the text exactly, character for character, and give the number of the section each quote comes from. Write every number exactly as the text writes it. If the text does not answer the question, reply NOT IN TEXT. If the user asks for an opinion, a grade, a comparison of quality, an ordering of securities or issuers, advice about trading, or a view about the future, reply exactly: REFUSED: this course asks only what the document says",
+    "role": "system"
+   },
+   {
+    "content": "The user message holds numbered chunks of one or more documents, each starting with its citation label in square brackets. Answer only from these chunks. End every sentence with the label of the chunk it comes from, written exactly as given, for example [boyd10k; Item 7; p. 37; c0412]. Where the rule above says NOT IN TEXT, reply exactly NOT IN CORPUS. When a chunk states what the company expects or plans, write that the document states it.",
+    "role": "system"
+   },
+   {
+    "content": "Chunk 1: [boyd2021; Section 4.10; c0492]\n$2,000) of that Holder's Notes pursuant to an offer (\"Change of Control Offer\") on the terms set forth in this Indenture. In the Change of Control Offer, the Company shall offer a payment (\"Change of Control Payment\") in cash equal to 101% of the aggregate principal amount of Notes repurchased plus accrued and unpaid interest and Additional Interest, if any, on the Notes repurchased, to the date of purchase.\n\n\nChunk 2: [boyd2021; Section 12.14; c0917]\nnge of Control Offer\") on the terms set forth in the Indenture. In the Change of Control Offer, the Company will offer a payment (\"Change of Control Payment\") in cash equal to 101% of the principal amount of Notes repurchased plus accrued and unpaid interest and Additional Interest, if any, on the Notes repurchased, to the date of purchase.\nNot later than 30 days following (i) any Change of Control or (ii) in the event the Notes have Investment Grade Status at the earlier of the public announcement of (x) \n\nChunk 3: [levi2006; Section 10.13; c0689]\ninking Fund\nThe Securities are not subject to any sinking fund.\n8. Repurchase of Securities at the Option of Holders upon Change of Control\nUpon a Change of Control, any Holder of Securities will have the right, subject to certain conditions specified in the Indenture, to cause the Company to repurchase all or any part of the Securities of such Holder at a purchase price equal to 101% of the principal amount of the Securities to be repurchased plus accrued and unpaid interest, if any, to the date of \n\nQuestion: What repurchase price does the Boyd 2021 indenture set on a change of control?",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "The Boyd 2021 indenture sets the repurchase price on a change of control at \"101% of the aggregate principal amount of Notes repurchased plus accrued and unpaid interest and Additional Interest, if any, on the Notes repurchased, to the date of purchase\" [boyd2021; Section 4.10; c0492] and similarly states \"101% of the principal amount of Notes repurchased plus accrued and unpaid interest and Additional Interest, if any, on the Notes repurchased, to the date of purchase\" [boyd2021; Section 12.14; c0917].",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791902126,
+  "id": "chatcmpl-EYXt8sh5UIJ7Scbt1UR7JtO7DFaZA",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_9d7b586de1",
+  "usage": {
+   "completion_tokens": 124,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 611,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 735
+  }
+ }
+}
