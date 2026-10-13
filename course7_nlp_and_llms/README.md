@@ -176,6 +176,8 @@ The 8-K sections are split by filing date: training 2019 to 2023, validation 202
 
 [Course 8 is Implementing Agentic AI](../course8_agentic_ai/README.md): three weeks from one tool request sent by hand to a multi-agent credit desk, with the agent loop written yourself, your own bond math and documents as tools, every figure traced to the tool result it cites, MCP, the OpenAI Agents SDK, an orchestrator with four specialists, evals with answer keys decided first, and guardrails and a budget in code. Every agent run is recorded and replays without a key. Your `textkit`, `marketdata`, `bondmath`, and `mlkit` are imported by a new module, `agentkit`, and never changed.
 
+For retrieval, [Course 10 is Implementing RAG](../course10_rag/README.md), and it follows day 14 of this course directly: three weeks from five questions a model cannot answer about a 10-K to a cited question-answering tool over a folder of public filings, with a recursive splitter, three embedding models, FAISS, BM25 and hybrid search, a reranker, a tuning grid, citations checked sentence by sentence, recall and MRR, LLM judges measured against a strict grader, and index refresh. Your `textkit` is imported by a new module, `ragkit`, and never changed; every generated answer replays without a key. You can take it right after this course.
+
 ---
 
 <div align="center">

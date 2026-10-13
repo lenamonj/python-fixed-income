@@ -148,8 +148,10 @@ def test_question_quotes_where_stated(textkit, questions: pd.DataFrame):
             haystack = squash(part_one.loc[part_one["item"] == item, "text"].iloc[0])
         else:
             text = indentures[row.expected_doc]
-            if row.expected_item:
-                sections = textkit.find_sections(text)
+            sections = textkit.find_sections(text)
+            if row.expected_item == "cover":
+                text = text[:int(sections["start"].min())]
+            elif row.expected_item:
                 found = sections.loc[sections["number"] == row.expected_item].iloc[0]
                 text = text[found["start"]:found["end"]]
             haystack = squash(textkit.normalize_text(text))

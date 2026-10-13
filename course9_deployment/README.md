@@ -185,7 +185,7 @@ No student's deployment, no request log from a real service, no desk snapshot, n
 
 ## What comes next
 
-Later courses build on the `bondmath`, `marketdata`, `mlkit`, `ensemblekit`, `netkit`, `textkit`, `agentkit`, and `deploykit` you wrote in Courses 2 to 9. Next comes [the Bonus course, Build Your Own Coding Agent](../course_bonus_coding_agent/README.md), which closes the series. It deploys its app to a ZeroGPU Space of your own, with the Hugging Face account and token you set up on day 1 of this course, once the account is older than 30 days.
+Later courses build on the `bondmath`, `marketdata`, `mlkit`, `ensemblekit`, `netkit`, `textkit`, `agentkit`, and `deploykit` you wrote in Courses 2 to 9. Next comes [Course 10, Implementing RAG](../course10_rag/README.md): three weeks from five questions a model cannot answer about a 10-K to a cited question-answering tool over a folder of public filings, with chunking, embeddings, FAISS, BM25 and hybrid search, a reranker, a tuning grid, metadata filters, citations checked sentence by sentence, recall and MRR, LLM judges, index refresh, and the retriever served behind the FastAPI pattern of this course; every answer replays without a key. After it, [the Bonus course, Build Your Own Coding Agent](../course_bonus_coding_agent/README.md) closes the series. It deploys its app to a ZeroGPU Space of your own, with the Hugging Face account and token you set up on day 1 of this course, once the account is older than 30 days.
 
 ---
 
