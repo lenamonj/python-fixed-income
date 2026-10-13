@@ -49,7 +49,7 @@ Setup is on the [series front page](../README.md#start-here). Course 5 runs in t
 
 | Step | What to do |
 |:---|:---|
-| **Install the course's packages** | With the course's `.venv` active, run the install line below. It adds XGBoost, LightGBM, imbalanced-learn, SHAP, and ipywidgets to Course 4's pins, and changes none of them. |
+| **Install the course's packages** | With the course's `.venv` active, run the install line below. It adds XGBoost, LightGBM, imbalanced-learn, SHAP, and ipywidgets to Course 4's pins, and changes none of them; jinja2, which draws the formatted tables, is one of Course 4's pins. |
 | **If `import lightgbm` fails** | If it stops with an `OSError` that names `lib_lightgbm.dll`, Windows is missing a runtime library LightGBM needs and pip does not install: install the Microsoft Visual C++ Redistributable for x64, a free download from Microsoft, and run the line again. The course has not tested this on a machine without that runtime. |
 | **No API key** | This course needs no key and no account. Every dataset is in the repo. |
 | **Keep your folder** | Your `my_bondmath` folder, in your `projects` folder beside the course repo, gains `ensemblekit.py` and its tests beside `mlkit.py`. If you skipped the earlier courses, create it with the last line below. |
@@ -65,7 +65,7 @@ New-Item -ItemType Directory -Force "$HOME\projects\my_bondmath" | Out-Null
 
 Each notebook works in a fresh work folder in your temp folder, prints its name, and writes nothing into the course repo. Each day's "Bring It Home" section shows the PowerShell steps that move the day's functions and tests into `my_bondmath`, copy in any data file the tests read, run the tests, and commit.
 
-Each day's folder holds three files with the same name: the notebook, a short overview PDF to read first, and a solutions notebook. [How a day works](../README.md#how-a-day-works) explains the pattern. As in Courses 2 to 4, every notebook ends in the same order: Excel side by side, save the day with Git, bring it home, then the exercises, with the AI check last. Git keeps the experiment log again: each model's results are committed beside its code, so a change of model is reviewed by its numbers.
+Each day's folder holds three files with the same name: the notebook, a short overview PDF to read first, and a solutions notebook. [How a day works](../README.md#how-a-day-works) explains the pattern. As in Courses 2 to 4, every notebook ends in the same order: Excel side by side, save the day with Git, bring it home, then the exercises, with the AI check last. Git keeps the experiment log again: each model's results are committed beside its code, so a change of model is reviewed by its numbers. Every model is shown, not only printed: a classifier's confusion matrices as heatmaps for each set of rows the day opens (training and validation, out-of-fold rows on the bankruptcy file, the test rows only in the capstone), its ROC and precision-recall curves beside the other models' with the chosen threshold marked, importance as bars (impurity, permutation, gain, split counts, and SHAP), a regression's residual plots in bp, and every comparison as a chart and a formatted table with the best value in each column marked.
 
 ## The three weeks
 
@@ -132,7 +132,8 @@ The description you write is about a historical, anonymised dataset. It is not a
 | scikit-learn | Splits, pipelines, bagging, random forests, AdaBoost, gradient boosting, stacking, searches, permutation importance, and calibration | Week 1, Day 1 |
 | pytest and Git | Testing `ensemblekit.py` every day, and keeping each model's results beside its code | Week 1, Day 1 |
 | pandas and matplotlib | Tables and charts of every dataset | Week 1, Day 1 |
-| jinja2 | The HTML of the formatted comparison tables (pandas' Styler), with the course's chart helpers `plotkit.py` | Week 1, Day 1 |
+| `plotkit.py` | Course 4's helper file, which every notebook writes into its work folder unchanged: the course's charts in matplotlib (confusion heatmaps, ROC and precision-recall curves, importance bars, residual plots, bars) and formatted comparison tables with pandas' Styler. You read it and use it; you do not write it | Week 1, Day 1 |
+| jinja2 | The HTML of the formatted comparison tables (pandas' Styler, through `plotkit.py`) | Week 1, Day 1 |
 | XGBoost | Regularised gradient boosting with early stopping | Week 2, Day 3 |
 | LightGBM | Leaf-wise gradient boosting, and the model SHAP describes | Week 2, Day 4 |
 | openpyxl | Writing results workbooks for Excel | Week 2, Day 5 |
