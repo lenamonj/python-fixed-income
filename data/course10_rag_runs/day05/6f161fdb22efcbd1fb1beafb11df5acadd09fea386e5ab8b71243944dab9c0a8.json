@@ -1,0 +1,60 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 300,
+  "messages": [
+   {
+    "content": "You extract information from the document text in the user message. Quote the text exactly, character for character, and give the number of the section each quote comes from. Write every number exactly as the text writes it. If the text does not answer the question, reply NOT IN TEXT. If the user asks for an opinion, a grade, a comparison of quality, an ordering of securities or issuers, advice about trading, or a view about the future, reply exactly: REFUSED: this course asks only what the document says",
+    "role": "system"
+   },
+   {
+    "content": "The user message holds numbered chunks of one or more documents, each starting with its citation label in square brackets. Answer only from these chunks. End every sentence with the label of the chunk it comes from, written exactly as given, for example [boyd10k; Item 7; p. 37; c0412]. When a chunk states what the company expects or plans, write that the document states it.",
+    "role": "system"
+   },
+   {
+    "content": "Chunk 1: [boyd10k; Item 7; p. 39; c0446]\n December 1 of each year. The 4.750% Senior Notes due 2027 will\nmature on December 1, 2027 and are fully and unconditionally guaranteed, on a joint and several basis, by certain of our current and future domestic\nrestricted subsidiaries, all of which are 100% owned by us. The net proceeds from the 4.750% Senior Notes due 2027 were used to finance the redemption of\nall of our outstanding 6.875% senior notes due 2023 and prepay a portion of a Term B loan under our Prior Credit Facility.\n\n\nChunk 2: [boyd10k; Item 8; p. 77; c0844]\n5, 2024 and 2023\nSenior Notes\n4.750% Senior Notes due June 2031\nOn June 8, 2021, we issued $900.0 million aggregate principal amount of 4.750% senior notes due June 2031 (\"4.750% Senior Notes due 2031\"). The\n4.750% Senior Notes due 2031 require semi-annual interest payments on March 15 and September 15 of each year. The 4.750% Senior Notes due 2031 will\n\n\nChunk 3: [boyd10k; Item 8; p. 77; c0845]\neptember 15 of each year. The 4.750% Senior Notes due 2031 will\nmature on June 15, 2031 and are fully and unconditionally guaranteed, on a joint and several basis, by certain of our current and future domestic restricted\nsubsidiaries, all of which are 100% owned by us. The net proceeds from the 4.750% Senior Notes due 2031 and cash on hand were used to finance the\nredemption of our outstanding 6.375% senior notes due April 2026 and 6.000% senior notes due August 2026.\n\n\nQuestion: What is the coupon of the senior notes due 2033?",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "NOT IN TEXT",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791864978,
+  "id": "chatcmpl-EYODyJ0LKn32Z9Mbltayndy7duJ4s",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_9d7b586de1",
+  "usage": {
+   "completion_tokens": 3,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 656,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 659
+  }
+ }
+}
