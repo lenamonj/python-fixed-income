@@ -1,0 +1,60 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 300,
+  "messages": [
+   {
+    "content": "You extract information from the document text in the user message. Quote the text exactly, character for character, and give the number of the section each quote comes from. Write every number exactly as the text writes it. If the text does not answer the question, reply NOT IN TEXT. If the user asks for an opinion, a grade, a comparison of quality, an ordering of securities or issuers, advice about trading, or a view about the future, reply exactly: REFUSED: this course asks only what the document says",
+    "role": "system"
+   },
+   {
+    "content": "The user message holds numbered chunks of one or more documents, each starting with its citation label in square brackets. Answer only from these chunks. End every sentence with the label of the chunk it comes from, written exactly as given, for example [boyd10k; Item 7; p. 37; c0412]. Where the rule above says NOT IN TEXT, reply exactly NOT IN CORPUS. When a chunk states what the company expects or plans, write that the document states it.",
+    "role": "system"
+   },
+   {
+    "content": "Chunk 1: [boyd10k; Item 8; p. 101; c1071]\n Bank of New York, or (ii) the base rate, in each case, plus an\napplicable margin. Such applicable margin is a percentage per annum determined in accordance with a specified pricing grid based on the Consolidated Total\nNet Leverage Ratio (as defined in the New Credit Agreement) and ranges from 1.25% to 2.25% (if using SOFR) and from 0.25% to 1.25% (if using the base\n\n\nChunk 2: [boyd10k; Item 7; p. 38; c0429]\nis determined in accordance with a specified pricing grid based\non the Consolidated Total Net Leverage Ratio) will be payable on the unused portions of the Revolving Credit Facility. The rates based on SOFR will be\ndetermined based upon, at the Company's option, either: (i) a forward-looking SOFR term rate administered by CME Group Benchmark Administration\n\n\nChunk 3: [boyd10k; Item 8; p. 76; c0831]\nis determined in accordance with a specified pricing grid based\non the Consolidated Total Net Leverage Ratio) will be payable on the unused portions of the Revolving Credit Facility. The rates based on SOFR will be\ndetermined based upon, at the Company's option, either: (i) a forward-looking SOFR term rate administered by CME Group Benchmark Administration\n\n\nQuestion: What applicable margin over SOFR does the Credit Agreement's pricing grid allow?",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "The applicable margin over SOFR, as determined in accordance with a specified pricing grid based on the Consolidated Total Net Leverage Ratio, ranges from 1.25% to 2.25% per annum. [boyd10k; Item 8; p. 101; c1071]",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791890681,
+  "id": "chatcmpl-EYUuXhcxgLeFSlBmwh9SZFBecyrwM",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_9d7b586de1",
+  "usage": {
+   "completion_tokens": 62,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 554,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 616
+  }
+ }
+}
