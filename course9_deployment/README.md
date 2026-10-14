@@ -50,7 +50,7 @@ Setup is on the [series front page](../README.md#start-here). Course 9 runs in t
 | Step | What to do |
 |:---|:---|
 | **Create your Hugging Face account first** | Do it today, before day 1 if you can. A free account can host a Gradio app on a ZeroGPU Space only once its email is verified and it is older than 30 days. At one notebook a day you reach day 10, the Space, about 9 days after day 1, before the account qualifies. Nothing waits on it: every notebook runs offline, and the Space step keeps until your date comes. |
-| **Install the course's packages** | With the course's `.venv` active, run the install line below. It adds seven lines to Course 8's pins (`fastapi`, `gradio`, `streamlit`, `uvicorn`, `httpx`, `pyyaml`, `joblib`; the last four were already installed through earlier courses) and changes none of them. Pip adds 21 packages, about 255 MB once installed, most of it `pyarrow` for Streamlit and Gradio itself. |
+| **Install the course's packages** | With the course's `.venv` active, run the install line below. It adds seven lines to Course 8's pins (`fastapi`, `gradio`, `streamlit`, `uvicorn`, `httpx`, `pyyaml`, `joblib`; the last four were already installed through earlier courses), keeps Course 8's jinja2 (the HTML of the formatted comparison tables), and changes none of them. Pip adds 21 packages, about 255 MB once installed, most of it `pyarrow` for Streamlit and Gradio itself. |
 | **No key needed** | The course sends no request to a model. The desk replays Course 8's saved runs, and the deployed desk holds no key. Your Hugging Face write token goes in `my_bondmath\.env` as `HF_TOKEN` (day 1); the notebooks print only whether it loaded. |
 | **Keep your folder** | Your `my_bondmath` folder, in your `projects` folder beside the course repo, gains `deploykit.py` and its tests. The public repos you make (`pfi-bondmath`, `pfi-bond-service`, `pfi-desk-app`) are new, clean folders beside it, built from named files after the scan passes, never `my_bondmath` itself. |
 | **Or use Colab** | Open any notebook in the [course map](#course-map) and click the **Open in Colab** badge. Its library versions can differ from the pins; the setup cell says so when it happens. The platform steps are typed in PowerShell on your own machine. |
@@ -66,6 +66,8 @@ New-Item -ItemType Directory -Force "$HOME\projects\my_bondmath" | Out-Null
 Each notebook works in a fresh work folder in your temp folder, prints its name, and writes nothing into the course repo. Each day's "Bring It Home" section shows the PowerShell steps that move the day's functions and tests into `my_bondmath`, run the tests, and commit, and, where the day ships something, the steps on your own accounts.
 
 Each day's folder holds three files with the same name: the notebook, a short overview PDF to read first, and a solutions notebook. [How a day works](../README.md#how-a-day-works) explains the pattern. As in Courses 2 to 8, every notebook ends in the same order: Excel side by side, save the day with Git, bring it home, then the exercises, with the AI check last.
+
+Every step is shown, not only printed: the seconds between the stamped lines of each recorded transcript (a CI job, a Vercel build, a Space's build, a Docker build), the files a deploy ships by size against the platform's limit, requests, status codes, latency, and error shares by path and by day from the request log, the run history of every workflow and pull request, a month's use of each free allowance against the amount included, and a chart beside a formatted table for every comparison of files, runs, paths, images, or days, with the best value in each column highlighted. The charts are matplotlib through `plotkit.py`, the course's small helper file, and the overview PDFs reuse the notebooks' own figures.
 
 ## Your accounts
 
@@ -168,8 +170,10 @@ The app describes public documents, a public curve, and a synthetic book, as of 
 | Hugging Face Spaces and `huggingface_hub` | The desk's Gradio app on a ZeroGPU Space, from a script that reads your token from `.env` | Week 2, Day 5 |
 | Docker Desktop | One image of the bond service, built and run on your machine | Week 3, Day 1 |
 | scikit-learn and joblib | Course 4's same-day 30 Yr task as a model file with its card | Week 3, Day 3 |
+| `plotkit.py` | Course 4's helper file, which every notebook writes into its work folder unchanged: the course's charts in matplotlib (transcript durations, sizes, request counts, status codes, run histories) and formatted comparison tables with pandas' Styler. You read it and use it; you do not write it, and it is not part of `deploykit.py` | Week 1, Day 1 |
+| jinja2 | The HTML of the formatted comparison tables (pandas' Styler, through `plotkit.py`) | Week 1, Day 1 |
 
-Exact versions are pinned in [`requirements.txt`](requirements.txt): fastapi 0.143.0, gradio 6.30.0, streamlit 1.65.0, uvicorn 0.54.0, httpx 0.28.1, pyyaml 6.0.3, and joblib 1.6.0 on top of Course 8's pins, among them pandas 3.0.6, pydantic 2.13.5, openai-agents 0.23.1, and pytest 9.1.1. A deployed folder has its own small requirements file: the bond service and the desk's snapshot service install `fastapi==0.143.0` alone, about 9 MB on Linux, where replaying the desk on a server would install about 5.7 GB.
+Exact versions are pinned in [`requirements.txt`](requirements.txt): fastapi 0.143.0, gradio 6.30.0, streamlit 1.65.0, uvicorn 0.54.0, httpx 0.28.1, pyyaml 6.0.3, and joblib 1.6.0 on top of Course 8's pins, among them pandas 3.0.6, pydantic 2.13.5, openai-agents 0.23.1, jinja2 3.1.6, and pytest 9.1.1. A deployed folder has its own small requirements file: the bond service and the desk's snapshot service install `fastapi==0.143.0` alone, about 9 MB on Linux, where replaying the desk on a server would install about 5.7 GB.
 
 | Data | Kind | Used in |
 |:---|:---|:---|
