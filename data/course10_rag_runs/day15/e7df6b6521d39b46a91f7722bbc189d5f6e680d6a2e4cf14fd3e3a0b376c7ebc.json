@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check an answer against the chunks it was written from. Reply with JSON only: verdict \"yes\" if every claim of the answer is stated in the chunks, \"partly\" if some claims are and some are not, \"no\" if none is; reason, one sentence naming a claim not found, if any. An answer that is exactly NOT IN CORPUS is \"yes\" when the chunks do not hold the answer.",
+    "role": "system"
+   },
+   {
+    "content": "Chunks:\n[boyd10q; Section I.1; c0157]\nf certain additional non-permitted or refinancing indebtedness.\nThe maximum permitted Consolidated Total Net Leverage Ratio is calculated as Consolidated Net Indebtedness to twelve-month trailing Consolidated EBITDA, as defined by the Credit Agreement. The maximum Consolidated Total Net Leverage Ratio must be no higher than 4.50 to 1.00.\nEarly Extinguishments and Modifications of Debt\n\n\n[boyd10k; Item 7; p. 38; c0440]\ntrictions on investments, dividends and certain other payments.\nThe maximum permitted Consolidated Total Net Leverage Ratio is calculated as Consolidated Net Indebtedness to twelve-month trailing Consolidated\nEBITDA, as defined by the Credit Agreement. The maximum Consolidated Total Net Leverage Ratio must be no higher than 4.50 to 1.00.\n33Table of Contents\nSenior Notes\nWe currently have two issuances of senior notes (the \"Senior Notes\") outstanding as described below.\n4.750% Senior Notes due June 2031\n\n\n[boyd10k; Item 8; p. 76; c0842]\nolidated Net Indebtedness to twelve-month trailing Consolidated\nEBITDA, as defined by the Credit Agreement. The maximum Consolidated Total Net Leverage Ratio must be no higher than 4.50 to 1.00.\nCurrent Maturities of Our Indebtedness\nAs of December 31, 2024, we classified certain non-extending balances under our Credit Facility as a current maturity, as such amounts came due within the\n\n\nQuestion: What maximum Consolidated Total Net Leverage Ratio does the Credit Agreement allow, as the 10-Q describes it?\n\nAnswer: The maximum Consolidated Total Net Leverage Ratio must be no higher than 4.50 to 1.00, as calculated by Consolidated Net Indebtedness to twelve-month trailing Consolidated EBITDA, as defined by the Credit Agreement [boyd10q; Section I.1; c0157].",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"yes\",\"reason\":\"\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937422,
+  "id": "chatcmpl-EYh4QisF9MADbudkTTh90Ow1MKOIC",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_b95523c015",
+  "usage": {
+   "completion_tokens": 10,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 574,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 584
+  }
+ }
+}

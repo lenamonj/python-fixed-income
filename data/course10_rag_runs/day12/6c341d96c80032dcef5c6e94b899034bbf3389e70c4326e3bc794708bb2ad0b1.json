@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check an answer against the chunks it was written from. Reply with JSON only: verdict \"yes\" if every claim of the answer is stated in the chunks, \"partly\" if some claims are and some are not, \"no\" if none is; reason, one sentence naming a claim not found, if any. An answer that is exactly NOT IN CORPUS is \"yes\" when the chunks do not hold the answer.",
+    "role": "system"
+   },
+   {
+    "content": "Chunks:\n[boyd10k; Item 8; p. 101; c1061]\n adjustment to our financial position or results of operations.\nOn January 21, 2026 (the \"New Closing Date\"), the Company entered into an Amended and Restated Credit Agreement (the \"New Credit Agreement\")\namong the Company, certain direct and indirect subsidiaries of the Company as guarantors (the \"New Guarantors\"), Bank of America, N.A., as administrative\n\n\n[boyd10k; Item 1A; p. 19; c0231]\nand Restated Credit\nAgreement entered into on January 21, 2026.\nThe restrictive covenants in our Credit Facility and other debt instruments may limit our operational and financial flexibility, and failure to comply with\nthese covenants could adversely impact our business.\nOur current debt instruments contain, and any future debt instruments are likely to contain, a number of restrictive covenants that impose significant operating\n\n\n[boyd10k; Item 7; p. 37; c0414]\n2,060.7 3,200.3 (1,139.6)\nLess current maturities - 44.0 (44.0)\nLong-term debt, net of current maturities $ 2,060.7 $ 3,156.3 $ (1,095.6)\nCredit Facility\nCredit Agreement\nOn March 2, 2022 (the \"Closing Date\"), the Company entered into a credit agreement (the \"Credit Agreement\") among the Company, certain direct and\nindirect subsidiaries of the Company as guarantors (the \"Guarantors\"), Bank of America, N.A., as administrative agent, collateral agent and letter of credit\n\n\nQuestion: On what date did the company enter into the Credit Agreement?\n\nAnswer: The company entered into the Credit Agreement on March 2, 2022 [boyd10k; Item 7; p. 37; c0414].",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"yes\",\"reason\":\"The answer states the company entered into the Credit Agreement on March 2, 2022, which is explicitly mentioned in the chunks.\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937311,
+  "id": "chatcmpl-EYh2da0yrU1TzEuThbtfvvOKYYAA6",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_b95523c015",
+  "usage": {
+   "completion_tokens": 36,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 546,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 582
+  }
+ }
+}

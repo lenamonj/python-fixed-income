@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check an answer against the chunks it was written from. Reply with JSON only: verdict \"yes\" if every claim of the answer is stated in the chunks, \"partly\" if some claims are and some are not, \"no\" if none is; reason, one sentence naming a claim not found, if any. An answer that is exactly NOT IN CORPUS is \"yes\" when the chunks do not hold the answer.",
+    "role": "system"
+   },
+   {
+    "content": "Chunks:\n[boyd10k; Item 8; p. 75; c0822]\n certain other financial institutions party thereto as lenders.\nThe Credit Agreement (i) provides for a $1,450.0 million senior secured revolving credit facility (the \"Revolving Credit Facility\") and (ii) provided for an\n$880.0 million senior secured term A loan (the \"Term A Loan,\" collectively with the Revolving Credit Facility, the \"Credit Facility\"). The Revolving Credit\n\n\n[boyd10k; Item 7; p. 37; c0423]\n New Credit Agreement amends and restates the Credit Agreement.\nThe New Credit Agreement provides for (i) a $1,450.0 million senior secured revolving credit facility (the \"New Revolving Credit Facility\") and (ii) a\n$1,200.0 million senior secured term A loan delayed draw facility (the \"New Term A Loan Facility\", and the loans thereunder, the \"New Term A Loans\"). The\n\n\n[boyd10k; Item 8; p. 75; c0827]\n A Loan\nextinguished the Term A Loan under the Credit Facility.\nWith a total revolving credit commitment of $1,450.0 million available under the Credit Facility, $135.0 million and $25.7 million in borrowings outstanding\non the Revolving Credit Facility and on the Swing Loan, respectively, and $12.7 million allocated to support various letters of credit, there is a remaining\ncontractual availability under the Credit Facility of $1,276.6 million at December 31, 2025.\n67Table of Contents\n\n\nQuestion: How large is the revolving credit facility under the Credit Agreement?\n\nAnswer: The Credit Agreement provides for a $1,450.0 million senior secured revolving credit facility (the \"Revolving Credit Facility\") [boyd10k; Item 8; p. 75; c0822].",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"yes\",\"reason\":\"\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937280,
+  "id": "chatcmpl-EYh28ACpgV6c6EmYcFhtOBPk31zJ7",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_b95523c015",
+  "usage": {
+   "completion_tokens": 10,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 543,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 553
+  }
+ }
+}

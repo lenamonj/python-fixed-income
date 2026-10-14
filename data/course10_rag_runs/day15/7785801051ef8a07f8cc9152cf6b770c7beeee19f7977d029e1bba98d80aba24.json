@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check whether an answer addresses its question. Reply with JSON only: verdict \"yes\" if it answers what was asked, \"partly\" if it answers part of it, \"no\" if it answers something else; reason, one sentence. Do not check whether the answer is true.",
+    "role": "system"
+   },
+   {
+    "content": "Question: What position does our portfolio hold in the 4.750% Senior Notes due 2031?\n\nAnswer: The document does not explicitly state the position held by the portfolio in the 4.750% Senior Notes due 2031. It only mentions that \"The 4.750% Senior Notes due 2031 will mature on June 15, 2031 and are fully and unconditionally guaranteed, on a joint and several basis, by certain of our current and future domestic restricted subsidiaries, all of which are 100% owned by us\" and that \"The net proceeds from the 4.750% Senior Notes due 2031 and cash on hand were used to finance the redemption of our outstanding 6.375% senior notes due April 2026 and 6.000% senior notes due August 2026\" [boyd10k; Item 8; p. 77; c0845], [boyd10k; Item 7; p. 39; c0442].\nNOT IN CORPUS",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"no\",\"reason\":\"The answer states that the document does not specify the portfolio's position in the notes, thus it does not answer the question asked.\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937423,
+  "id": "chatcmpl-EYh4R0qFpY2Z766c5g2wSTRYovy1E",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_d0746abbc5",
+  "usage": {
+   "completion_tokens": 35,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 327,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 362
+  }
+ }
+}

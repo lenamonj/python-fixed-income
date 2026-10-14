@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check an answer against the chunks it was written from. Reply with JSON only: verdict \"yes\" if every claim of the answer is stated in the chunks, \"partly\" if some claims are and some are not, \"no\" if none is; reason, one sentence naming a claim not found, if any. An answer that is exactly NOT IN CORPUS is \"yes\" when the chunks do not hold the answer.",
+    "role": "system"
+   },
+   {
+    "content": "Chunks:\n[boyd10k; Item 7; p. 37; c0425]\n 2027 in up to a maximum of four (4) borrowings, provided that,\non February 1, 2026, the remaining borrowings available under the New Term A Loan Facility will be reduced by an amount equal to the greater of New Term\nA Loans previously made and $400.0 million. Proceeds from the New Credit Agreement were used to refinance all outstanding obligations under the Credit\n\n\n[boyd10k; Item 7; p. 37; c0421]\nity, $135.0 million and $25.7 million in borrowings outstanding\non the Revolving Credit Facility and the Swing Loan, respectively, and $12.7 million allocated to support various letters of credit, there is a remaining\ncontractual availability under the Credit Facility of $1,276.6 million as of December 31, 2025.\nOn January 21, 2026 (the \"New Closing Date\"), the Company entered into an Amended and Restated Credit Agreement (the \"New Credit Agreement\")\n\n\n[boyd10k; Item 8; p. 101; c1064]\nsary of the New Closing Date (or earlier upon the occurrence or\nnon-occurrence of certain events). New Term A Loans are available to be drawn until July 1, 2027 in up to a maximum of four (4) borrowings, provided that,\non February 1, 2026, the remaining borrowings available under the New Term A Loan Facility will be reduced by an amount equal to the greater of New Term\n\n\nQuestion: How large is the term A loan facility under the New Credit Agreement of January 21, 2026?\n\nAnswer: NOT IN CORPUS",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"yes\",\"reason\":\"The answer states 'NOT IN CORPUS' and the chunks do not provide the size of the Term A loan facility under the New Credit Agreement of January 21, 2026.\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937301,
+  "id": "chatcmpl-EYh2TQy6gJ5gisPqZlNYxUkli7ZSu",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_b95523c015",
+  "usage": {
+   "completion_tokens": 47,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 514,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 561
+  }
+ }
+}

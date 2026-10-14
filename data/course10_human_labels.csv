@@ -1,0 +1,46 @@
+answer_key,labeller,grounded,relevant,note
+8486db8bee00325c724f1bb9f054ce5d3c4da561eda2d862f0e629cb68d7eab6,course reviewer,yes,yes,
+67bf687f95b6a0ec2befd0e78b45b26a24225bad788ba6e4eacf7bd7e3285d84,course reviewer,yes,yes,
+579c007b8502423a76d61a1f7f385a577551f19b82f4286114db1289c88d270f,course reviewer,yes,yes,
+0175e0544071df847e9a6d6d93829084e4fdd74dc93ce02065b542174d094623,course reviewer,yes,yes,the range quoted is the chunk's New Credit Agreement grid; the answer names neither agreement
+a5d44963d537b1693ef2069bf302ecc318f7499953ab02a6b975db1c0a77521f,course reviewer,yes,yes,
+95e5fb9c285e8a3aed01a43a2aefcd7313fbd10bab1defaed432e793e9756bef,course reviewer,yes,yes,
+cdae214f023d1eb6e40ef3425e14906f96ad3daee23421d47ee9ca9afa672bb2,course reviewer,yes,yes,
+794ea3fecca649d85e1562f7c3ab25b09ac7a15b26fa69328a6b64c5c8c1523a,course reviewer,yes,yes,
+ccb050699705d70b28923ac277a11bddd0b4b913bd2f9a073f3f40efa75fb7ad,course reviewer,yes,yes,
+e66f33900c5712c76c86d7f4ee81f7e62bae2d7722c24c146464344409e4c887,course reviewer,yes,yes,
+d7f463e1c7ac5458ee333aea696b13875ac192e6d9e18f747ec5af7f103d2ced,course reviewer,yes,yes,
+09ad87889a088365dd0e6d1434ff00f05b782069ac0ff081e55868bfdb3fe37e,course reviewer,yes,yes,
+e9ac19ff2a65998d8e867ec077352a6005234ca4624be66253311e113a14b74a,course reviewer,yes,yes,
+23f3a0f07525e3fe1e63a9d35523f0f9900aefe6491c5e60f7057de4bcf287f2,course reviewer,yes,yes,
+7b3e5ea5d72ecd60118445bf224a70a0721ef9381f5e22591d3090c406b79e3b,course reviewer,yes,yes,
+83f46fd24e79f77249093bf7d40ffde284401235ca654b90517619a1498b7984,course reviewer,yes,yes,
+6eb732d1188c0a6b84a9f76545db59d138c510a2feb6a600dfea31f430442be3,course reviewer,yes,yes,
+990b969afe2c00bf902748697389529bd09a709caef0d51e97bbf1132a401742,course reviewer,yes,yes,
+c6fbe8ca0125d138d7a150b23598d72fb93206f613d07bff216a221e442bb928,course reviewer,yes,yes,NOT IN CORPUS read as addressing the question: it states the corpus does not hold the answer
+df452c68b72ac14f7098f256ccd4b24cd52966afa4d4190a4338b6d123a19748,course reviewer,yes,yes,
+1144d753ba5f8e1b526b96e3da74389267265c349fbed05b35ebf35a73438665,course reviewer,yes,yes,
+bebdb3a472a151008a99b2efddf7ded3d8662495d649e869f5e95b4a95f296b8,course reviewer,partly,partly,"the quoted sentence is in chunk 1; the inferred $6.55 billion is arithmetic the chunks do not state, offered as an approximation beside a not-stated conclusion"
+91817b903840d7736dfd61cea14aa70cc3a81a81faf12a329e910e86eb9beee4,course reviewer,yes,partly,"the figure is the Item 7 interest expense table's, not the segment reconciliation's the question asks for; a related figure"
+a5087f69c393af72a1e7a62e7550c3699ede2a3f72a169ab2be16b0cf2b6599d,course reviewer,yes,yes,NOT IN CORPUS read as addressing the question: it states the corpus does not hold the answer
+bc14db81d710e933f6cfc5ec5368586e23beaa149c7349aebe8c56f4667a653b,course reviewer,yes,yes,NOT IN CORPUS read as addressing the question: it states the corpus does not hold the answer
+bf219977cb72dbf3fc57b48313b697208a841179dc9ded522ab6827f4d85c0c1,course reviewer,partly,partly,"the first sentence reads a share count as an employee count, a claim the chunks do not make; the answer then withdraws it and ends NOT IN CORPUS"
+1e3bed5fd097ba9d5f09c64247f10bfa1ebf75e736eba7bd94ac20f4061c5010,course reviewer,yes,yes,
+c61a22557d474f6610aa2c11d77bd959ee0946691a6d4866c93f30042c40a2c9,course reviewer,yes,yes,
+8d17ceee82495f6a77c2c9065440aaf5fa308bb19f57e382e66f91812d621405,course reviewer,yes,yes,
+a5f865c9fe02b5f6c71fdc24aa272f28741cdf9bbbd45f0d56b33688cf902a42,course reviewer,partly,partly,"chunk 1 states the $915.0 million on the Revolving Credit Facility was paid down with the proceeds; the answer's claim that the text does not state the amount is not supported, and it declines to answer"
+63ab9e7e256c76f1b0dbede8aa19e687693ca745414927a64962ee1c8f79464b,course reviewer,yes,yes,
+75aefa6e01381ae94695ce94f1db0bc50822cdbdf5cfe3265968a9edfefab0f9,course reviewer,yes,partly,"the figure is Item 7's blended rate, not the rate Note 7's table shows; a related figure"
+3e76bba95f08f66a429dcbd3cb09c39916fcbd185bf348fada83698693d9a367,course reviewer,yes,partly,"gives the December 31, 2024 figure, labelled as such, and ends NOT IN CORPUS for the 2025 figure asked"
+aa86a8bd2867a584a93556c5d5be51775050da1d57873eace44820caef1e8c19,course reviewer,yes,yes,
+589d01caa268adff3272478cb3ac54bbce2c90a420ee85e543a0d045cb2ccdc3,course reviewer,yes,yes,
+30acf50345126bc0ee10177b7fe39c55a393a5af22cbe38aa2e6137fde1fc68b,course reviewer,yes,yes,
+06e1231a238a018b68c36af72903fd2e1eec76e3f12a53e7db97110ec3b5687f,course reviewer,yes,yes,
+620b18dd8e90357635a6f6b145b71563685263c7460515488cb02ba76f1c9ca7,course reviewer,yes,yes,
+9ff610cae15ba88978f1f60b70a103a54a3ab807990ba57638935bfb32323484,course reviewer,yes,yes,
+1c6764d5819a8228f47708394f5c72594e8815f019532f3c5e227a96ffceac4b,course reviewer,yes,yes,
+e6827842829ffadaff81e1db4dd841b251768998dd54228837e034c3a16c03de,course reviewer,yes,yes,
+5a22203211a9cb2b8c24a994677b09d28416f787165b48996470a9c4a2ebd1bc,course reviewer,yes,partly,"the answer stops mid-list after component (ii), so the accordion's size is given in part"
+ec999b9dc058e1cc9e10fc5639b4590087eb18b39cc3986792e4104e4dea974a,course reviewer,yes,yes,
+57cc99ce3d2f5835d594bb54b9ff7d7291a4199ae9577760629229e05eefd5cf,course reviewer,yes,yes,NOT IN CORPUS read as addressing the question: it states the corpus does not hold the answer
+50fc7490284352f997f238048932ce75200b7d090be51a5f668bf4ee401c1dcc,course reviewer,yes,yes,NOT IN CORPUS read as addressing the question: it states the corpus does not hold the answer

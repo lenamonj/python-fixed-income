@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check an answer against the chunks it was written from. Reply with JSON only: verdict \"yes\" if every claim of the answer is stated in the chunks, \"partly\" if some claims are and some are not, \"no\" if none is; reason, one sentence naming a claim not found, if any. An answer that is exactly NOT IN CORPUS is \"yes\" when the chunks do not hold the answer.",
+    "role": "system"
+   },
+   {
+    "content": "Chunks:\n[boyd10k; Item 7; p. 38; c0432]\nr (z) the SOFR rate for a one month\ninterest period plus 1.00%.\nThe blended interest rate for outstanding borrowings under the Credit Facility was 5.3% and 6.2% at December 31, 2025 and December 31, 2024,\nrespectively.\nOptional and Mandatory Prepayments\nPursuant to the terms of the Credit Agreement, the Company is required to use a portion of its annual excess cash flow to prepay loans outstanding under the\n\n\n[boyd10k; Item 8; p. 78; c0862]\n a ratio of the Company's consolidated EBITDA to fixed charges,\nincluding interest) for the Company's trailing four quarter period on a pro forma basis would be at least 2.0 to 1.0. Should this provision prohibit the\nincurrence of additional debt, the Company may still borrow under its existing credit facility. At December 31, 2025, the available borrowing capacity under\nour Credit Facility was $1,276.6 million.\nScheduled Maturities of Long-Term Debt\n\n\n[boyd10k; Item 7; p. 39; c0454]\nould be at least 2.0 to 1.0. Should this provision prohibit the\nincurrence of additional debt, the Company may still borrow under its existing credit facility. At December 31, 2025, the available borrowing capacity under\nour Credit Facility was $1,276.6 million.\n34Table of Contents\nCovenant Compliance\nAs of December 31, 2025, we were in compliance with the financial and other covenants of our debt instruments.\nScheduled Maturities of Long-Term Debt\n\n\nQuestion: What was the blended interest rate on borrowings under the Credit Facility at December 31, 2025?\n\nAnswer: The blended interest rate for outstanding borrowings under the Credit Facility was 5.3% at December 31, 2025 [boyd10k; Item 7; p. 38; c0432].",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"yes\",\"reason\":\"\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937284,
+  "id": "chatcmpl-EYh2CEqODR91Ersm1npeOk6A43qWO",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_b95523c015",
+  "usage": {
+   "completion_tokens": 10,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 584,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 594
+  }
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check whether an answer addresses its question. Reply with JSON only: verdict \"yes\" if it answers what was asked, \"partly\" if it answers part of it, \"no\" if it answers something else; reason, one sentence. Do not check whether the answer is true.",
+    "role": "system"
+   },
+   {
+    "content": "Question: How large is the accordion feature of the Credit Agreement, before prepayments and the leverage-based amount?\n\nAnswer: The accordion feature of the Credit Agreement permits the incurrence of one or more new tranches of revolving credit commitments in an aggregate amount up to the sum of (i) $1,000.0 million, (ii) the amount of certain voluntary prepayments of senior secured indebtedness of the Company, and (iii) the maximum amount of incremental commitments which would not cause the Consolidated First Lien Net Leverage Ratio to exceed 3.00 to 1.00 on a pro forma basis [boyd10k; Item 8; p. 76; c0838][boyd10k; Item 8; p. 76; c0839].\nTherefore, before considering prepayments and the leverage-based amount, the accordion feature is $1,000.0 million [boyd10k; Item 8; p. 76; c0838].",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"yes\",\"reason\":\"The answer specifies the size of the accordion feature before prepayments and leverage-based amounts as $1,000.0 million, directly addressing the question.\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937286,
+  "id": "chatcmpl-EYh2EYvpzQMRjqw8h331SFt2X1bSQ",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_905a67ea06",
+  "usage": {
+   "completion_tokens": 39,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 316,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 355
+  }
+ }
+}

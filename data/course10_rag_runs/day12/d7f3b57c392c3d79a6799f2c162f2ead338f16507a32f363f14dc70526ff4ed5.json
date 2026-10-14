@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check an answer against the chunks it was written from. Reply with JSON only: verdict \"yes\" if every claim of the answer is stated in the chunks, \"partly\" if some claims are and some are not, \"no\" if none is; reason, one sentence naming a claim not found, if any. An answer that is exactly NOT IN CORPUS is \"yes\" when the chunks do not hold the answer.",
+    "role": "system"
+   },
+   {
+    "content": "Chunks:\n[boyd10k; Item 8; p. 101; c1060]\ng this period, up to the filing date, other than the following:\n(i) a $0.20 per share cash dividend declared by the Board of Directors on February 19, 2026 and payable April 15, 2026 to shareholders of record on March\n16, 2026; and (ii) entering into a new amended and restated credit agreement as discussed further below, we did not identify any additional subsequent events,\nthe effects of which would require disclosure or adjustment to our financial position or results of operations.\n\n\n[boyd10k; Item 7; p. 40; c0459]\nur New Credit Agreement. The dividends declared by the Board of\nDirectors under this program are:\nDeclaration date Record date Payment date Amount per share\nFebruary 14, 2023 March 15, 2023 April 15, 2023 $ 0.16\nMay 4, 2023 June 15, 2023 July 15, 2023 0.16\nAugust 15, 2023 September 15, 2023 October 15, 2023 0.16\nDecember 7, 2023 December 22, 2023 January 15, 2024 0.16\nFebruary 28, 2024 March 15, 2024 April 15, 2024 0.17\nMay 9, 2024 June 15, 2024 July 15, 2024 0.17\n\n\n[boyd10k; Item 8; p. 86; c0952]\noutstanding senior notes and in our\nCredit Agreement.\nDividends\nDividends are declared at the discretion of our Board of Directors. We are subject to certain limitations regarding the payment of dividends, such as restricted\npayment limitations contained in our Credit Agreement and the indentures for our outstanding senior notes. The dividends declared by the Board of Directors\nunder this program as of December 31, 2025 are:\nDeclaration date Record date Payment date Amount per share\n\n\nQuestion: What dividend per share did the Board declare on February 19, 2026?\n\nAnswer: The Board of Directors declared a $0.20 per share cash dividend on February 19, 2026 [boyd10k; Item 8; p. 101; c1060].",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"yes\",\"reason\":\"\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937323,
+  "id": "chatcmpl-EYh2p9paSUx4qECHB4qJRiBGcCeXx",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_b95523c015",
+  "usage": {
+   "completion_tokens": 10,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 653,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 663
+  }
+ }
+}

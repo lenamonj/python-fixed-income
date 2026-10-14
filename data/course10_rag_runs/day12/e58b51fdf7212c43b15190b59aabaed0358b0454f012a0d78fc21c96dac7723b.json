@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check whether an answer addresses its question. Reply with JSON only: verdict \"yes\" if it answers what was asked, \"partly\" if it answers part of it, \"no\" if it answers something else; reason, one sentence. Do not check whether the answer is true.",
+    "role": "system"
+   },
+   {
+    "content": "Question: What letters of credit were outstanding at December 31, 2025?\n\nAnswer: At December 31, 2025, the company had outstanding letters of credit totaling $12.7 million [boyd10k; Item 7; p. 42; c0482]. The $12.7 million in aggregate outstanding letters of credit is also excluded from the approximately $2.1 billion of long-term debt on a consolidated basis as of December 31, 2025 [boyd10k; Item 1A; p. 19; c0225]. Additionally, $12.7 million was allocated to support various letters of credit as of December 31, 2025 [boyd10k; Item 7; p. 37; c0421].",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"yes\",\"reason\":\"The answer specifies the amount of outstanding letters of credit at December 31, 2025, directly addressing the question.\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937292,
+  "id": "chatcmpl-EYh2KfLzBkyiu5G9t7TMypQWylx0v",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_b4e0fcef9d",
+  "usage": {
+   "completion_tokens": 33,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 275,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 308
+  }
+ }
+}

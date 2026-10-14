@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check an answer against the chunks it was written from. Reply with JSON only: verdict \"yes\" if every claim of the answer is stated in the chunks, \"partly\" if some claims are and some are not, \"no\" if none is; reason, one sentence naming a claim not found, if any. An answer that is exactly NOT IN CORPUS is \"yes\" when the chunks do not hold the answer.",
+    "role": "system"
+   },
+   {
+    "content": "Chunks:\n[boyd10q; Section I.2; c0420]\nolving Credit Facility of $1,094.7 million as of June 30, 2026. In addition, with $400.0 million drawn on the Term A Loan Facility, the Company had $800.0 million of contractual availability under the Term A Loan Facility as of June 30, 2026, and together with the Revolving Credit Facility, there was remaining contractual availability under the Credit Facility of $1,894.7 million as of June 30, 2026.\n\n\n[boyd10q; Section I.1; c0142]\nolving Credit Facility of $1,094.7 million as of June 30, 2026. In addition, with $400.0 million drawn on the Term A Loan Facility, the Company had $800.0 million of contractual availability under the Term A Loan Facility as of June 30, 2026, and together with the Revolving Credit Facility, there was remaining contractual availability under the Credit Facility of $1,894.7 million as of June 30, 2026.\n14\nTable of Contents\nBOYD GAMING CORPORATION AND SUBSIDIARIES\n\n\n[boyd10q; Section I.1; c0137]\n and the Credit Facility maturity reverts to the Maturity Date. Term A Loans are available to be drawn until July 1, 2027 in up to a maximum of four borrowings, provided that, on February 1, 2026, the remaining borrowings available under the Term A Loan Facility will be reduced by an amount equal to the greater of Term A Loans previously made and $400.0 million. As of June 30, 2026, the Company has made one borrowing totaling $400.0 million under the Term A Loan Facility. \n\nQuestion: How much had been drawn on the Term A Loan Facility at June 30, 2026?\n\nAnswer: \"with $400.0 million drawn on the Term A Loan Facility\" as of June 30, 2026 [boyd10q; Section I.2; c0420]\n\"with $400.0 million drawn on the Term A Loan Facility\" as of June 30, 2026 [boyd10q; Section I.1; c0142]\n\"the Company has made one borrowing totaling $400.0 million under the Term A Loan Facility\" as of June 30, 2026 [boyd10q; Section I.1; c0137]",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"yes\",\"reason\":\"The answer that $400.0 million had been drawn on the Term A Loan Facility as of June 30, 2026 is explicitly stated in all provided chunks.\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937405,
+  "id": "chatcmpl-EYh49uZzd3hszjUbwXzTsmznxJyv4",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_b95523c015",
+  "usage": {
+   "completion_tokens": 43,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 673,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 716
+  }
+ }
+}

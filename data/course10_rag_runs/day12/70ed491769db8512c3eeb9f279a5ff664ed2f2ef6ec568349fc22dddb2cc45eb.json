@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check an answer against the chunks it was written from. Reply with JSON only: verdict \"yes\" if every claim of the answer is stated in the chunks, \"partly\" if some claims are and some are not, \"no\" if none is; reason, one sentence naming a claim not found, if any. An answer that is exactly NOT IN CORPUS is \"yes\" when the chunks do not hold the answer.",
+    "role": "system"
+   },
+   {
+    "content": "Chunks:\n[boyd10k; Item 7; p. 34; c0389]\n not include the related discounts or deferred finance charges.\nInterest expense, net of capitalized interest and interest income, decreased $23.0 million, or 13.1%, from 2024 to 2025. The decline was primarily driven by a\ndecrease in the weighted average debt balance of $143.3 million and an approximate 60 basis point decrease in the weighted average interest rate. Interest\n\n\n[boyd10k; Item 7; p. 34; c0388]\n Expense (Income)\nInterest Expense, Net\nYear Ended December 31,\n(In millions) 2025 2024\nInterest expense, net of capitalized interest and interest income $ 152.8 $ 175.8\nAverage long-term debt balance (1) 2,844.2 2,987.4\nWeighted average interest rates 5.0% 5.6%\nMix of Debt at Year End\nFixed rate debt 92.2% 59.4%\nVariable rate debt 7.8% 40.6%\n(1) Average debt balance calculation does not include the related discounts or deferred finance charges.\n\n\n[boyd10k; Item 7; p. 34; c0390]\n point decrease in the weighted average interest rate. Interest\nexpense, net of capitalized interest and interest income, and the weighted average debt balance were favorably impacted in 2025 as a result of the FanDuel\nEquity Sale and the use of the proceeds in the third quarter to repay outstanding borrowings and retire the Term A Loan (as defined below in \"Liquidity and\nCapital Resources - Indebtedness\") under the Credit Facility.\nEarly Extinguishments and Modifications of Debt\n\n\nQuestion: What interest expense, net of amounts capitalized, does the segment reconciliation show for 2025?\n\nAnswer: The interest expense, net of capitalized interest and interest income, for 2025 is $152.8 million [boyd10k; Item 7; p. 34; c0388].",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"yes\",\"reason\":\"\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937305,
+  "id": "chatcmpl-EYh2XEH2vcjEL7Vnir60iM6qcj87S",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_b95523c015",
+  "usage": {
+   "completion_tokens": 10,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 585,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 595
+  }
+ }
+}

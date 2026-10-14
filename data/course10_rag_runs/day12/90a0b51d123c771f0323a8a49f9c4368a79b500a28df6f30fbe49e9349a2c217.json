@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check an answer against the chunks it was written from. Reply with JSON only: verdict \"yes\" if every claim of the answer is stated in the chunks, \"partly\" if some claims are and some are not, \"no\" if none is; reason, one sentence naming a claim not found, if any. An answer that is exactly NOT IN CORPUS is \"yes\" when the chunks do not hold the answer.",
+    "role": "system"
+   },
+   {
+    "content": "Chunks:\n[boyd10k; Item 8; p. 77; c0844]\n5, 2024 and 2023\nSenior Notes\n4.750% Senior Notes due June 2031\nOn June 8, 2021, we issued $900.0 million aggregate principal amount of 4.750% senior notes due June 2031 (\"4.750% Senior Notes due 2031\"). The\n4.750% Senior Notes due 2031 require semi-annual interest payments on March 15 and September 15 of each year. The 4.750% Senior Notes due 2031 will\n\n\n[boyd10k; Item 7; p. 39; c0441]\ntstanding as described below.\n4.750% Senior Notes due June 2031\nOn June 8, 2021, we issued $900.0 million aggregate principal amount of 4.750% Senior Notes due June 2031 (\"4.750% Senior Notes due 2031\"). The\n4.750% Senior Notes due 2031 require semi-annual interest payments on March 15 and September 15 of each year. The 4.750% Senior Notes due 2031 will\n\n\n[boyd10k; Item 7; p. 39; c0443]\nSenior Notes due 2031 and cash on hand were used to finance the\nredemption of our outstanding $750.0 million aggregate principal amount of 6.375% Senior Notes due 2026 and $700.0 million aggregate principal amount of\n6.000% Senior Notes due 2026.\nIn conjunction with the issuance of the 4.750% Senior Notes due 2031, we incurred approximately $13.5 million in debt financing costs that have been\n\n\nQuestion: What was the trading price of the 4.750% Senior Notes due 2031 on February 16, 2026?\n\nAnswer: NOT IN CORPUS",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"yes\",\"reason\":\"The chunks do not provide any information about the trading price of the 4.750% Senior Notes due 2031 on February 16, 2026.\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937306,
+  "id": "chatcmpl-EYh2Yc2FDnYAhV4sI4IggyKe1yxzs",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_b95523c015",
+  "usage": {
+   "completion_tokens": 42,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 554,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 596
+  }
+ }
+}

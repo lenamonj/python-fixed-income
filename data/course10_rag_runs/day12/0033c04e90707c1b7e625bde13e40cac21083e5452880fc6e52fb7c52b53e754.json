@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check an answer against the chunks it was written from. Reply with JSON only: verdict \"yes\" if every claim of the answer is stated in the chunks, \"partly\" if some claims are and some are not, \"no\" if none is; reason, one sentence naming a claim not found, if any. An answer that is exactly NOT IN CORPUS is \"yes\" when the chunks do not hold the answer.",
+    "role": "system"
+   },
+   {
+    "content": "Chunks:\n[boyd10k; Item 8; p. 96; c1027]\n2025, 2024 and 2023, respectively.\nNOTE 14. SEGMENT INFORMATION\nWe have four reportable segments consisting of: (i) Las Vegas Locals; (ii) Downtown Las Vegas; (iii) Midwest & South; and (iv) Online (collectively\n\"Reportable Segments\"). The Online segment includes the operating results of Boyd Interactive and online market access fees from our agreements with third\nparties throughout the United States. To reconcile Reportable Segments information to the consolidated information, the Company has aggregated\n\n\n[boyd10k; Item 1; p. 4; c0027]\ns as an operating segment. For financial reporting purposes, we\naggregate these operations into four reportable segments: (i) Las Vegas Locals; (ii) Downtown Las Vegas; (iii) Midwest & South; and (iv) Online,\n(collectively \"Reportable Segments\"). The Online segment includes the operating results of our online gaming operations through market access agreements\n\n\n[boyd10k; Item 8; p. 58; c0627]\nInteractive\") and online market access fees from our agreements\nwith third parties throughout the United States. To reconcile Reportable Segments information to the consolidated information, the Company has aggregated\nnonreportable operating segments into a Managed & Other category. The Managed & Other category includes management fees earned under our\nmanagement contract with Wilton Rancheria for the management of Sky River Casino in northern California and the operating results of Lattner\n\n\nQuestion: What are the company's reportable segments?\n\nAnswer: The company's reportable segments are: (i) Las Vegas Locals; (ii) Downtown Las Vegas; (iii) Midwest & South; and (iv) Online (collectively \"Reportable Segments\") [boyd10k; Item 8; p. 96; c1027]. The Online segment includes the operating results of Boyd Interactive and online market access fees from agreements with third parties throughout the United States [boyd10k; Item 8; p. 96; c1027]. This is consistent with the description in another section stating the same four reportable segments and that the Online segment includes the operating results of online gaming operations through market access agreements [boyd10k; Item 1; p. 4; c0027].",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"yes\",\"reason\":\"\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937302,
+  "id": "chatcmpl-EYh2UQOGuQ7yQfEawt031PV4iqMh3",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_b95523c015",
+  "usage": {
+   "completion_tokens": 10,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 644,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 654
+  }
+ }
+}

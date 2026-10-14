@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check an answer against the chunks it was written from. Reply with JSON only: verdict \"yes\" if every claim of the answer is stated in the chunks, \"partly\" if some claims are and some are not, \"no\" if none is; reason, one sentence naming a claim not found, if any. An answer that is exactly NOT IN CORPUS is \"yes\" when the chunks do not hold the answer.",
+    "role": "system"
+   },
+   {
+    "content": "Chunks:\n[levi2006; Cover; c0012]\n, for any purposes, be deemed to be part of this Indenture.\n(v)\nINDENTURE dated as of March 17, 2006, between LEVI STRAUSS & CO., a Delaware corporation (the \"Company\") and WILMINGTON TRUST COMPANY, a Delaware banking corporation, as Trustee (the \"Trustee\").\nEach party agrees as follows for the benefit of the other party and for the equal and ratable benefit of the Holders of the Company's 8-7/8% Senior Notes due 2016, to be issued, from time to time, in one or more series as in this Indenture provided \n\n[boyd10k; Item 7; p. 36; c0413]\n the Credit Facility for\n2024.\n31Table of Contents\nIndebtedness\nThe outstanding principal balances of long-term debt, before unamortized discounts and fees, and the changes in those balances, are as follows:\nDecember 31, December 31,\n(In millions) 2025 2024 Decrease\nCredit facility $ 160.7 $ 1,300.3 $ (1,139.6)\n4.750% senior notes due 2027 1,000.0 1,000.0 -\n4.750% senior notes due 2031 900.0 900.0 -\nTotal long-term debt 2,060.7 3,200.3 (1,139.6)\nLess current maturities - 44.0 (44.0)\n\n\n[levi2006; Cover; c0000]\nEX-4.1 2 f18762exv4w1.htm EXHIBIT 4.1\nexv4w1\nExhibit 4.1\nEXECUTION COPY\nLEVI STRAUSS & CO.\n8-7/8% Senior Notes due 2016\nINDENTURE\nDated as of March 17, 2006\nWILMINGTON TRUST COMPANY,\nTrustee\nTABLE OF CONTENTS\nPage\nARTICLE I\nDefinitions and Incorporation by Reference\nSECTION 1.01. Definitions 1\nSECTION 1.02. Other Definitions 30\nSECTION 1.03. Incorporation by Reference of Trust Indenture Act 31\nSECTION 1.04. Rules of Construction 32\nARTICLE II\nThe Securities\n\n\nQuestion: How large is the credit facility basket in the Levi Strauss 2006 indenture, before reductions?\n\nAnswer: NOT IN CORPUS",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"yes\",\"reason\":\"The answer states 'NOT IN CORPUS' and the chunks do not provide information about the size of the credit facility basket in the Levi Strauss 2006 indenture before reductions.\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937414,
+  "id": "chatcmpl-EYh4ILfKN7k2jaAnkYz9f2JxK3v9Q",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_b95523c015",
+  "usage": {
+   "completion_tokens": 46,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 677,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 723
+  }
+ }
+}

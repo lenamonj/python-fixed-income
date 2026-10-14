@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check an answer against the chunks it was written from. Reply with JSON only: verdict \"yes\" if every claim of the answer is stated in the chunks, \"partly\" if some claims are and some are not, \"no\" if none is; reason, one sentence naming a claim not found, if any. An answer that is exactly NOT IN CORPUS is \"yes\" when the chunks do not hold the answer.",
+    "role": "system"
+   },
+   {
+    "content": "Chunks:\n[boyd10k; Item 8; p. 76; c0839]\n prepayments of senior secured indebtedness of the Company, and\n(iii) the maximum amount of incremental commitments which, after giving effect thereto, would not cause the Consolidated First Lien Net Leverage Ratio (as\ndefined in the Credit Agreement) to exceed 3.00 to 1.00 on a pro forma basis, in each case, subject to the satisfaction of certain conditions.\nFinancial and Other Covenants\n\n\n[boyd10k; Item 8; p. 101; c1067]\nAgreement), (ii) the amount of certain voluntary prepayments of\nsenior secured indebtedness of the Company, and (iii) the maximum amount of incremental commitments which, after giving effect thereto, would not cause\nthe Consolidated First Lien Net Leverage Ratio (as defined in the New Credit Agreement) to exceed 3.00 to 1.00 on a pro forma basis, in each case, subject to\nthe satisfaction of certain conditions.\n\n\n[boyd10k; Item 7; p. 38; c0437]\n one or more new tranches of revolving credit commitments in an\naggregate amount up to the sum of (i) $1,000.0 million, (ii) the amount of certain voluntary prepayments of senior secured indebtedness of the Company, and\n(iii) the maximum amount of incremental commitments which, after giving effect thereto, would not cause the Consolidated First Lien Net Leverage Ratio (as\n\n\nQuestion: What first lien net leverage level limits incremental commitments under the accordion?\n\nAnswer: The first lien net leverage level that limits incremental commitments under the accordion is a Consolidated First Lien Net Leverage Ratio not to exceed 3.00 to 1.00 on a pro forma basis [boyd10k; Item 8; p. 76; c0839], [boyd10k; Item 8; p. 101; c1067], [boyd10k; Item 7; p. 38; c0437].",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"yes\",\"reason\":\"\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937318,
+  "id": "chatcmpl-EYh2kVR6HhRkQPCt77U3QLkx81638",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_b95523c015",
+  "usage": {
+   "completion_tokens": 10,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 579,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 589
+  }
+ }
+}

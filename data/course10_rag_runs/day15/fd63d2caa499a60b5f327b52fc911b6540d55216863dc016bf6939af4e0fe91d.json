@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check whether an answer addresses its question. Reply with JSON only: verdict \"yes\" if it answers what was asked, \"partly\" if it answers part of it, \"no\" if it answers something else; reason, one sentence. Do not check whether the answer is true.",
+    "role": "system"
+   },
+   {
+    "content": "Question: What repurchase price does the Boyd 2021 indenture set on a change of control?\n\nAnswer: The Boyd 2021 indenture sets the repurchase price on a change of control at \"101% of the aggregate principal amount of Notes repurchased plus accrued and unpaid interest and Additional Interest, if any, on the Notes repurchased, to the date of purchase\" [boyd2021; Section 4.10; c0492] and similarly states \"101% of the principal amount of Notes repurchased plus accrued and unpaid interest and Additional Interest, if any, on the Notes repurchased, to the date of purchase\" [boyd2021; Section 12.14; c0917].",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"yes\",\"reason\":\"The answer directly states the repurchase price set by the Boyd 2021 indenture on a change of control, including the percentage and additional interest details.\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937410,
+  "id": "chatcmpl-EYh4EbgB0ygnBMnY5Hw812SlJc6U5",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_b4e0fcef9d",
+  "usage": {
+   "completion_tokens": 40,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 259,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 299
+  }
+ }
+}

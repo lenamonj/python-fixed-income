@@ -1,0 +1,84 @@
+{
+ "path": "/v1/chat/completions",
+ "recorded": "2026-10-13",
+ "request": {
+  "max_tokens": 200,
+  "messages": [
+   {
+    "content": "You check an answer against the chunks it was written from. Reply with JSON only: verdict \"yes\" if every claim of the answer is stated in the chunks, \"partly\" if some claims are and some are not, \"no\" if none is; reason, one sentence naming a claim not found, if any. An answer that is exactly NOT IN CORPUS is \"yes\" when the chunks do not hold the answer.",
+    "role": "system"
+   },
+   {
+    "content": "Chunks:\n[boyd10q; Section I.2; c0421]\ner the Credit Facility of $1,894.7 million as of June 30, 2026.\nThe blended interest rate for outstanding borrowings at June 30, 2026 under the Credit Facility was 4.9% and at December 31, 2025 under the Prior Credit Facility was 5.3%.\nDebt Service Requirements\nPursuant to the terms of the Credit Agreement (i) the loans under the Term A Loan Facility will amortize in an annual amount equal to 5.00% of the original principal amount thereof, commencing with the first full fiscal quarter ending after the \n\n[boyd10q; Section I.2; c0325]\nn on April 1, 2026 and organic growth from existing operations. Online margins decreased as compared to the prior year comparable periods for the three and six months ended June 30, 2026, to 34.0% from 58.7% and 33.4% from 58.8%, respectively, due primarily to the changes in our market access agreements starting in the third quarter of 2025. The fees we receive under our market access agreements generate high margin revenues as we incur minimal costs related to such agreements. \n\n[boyd10q; Section I.2; c0388]\nnded June 30, 2026 and 2025 were 23.8% and 24.3%, respectively. Our tax rate for the six months ended June 30, 2026, was unfavorably impacted by state taxes, nondeductible compensation and company provided benefits, which were partially offset by excess tax benefits related to equity compensation and tax credits. \n\nQuestion: What was Lamar Media's leverage ratio at June 30, 2026?\n\nAnswer: NOT IN CORPUS",
+    "role": "user"
+   }
+  ],
+  "model": "gpt-4.1-mini",
+  "response_format": {
+   "json_schema": {
+    "name": "verdict",
+    "schema": {
+     "additionalProperties": false,
+     "properties": {
+      "reason": {
+       "type": "string"
+      },
+      "verdict": {
+       "enum": [
+        "yes",
+        "partly",
+        "no"
+       ],
+       "type": "string"
+      }
+     },
+     "required": [
+      "verdict",
+      "reason"
+     ],
+     "type": "object"
+    },
+    "strict": true
+   },
+   "type": "json_schema"
+  },
+  "seed": 42,
+  "temperature": 0.0
+ },
+ "response": {
+  "choices": [
+   {
+    "finish_reason": "stop",
+    "index": 0,
+    "logprobs": null,
+    "message": {
+     "annotations": [],
+     "content": "{\"verdict\":\"yes\",\"reason\":\"The answer states 'NOT IN CORPUS' and the chunks do not provide Lamar Media's leverage ratio at June 30, 2026.\"}",
+     "refusal": null,
+     "role": "assistant"
+    }
+   }
+  ],
+  "created": 1791937424,
+  "id": "chatcmpl-EYh4SqF8SpGzw7zA8eHFdBalz0yzW",
+  "model": "gpt-4.1-mini-2025-04-14",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": "fp_b95523c015",
+  "usage": {
+   "completion_tokens": 39,
+   "completion_tokens_details": {
+    "accepted_prediction_tokens": 0,
+    "audio_tokens": 0,
+    "reasoning_tokens": 0,
+    "rejected_prediction_tokens": 0
+   },
+   "prompt_tokens": 529,
+   "prompt_tokens_details": {
+    "audio_tokens": 0,
+    "cached_tokens": 0
+   },
+   "total_tokens": 568
+  }
+ }
+}
