@@ -242,69 +242,27 @@ cd python-fixed-income
 
 No git, or not allowed to install it? On the repo's GitHub page choose **Code**, then **Download ZIP**, unzip it into `projects`, and `cd` into the unzipped folder.
 
-**Step 2.** Create an environment and install what Course 1 needs. Each course folder has its own `requirements.txt`.
+**Step 2.** Create an environment and install everything the series needs, in one step. The root `requirements.txt` pins every library of Courses 1 to 10 and the Bonus course.
 
 ```powershell
 python -m venv .venv
 .venv\Scripts\Activate.ps1
-python -m pip install -r course1_python_foundations\requirements.txt
+python -m pip install -r requirements.txt
 ```
 
-For Course 2, install its file into the same environment. Course 2 also uses git from the first day.
+It is a large install: TensorFlow and PyTorch are in it, so allow time and a few gigabytes of disk. To install one course only, use that course folder's own `requirements.txt` instead; the files are cumulative, so a later course's file covers the earlier ones.
 
-```powershell
-python -m pip install -r course2_bond_math\requirements.txt
-```
+Every notebook also opens with an install section: its first code cell checks the course's pinned libraries and installs only what is missing, so in Google Colab there is nothing to set up, and on a machine prepared with Step 2 it prints that everything is present.
 
-For Course 3, install its file too. Course 3 uses a free FRED API key of your own, kept in a `.env` file outside the course repo or in Colab's Secrets panel, never in the repo; every notebook runs without one. The [Course 3 README](course3_market_data/README.md#your-fred-key) explains.
+What the courses need beyond the install:
 
-```powershell
-python -m pip install -r course3_market_data\requirements.txt
-```
-
-For Course 4, install its file too. It adds scikit-learn, statsmodels, and scipy, and needs no API key.
-
-```powershell
-python -m pip install -r course4_machine_learning\requirements.txt
-```
-
-For Course 5, install its file too. It adds XGBoost, LightGBM, imbalanced-learn, and SHAP, and needs no API key. If `import lightgbm` fails, the [Course 5 README](course5_advanced_ml/README.md#before-you-start) says what to install.
-
-```powershell
-python -m pip install -r course5_advanced_ml\requirements.txt
-```
-
-For Course 6, install its file too. It adds TensorFlow and Keras and needs no API key. TensorFlow is a large download, about 350 MB and about 1.5 GB once installed, so allow time and disk space. If `import tensorflow` fails, the [Course 6 README](course6_neural_networks/README.md#before-you-start) says what to install.
-
-```powershell
-python -m pip install -r course6_neural_networks\requirements.txt
-```
-
-For Course 7, install its file too. It adds PyTorch (the CPU build, about 125 MB to download), transformers, sentence-transformers, and the `openai` package; its two small models download into the Hugging Face cache, about 118 MB, the first time a notebook needs them. Week 3 asks for a free OpenRouter key of your own, kept in `my_bondmath\.env` or Colab's Secrets panel, never in the repo; an OpenAI key works as the alternative route, and with no key every week 3 notebook replays the course's saved responses. The [Course 7 README](course7_nlp_and_llms/README.md#your-openrouter-key) explains.
-
-```powershell
-python -m pip install -r course7_nlp_and_llms\requirements.txt
-```
-
-For Course 8, install its file too. It adds two packages, the OpenAI Agents SDK (`openai-agents`) and `mcp`, about 53 MB once installed. No key is needed: every agent run of the course was recorded once and replays from the repo. An OpenAI or OpenRouter key of your own, kept in `my_bondmath\.env` or Colab's Secrets panel, lets a notebook go live. The [Course 8 README](course8_agentic_ai/README.md#no-key-needed-and-going-live) explains.
-
-```powershell
-python -m pip install -r course8_agentic_ai\requirements.txt
-```
-
-For Course 9, install its file too. It adds seven lines, FastAPI, Gradio, Streamlit, uvicorn, httpx, PyYAML, and joblib (the last four were already installed through earlier courses): pip adds 21 packages, about 255 MB once installed. No key is needed: the course sends no request to a model. It deploys to your own free GitHub, Vercel, and Hugging Face accounts and runs Docker Desktop on your own machine; create the Hugging Face account before you start, because a free account hosts a Space only once it is older than 30 days. Every notebook runs offline. The [Course 9 README](course9_deployment/README.md#your-accounts) explains.
-
-```powershell
-python -m pip install -r course9_deployment\requirements.txt
-```
-
-For Course 10, install its file too. It adds two lines to Course 9's pins, `faiss-cpu` and `rank-bm25`: pip adds 2 packages, about 64 MB once installed. No key is needed: every generated answer and judge verdict replays from the course's saved runs, and a key of your own in `my_bondmath\.env` makes the same cells live. In Colab the course advises the T4 GPU runtime for its local-model cells and never requires it; on Windows everything runs on the CPU. The [Course 10 README](course10_rag/README.md#before-you-start) explains.
-
-```powershell
-python -m pip install -r course10_rag\requirements.txt
-```
-
-The Bonus course installs nothing new: its `requirements.txt` is Course 9's file. No key is needed, because every request to the model replays the course's saved responses; an OpenAI key of your own in `my_bondmath\.env` makes the notebook live. Its last step deploys the agent to a private Space on the Hugging Face account you created for Course 9, once that account is older than 30 days. The [Bonus course README](course_bonus_coding_agent/README.md#start-here) explains.
+- Courses 1, 2, 4, 5, 6, 9 and 10 need no API key. Course 2 uses git from its first day.
+- Course 3 uses a free FRED API key of your own, kept in a `.env` file outside the course repo or in Colab's Secrets panel, never in the repo; every notebook runs without one. The [Course 3 README](course3_market_data/README.md#your-fred-key) explains.
+- Course 7's week 3 asks for a free OpenRouter key of your own (an OpenAI key works as the alternative route), kept in `my_bondmath\.env` or Colab's Secrets panel; with no key every week 3 notebook replays the course's saved responses. The [Course 7 README](course7_nlp_and_llms/README.md#your-openrouter-key) explains. Its two small models download into the Hugging Face cache, about 118 MB, the first time a notebook needs them.
+- Course 8 needs no key: every agent run was recorded once and replays from the repo; an OpenAI or OpenRouter key of your own lets a notebook go live. The [Course 8 README](course8_agentic_ai/README.md#no-key-needed-and-going-live) explains.
+- Course 9 deploys to your own free GitHub, Vercel, and Hugging Face accounts and runs Docker Desktop on your own machine; create the Hugging Face account before you start, because a free account hosts a Space only once it is older than 30 days. Every notebook runs offline. The [Course 9 README](course9_deployment/README.md#your-accounts) explains.
+- Course 10 replays every generated answer and judge verdict from its saved runs; a key of your own in `my_bondmath\.env` makes the same cells live. In Colab it advises the T4 GPU runtime for its local-model cells and never requires it. The [Course 10 README](course10_rag/README.md#before-you-start) explains.
+- The Bonus course replays its saved responses; an OpenAI key of your own in `my_bondmath\.env` makes the notebook live, and its last step deploys the agent to a private Space on the Hugging Face account you created for Course 9. The [Bonus course README](course_bonus_coding_agent/README.md#start-here) explains.
 
 **Step 3.** Open the folder in VS Code.
 
