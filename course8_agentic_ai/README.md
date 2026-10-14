@@ -49,7 +49,7 @@ Setup is on the [series front page](../README.md#start-here). Course 8 runs in t
 
 | Step | What to do |
 |:---|:---|
-| **Install the course's packages** | With the course's `.venv` active, run the install line below. It adds two packages to Course 7's pins, `openai-agents` (the OpenAI Agents SDK) and `mcp` (the Model Context Protocol), and changes none of them. With their dependencies they take about 53 MB once installed. |
+| **Install the course's packages** | With the course's `.venv` active, run the install line below. It adds three packages to Course 7's pins, `openai-agents` (the OpenAI Agents SDK), `mcp` (the Model Context Protocol), and jinja2 (the HTML of the formatted comparison tables), and changes none of them. With their dependencies they take about 53 MB once installed. |
 | **No key needed** | Every agent run in the course was recorded once and is committed. With no key, every notebook replays the saved runs and prints exactly what the saved notebook shows. See [No key needed, and going live](#no-key-needed-and-going-live). |
 | **The sentence model** | Day 7 and the capstone search an indenture with Course 7's sentence model on your CPU (`sentence-transformers/all-MiniLM-L6-v2`, about 92 MB, at a pinned revision). If Course 7 already put it in your Hugging Face cache, nothing is downloaded; otherwise the first of those notebooks downloads it once. |
 | **Keep your folder** | Your `my_bondmath` folder, in your `projects` folder beside the course repo, gains `agentkit.py` and its tests beside the earlier modules, the MCP server script `course_server.py` (day 8), the capstone's `credit_desk.py`, and a `cache\agents\` folder that Git ignores. If you skipped the earlier courses, create it with the last line below. |
@@ -66,6 +66,8 @@ New-Item -ItemType Directory -Force "$HOME\projects\my_bondmath" | Out-Null
 Each notebook works in a fresh work folder in your temp folder, prints its name, and writes nothing into the course repo. Each day's "Bring It Home" section shows the PowerShell steps that move the day's functions and tests into `my_bondmath`, run the tests, and commit.
 
 Each day's folder holds three files with the same name: the notebook, a short overview PDF to read first, and a solutions notebook. [How a day works](../README.md#how-a-day-works) explains the pattern. As in Courses 2 to 7, every notebook ends in the same order: Excel side by side, save the day with Git, bring it home, then the exercises, with the AI check last. Git keeps two logs beside the code: every agent run with its requests, tokens, dollars, and checks, and from week 3 every eval row.
+
+Every run is shown, not only printed: bars of the tokens, requests, and dollars of each run and each agent, counts of tool calls by tool, pass and fail grids of every figure and every eval row against its checks, and a chart beside a formatted table for every comparison of runs, agents, settings, or days, with the best value in each column highlighted. The charts are matplotlib through `plotkit.py`, the course's small helper file, and the overview PDFs reuse the notebooks' own figures.
 
 ## No key needed, and going live
 
@@ -168,10 +170,12 @@ The brief describes public documents, a public curve, and a synthetic book. It i
 | `mcp` | An MCP server and client, in the same process and over stdio | Week 2, Day 3 |
 | `openai-agents` | The OpenAI Agents SDK: agents, tools, handoffs, sessions, guardrails | Week 2, Day 4 |
 | Python's `sqlite3` | The desk's memory | Week 3, Day 2 |
+| `plotkit.py` | Course 4's helper file, which every notebook writes into its work folder unchanged: the course's charts in matplotlib (bars of tokens, requests, and cost, tool-call counts, pass and fail grids) and formatted comparison tables with pandas' Styler. You read it and use it; you do not write it, and it is not part of `agentkit.py` | Week 1, Day 1 |
+| jinja2 | The HTML of the formatted comparison tables (pandas' Styler, through `plotkit.py`) | Week 1, Day 1 |
 | Course 7's `covenant_tool.py` | The credit analyst's covenant table | Week 3, Day 1 |
 | TensorFlow, Keras, XGBoost, LightGBM, and the rest of Course 7's pins | Not used; kept so one environment runs Courses 4 to 8 | |
 
-Exact versions are pinned in [`requirements.txt`](requirements.txt): openai-agents 0.23.1 and mcp 2.3.0 on top of Course 7's pins, among them openai 3.26.0, pydantic 2.13.5, torch 2.14.1, sentence-transformers 6.1.0, pandas 3.0.6, and pytest 9.1.1. Every agent request goes to `gpt-4.1-mini` with temperature 0, seed 42, one tool request at a time (day 11 turns parallel tool requests on once), and at most 8 steps a run. No other framework, no web search, and no vector database.
+Exact versions are pinned in [`requirements.txt`](requirements.txt): openai-agents 0.23.1, mcp 2.3.0, and jinja2 3.1.6 on top of Course 7's pins, among them openai 3.26.0, pydantic 2.13.5, torch 2.14.1, sentence-transformers 6.1.0, pandas 3.0.6, and pytest 9.1.1. Every agent request goes to `gpt-4.1-mini` with temperature 0, seed 42, one tool request at a time (day 11 turns parallel tool requests on once), and at most 8 steps a run. No other framework, no web search, and no vector database.
 
 | Data | Kind | Used in |
 |:---|:---|:---|
