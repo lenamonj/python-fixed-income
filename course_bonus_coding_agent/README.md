@@ -113,6 +113,7 @@ Nothing on the Space runs a workspace file. Free hardware sleeps when unused, it
 | Gradio | The chat page, built and driven as a function in the notebook, launched only from PowerShell |
 | `huggingface_hub` | The deploy script: the private Space, its secret and variables, the upload, and the stage |
 | pytest | `test_coding_agent.py`, which grows beside the module: the fence, the tools, the loop on scripted responses, the refusal rule, and the page's handler |
+| Course 4's `plotkit.py` with matplotlib and pandas Styler (jinja2) | Every run shown: the tokens of each request as bars, the cost per task, the tool requests by tool with the refused ones beside them, the Space's build steps and stages from the masked log, and a formatted table under each comparison |
 
 Exact versions are pinned in [`requirements.txt`](requirements.txt), Course 9's file: openai 3.26.0, gradio 6.30.0, huggingface-hub 1.33.0, python-dotenv 1.2.4, and pytest 9.1.1 among them. `coding_agent.py` imports only the standard library, `openai`, and `gradio`, so the same text runs on your machine and on a Space.
 
