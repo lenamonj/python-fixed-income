@@ -142,7 +142,7 @@ Exact versions are pinned in [`requirements.txt`](requirements.txt). Git is inst
 | The capstone extract, its cover note, and its answer key | Invented for this course | The capstone |
 | U.S. Treasury daily par yield curve rates | Real, public | Week 3, Day 1 |
 
-Sources and terms for every file are in [The data](../README.md#the-data) on the front page.
+Sources and terms for every file are in [the data page](../data/README.md).
 
 ## What comes next
 

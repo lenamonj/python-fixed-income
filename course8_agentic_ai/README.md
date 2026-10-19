@@ -189,7 +189,7 @@ Exact versions are pinned in [`requirements.txt`](requirements.txt): openai-agen
 | `course8_synthetic_desk_memo.txt`: a 13-line desk memo about the synthetic book | **Synthetic**: written for the course, with one planted instruction for the lesson on prompt injection | Days 13 and 14, and the capstone |
 | `course8_agent_runs/`: 350 saved exchanges, one file per request, recorded 2026-10-08 to 2026-10-11 | The course's own, MIT with the code; no key, no request header, and no account identifier is stored | Every day |
 
-Every recorded run reads committed files only: no tool reads the clock, every question states its as-of date, and a date a file lacks is an error result, never the nearest row. The guardrail in one sentence: no agent output recommends, ranks, or forecasts any security, rate, or issuer, real or synthetic, and a real issuer appears only as the author of its document, never beside a holding. Sources, terms, and changes for every file are in [The data](../README.md#the-data) on the front page.
+Every recorded run reads committed files only: no tool reads the clock, every question states its as-of date, and a date a file lacks is an error result, never the nearest row. The guardrail in one sentence: no agent output recommends, ranks, or forecasts any security, rate, or issuer, real or synthetic, and a real issuer appears only as the author of its document, never beside a holding. Sources, terms, and changes for every file are in [the data page](../data/README.md).
 
 ## What comes next
 

@@ -171,7 +171,7 @@ Exact versions are pinned in [`requirements.txt`](requirements.txt): torch 2.14.
 | GloVe 6B word vectors, a subset of 44,558 words at 100 numbers each | Real, public domain: Pennington, Socher, and Manning (2014), https://nlp.stanford.edu/projects/glove/, Public Domain Dedication and License v1.0 | Day 4 |
 | The two models' outputs on the 8-K sections, and the course's saved LLM responses (66 files) | The course's own, computed once by the course and committed under its MIT license | Days 7, 10, and 11 to 15 |
 
-The 8-K sections are split by filing date: training 2019 to 2023, validation 2024, and the 2025 test sections opened once, on day 10. The rare items are rare in the file by the course's sampling design, and the notebooks say so. Item 5.02 sections name officers and directors; they are counted by item only and no name is printed. The Lamar indenture is never opened before the capstone. Sources, terms, and changes for every file are in [The data](../README.md#the-data) on the front page.
+The 8-K sections are split by filing date: training 2019 to 2023, validation 2024, and the 2025 test sections opened once, on day 10. The rare items are rare in the file by the course's sampling design, and the notebooks say so. Item 5.02 sections name officers and directors; they are counted by item only and no name is printed. The Lamar indenture is never opened before the capstone. Sources, terms, and changes for every file are in [the data page](../data/README.md).
 
 ## What comes next
 

@@ -185,7 +185,7 @@ Exact versions are pinned in [`requirements.txt`](requirements.txt): fastapi 0.1
 | `treasury_par_yields.csv`: 2,940 days of U.S. Treasury daily par yield curve rates, 2015-01-02 to 2026-10-02 | Real, public: U.S. Department of the Treasury, public domain | Day 13 |
 | `bondmath_excel_reference.csv` and `bondmath_excel_reference_tvm.csv`: 306 and 153 cases | Excel's own results for Course 2's bond math, which the tests that run on GitHub compare with | Days 1, 3, and 5 |
 
-No student's deployment, no request log from a real service, no desk snapshot, no model file, no Docker image, and no token is in the repo: each notebook rebuilds the snapshot and the model from the committed files. The guardrail in one sentence: nothing deployed predicts, forecasts, recommends, or decides; the desk serves a 2026-10-02 snapshot of Course 8's descriptive brief and refuses a request for a view. Sources, terms, and changes for every file are in [The data](../README.md#the-data) on the front page.
+No student's deployment, no request log from a real service, no desk snapshot, no model file, no Docker image, and no token is in the repo: each notebook rebuilds the snapshot and the model from the committed files. The guardrail in one sentence: nothing deployed predicts, forecasts, recommends, or decides; the desk serves a 2026-10-02 snapshot of Course 8's descriptive brief and refuses a request for a view. Sources, terms, and changes for every file are in [the data page](../data/README.md).
 
 ## What comes next
 

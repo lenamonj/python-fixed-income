@@ -146,7 +146,7 @@ Exact versions are pinned in [`requirements.txt`](requirements.txt). Git is inst
 | U.S. Treasury daily par yield curve rates, 2015 to 2026 | Real, public domain | Days 11 and 14 |
 | Polish Companies Bankruptcy, 5th year: 5,910 financial statements | Real, public: Tomczak, S. (2016). Polish Companies Bankruptcy [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5F600. Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | The capstone |
 
-The card accounts describe people, so the four columns about them (sex, education, marriage, age) are never model features, and one section of day 10 describes the chosen model's flags by group with counts and nothing more. Consumer credit in Taiwan in 2005 differs from US credit, and the Polish companies are one country and period; every notebook that uses them says so. Sources, terms, and changes for every file are in [The data](../README.md#the-data) on the front page.
+The card accounts describe people, so the four columns about them (sex, education, marriage, age) are never model features, and one section of day 10 describes the chosen model's flags by group with counts and nothing more. Consumer credit in Taiwan in 2005 differs from US credit, and the Polish companies are one country and period; every notebook that uses them says so. Sources, terms, and changes for every file are in [the data page](../data/README.md).
 
 ## What comes next
 

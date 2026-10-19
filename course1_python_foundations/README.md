@@ -143,7 +143,7 @@ Exact versions are pinned in [`requirements.txt`](requirements.txt).
 | UCI Default of Credit Card Clients | Real, public, CC BY 4.0 | Week 4, Day 1 |
 | FOMC post-meeting statements | Real, public | Week 4, Days 2 and 3 |
 
-Sources and terms for every file are in [The data](../README.md#the-data) on the front page.
+Sources and terms for every file are in [the data page](../data/README.md).
 
 ## What comes next
 

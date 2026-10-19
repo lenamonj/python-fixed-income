@@ -125,7 +125,7 @@ Exact versions are pinned in [`requirements.txt`](requirements.txt), Course 9's 
 | `bonus_agent_runs/`: 29 saved exchanges with OpenAI's Responses API on `gpt-6.1-sol`, recorded 2026-10-12 | The course's own, MIT with the code: every request the two notebooks send and its response, recorded once and replayed with no key; no key, no header, and no account identifier stored | The notebook and its solutions |
 | `bonus_transcripts/`: 7 masked transcripts, recorded 2026-10-12 | The course's own, MIT with the code: what Hugging Face printed when the course created its private Space, built it, sent three requests, ran it once without the placeholder, and deleted it, with account names, addresses, and ids masked | Section 11 |
 
-No workspace, no Space, no key, and no `.env` is in the repo. The guardrail in one sentence: the agent never leaves its workspace folder, never runs code, and never gives a view on any bond, issuer, price, or yield. Sources and terms for every file are in [The data](../README.md#the-data) on the front page.
+No workspace, no Space, no key, and no `.env` is in the repo. The guardrail in one sentence: the agent never leaves its workspace folder, never runs code, and never gives a view on any bond, issuer, price, or yield. Sources and terms for every file are in [the data page](../data/README.md).
 
 ## Credit
 
