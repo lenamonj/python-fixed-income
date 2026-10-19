@@ -21,10 +21,10 @@
 
 <table>
   <tr>
-    <td align="center" width="25%"><h2>156</h2>notebooks, each with<br>worked solutions</td>
-    <td align="center" width="25%"><h2>158</h2>Excel comparisons,<br>formula by formula</td>
-    <td align="center" width="25%"><h2>31</h2>weeks, one notebook<br>a day</td>
-    <td align="center" width="25%"><h2>$0</h2>to take, and no key<br>needed to run</td>
+    <td align="center" valign="top" width="25%"><h2>156</h2>notebooks, each with<br>worked solutions</td>
+    <td align="center" valign="top" width="25%"><h2>158</h2>Excel comparisons,<br>formula by formula</td>
+    <td align="center" valign="top" width="25%"><h2>31</h2>weeks, one notebook<br>a day</td>
+    <td align="center" valign="top" width="25%"><h2>$0</h2>to take, and no key<br>needed to run</td>
   </tr>
 </table>
 
@@ -100,6 +100,8 @@ flowchart LR
     end
     F --> M --> A --> S
     classDef course fill:#123D2F,stroke:#1C7A57,color:#FFFFFF
+    classDef stage fill:#E8F3EC,stroke:#1C7A57,color:#123D2F
+    class F,M,A,S stage
     class C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,CB course
 ```
 
@@ -127,14 +129,16 @@ Every result is drawn as a chart or a formatted table. These come straight from 
 
 <table>
   <tr>
-    <td width="33%"><img src="assets/readme/gallery/c2_price_yield.png" alt="Price against yield for four bonds"><br><sub><b>Course 2</b> · Price against yield for four bonds</sub></td>
-    <td width="33%"><img src="assets/readme/gallery/c2_convexity.png" alt="Duration and convexity against the full reprice"><br><sub><b>Course 2</b> · Duration, convexity, and the full reprice</sub></td>
-    <td width="33%"><img src="assets/readme/gallery/c3_curve_slopes.png" alt="Treasury curve slopes in basis points"><br><sub><b>Course 3</b> · Treasury curve slopes, in bp</sub></td>
+    <td width="50%" valign="top"><img src="assets/readme/gallery/c2_price_yield.png" alt="Price against yield for four bonds"><br><sub><b>Course 2</b> · Price and yield</sub></td>
+    <td width="50%" valign="top"><img src="assets/readme/gallery/c2_convexity.png" alt="Duration, convexity, and the full reprice"><br><sub><b>Course 2</b> · Duration and convexity</sub></td>
   </tr>
   <tr>
-    <td width="33%"><img src="assets/readme/gallery/c4_correlation_heatmap.png" alt="Correlation of daily changes across Treasury tenors"><br><sub><b>Course 4</b> · Correlation of daily changes across the curve</sub></td>
-    <td width="33%"><img src="assets/readme/gallery/c5_shap_waterfall.png" alt="One company's model output split by SHAP value"><br><sub><b>Course 5</b> · One model output, split by SHAP value</sub></td>
-    <td width="33%"><img src="assets/readme/gallery/c7_indenture_embeddings.png" alt="An indenture's sections as sentence embeddings"><br><sub><b>Course 7</b> · An indenture's sections, as embeddings</sub></td>
+    <td width="50%" valign="top"><img src="assets/readme/gallery/c3_curve_slopes.png" alt="Treasury curve slopes in basis points"><br><sub><b>Course 3</b> · Treasury curve slopes</sub></td>
+    <td width="50%" valign="top"><img src="assets/readme/gallery/c4_correlation_heatmap.png" alt="Correlation of daily changes across Treasury tenors"><br><sub><b>Course 4</b> · Correlation across the curve</sub></td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top"><img src="assets/readme/gallery/c5_shap_waterfall.png" alt="One company's model output split by SHAP value"><br><sub><b>Course 5</b> · A model output, by SHAP value</sub></td>
+    <td width="50%" valign="top"><img src="assets/readme/gallery/c7_indenture_embeddings.png" alt="An indenture's sections as sentence embeddings"><br><sub><b>Course 7</b> · An indenture, as embeddings</sub></td>
   </tr>
 </table>
 
