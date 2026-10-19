@@ -80,30 +80,12 @@ And it keeps going. You will price bonds with code you wrote and tested against 
 
 Ten courses and a bonus, each one building on the last.
 
-```mermaid
-flowchart LR
-    subgraph F["Foundations"]
-        direction TB
-        C1["1 · Python Foundations"] --> C2["2 · Bond Math"] --> C3["3 · Market Data"]
-    end
-    subgraph M["Machine learning"]
-        direction TB
-        C4["4 · Machine Learning"] --> C5["5 · Advanced ML"] --> C6["6 · Neural Networks"]
-    end
-    subgraph A["Language models and agents"]
-        direction TB
-        C7["7 · NLP, RAG, and LLMs"] --> C8["8 · Agentic AI"]
-    end
-    subgraph S["Build and ship"]
-        direction TB
-        C9["9 · Deployment"] --> C10["10 · Implementing RAG"] --> CB["Bonus · Your Own Coding Agent"]
-    end
-    F --> M --> A --> S
-    classDef course fill:#123D2F,stroke:#1C7A57,color:#FFFFFF
-    classDef stage fill:#E8F3EC,stroke:#1C7A57,color:#123D2F
-    class F,M,A,S stage
-    class C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,CB course
-```
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/path-dark.png">
+    <img src="assets/readme/path-light.png" width="720" alt="The path: Foundations (Courses 1 to 3), then Machine learning (4 to 6), then Language models and agents (7 and 8), then Build and ship (9, 10, and the Bonus)">
+  </picture>
+</p>
 
 ## What you will build
 
