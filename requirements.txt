@@ -1,6 +1,7 @@
 # Everything every course of Python for Fixed Income needs, pinned. One install covers Courses 1 to 10 and the Bonus course.
 # Each course folder keeps its own requirements.txt (the subset that course needs) for the notebooks' Colab install cells.
 beautifulsoup4==4.15.0
+catboost==1.2.10
 faiss-cpu==1.15.1
 fastapi==0.143.0
 gradio==6.30.0
