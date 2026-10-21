@@ -41,7 +41,7 @@ Four habits run through all of it.
 
 You need Course 5, or the same ground: walk-forward splits from Course 4, regression, and LightGBM. Each notebook writes the reference `mlkit.py` and the `tskit.py` it starts from into its work folder, so a missing or unfinished module never stops it. Course 5B sits between Course 5 and [Course 6](../course6_neural_networks/README.md), whose sequence networks on the Treasury curve come after it.
 
-Status: <!-- count:ready -->1<!-- /count --> of <!-- count:total -->9<!-- /count --> notebooks are ready; the capstone is coming.
+Status: <!-- count:ready -->5<!-- /count --> of <!-- count:total -->9<!-- /count --> notebooks are ready; the capstone is coming.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -83,10 +83,10 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
 | 1 | [Missing Data, Gaps, and Corrections](week1/day1/01_missing_data_gaps_and_corrections.ipynb) | Four kinds of missing in a dated table, a heatmap of blanks over time and runs of blanks, absent weekdays checked against a holiday calendar, wrong values found and corrected with a change log (and why `update` cannot blank a cell), `combine_first` from a second source, every fill side by side against the true values, `limit` and `limit_area`, and a score a backfill improves falsely, beside `IF`, `NETWORKDAYS`, interpolation by hand, and `XLOOKUP` in Excel | Ready |
-| 2 | Frequency, Lags, and the Naive Baselines | Business-day frequency, `shift` and `diff` in bp, the development and held-out years, the last value carried forward, the mean, and drift as baselines, MAE, RMSE, and MASE, and walk-forward scoring | Coming |
-| 3 | Stationarity and Differencing | AR(1) series side by side as phi rises to 1, rolling mean and spread, ADF and KPSS and what to do when they disagree, a spurious regression, and differencing | Coming |
-| 4 | Autocorrelation: ACF and PACF | Lag scatter plots, autocorrelation by hand and by `CORREL`, the confidence band, PACF, the identification grid, changes against their squares, and Ljung-Box | Coming |
-| 5 | Case Study: AR and ARIMA on the Curve | AR, MA, and ARIMA, the AIC and BIC grid, every setting of `ARIMA`, residual diagnostics, and one-step values walk-forward against the baselines, then a case study: what the model shows, and where it fails | Coming |
+| 2 | [Frequency, Lags, and the Naive Baselines](week1/day2/02_frequency_lags_and_the_naive_baselines.ipynb) | Business-day frequency, `shift` and `diff` in bp, the development and held-out years, the last value carried forward, the mean, and drift as baselines, MAE, RMSE, and MASE, and walk-forward scoring | Ready |
+| 3 | [Stationarity and Differencing](week1/day3/03_stationarity_and_differencing.ipynb) | AR(1) series side by side as phi rises to 1, rolling mean and spread, ADF and KPSS and what to do when they disagree, a spurious regression, and differencing | Ready |
+| 4 | [Autocorrelation: ACF and PACF](week1/day4/04_autocorrelation_acf_and_pacf.ipynb) | Lag scatter plots, autocorrelation by hand and by `CORREL`, the confidence band, PACF, the identification grid, changes against their squares, and Ljung-Box | Ready |
+| 5 | [Case Study: AR and ARIMA on the Curve](week1/day5/05_case_study_ar_and_arima_on_the_curve.ipynb) | AR, MA, and ARIMA, the AIC and BIC grid, every setting of `ARIMA`, residual diagnostics, and one-step values walk-forward against the baselines, then a case study: what the model shows, and where it fails | Ready |
 
 ### Week 2: Beyond ARIMA
 
