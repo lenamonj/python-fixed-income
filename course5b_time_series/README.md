@@ -41,7 +41,7 @@ Four habits run through all of it.
 
 You need Course 5, or the same ground: walk-forward splits from Course 4, regression, and LightGBM. Each notebook writes the reference `mlkit.py` and the `tskit.py` it starts from into its work folder, so a missing or unfinished module never stops it. Course 5B sits between Course 5 and [Course 6](../course6_neural_networks/README.md), whose sequence networks on the Treasury curve come after it.
 
-Status: <!-- count:ready -->8<!-- /count --> of <!-- count:total -->9<!-- /count --> notebooks are ready; the capstone is coming.
+Status: <!-- count:ready -->9<!-- /count --> of <!-- count:total -->9<!-- /count --> notebooks are ready; the capstone is coming.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -95,7 +95,7 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 | 1 | [Exponential Smoothing](week2/day1/06_exponential_smoothing.ipynb) | EWMA by hand and in one Excel formula, alpha swept in panels, simple, Holt, and damped smoothing, every setting of `ExponentialSmoothing`, and EWMA of squared changes | Ready |
 | 2 | [Volatility Clustering and GARCH](week2/day2/07_volatility_clustering_and_garch.ipynb) | Squared changes and their ACF, rolling, EWMA, and GARCH(1,1) volatility on one chart, persistence and the half-life of a shock, every setting of `arch_model`, and fitted volatility scored walk-forward | Ready |
 | 3 | [Lag Features and Gradient Boosting](week2/day3/08_lag_features_and_gradient_boosting.ipynb) | `lag_features` built with no leak, LightGBM on lags walk-forward against the baselines, ARIMA, and smoothing, the settings that matter for a series, and a leak shown on purpose | Ready |
-| 4 | Two Series: Cointegration and Mean Reversion | Levels against changes, Engle-Granger on the 5 Yr and 10 Yr and on the synthetic IG and HY spreads, the hedge ratio, the half-life of mean reversion, and a rolling hedge ratio, described, never traded | Coming |
+| 4 | [Two Series: Cointegration and Mean Reversion](week2/day4/09_two_series_cointegration_and_mean_reversion.ipynb) | Levels against changes, Engle-Granger on the 5 Yr and 10 Yr and on the synthetic IG and HY spreads, the hedge ratio, the half-life of mean reversion, and a rolling hedge ratio, described, never traded | Ready |
 | 5 | Course 5B Capstone | The course's workflow on 2s10s and the synthetic HY spread: repair, stationarity, ACF, baselines, ARIMA, smoothing, LightGBM on lags, GARCH, a choice on development, and the held-out years opened once | Coming |
 
 <!-- map:end -->
