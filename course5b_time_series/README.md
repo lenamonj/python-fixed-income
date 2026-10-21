@@ -41,7 +41,7 @@ Four habits run through all of it.
 
 You need Course 5, or the same ground: walk-forward splits from Course 4, regression, and LightGBM. Each notebook writes the reference `mlkit.py` and the `tskit.py` it starts from into its work folder, so a missing or unfinished module never stops it. Course 5B sits between Course 5 and [Course 6](../course6_neural_networks/README.md), whose sequence networks on the Treasury curve come after it.
 
-Status: <!-- count:ready -->5<!-- /count --> of <!-- count:total -->9<!-- /count --> notebooks are ready; the capstone is coming.
+Status: <!-- count:ready -->6<!-- /count --> of <!-- count:total -->9<!-- /count --> notebooks are ready; the capstone is coming.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -92,7 +92,7 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
-| 1 | Exponential Smoothing | EWMA by hand and in one Excel formula, alpha swept in panels, simple, Holt, and damped smoothing, every setting of `ExponentialSmoothing`, and EWMA of squared changes | Coming |
+| 1 | [Exponential Smoothing](week2/day1/06_exponential_smoothing.ipynb) | EWMA by hand and in one Excel formula, alpha swept in panels, simple, Holt, and damped smoothing, every setting of `ExponentialSmoothing`, and EWMA of squared changes | Ready |
 | 2 | Volatility Clustering and GARCH | Squared changes and their ACF, rolling, EWMA, and GARCH(1,1) volatility on one chart, persistence and the half-life of a shock, every setting of `arch_model`, and fitted volatility scored walk-forward | Coming |
 | 3 | Lag Features and Gradient Boosting | `lag_features` built with no leak, LightGBM on lags walk-forward against the baselines, ARIMA, and smoothing, the settings that matter for a series, and a leak shown on purpose | Coming |
 | 4 | Two Series: Cointegration and Mean Reversion | Levels against changes, Engle-Granger on the 5 Yr and 10 Yr and on the synthetic IG and HY spreads, the hedge ratio, the half-life of mean reversion, and a rolling hedge ratio, described, never traded | Coming |
