@@ -7,7 +7,7 @@
 
 <h3>From your first line of code to your own AI agents.<br>Taught entirely through the work of a credit desk.</h3>
 
-[![Courses](https://img.shields.io/badge/Courses-10_%2B_Bonus-123D2F?style=for-the-badge)](#the-courses)
+[![Courses](https://img.shields.io/badge/Courses-11_%2B_Bonus-123D2F?style=for-the-badge)](#the-courses)
 [![Notebooks](https://img.shields.io/badge/Notebooks-156-123D2F?style=for-the-badge)](#the-courses)
 [![Price](https://img.shields.io/badge/Price-Free-1C7A57?style=for-the-badge)](#start-here)
 [![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
@@ -78,12 +78,12 @@ And it keeps going. You will price bonds with code you wrote and tested against 
 
 ## The path
 
-Ten courses and a bonus, each one building on the last.
+Eleven courses and a bonus, each one building on the last.
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/readme/path-dark.png">
-    <img src="assets/readme/path-light.png" width="720" alt="The path: Foundations (Courses 1 to 3), then Machine learning (4 to 6), then Language models and agents (7 and 8), then Build and ship (9, 10, and the Bonus)">
+    <img src="assets/readme/path-light.png" width="720" alt="The path: Foundations (Courses 1 to 3), then Machine learning (4, 5, 5B, and 6), then Language models and agents (7 and 8), then Build and ship (9, 10, and the Bonus)">
   </picture>
 </p>
 
@@ -98,6 +98,7 @@ Every course ends with a capstone you can show.
 | **3** | [Market Data and Time Series](course3_market_data/README.md) | A daily market snapshot from a vendor extract you test, clean, and reconcile, written to HTML and Excel and run again for another date |
 | **4** | [Machine Learning](course4_machine_learning/README.md) | Three models compared on a public file of company statements, each tested on rows it never saw |
 | **5** | [Advanced Machine Learning](course5_advanced_ml/README.md) | A logistic regression, a random forest, XGBoost, and LightGBM compared on a public file of company ratios where bankruptcies are rare |
+| **5B** | [Time Series Models](course5b_time_series/README.md) | Two series repaired, tested, and modelled walk-forward with ARIMA, smoothing, GARCH, and LightGBM, each measured against carrying the last value forward |
 | **6** | [Neural Networks](course6_neural_networks/README.md) | A neural network built in Keras and measured against LightGBM, all on an ordinary laptop CPU |
 | **7** | [NLP, RAG, and LLMs](course7_nlp_and_llms/README.md) | A covenant extraction tool, run on an indenture you have never seen, with every number checked against the text |
 | **8** | [Implementing Agentic AI](course8_agentic_ai/README.md) | A multi-agent credit desk that writes a morning brief from FOMC statements, an indenture, and the book's risk, with every figure traced to the tool that produced it |
@@ -260,7 +261,7 @@ Four habits run through every day.
 
 ## The courses
 
-Each course has its own folder, course map, and install list. Weeks start again at 1 in every course. All ten courses and the Bonus course are ready.
+Each course has its own folder, course map, and install list. Weeks start again at 1 in every course. Courses 1 to 10 and the Bonus course are ready; Course 5B is being built.
 
 | Course | Length | What it covers |
 |:---:|:---:|:---|
@@ -269,6 +270,7 @@ Each course has its own folder, course map, and install list. Weeks start again 
 | **3** | 3 weeks | [Market Data and Time Series](course3_market_data/README.md): APIs and keys kept secret, market calendars, changes, volatility, z-scores, percentile ranks, slopes, butterflies, and SQL |
 | **4** | 3 weeks | [Machine Learning](course4_machine_learning/README.md): regression on the spread cross-section, logistic regression, thresholds, decision trees, walk-forward validation, clustering, and PCA |
 | **5** | 3 weeks | [Advanced Machine Learning](course5_advanced_ml/README.md): bagging, random forests, boosting, XGBoost, LightGBM, stacking, honest tuning, rare events, and SHAP values |
+| **5B** | 2 weeks | [Time Series Models](course5b_time_series/README.md): missing data and corrections, lags and the naive baselines, stationarity, ACF and PACF, ARIMA, exponential smoothing, GARCH, lag features with LightGBM, and cointegration |
 | **6** | 3 weeks | [Neural Networks](course6_neural_networks/README.md): gradients by hand, dense networks in Keras, optimizers, regularization, and sequence models on the Treasury curve |
 | **7** | 3 weeks | [NLP, RAG, and LLMs](course7_nlp_and_llms/README.md): TF-IDF, embeddings, semantic search, EDGAR filings, large language models, and covenant extraction from real indentures |
 | **8** | 3 weeks | [Implementing Agentic AI](course8_agentic_ai/README.md): the agent loop by hand, tools, MCP, the OpenAI Agents SDK, an orchestrator with specialists, evals, and guardrails |
