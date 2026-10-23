@@ -7,8 +7,8 @@
 
 <h3>From your first line of code to your own AI agents.<br>Taught entirely through the work of a credit desk.</h3>
 
-[![Courses](https://img.shields.io/badge/Courses-11_%2B_Bonus-123D2F?style=for-the-badge)](#the-courses)
-[![Notebooks](https://img.shields.io/badge/Notebooks-166-123D2F?style=for-the-badge)](#the-courses)
+[![Courses](https://img.shields.io/badge/Courses-12_%2B_Bonus-123D2F?style=for-the-badge)](#the-courses)
+[![Notebooks](https://img.shields.io/badge/Notebooks-167-123D2F?style=for-the-badge)](#the-courses)
 [![Price](https://img.shields.io/badge/Price-Free-1C7A57?style=for-the-badge)](#start-here)
 [![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)](#run-in-google-colab-with-nothing-to-install)
@@ -21,8 +21,8 @@
 
 <table>
   <tr>
-    <td align="center" valign="top" width="25%"><h2>166</h2>notebooks, each with<br>worked solutions</td>
-    <td align="center" valign="top" width="25%"><h2>173</h2>Excel comparisons,<br>formula by formula</td>
+    <td align="center" valign="top" width="25%"><h2>167</h2>notebooks, each with<br>worked solutions</td>
+    <td align="center" valign="top" width="25%"><h2>177</h2>Excel comparisons,<br>formula by formula</td>
     <td align="center" valign="top" width="25%"><h2>33</h2>weeks, one notebook<br>a day</td>
     <td align="center" valign="top" width="25%"><h2>$0</h2>to take, and no key<br>needed to run</td>
   </tr>
@@ -261,7 +261,7 @@ Four habits run through every day.
 
 ## The courses
 
-Each course has its own folder, course map, and install list. Weeks start again at 1 in every course. Courses 1 to 10, Course 5B, and the Bonus course are ready.
+Each course has its own folder, course map, and install list. Weeks start again at 1 in every course. Courses 1 to 10, Course 5B, and the Bonus course are ready. Course 5C is being built, one day at a time.
 
 | Course | Length | What it covers |
 |:---:|:---:|:---|
@@ -271,6 +271,7 @@ Each course has its own folder, course map, and install list. Weeks start again 
 | **4** | 3 weeks | [Machine Learning](course4_machine_learning/README.md): regression on the spread cross-section, logistic regression, thresholds, decision trees, walk-forward validation, clustering, and PCA |
 | **5** | 3 weeks | [Advanced Machine Learning](course5_advanced_ml/README.md): bagging, random forests, boosting, XGBoost, LightGBM, stacking, honest tuning, rare events, and SHAP values |
 | **5B** | 2 weeks | [Time Series Models](course5b_time_series/README.md): missing data and corrections, lags and the naive baselines, stationarity, ACF and PACF, ARIMA, exponential smoothing, GARCH, lag features with LightGBM, and cointegration |
+| **5C** | 2 weeks | [Risk Models](course5c_risk_models/README.md), being built one day at a time: Monte Carlo, VaR and expected shortfall, correlated defaults, survival and hazard models, outlier screens, and population stability |
 | **6** | 3 weeks | [Neural Networks](course6_neural_networks/README.md): gradients by hand, dense networks in Keras, optimizers, regularization, and sequence models on the Treasury curve |
 | **7** | 3 weeks | [NLP, RAG, and LLMs](course7_nlp_and_llms/README.md): TF-IDF, embeddings, semantic search, EDGAR filings, large language models, and covenant extraction from real indentures |
 | **8** | 3 weeks | [Implementing Agentic AI](course8_agentic_ai/README.md): the agent loop by hand, tools, MCP, the OpenAI Agents SDK, an orchestrator with specialists, evals, and guardrails |

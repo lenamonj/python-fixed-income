@@ -18,7 +18,8 @@ and the saved copy's name (assets/headers/course2_<notebook>.png), so it cannot 
 Courses 1 to 10 are known (course 4 added 2026-10-04, course 5 added 2026-10-05, course 6 added 2026-10-06, course 7
 added 2026-10-07, course 8 added 2026-10-08, course 9 added 2026-10-12, course 10 added 2026-10-12; the banners of
 the earlier courses are unchanged). Course 5B is --course 5b (added 2026-10-20; its saved copies are
-assets/headers/course5b_<notebook>.png; every earlier banner is unchanged). The Bonus course is --course bonus (added 2026-10-12; its saved copies are assets/headers/bonus_<notebook>.png):
+assets/headers/course5b_<notebook>.png; every earlier banner is unchanged). Course 5C is --course 5c (added 2026-10-22; its saved copies are
+assets/headers/course5c_<notebook>.png; every earlier banner is unchanged). The Bonus course is --course bonus (added 2026-10-12; its saved copies are assets/headers/bonus_<notebook>.png):
 
     python tools/notebook_header.py course_bonus_coding_agent/week1/day1/01_build_your_own_coding_agent.ipynb --course bonus --week 1 --day 1 --title "Build Your Own Coding Agent"
 """
@@ -43,6 +44,7 @@ COURSES = {
     4: ("COURSE 4 · MACHINE LEARNING", "Course 4: Machine Learning", "course4_"),
     5: ("COURSE 5 · ADVANCED MACHINE LEARNING", "Course 5: Advanced Machine Learning", "course5_"),
     "5b": ("COURSE 5B · TIME SERIES MODELS", "Course 5B: Time Series Models", "course5b_"),
+    "5c": ("COURSE 5C · RISK MODELS", "Course 5C: Risk Models", "course5c_"),
     6: ("COURSE 6 · NEURAL NETWORKS", "Course 6: Neural Networks", "course6_"),
     7: ("COURSE 7 · NLP, RAG, AND LLMS", "Course 7: NLP, RAG, and LLMs", "course7_"),
     8: ("COURSE 8 · IMPLEMENTING AGENTIC AI", "Course 8: Implementing Agentic AI", "course8_"),
@@ -107,9 +109,9 @@ def bezier(p0, p1, p2, p3, steps: int = 60) -> list:
 
 
 def course_key(text: str) -> int | str:
-    """The --course value: a course number (1 to 10), 5b, or the word bonus."""
+    """The --course value: a course number (1 to 10), 5b, 5c, or the word bonus."""
     key = text.strip().lower()
-    return key if key in ("bonus", "5b") else int(key)
+    return key if key in ("bonus", "5b", "5c") else int(key)
 
 
 def draw_banner(week: int, day: int, title: str, course: int | str = 1) -> Image.Image:
