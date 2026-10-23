@@ -37,7 +37,7 @@ The data is built to behave like a real portfolio.
 |:---|:---|
 | **Price and yield always agree** | Each yield is a synthetic Treasury yield plus a spread, and each price is calculated from that yield. |
 | **One convention throughout** | Fixed-rate bullet bonds, semiannual coupons, 30/360 day count, modified duration. |
-| **Identical for every student** | Seeded scripts generate every file: `tools/make_holdings.py` for the portfolio, `tools/make_blotter.py` for the trades, `tools/make_project_data.py` for the project extract, `tools/make_course2_data.py` for the Course 2 curve and capstone, and `tools/make_course3_data.py` for the Course 3 spreads, FRED-format samples, and capstone. `tools/make_excel_reference.py`, `tools/make_course3_excel_reference.py`, and `tools/make_course4_excel_reference.py` wrote the Excel values once, through desktop Excel on Windows. |
+| **Identical for every student** | Seeded scripts generate every file: `tools/make_holdings.py` for the portfolio, `tools/make_blotter.py` for the trades, `tools/make_project_data.py` for the project extract, `tools/make_course2_data.py` for the Course 2 curve and capstone, `tools/make_course3_data.py` for the Course 3 spreads, FRED-format samples, and capstone, and `tools/make_cohort.py` for the Course 5C firm cohort. `tools/make_excel_reference.py`, `tools/make_course3_excel_reference.py`, and `tools/make_course4_excel_reference.py` wrote the Excel values once, through desktop Excel on Windows. |
 | **Checked** | `python -m pytest` confirms the identifiers are valid and that each bond's price, accrued interest, and duration match its yield. |
 | **No real CUSIPs** | Every CUSIP uses an issuer number in the range reserved for internal use, with a valid check digit. |
 
@@ -62,6 +62,12 @@ Course 3 adds three files derived from the public Treasury file. They hold its v
 | `data/course3_excel_reference.csv` | 190 market dates of 2026: the 2, 5, 10, and 30 Yr, and Excel's results for changes, rolling volatility, z-scores, percentile ranks, 2s10s, and 2s5s10s, with each formula | Computed by desktop Excel from `data/treasury_par_yields.csv` |
 
 Nothing pulled from the FRED API is stored in this repo. Course 3's live cells pull public Treasury series with the student's own key, and pull ICE BofA and Moody's series only to the student's own screen: those are licensed, held in memory, and never cached, written to a file, or committed.
+
+Course 5C adds one synthetic file for its default and drift lessons.
+
+| File | What it holds | Source and terms |
+|:---|:---|:---|
+| `data/course5c_cohort.csv` | 4,000 invented firms followed year by year over 20 study years, 29,615 firm-years: rating, leverage, coverage, and whether the firm defaulted or left that year, with a population shift planted from study year 11 | **Synthetic**: invented by `tools/make_cohort.py` with a fixed seed; ids only, no names, no calendar years, and no agency statistic. Under the repo's MIT license. |
 
 Course 7 adds text: public statements, public filings written by real issuers, a public-domain word vector file, and outputs the course computed itself. Real issuers appear only as the authors of the documents, which are quoted for descriptive extraction only: what the document says, never a view on the issuer or its securities. The 46-row `data/fomc_statements.csv` is unchanged.
 

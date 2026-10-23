@@ -166,3 +166,58 @@ def test_credit_card_quirks_are_kept(credit_cards: pd.DataFrame) -> None:
     assert set(credit_cards["MARRIAGE"]) == {0, 1, 2, 3}
     assert {-2, 0} <= set(credit_cards["PAY_0"])
     assert "PAY_1" not in credit_cards.columns
+
+
+@pytest.fixture(scope="module")
+def cohort() -> pd.DataFrame:
+    return pd.read_csv(DATA / "course5c_cohort.csv")
+
+
+def test_cohort_rows_follow_each_firm_year_by_year(cohort: pd.DataFrame) -> None:
+    assert cohort.notna().all().all()
+    assert not cohort.duplicated(["firm_id", "study_year"]).any()
+    assert cohort["firm_id"].nunique() == 4_000
+    assert cohort["study_year"].between(1, 20).all()
+    # consecutive years with no gap, starting at years_since_entry 1
+    for _, firm in cohort.groupby("firm_id"):
+        assert firm["years_since_entry"].tolist() == list(range(1, len(firm) + 1))
+        assert (firm["study_year"].diff().dropna() == 1).all()
+    entry = cohort.loc[cohort["years_since_entry"] == 1, "study_year"]
+    assert entry.between(1, 16).all()
+
+
+def test_cohort_ends_at_default_exit_or_year_20(cohort: pd.DataFrame) -> None:
+    assert set(cohort["default"]) == {0, 1} and set(cohort["exit"]) == {0, 1}
+    assert not (cohort["default"] & cohort["exit"]).any()
+    ended = cohort["default"] | cohort["exit"]
+    last = cohort.groupby("firm_id").tail(1)
+    # a default or an exit is always a firm's last row, and a firm with neither runs to year 20
+    assert ended.sum() == (last["default"] | last["exit"]).sum()
+    assert (last.loc[(last["default"] | last["exit"]) == 0, "study_year"] == 20).all()
+
+
+def test_cohort_ratings_and_covariates(cohort: pd.DataFrame) -> None:
+    ratings = pd.read_csv(DATA / "ratings.csv")
+    assert set(zip(cohort["rating"], cohort["rating_score"])) <= set(zip(ratings["rating"], ratings["score"]))
+    assert (cohort["leverage"] >= 0.3).all() and (cohort["coverage"] >= 0.2).all()
+    assert cohort["firm_id"].str.fullmatch(r"F\d{4}").all()
+
+
+def test_cohort_default_counts(cohort: pd.DataFrame) -> None:
+    ratings = pd.read_csv(DATA / "ratings.csv").set_index("rating")["bucket"]
+    by_bucket = cohort.groupby(cohort["rating"].map(ratings))["default"].sum()
+    assert by_bucket.get("AAA", 0) + by_bucket.get("AA", 0) <= 3   # the low-default problem of day 3
+    for bucket in ["BBB", "BB", "B", "CCC"]:
+        assert by_bucket[bucket] >= 20
+    development = cohort[cohort["study_year"] <= 14]
+    assert 300 <= development["default"].sum() <= 400
+
+
+def test_cohort_generator_is_deterministic(tmp_path: Path) -> None:
+    from make_cohort import write_cohort
+
+    write_cohort(tmp_path / "first.csv")
+    write_cohort(tmp_path / "second.csv")
+    first = (tmp_path / "first.csv").read_bytes()
+    assert first == (tmp_path / "second.csv").read_bytes()
+    assert first == (DATA / "course5c_cohort.csv").read_bytes()
