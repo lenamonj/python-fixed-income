@@ -39,7 +39,7 @@ Four habits run through all of it.
 
 You need Course 5B, or the same ground: walk-forward splits and logistic regression from Course 4, and the development and held-out years of Course 5B. Each notebook writes the reference `mlkit.py` and the `riskkit.py` it starts from into its work folder, so a missing or unfinished module never stops it. Course 5C sits between Course 5B and [Course 6](../course6_neural_networks/README.md).
 
-Status: <!-- count:ready -->4<!-- /count --> of <!-- count:total -->10<!-- /count --> notebooks are ready. The course is being built one day at a time.
+Status: <!-- count:ready -->5<!-- /count --> of <!-- count:total -->10<!-- /count --> notebooks are ready. The course is being built one day at a time.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -84,7 +84,7 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 | 2 | [Historical Simulation and VaR](week1/day2/02_historical_simulation_and_var.ipynb) | The book's exposure by key rate and by DTS, its daily P&L had each day of 2015 to 2022 repeated, VaR and expected shortfall from the history, a normal model, and a fitted Student's t, every setting swept, and a walk-forward backtest with Kupiec's test, beside `PERCENTILE.INC`, `AVERAGEIF`, and `CHISQ.DIST.RT` in Excel | Ready |
 | 3 | [Correlated Defaults and the Loss Distribution](week1/day3/03_correlated_defaults_and_the_loss_distribution.ipynb) | Default rates from the synthetic cohort and the low-default problem, defaults that cluster by year, the one-factor model with its correlation swept, the Vasicek formula against a simulation, the book's credit loss with VaR and expected shortfall by sector, and Cholesky, beside `AVERAGEIFS`, `NORM.S.DIST`, and `BETA.INV` in Excel | Ready |
 | 4 | [Survival Curves and Kaplan-Meier](week1/day4/04_survival_curves_and_kaplan_meier.ipynb) | Censoring and the bias of dropping it, Kaplan-Meier by hand and in statsmodels with its band, curves by rating, the log-rank test, the hazard and a flat hazard, and the credit triangle on invented numbers, beside `COUNTIF`, `COUNTIFS`, and `EXP` in Excel | Ready |
-| 5 | Case Study: Hazard Models | The Cox model and a discrete-time hazard on firm-years, their coefficients against the planted ones, then a case study: what the model shows, and where it fails | Planned |
+| 5 | [Case Study: Hazard Models](week1/day5/05_case_study_hazard_models.ipynb) | A firm-year table, the Cox model with covariates that change year by year and its settings swept, the proportional-hazards check, a logistic hazard against the generator's planted coefficients, survival curves from hazards, then a case study scored walk-forward by AUC and calibration: what the model shows, and where it fails, beside `SUMPRODUCT`, `EXP`, and `PRODUCT` in Excel | Ready |
 
 ### Week 2: Unusual data and drift
 
