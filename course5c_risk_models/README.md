@@ -39,7 +39,7 @@ Four habits run through all of it.
 
 You need Course 5B, or the same ground: walk-forward splits and logistic regression from Course 4, and the development and held-out years of Course 5B. Each notebook writes the reference `mlkit.py` and the `riskkit.py` it starts from into its work folder, so a missing or unfinished module never stops it. Course 5C sits between Course 5B and [Course 6](../course6_neural_networks/README.md).
 
-Status: <!-- count:ready -->7<!-- /count --> of <!-- count:total -->10<!-- /count --> notebooks are ready. The course is being built one day at a time.
+Status: <!-- count:ready -->8<!-- /count --> of <!-- count:total -->10<!-- /count --> notebooks are ready. The course is being built one day at a time.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -92,7 +92,7 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 |:---:|:---|:---|:---:|
 | 1 | [Outliers: Robust Rules](week2/day1/06_outliers_robust_rules.ipynb) | Off-market prints planted in a copy of the blotter, each trade's distance from a reference, masking shown, the robust z-score at the published 3.5 and Tukey's fences, precision and recall against the planted labels with a threshold sweep, and rolling scores on past trades only, beside `MEDIAN`, the MAD as an array formula, and `QUARTILE.INC` in Excel | Ready |
 | 2 | [Isolation Forest and Local Outlier Factor](week2/day2/07_isolation_forest_and_local_outlier_factor.ipynb) | The robust Mahalanobis distance on daily curve changes with masking drawn and the unusual days listed as history, field errors planted in a copy of the book, isolation forest with every setting read and swept, local outlier factor and its neighbourhood, three screens judged on planted and untouched books, and why contamination never comes from the labels, beside `MINVERSE`, `MMULT`, and `CHISQ.INV` in Excel | Ready |
-| 3 | Population Stability and Drift | PSI by hand and by function, the 10 Yr level against its change, per-feature PSI on the cohort, KS and Jensen-Shannon | Planned |
+| 3 | [Population Stability and Drift](week2/day3/08_population_stability_and_drift.ipynb) | PSI by hand and by function, the 10 Yr level against its daily change, the empty bin and its floor, the bins swept, PSI quarter by quarter, per-input PSI finding the cohort's planted shift, and PSI beside the KS test and Jensen-Shannon, beside `PERCENTILE.INC`, `FREQUENCY`, and `SUMPRODUCT` in Excel | Ready |
 | 4 | Case Study: Monitoring a Credit Model | A hazard model watched year by year: score and input PSI, AUC, calibration, and a monitoring table | Planned |
 | 5 | Course 5C Capstone | A risk report on the book and the cohort, with the held-out years opened once | Planned |
 
