@@ -39,7 +39,7 @@ Four habits run through all of it.
 
 You need Course 5B, or the same ground: walk-forward splits and logistic regression from Course 4, and the development and held-out years of Course 5B. Each notebook writes the reference `mlkit.py` and the `riskkit.py` it starts from into its work folder, so a missing or unfinished module never stops it. Course 5C sits between Course 5B and [Course 6](../course6_neural_networks/README.md).
 
-Status: <!-- count:ready -->5<!-- /count --> of <!-- count:total -->10<!-- /count --> notebooks are ready. The course is being built one day at a time.
+Status: <!-- count:ready -->6<!-- /count --> of <!-- count:total -->10<!-- /count --> notebooks are ready. The course is being built one day at a time.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -90,7 +90,7 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
-| 1 | Outliers: Robust Rules | Off-market prints planted in the blotter, masking, the robust z-score and IQR fences, and precision and recall against the planted labels | Planned |
+| 1 | [Outliers: Robust Rules](week2/day1/06_outliers_robust_rules.ipynb) | Off-market prints planted in a copy of the blotter, each trade's distance from a reference, masking shown, the robust z-score at the published 3.5 and Tukey's fences, precision and recall against the planted labels with a threshold sweep, and rolling scores on past trades only, beside `MEDIAN`, the MAD as an array formula, and `QUARTILE.INC` in Excel | Ready |
 | 2 | Isolation Forest and Local Outlier Factor | Mahalanobis distance on curve changes, isolation forest and its settings, local outlier factor, and planted field errors | Planned |
 | 3 | Population Stability and Drift | PSI by hand and by function, the 10 Yr level against its change, per-feature PSI on the cohort, KS and Jensen-Shannon | Planned |
 | 4 | Case Study: Monitoring a Credit Model | A hazard model watched year by year: score and input PSI, AUC, calibration, and a monitoring table | Planned |
