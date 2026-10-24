@@ -15,7 +15,8 @@ OUT = Path(__file__).resolve().parent.parent / "assets" / "readme"
 STAGES = [
     ("Foundations", [("Course 1", "Python Foundations"), ("Course 2", "Bond Math"), ("Course 3", "Market Data")]),
     ("Machine learning", [("Course 4", "Machine Learning"), ("Course 5", "Advanced ML"),
-                          ("Course 5B", "Time Series Models"), ("Course 6", "Neural Networks")]),
+                          ("Course 5B", "Time Series Models"), ("Course 5C", "Risk Models"),
+                          ("Course 6", "Neural Networks")]),
     ("Language models and agents", [("Course 7", "NLP, RAG, and LLMs"), ("Course 8", "Agentic AI")]),
     ("Build and ship", [("Course 9", "Deployment"), ("Course 10", "Implementing RAG"),
                         ("Bonus", "Your Own Coding Agent")]),
@@ -27,6 +28,7 @@ CARD_W = 270
 CARD_H = 140
 CARD_GAP = (WIDTH - 2 * PAD - 3 * CARD_W) // 2
 NARROW_GAP = 40  # a band of four cards (Course 5B joined Machine learning, 2026-10-20) uses narrower cards
+# a band of five (Course 5C joined, 2026-10-24) also uses smaller type, so each name fits its card
 BAND_H = 250
 BAND_GAP = 70
 
@@ -73,14 +75,15 @@ def draw(theme: dict) -> Image.Image:
 
         card_top = top + BAND_H - PAD - CARD_H
         card_w, gap = (CARD_W, CARD_GAP) if len(courses) <= 3 else             ((WIDTH - 2 * PAD - (len(courses) - 1) * NARROW_GAP) // len(courses), NARROW_GAP)
+        band_label, band_name, step, inset = (label_font, name_font, 36, 22) if len(courses) <= 4 else (mono(18, bold=True), sans(23, 500), 29, 14)
         for j, (label, name) in enumerate(courses):
             left = PAD + j * (card_w + gap)
             canvas.rounded_rectangle((left, card_top, left + card_w, card_top + CARD_H), radius=18,
                                      fill=theme["card"])
-            canvas.text((left + 22, card_top + 42), label.upper(), font=label_font, fill=theme["label"],
+            canvas.text((left + inset, card_top + 42), label.upper(), font=band_label, fill=theme["label"],
                         anchor="ls")
-            for k, line in enumerate(wrap(name, name_font, card_w - 44)):
-                canvas.text((left + 22, card_top + 84 + k * 36), line, font=name_font, fill=theme["name"],
+            for k, line in enumerate(wrap(name, band_name, card_w - 2 * inset)):
+                canvas.text((left + inset, card_top + 84 + k * step), line, font=band_name, fill=theme["name"],
                             anchor="ls")
             if j:
                 mid = card_top + CARD_H // 2

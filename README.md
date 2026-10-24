@@ -8,7 +8,7 @@
 <h3>From your first line of code to your own AI agents.<br>Taught entirely through the work of a credit desk.</h3>
 
 [![Courses](https://img.shields.io/badge/Courses-12_%2B_Bonus-123D2F?style=for-the-badge)](#the-courses)
-[![Notebooks](https://img.shields.io/badge/Notebooks-175-123D2F?style=for-the-badge)](#the-courses)
+[![Notebooks](https://img.shields.io/badge/Notebooks-176-123D2F?style=for-the-badge)](#the-courses)
 [![Price](https://img.shields.io/badge/Price-Free-1C7A57?style=for-the-badge)](#start-here)
 [![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)](#run-in-google-colab-with-nothing-to-install)
@@ -21,8 +21,8 @@
 
 <table>
   <tr>
-    <td align="center" valign="top" width="25%"><h2>175</h2>notebooks, each with<br>worked solutions</td>
-    <td align="center" valign="top" width="25%"><h2>195</h2>Excel comparisons,<br>formula by formula</td>
+    <td align="center" valign="top" width="25%"><h2>176</h2>notebooks, each with<br>worked solutions</td>
+    <td align="center" valign="top" width="25%"><h2>196</h2>Excel comparisons,<br>formula by formula</td>
     <td align="center" valign="top" width="25%"><h2>33</h2>weeks, one notebook<br>a day</td>
     <td align="center" valign="top" width="25%"><h2>$0</h2>to take, and no key<br>needed to run</td>
   </tr>
@@ -78,12 +78,12 @@ And it keeps going. You will price bonds with code you wrote and tested against 
 
 ## The path
 
-Eleven courses and a bonus, each one building on the last.
+Twelve courses and a bonus, each one building on the last.
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/readme/path-dark.png">
-    <img src="assets/readme/path-light.png" width="720" alt="The path: Foundations (Courses 1 to 3), then Machine learning (4, 5, 5B, and 6), then Language models and agents (7 and 8), then Build and ship (9, 10, and the Bonus)">
+    <img src="assets/readme/path-light.png" width="720" alt="The path: Foundations (Courses 1 to 3), then Machine learning (4, 5, 5B, 5C, and 6), then Language models and agents (7 and 8), then Build and ship (9, 10, and the Bonus)">
   </picture>
 </p>
 
@@ -99,6 +99,7 @@ Every course ends with a capstone you can show.
 | **4** | [Machine Learning](course4_machine_learning/README.md) | Three models compared on a public file of company statements, each tested on rows it never saw |
 | **5** | [Advanced Machine Learning](course5_advanced_ml/README.md) | A logistic regression, a random forest, XGBoost, and LightGBM compared on a public file of company ratios where bankruptcies are rare |
 | **5B** | [Time Series Models](course5b_time_series/README.md) | Two series repaired, tested, and modelled walk-forward with ARIMA, smoothing, GARCH, and LightGBM, each measured against carrying the last value forward |
+| **5C** | [Risk Models](course5c_risk_models/README.md) | A risk report on a synthetic book and cohort: credit loss by Monte Carlo, historical VaR backtested, a hazard model chosen by a tested rule, a trade screen, and PSI, with the held-out years opened once |
 | **6** | [Neural Networks](course6_neural_networks/README.md) | A neural network built in Keras and measured against LightGBM, all on an ordinary laptop CPU |
 | **7** | [NLP, RAG, and LLMs](course7_nlp_and_llms/README.md) | A covenant extraction tool, run on an indenture you have never seen, with every number checked against the text |
 | **8** | [Implementing Agentic AI](course8_agentic_ai/README.md) | A multi-agent credit desk that writes a morning brief from FOMC statements, an indenture, and the book's risk, with every figure traced to the tool that produced it |
@@ -156,7 +157,7 @@ Nothing here asks you to forget Excel. Wherever Excel has a feature for the job,
 | Build a pivot table | Group by a column and summarize | 1 |
 | Goal Seek a yield, or use `RATE` and `YIELD` | Write a loop that solves the yield from a price | 2 |
 
-**[See all 195 comparisons, course by course.](EXCEL.md)**
+**[See all 196 comparisons, course by course.](EXCEL.md)**
 
 What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so the same steps run again on tomorrow's file without anyone dragging a formula or repointing a range.
 
@@ -261,7 +262,7 @@ Four habits run through every day.
 
 ## The courses
 
-Each course has its own folder, course map, and install list. Weeks start again at 1 in every course. Courses 1 to 10, Course 5B, and the Bonus course are ready. Course 5C is being built, one day at a time.
+Each course has its own folder, course map, and install list. Weeks start again at 1 in every course. Courses 1 to 10, Courses 5B and 5C, and the Bonus course are ready.
 
 | Course | Length | What it covers |
 |:---:|:---:|:---|
@@ -271,7 +272,7 @@ Each course has its own folder, course map, and install list. Weeks start again 
 | **4** | 3 weeks | [Machine Learning](course4_machine_learning/README.md): regression on the spread cross-section, logistic regression, thresholds, decision trees, walk-forward validation, clustering, and PCA |
 | **5** | 3 weeks | [Advanced Machine Learning](course5_advanced_ml/README.md): bagging, random forests, boosting, XGBoost, LightGBM, stacking, honest tuning, rare events, and SHAP values |
 | **5B** | 2 weeks | [Time Series Models](course5b_time_series/README.md): missing data and corrections, lags and the naive baselines, stationarity, ACF and PACF, ARIMA, exponential smoothing, GARCH, lag features with LightGBM, and cointegration |
-| **5C** | 2 weeks | [Risk Models](course5c_risk_models/README.md), being built one day at a time: Monte Carlo, VaR and expected shortfall, correlated defaults, survival and hazard models, outlier screens, and population stability |
+| **5C** | 2 weeks | [Risk Models](course5c_risk_models/README.md): Monte Carlo, VaR and expected shortfall, correlated defaults, survival and hazard models, outlier screens, and population stability |
 | **6** | 3 weeks | [Neural Networks](course6_neural_networks/README.md): gradients by hand, dense networks in Keras, optimizers, regularization, and sequence models on the Treasury curve |
 | **7** | 3 weeks | [NLP, RAG, and LLMs](course7_nlp_and_llms/README.md): TF-IDF, embeddings, semantic search, EDGAR filings, large language models, and covenant extraction from real indentures |
 | **8** | 3 weeks | [Implementing Agentic AI](course8_agentic_ai/README.md): the agent loop by hand, tools, MCP, the OpenAI Agents SDK, an orchestrator with specialists, evals, and guardrails |

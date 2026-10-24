@@ -39,7 +39,7 @@ Four habits run through all of it.
 
 You need Course 5B, or the same ground: walk-forward splits and logistic regression from Course 4, and the development and held-out years of Course 5B. Each notebook writes the reference `mlkit.py` and the `riskkit.py` it starts from into its work folder, so a missing or unfinished module never stops it. Course 5C sits between Course 5B and [Course 6](../course6_neural_networks/README.md).
 
-Status: <!-- count:ready -->9<!-- /count --> of <!-- count:total -->10<!-- /count --> notebooks are ready. The course is being built one day at a time.
+Status: <!-- count:ready -->10<!-- /count --> of <!-- count:total -->10<!-- /count --> notebooks are ready.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -94,7 +94,7 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 | 2 | [Isolation Forest and Local Outlier Factor](week2/day2/07_isolation_forest_and_local_outlier_factor.ipynb) | The robust Mahalanobis distance on daily curve changes with masking drawn and the unusual days listed as history, field errors planted in a copy of the book, isolation forest with every setting read and swept, local outlier factor and its neighbourhood, three screens judged on planted and untouched books, and why contamination never comes from the labels, beside `MINVERSE`, `MMULT`, and `CHISQ.INV` in Excel | Ready |
 | 3 | [Population Stability and Drift](week2/day3/08_population_stability_and_drift.ipynb) | PSI by hand and by function, the 10 Yr level against its daily change, the empty bin and its floor, the bins swept, PSI quarter by quarter, per-input PSI finding the cohort's planted shift, and PSI beside the KS test and Jensen-Shannon, beside `PERCENTILE.INC`, `FREQUENCY`, and `SUMPRODUCT` in Excel | Ready |
 | 4 | [Case Study: Monitoring a Credit Model](week2/day4/09_case_study_monitoring_a_credit_model.ipynb) | Day 5's hazard model frozen on study years 1 to 10 and watched over 11 to 14: the count against the counted defaults with its Poisson chance, AUC by year, the PSI of the score and each input, the stock against the flow, `monitoring_report` with green, amber, and red bands, and a case study of inputs that drift while the ranking holds and the reverse, beside `POISSON.DIST` and the AUC from `RANK.AVG` in Excel | Ready |
-| 5 | Course 5C Capstone | A risk report on the book and the cohort, with the held-out years opened once | Planned |
+| 5 | [Course 5C Capstone](week2/day5/course5c_capstone.ipynb) | A risk report on the book and the cohort: credit loss by Monte Carlo with VaR and expected shortfall, historical VaR backtested inside development, a hazard model chosen by a tested `choose_model` and frozen, a screen of planted trades, every choice committed, then the held-out years opened once for the VaR backtest, the default levels, the hazard model, and a PSI table of the stock and the flow, beside `SUMPRODUCT`, `CHISQ.DIST.RT`, `POISSON.DIST`, and the results workbook in Excel | Ready |
 
 <!-- map:end -->
 
