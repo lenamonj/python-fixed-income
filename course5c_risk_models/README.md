@@ -39,7 +39,7 @@ Four habits run through all of it.
 
 You need Course 5B, or the same ground: walk-forward splits and logistic regression from Course 4, and the development and held-out years of Course 5B. Each notebook writes the reference `mlkit.py` and the `riskkit.py` it starts from into its work folder, so a missing or unfinished module never stops it. Course 5C sits between Course 5B and [Course 6](../course6_neural_networks/README.md).
 
-Status: <!-- count:ready -->2<!-- /count --> of <!-- count:total -->10<!-- /count --> notebooks are ready. The course is being built one day at a time.
+Status: <!-- count:ready -->3<!-- /count --> of <!-- count:total -->10<!-- /count --> notebooks are ready. The course is being built one day at a time.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -82,7 +82,7 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 |:---:|:---|:---|:---:|
 | 1 | [Monte Carlo Foundations](week1/day1/01_monte_carlo_foundations.ipynb) | One bond's loss simulated year by year against PD x LGD x EAD, seeds and independent streams, the standard error and the price of precision, the normal, Student's t, lognormal, and beta, defaults among 50 bonds against the binomial, antithetic pairs, and how many trials a precision needs, beside `RAND`, `NORM.S.INV`, a Data Table, and `BINOM.DIST` in Excel | Ready |
 | 2 | [Historical Simulation and VaR](week1/day2/02_historical_simulation_and_var.ipynb) | The book's exposure by key rate and by DTS, its daily P&L had each day of 2015 to 2022 repeated, VaR and expected shortfall from the history, a normal model, and a fitted Student's t, every setting swept, and a walk-forward backtest with Kupiec's test, beside `PERCENTILE.INC`, `AVERAGEIF`, and `CHISQ.DIST.RT` in Excel | Ready |
-| 3 | Correlated Defaults and the Loss Distribution | Default rates from the synthetic cohort, the one-factor model, the loss distribution of the book, and the Vasicek formula | Planned |
+| 3 | [Correlated Defaults and the Loss Distribution](week1/day3/03_correlated_defaults_and_the_loss_distribution.ipynb) | Default rates from the synthetic cohort and the low-default problem, defaults that cluster by year, the one-factor model with its correlation swept, the Vasicek formula against a simulation, the book's credit loss with VaR and expected shortfall by sector, and Cholesky, beside `AVERAGEIFS`, `NORM.S.DIST`, and `BETA.INV` in Excel | Ready |
 | 4 | Survival Curves and Kaplan-Meier | Censoring, Kaplan-Meier by hand and in statsmodels, curves by rating, and the log-rank test | Planned |
 | 5 | Case Study: Hazard Models | The Cox model and a discrete-time hazard on firm-years, their coefficients against the planted ones, then a case study: what the model shows, and where it fails | Planned |
 
