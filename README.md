@@ -8,7 +8,7 @@
 <h3>From your first line of code to your own AI agents.<br>Taught entirely through the work of a credit desk.</h3>
 
 [![Courses](https://img.shields.io/badge/Courses-12_%2B_Bonus-123D2F?style=for-the-badge)](#the-courses)
-[![Notebooks](https://img.shields.io/badge/Notebooks-167-123D2F?style=for-the-badge)](#the-courses)
+[![Notebooks](https://img.shields.io/badge/Notebooks-168-123D2F?style=for-the-badge)](#the-courses)
 [![Price](https://img.shields.io/badge/Price-Free-1C7A57?style=for-the-badge)](#start-here)
 [![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)](#run-in-google-colab-with-nothing-to-install)
@@ -21,8 +21,8 @@
 
 <table>
   <tr>
-    <td align="center" valign="top" width="25%"><h2>167</h2>notebooks, each with<br>worked solutions</td>
-    <td align="center" valign="top" width="25%"><h2>177</h2>Excel comparisons,<br>formula by formula</td>
+    <td align="center" valign="top" width="25%"><h2>168</h2>notebooks, each with<br>worked solutions</td>
+    <td align="center" valign="top" width="25%"><h2>180</h2>Excel comparisons,<br>formula by formula</td>
     <td align="center" valign="top" width="25%"><h2>33</h2>weeks, one notebook<br>a day</td>
     <td align="center" valign="top" width="25%"><h2>$0</h2>to take, and no key<br>needed to run</td>
   </tr>
@@ -156,7 +156,7 @@ Nothing here asks you to forget Excel. Wherever Excel has a feature for the job,
 | Build a pivot table | Group by a column and summarize | 1 |
 | Goal Seek a yield, or use `RATE` and `YIELD` | Write a loop that solves the yield from a price | 2 |
 
-**[See all 177 comparisons, course by course.](EXCEL.md)**
+**[See all 180 comparisons, course by course.](EXCEL.md)**
 
 What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so the same steps run again on tomorrow's file without anyone dragging a formula or repointing a range.
 
