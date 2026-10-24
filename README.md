@@ -156,7 +156,7 @@ Nothing here asks you to forget Excel. Wherever Excel has a feature for the job,
 | Build a pivot table | Group by a column and summarize | 1 |
 | Goal Seek a yield, or use `RATE` and `YIELD` | Write a loop that solves the yield from a price | 2 |
 
-**[See all 173 comparisons, course by course.](EXCEL.md)**
+**[See all 177 comparisons, course by course.](EXCEL.md)**
 
 What changes is what you get to keep. A spreadsheet holds the answer. Code holds the steps that produced it, so the same steps run again on tomorrow's file without anyone dragging a formula or repointing a range.
 

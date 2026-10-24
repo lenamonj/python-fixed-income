@@ -21,8 +21,8 @@ def available() -> bool:
     return ASSEMBLE.is_file()
 
 
-def ragkit(day: int = 14):
-    """Import the reference ragkit at the end of `day` (with the earlier modules it needs)."""
+def ragkit():
+    """Import the reference ragkit at the end of day 14 (with the earlier modules it needs)."""
     if "ragkit" in sys.modules:
         return sys.modules["ragkit"]
     if not available():
@@ -31,10 +31,9 @@ def ragkit(day: int = 14):
     assemble = importlib.util.module_from_spec(spec)
     sys.modules["course10_assemble"] = assemble
     spec.loader.exec_module(assemble)
-    last = max(d for d in range(1, day + 1) if (assemble.FRAGMENTS / f"day{d:02d}_ragkit.py").exists())
     folder = Path(tempfile.mkdtemp(prefix="pfi_course10_reference_"))
     atexit.register(shutil.rmtree, folder, True)
-    assemble.write_day(last, folder)
+    assemble.write_day(14, folder)
     sys.path.insert(0, str(folder))
     import ragkit as module
     return module

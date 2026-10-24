@@ -116,8 +116,10 @@ def add_to_notebook(path: Path) -> bool:
     """Add the section to one saved notebook, with its output. Returns False when it was already there."""
     course_folder = path.resolve().relative_to(REPO).parts[0]
     nb = nbformat.read(path, as_version=4)
+    # insert_cells may edit a cell in place (the solutions note), so compare sources, not list identity
+    before = [cell.source for cell in nb.cells]
     cells = insert_cells(list(nb.cells), course_folder)
-    if cells is nb.cells:
+    if [cell.source for cell in cells] == before:
         return False
     code_cell = next(cell for cell in cells if cell.cell_type == "code" and cell.source.startswith("# install what this notebook needs"))
     code_cell.outputs = [nbformat.v4.new_output("stream", name="stdout", text=saved_output(code_cell.source))]
