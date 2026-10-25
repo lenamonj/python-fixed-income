@@ -112,7 +112,7 @@ You keep everything you know. The difference is that code keeps the steps, not j
 
 > [!TIP]
 > 1. **[Day 00: Setup](course1_python_foundations/week1/day00/00_setup_your_computer.ipynb).** Choose Colab or your own Windows computer, with a screenshot of every step.
-> 2. **[Day 0: Start Here](course1_python_foundations/week1/day0/00_start_here.ipynb).** What Python, a notebook, and a library are, from zero.
+> 2. **[Day 0: Start Here](course1_python_foundations/week1/day0/0_start_here.ipynb).** What Python, a notebook, and a library are, from zero.
 > 3. **[Course 1](course1_python_foundations/README.md#course-map).** Click the **Open in Colab** badge at the top of any notebook. All you need is a Google account.
 
 In Colab, use the course data only. Never upload anything from your employer.

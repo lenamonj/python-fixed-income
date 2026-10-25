@@ -72,7 +72,7 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
 | 00 | [Setup: Python, VS Code, and Colab](week1/day00/00_setup_your_computer.ipynb) | Step by step, with a screenshot of each step: install Python and VS Code, get the course, make the course environment, and use Colab | Ready |
-| 0 | [Start Here: Python, Notebooks, and Libraries](week1/day0/00_start_here.ipynb) | Ground zero, for someone who has never opened a notebook: what Python is, notebooks and their code and markdown cells, `.py` files, and libraries | Ready |
+| 0 | [Start Here: Python, Notebooks, and Libraries](week1/day0/0_start_here.ipynb) | Ground zero, for someone who has never opened a notebook: what Python is, notebooks and their code and markdown cells, `.py` files, and libraries | Ready |
 | 1 | [Introduction to Python](week1/day1/01_python_for_fixed_income_intro.ipynb) | Variables, f-strings, lists, dictionaries, conditions, loops, and functions, on four bonds | Ready |
 | 2 | [Files and Folders](week1/day2/02_files_and_folders.ipynb) | Finding, creating, writing, and reading the desk's holdings file | Ready |
 | 3 | [Debugging](week1/day3/03_debugging.ipynb) | Reading an error, the common error types, bugs that raise no error, and checks that stop the run with `assert` | Ready |
