@@ -8,7 +8,7 @@
 <h3>From your first line of code to your own AI agents.<br>Taught entirely through the work of a credit desk.</h3>
 
 [![Courses](https://img.shields.io/badge/Courses-12_%2B_Bonus-123D2F?style=for-the-badge)](#the-courses)
-[![Notebooks](https://img.shields.io/badge/Notebooks-177-123D2F?style=for-the-badge)](#the-courses)
+[![Notebooks](https://img.shields.io/badge/Notebooks-178-123D2F?style=for-the-badge)](#the-courses)
 [![Price](https://img.shields.io/badge/Price-Free-1C7A57?style=for-the-badge)](#start-here)
 [![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)](#run-in-google-colab-with-nothing-to-install)
@@ -21,7 +21,7 @@
 
 <table>
   <tr>
-    <td align="center" valign="top" width="25%"><h2>177</h2>notebooks, each with<br>worked solutions</td>
+    <td align="center" valign="top" width="25%"><h2>178</h2>notebooks, every lesson<br>with worked solutions</td>
     <td align="center" valign="top" width="25%"><h2>197</h2>Excel comparisons,<br>formula by formula</td>
     <td align="center" valign="top" width="25%"><h2>33</h2>weeks, one notebook<br>a day</td>
     <td align="center" valign="top" width="25%"><h2>$0</h2>to take, and no key<br>needed to run</td>
