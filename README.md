@@ -168,6 +168,8 @@ What changes is what you get to keep. A spreadsheet holds the answer. Code holds
 > [!TIP]
 > The fastest way in. Open the [Course 1 map](course1_python_foundations/README.md#course-map), pick a notebook, and click the **Open in Colab** badge at the top. Colab runs in your browser and needs only a Google account. Every notebook's first cell installs what it needs.
 >
+> Setting up from scratch? [Day 00: Setup](course1_python_foundations/week1/day00/00_setup_your_computer.ipynb) walks through installing Python and VS Code, and using Colab, with a screenshot of every step.
+>
 > Never opened a notebook? Begin with [Day 0: Start Here](course1_python_foundations/week1/day0/00_start_here.ipynb): what Python, a notebook, a `.py` file, and a library are, from zero.
 
 Use Colab on a personal account, with the course data only. Do not upload anything from your employer.
@@ -178,6 +180,8 @@ Use Colab on a personal account, with the course data only. Do not upload anythi
 <summary><b>Three steps: clone, install, open in VS Code</b></summary>
 
 <br>
+
+New to all of this? [Day 00: Setup](course1_python_foundations/week1/day00/00_setup_your_computer.ipynb) shows every step below with a screenshot.
 
 You need [Python 3.13](https://www.python.org/downloads/), [VS Code](https://code.visualstudio.com/) with the Python and Jupyter extensions, and [git](https://git-scm.com/downloads). On a work machine, check your firm's policy before installing anything.
 
