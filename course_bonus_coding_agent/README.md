@@ -12,7 +12,7 @@
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](../LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-22C55E?style=for-the-badge)](../LICENSE-CONTENT)
 
-**[Start here](#start-here)** &nbsp;&middot;&nbsp; **[The lesson](#the-lesson)** &nbsp;&middot;&nbsp; **[Course map](#course-map)** &nbsp;&middot;&nbsp; **[The app](#the-app)** &nbsp;&middot;&nbsp; **[What it uses](#what-it-uses)** &nbsp;&middot;&nbsp; **[The data](#the-data)** &nbsp;&middot;&nbsp; **[Course 9](../course9_deployment/README.md)** &nbsp;&middot;&nbsp; **[Series front page](../README.md)**
+**[Start here](#start-here)** &nbsp;&middot;&nbsp; **[The lesson](#the-lesson)** &nbsp;&middot;&nbsp; **[Course map](#course-map)** &nbsp;&middot;&nbsp; **[The app](#the-app)** &nbsp;&middot;&nbsp; **[What it uses](#what-it-uses)** &nbsp;&middot;&nbsp; **[The data](#the-data)** &nbsp;&middot;&nbsp; **[Course 9](../course09_deployment/README.md)** &nbsp;&middot;&nbsp; **[Series front page](../README.md)**
 
 ## Bonus: Build Your Own Coding Agent
 

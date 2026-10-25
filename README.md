@@ -34,7 +34,7 @@
 
 Fixed income runs on judgement and on data. The judgement you already have: how a bond is priced, where it sits in the capital structure, what its spread is telling you. This series builds the other half. It teaches you to work with data directly in Python, from your first line of code to models and AI agents that do real work on a credit desk.
 
-It starts at zero. No programming background is assumed, and [Day 00](course1_python_foundations/week1/day00/00_setup_your_computer.ipynb) walks you through the setup screen by screen. From there, every lesson is built on the instruments, files, and questions of a fixed income portfolio: coupons and cash flows, holdings extracts and trade blotters, the Treasury curve, FOMC statements, 10-Ks, and bond indentures. Each course ends with a tool you built, tested, and can show.
+It starts at zero. No programming background is assumed, and the [Setup notebook](course01_python_foundations/setup/setup_your_computer.ipynb) walks you through it screen by screen. From there, every lesson is built on the instruments, files, and questions of a fixed income portfolio: coupons and cash flows, holdings extracts and trade blotters, the Treasury curve, FOMC statements, 10-Ks, and bond indentures. Each course ends with a tool you built, tested, and can show.
 
 > [!NOTE]
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
@@ -50,17 +50,17 @@ It starts at zero. No programming background is assumed, and [Day 00](course1_py
 
 | | Course | Weeks | What you build |
 |:---:|:---|:---:|:---|
-| **1** | [Python Foundations](course1_python_foundations/README.md) | 4 | A month-end review of a holdings extract: cleaned, checked against its control totals, compared with its benchmark, and written to Excel |
-| **2** | [Bond Math](course2_bond_math/README.md) | 3 | Your own bond math module, tested against Excel, and a risk report on a whole book: duration, DV01, convexity, spread, and DTS |
-| **3** | [Market Data and Time Series](course3_market_data/README.md) | 3 | A daily market snapshot from a vendor extract you test, clean, and reconcile, written to HTML and Excel |
-| **4** | [Machine Learning](course4_machine_learning/README.md) | 3 | Three models compared on a public file of company statements, each tested on rows it never saw |
-| **5** | [Advanced Machine Learning](course5_advanced_ml/README.md) | 3 | Logistic regression, a random forest, XGBoost, and LightGBM compared on company ratios where bankruptcies are rare |
-| **5B** | [Time Series Models](course5b_time_series/README.md) | 2 | Two series modelled walk-forward with ARIMA, smoothing, GARCH, and LightGBM, each measured against carrying the last value forward |
-| **5C** | [Risk Models](course5c_risk_models/README.md) | 2 | A risk report on a synthetic book: Monte Carlo credit loss, backtested VaR, a hazard model, a trade screen, and PSI |
-| **6** | [Neural Networks](course6_neural_networks/README.md) | 3 | A neural network built in Keras and measured against LightGBM, on an ordinary laptop CPU |
-| **7** | [NLP, RAG, and LLMs](course7_nlp_and_llms/README.md) | 3 | A covenant extraction tool, run on an indenture it has never seen, with every number checked against the text |
-| **8** | [Implementing Agentic AI](course8_agentic_ai/README.md) | 3 | A multi-agent credit desk that writes a morning brief, with every figure traced to the tool that produced it |
-| **9** | [Deployment](course9_deployment/README.md) | 3 | The morning brief as a public app: tested on every push, logged, costed, and deployed on free accounts |
+| **1** | [Python Foundations](course01_python_foundations/README.md) | 4 | A month-end review of a holdings extract: cleaned, checked against its control totals, compared with its benchmark, and written to Excel |
+| **2** | [Bond Math](course02_bond_math/README.md) | 3 | Your own bond math module, tested against Excel, and a risk report on a whole book: duration, DV01, convexity, spread, and DTS |
+| **3** | [Market Data and Time Series](course03_market_data/README.md) | 3 | A daily market snapshot from a vendor extract you test, clean, and reconcile, written to HTML and Excel |
+| **4** | [Machine Learning](course04_machine_learning/README.md) | 3 | Three models compared on a public file of company statements, each tested on rows it never saw |
+| **5** | [Advanced Machine Learning](course05_advanced_ml/README.md) | 3 | Logistic regression, a random forest, XGBoost, and LightGBM compared on company ratios where bankruptcies are rare |
+| **5B** | [Time Series Models](course05b_time_series/README.md) | 2 | Two series modelled walk-forward with ARIMA, smoothing, GARCH, and LightGBM, each measured against carrying the last value forward |
+| **5C** | [Risk Models](course05c_risk_models/README.md) | 2 | A risk report on a synthetic book: Monte Carlo credit loss, backtested VaR, a hazard model, a trade screen, and PSI |
+| **6** | [Neural Networks](course06_neural_networks/README.md) | 3 | A neural network built in Keras and measured against LightGBM, on an ordinary laptop CPU |
+| **7** | [NLP, RAG, and LLMs](course07_nlp_and_llms/README.md) | 3 | A covenant extraction tool, run on an indenture it has never seen, with every number checked against the text |
+| **8** | [Implementing Agentic AI](course08_agentic_ai/README.md) | 3 | A multi-agent credit desk that writes a morning brief, with every figure traced to the tool that produced it |
+| **9** | [Deployment](course09_deployment/README.md) | 3 | The morning brief as a public app: tested on every push, logged, costed, and deployed on free accounts |
 | **10** | [Implementing RAG](course10_rag/README.md) | 3 | A question-answering tool over public filings that cites the document and page behind every sentence |
 | **Bonus** | [Build Your Own Coding Agent](course_bonus_coding_agent/README.md) | 1 day | A coding agent written from an empty file, deployed to your own private Hugging Face Space |
 
@@ -111,15 +111,15 @@ You keep everything you know. The difference is that code keeps the steps, not j
 ### Run in Google Colab, with nothing to install
 
 > [!TIP]
-> 1. **[Day 00: Setup](course1_python_foundations/week1/day00/00_setup_your_computer.ipynb).** Choose Colab or your own Windows computer, with a screenshot of every step.
-> 2. **[Day 0: Start Here](course1_python_foundations/week1/day0/0_start_here.ipynb).** What Python, a notebook, and a library are, from zero.
-> 3. **[Course 1](course1_python_foundations/README.md#course-map).** Click the **Open in Colab** badge at the top of any notebook. All you need is a Google account.
+> 1. **[Setup](course01_python_foundations/setup/setup_your_computer.ipynb).** Choose Colab or your own Windows computer, with a screenshot of every step.
+> 2. **[Day 0: Start Here](course01_python_foundations/week1/day0/0_start_here.ipynb).** What Python, a notebook, and a library are, from zero.
+> 3. **[Course 1](course01_python_foundations/README.md#course-map).** Click the **Open in Colab** badge at the top of any notebook. All you need is a Google account.
 
 In Colab, use the course data only. Never upload anything from your employer.
 
 ### Run on your own Windows machine
 
-Follow [Day 00](course1_python_foundations/week1/day00/00_setup_your_computer.ipynb), Parts 1 to 4. On a work machine, check your firm's policy before installing anything.
+Follow [Setup](course01_python_foundations/setup/setup_your_computer.ipynb), Parts 1 to 4. On a work machine, check your firm's policy before installing anything.
 
 <details>
 <summary><b>Already set up with Python 3.13 and VS Code? The short version.</b></summary>
@@ -153,10 +153,10 @@ No git? Choose **Code**, then **Download ZIP** on this page, and unzip it into `
 | Course | What you can add |
 |:---:|:---|
 | 1, 2, 4, 5, 5B, 5C, 6 | Nothing. |
-| 3 | A free [FRED API key](course3_market_data/README.md#your-fred-key) to pull live data. Without one, every notebook still runs. |
-| 7 | A free [OpenRouter key](course7_nlp_and_llms/README.md#your-openrouter-key), or an OpenAI key, for live model requests. Without one, week 3 replays the course's saved responses. |
-| 8 | An [OpenAI or OpenRouter key](course8_agentic_ai/README.md#no-key-needed-and-going-live) to run the agents live. Every run is recorded and replays without one. |
-| 9 | Free [GitHub, Vercel, and Hugging Face accounts](course9_deployment/README.md#your-accounts) and Docker Desktop to deploy for real. A free Hugging Face account hosts a Space only once it is 30 days old, so create it early. |
+| 3 | A free [FRED API key](course03_market_data/README.md#your-fred-key) to pull live data. Without one, every notebook still runs. |
+| 7 | A free [OpenRouter key](course07_nlp_and_llms/README.md#your-openrouter-key), or an OpenAI key, for live model requests. Without one, week 3 replays the course's saved responses. |
+| 8 | An [OpenAI or OpenRouter key](course08_agentic_ai/README.md#no-key-needed-and-going-live) to run the agents live. Every run is recorded and replays without one. |
+| 9 | Free [GitHub, Vercel, and Hugging Face accounts](course09_deployment/README.md#your-accounts) and Docker Desktop to deploy for real. A free Hugging Face account hosts a Space only once it is 30 days old, so create it early. |
 | 10 | A [key of your own](course10_rag/README.md#before-you-start) for live answers. Colab's T4 GPU runtime helps the local-model cells and is never required. |
 | Bonus | An [OpenAI key](course_bonus_coding_agent/README.md#start-here) for a live agent, and the Hugging Face account from Course 9. |
 
@@ -178,7 +178,7 @@ Code is under the [MIT License](LICENSE). Written content, slide overviews, and 
 
 <div align="center">
 
-<h3>Ready? Open <a href="course1_python_foundations/week1/day00/00_setup_your_computer.ipynb">Day 00</a> and get set up.</h3>
+<h3>Ready? Open <a href="course01_python_foundations/setup/setup_your_computer.ipynb">Setup</a> and get your computer ready.</h3>
 
 Created by **Jeff Lenamon**
 

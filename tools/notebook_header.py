@@ -8,12 +8,12 @@ VS Code and Colab without the repo being public. A copy is saved in assets/heade
 
 Usage (from the repo root, with Pillow and nbformat installed):
 
-    python tools/notebook_header.py course1_python_foundations/week1/day2/02_files_and_folders.ipynb --week 1 --day 2 --title "Files and Folders"
+    python tools/notebook_header.py course01_python_foundations/week1/day2/02_files_and_folders.ipynb --week 1 --day 2 --title "Files and Folders"
 
 Course 1 is the default. A later course passes --course, which changes the course line, the alt text,
 and the saved copy's name (assets/headers/course2_<notebook>.png), so it cannot collide with Course 1's:
 
-    python tools/notebook_header.py course2_bond_math/week1/day1/01_time_value_of_money.ipynb --course 2 --week 1 --day 1 --title "Time Value of Money"
+    python tools/notebook_header.py course02_bond_math/week1/day1/01_time_value_of_money.ipynb --course 2 --week 1 --day 1 --title "Time Value of Money"
 
 Courses 1 to 10 are known (course 4 added 2026-10-04, course 5 added 2026-10-05, course 6 added 2026-10-06, course 7
 added 2026-10-07, course 8 added 2026-10-08, course 9 added 2026-10-12, course 10 added 2026-10-12; the banners of
@@ -114,7 +114,7 @@ def course_key(text: str) -> int | str:
     return key if key in ("bonus", "5b", "5c") else int(key)
 
 
-def draw_banner(week: int, day: int, title: str, course: int | str = 1) -> Image.Image:
+def draw_banner(week: int, day: int, title: str, course: int | str = 1, label: str | None = None) -> Image.Image:
     image = Image.new("RGB", (WIDTH, HEIGHT), BACKGROUND)
     draw = ImageDraw.Draw(image)
 
@@ -136,7 +136,7 @@ def draw_banner(week: int, day: int, title: str, course: int | str = 1) -> Image
     draw.text((460 + prefix_font.getlength(BYLINE_PREFIX), 364), AUTHOR, font=sans(36, 600), fill=DARK_GREEN, anchor="ls")
 
     # week and day, right-aligned
-    label = f"WEEK {week} · DAY {day}"
+    label = label or f"WEEK {week} · DAY {day}"
     label_font = mono(34, bold=False)
     draw_spaced(draw, RIGHT_EDGE - spaced_width(label, label_font, 4), 220, label, label_font, ACCENT_GREEN, spacing=4)
 
@@ -148,24 +148,28 @@ def draw_banner(week: int, day: int, title: str, course: int | str = 1) -> Image
     return image
 
 
-def header_markdown(week: int, day: int, title: str, image: Image.Image, course: int | str = 1) -> str:
+def header_markdown(week: int, day: int, title: str, image: Image.Image, course: int | str = 1,
+                    label: str | None = None) -> str:
     buffer = io.BytesIO()
     image.save(buffer, format="PNG", optimize=True)
     encoded = base64.b64encode(buffer.getvalue()).decode("ascii")
-    alt = f"{COURSE_NAME} | {COURSES[course][1]} | Created by {AUTHOR} | Week {week}, Day {day} | {title}"
+    where = label.title() if label else f"Week {week}, Day {day}"
+    alt = f"{COURSE_NAME} | {COURSES[course][1]} | Created by {AUTHOR} | {where} | {title}"
     return f"![{alt}](data:image/png;base64,{encoded})"
 
 
-def apply_header(notebook_path: Path, week: int, day: int, title: str, course: int | str = 1) -> None:
-    """Insert the banner as the first cell, replacing an earlier banner if there is one."""
+def apply_header(notebook_path: Path, week: int, day: int, title: str, course: int | str = 1,
+                 label: str | None = None) -> None:
+    """Insert the banner as the first cell, replacing an earlier banner if there is one. label (for example
+    "SETUP") replaces WEEK n · DAY n for a notebook that is not a course day."""
     if course not in COURSES:
         raise ValueError(f"course must be one of {list(COURSES)}, not {course}")
-    image = draw_banner(week, day, title, course)
+    image = draw_banner(week, day, title, course, label)
     HEADERS.mkdir(parents=True, exist_ok=True)
     image.save(HEADERS / f"{COURSES[course][2]}{notebook_path.stem}.png", optimize=True)
 
     nb = nbformat.read(notebook_path, as_version=4)
-    cell = nbformat.v4.new_markdown_cell(header_markdown(week, day, title, image, course))
+    cell = nbformat.v4.new_markdown_cell(header_markdown(week, day, title, image, course, label))
     cell.metadata["tags"] = [HEADER_TAG]
     if nb.cells and HEADER_TAG in nb.cells[0].metadata.get("tags", []):
         nb.cells[0] = cell

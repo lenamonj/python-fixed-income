@@ -36,7 +36,7 @@ def test_no_solutions_notebook_carries_the_note():
 
 def test_hook_adds_the_note_once_and_skips_solutions():
     cells = [new_markdown_cell("# Day 1"), new_markdown_cell(HEADING), new_markdown_cell("Replace each `...`.")]
-    insert_cells(cells, "course1_python_foundations")
+    insert_cells(cells, "course01_python_foundations")
     assert cells[1].source == f"{HEADING}\n\n{NOTE}"
     assert add_note(cells) is False
 
