@@ -35,7 +35,7 @@ Two habits run through all of it.
 
 You need no coding experience. You do need to know what a coupon, a spread, and a duration are. This is the first course in [Python for Fixed Income](../README.md).
 
-Status: <!-- count:ready -->19<!-- /count --> of <!-- count:total -->19<!-- /count --> notebooks are ready, and so is the course project.
+Status: <!-- count:ready -->20<!-- /count --> of <!-- count:total -->20<!-- /count --> notebooks are ready, and so is the course project.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -71,6 +71,7 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
+| 0 | [Start Here: Python, Notebooks, and Libraries](week1/day0/00_start_here.ipynb) | Ground zero, for someone who has never opened a notebook: what Python is, notebooks and their code and markdown cells, `.py` files, and libraries | Ready |
 | 1 | [Introduction to Python](week1/day1/01_python_for_fixed_income_intro.ipynb) | Variables, f-strings, lists, dictionaries, conditions, loops, and functions, on four bonds | Ready |
 | 2 | [Files and Folders](week1/day2/02_files_and_folders.ipynb) | Finding, creating, writing, and reading the desk's holdings file | Ready |
 | 3 | [Debugging](week1/day3/03_debugging.ipynb) | Reading an error, the common error types, bugs that raise no error, and checks that stop the run with `assert` | Ready |
