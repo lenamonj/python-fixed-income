@@ -15,7 +15,7 @@
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-22C55E?style=for-the-badge)](LICENSE-CONTENT)
 
-**[Start here](#start-here)** &nbsp;·&nbsp; **[The courses](#the-courses)** &nbsp;·&nbsp; **[How a day works](#how-a-day-works)** &nbsp;·&nbsp; **[Coming from Excel](#coming-from-excel)**
+**[Start here: Setup, then Day 0](#start-here)** &nbsp;·&nbsp; **[The courses](#the-courses)** &nbsp;·&nbsp; **[How a day works](#how-a-day-works)** &nbsp;·&nbsp; **[Coming from Excel](#coming-from-excel)**
 
 <br>
 
@@ -38,6 +38,16 @@ It starts at zero. No programming background is assumed, and the [Setup notebook
 
 > [!NOTE]
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
+
+## Start here
+
+Three notebooks, in this order. If you choose Colab, there is nothing to install.
+
+| Step | Open | What it does |
+|:---:|:---|:---|
+| **1** | **[Setup](course01_python_foundations/setup/setup_your_computer.ipynb)** | Get ready to run code: Colab in your web browser, or Python and VS Code on your own Windows computer. A picture of every step. |
+| **2** | **[Day 0: Start Here](course01_python_foundations/week1/day0/0_start_here.ipynb)** | What Python, a notebook, and a library are. Your first lines of code. |
+| **3** | **[Day 1: Introduction to Python](course01_python_foundations/week1/day1/01_python_for_fixed_income_intro.ipynb)** | The first full lesson, on a desk of four bonds. From here, follow the [Course 1 map](course01_python_foundations/README.md#course-map), one notebook a day. |
 
 ## The courses
 
@@ -106,16 +116,11 @@ You keep everything you know. The difference is that code keeps the steps, not j
 
 **[All 199 comparisons, course by course](EXCEL.md)**
 
-## Start here
+## Setup details
 
 ### Run in Google Colab, with nothing to install
 
-> [!TIP]
-> 1. **[Setup](course01_python_foundations/setup/setup_your_computer.ipynb).** Choose Colab or your own Windows computer, with a screenshot of every step.
-> 2. **[Day 0: Start Here](course01_python_foundations/week1/day0/0_start_here.ipynb).** What Python, a notebook, and a library are, from zero.
-> 3. **[Course 1](course01_python_foundations/README.md#course-map).** Click the **Open in Colab** badge at the top of any notebook. All you need is a Google account.
-
-In Colab, use the course data only. Never upload anything from your employer.
+All you need is a Google account. Click the **Open in Colab** badge at the top of any notebook. In Colab, use the course data only, and never upload anything from your employer.
 
 ### Run on your own Windows machine
 
