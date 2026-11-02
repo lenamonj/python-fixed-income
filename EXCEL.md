@@ -102,6 +102,24 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Use `PRICE` between coupon dates, add accrued for the dirty price, use `YIELD`, and write the price out cell by cell | Write `price`, `dirty_price`, and `yield_to_maturity`, and invoice a month of trades | 2 | Week 2, Day 3 |
 | Use `DURATION` and `MDURATION`, build DV01 from cells, and bump the yield in two `PRICE` cells | Write duration and DV01 functions, and check DV01 by bumping the yield | 2 | Week 2, Day 4 |
 | Estimate convexity from three `PRICE` cells, and total a book's DV01 with `SUMPRODUCT` | Write `convexity`, and reprice a whole book with its DV01 and duration | 2 | Week 2, Day 5 |
+| Take apart a date with `YEAR`, `MONTH`, and `DAY` | `.year`, `.month`, and `.day` | 2 | Week 2, Day 1 |
+| Read a date with `=DATEVALUE("2031-09-30")` | `date.fromisoformat` | 2 | Week 2, Day 1 |
+| Add days with `=DATE(...)+182` | `date + timedelta(days=182)` | 2 | Week 2, Day 1 |
+| Compare dates with `<`, and take the latest with `MAX` | `<` and `max` on dates | 2 | Week 2, Day 1 |
+| Find a month's length with `=DAY(EOMONTH(DATE(2027,2,1),0))` | `calendar.monthrange(...)[1]` | 2 | Week 2, Day 1 |
+| Split months into years with `QUOTIENT` and `MOD` | `divmod(n, 12)` | 2 | Week 2, Day 1 |
+| Test for month end with `=E2=EOMONTH(E2,0)` | `.dt.is_month_end` | 2 | Week 2, Day 1 |
+| Group by month in a PivotTable | `groupby` with `agg` | 2 | Week 2, Day 1 |
+| Write the 30/360 formula with `YEAR`, `MONTH`, `DAY`, and `MIN(DAY(A1),30)` | `count_30_360`, one rule at a time | 2 | Week 2, Day 2 |
+| Count 30/360 days with `=YEARFRAC(DATE(2026,9,30),DATE(2026,11,30),0)*360` | `days_30_360` | 2 | Week 2, Day 2 |
+| Work accrued on basis 1 with `COUPNCD` less `COUPPCD` | `accrued_interest(..., "ACT/ACT")` | 2 | Week 2, Day 2 |
+| Check a period with `COUPDAYBS` plus `COUPDAYSNC` | A plus DSC | 2 | Week 2, Day 2 |
+| Look up a CUSIP with `XLOOKUP` | `merge` | 2 | Week 2, Day 3 |
+| Total by side with `SUMIFS` | `groupby('side')` | 2 | Week 2, Day 3 |
+| Weight the time with `=SUMPRODUCT(B2:B11,D2:D11)/SUM(D2:D11)` | Macaulay duration, as weighted time | 2 | Week 2, Day 4 |
+| Sign a short position with `*-2000000/100` | A short position's DV01 | 2 | Week 2, Day 4 |
+| Check a gap with `=ABS(A2-B2)` and `MAX` | A gap check over the book | 2 | Week 2, Day 5 |
+| Find the largest with `=LARGE(G2:G201,1)` | `nlargest` | 2 | Week 2, Day 5 |
 | Interpolate a curve with `FORECAST.LINEAR`, `INDEX`, and `MATCH`, and chart it as a Scatter | Write `interpolate_yield`, with flat ends, and compare it with `numpy.interp` | 2 | Week 3, Day 1 |
 | Use `YEARFRAC` for years to maturity, and subtract the curve yield for a spread | Measure every bond's spread to the curve, and reproduce the file's spread column | 2 | Week 3, Day 2 |
 | Divide two bumped `PRICE` cells for spread duration, multiply for DTS, and total buckets with `SUMIFS` | Write `spread_duration` and `dts`, and group each bond's share of the book's DTS | 2 | Week 3, Day 3 |
