@@ -107,6 +107,15 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Divide two bumped `PRICE` cells for spread duration, multiply for DTS, and total buckets with `SUMIFS` | Write `spread_duration` and `dts`, and group each bond's share of the book's DTS | 2 | Week 3, Day 3 |
 | Add a calculated field to a pivot table, and run a What-If Data Table over a whole-book reprice | Group by sector and rating, and reprice the book under rate and spread scenarios | 2 | Week 3, Day 4 |
 | Check a risk report workbook with `SUM` and `SUMPRODUCT`, and price a month-end and a final-period bond with the `COUP` functions, `PRICE`, and `YIELD` | Clean, recompute, and reconcile a month-end extract, and write the risk report to Excel | 2 | Week 3, Day 5 |
+| Build a fine grid of years with `=SEQUENCE(401,1,0,0.1)` | `np.linspace(0, 40, 401)` | 2 | Week 3, Day 1 |
+| Write a curve as `=ROUND(3.55+1.05*(1-EXP(-A2/7)),3)` | `round(3.55 + 1.05 * (1 - math.exp(-t / 7)), 3)` | 2 | Week 3, Day 1 |
+| Measure a gap with `MAX` and `AVERAGE` over a column of differences | `gap_bp.max()` and `gap_bp.mean()` | 2 | Week 3, Day 1 |
+| Summarize by bucket with `COUNTIFS`, `MINIFS`, `MAXIFS`, and `MEDIAN(FILTER(...))` | `groupby('bucket').agg(...)` | 2 | Week 3, Day 2 |
+| Bring in a rating with `XLOOKUP` | `merge` | 2 | Week 3, Day 2 |
+| Size a reconciliation with `=MAX(ABS(N2:N201))`, `AVERAGE(ABS(...))`, and `COUNTIF` | `.abs().max()`, `.abs().mean()`, and `(gap > 0).sum()` | 2 | Week 3, Day 2 |
+| Find the top ten with `LARGE`, and their share with `=SUM(LARGE(O2:O201,{1,...,10}))/SUM(O2:O201)` | `nlargest(10, ...)` | 2 | Week 3, Day 3 |
+| Mark the largest with Conditional Formatting, Top 10 Items, set to 1 | `highlight_max` | 2 | Week 3, Days 3 and 4 |
+| Find the largest weight with `=MAX(T2:T201)` | `weight_pct.max()` | 2 | Week 3, Day 4 |
 | Build a request URL in cells with `&` and `ENCODEURL`, and load a web CSV with Power Query From Web | Build the request in code, and read the key from `.env` so it is never typed into a cell or a file | 3 | Week 1, Day 1 |
 | Load JSON with Power Query, and turn FRED's `.` into `#N/A` with `IFERROR(VALUE(...),NA())` | Parse FRED's JSON, reading `.` as missing and never as 0 | 3 | Week 1, Day 2 |
 | Use `WEEKDAY`, `WORKDAY`, and `NETWORKDAYS` with a holiday list, and see `XLOOKUP` return `#N/A` on a date with no row | Take the market calendar from the data's own dates, and join two series inner or outer | 3 | Week 1, Day 3 |
