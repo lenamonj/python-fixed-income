@@ -22,7 +22,7 @@
 <table>
   <tr>
     <td align="center" valign="top" width="25%"><h2>179</h2>notebooks, every lesson<br>with worked solutions</td>
-    <td align="center" valign="top" width="25%"><h2>199</h2>Excel comparisons,<br>formula by formula</td>
+    <td align="center" valign="top" width="25%"><h2>200</h2>Excel comparisons,<br>formula by formula</td>
     <td align="center" valign="top" width="25%"><h2>35</h2>weeks, one notebook<br>a day</td>
     <td align="center" valign="top" width="25%"><h2>$0</h2>to take, and no key<br>needed to run</td>
   </tr>
@@ -114,7 +114,7 @@ You keep everything you know. The difference is that code keeps the steps, not j
 | Build a pivot table | Group by a column and summarize | 1 |
 | Goal Seek a yield, or use `RATE` and `YIELD` | Write a loop that solves the yield from a price | 2 |
 
-**[All 199 comparisons, course by course](EXCEL.md)**
+**[All 200 comparisons, course by course](EXCEL.md)**
 
 ## Setup details
 

@@ -13,6 +13,7 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Wrap a number in `TEXT` and join it to a sentence with `&` | Write an f-string with a format code | 1 | Week 1, Day 1 |
 | Type `=1.025^10` for a power, and use `QUOTIENT`, `MOD`, and `ROUND` | Write `1.025 ** 10`, `//`, `%`, and `round()`, and see why `^` is not a power in Python and `round(2.5)` gives 2 | 1 | Week 1, Day 1 |
 | Write a nested `IF` | Write `if`, `elif`, `else`, one test per line | 1 | Week 1, Day 1 Part 2 |
+| Show a workbook's path with `CELL("filename",A1)`, and split a column with Text to Columns | `os.getcwd()`, and `split(',')` | 1 | Week 1, Day 2 |
 | See `#N/A`, `#DIV/0!`, or `#NAME?` in a cell | Read an error that names the line and the cause | 1 | Week 1, Day 3 |
 | Put an `IF` beside a total that shows OK or CHECK | Write an `assert` that stops the run when the total is wrong | 1 | Week 1, Day 3 |
 | Turn on AutoFilter and sort a sheet | Filter and sort a table by condition | 1 | Week 2, Day 2 |
