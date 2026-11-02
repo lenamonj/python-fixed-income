@@ -63,6 +63,18 @@ def title_cased(heading: str) -> bool:
     return True
 
 
+def test_the_four_splits_are_in_place():
+    stems = {path.stem for path in TEACHING}
+    assert {"06_part2_numpy", "07_part2_pandas_series_and_dataframes", "08_part2_pandas_combining_and_loading",
+            "17_part2_analyzing_text"} <= stems
+
+
+@pytest.mark.parametrize("path", TEACHING, ids=ids)
+def test_each_notebook_has_its_solutions_and_overview(path):
+    assert path.with_name(path.stem + "_solutions.ipynb").exists()
+    assert path.with_name(path.stem + "_overview.pdf").exists()
+
+
 @pytest.mark.parametrize("path", TEACHING, ids=ids)
 def test_opening(path):
     cells = nbformat.read(path, as_version=4).cells

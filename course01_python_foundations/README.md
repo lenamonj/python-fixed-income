@@ -6,7 +6,7 @@
 </picture>
 
 [![Course 1](https://img.shields.io/badge/Course_1-Python_Foundations-123D2F?style=for-the-badge)](../README.md)
-[![Length](https://img.shields.io/badge/4_weeks-20_notebooks_%2B_project-1C7A57?style=for-the-badge)](#course-map)
+[![Length](https://img.shields.io/badge/4_weeks-24_notebooks_%2B_project-1C7A57?style=for-the-badge)](#course-map)
 [![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)](../README.md#run-in-google-colab-with-nothing-to-install)
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](../LICENSE)
@@ -35,7 +35,7 @@ Two habits run through all of it.
 
 You need no coding experience. You do need to know what a coupon, a spread, and a duration are. This is the first course in [Python for Fixed Income](../README.md).
 
-Status: <!-- count:ready -->22<!-- /count --> of <!-- count:total -->22<!-- /count --> notebooks are ready, and so is the course project.
+Status: <!-- count:ready -->26<!-- /count --> of <!-- count:total -->26<!-- /count --> notebooks are ready, and so is the course project.
 
 > This course is educational content created in a personal capacity. Nothing here is investment advice or a recommendation to buy or sell any security. All portfolio data is synthetic.
 
@@ -89,9 +89,12 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
-| 1 | [NumPy](week2/day1/06_numpy.ipynb) | Arrays, arithmetic on a whole portfolio at once, and pricing a bond from its cash flows | Ready |
-| 2 | [pandas: Series and DataFrames](week2/day2/07_pandas_series_and_dataframes.ipynb) | Tables with names, selecting, filtering, and sorting 200 holdings | Ready |
-| 3 | [pandas: Combining and Loading](week2/day3/08_pandas_combining_and_loading.ipynb) | Joining tables, reading and saving CSV files and Excel workbooks, summaries, and dates | Ready |
+| 1, Part 1 | [NumPy, Part 1](week2/day1/06_numpy.ipynb) | Arrays, arithmetic on a whole column at once, totals, a weighted average, and returns | Ready |
+| 1, Part 2 | [NumPy, Part 2](week2/day1_part2/06_part2_numpy.ipynb) | Masks, a table in one array, pricing a bond from its cash flows, and saving arrays | Ready |
+| 2, Part 1 | [pandas: Series and DataFrames, Part 1](week2/day2/07_pandas_series_and_dataframes.ipynb) | Series, DataFrames, the holdings file, and selecting columns and rows | Ready |
+| 2, Part 2 | [pandas: Series and DataFrames, Part 2](week2/day2_part2/07_part2_pandas_series_and_dataframes.ipynb) | Column statistics, filtering, sorting, changing data on a copy, and styled tables | Ready |
+| 3, Part 1 | [pandas: Combining and Loading, Part 1](week2/day3/08_pandas_combining_and_loading.ipynb) | Joining tables and guarding the join, the benchmark, stacking tables, and summaries by group | Ready |
+| 3, Part 2 | [pandas: Combining and Loading, Part 2](week2/day3_part2/08_part2_pandas_combining_and_loading.ipynb) | Weighted averages, pivot tables, saving CSV files and Excel workbooks, and dates | Ready |
 | 4 | [Case Study: A First Look at the Data](week2/day4/09_case_study_first_look_at_the_data.ipynb) | Three linked tables: positions, issuers, and ratings, checked before any join | Ready |
 | 5 | [Case Study: Joining the Tables](week2/day5/10_case_study_joining_the_tables.ipynb) | Joining the three tables, checking each join, and answering the desk's questions from the result | Ready |
 
@@ -110,7 +113,8 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
 | 1 | [Case Study: Consumer Credit](week4/day1/16_case_study_consumer_credit.ipynb) | A full analysis of a public credit card default dataset: 30,000 accounts, a yes or no outcome, and rates with their counts | Ready |
-| 2 | [Analyzing Text](week4/day2/17_analyzing_text.ipynb) | Regular expressions, cleaning, stopwords, stemming, and turning text into numbers, on FOMC statements | Ready |
+| 2, Part 1 | [Analyzing Text, Part 1](week4/day2/17_analyzing_text.ipynb) | String tools and regular expressions on an FOMC statement, bond descriptions, and CUSIPs | Ready |
+| 2, Part 2 | [Analyzing Text, Part 2](week4/day2_part2/17_part2_analyzing_text.ipynb) | Cleaning, stopwords, stemming, and turning 46 FOMC statements into tables of counts and charts | Ready |
 | 3 | [Case Study: Statement Sentiment](week4/day3/18_case_study_statement_sentiment.ipynb) | Turning the wording of FOMC statements into a score with three word lists, and how far to trust it | Ready |
 | 4 | [From Notebook to Module](week4/day4/19_from_notebook_to_module.ipynb) | Putting the cleaning and checking steps into a `.py` file, importing it, and running the same lines on a second file | Ready |
 | 5 | [Course Project](week4/day5/course1_project.ipynb) | A new month-end extract, answered on your own, ending in a written picture of the book. A [worked version](week4/day5/course1_project_solutions.ipynb) sits beside it | Ready |

@@ -39,32 +39,32 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Take `AVERAGE`, `STDEV.S`, `MIN`, `QUARTILE.INC`, `MEDIAN`, and `MAX` | Call `describe()` | 1 | Week 1, Day 5 |
 | Subtract par with `=G2-100` and chart it as columns | Chart price against par | 1 | Week 1, Day 5 |
 | Total with `=SUM(H2:H7)` | Call `df['Face'].sum()` | 1 | Week 1, Day 5 |
-| Turn on AutoFilter and sort a sheet | Filter and sort a table by condition | 1 | Week 2, Day 2 |
-| Use `SUMIF` and `COUNTIF` | Filter, then sum or count | 1 | Week 2, Day 2 and Day 5 |
+| Turn on AutoFilter and sort a sheet | Filter and sort a table by condition | 1 | Week 2, Day 2 Part 2 |
+| Use `SUMIF` and `COUNTIF` | Filter, then sum or count | 1 | Week 2, Day 2 Part 2 and Day 5 |
 | Use `COUNTBLANK` and Remove Duplicates | Count missing values and repeated rows in one line each | 1 | Week 2, Day 4 |
 | Use `VLOOKUP` or `INDEX` and `MATCH` | Merge two tables on a shared column | 1 | Week 2, Day 3 and Day 5 |
-| Build a pivot table | Group by a column and summarize | 1 | Week 2, Day 3 and Day 5 |
-| Open and save a workbook with several sheets | Read a sheet into a table, and write tables to the sheets of a new workbook | 1 | Week 2, Day 3 and Day 5 |
-| Use `SUMPRODUCT` over `SUM` for a weighted average | Do the same arithmetic on two columns | 1 | Week 2, Day 3 and Day 5 |
+| Build a pivot table | Group by a column and summarize | 1 | Week 2, Day 3, Day 3 Part 2, and Day 5 |
+| Open and save a workbook with several sheets | Read a sheet into a table, and write tables to the sheets of a new workbook | 1 | Week 2, Day 3 Part 2 and Day 5 |
+| Use `SUMPRODUCT` over `SUM` for a weighted average | Do the same arithmetic on two columns | 1 | Week 2, Day 3 Part 2 and Day 5 |
 | Build a run of numbers with `=SEQUENCE(11,1,95,1)` | `np.arange` | 1 | Week 2, Day 1 |
 | Sort with `=SORT(D2:D5)`, and sort one column by another with `=SORTBY(A2:A5,D2:D5)` | `np.sort`, and `tickers[np.argsort(coupons)]` | 1 | Week 2, Day 1 |
 | Fill `=SUM($B$2:B2)` down a column | `np.cumsum` | 1 | Week 2, Day 1 |
 | Draw a random move with `=NORM.S.INV(RAND())*5` | `rng.standard_normal(250) * 5` | 1 | Week 2, Day 1 |
 | Take a change with `=B3-B2` and a return with `=B3/B2-1` | `np.diff`, and a simple return on the whole array | 1 | Week 2, Day 1 |
-| Test a cell with `=ISNUMBER(F2)` | `np.isfinite` | 1 | Week 2, Day 1 |
-| Use the Scientific number format | Read `1.5e+06` in an output | 1 | Week 2, Day 1 |
-| Reshape a row with `=WRAPROWS(A1:L1,4)` | `reshape` | 1 | Week 2, Day 1 |
-| Multiply matrices with `=MMULT(TRANSPOSE(B2:B4),C2:F4)/100`, and build an identity with `=MUNIT(3)` | `@`, and `np.eye(3)` | 1 | Week 2, Day 1 |
-| Save As CSV | `np.savetxt` | 1 | Week 2, Day 1 |
+| Test a cell with `=ISNUMBER(F2)` | `np.isfinite` | 1 | Week 2, Day 1 Part 2 |
+| Use the Scientific number format | Read `1.5e+06` in an output | 1 | Week 2, Day 1 Part 2 |
+| Reshape a row with `=WRAPROWS(A1:L1,4)` | `reshape` | 1 | Week 2, Day 1 Part 2 |
+| Multiply matrices with `=MMULT(TRANSPOSE(B2:B4),C2:F4)/100`, and build an identity with `=MUNIT(3)` | `@`, and `np.eye(3)` | 1 | Week 2, Day 1 Part 2 |
+| Save As CSV | `np.savetxt` | 1 | Week 2, Day 1 Part 2 |
 | Open a file with Data, From Text/CSV | `pd.read_csv` | 1 | Week 2, Day 2 |
-| Set a pivot to Show Values As, % of Grand Total | `value_counts(normalize=True)` | 1 | Week 2, Day 2 |
-| Count distinct values with `=COUNTA(UNIQUE(C2:C201))` | `nunique()` | 1 | Week 2, Day 2 |
-| Count several labels with `=SUM(COUNTIF(F:F,{"A+","A","A-"}))` | `isin().sum()` | 1 | Week 2, Day 2 |
-| Take the largest or smallest with `LARGE` and `SMALL` | `nlargest` and `nsmallest` | 1 | Week 2, Day 2 |
+| Set a pivot to Show Values As, % of Grand Total | `value_counts(normalize=True)` | 1 | Week 2, Day 2 Part 2 |
+| Count distinct values with `=COUNTA(UNIQUE(C2:C201))` | `nunique()` | 1 | Week 2, Day 2 Part 2 |
+| Count several labels with `=SUM(COUNTIF(F:F,{"A+","A","A-"}))` | `isin().sum()` | 1 | Week 2, Day 2 Part 2 |
+| Take the largest or smallest with `LARGE` and `SMALL` | `nlargest` and `nsmallest` | 1 | Week 2, Day 2 Part 2 |
 | Choose a Join Kind in Power Query's Merge Queries | `how=` | 1 | Week 2, Day 3 |
 | Put ranges side by side with `HSTACK` | `concat(axis=1)` | 1 | Week 2, Day 3 |
-| Read day-first dates with Text to Columns and DMY | `dayfirst=True` | 1 | Week 2, Day 3 |
-| Format a date with `=TEXT(H2,"dd mmm yyyy")` | `strftime` | 1 | Week 2, Day 3 |
+| Read day-first dates with Text to Columns and DMY | `dayfirst=True` | 1 | Week 2, Day 3 Part 2 |
+| Format a date with `=TEXT(H2,"dd mmm yyyy")` | `strftime` | 1 | Week 2, Day 3 Part 2 |
 | Flip a test with `=NOT(G2)` | `~` | 1 | Week 2, Day 4 |
 | Test for repeats with `=COUNTA(UNIQUE(A2:A201))=COUNTA(A2:A201)` | `is_unique` | 1 | Week 2, Day 4 |
 | Drag a second pivot field from Rows to Columns | `groupby` on two labels, then `unstack()` | 1 | Week 2, Day 5 |
@@ -79,14 +79,14 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Tilt labels with a Custom angle in Format Axis | `rotation=45` | 1 | Week 3, Day 1 |
 | Build a correlation table with the Analysis ToolPak | `.corr()` | 1 | Week 3, Day 1 |
 | Use `AVERAGEIF` on a column of 0s and 1s to get a rate by group | Group, then take the mean and the count together | 1 | Week 4, Day 1 |
-| Use `FIND`, `SUBSTITUTE`, `TRIM`, and Find and Replace on text | Search and clean text with patterns, across every row at once | 1 | Week 4, Day 2 |
+| Use `FIND`, `SUBSTITUTE`, `TRIM`, and Find and Replace on text | Search and clean text with patterns, across every row at once | 1 | Week 4, Day 2 and Day 2 Part 2 |
 | Count words from a list with `SUMPRODUCT`, and standardize with `STANDARDIZE` | Score every document against a word list and compare the scores | 1 | Week 4, Day 3 |
 | Paste next month's rows into last month's workbook and re-point every range | Keep the steps as functions in one file and run them on the new file | 1 | Week 4, Day 4 |
 | Cap a value with `=MAX(-0.5,MIN(1.5,AK2))` | `.clip()` | 1 | Week 4, Day 1 |
 | Sort on a `=RAND()` helper column, which does not repeat | `.sample()` with a seed, which does | 1 | Week 4, Day 1 |
 | Build one Scatter per pair of columns | `sns.pairplot()` | 1 | Week 4, Day 1 |
 | Fix the range of Data Bars under More Rules | `vmin` and `vmax` on `.bar()` | 1 | Week 4, Day 1 |
-| Compare two word lists with `UNIQUE` and `=SUMPRODUCT(COUNTIF(B2:B5,A2:A4))` | `set()` and a Jaccard score | 1 | Week 4, Day 2 |
+| Compare two word lists with `UNIQUE` and `=SUMPRODUCT(COUNTIF(B2:B5,A2:A4))` | `set()` and a Jaccard score | 1 | Week 4, Day 2 Part 2 |
 | Hold a cut-off in one cell with `=IF(E2>=$H$1,...)` | A `cutoff=0.05` default | 1 | Week 4, Day 3 |
 | Count above and below a cut-off with `=COUNTIF($E$2:$E$47,">="&H2)` | Try five cut-offs in a loop | 1 | Week 4, Day 3 |
 | Open Insert Function with Shift+F3 | `help()` | 1 | Week 4, Day 4 |
