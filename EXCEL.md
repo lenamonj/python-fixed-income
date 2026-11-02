@@ -81,6 +81,15 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Use `FIND`, `SUBSTITUTE`, `TRIM`, and Find and Replace on text | Search and clean text with patterns, across every row at once | 1 | Week 4, Day 2 |
 | Count words from a list with `SUMPRODUCT`, and standardize with `STANDARDIZE` | Score every document against a word list and compare the scores | 1 | Week 4, Day 3 |
 | Paste next month's rows into last month's workbook and re-point every range | Keep the steps as functions in one file and run them on the new file | 1 | Week 4, Day 4 |
+| Cap a value with `=MAX(-0.5,MIN(1.5,AK2))` | `.clip()` | 1 | Week 4, Day 1 |
+| Sort on a `=RAND()` helper column, which does not repeat | `.sample()` with a seed, which does | 1 | Week 4, Day 1 |
+| Build one Scatter per pair of columns | `sns.pairplot()` | 1 | Week 4, Day 1 |
+| Fix the range of Data Bars under More Rules | `vmin` and `vmax` on `.bar()` | 1 | Week 4, Day 1 |
+| Compare two word lists with `UNIQUE` and `=SUMPRODUCT(COUNTIF(B2:B5,A2:A4))` | `set()` and a Jaccard score | 1 | Week 4, Day 2 |
+| Hold a cut-off in one cell with `=IF(E2>=$H$1,...)` | A `cutoff=0.05` default | 1 | Week 4, Day 3 |
+| Count above and below a cut-off with `=COUNTIF($E$2:$E$47,">="&H2)` | Try five cut-offs in a loop | 1 | Week 4, Day 3 |
+| Open Insert Function with Shift+F3 | `help()` | 1 | Week 4, Day 4 |
+| Save a `LAMBDA` in Name Manager | Save a function in a module | 1 | Week 4, Day 4 |
 | Use `FV` and `PV`, and read the minus sign `PV` returns | Write `future_value` and `present_value` and test them against Excel's values | 2 | Week 1, Day 1 |
 | Price a bond on a coupon date with `NPV` over a column of cash flows, `-PV` with a payment, or `PRICE` | List the cash flows and discount them in one function | 2 | Week 1, Day 2 |
 | Fill a column of `PRICE` formulas down a range of yields and chart it as a Scatter with Straight Lines | Price a grid of yields and plot the price-yield curve | 2 | Week 1, Day 3 |
