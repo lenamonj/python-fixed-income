@@ -16,9 +16,10 @@ TEACHING = sorted(
     if not path.stem.endswith("_solutions")
 )
 SMALL_WORDS = {"a", "an", "and", "as", "at", "but", "by", "for", "in", "nor", "of", "on", "or", "per", "the", "to", "vs"}
-LIBRARY_NAMES = {"os", "csv", "pathlib", "merge", "concat", "apply", "pandas", "plotly", "pivot_table", "pytest", "bp"}
+LIBRARY_NAMES = {"os", "csv", "pathlib", "merge", "concat", "apply", "pandas", "plotly", "pivot_table", "pytest", "bp", "sqlite3"}
 INSTALL_HEADINGS = {"Before You Start: Install the Libraries", "Before You Start: Nothing to Install"}
 LEAD_IN = "By the end of this notebook, you can:"
+WITHIN_TITLE = re.compile(r"\b(with|from|into|over)\b")
 
 
 def ids(path: Path) -> str:
@@ -72,6 +73,11 @@ def test_the_four_splits_are_in_place():
     stems = {path.stem for path in TEACHING}
     assert {"06_part2_numpy", "07_part2_pandas_series_and_dataframes", "08_part2_pandas_combining_and_loading",
             "17_part2_analyzing_text"} <= stems
+
+
+@pytest.mark.parametrize("path", TEACHING, ids=ids)
+def test_title_is_title_case(path):
+    assert title_cased(headings(path, 1)[0]) and not WITHIN_TITLE.search(headings(path, 1)[0])
 
 
 @pytest.mark.parametrize("path", TEACHING, ids=ids)

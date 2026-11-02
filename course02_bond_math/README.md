@@ -81,9 +81,9 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
 | 1 | [Time Value of Money](week1/day1/01_time_value_of_money.ipynb) | Future and present value with semiannual compounding, your first functions in `bondmath.py`, your first test, and your first Git commit | Ready |
-| 2 | [Cash Flows and Price from Yield](week1/day2/02_cash_flows_and_price_from_yield.ipynb) | A bullet bond's cash flows, and its price as their discounted sum on a coupon date, beside `NPV`, `PV`, and `PRICE` | Ready |
+| 2 | [Cash Flows and Price From Yield](week1/day2/02_cash_flows_and_price_from_yield.ipynb) | A bullet bond's cash flows, and its price as their discounted sum on a coupon date, beside `NPV`, `PV`, and `PRICE` | Ready |
 | 3 | [The Price-Yield Relationship](week1/day3/03_the_price_yield_relationship.ipynb) | Par, premium, and discount, the price-yield curve, which bond moves more, pull to par, and restating a yield with `EFFECT` and `NOMINAL` | Ready |
-| 4 | [Yield from Price](week1/day4/04_yield_from_price.ipynb) | Goal Seek, bisection by hand and in a loop, a check that stops on bad input, and undoing a bad edit with Git | Ready |
+| 4 | [Yield From Price](week1/day4/04_yield_from_price.ipynb) | Goal Seek, bisection by hand and in a loop, a check that stops on bad input, and undoing a bad edit with Git | Ready |
 | 5 | [Case Study: A New Issue Calendar](week1/day5/05_case_study_a_new_issue_calendar.ipynb) | Eight new issues described with the week's functions, and a workbook of live `PRICE` and `YIELD` formulas to open in Excel | Ready |
 
 ### Week 2: Dates, accrued interest, and risk
@@ -101,7 +101,7 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
 | 1 | [Treasury Curve Interpolation](week3/day1/11_treasury_curve_interpolation.ipynb) | A curve as tenors and yields, straight-line interpolation by hand, in a function, and with `numpy.interp`, on the real Treasury curve and an invented one | Ready |
-| 2 | [Spread over the Curve](week3/day2/12_spread_over_the_curve.ipynb) | Years to maturity on 30/360, the curve yield at each maturity, spread to the curve, and the holdings' spread column reproduced exactly | Ready |
+| 2 | [Spread Over the Curve](week3/day2/12_spread_over_the_curve.ipynb) | Years to maturity on 30/360, the curve yield at each maturity, spread to the curve, and the holdings' spread column reproduced exactly | Ready |
 | 3 | [Spread Duration and DTS](week3/day3/13_spread_duration_and_dts.ipynb) | Spread duration by bumping the spread, DTS, and each bond's and each rating bucket's share of the book's DTS | Ready |
 | 4 | [Portfolio Aggregation and Scenarios](week3/day4/14_portfolio_aggregation_and_scenarios.ipynb) | Market-value weights, book duration, spread, DTS, and DV01 by sector and rating, and rate and spread scenarios repriced in full | Ready |
 | 5 | [Course 2 Capstone](week3/day5/course2_capstone.ipynb) | A November extract tested, cleaned, recomputed, reconciled to its cover note, and turned into a risk report. A [worked version](week3/day5/course2_capstone_solutions.ipynb) sits beside it | Ready |

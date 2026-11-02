@@ -111,9 +111,9 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
-| 1 | [SQL with sqlite3](week3/day1/11_sql_with_sqlite3.ipynb) | A database in one file, `SELECT` to `HAVING` beside pandas, parameters instead of pasted values, and a weighted OAS checked against `bondmath` | Ready |
+| 1 | [SQL With sqlite3](week3/day1/11_sql_with_sqlite3.ipynb) | A database in one file, `SELECT` to `HAVING` beside pandas, parameters instead of pasted values, and a weighted OAS checked against `bondmath` | Ready |
 | 2 | [SQL Joins and Time Series](week3/day2/12_sql_joins_and_time_series.ipynb) | Joins, the join that duplicates rows, dates as text, and window functions for daily changes and month ends | Ready |
-| 3 | [Working with an AI Assistant](week3/day3/13_working_with_an_ai_assistant.ipynb) | The prompt as a spec, AI-style code reviewed with tests, a chart checked against its numbers, what never to paste, a package that does not exist, and JSON replies | Ready |
+| 3 | [Working With an AI Assistant](week3/day3/13_working_with_an_ai_assistant.ipynb) | The prompt as a spec, AI-style code reviewed with tests, a chart checked against its numbers, what never to paste, a package that does not exist, and JSON replies | Ready |
 | 4 | [The Daily Market Snapshot](week3/day4/14_the_daily_market_snapshot.ipynb) | One function for any date, a book section with DV01 and a what-if, an HTML page and an Excel workbook, and `snapshot.py` run from the command line | Ready |
 | 5 | [Course 3 Capstone](week3/day5/course3_capstone.ipynb) | A vendor extract tested, cleaned, reconciled, appended to history, and turned into the snapshot on two dates. A [worked version](week3/day5/course3_capstone_solutions.ipynb) sits beside it | Ready |
 
