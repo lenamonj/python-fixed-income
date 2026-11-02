@@ -8,7 +8,7 @@
 <h3>From your first line of code to your own AI agents.<br>Taught entirely through the work of a credit desk.</h3>
 
 [![Courses](https://img.shields.io/badge/Courses-12_%2B_Bonus-123D2F?style=for-the-badge)](#the-courses)
-[![Notebooks](https://img.shields.io/badge/Notebooks-178-123D2F?style=for-the-badge)](#the-courses)
+[![Notebooks](https://img.shields.io/badge/Notebooks-179-123D2F?style=for-the-badge)](#the-courses)
 [![Price](https://img.shields.io/badge/Price-Free-1C7A57?style=for-the-badge)](#start-here)
 [![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)](#run-in-google-colab-with-nothing-to-install)
@@ -21,7 +21,7 @@
 
 <table>
   <tr>
-    <td align="center" valign="top" width="25%"><h2>178</h2>notebooks, every lesson<br>with worked solutions</td>
+    <td align="center" valign="top" width="25%"><h2>179</h2>notebooks, every lesson<br>with worked solutions</td>
     <td align="center" valign="top" width="25%"><h2>199</h2>Excel comparisons,<br>formula by formula</td>
     <td align="center" valign="top" width="25%"><h2>35</h2>weeks, one notebook<br>a day</td>
     <td align="center" valign="top" width="25%"><h2>$0</h2>to take, and no key<br>needed to run</td>
@@ -47,7 +47,7 @@ Three notebooks, in this order. If you choose Colab, there is nothing to install
 |:---:|:---|:---|
 | **1** | **[Setup](course01_python_foundations/setup/setup_your_computer.ipynb)** | Get ready to run code: Colab in your web browser, or Python and VS Code on your own Windows computer. A picture of every step. |
 | **2** | **[Day 0: Start Here](course01_python_foundations/week1/day0/0_start_here.ipynb)** | What Python, a notebook, and a library are. Your first lines of code. |
-| **3** | **[Day 1: Introduction to Python](course01_python_foundations/week1/day1/01_python_for_fixed_income_intro.ipynb)** | The first full lesson, on a desk of four bonds. From here, follow the [Course 1 map](course01_python_foundations/README.md#course-map), one notebook a day. |
+| **3** | **[Day 1, Part 1: Introduction to Python](course01_python_foundations/week1/day1/01_python_for_fixed_income_intro.ipynb)** | The first full lesson, on a desk of four bonds. From here, follow the [Course 1 map](course01_python_foundations/README.md#course-map), one notebook a day. |
 
 ## The courses
 

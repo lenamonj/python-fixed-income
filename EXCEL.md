@@ -9,10 +9,10 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | A workbook, its formula cells and notes, F9, add-ins, and VBA modules | A notebook, its code and markdown cells, Run All, libraries, and `.py` files | 1 | Week 1, Day 0 |
 | `=2+2`, `=5-3`, `=5*5`, `=10/5`, `=QUOTIENT(7,2)`, `=MOD(7,2)`, `=5^2` | `2 + 2`, `5 - 3`, `5 * 5`, `10 / 5`, `7 // 2`, `7 % 2`, `5 ** 2` | 1 | Week 1, Day 0 |
 | `=2+3*4` and `=(2+3)*4`: multiply before add, brackets first | `2 + 3 * 4` and `(2 + 3) * 4`: the same order | 1 | Week 1, Day 0 |
-| Fill a formula down a column | Write the formula once, in a loop or on a whole array | 1 | Week 1, Day 1 and Week 2, Day 1 |
+| Fill a formula down a column | Write the formula once, in a loop or on a whole array | 1 | Week 1, Day 1 Part 2 and Week 2, Day 1 |
 | Wrap a number in `TEXT` and join it to a sentence with `&` | Write an f-string with a format code | 1 | Week 1, Day 1 |
 | Type `=1.025^10` for a power, and use `QUOTIENT`, `MOD`, and `ROUND` | Write `1.025 ** 10`, `//`, `%`, and `round()`, and see why `^` is not a power in Python and `round(2.5)` gives 2 | 1 | Week 1, Day 1 |
-| Write a nested `IF` | Write `if`, `elif`, `else`, one test per line | 1 | Week 1, Day 1 |
+| Write a nested `IF` | Write `if`, `elif`, `else`, one test per line | 1 | Week 1, Day 1 Part 2 |
 | See `#N/A`, `#DIV/0!`, or `#NAME?` in a cell | Read an error that names the line and the cause | 1 | Week 1, Day 3 |
 | Put an `IF` beside a total that shows OK or CHECK | Write an `assert` that stops the run when the total is wrong | 1 | Week 1, Day 3 |
 | Turn on AutoFilter and sort a sheet | Filter and sort a table by condition | 1 | Week 2, Day 2 |
