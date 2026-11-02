@@ -31,6 +31,7 @@ from pathlib import Path
 import nbformat
 from PIL import Image, ImageDraw, ImageFont
 from left_tables import left_tables
+from plain_prose import plain_prose
 
 REPO = Path(__file__).resolve().parent.parent
 FONTS = REPO / "assets" / "fonts"
@@ -171,9 +172,10 @@ def apply_header(notebook_path: Path, week: int, day: int, title: str, course: i
 
     nb = nbformat.read(notebook_path, as_version=4)
     # GitHub centres markdown tables: every table becomes a left-aligned HTML table (Jeff, 2026-10-25)
+    # running text loses its bullets and takes one sentence to a paragraph (Jeff, 2026-11-01)
     for md_cell in nb.cells:
         if md_cell.cell_type == "markdown":
-            md_cell.source = left_tables(md_cell.source)
+            md_cell.source = plain_prose(left_tables(md_cell.source))
     cell = nbformat.v4.new_markdown_cell(header_markdown(week, day, title, image, course, label))
     cell.metadata["tags"] = [HEADER_TAG]
     if nb.cells and HEADER_TAG in nb.cells[0].metadata.get("tags", []):

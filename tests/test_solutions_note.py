@@ -12,6 +12,7 @@ from nbformat.v4 import new_markdown_cell
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "tools"))
 from install_cell import insert_cells  # noqa: E402
+from plain_prose import plain_prose  # noqa: E402
 from solutions_note import HEADING, NOTE, add_note  # noqa: E402
 
 
@@ -25,7 +26,7 @@ def test_every_teaching_notebook_opens_its_exercises_with_the_note():
     with_exercises = [p for p in teaching if _exercise_cell(p) is not None]
     assert len(with_exercises) >= 155
     for path in with_exercises:
-        assert _exercise_cell(path).source.startswith(f"{HEADING}\n\n{NOTE}"), path
+        assert plain_prose(_exercise_cell(path).source).startswith(f"{HEADING}\n\n{plain_prose(NOTE)}"), path
 
 
 def test_no_solutions_notebook_carries_the_note():

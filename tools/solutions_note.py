@@ -16,6 +16,8 @@ from pathlib import Path
 
 import nbformat
 
+from plain_prose import plain_prose
+
 HEADING = "## Exercises"
 
 NOTE = ("**Every exercise has a worked answer** in the solutions notebook in this folder: the one with this "
@@ -36,7 +38,8 @@ def add_note(cells: list) -> bool:
         return False
     for cell in cells:
         if cell.cell_type == "markdown" and cell.source.startswith(HEADING):
-            if NOTE in cell.source:
+            # plain_prose may already have split the note into two lines
+            if plain_prose(NOTE) in plain_prose(cell.source):
                 return False
             rest = cell.source[len(HEADING):].lstrip("\n")
             cell.source = f"{HEADING}\n\n{NOTE}" + (f"\n\n{rest}" if rest else "")
