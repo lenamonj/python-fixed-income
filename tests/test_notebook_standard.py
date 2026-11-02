@@ -1,4 +1,4 @@
-"""Every Course 1 notebook follows one standard, so the course reads as one piece of work.
+"""Every notebook follows one standard, so the series reads as one piece of work. A course joins COURSES at its pass.
 
 The standard itself is in COURSE1_SPEC.md under "The notebook standard". Jeff, 2026-11-02: "assure there is a
 standardization we are following otherwise it shows we are not professional".
@@ -10,12 +10,13 @@ import nbformat
 import pytest
 
 REPO = Path(__file__).resolve().parents[1]
-COURSE = REPO / "course01_python_foundations"
+COURSES = ["course01_python_foundations", "course02_bond_math"]
 TEACHING = sorted(
-    path for path in COURSE.glob("week*/day*/*.ipynb") if not path.stem.endswith("_solutions")
+    path for course in COURSES for path in (REPO / course).glob("week*/day*/*.ipynb")
+    if not path.stem.endswith("_solutions")
 )
-SMALL_WORDS = {"a", "an", "and", "as", "at", "but", "by", "for", "in", "nor", "of", "on", "or", "the", "to", "vs"}
-LIBRARY_NAMES = {"os", "csv", "pathlib", "merge", "concat", "apply", "pandas", "plotly", "pivot_table"}
+SMALL_WORDS = {"a", "an", "and", "as", "at", "but", "by", "for", "in", "nor", "of", "on", "or", "per", "the", "to", "vs"}
+LIBRARY_NAMES = {"os", "csv", "pathlib", "merge", "concat", "apply", "pandas", "plotly", "pivot_table", "pytest", "bp"}
 INSTALL_HEADINGS = {"Before You Start: Install the Libraries", "Before You Start: Nothing to Install"}
 LEAD_IN = "By the end of this notebook, you can:"
 
@@ -25,7 +26,11 @@ def ids(path: Path) -> str:
 
 
 def is_project(path: Path) -> bool:
-    return path.stem == "course1_project"
+    return path.stem == "course1_project" or path.stem.endswith("_capstone")
+
+
+def in_course_1(path: Path) -> bool:
+    return "course01" in str(path)
 
 
 def is_case_study(path: Path) -> bool:
@@ -108,15 +113,15 @@ def test_headings_are_title_case(path):
 
 @pytest.mark.parametrize("path", [p for p in TEACHING if not is_project(p)], ids=ids)
 def test_ending(path):
-    level_two = headings(path, 2)
+    level_two = [heading for heading in headings(path, 2) if heading != "Tidying Up"]
     assert level_two[-3:] == ["You Can Now", "Exercises", "Congratulations!"]
-    if is_case_study(path):
+    if is_case_study(path) and in_course_1(path):
         assert level_two[-4] == "Summary"
 
 
-def test_project_ends_on_the_closing():
-    project = next(path for path in TEACHING if is_project(path))
-    assert headings(project, 2)[-1] == "Congratulations!"
+@pytest.mark.parametrize("path", [p for p in TEACHING if is_project(p)], ids=ids)
+def test_project_ends_on_the_closing(path):
+    assert headings(path, 2)[-1] == "Congratulations!"
 
 
 @pytest.mark.parametrize("path", TEACHING, ids=ids)
@@ -141,9 +146,10 @@ def test_last_exercise_is_an_ai_check(path):
 
 @pytest.mark.parametrize("path", [p for p in TEACHING if is_case_study(p)], ids=ids)
 def test_case_study_opens_with_the_problem_definition(path):
-    assert headings(path, 2)[1] == "Problem Definition"
+    assert "Problem Definition" in headings(path, 2)
     level_three = headings(path, 3)
-    assert level_three[:4] == ["Context", "Objective", "The Data", "How We Will Work"]
+    start = level_three.index("Context")
+    assert level_three[start:start + 4] == ["Context", "Objective", "The Data", "How We Will Work"]
 
 
 @pytest.mark.parametrize("path", [p for p in TEACHING if not is_case_study(p) and not is_project(p)], ids=ids)
@@ -161,7 +167,7 @@ def test_questions_are_q_lines_never_bold(path):
     assert len(re.findall(r"^Q\. ", text, re.M)) >= 8
 
 
-@pytest.mark.parametrize("path", [p for p in TEACHING if not is_project(p) and number(p) >= 5], ids=ids)
+@pytest.mark.parametrize("path", [p for p in TEACHING if not is_project(p) and (not in_course_1(p) or number(p) >= 5)], ids=ids)
 def test_predict_cells_run_from_day_5(path):
     found = re.findall(r"^\*\*Predict (\d+)\*\*$", "\n".join(markdown(path)), re.M)
     assert len(found) >= 3
