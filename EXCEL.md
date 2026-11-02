@@ -45,11 +45,38 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Build a pivot table | Group by a column and summarize | 1 | Week 2, Day 3 and Day 5 |
 | Open and save a workbook with several sheets | Read a sheet into a table, and write tables to the sheets of a new workbook | 1 | Week 2, Day 3 and Day 5 |
 | Use `SUMPRODUCT` over `SUM` for a weighted average | Do the same arithmetic on two columns | 1 | Week 2, Day 3 and Day 5 |
+| Build a run of numbers with `=SEQUENCE(11,1,95,1)` | `np.arange` | 1 | Week 2, Day 1 |
+| Sort with `=SORT(D2:D5)`, and sort one column by another with `=SORTBY(A2:A5,D2:D5)` | `np.sort`, and `tickers[np.argsort(coupons)]` | 1 | Week 2, Day 1 |
+| Fill `=SUM($B$2:B2)` down a column | `np.cumsum` | 1 | Week 2, Day 1 |
+| Draw a random move with `=NORM.S.INV(RAND())*5` | `rng.standard_normal(250) * 5` | 1 | Week 2, Day 1 |
+| Take a change with `=B3-B2` and a return with `=B3/B2-1` | `np.diff`, and a simple return on the whole array | 1 | Week 2, Day 1 |
+| Test a cell with `=ISNUMBER(F2)` | `np.isfinite` | 1 | Week 2, Day 1 |
+| Use the Scientific number format | Read `1.5e+06` in an output | 1 | Week 2, Day 1 |
+| Reshape a row with `=WRAPROWS(A1:L1,4)` | `reshape` | 1 | Week 2, Day 1 |
+| Multiply matrices with `=MMULT(TRANSPOSE(B2:B4),C2:F4)/100`, and build an identity with `=MUNIT(3)` | `@`, and `np.eye(3)` | 1 | Week 2, Day 1 |
+| Save As CSV | `np.savetxt` | 1 | Week 2, Day 1 |
+| Open a file with Data, From Text/CSV | `pd.read_csv` | 1 | Week 2, Day 2 |
+| Set a pivot to Show Values As, % of Grand Total | `value_counts(normalize=True)` | 1 | Week 2, Day 2 |
+| Count distinct values with `=COUNTA(UNIQUE(C2:C201))` | `nunique()` | 1 | Week 2, Day 2 |
+| Count several labels with `=SUM(COUNTIF(F:F,{"A+","A","A-"}))` | `isin().sum()` | 1 | Week 2, Day 2 |
+| Take the largest or smallest with `LARGE` and `SMALL` | `nlargest` and `nsmallest` | 1 | Week 2, Day 2 |
+| Choose a Join Kind in Power Query's Merge Queries | `how=` | 1 | Week 2, Day 3 |
+| Put ranges side by side with `HSTACK` | `concat(axis=1)` | 1 | Week 2, Day 3 |
+| Read day-first dates with Text to Columns and DMY | `dayfirst=True` | 1 | Week 2, Day 3 |
+| Format a date with `=TEXT(H2,"dd mmm yyyy")` | `strftime` | 1 | Week 2, Day 3 |
+| Flip a test with `=NOT(G2)` | `~` | 1 | Week 2, Day 4 |
+| Test for repeats with `=COUNTA(UNIQUE(A2:A201))=COUNTA(A2:A201)` | `is_unique` | 1 | Week 2, Day 4 |
+| Drag a second pivot field from Rows to Columns | `groupby` on two labels, then `unstack()` | 1 | Week 2, Day 5 |
 | Insert a chart: Column, Line, Scatter, Histogram, Box and Whisker | Draw the same chart in a few lines of code | 1 | Week 3, Day 1 |
 | Add a trendline, and use `SLOPE`, `INTERCEPT`, and `RSQ` | Fit the line and print its numbers with units | 1 | Week 3, Day 2 |
 | Use Remove Duplicates, `TRIM`, and `QUARTILE.INC` to clean and check a sheet | Find and fix the same problems in code, and print the totals before and after | 1 | Week 3, Day 3 |
 | Use `XLOOKUP` by date, and `AVERAGEIFS` by year | Select by date and group a time series by year | 1 | Week 3, Day 4 |
 | Net buys against sells with two `SUMIFS`, and keep a running total | Sign the sells, group, and take a cumulative sum | 1 | Week 3, Day 5 |
+| Put ratings in credit order with `=UNIQUE(SORTBY(C2:C19,B2:B19))` | `ratings.sort_values('score')['bucket'].unique()` | 1 | Week 3, Day 1 |
+| Add a note with an arrow through Insert, Shapes | `ax.annotate` | 1 | Week 3, Day 1 |
+| Tick Logarithmic scale in Format Axis | `ax.set_yscale('log')` | 1 | Week 3, Day 1 |
+| Tilt labels with a Custom angle in Format Axis | `rotation=45` | 1 | Week 3, Day 1 |
+| Build a correlation table with the Analysis ToolPak | `.corr()` | 1 | Week 3, Day 1 |
 | Use `AVERAGEIF` on a column of 0s and 1s to get a rate by group | Group, then take the mean and the count together | 1 | Week 4, Day 1 |
 | Use `FIND`, `SUBSTITUTE`, `TRIM`, and Find and Replace on text | Search and clean text with patterns, across every row at once | 1 | Week 4, Day 2 |
 | Count words from a list with `SUMPRODUCT`, and standardize with `STANDARDIZE` | Score every document against a word list and compare the scores | 1 | Week 4, Day 3 |
