@@ -20,6 +20,10 @@ LIBRARY_NAMES = {"os", "csv", "pathlib", "merge", "concat", "apply", "pandas", "
 INSTALL_HEADINGS = {"Before You Start: Install the Libraries", "Before You Start: Nothing to Install"}
 LEAD_IN = "By the end of this notebook, you can:"
 WITHIN_TITLE = re.compile(r"\b(with|from|into|over)\b")
+# Code spans may teach f-strings, so a format code is only a fault in prose. A dictionary lookup is a fault anywhere.
+CODE_TEXT = re.compile(r"```.*?```|`[^`\n]*`|<code>.*?</code>|\$\$.*?\$\$", re.S)
+UNFILLED = re.compile(r"\{[A-Za-z_]\w*(?:\[|\(|!r|:[,+.0-9]*[a-z%]\})")
+UNFILLED_LOOKUP = re.compile(r"\{[A-Za-z_]\w*\[['\"]")
 
 
 def ids(path: Path) -> str:
@@ -78,6 +82,13 @@ def test_the_four_splits_are_in_place():
 @pytest.mark.parametrize("path", TEACHING, ids=ids)
 def test_title_is_title_case(path):
     assert title_cased(headings(path, 1)[0]) and not WITHIN_TITLE.search(headings(path, 1)[0])
+
+
+@pytest.mark.parametrize("path", TEACHING, ids=ids)
+def test_no_builder_placeholder_reaches_the_student(path):
+    for cell in markdown(path):
+        prose = CODE_TEXT.sub("", cell)
+        assert not UNFILLED.search(prose) and not UNFILLED_LOOKUP.search(cell), cell[:200]
 
 
 @pytest.mark.parametrize("path", TEACHING, ids=ids)
