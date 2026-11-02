@@ -97,6 +97,26 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Restate a yield with `EFFECT` and `NOMINAL` | Write `convert_yield` between any two compounding frequencies | 2 | Week 1, Day 3 |
 | Goal Seek a yield, halve a bracket with `IF` formulas, or use `RATE` and `YIELD` | Write a bisection loop that solves the yield from a price | 2 | Week 1, Day 4 |
 | Round a coupon with `MROUND`, and open a workbook of live `PRICE` and `YIELD` formulas | Find the coupon on a 1/8 grid, and write a workbook of live formulas with openpyxl | 2 | Week 1, Day 5 |
+| Write a growth factor as `=(1+5.4/100/2)^(2*5)` | `(1 + 0.054 / 2) ** 10` | 2 | Week 1, Day 1 |
+| Write a discount factor as `=1/(1+5.4/100/2)^(2*5)` or `=-PV(...,0,1)` | `bondmath.present_value(1, 5.40, 5)` | 2 | Week 1, Day 1 |
+| Fill `=D1+100*5.4/100/2` down for simple interest | `amount + amount * period_rate * k` | 2 | Week 1, Day 1 |
+| Add a check column with `=ABS(B2-C2)<0.000001` | `pytest.approx` | 2 | Week 1, Day 1 |
+| Save As with a date in the name | `git commit` | 2 | Week 1, Day 1 |
+| Total the cash with `=SUM(B1:B10)` | `.sum()` | 2 | Week 1, Day 2 |
+| Price the coupons alone with `=-PV(5.4/100/2,2*5,5.25/2,0)` | `price - redemption_pv` | 2 | Week 1, Day 2 |
+| See `=-PV(5.4/100/2,2*2.3,5.25/2,100)` accept part periods | See `cash_flows` refuse them | 2 | Week 1, Day 2 |
+| Work a sale between coupons with `COUPDAYBS` and `COUPDAYS` | `coupon_each * 30 / 180` | 2 | Week 1, Day 2 |
+| Label a bond with a nested `IF` on `ROUND` | `par_label` | 2 | Week 1, Day 3 |
+| Price a premium as `=-PV(4.6/100/2,2*3,(4.75-4.6)/2,0)` | The present value of the extras | 2 | Week 1, Day 3 |
+| Restate a yield with `=((1+5.4/100/2)^2-1)*100` | Growth less 100 | 2 | Week 1, Day 3 |
+| Test `YIELD` with `ISERROR` | `ValueError` from the bracket check | 2 | Week 1, Day 4 |
+| Find a negative yield with `=RATE(...,-130,100)*2*100` | `bondmath.yield_from_price(5.25, 130, 5)` | 2 | Week 1, Day 4 |
+| Close without saving | `git restore` | 2 | Week 1, Day 4 |
+| Test for repeats with `=SUMPRODUCT(1/COUNTIF(A1:A8,A1:A8))` | `.is_unique` | 2 | Week 1, Day 5 |
+| Test a coupon grid with `=MOD(5.125*8,1)` | `% 1` | 2 | Week 1, Day 5 |
+| Move to a grid with `=FLOOR(5.69,0.125)` and `CEILING` | `math.floor` and `math.ceil` | 2 | Week 1, Day 5 |
+| Price an eighth of coupon with `=-PV(5.5/100/2,2*30,0.125/2,0)` | The price of an eighth of coupon | 2 | Week 1, Day 5 |
+| Keep a saved copy, `calendar_week1.xlsx` | `git tag` | 2 | Week 1, Day 5 |
 | Read date serial numbers, and use `EDATE`, `EOMONTH`, `COUPPCD`, `COUPNCD`, and `COUPNUM` | Work with `date` values, add months, and build a coupon schedule back from maturity | 2 | Week 2, Day 1 |
 | Use `COUPDAYBS`, `COUPDAYS`, `COUPDAYSNC`, `ACCRINT`, and `YEARFRAC` beside `DAYS360` | Count days on US 30/360 and actual/actual, and compute accrued interest | 2 | Week 2, Day 2 |
 | Use `PRICE` between coupon dates, add accrued for the dirty price, use `YIELD`, and write the price out cell by cell | Write `price`, `dirty_price`, and `yield_to_maturity`, and invoice a month of trades | 2 | Week 2, Day 3 |
