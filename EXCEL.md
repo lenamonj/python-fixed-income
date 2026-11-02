@@ -191,6 +191,7 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Size the sample correction and the annualising factor with `=SQRT(21/20)` and `=SQRT(252)` | The ratio and the factor | 3 | Week 2, Day 2 |
 | Count rows by year with `COUNTIFS` | `groupby(index.year).size()` | 3 | Week 2, Day 2 |
 | Find the peak and its date with `MAX` and `XLOOKUP` | `max` and `idxmax` | 3 | Week 2, Day 2 |
+| Compare two windows with `=G254/K254` | `vol_ratio` | 3 | Week 2, Day 2 |
 | Find a window's extremes and dates with `MIN`, `MAX`, and `XLOOKUP` | `min` and `idxmax` | 3 | Week 2, Day 3 |
 | Score a day three ways with `AVERAGE`, `STDEV.S`, and `COUNTIF` | The z-score and the rank, three ways | 3 | Week 2, Day 3 |
 | Rank ties with `=COUNTIF(H1:H10,"<="&7)` | `rank(method="max")` | 3 | Week 2, Day 3 |
