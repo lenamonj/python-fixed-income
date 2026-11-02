@@ -41,7 +41,7 @@ IMPORT_NAMES = {
     "sentence-transformers": "sentence_transformers",
 }
 
-HEADING = "## Before you start: install the libraries"
+HEADING = "## Before You Start: Install the Libraries"
 
 MARKDOWN = f"""{HEADING}
 
@@ -95,7 +95,7 @@ def insert_cells(cells: list, course_folder: str) -> list:
     Cells that already hold the section are returned unchanged. Every builder passes through here, so this is
     also where a teaching notebook's Exercises section gets its note on the worked answers (solutions_note.py)."""
     add_note(cells)
-    if any(cell.cell_type == "markdown" and cell.source.startswith(HEADING) for cell in cells):
+    if any(cell.cell_type == "markdown" and cell.source.lower().startswith(HEADING.lower()) for cell in cells):
         return cells
     markdown, code = install_section(course_folder)
     for index, cell in enumerate(cells):
