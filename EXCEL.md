@@ -159,16 +159,60 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Use `WEEKDAY`, `WORKDAY`, and `NETWORKDAYS` with a holiday list, and see `XLOOKUP` return `#N/A` on a date with no row | Take the market calendar from the data's own dates, and join two series inner or outer | 3 | Week 1, Day 3 |
 | Find a month's last market date with `EOMONTH` and `MAXIFS`, look up a value as of a date with `XLOOKUP` match mode -1, and group a pivot table by month | Take the last observation of each week or month, labelled by its own date, and the as-of value | 3 | Week 1, Day 4 |
 | Append and merge files with Power Query, and check a sheet with `SUMPRODUCT`, `UNIQUE`, and `COUNTBLANK` | Build one checked daily dataset from two files, and cache a download | 3 | Week 1, Day 5 |
+| Measure a text's length with `=LEN(B1)` | `len(FAKE_KEY)` | 3 | Week 1, Day 1 |
+| Count a year's rows with `COUNTIFS` on two dates | Rows per year | 3 | Week 1, Day 1 |
+| See a Line chart read text `.` as 0 and an empty cell as a gap | A chart of `.` as 0 against `NaN` | 3 | Week 1, Day 1 |
+| Keep an old copy of a workbook, which still holds a deleted key | The commit history | 3 | Week 1, Day 1 |
+| Separate rows from numbers with `COUNTA`, `COUNT`, and `=COUNTIF(...,".")` | Rows against numbers | 3 | Week 1, Day 2 |
+| Compare `AVERAGE` with `SUM/ROWS` when a cell is text | `mean` with `NaN` left out, and with `fillna(0)` | 3 | Week 1, Day 2 |
+| Find the first run over a rate limit with `=INT(120/11)+1` | The first run over the limit | 3 | Week 1, Day 2 |
+| Count calendar days with `=A2941-A2+1` | `len(pd.date_range(...))` | 3 | Week 1, Day 3 |
+| Count a weekday with `=SUMPRODUCT(--(WEEKDAY(...,2)=1))` | `day_name().value_counts()` | 3 | Week 1, Day 3 |
+| Fill `=A3-A2` down and count gaps with `COUNTIF` | Gaps between rows | 3 | Week 1, Day 3 |
+| Carry a value forward with `=IF(T3="",U2,T3)` | `ffill` | 3 | Week 1, Day 3 |
+| Conditional Formatting, Data Bars | `.style.bar` | 3 | Week 1, Day 3 |
+| Find a month's first, mean, and high with `XLOOKUP`, `AVERAGEIFS`, and `MAXIFS` | First, mean, and high | 3 | Week 1, Day 4 |
+| Test a month end with `COUNTIF(dates,EOMONTH(...))` | `isin` on month ends | 3 | Week 1, Day 4 |
+| Open a CSV of full-digit thirds and see the values change | `float_precision="round_trip"` | 3 | Week 1, Day 5 |
 | Write `=(B3-B2)*100` for a change in bp, `XLOOKUP` with `EDATE` for a one-month change, and `MAX` with `XLOOKUP` for the date of the largest move | Compute changes in bp over rows and over calendar periods, and price returns in percent | 3 | Week 2, Day 1 |
 | Fill `STDEV.S` down a fixed-size range, with `STDEV.P`, `OFFSET`, and `*SQRT(252)` beside it | Compute rolling volatility over a trailing window of rows, and test that it uses no future data | 3 | Week 2, Day 2 |
 | Use `STANDARDIZE`, and `COUNTIF` over `COUNT` for a percentile rank, beside `PERCENTRANK.INC`, `RANK.EQ`, and `RANK.AVG` | Compute rolling z-scores and percentile ranks that match Excel row for row | 3 | Week 2, Day 3 |
 | Fill slope and butterfly formulas down the Treasury sheet, and weight a butterfly with `PRICE` and `MDURATION` | Compute slopes and butterflies in bp, and DV01-neutral weights from your own `bondmath` | 3 | Week 2, Day 4 |
 | Build a summary sheet for one date with `XMATCH`, `XLOOKUP`, `INDEX`, `OFFSET`, `STANDARDIZE`, and `COUNTIF` | Build every measure as of one date in one table that reads nothing after it | 3 | Week 2, Day 5 |
+| See `=(B440-B439)*100` hold more digits than it shows | `ten.iloc[-1] - ten.iloc[-2]` | 3 | Week 2, Day 1 |
+| Choose `=D440-D439` or `*100` by the column's units | `change_bp(ig, percent_units=False)` and the default | 3 | Week 2, Day 1 |
+| Step back a month with `=EDATE(DATE(2026,3,31),-1)` | `pd.DateOffset(months=1)` | 3 | Week 2, Day 1 |
+| Rank moves with `=TAKE(SORT(ROUND(ABS(C251:C440),6),,-1),6)` and `LARGE` | `nlargest` | 3 | Week 2, Day 1 |
+| Count large moves with `=SUMPRODUCT(--(ABS(C251:C440)>=10))` or two `COUNTIF`s | A threshold count | 3 | Week 2, Day 1 |
+| Fill a histogram bin with `=COUNTIFS(C251:C440,">=0.5",C251:C440,"<1.5")` | A histogram bin | 3 | Week 2, Day 1 |
+| Conditional Formatting, Data Bars and the Top 1 rule | `.bar` and `highlight_max` | 3 | Week 2, Day 1 |
+| Count a calendar window with `=COUNTIFS($A$3:$A$2941,">"&A3-30,$A$3:$A$2941,"<="&A3)` | `rolling("30D").count()` | 3 | Week 2, Day 2 |
+| Fill `=AVERAGE(A$1:A1)` down | `min_periods=1` | 3 | Week 2, Day 2 |
+| Size the sample correction and the annualising factor with `=SQRT(21/20)` and `=SQRT(252)` | The ratio and the factor | 3 | Week 2, Day 2 |
+| Count rows by year with `COUNTIFS` | `groupby(index.year).size()` | 3 | Week 2, Day 2 |
+| Find the peak and its date with `MAX` and `XLOOKUP` | `max` and `idxmax` | 3 | Week 2, Day 2 |
+| Find a window's extremes and dates with `MIN`, `MAX`, and `XLOOKUP` | `min` and `idxmax` | 3 | Week 2, Day 3 |
+| Score a day three ways with `AVERAGE`, `STDEV.S`, and `COUNTIF` | The z-score and the rank, three ways | 3 | Week 2, Day 3 |
+| Rank ties with `=COUNTIF(H1:H10,"<="&7)` | `rank(method="max")` | 3 | Week 2, Day 3 |
+| Show a flat window with `=IFERROR(STANDARDIZE(...),NA())` | `NaN` on a flat window | 3 | Week 2, Day 3 |
+| Find the low in 2s10s and its date with `MIN` and `XLOOKUP` | `min` and `idxmin` | 3 | Week 2, Day 4 |
+| Write a fly the other way round with `=(B+D-2*C)*100` | The other sign | 3 | Week 2, Day 4 |
+| Count inverted days with `COUNTIF` | Sign counts | 3 | Week 2, Day 4 |
+| Count a run with `=IF(E2<0,IF(N(E1)<0,F1+1,1),0)`, then `MAX` | `cumsum` and `groupby` runs | 3 | Week 2, Day 4 |
+| Correlate changes with `=CORREL(F3:F752,G3:G752)` | `.corr` | 3 | Week 2, Day 5 |
+| Find the mean absolute move with `SUMPRODUCT(ABS())/COUNT`, and `MIN` | The mean absolute move and the largest fall | 3 | Week 2, Day 5 |
+| Count negative days with `COUNTIF` | Negative days | 3 | Week 2, Day 5 |
+| Find the same-direction share with `SUMPRODUCT`, and the gap with `MIN` and `MAX` | The share and the gap | 3 | Week 2, Day 5 |
 | Use `COUNTIFS`, `SUMIFS`, `AVERAGEIFS`, `FILTER`, `TAKE` with `SORTBY`, and a pivot table | Write `WHERE`, `GROUP BY`, `HAVING`, `ORDER BY`, and `LIMIT` in SQL, each checked against pandas | 3 | Week 3, Day 1 |
 | Join with `XLOOKUP` or Power Query Merge, and find repeated keys with `COUNTIF` | Join tables in SQL, catch a join that duplicates rows, and use window functions for daily changes and month ends | 3 | Week 3, Day 2 |
 | Check a suggested formula, `PERCENTRANK.INC`, against `COUNTIF` over `COUNT`, and a DV01 built from cells | Test code written in the style of an AI assistant against your own functions and Excel's values | 3 | Week 3, Day 3 |
 | Open the snapshot workbook and check its numbers with `SUMIFS`, `STANDARDIZE`, and `COUNTIF` | Write a daily market snapshot to HTML and Excel from one function that runs on any date | 3 | Week 3, Day 4 |
 | Test a pasted extract's dates and units with `DATE`, `WEEKDAY`, `COUNTIF`, and `IFERROR(VALUE(...),NA())` | Clean a vendor extract with checks that stop, reconcile it, and run the snapshot on two dates | 3 | Week 3, Day 5 |
+| Unpivot with Power Query's `Table.UnpivotOtherColumns`, then filter the blanks | `melt` and `dropna` | 3 | Week 3, Day 1 |
+| Test a date range with two tests in `COUNTIFS` | `BETWEEN` | 3 | Week 3, Day 2 |
+| Summarize a month with `MINIFS`, `MAXIFS`, and `AVERAGEIFS` | `GROUP BY substr(date, 1, 7)` | 3 | Week 3, Day 2 |
+| Take a month label with `=TEXT(DATE(2026,9,30),"yyyy-mm")` | `substr(date, 1, 7)` | 3 | Week 3, Day 2 |
+| See text dates compare wrongly with `="09/30/2026"<"10/02/2025"` | SQL text comparison | 3 | Week 3, Day 2 |
 | Fit `SLOPE`, `INTERCEPT`, and `RSQ` on a training sheet, and score a test sheet with `AVERAGE(ABS(...))` and `SQRT(SUMXMY2(...)/COUNT(...))` | Split the rows, fit on the training rows, and measure the error in bp on rows the model never saw | 4 | Week 1, Day 1 |
 | Build dummy columns with `=--(D2="AAA")`, fit them with `LINEST`, and score the test rows with `TREND` | Encode ratings with a named reference level and fit a multiple regression | 4 | Week 1, Day 2 |
 | Read `LINEST`'s standard errors, and compute p-values with `T.DIST.2T`, intervals with `T.INV.2T`, a VIF with `1/(1-R2)`, and a joint F-test with `F.DIST.RT` | Read statsmodels' coefficient table, test sector jointly, and measure multicollinearity | 4 | Week 1, Day 3 |
