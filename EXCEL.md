@@ -16,6 +16,28 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Show a workbook's path with `CELL("filename",A1)`, and split a column with Text to Columns | `os.getcwd()`, and `split(',')` | 1 | Week 1, Day 2 |
 | See `#N/A`, `#DIV/0!`, or `#NAME?` in a cell | Read an error that names the line and the cause | 1 | Week 1, Day 3 |
 | Put an `IF` beside a total that shows OK or CHECK | Write an `assert` that stops the run when the total is wrong | 1 | Week 1, Day 3 |
+| Type `=1+` and see Excel refuse the formula | Read a `SyntaxError` | 1 | Week 1, Day 3 |
+| Multiply text by a number with `=A1*5.25/100` and get 78750, because Excel converts the text | See a `TypeError`, because Python never converts | 1 | Week 1, Day 3 |
+| Repeat text with `=REPT("1500000",2)` | Repeat a string with `'1500000' * 2` | 1 | Week 1, Day 3 |
+| Round down with `=INT(98.5)` | Round down with `math.floor(98.5)` | 1 | Week 1, Day 3 |
+| Count from 1 with `=INDEX(A1:A4,1)`, and see `#REF!` from `=INDEX(A1:A4,5)` | Count from 0, and see an `IndexError` | 1 | Week 1, Day 3 |
+| Look up with `XLOOKUP`, which ignores case | Use exact dictionary keys, and see a `KeyError` | 1 | Week 1, Day 3 |
+| Convert with `=VALUE("5.25%")`, which returns 0.0525 | See `float()` refuse `'5.25%'` | 1 | Week 1, Day 3 |
+| Step through a formula with Evaluate Formula on the Formulas tab | Put a `print()` inside a loop | 1 | Week 1, Day 3 |
+| Catch errors with `=IFERROR(VALUE(A1),"bad price")` and `=IFNA(XLOOKUP(...),"not found")` | See a bare `except:` hide a typo, and name the error instead | 1 | Week 1, Day 3 |
+| Add a class in VBA with Insert, Class Module, and refer to it with `Me` | Write a `class`, and refer to it with `self` | 1 | Week 1, Day 4 |
+| See `=ROUND(98.5)` refused for too few arguments | See a `TypeError` for a missing argument | 1 | Week 1, Day 4 |
+| Paste a value over a formula, and watch it go stale | Store an attribute, and watch it go stale | 1 | Week 1, Day 4 |
+| Filter with `=FILTER(A2:A5,C2:C5<100)` | Write a list comprehension with `if` | 1 | Week 1, Day 4 |
+| Find the top row with `=INDEX(A2:A5,MATCH(MAX(B2:B5),B2:B5,0))` | Use `max(..., key=...)` | 1 | Week 1, Day 4 |
+| Add a row to an Excel Table, and it picks up the formula columns | Create a new object, and it comes with its methods | 1 | Week 1, Day 4 |
+| Join text with `=A2&" "&B2&"% of "&C2` | Write `__str__` | 1 | Week 1, Day 4 |
+| Fill `=IF(E2>=11,G2-0.5,G2)` down a column | Update values with a condition inside a loop | 1 | Week 1, Day 5 |
+| Count with `=COUNTIF(G2:G7,">100")`, and with two tests in `COUNTIFS` | Count in a loop, with `and` for the second test | 1 | Week 1, Day 5 |
+| Let `=IFS(...)` stop at the first true test | Order the tests in `if` and `elif` | 1 | Week 1, Day 5 |
+| Take `AVERAGE`, `STDEV.S`, `MIN`, `QUARTILE.INC`, `MEDIAN`, and `MAX` | Call `describe()` | 1 | Week 1, Day 5 |
+| Subtract par with `=G2-100` and chart it as columns | Chart price against par | 1 | Week 1, Day 5 |
+| Total with `=SUM(H2:H7)` | Call `df['Face'].sum()` | 1 | Week 1, Day 5 |
 | Turn on AutoFilter and sort a sheet | Filter and sort a table by condition | 1 | Week 2, Day 2 |
 | Use `SUMIF` and `COUNTIF` | Filter, then sum or count | 1 | Week 2, Day 2 and Day 5 |
 | Use `COUNTBLANK` and Remove Duplicates | Count missing values and repeated rows in one line each | 1 | Week 2, Day 4 |
