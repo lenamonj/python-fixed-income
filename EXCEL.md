@@ -215,19 +215,82 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Take a month label with `=TEXT(DATE(2026,9,30),"yyyy-mm")` | `substr(date, 1, 7)` | 3 | Week 3, Day 2 |
 | See text dates compare wrongly with `="09/30/2026"<"10/02/2025"` | SQL text comparison | 3 | Week 3, Day 2 |
 | Fit `SLOPE`, `INTERCEPT`, and `RSQ` on a training sheet, and score a test sheet with `AVERAGE(ABS(...))` and `SQRT(SUMXMY2(...)/COUNT(...))` | Split the rows, fit on the training rows, and measure the error in bp on rows the model never saw | 4 | Week 1, Day 1 |
+| `MEDIAN`, `AVERAGE`, `QUARTILE.INC`, and `MAX` of the OAS column | pandas `median`, `mean`, `quantile`, and `max` | 4 | Week 1, Day 1 |
+| `=CORREL(A2:A822,C2:C822)`, one per column | `corr` against OAS | 4 | Week 1, Day 1 |
+| `=AVERAGE(ABS((A2:A207-C2:C207)/A2:A207))*100` | MAPE in `regression_table` | 4 | Week 1, Day 1 |
+| `=1-(1-E3)*(COUNT(A2:A616)-1)/(COUNT(A2:A616)-2)` | Adjusted R-squared | 4 | Week 1, Day 1 |
+| `=COUNTIF(C2:C207,"<0")` | `(fitted_test < 0).sum()`, fitted spreads below zero | 4 | Week 1, Day 1 |
+| Clustered column, scatter, and line-with-markers charts, from the Insert menu | matplotlib charts | 4 | Week 1, Day 1 |
 | Build dummy columns with `=--(D2="AAA")`, fit them with `LINEST`, and score the test rows with `TREND` | Encode ratings with a named reference level and fit a multiple regression | 4 | Week 1, Day 2 |
+| `=COUNTIF(D2:D616,"A")` | `value_counts` of the rating column | 4 | Week 1, Day 2 |
+| `AVERAGEIF` for BBB minus `AVERAGEIF` for A | Difference of two group means | 4 | Week 1, Day 2 |
+| `=SORT(UNIQUE(D2:D616))`, which puts A- before A+, the reverse of Python | `sorted` on the rating labels | 4 | Week 1, Day 2 |
+| `=LINEST(A2:A616,F2:X616,FALSE,TRUE)` | `LinearRegression(fit_intercept=False)` | 4 | Week 1, Day 2 |
+| `=SUBSTITUTE(SUBSTITUTE(D2,"+",""),"-","")` | `.str.rstrip("+-")`, the letter grade | 4 | Week 1, Day 2 |
 | Read `LINEST`'s standard errors, and compute p-values with `T.DIST.2T`, intervals with `T.INV.2T`, a VIF with `1/(1-R2)`, and a joint F-test with `F.DIST.RT` | Read statsmodels' coefficient table, test sector jointly, and measure multicollinearity | 4 | Week 1, Day 3 |
+| `=100*(EXP(Z2)-1)` | A log coefficient read as a percent | 4 | Week 1, Day 3 |
+| `=INDEX(LINEST(B2:B308,C2:M308,TRUE,TRUE),2,10)` | `fit_half.bse`, a standard error on half the rows | 4 | Week 1, Day 3 |
+| `=CORREL(D2:D616,N2:N616)` | `corr` between two features | 4 | Week 1, Day 3 |
+| `=SUMPRODUCT(--(D2:D616=O2:O616))` | Count of rows where two columns are equal | 4 | Week 1, Day 3 |
 | Take `LN` and `EXP` of spreads, run Breusch-Pagan by hand with `LINEST` and `CHISQ.DIST.RT`, and compute Q-Q points with `NORM.S.INV` | Check a regression's assumptions with residual plots and tests, and model log spreads | 4 | Week 1, Day 4 |
+| `=SKEW.P(A2:A616)`, where `SKEW` gives a different 4.44 | `scipy.stats.skew` | 4 | Week 1, Day 4 |
+| `=100*(EXP(INDEX(LINEST(...),1,10))-1)` | `percent_effect` of a log-model coefficient | 4 | Week 1, Day 4 |
+| `=AVERAGE(EXP(AI2:AI616))` | Mean of `exp(residual)`, the retransformation factor | 4 | Week 1, Day 4 |
 | Standardize with `STANDARDIZE` and `STDEV.P`, and solve ridge in closed form with `MMULT`, `MINVERSE`, and `MUNIT` | Fit ridge and lasso inside a pipeline that scales on the training rows only | 4 | Week 1, Day 5 |
+| `=SUMSQ(S2:U2)` | Sum of squared coefficients, the ridge penalty | 4 | Week 1, Day 5 |
+| `=10^SEQUENCE(13,1,-3,0.5)` | `np.logspace(-3, 3, 13)`, the alpha grid | 4 | Week 1, Day 5 |
+| `=LN(900/80)` | The generator's rating effect on the log scale | 4 | Week 1, Day 5 |
 | Fill a logistic probability formula, sum a log-likelihood column, and maximise it with Solver, the non-negative box turned off | Fit a logistic regression and read odds ratios with `exp` | 4 | Week 2, Day 1 |
+| `=SLOPE` and `=INTERCEPT` on a 0 and 1 column | `LinearRegression` on the default flag | 4 | Week 2, Day 1 |
+| `=1/(1+EXP(-2))` | The logistic curve at a score of 2 | 4 | Week 2, Day 1 |
+| `=LN(0.8/(1-0.8))` | Log odds of a probability | 4 | Week 2, Day 1 |
+| `=AVERAGEIFS(A:A,B:B,2)`, then the odds and `LN` | Default rate by repayment code | 4 | Week 2, Day 1 |
+| `=EXP(L2-NORM.S.INV(0.975)*M2)` and `=EXP(L2+NORM.S.INV(0.975)*M2)` | `conf_int` on the odds scale | 4 | Week 2, Day 1 |
+| One account's probability from its coefficients | `logistic_probability` | 4 | Week 2, Day 1 |
+| `=STDEV.P` | `StandardScaler`'s `scale_` | 4 | Week 2, Day 1 |
+| `=CORREL` | `corr` | 4 | Week 2, Day 1 |
+| A fitted curve filled into a scatter chart | matplotlib curve over the points | 4 | Week 2, Day 1 |
 | Count a confusion matrix with `COUNTIFS` against a threshold cell | Count the confusion matrix and compute precision, recall, and F1 for the default class | 4 | Week 2, Day 2 |
+| `=COUNTIF(B:B,">="&F$1)` | Number of accounts flagged at a threshold | 4 | Week 2, Day 2 |
+| F1 of the model that flags every account | `f1_score` | 4 | Week 2, Day 2 |
+| `COUNTIFS` over `COUNTIF` at a threshold of 0.7 | Precision | 4 | Week 2, Day 2 |
+| `=F2/(F2+F3)` | Recall of row 0 | 4 | Week 2, Day 2 |
+| `=AVERAGE(F2/(F2+F3),F5/(F5+F4))` | Macro recall | 4 | Week 2, Day 2 |
+| `=2*F4+F3` | Weighted cost total | 4 | Week 2, Day 2 |
+| `=(G3-F3)/(G5-F5)` | False flags per extra default caught | 4 | Week 2, Day 2 |
+| A histogram chart of the scores | matplotlib histogram | 4 | Week 2, Day 2 |
 | List thresholds with `SORT(UNIQUE(...))`, trace the ROC with `COUNTIFS`, take the AUC with `SUMPRODUCT`, and pick a threshold with `MAXIFS` | Draw ROC and precision-recall curves, and choose a threshold for a target recall on validation rows | 4 | Week 2, Day 3 |
+| `=COUNTIF(...)*COUNTIF(...)` | Number of default and non-default pairs behind the AUC | 4 | Week 2, Day 3 |
+| `=AVERAGE(A:A)` | The precision floor, the default rate | 4 | Week 2, Day 3 |
+| `=SUMPRODUCT((B2:B6001>=LARGE(B2:B6001,100))*A2:A6001)` | Defaults among the top 100 scores | 4 | Week 2, Day 3 |
+| `=AVERAGE(FILTER(A:A,B:B<=PERCENTILE.INC(B:B,0.1)))`, and the same on the scores | One calibration group | 4 | Week 2, Day 3 |
 | Compute Gini with `COUNTIFS`, a leaf's default share with `AVERAGEIFS`, and write a small tree as nested `IF` | Grow, prune, and read a decision tree | 4 | Week 2, Day 4 |
+| `=COUNTIF(B:B,">1.5")` | Accounts a one-question tree flags | 4 | Week 2, Day 4 |
+| `COUNTIFS` over `COUNTIF` | Recall of the one-question tree | 4 | Week 2, Day 4 |
+| `=1-(0.9^2+0.1^2)` | Gini of a 90 and 10 group | 4 | Week 2, Day 4 |
 | Open the results workbook, recompute precision and recall, and find the best model with `INDEX` and `MATCH` | Compare three models on validation rows, open the test rows once, and write the comparison to Excel | 4 | Week 2, Day 5 |
+| `=MEDIAN` and `=SKEW` | pandas `median` and `skew` | 4 | Week 2, Day 5 |
 | Fill `SLOPE(OFFSET(...))` down a trailing window, fit one fold with `TREND`, and compare a whole-history `STANDARDIZE` with a trailing one | Validate on dated rows with walk-forward splits, and show lookahead in a feature | 4 | Week 3, Day 1 |
+| `=CORREL(E3:E2941,E2:E2940)` and `=CORREL(H4:H2941,H3:H2940)` | `autocorr(1)` on levels and changes | 4 | Week 3, Day 1 |
+| `=MEDIAN(ABS(H3:H2941))` | `.abs().median()` | 4 | Week 3, Day 1 |
+| `=INDEX(A2:A2941,MATCH(MIN(E2:E2941),E2:E2941,0))` | `idxmin()` | 4 | Week 3, Day 1 |
+| `=COUNTIF(E884:E1009,">"&MAX(E2:E883))` | Test rows above the training maximum | 4 | Week 3, Day 1 |
+| `=LINEST(E2:E505,B2:C505)`, which returns the columns in reverse order | `coef_` and `intercept_` | 4 | Week 3, Day 1 |
+| `=SUMXMY2(N507:N631,N506:N630)/SUMSQ(N506:N631)` | `durbin_watson` | 4 | Week 3, Day 1 |
 | Measure distance to each centre with `SQRT(SUMXMY2(...))`, assign with `MATCH(MIN(...))`, and update the centres with `AVERAGEIF` | Scale the bonds and run K-means, with the elbow and the silhouette | 4 | Week 3, Day 2 |
+| `=STDEV.S(B2:B822)` | `.std()` | 4 | Week 3, Day 2 |
+| `=LN(B2)` | `np.log` | 4 | Week 3, Day 2 |
+| `=(MAX(B2:B822)-AVERAGE(B2:B822))/STDEV.P(B2:B822)` | The largest z-score, `z.max()` | 4 | Week 3, Day 2 |
+| `=SQRT(SUMXMY2(B3:E3,$B$2:$E$2))` with `INDEX` and `MATCH(MIN(...))` | The nearest bond | 4 | Week 3, Day 2 |
+| `=MIN(L2:O2)^2`, then `=SUM(Q2:Q822)` | `inertia_` | 4 | Week 3, Day 2 |
+| `SUMIF` and `COUNTIF`, `AVERAGEIF`, `MINIFS`, and `(b-a)/MAX(a,b)` | `silhouette_samples` for one bond | 4 | Week 3, Day 2 |
 | Count clusters with a pivot table, and take medians with `MEDIAN(IF(...))`, which a pivot table cannot give | Build a hierarchical clustering, cut it, and profile the clusters in their own units | 4 | Week 3, Day 3 |
+| `COUNTIF`, `SUMIF`, and `MEDIAN(IF(...))` on the ticker column | `groupby().agg()` | 4 | Week 3, Day 3 |
+| `=CORREL(A2:A11176,B2:B11176)` | `cophenet` | 4 | Week 3, Day 3 |
+| `=AVERAGEIF($H$2:$H$151,1,$G$2:$G$151)` | `groupby().mean()` | 4 | Week 3, Day 3 |
+| `=CORREL(B2:B151,F2:F151)` and `=CORREL(D2:D151,E2:E151)` | `.corr()` | 4 | Week 3, Day 3 |
 | Build a `COVARIANCE.S` grid, and score each date with `MMULT` of the centred changes | Find level, slope, and curvature with PCA on the Treasury curve | 4 | Week 3, Day 4 |
+| `=SUMPRODUCT(B2:B9,B2:B9)` and `=SUM(C2:C9)` | A loading's length and the sign rule | 4 | Week 3, Day 4 |
 | Check the capstone's results workbook with `COUNTIFS` against its threshold | Compare three models on a new file, test once, and write the results to Excel | 4 | Week 3, Day 5 |
 | Chart a comparison of models as a clustered column or line chart, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 4 | Week 1, Day 1 to Week 3, Day 4 |
 | Compute the share a sample leaves out with `=(1-1/n)^n`, count pasted positions with `FREQUENCY` and `COUNTIF`, and see `RANDARRAY` redraw on every recalculation | Draw a seeded bootstrap, count its rows, and measure how ten trees on ten samples disagree | 5 | Week 1, Day 1 |

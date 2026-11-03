@@ -10,13 +10,13 @@ import nbformat
 import pytest
 
 REPO = Path(__file__).resolve().parents[1]
-COURSES = ["course01_python_foundations", "course02_bond_math", "course03_market_data"]
+COURSES = ["course01_python_foundations", "course02_bond_math", "course03_market_data", "course04_machine_learning"]
 TEACHING = sorted(
     path for course in COURSES for path in (REPO / course).glob("week*/day*/*.ipynb")
     if not path.stem.endswith("_solutions")
 )
 SMALL_WORDS = {"a", "an", "and", "as", "at", "but", "by", "for", "in", "nor", "of", "on", "or", "per", "the", "to", "vs"}
-LIBRARY_NAMES = {"os", "csv", "pathlib", "merge", "concat", "apply", "pandas", "plotly", "pivot_table", "pytest", "bp", "sqlite3"}
+LIBRARY_NAMES = {"os", "csv", "pathlib", "merge", "concat", "apply", "pandas", "plotly", "pivot_table", "pytest", "bp", "sqlite3", "t-SNE"}
 INSTALL_HEADINGS = {"Before You Start: Install the Libraries", "Before You Start: Nothing to Install"}
 LEAD_IN = "By the end of this notebook, you can:"
 WITHIN_TITLE = re.compile(r"\b(with|from|into|over)\b")
