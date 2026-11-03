@@ -302,7 +302,19 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Count columns per split with `INT(SQRT(19))`, the chance one is tried with `COMBIN`, and two trees' agreement with `CORREL` | Fit a random forest, measure tree correlation, and summarise a search's fold scores | 5 | Week 1, Day 3 |
 | `=ROWS(A2:A18001)/(2*COUNTIF(A2:A18001,1))` for a class weight, and `AVERAGE` and `STDEV.P` of the fold scores | `compute_class_weight("balanced")` and `cv_results_` | 5 | Week 1, Day 3 |
 | Rank two importance columns with `RANK.EQ`, and compute a ROC AUC from `RANK.AVG` and `SUMIF` | Compare impurity and permutation importance, and catch a column of noise that one of them ranks second | 5 | Week 1, Day 4 |
+| `=AVERAGE(A2:A18001)` and `=STDEV.S(A2:A18001)` on the noise column | `X_train["noise"].mean()` and `.std()` | 5 | Week 1, Day 4 |
+| `=CORREL(A2:A18001,B2:B18001)` for the noise column against the outcome | `np.corrcoef(X_train["noise"], y_train)` | 5 | Week 1, Day 4 |
+| `=COUNTA(UNIQUE(A2:A18001))` for the distinct values in a column | `X_train.nunique()` | 5 | Week 1, Day 4 |
+| `=RANK.AVG(B2,$B$2:$B$21,1)` filled down, then `=CORREL(E2:E21,F2:F21)` on the ranks | `.corr(method="spearman")` | 5 | Week 1, Day 4 |
+| `=AVERAGE(A2:A6)` and `=STDEV.P(A2:A6)` of five group shuffles | `np.mean(group_drops)` and `np.std(group_drops)` | 5 | Week 1, Day 4 |
+| `=SUM(B2:B7)` of the six bills' permutation drops | `table.loc[bills, "permutation"].sum()` | 5 | Week 1, Day 4 |
+| `=1-((B2/A2)^2+(C2/A2)^2)` for a node's Gini impurity | `tiny_tree.tree_.impurity` | 5 | Week 1, Day 4 |
+| `=(A2*D2-A3*D3-A6*D6)/$A$2` for one split's credit, then `=(F3+F6)/(F2+F3+F6)` for a column's share | `split_credits(tiny_tree, tiny_columns)` and `tiny_tree.feature_importances_` | 5 | Week 1, Day 4 |
 | Turn a fitted log spread into bp with `EXP`, average the misses with `AVERAGE(ABS(...))`, and compute R-squared with `SUMXMY2` and `DEVSQ` | Score OLS, a tree, and a forest on the spread cross-section by cross-validation and by issuer | 5 | Week 1, Day 5 |
+| `=COUNTIF(C2:C616,C2)` for the bonds in one leaf | `same_leaf.sum()` | 5 | Week 1, Day 5 |
+| `=AVERAGEIF(C2:C616,C2,B2:B616)`, then `=EXP(E2)` for the leaf's fitted spread in bp | `y[same_leaf].mean()` and `np.exp(fitted_log[0])` | 5 | Week 1, Day 5 |
+| `=COUNTIFS(A2:A18001,1,B2:B18001,">="&E1)/COUNTIF(A2:A18001,1)` for recall at a threshold | `(oof_log >= threshold_log)[y_train == 1].mean()` | 5 | Week 1, Day 5 |
+| `=AVERAGEIF(A2:A616,"High Yield",B2:B616)` and the same for "Investment Grade" | `residuals.abs().groupby(grade).mean()` | 5 | Week 1, Day 5 |
 | Run an AdaBoost round with `SUMPRODUCT`, `LN`, and `EXP`, and see `LOG` return base 10 | Run three AdaBoost rounds by hand and match scikit-learn's stump weights | 5 | Week 2, Day 1 |
 | `=COUNTIF(A2:A18001,"<=1.5")` and `=AVERAGEIFS(B2:B18001,A2:A18001,"<=1.5")` on each side of a stump's split | `(X_train["PAY_0"] <= 1.5).sum()` and `y_train[yes_side].mean()` | 5 | Week 2, Day 1 |
 | `=COUNTIFS(C2:C18001,1,A2:A18001,"<=1.5")` for the misses on one side | `((missed == 1) & yes_side).sum()` | 5 | Week 2, Day 1 |
