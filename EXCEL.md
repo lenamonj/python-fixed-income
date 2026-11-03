@@ -294,19 +294,47 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Check the capstone's results workbook with `COUNTIFS` against its threshold | Compare three models on a new file, test once, and write the results to Excel | 4 | Week 3, Day 5 |
 | Chart a comparison of models as a clustered column or line chart, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 4 | Week 1, Day 1 to Week 3, Day 4 |
 | Compute the share a sample leaves out with `=(1-1/n)^n`, count pasted positions with `FREQUENCY` and `COUNTIF`, and see `RANDARRAY` redraw on every recalculation | Draw a seeded bootstrap, count its rows, and measure how ten trees on ten samples disagree | 5 | Week 1, Day 1 |
+| `=1-AVERAGE(Q2:Q6001)` on the pasted validation outcomes | `1 - y_valid.mean()` | 5 | Week 1, Day 1 |
+| `=COUNTIF(M2:M6001,">=0.5")` on the ten-tree average | `(average_full >= 0.5).sum()` | 5 | Week 1, Day 1 |
+| `=COUNTIFS(Q2:Q6001,1,M2:M6001,">=0.5")`, then `=R3/R2` for precision | Precision from `mlkit.classification_metrics` | 5 | Week 1, Day 1 |
+| `=STDEV.P(B2:K2)`, `=COUNTIF(B2:K2,">=0.5")`, and `=AVERAGE(B2:K2)` across ten trees | `ten.std(axis=1, ddof=0)`, `(ten >= 0.5).sum(axis=1)`, and `proba_ten.mean(axis=1)` | 5 | Week 1, Day 1 |
 | Average pasted tree columns with `AVERAGE`, and score a vote with `SUMPRODUCT` | Bag trees by hand and with scikit-learn, and read the out-of-bag score as the accuracy it is | 5 | Week 1, Day 2 |
 | Count columns per split with `INT(SQRT(19))`, the chance one is tried with `COMBIN`, and two trees' agreement with `CORREL` | Fit a random forest, measure tree correlation, and summarise a search's fold scores | 5 | Week 1, Day 3 |
+| `=ROWS(A2:A18001)/(2*COUNTIF(A2:A18001,1))` for a class weight, and `AVERAGE` and `STDEV.P` of the fold scores | `compute_class_weight("balanced")` and `cv_results_` | 5 | Week 1, Day 3 |
 | Rank two importance columns with `RANK.EQ`, and compute a ROC AUC from `RANK.AVG` and `SUMIF` | Compare impurity and permutation importance, and catch a column of noise that one of them ranks second | 5 | Week 1, Day 4 |
 | Turn a fitted log spread into bp with `EXP`, average the misses with `AVERAGE(ABS(...))`, and compute R-squared with `SUMXMY2` and `DEVSQ` | Score OLS, a tree, and a forest on the spread cross-section by cross-validation and by issuer | 5 | Week 1, Day 5 |
 | Run an AdaBoost round with `SUMPRODUCT`, `LN`, and `EXP`, and see `LOG` return base 10 | Run three AdaBoost rounds by hand and match scikit-learn's stump weights | 5 | Week 2, Day 1 |
+| `=COUNTIF(A2:A18001,"<=1.5")` and `=AVERAGEIFS(B2:B18001,A2:A18001,"<=1.5")` on each side of a stump's split | `(X_train["PAY_0"] <= 1.5).sum()` and `y_train[yes_side].mean()` | 5 | Week 2, Day 1 |
+| `=COUNTIFS(C2:C18001,1,A2:A18001,"<=1.5")` for the misses on one side | `((missed == 1) & yes_side).sum()` | 5 | Week 2, Day 1 |
+| `=1/(1+EXP(2))` and `=1/(1+EXP(-2))` | `1 / (1 + np.exp(2))` | 5 | Week 2, Day 1 |
+| `=1/(1+EXP(-2*I2))` filled down on the pasted votes | `ada.predict_proba(X_valid)[:, 1]`, equal within 1e-12 | 5 | Week 2, Day 1 |
+| `=COUNTIF(L2:L18001,">=3")` and `=AVERAGEIFS(B2:B18001,L2:L18001,">=3")` on the rows most reweighted | `(relative >= 3).sum()` and `y_train[relative >= 3].mean()` | 5 | Week 2, Day 1 |
 | Fit one boosting round from residuals with two `AVERAGEIFS` and an `IF` | Build gradient boosting from residuals and match the library to 1e-12 | 5 | Week 2, Day 2 |
+| `=DEVSQ(B2:B616)` | `((y - y.mean()) ** 2).sum()` | 5 | Week 2, Day 2 |
+| `=COUNTIF(A2:A616,"<="&M2)` for the rows left of a split | `(train["score"] <= 9.5).sum()` | 5 | Week 2, Day 2 |
 | Add gradients with `SUMIFS` for an XGBoost leaf and its gain, and fill a log loss column with `LN` | Regularise XGBoost, stop it early on rows carved from the training rows, and compute log loss by hand | 5 | Week 2, Day 3 |
 | Blend two pasted probability columns with `AVERAGE`, and apply a stack's logistic layer with `EXP` | Stack models on out-of-fold outputs and check whether the stack beats its best member | 5 | Week 2, Day 4 |
+| `=COUNTIFS(A2:A6001,1,C2:C6001,">=0.5")/COUNTIF(A2:A6001,1)` for recall | `(proba_light[y_valid == 1] >= 0.5).mean()` | 5 | Week 2, Day 4 |
+| `=CORREL(A2:A18001,B2:B18001)` on two out-of-fold columns | `inputs.corr()` | 5 | Week 2, Day 4 |
 | Read a bootstrap interval with `PERCENTILE.INC`, and find the chosen model with `INDEX` and `MATCH` | Compare six models with bootstrap intervals and paired differences, and write the results to Excel | 5 | Week 2, Day 5 |
 | Summarise five fold scores with `AVERAGE` and `STDEV.P`, not `STDEV.S` | Read a randomized search's results and report a nested score beside its best score | 5 | Week 3, Day 1 |
+| `=2^3*5` and `=5^3*5` for a grid's model count | `len(ParameterGrid(...)) * 5` | 5 | Week 3, Day 1 |
+| `=RANDBETWEEN(4,31)`, upper bound included | `randint(4, 32)`, upper bound excluded | 5 | Week 3, Day 1 |
+| `=EXP(LN(0.05)+RAND()*(LN(0.2)-LN(0.05)))` | `loguniform(0.05, 0.2)` | 5 | Week 3, Day 1 |
+| `=COUNTIF(B2:B4681,">="&F1)` and `=COUNTIFS(A2:A4681,1,B2:B4681,">="&F1)` for flagged and caught | The flagged count and the bankrupt companies caught at a threshold | 5 | Week 3, Day 1 |
 | Cap a column with `MIN`, guard a ratio with `IF(OR(...),NA(),...)`, clip with `PERCENTILE.INC`, and count gaps with `COUNTBLANK` | Engineer features from financial ratios, each statistic learned inside the fold | 5 | Week 3, Day 2 |
+| `=COUNTIF(...,"<0")` on a guarded ratio, which skips `#N/A` | `(debt_to_equity < 0).sum()` | 5 | Week 3, Day 2 |
+| `=100*AVERAGEIFS(...)` of the class by count of gaps | `y.groupby(gaps).mean()` | 5 | Week 3, Day 2 |
+| `MEDIAN`, `AVERAGE`, and `COUNTBLANK` on a column with gaps | `median()`, `mean()`, and `isna().sum()` | 5 | Week 3, Day 2 |
 | Rebuild one SMOTE row with `=x+u*(nb-x)`, correct a resampled score by formula, and compute a Brier score with `SUMXMY2` | Compare class weights, resampling, and a threshold on a rare outcome, and recalibrate the score | 5 | Week 3, Day 3 |
+| `=COUNTIF(A2:A4681,0)/COUNTIF(A2:A4681,1)` and `=1-AVERAGE(A2:A4681)` | The class ratio and the all-zero baseline | 5 | Week 3, Day 3 |
+| `=ROWS(A2:A4681)/(2*COUNTIF(A2:A4681,1))`, and with 0 | `compute_class_weight("balanced")` | 5 | Week 3, Day 3 |
+| `AVERAGE` of the out-of-fold outputs | `proba.mean()` | 5 | Week 3, Day 3 |
 | Add a SHAP row with `SUM` to the model's log-odds, turn it into a probability with `EXP`, and average absolute values with `AVERAGE(ABS(...))` | Split a company's score across its ratios with SHAP values, and never read a contribution as a cause | 5 | Week 3, Day 4 |
+| `=AVERAGE(E2:E4681)` on the pasted log-odds for the base value | `raw.mean()` | 5 | Week 3, Day 4 |
+| `=COUNTIF(E2:E4681,"<"&B1)` and `=MEDIAN(E2:E4681)` | `(raw < base).sum()` and `np.median(raw)` | 5 | Week 3, Day 4 |
+| `=1/(1+EXP(-(B1+B47)))-1/(1+EXP(-B1))` for one contribution in probability terms | The difference of two `logistic_probability` calls | 5 | Week 3, Day 4 |
+| `COUNTIFS` and `AVERAGEIFS` by band of a ratio, where the criterion `""` matches empty cells | Mask counts and means by band | 5 | Week 3, Day 4 |
 | Check the capstone's confusion matrix with `COUNTIFS`, its interval with `PERCENTILE.INC`, and a SHAP row with `SUM` | Compare four models on a new file, test once, describe the chosen one with SHAP values, and write the results to Excel | 5 | Week 3, Day 5 |
 | Chart a comparison of models as a clustered column, bar, line, or scatter chart, add custom error bars for a spread of fold scores, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 5 | Week 1, Day 1 to Week 3, Day 4 |
 | Use `COUNTBLANK` on each column, and `NETWORKDAYS` less `ROWS` to count absent dates | Count blanks per column and the absent market dates, then find each gap's run and kind | 5B | Week 1, Day 1 |
