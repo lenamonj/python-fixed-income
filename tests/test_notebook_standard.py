@@ -10,7 +10,7 @@ import nbformat
 import pytest
 
 REPO = Path(__file__).resolve().parents[1]
-COURSES = ["course01_python_foundations", "course02_bond_math", "course03_market_data", "course04_machine_learning"]
+COURSES = ["course01_python_foundations", "course02_bond_math", "course03_market_data", "course04_machine_learning", "course05_advanced_ml"]
 TEACHING = sorted(
     path for course in COURSES for path in (REPO / course).glob("week*/day*/*.ipynb")
     if not path.stem.endswith("_solutions")
