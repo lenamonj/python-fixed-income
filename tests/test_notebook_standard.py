@@ -29,7 +29,14 @@ NEW_STYLE = {"01_the_ml_workflow_and_simple_regression", "0_start_here", "01_pyt
              "01_part2_python_for_fixed_income_intro", "02_files_and_folders",
              "03_debugging", "04_classes_a_bond_object", "05_case_study_a_small_portfolio",
              "06_numpy", "06_part2_numpy",
-             "07_pandas_series_and_dataframes", "07_part2_pandas_series_and_dataframes"}
+             "07_pandas_series_and_dataframes", "07_part2_pandas_series_and_dataframes",
+             # the rest of Course 1, added up front (2026-11-08) so two build teams never edit this line at once
+             "08_pandas_combining_and_loading", "08_part2_pandas_combining_and_loading",
+             "09_case_study_first_look_at_the_data", "10_case_study_joining_the_tables",
+             "11_visualization", "12_visualization_more", "13_exploratory_data_analysis",
+             "14_case_study_treasury_yields", "15_case_study_trade_blotter",
+             "16_case_study_consumer_credit", "17_analyzing_text", "17_part2_analyzing_text",
+             "18_case_study_statement_sentiment", "19_from_notebook_to_module", "course1_project"}
 
 
 def ids(path: Path) -> str:
