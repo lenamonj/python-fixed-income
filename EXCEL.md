@@ -224,20 +224,25 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Match sector names with `=COUNTIF(benchmark!$E$2:$E$822, E2) = 0`, which ignores capitals, so it flags only the names off by a space | `~isin()`, which flags a name off by a space or by its capitals | 1 | Week 4, Day 5 |
 | Weight a sector with `=SUMIF(E2:E207, "Materials", S2:S207) / SUM(S2:S207) * 100`, or a PivotTable value shown as % of Grand Total, and weight OAS and DTS with `=SUMPRODUCT(M2:M207, S2:S207) / SUM(S2:S207)` | `weight_pct` summed by `groupby()`, and `(x * w).sum() / w.sum()` | 1 | Week 4, Day 5 |
 | Use `FV` and `PV`, and read the minus sign `PV` returns | Write `future_value` and `present_value` and test them against Excel's values | 2 | Week 1, Day 1 |
-| Price a bond on a coupon date with `NPV` over a column of cash flows, `-PV` with a payment, or `PRICE` | List the cash flows and discount them in one function | 2 | Week 1, Day 2 |
+| Price a bond on a coupon date four ways: a column `=B1/(1+5.4/100/2)^A1` totalled by `=SUM(C1:C10)`, `=NPV(5.4/100/2,B1:B10)`, `=-PV(5.4/100/2,2*5,5.25/2,100)`, or `PRICE` | `cash_flows` and `price_from_yield`, tested against 20 `-PV` rows and 17 coupon-date `PRICE` rows | 2 | Week 1, Day 2 |
 | Fill a column of `PRICE` formulas down a range of yields and chart it as a Scatter with Straight Lines | Price a grid of yields and plot the price-yield curve | 2 | Week 1, Day 3 |
 | Restate a yield with `EFFECT` and `NOMINAL` | Write `convert_yield` between any two compounding frequencies | 2 | Week 1, Day 3 |
 | Goal Seek a yield, halve a bracket with `IF` formulas, or use `RATE` and `YIELD` | Write a bisection loop that solves the yield from a price | 2 | Week 1, Day 4 |
 | Round a coupon with `MROUND`, and open a workbook of live `PRICE` and `YIELD` formulas | Find the coupon on a 1/8 grid, and write a workbook of live formulas with openpyxl | 2 | Week 1, Day 5 |
-| Write a growth factor as `=(1+5.4/100/2)^(2*5)` | `(1 + 0.054 / 2) ** 10` | 2 | Week 1, Day 1 |
-| Write a discount factor as `=1/(1+5.4/100/2)^(2*5)` or `=-PV(...,0,1)` | `bondmath.present_value(1, 5.40, 5)` | 2 | Week 1, Day 1 |
-| Fill `=D1+100*5.4/100/2` down for simple interest | `amount + amount * period_rate * k` | 2 | Week 1, Day 1 |
-| Add a check column with `=ABS(B2-C2)<0.000001` | `pytest.approx` | 2 | Week 1, Day 1 |
+| Write a growth factor as `=(1+5.4/100/2)^(2*5)` | `(1 + period_rate) ** (2 * 5)` | 2 | Week 1, Day 1 |
+| Write a discount factor as `=1/(1+5.4/100/2)^(2*5)` or `=-PV(5.4/100/2,2*5,0,1)` | `bondmath.present_value(1, 5.4, 5)` | 2 | Week 1, Day 1 |
+| Fill `=D1+100*5.4/100/2` down for simple interest | `100 + 100 * period_rate * k` | 2 | Week 1, Day 1 |
+| Fill `=A1*(1+5.4/100/2)` down ten rows from 100 | A loop that multiplies by `1 + period_rate` ten times | 2 | Week 1, Day 1 |
+| Discount with `=100/(1+5.4/100/2)^(2*5)`, or turn `PV`'s sign with `=-PV(5.4/100/2,2*5,0,100)` | `bondmath.present_value(100, 5.4, 5)`, positive as its docstring says | 2 | Week 1, Day 1 |
+| Change the compounding in `=FV(5.4/100/4,4*5,0,-100)`, where the frequency sits in the rate and in the periods | The `frequency` argument of `future_value` and `present_value` | 2 | Week 1, Day 1 |
+| Compound daily with `=100*(1+5.4/100/365)^(365*5)` | The formula written out, since the module refuses 365 | 2 | Week 1, Day 1 |
+| Add a check column with `=ABS(A2-B2)<0.000001` beside `=FV(5.4/100/2,2*5,0,-100)` | `pytest.approx(..., abs=1e-6)` in a test over all 18 `FV` rows | 2 | Week 1, Day 1 |
 | Save As with a date in the name | `git commit` | 2 | Week 1, Day 1 |
 | Total the cash with `=SUM(B1:B10)` | `.sum()` | 2 | Week 1, Day 2 |
 | Price the coupons alone with `=-PV(5.4/100/2,2*5,5.25/2,0)` | `price - redemption_pv` | 2 | Week 1, Day 2 |
 | See `=-PV(5.4/100/2,2*2.3,5.25/2,100)` accept part periods | See `cash_flows` refuse them | 2 | Week 1, Day 2 |
-| Work a sale between coupons with `COUPDAYBS` and `COUPDAYS` | `coupon_each * 30 / 180` | 2 | Week 1, Day 2 |
+| Price at a yield of 0 with `=-PV(0/100/2,2*5,5.25/2,100)`, the total cash | `bondmath.price_from_yield(5.25, 0, 5)` | 2 | Week 1, Day 2 |
+| Read `=PRICE(DATE(2026,9,30),DATE(2031,9,30),5.25/100,5.4/100,100,2,0)` as the clean price, its seven arguments in order | `price_from_yield`, both the clean and the dirty price on a coupon date | 2 | Week 1, Day 2 |
 | Label a bond with a nested `IF` on `ROUND` | `par_label` | 2 | Week 1, Day 3 |
 | Price a premium as `=-PV(4.6/100/2,2*3,(4.75-4.6)/2,0)` | The present value of the extras | 2 | Week 1, Day 3 |
 | Restate a yield with `=((1+5.4/100/2)^2-1)*100` | Growth less 100 | 2 | Week 1, Day 3 |

@@ -36,7 +36,9 @@ NEW_STYLE = {"01_the_ml_workflow_and_simple_regression", "0_start_here", "01_pyt
              "11_visualization", "12_visualization_more", "13_exploratory_data_analysis",
              "14_case_study_treasury_yields", "15_case_study_trade_blotter",
              "16_case_study_consumer_credit", "17_analyzing_text", "17_part2_analyzing_text",
-             "18_case_study_statement_sentiment", "19_from_notebook_to_module", "course1_project"}
+             "18_case_study_statement_sentiment", "19_from_notebook_to_module", "course1_project",
+             # Course 2 as redesigned
+             "01_time_value_of_money", "02_cash_flows_and_price_from_yield"}
 
 
 def ids(path: Path) -> str:
@@ -190,7 +192,8 @@ def test_case_study_opens_with_the_problem_definition(path):
 @pytest.mark.parametrize("path", [p for p in TEACHING if not is_case_study(p) and not is_project(p)], ids=ids)
 def test_hands_on_notebook_has_a_scenario_before_its_first_section(path):
     sources = markdown(path)
-    if path.stem in NEW_STYLE and in_course_1(path):
+    # Courses 1 and 2 as redesigned: no install section, so the scenario sits between the title and section 1
+    if path.stem in NEW_STYLE and course_number(path) <= 2:
         # sources[0] is the banner, sources[1] the title; a scenario cell sits before the first numbered section
         first_section = next(i for i, source in enumerate(sources) if re.match(rf"## {number(path)}\.\d", source))
         assert sources[1].startswith("# ") and first_section >= 3, "no scenario between the title and section 1"

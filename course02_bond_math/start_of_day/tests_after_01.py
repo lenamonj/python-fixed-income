@@ -1,0 +1,56 @@
+"""Tests for bondmath.py.
+
+Every expected value comes from Excel: the two reference CSV files in this folder, or a small hand
+table whose values those files confirm. Run from this folder with:  python -m pytest
+"""
+import csv
+from pathlib import Path
+
+import pytest
+
+import bondmath
+
+# the reference files sit in the same folder as this test file
+HERE = Path(__file__).parent
+
+
+def read_rows(file_name: str) -> list[dict]:
+    """Read a reference CSV from this folder: one dict per row, every value a string."""
+    with open(HERE / file_name, newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+TVM = read_rows("bondmath_excel_reference_tvm.csv")
+
+
+def tvm_rows(function: str) -> list[dict]:
+    """The week 1 reference rows for one Excel function, for example "FV"."""
+    rows = [row for row in TVM if row["function"] == function]
+    assert rows, f"no {function} rows in the reference file"
+    return rows
+
+
+def test_future_value_matches_excel_fv():
+    for row in tvm_rows("FV"):
+        # the inputs, in course units
+        amount, rate_pct = float(row["amount"]), float(row["rate_pct"])
+        years, frequency = float(row["years"]), int(row["frequency"])
+        result = bondmath.future_value(amount, rate_pct, years, frequency)
+        # Excel's FV, with the amount entered as -amount, is positive
+        assert result == pytest.approx(float(row["excel_value"]), abs=1e-6), row["case_id"]
+
+
+def test_present_value_matches_excel_pv():
+    for row in tvm_rows("PV"):
+        amount, rate_pct = float(row["amount"]), float(row["rate_pct"])
+        years, frequency = float(row["years"]), int(row["frequency"])
+        result = bondmath.present_value(amount, rate_pct, years, frequency)
+        # Excel's PV of a positive amount is negative (money paid now), so compare with minus the Excel value
+        assert result == pytest.approx(-float(row["excel_value"]), abs=1e-6), row["case_id"]
+
+
+def test_present_value_undoes_future_value():
+    for frequency in (1, 2, 4):
+        # grow 100 for 3 years at 5 percent, then discount it back
+        grown = bondmath.future_value(100, 5.0, 3, frequency)
+        assert bondmath.present_value(grown, 5.0, 3, frequency) == pytest.approx(100, abs=1e-9)

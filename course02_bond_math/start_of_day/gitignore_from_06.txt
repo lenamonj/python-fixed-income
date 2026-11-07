@@ -1,0 +1,3 @@
+# folders Python and pytest make: never part of the record
+__pycache__/
+.pytest_cache/
