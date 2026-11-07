@@ -180,9 +180,10 @@ def test_case_study_opens_with_the_problem_definition(path):
 def test_hands_on_notebook_has_a_scenario_before_its_first_section(path):
     sources = markdown(path)
     if path.stem in NEW_STYLE:
-        install = next(i for i, source in enumerate(sources) if source.startswith("## Before You Start"))
-        assert sources[install + 1].startswith("# Problem Statement")
-        after = re.findall(r"^## (.+)$", "\n".join(sources[install + 1:]), re.M)
+        # sources[0] is the banner, sources[1] the title; the new style has no install section
+        start = next(i for i, source in enumerate(sources) if source.startswith("# Problem Statement"))
+        assert start == 2
+        after = re.findall(r"^## (.+)$", "\n".join(sources[start:]), re.M)
         assert after[:3] == ["Business Context", "Objectives", "Data Dictionary"]
         return
     first_section = next(i for i, source in enumerate(sources) if re.match(rf"## {number(path)}\.\d", source))
