@@ -64,8 +64,8 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Use `COUNTBLANK` and Remove Duplicates | Count missing values and repeated rows in one line each | 1 | Week 2, Day 4 |
 | Bring a column across with `=VLOOKUP(B2,issuers!A:C,3,FALSE)` filled down, once per column wanted; `=XLOOKUP(B2,issuers!A:A,issuers!C:C)` in Excel 2021 or later and Microsoft 365; `INDEX` and `MATCH` in any version | `pd.merge(positions, issuer_details, on='ticker')`: every column wanted in one line | 1 | Week 2, Day 3 and Day 5 |
 | Build a pivot table | Group by a column and summarize | 1 | Week 2, Day 3, Day 3 Part 2, and Day 5 |
-| Open and save a workbook with several sheets | Read a sheet into a table, and write tables to the sheets of a new workbook | 1 | Week 2, Day 3 Part 2 and Day 5 |
-| Use `SUMPRODUCT` over `SUM` for a weighted average | Do the same arithmetic on two columns | 1 | Week 2, Day 3 Part 2 and Day 5 |
+| Save a workbook with File, Save As, Excel Workbook, put two tables on two sheets, and open one sheet by its tab | `to_excel(sheet_name=)`, `pd.ExcelWriter` for several sheets, and `read_excel(sheet_name=)`, or `sheet_name=None` for every sheet | 1 | Week 2, Day 3 Part 2 and Day 5 |
+| Weight the book with `=SUMPRODUCT(M2:M201,S2:S201)/SUM(S2:S201)`, and one sector with `=SUMPRODUCT((E2:E201="Energy")*M2:M201*S2:S201)/SUMIFS(S2:S201,E2:E201,"Energy")` | OAS times market value, summed, over the summed market value; per sector with `groupby` | 1 | Week 2, Day 3 Part 2 and Day 5 |
 | Spill `=B2:B5*C2:C5/100` from one cell (Microsoft 365, Excel 2021) | Multiply two arrays value by value: `faces * prices / 100` | 1 | Week 2, Day 1 |
 | Build a run of numbers with `=SEQUENCE(11,1,95,1)` | `np.arange` | 1 | Week 2, Day 1 |
 | Total with `=SUM(E2:E5)`, or in one cell with `=SUMPRODUCT(B2:B5,C2:C5)/100` | `costs.sum()`, or `(faces * prices / 100).sum()` | 1 | Week 2, Day 1 |
@@ -110,6 +110,12 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Total, average, and count one sector with `=SUMIFS(S:S,E:E,"Energy")`, `=AVERAGEIFS(M:M,E:E,"Energy")`, and `=COUNTIFS(E:E,"Energy")` | `groupby('sector')` with `sum()`, `mean()`, `count()`, or `agg()`: every sector at once | 1 | Week 2, Day 3 |
 | Read day-first dates with Text to Columns and DMY | `dayfirst=True` | 1 | Week 2, Day 3 Part 2 |
 | Format a date with `=TEXT(H2,"dd mmm yyyy")` | `strftime` | 1 | Week 2, Day 3 Part 2 |
+| Build a PivotTable with sector in Rows, grade in Columns, and Sum of market_value in Values, Grand Totals on | `pd.pivot_table(book, index='sector', columns='grade', values='market_value', aggfunc='sum', margins=True)` | 1 | Week 2, Day 3 Part 2 |
+| Label each row with `=IF(I2>100,"Premium",IF(I2<100,"Discount","Par"))` filled down | `apply` with a function, or a nested `np.where` | 1 | Week 2, Day 3 Part 2 |
+| Turn date text into a date with `=DATEVALUE(H2)`, and read its parts with `=YEAR(H2)`, `=MONTH(H2)`, and `=TEXT(H2,"dddd")` | `pd.to_datetime()`, then `.dt.year`, `.dt.month`, and `.dt.day_name()` | 1 | Week 2, Day 3 Part 2 |
+| Work out years left with `=(H2-A2)/365.25`, three years on with `=EDATE(A2,36)`, and count early maturities with `=COUNTIF(H:H,"<"&DATE(2028,1,1))` | `(book['maturity'] - as_of).dt.days / 365.25`, and a date column compared with `pd.Timestamp` | 1 | Week 2, Day 3 Part 2 |
+| Bucket with a nested `IF`, or `VLOOKUP` approximate on a table of edges | `pd.cut(years, bins=edges, labels=names)` | 1 | Week 2, Day 3 Part 2 |
+| Keep a digit-only CUSIP's zeros with Data, From Text/CSV (Excel 2016 and later), Data Type Detection set to Do not detect data types | `read_csv(..., dtype={'cusip': str})` | 1 | Week 2, Day 3 Part 2 |
 | Flip a test with `=NOT(G2)` | `~` | 1 | Week 2, Day 4 |
 | Test for repeats with `=COUNTA(UNIQUE(A2:A201))=COUNTA(A2:A201)` | `is_unique` | 1 | Week 2, Day 4 |
 | Drag a second pivot field from Rows to Columns | `groupby` on two labels, then `unstack()` | 1 | Week 2, Day 5 |
