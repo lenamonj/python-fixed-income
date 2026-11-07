@@ -45,9 +45,13 @@ def _table(lines: list[str]) -> str:
 def left_tables(text: str) -> str:
     """The text with every markdown table (a header line, an alignment line, then rows) as a left-aligned HTML table."""
     lines = text.split("\n")
-    out, i = [], 0
+    out, i, fenced = [], 0, False
     while i < len(lines):
-        if not (lines[i].lstrip().startswith("|") and i + 1 < len(lines) and SEPARATOR.fullmatch(lines[i + 1])):
+        # a table inside a code fence is an example of what to type: leave it as typed
+        if lines[i].lstrip().startswith("```"):
+            fenced = not fenced
+        if fenced or not (lines[i].lstrip().startswith("|") and i + 1 < len(lines)
+                          and SEPARATOR.fullmatch(lines[i + 1])):
             out.append(lines[i])
             i += 1
             continue

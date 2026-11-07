@@ -173,8 +173,9 @@ def apply_header(notebook_path: Path, week: int, day: int, title: str, course: i
     nb = nbformat.read(notebook_path, as_version=4)
     # GitHub centres markdown tables: every table becomes a left-aligned HTML table (Jeff, 2026-10-25)
     # running text loses its bullets and takes one sentence to a paragraph (Jeff, 2026-11-01)
+    # a cell tagged markdown-example shows the student real markdown, so it is kept exactly as typed
     for md_cell in nb.cells:
-        if md_cell.cell_type == "markdown":
+        if md_cell.cell_type == "markdown" and "markdown-example" not in md_cell.metadata.get("tags", []):
             md_cell.source = plain_prose(left_tables(md_cell.source))
     cell = nbformat.v4.new_markdown_cell(header_markdown(week, day, title, image, course, label))
     cell.metadata["tags"] = [HEADER_TAG]
