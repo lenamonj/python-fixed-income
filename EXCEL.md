@@ -49,12 +49,16 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Add a row to an Excel Table, and it picks up the formula columns | Make a new object, and it comes with its methods | 1 | Week 1, Day 4 |
 | Filter with `=FILTER(A2:A5,D2:D5<100)` | Write a list comprehension with `if` over a list of objects | 1 | Week 1, Day 4 |
 | Find the top row with `=INDEX(A2:A5,MATCH(MAX(B2:B5),B2:B5,0))` | Use `max(..., key=...)`, which hands back the whole object | 1 | Week 1, Day 4 |
-| Fill `=IF(E2>=11,G2-0.5,G2)` down a column | Update values with a condition inside a loop | 1 | Week 1, Day 5 |
-| Count with `=COUNTIF(G2:G7,">100")`, and with two tests in `COUNTIFS` | Count in a loop, with `and` for the second test | 1 | Week 1, Day 5 |
-| Let `=IFS(...)` stop at the first true test | Order the tests in `if` and `elif` | 1 | Week 1, Day 5 |
-| Take `AVERAGE`, `STDEV.S`, `MIN`, `QUARTILE.INC`, `MEDIAN`, and `MAX` | Call `describe()` | 1 | Week 1, Day 5 |
-| Subtract par with `=G2-100` and chart it as columns | Chart price against par | 1 | Week 1, Day 5 |
-| Total with `=SUM(H2:H7)` | Call `df['Face'].sum()` | 1 | Week 1, Day 5 |
+| Find a position with `=MATCH("DNMR",A2:A7,0)`, counted from 1, and read it with `=INDEX(F2:F7,2)` | Find a position with `index()`, counted from 0, and read every list at it | 1 | Week 1, Day 5 |
+| Fill `=IF(E2>=11,G2-0.5,G2)` down a new column | Correct the prices where they sit, with an `if` inside an `enumerate()` loop | 1 | Week 1, Day 5 |
+| Count with `=COUNTIF(E2:E7,"<=10")` and `=COUNTIF(I2:I7,">100")` | Count in a loop with a counter and `+=` | 1 | Week 1, Day 5 |
+| Count the rows that pass two tests with `=COUNTIFS(E2:E7,">=11",I2:I7,">100")` | Join two tests with `and`, and see `or` let in one more bond | 1 | Week 1, Day 5 |
+| Let `=IFS(E4<=10,"BBB",E4<=7,"A or better",TRUE,"High yield")` stop at the first true test | Order the tests in `if` and `elif`, the narrowest first | 1 | Week 1, Day 5 |
+| A worksheet: named columns, one bond per row | A pandas DataFrame, built from a dictionary of lists | 1 | Week 1, Day 5 |
+| Take `COUNT`, `AVERAGE`, `STDEV.S`, `MIN`, `QUARTILE.INC`, `MEDIAN`, and `MAX`, and read 7.33E+05 in Scientific format | Call `describe()` once for every number column, and read `7.333333e+05` | 1 | Week 1, Day 5 |
+| Subtract par with `=I2-100`, fill it down, and insert a Column Chart | Points from par by a comprehension, one colour per bar with `color=` | 1 | Week 1, Day 5 |
+| Total with `=SUM(H2:H7)` | `df['Face'].sum()`, with no loop | 1 | Week 1, Day 5 |
+| Save the sheet with File, Save As, CSV (Comma delimited), and open it again | Write the table with `to_csv()`, and read it back with `read_csv()` | 1 | Week 1, Day 5 |
 | Turn on AutoFilter and sort a sheet | Filter and sort a table by condition | 1 | Week 2, Day 2 Part 2 |
 | Use `SUMIF` and `COUNTIF` | Filter, then sum or count | 1 | Week 2, Day 2 Part 2 and Day 5 |
 | Use `COUNTBLANK` and Remove Duplicates | Count missing values and repeated rows in one line each | 1 | Week 2, Day 4 |
