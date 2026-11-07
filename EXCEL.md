@@ -88,7 +88,11 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Reshape a row with `=WRAPROWS(A1:L1,4)` | `reshape` | 1 | Week 2, Day 1 Part 2 |
 | Value a book with `=SUMPRODUCT(B2:B4,C2:C4)/100` for one day or `=MMULT(TRANSPOSE(B2:B4),C2:F4)/100` for every day, turn a grid with `=TRANSPOSE(C2:F4)`, and build an identity with `=MUNIT(3)` | `@`, `.T`, and `np.eye(3)` | 1 | Week 2, Day 1 Part 2 |
 | Save As CSV | `np.savetxt` | 1 | Week 2, Day 1 Part 2 |
-| Open a file with Data, From Text/CSV | `pd.read_csv` | 1 | Week 2, Day 2 |
+| Look up by label with `=VLOOKUP("PLWK",A2:B5,2,FALSE)`, and by position with `=INDEX(B2:B5,1)`, counted from 1 | `prices['PLWK']`, and `prices.iloc[0]`, counted from 0 | 1 | Week 2, Day 2 |
+| Pair each coupon with its own face with `=B2*VLOOKUP(A2,D:E,2,FALSE)/100` filled down, and see `#N/A` for a missing ticker carry into `=SUM()` | `faces * coupons / 100`, matched by label, with `NaN` for the missing bond and `sum()` totalling the rest | 1 | Week 2, Day 2 |
+| Press Ctrl+End to land on S201: the header in row 1, the bonds in rows 2 to 201 | `holdings.tail(3)`, the last label 199, counted from 0 | 1 | Week 2, Day 2 |
+| Hide the other columns, or take them with `=CHOOSECOLS(A1:S201,3,7,8,9)` in Microsoft 365 | `holdings[['ticker', 'coupon', 'maturity', 'price']]` | 1 | Week 2, Day 2 |
+| Find a price with `=VLOOKUP("99039NAC0",B:I,8,FALSE)` or `=INDEX(I:I,MATCH("99039NAC0",B:B,0))`, take a block with `=TAKE(A2:S201,3,4)` in Microsoft 365, and see `#N/A` for a CUSIP that is not there | `by_cusip.loc['99039NAC0', 'price']`, `holdings.iloc[0:3, 0:4]`, and a `KeyError` | 1 | Week 2, Day 2 |
 | Set a pivot to Show Values As, % of Grand Total | `value_counts(normalize=True)` | 1 | Week 2, Day 2 Part 2 |
 | Count distinct values with `=COUNTA(UNIQUE(C2:C201))` | `nunique()` | 1 | Week 2, Day 2 Part 2 |
 | Count several labels with `=SUM(COUNTIF(F:F,{"A+","A","A-"}))` | `isin().sum()` | 1 | Week 2, Day 2 Part 2 |
