@@ -38,9 +38,13 @@ NEW_STYLE = {"01_the_ml_workflow_and_simple_regression", "0_start_here", "01_pyt
              "16_case_study_consumer_credit", "17_analyzing_text", "17_part2_analyzing_text",
              "18_case_study_statement_sentiment", "19_from_notebook_to_module", "course1_project",
              # Course 2 as redesigned
-             "01_time_value_of_money", "02_cash_flows_and_price_from_yield", "06_dates_and_coupon_schedules",
-             "08_clean_and_dirty_price", "09_duration_and_dv01", "12_spread_over_the_curve",
-             "13_spread_duration_and_dts"}
+             "01_time_value_of_money", "02_cash_flows_and_price_from_yield",
+             "03_the_price_yield_relationship", "04_yield_from_price", "05_case_study_a_new_issue_calendar",
+             "06_dates_and_coupon_schedules", "07_day_counts_and_accrued_interest",
+             "08_clean_and_dirty_price", "09_duration_and_dv01",
+             "10_case_study_convexity_and_the_september_book", "11_treasury_curve_interpolation",
+             "12_spread_over_the_curve", "13_spread_duration_and_dts",
+             "14_portfolio_aggregation_and_scenarios"}
 
 
 def ids(path: Path) -> str:

@@ -118,9 +118,9 @@ def test_yield_from_price_matches_excel():
                                            float(row["years"]), int(row["frequency"]))
         assert result == pytest.approx(float(row["excel_value"]) * 100, abs=1e-6), row["case_id"]
     # Excel's YIELD on the coupon-date rows, already in percent in the reference file
-    for row in REFERENCE:
-        if row["coupdaybs"] != "0":
-            continue
+    coupon_date_rows = [row for row in REFERENCE if row["coupdaybs"] == "0"]
+    assert coupon_date_rows, "no coupon-date rows in the reference file"
+    for row in coupon_date_rows:
         frequency = int(row["frequency"])
         years = int(row["coupnum"]) / frequency
         result = bondmath.yield_from_price(float(row["coupon_pct"]), float(row["price"]), years, frequency)
@@ -418,9 +418,9 @@ def test_weighted_average_raises_on_zero_weights():
 
 def test_estimate_close_to_full_reprice_for_small_shift():
     shift_bp = 5
-    for row in REFERENCE:
-        if row["group"] != "holdings":
-            continue
+    # the 200 holdings rows of the reference file, Excel's inputs
+    rows = [row for row in REFERENCE if row["group"] == "holdings"]
+    for row in rows:
         settlement, maturity, coupon_pct, yield_pct, frequency, basis = bond_inputs(row)
         # full reprice: the dirty price after the shift minus the dirty price before
         before = bondmath.dirty_price(settlement, maturity, coupon_pct, yield_pct, frequency, basis)

@@ -118,9 +118,9 @@ def test_yield_from_price_matches_excel():
                                            float(row["years"]), int(row["frequency"]))
         assert result == pytest.approx(float(row["excel_value"]) * 100, abs=1e-6), row["case_id"]
     # Excel's YIELD on the coupon-date rows, already in percent in the reference file
-    for row in REFERENCE:
-        if row["coupdaybs"] != "0":
-            continue
+    coupon_date_rows = [row for row in REFERENCE if row["coupdaybs"] == "0"]
+    assert coupon_date_rows, "no coupon-date rows in the reference file"
+    for row in coupon_date_rows:
         frequency = int(row["frequency"])
         years = int(row["coupnum"]) / frequency
         result = bondmath.yield_from_price(float(row["coupon_pct"]), float(row["price"]), years, frequency)
