@@ -24,7 +24,11 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Keep the rows that pass with `=FILTER(A2:A5,F2:F5<=10)` | Write a list comprehension with an `if` at the end | 1 | Week 1, Day 1 Part 2 |
 | Name a reusable formula `=LAMBDA(face,coupon,face*coupon/100)` in the Name Manager | Write a function with `def` and `return` | 1 | Week 1, Day 1 Part 2 |
 | Sort with `=SORT(A1:A4,1,-1)` and `=SORTBY(A1:A4,C1:C4,-1)`, or with the Sort buttons on the Data tab | `sorted(price_list, reverse=True)`, and `sorted(holdings, key=price_of)` | 1 | Week 1, Day 1 Part 2 |
-| Show a workbook's path with `CELL("filename",A1)`, and split a column with Text to Columns | `os.getcwd()`, and `split(',')` | 1 | Week 1, Day 2 |
+| Show a saved workbook's full path with `=CELL("filename",A1)` | `os.getcwd()` and `os.path.basename()` | 1 | Week 1, Day 2 |
+| Double-click a CSV file and see it split at the commas, where Windows' list separator is a comma | Write a CSV file with `open()`, `write()`, and a loop, and read it back | 1 | Week 1, Day 2 |
+| Split a column with Text to Columns, the comma as the delimiter | `line.strip().split(',')` | 1 | Week 1, Day 2 |
+| See a quoted name such as `"Quorvane Energy, Inc."` stay in one cell | `csv.reader` and `csv.DictReader` | 1 | Week 1, Day 2 |
+| Count the names that end in .csv with `=COUNTIF(A1:A10,"*.csv")` | `Path.glob('*.csv')` | 1 | Week 1, Day 2 |
 | See `#N/A`, `#DIV/0!`, or `#NAME?` in a cell | Read an error that names the line and the cause | 1 | Week 1, Day 3 |
 | Put an `IF` beside a total that shows OK or CHECK | Write an `assert` that stops the run when the total is wrong | 1 | Week 1, Day 3 |
 | Type `=1+` and see Excel refuse the formula | Read a `SyntaxError` | 1 | Week 1, Day 3 |
