@@ -120,18 +120,29 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Test a key for repeats with `=COUNTA(UNIQUE(A2:A201))=COUNTA(A2:A201)` in Excel 2021 and Microsoft 365 | `positions['cusip'].is_unique` | 1 | Week 2, Day 4 |
 | Flag rows with helper columns such as `=IF(E2<100,1,0)`, add across with `=SUM(G2:I2)` and down with `=SUM(G2:G201)` | A DataFrame of True and False flags, `flags.sum(axis=1)` across and `flags.sum()` down | 1 | Week 2, Day 4 |
 | Drag a second pivot field from Rows to Columns | `groupby` on two labels, then `unstack()` | 1 | Week 2, Day 5 |
-| Insert a chart: Column, Line, Scatter, Histogram, Box and Whisker | Draw the same chart in a few lines of code | 1 | Week 3, Day 1 |
+| Insert a chart: Histogram and Box and Whisker from Insert, Statistic Chart; Clustered Column or Clustered Bar; Line with Markers; Scatter, with the first column on x | `ax.hist`, `ax.boxplot`, `ax.bar` and `ax.barh`, `ax.plot`, `ax.scatter`, or seaborn's `histplot`, `barplot`, `countplot`, `lineplot`, and `scatterplot` | 1 | Week 3, Day 1 |
 | Add a trendline, and use `SLOPE`, `INTERCEPT`, and `RSQ` | Fit the line and print its numbers with units | 1 | Week 3, Day 2 |
 | Use Remove Duplicates, `TRIM`, and `QUARTILE.INC` to clean and check a sheet | Find and fix the same problems in code, and print the totals before and after | 1 | Week 3, Day 3 |
 | Use `XLOOKUP` by date, and `AVERAGEIFS` by year | Select by date and group a time series by year | 1 | Week 3, Day 4 |
 | Net buys against sells with two `SUMIFS`, and keep a running total | Sign the sells, group, and take a cumulative sum | 1 | Week 3, Day 5 |
 | Put ratings in credit order with `=UNIQUE(SORTBY(C2:C19,B2:B19))` | `ratings.sort_values('score')['bucket'].unique()` | 1 | Week 3, Day 1 |
+| Name a chart's parts: the Chart Area, sized by dragging a corner, the Plot Area, the Chart Title, the Axis Titles, and Format Axis | `fig, ax = plt.subplots(figsize=(8, 4.5))`, `ax.set_title`, `ax.set_xlabel`, and `ax.set_ylabel` | 1 | Week 3, Day 1 |
+| Count one histogram bin with `=COUNTIFS(M:M,">=19",M:M,"<325.4")`; a value on a bin edge falls in the left bin, where matplotlib puts it in the right | `counts, edges, bars = ax.hist(book['oas'], bins=5)`, then `counts[0]` | 1 | Week 3, Day 1 |
+| Take quartiles with `=QUARTILE.INC(M2:M201,1)`, and set a Box and Whisker chart's Quartile Calculation to Inclusive median, since its default is Exclusive | `book['oas'].quantile(0.25)` | 1 | Week 3, Day 1 |
+| Average one bucket with `=AVERAGEIFS(M:M,U:U,"BBB")`, and drag PivotTable buckets out of text order into credit order | `sns.barplot(data=book, x='bucket', y='oas', order=bucket_order)` | 1 | Week 3, Day 1 |
+| Take one group's median with `=MEDIAN(IF(T2:T201=10,M2:M201))`, entered with Ctrl+Shift+Enter before dynamic arrays | `book.groupby('score')['oas'].agg(['median', 'mean', 'count'])` | 1 | Week 3, Day 1 |
 | Add a note with an arrow through Insert, Shapes | `ax.annotate` | 1 | Week 3, Day 1 |
 | Tick Logarithmic scale in Format Axis | `ax.set_yscale('log')` | 1 | Week 3, Day 1 |
 | Tilt labels with a Custom angle in Format Axis | `rotation=45` | 1 | Week 3, Day 1 |
-| Build a correlation table with the Analysis ToolPak | `.corr()` | 1 | Week 3, Day 1 |
+| Measure a correlation with `=CORREL(M2:M201,L2:L201)`, build a table with the Analysis ToolPak's Correlation, and shade it with Conditional Formatting, Color Scales | `.corr()`, then `sns.heatmap(corr_table, annot=True)` | 1 | Week 3, Day 1 |
+| Draw a Scatter chart for each pair of columns, six for four columns | `sns.pairplot` | 1 | Week 3, Day 1 |
 | Use `AVERAGEIF` on a column of 0s and 1s to get a rate by group | Group, then take the mean and the count together | 1 | Week 4, Day 1 |
 | Use `FIND`, `SUBSTITUTE`, `TRIM`, and Find and Replace on text | Search and clean text with patterns, across every row at once | 1 | Week 4, Day 2 and Day 2 Part 2 |
+| Find a word with `=FIND("Inflation",A2)`, which counts from 1, test for it with `=ISNUMBER(FIND(...))`, or use `SEARCH` to ignore capitals | `text.find('Inflation')`, which counts from 0, and `'inflation' in text` | 1 | Week 4, Day 2 |
+| Count a piece of text with `=(LEN(A2)-LEN(SUBSTITUTE(A2,"rate","")))/LEN("rate")`, and the words with `=COUNTA(TEXTSPLIT(A2," "))` in Microsoft 365 and Excel 2024 | `text.count('rate')` and `len(text.split())` | 1 | Week 4, Day 2 |
+| Pull the first match with `=REGEXEXTRACT(A2,pattern)`, its groups with `=REGEXEXTRACT(A2,pattern,2)`, and test a CUSIP's shape with `=REGEXTEST(B2,"^[0-9A-Z]{9}$")`, in Microsoft 365 | `re.search(pattern, text).group(0)`, `.groups()`, and `re.fullmatch()` or `.str.fullmatch()` on a column | 1 | Week 4, Day 2 |
+| Take the text between two markers with `=TEXTBEFORE(TEXTAFTER(A2," at ")," percent")` in Microsoft 365 and Excel 2024 | A lazy group: `re.search(r' at (.+?) percent', text).group(1)` | 1 | Week 4, Day 2 |
+| Split a bond description with `=TEXTSPLIT(TRIM(A2)," ")` and `=VALUE(C2)`, or type one and let Flash Fill (Ctrl+E) copy it as values | A pattern with three groups, `float()`, and `pd.to_datetime(format='%m/%d/%Y')` | 1 | Week 4, Day 2 |
 | Count words from a list with `SUMPRODUCT`, and standardize with `STANDARDIZE` | Score every document against a word list and compare the scores | 1 | Week 4, Day 3 |
 | Paste next month's rows into last month's workbook and re-point every range | Keep the steps as functions in one file and run them on the new file | 1 | Week 4, Day 4 |
 | Cap a value with `=MAX(-0.5,MIN(1.5,AK2))` | `.clip()` | 1 | Week 4, Day 1 |
