@@ -29,8 +29,6 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Split a column with Text to Columns, the comma as the delimiter | `line.strip().split(',')` | 1 | Week 1, Day 2 |
 | See a quoted name such as `"Quorvane Energy, Inc."` stay in one cell | `csv.reader` and `csv.DictReader` | 1 | Week 1, Day 2 |
 | Count the names that end in .csv with `=COUNTIF(A1:A10,"*.csv")` | `Path.glob('*.csv')` | 1 | Week 1, Day 2 |
-| See `#N/A`, `#DIV/0!`, or `#NAME?` in a cell | Read an error that names the line and the cause | 1 | Week 1, Day 3 |
-| Put an `IF` beside a total that shows OK or CHECK | Write an `assert` that stops the run when the total is wrong | 1 | Week 1, Day 3 |
 | Type `=1+` and see Excel refuse the formula | Read a `SyntaxError` | 1 | Week 1, Day 3 |
 | Multiply text by a number with `=A1*5.25/100` and get 78750, because Excel converts the text | See a `TypeError`, because Python never converts | 1 | Week 1, Day 3 |
 | Repeat text with `=REPT("1500000",2)` | Repeat a string with `'1500000' * 2` | 1 | Week 1, Day 3 |
@@ -38,8 +36,12 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Count from 1 with `=INDEX(A1:A4,1)`, and see `#REF!` from `=INDEX(A1:A4,5)` | Count from 0, and see an `IndexError` | 1 | Week 1, Day 3 |
 | Look up with `XLOOKUP`, which ignores case | Use exact dictionary keys, and see a `KeyError` | 1 | Week 1, Day 3 |
 | Convert with `=VALUE("5.25%")`, which returns 0.0525 | See `float()` refuse `'5.25%'` | 1 | Week 1, Day 3 |
+| See `#NAME?`, `#VALUE!`, `#REF!`, `#N/A`, or `#DIV/0!` in a cell while the sheet calculates on | Read the error's type on a traceback's last line, from a table of every error so far | 1 | Week 1, Day 3 |
 | Step through a formula with Evaluate Formula on the Formulas tab | Put a `print()` inside a loop | 1 | Week 1, Day 3 |
+| Paste a range, a separate copy from the moment it lands | Ask for a separate list with `.copy()`, since a second name is not a copy | 1 | Week 1, Day 3 |
+| See `=0.1+0.2=0.3` return TRUE | See `0.1 + 0.2 == 0.3` return `False`, and compare with `math.isclose()` | 1 | Week 1, Day 3 |
 | Catch errors with `=IFERROR(VALUE(A1),"bad price")` and `=IFNA(XLOOKUP(...),"not found")` | See a bare `except:` hide a typo, and name the error instead | 1 | Week 1, Day 3 |
+| Put an `IF` beside a total that shows OK or CHECK, and refuse a typed value with Data Validation | Stop the run with an `assert` on your own totals, and with `raise` in a function handed a bad value | 1 | Week 1, Day 3 |
 | Add a class in VBA with Insert, Class Module, and refer to it with `Me` | Write a `class`, and refer to it with `self` | 1 | Week 1, Day 4 |
 | See `=ROUND(98.5)` refused for too few arguments | See a `TypeError` for a missing argument | 1 | Week 1, Day 4 |
 | Paste a value over a formula, and watch it go stale | Store an attribute, and watch it go stale | 1 | Week 1, Day 4 |
