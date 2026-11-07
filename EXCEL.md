@@ -42,13 +42,13 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | See `=0.1+0.2=0.3` return TRUE | See `0.1 + 0.2 == 0.3` return `False`, and compare with `math.isclose()` | 1 | Week 1, Day 3 |
 | Catch errors with `=IFERROR(VALUE(A1),"bad price")` and `=IFNA(XLOOKUP(...),"not found")` | See a bare `except:` hide a typo, and name the error instead | 1 | Week 1, Day 3 |
 | Put an `IF` beside a total that shows OK or CHECK, and refuse a typed value with Data Validation | Stop the run with an `assert` on your own totals, and with `raise` in a function handed a bad value | 1 | Week 1, Day 3 |
-| Add a class in VBA with Insert, Class Module, and refer to it with `Me` | Write a `class`, and refer to it with `self` | 1 | Week 1, Day 4 |
-| See `=ROUND(98.5)` refused for too few arguments | See a `TypeError` for a missing argument | 1 | Week 1, Day 4 |
-| Paste a value over a formula, and watch it go stale | Store an attribute, and watch it go stale | 1 | Week 1, Day 4 |
-| Filter with `=FILTER(A2:A5,C2:C5<100)` | Write a list comprehension with `if` | 1 | Week 1, Day 4 |
-| Find the top row with `=INDEX(A2:A5,MATCH(MAX(B2:B5),B2:B5,0))` | Use `max(..., key=...)` | 1 | Week 1, Day 4 |
-| Add a row to an Excel Table, and it picks up the formula columns | Create a new object, and it comes with its methods | 1 | Week 1, Day 4 |
-| Join text with `=A2&" "&B2&"% of "&C2` | Write `__str__` | 1 | Week 1, Day 4 |
+| Add a class in VBA with Insert, Class Module, and refer to the object with `Me` | Write a `class`, and refer to the object with `self` | 1 | Week 1, Day 4 |
+| See `=ROUND(98.5)` refused for too few arguments | See a `TypeError` name the term `__init__` was not given | 1 | Week 1, Day 4 |
+| Paste a value over a formula, and watch it go stale | Store a worked-out value as an attribute and watch it go stale; a method works it out on every call | 1 | Week 1, Day 4 |
+| Build a label with `=A2&" "&B2&"% of "&C2` | Write `__str__` with an f-string, so `print` shows a Bond in words | 1 | Week 1, Day 4 |
+| Add a row to an Excel Table, and it picks up the formula columns | Make a new object, and it comes with its methods | 1 | Week 1, Day 4 |
+| Filter with `=FILTER(A2:A5,D2:D5<100)` | Write a list comprehension with `if` over a list of objects | 1 | Week 1, Day 4 |
+| Find the top row with `=INDEX(A2:A5,MATCH(MAX(B2:B5),B2:B5,0))` | Use `max(..., key=...)`, which hands back the whole object | 1 | Week 1, Day 4 |
 | Fill `=IF(E2>=11,G2-0.5,G2)` down a column | Update values with a condition inside a loop | 1 | Week 1, Day 5 |
 | Count with `=COUNTIF(G2:G7,">100")`, and with two tests in `COUNTIFS` | Count in a loop, with `and` for the second test | 1 | Week 1, Day 5 |
 | Let `=IFS(...)` stop at the first true test | Order the tests in `if` and `elif` | 1 | Week 1, Day 5 |
