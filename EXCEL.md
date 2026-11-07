@@ -129,7 +129,18 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Put grade and bucket both in a PivotTable's Rows, then drag grade from Rows to Columns | `groupby(['grade', 'maturity_bucket'])`, then `unstack('grade')` | 1 | Week 2, Day 5 |
 | Insert a chart: Histogram and Box and Whisker from Insert, Statistic Chart; Clustered Column or Clustered Bar; Line with Markers; Scatter, with the first column on x | `ax.hist`, `ax.boxplot`, `ax.bar` and `ax.barh`, `ax.plot`, `ax.scatter`, or seaborn's `histplot`, `barplot`, `countplot`, `lineplot`, and `scatterplot` | 1 | Week 3, Day 1 |
 | Add a trendline, and use `SLOPE`, `INTERCEPT`, and `RSQ` | Fit the line and print its numbers with units | 1 | Week 3, Day 2 |
-| Use Remove Duplicates, `TRIM`, and `QUARTILE.INC` to clean and check a sheet | Find and fix the same problems in code, and print the totals before and after | 1 | Week 3, Day 3 |
+| Check a sheet against its cover note with `=COUNTA(B2:B205)` and `=SUM(S2:S205)`, and test a cell's type with `=ISNUMBER(I2)` and `=ISTEXT(I2)` | `len(raw)` and `.sum()` less stored control totals, and `dtypes` | 1 | Week 3, Day 3 |
+| Mark repeats with `=COUNTIF(B:B,B2)>1`, then Data, Remove Duplicates, which deletes in place | `duplicated(keep=False)`, then `drop_duplicates()` on a copy | 1 | Week 3, Day 3 |
+| Tidy text with `=UPPER(TRIM(C2))`; `=` ignores case, so `="thaa"="THAA"` is TRUE; `EXACT` tells them apart | `.str.strip().str.upper()`, compared with `!=` | 1 | Week 3, Day 3 |
+| Test a rating against the scale with `=COUNTIF(ratings!A:A,F2)>0`, or limit entries with Data Validation, List | `book['rating'].isin(ratings['rating'])` | 1 | Week 3, Day 3 |
+| Turn a system's words for missing into blanks with Power Query, Replace Values with `null` | `read_csv(..., na_values=['missing', '--'])` | 1 | Week 3, Day 3 |
+| Count stale prices with `=COUNTIF(J:J,"<"&DATE(2026,9,30))` | `book[book['price_date'] < book['as_of_date']]` | 1 | Week 3, Day 3 |
+| Count blank ratings with `=COUNTBLANK(F2:F201)`, total their value with `=SUMIF(F2:F201,"",S2:S201)`, and average past errors with `=AGGREGATE(1,6,...)` | `isna().sum()`, `.sum()` on the rows, and `mean()`, which skips a gap | 1 | Week 3, Day 3 |
+| Fill every blank at once with Go To Special, Blanks, a value, and Ctrl+Enter | `fillna()` | 1 | Week 3, Day 3 |
+| Measure with `=SKEW(M2:M201)`, `=QUARTILE.INC(L2:L201,1)`, a z-score with `=STANDARDIZE(M2,AVERAGE(M$2:M$201),STDEV.S(M$2:M$201))`, and cap with `=MIN(M2,409.875)` | `skew()`, `quantile(0.25)`, `(x - mean) / std`, and `clip(upper=409.875)` | 1 | Week 3, Day 3 |
+| Correlate within one grade with `=CORREL(FILTER(N2:N201,V2:V201="High Yield"),FILTER(L2:L201,V2:V201="High Yield"))` in Excel 2021 and Microsoft 365; `CORREL` on a filtered sheet still counts the hidden rows | A filter, then `corr()` | 1 | Week 3, Day 3 |
+| Untick Show outlier points in a Box and Whisker chart's Format Data Series (Excel 2016 and later) | `ax.boxplot(..., showfliers=False)` | 1 | Week 3, Day 3 |
+| Repeat the month's steps with Power Query's Applied Steps and Refresh, and show a check with `=IF(COUNTA(B2:B201)=200,"ok","CHECK")`, which stops nothing | `clean_holdings(raw, ratings)`, with `assert` lines that stop the run | 1 | Week 3, Day 3 |
 | Use `XLOOKUP` by date, and `AVERAGEIFS` by year | Select by date and group a time series by year | 1 | Week 3, Day 4 |
 | Net buys against sells with two `SUMIFS`, and keep a running total | Sign the sells, group, and take a cumulative sum | 1 | Week 3, Day 5 |
 | Put ratings in credit order with `=UNIQUE(SORTBY(C2:C19,B2:B19))` | `ratings.sort_values('score')['bucket'].unique()` | 1 | Week 3, Day 1 |
