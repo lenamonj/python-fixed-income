@@ -66,11 +66,20 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Build a pivot table | Group by a column and summarize | 1 | Week 2, Day 3, Day 3 Part 2, and Day 5 |
 | Open and save a workbook with several sheets | Read a sheet into a table, and write tables to the sheets of a new workbook | 1 | Week 2, Day 3 Part 2 and Day 5 |
 | Use `SUMPRODUCT` over `SUM` for a weighted average | Do the same arithmetic on two columns | 1 | Week 2, Day 3 Part 2 and Day 5 |
+| Spill `=B2:B5*C2:C5/100` from one cell (Microsoft 365, Excel 2021) | Multiply two arrays value by value: `faces * prices / 100` | 1 | Week 2, Day 1 |
 | Build a run of numbers with `=SEQUENCE(11,1,95,1)` | `np.arange` | 1 | Week 2, Day 1 |
+| Total with `=SUM(E2:E5)`, or in one cell with `=SUMPRODUCT(B2:B5,C2:C5)/100` | `costs.sum()`, or `(faces * prices / 100).sum()` | 1 | Week 2, Day 1 |
+| Test two decimals with `=ABS(F2-G2)<0.000001` or `=ROUND(F2,6)=ROUND(G2,6)` | `np.isclose` and `np.allclose`, never `==` | 1 | Week 2, Day 1 |
+| Multiply by an empty cell and get 0 | A `ValueError` when four values meet five | 1 | Week 2, Day 1 |
+| See `#DIV/0!` in a yield and in its `SUM` | `inf`, a `RuntimeWarning`, and an `inf` that carries into the sum | 1 | Week 2, Day 1 |
+| Take `SUM`, `AVERAGE`, `MIN`, `MAX`, and `ROUND`, and find the top bond with `INDEX` and `MATCH` | `np.sum`, `np.mean`, `np.min`, `np.max`, `np.round`, and `tickers[np.argmax(coupons)]` | 1 | Week 2, Day 1 |
 | Sort with `=SORT(D2:D5)`, and sort one column by another with `=SORTBY(A2:A5,D2:D5)` | `np.sort`, and `tickers[np.argsort(coupons)]` | 1 | Week 2, Day 1 |
-| Fill `=SUM($B$2:B2)` down a column | `np.cumsum` | 1 | Week 2, Day 1 |
-| Draw a random move with `=NORM.S.INV(RAND())*5` | `rng.standard_normal(250) * 5` | 1 | Week 2, Day 1 |
+| Start a running total with `=B2`, then fill `=H2+B3` down | `np.cumsum` | 1 | Week 2, Day 1 |
+| Weight the coupons with `=SUMPRODUCT(D2:D5,B2:B5)/SUM(B2:B5)` | `np.average(coupons, weights=faces)` | 1 | Week 2, Day 1 |
+| Use `=STDEV.P` and `=STDEV.S` | `np.std`, and `np.std(prices, ddof=1)` | 1 | Week 2, Day 1 |
+| Draw with `=RAND()`, `=RANDBETWEEN(1,10)`, and `=NORM.S.INV(RAND())*5`, with no seed | `rng.random`, `rng.integers`, and `rng.standard_normal(250) * 5` from a seeded generator | 1 | Week 2, Day 1 |
 | Take a change with `=B3-B2` and a return with `=B3/B2-1` | `np.diff`, and a simple return on the whole array | 1 | Week 2, Day 1 |
+| Take a log return with `=LN(B3/B2)`, and undo it with `=EXP()` | `np.log` and `np.exp` on whole arrays | 1 | Week 2, Day 1 |
 | Test a cell with `=ISNUMBER(F2)` | `np.isfinite` | 1 | Week 2, Day 1 Part 2 |
 | Use the Scientific number format | Read `1.5e+06` in an output | 1 | Week 2, Day 1 Part 2 |
 | Reshape a row with `=WRAPROWS(A1:L1,4)` | `reshape` | 1 | Week 2, Day 1 Part 2 |

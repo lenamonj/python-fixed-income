@@ -27,7 +27,8 @@ UNFILLED_LOOKUP = re.compile(r"\{[A-Za-z_]\w*\[['\"]")
 # Jeff 2026-11-07: from Course 4 on, notebooks follow his sample template; a day joins this set when rebuilt
 NEW_STYLE = {"01_the_ml_workflow_and_simple_regression", "0_start_here", "01_python_for_fixed_income_intro",
              "01_part2_python_for_fixed_income_intro", "02_files_and_folders",
-             "03_debugging", "04_classes_a_bond_object", "05_case_study_a_small_portfolio"}
+             "03_debugging", "04_classes_a_bond_object", "05_case_study_a_small_portfolio",
+             "06_numpy"}
 
 
 def ids(path: Path) -> str:
