@@ -220,6 +220,9 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Type `=SUM` in a cell, then Ctrl+A, for the Function Arguments box | `help()`, which prints the signature and the docstring | 1 | Week 4, Day 4 |
 | Save `=LAMBDA(oas, oas / 100)` in Formulas, Name Manager, for that workbook only (Microsoft 365, Excel 2024) | Write a function into a module any notebook can import | 1 | Week 4, Day 4 |
 | Keep macros in the Personal Macro Workbook, PERSONAL.XLSB, which Excel opens hidden at start-up | `import desk_tools` | 1 | Week 4, Day 4 |
+| Test an extract rule by rule with `=COUNTIF($B$2:$B$210, B2) > 1`, `=LEN(B2) = 9`, `=COUNTIF(R2:R210, "<=0")`, `=ABS(R2 * (I2 + K2) / 100 - S2) > 1` filled down, and `=COUNTBLANK(M2:M210)` | Each rule as a mask and a count: `duplicated(keep=False)`, `.str.fullmatch()`, `<= 0`, `.abs() > 1`, `isna().sum()` | 1 | Week 4, Day 5 |
+| Match sector names with `=COUNTIF(benchmark!$E$2:$E$822, E2) = 0`, which ignores capitals, so it flags only the names off by a space | `~isin()`, which flags a name off by a space or by its capitals | 1 | Week 4, Day 5 |
+| Weight a sector with `=SUMIF(E2:E207, "Materials", S2:S207) / SUM(S2:S207) * 100`, or a PivotTable value shown as % of Grand Total, and weight OAS and DTS with `=SUMPRODUCT(M2:M207, S2:S207) / SUM(S2:S207)` | `weight_pct` summed by `groupby()`, and `(x * w).sum() / w.sum()` | 1 | Week 4, Day 5 |
 | Use `FV` and `PV`, and read the minus sign `PV` returns | Write `future_value` and `present_value` and test them against Excel's values | 2 | Week 1, Day 1 |
 | Price a bond on a coupon date with `NPV` over a column of cash flows, `-PV` with a payment, or `PRICE` | List the cash flows and discount them in one function | 2 | Week 1, Day 2 |
 | Fill a column of `PRICE` formulas down a range of yields and chart it as a Scatter with Straight Lines | Price a grid of yields and plot the price-yield curve | 2 | Week 1, Day 3 |
