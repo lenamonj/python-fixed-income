@@ -141,7 +141,16 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Correlate within one grade with `=CORREL(FILTER(N2:N201,V2:V201="High Yield"),FILTER(L2:L201,V2:V201="High Yield"))` in Excel 2021 and Microsoft 365; `CORREL` on a filtered sheet still counts the hidden rows | A filter, then `corr()` | 1 | Week 3, Day 3 |
 | Untick Show outlier points in a Box and Whisker chart's Format Data Series (Excel 2016 and later) | `ax.boxplot(..., showfliers=False)` | 1 | Week 3, Day 3 |
 | Repeat the month's steps with Power Query's Applied Steps and Refresh, and show a check with `=IF(COUNTA(B2:B201)=200,"ok","CHECK")`, which stops nothing | `clean_holdings(raw, ratings)`, with `assert` lines that stop the run | 1 | Week 3, Day 3 |
-| Use `XLOOKUP` by date, and `AVERAGEIFS` by year | Select by date and group a time series by year | 1 | Week 3, Day 4 |
+| Open the CSV in Excel 365, which converts its dates on opening, so `=ISNUMBER(A2)` is TRUE | `pd.read_csv(..., parse_dates=['date'], index_col='date')`, a `DatetimeIndex` | 1 | Week 3, Day 4 |
+| Look up one date with `=XLOOKUP(DATE(2020,3,9),A2:A2941,M2:M2941)` (Excel 2021 and Microsoft 365) | `yields.loc['2020-03-09', '10 Yr']` | 1 | Week 3, Day 4 |
+| Count the weekdays in the span with `=NETWORKDAYS(A2,A2941)`, 3,066, and blanks with `=COUNTBLANK(D2:D2941)`, 949 | `pd.date_range(freq='B')` with `difference()`, and `isna().sum()` | 1 | Week 3, Day 4 |
+| Average one year with `=AVERAGEIFS(M:M,P:P,2020)` beside a `=YEAR(A2)` helper column, and `MAXIFS`, `MINIFS` from Excel 2019 | `yields.groupby(yields.index.year)['10 Yr'].agg(['mean', 'min', 'max'])` | 1 | Week 3, Day 4 |
+| Turn wide to long with Power Query's Unpivot Other Columns, which leaves out null cells, and shade a table with Conditional Formatting, Color Scales | `melt()`, which keeps the blanks as `NaN` rows, and `sns.heatmap()` | 1 | Week 3, Day 4 |
+| Find the date of the high with `=XLOOKUP(MAX(M2:M2941),M2:M2941,A2:A2941)` | `idxmax()` | 1 | Week 3, Day 4 |
+| Take a month-end value with `=XLOOKUP(EOMONTH(DATE(2015,1,1),0),A2:A2941,M2:M2941,,-1)`, 1.68 | `resample('ME').last()` | 1 | Week 3, Day 4 |
+| Chart a curve as a Scatter with Straight Lines, which places each point by its x in years; a Line chart spaces text labels evenly | `ax.plot(years, yields, marker='o')` | 1 | Week 3, Day 4 |
+| Count days below zero with `=COUNTIF(Q2:Q2941,"<0")`, 544, beside `=(M2-I2)*100`, and in one year with `=COUNTIFS(Q2:Q2941,"<0",P2:P2941,2023)`, 250 | `(yields['spread_bp'] < 0).sum()` and `groupby(...).sum()` | 1 | Week 3, Day 4 |
+| Take daily changes with `=(M3-M2)*100` filled down, the largest with `LARGE` and `SMALL`, and a 20-row average with `=AVERAGE(M2:M21)` filled down or a Moving Average trendline, period 20 | `diff() * 100`, `nlargest()`, `nsmallest()`, and `rolling(20).mean()` | 1 | Week 3, Day 4 |
 | Net buys against sells with two `SUMIFS`, and keep a running total | Sign the sells, group, and take a cumulative sum | 1 | Week 3, Day 5 |
 | Put ratings in credit order with `=UNIQUE(SORTBY(C2:C19,B2:B19))` | `ratings.sort_values('score')['bucket'].unique()` | 1 | Week 3, Day 1 |
 | Name a chart's parts: the Chart Area, sized by dragging a corner, the Plot Area, the Chart Title, the Axis Titles, and Format Axis | `fig, ax = plt.subplots(figsize=(8, 4.5))`, `ax.set_title`, `ax.set_xlabel`, and `ax.set_ylabel` | 1 | Week 3, Day 1 |
