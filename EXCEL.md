@@ -62,7 +62,7 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Filter with AutoFilter, and sort with Data, Sort, which reorders the sheet, or with `=SORT(A2:S201,13,-1)` in Excel 2021 and Microsoft 365, which spills a sorted copy | `holdings[is_energy]`, and `sort_values('oas', ascending=False)`, which hands back a sorted copy | 1 | Week 2, Day 2 Part 2 |
 | Use `SUMIF` and `COUNTIF` | Filter, then sum or count | 1 | Week 2, Day 2 Part 2 and Day 5 |
 | Use `COUNTBLANK` and Remove Duplicates | Count missing values and repeated rows in one line each | 1 | Week 2, Day 4 |
-| Use `VLOOKUP` or `INDEX` and `MATCH` | Merge two tables on a shared column | 1 | Week 2, Day 3 and Day 5 |
+| Bring a column across with `=VLOOKUP(B2,issuers!A:C,3,FALSE)` filled down, once per column wanted; `=XLOOKUP(B2,issuers!A:A,issuers!C:C)` in Excel 2021 or later and Microsoft 365; `INDEX` and `MATCH` in any version | `pd.merge(positions, issuer_details, on='ticker')`: every column wanted in one line | 1 | Week 2, Day 3 and Day 5 |
 | Build a pivot table | Group by a column and summarize | 1 | Week 2, Day 3, Day 3 Part 2, and Day 5 |
 | Open and save a workbook with several sheets | Read a sheet into a table, and write tables to the sheets of a new workbook | 1 | Week 2, Day 3 Part 2 and Day 5 |
 | Use `SUMPRODUCT` over `SUM` for a weighted average | Do the same arithmetic on two columns | 1 | Week 2, Day 3 Part 2 and Day 5 |
@@ -101,8 +101,13 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Change a price and watch `=R4*(I4+K4)/100` recalculate | Change a price, then rerun the line that computes market value: a column holds values, not formulas | 1 | Week 2, Day 2 Part 2 |
 | Set Format Cells to 2 decimal places, or Custom `#,##0" bp"`, while the cell keeps every digit | `.style.format({'price': '{:.2f}', 'oas': '{:,.0f} bp'})`, display only | 1 | Week 2, Day 2 Part 2 |
 | Shade with Conditional Formatting, Color Scales, mark the top price with Top 10 Items set to 1, and add Data Bars | `.background_gradient()`, `.highlight_max()`, and `.bar()` on a Styler | 1 | Week 2, Day 2 Part 2 |
-| Choose a Join Kind in Power Query's Merge Queries | `how=` | 1 | Week 2, Day 3 |
-| Put ranges side by side with `HSTACK` | `concat(axis=1)` | 1 | Week 2, Day 3 |
+| Choose Inner, Left Outer, Right Outer, or Full Outer as the Join Kind in Power Query's Merge Queries (Excel 2016 and later) | `how='inner'`, `'left'`, `'right'`, or `'outer'`, and `indicator=True` to mark where each row was found | 1 | Week 2, Day 3 |
+| See `#N/A` where `VLOOKUP` finds no match, and find it with `=ISNA(...)` | `NaN` from a left merge, found with `isna()` | 1 | Week 2, Day 3 |
+| Let `VLOOKUP` take the first of two matches, and find repeats with a helper `=COUNTIF(A:A,A2)` above 1 | A repeated key repeats rows; `validate='many_to_one'` refuses it | 1 | Week 2, Day 3 |
+| Mark the benchmark bonds held with a helper `=COUNTIF(holdings!B:B,B2)`, and add their weight with `=SUMIFS(S:S,T:T,1)` | A left merge on the CUSIP, then `notna()` and `loc[held, 'weight_pct'].sum()` | 1 | Week 2, Day 3 |
+| Paste one range under another, or `=VSTACK(range1,range2)` in Microsoft 365 and Excel 2024, matched by position | `pd.concat([ig_book, hy_book])`, columns matched by name, and `ignore_index=True` to number the rows again | 1 | Week 2, Day 3 |
+| Put ranges side by side with `=HSTACK(range1,range2)` in Microsoft 365 and Excel 2024, matched by position | `pd.concat([price_part, oas_part], axis=1)`, matched by row label | 1 | Week 2, Day 3 |
+| Total, average, and count one sector with `=SUMIFS(S:S,E:E,"Energy")`, `=AVERAGEIFS(M:M,E:E,"Energy")`, and `=COUNTIFS(E:E,"Energy")` | `groupby('sector')` with `sum()`, `mean()`, `count()`, or `agg()`: every sector at once | 1 | Week 2, Day 3 |
 | Read day-first dates with Text to Columns and DMY | `dayfirst=True` | 1 | Week 2, Day 3 Part 2 |
 | Format a date with `=TEXT(H2,"dd mmm yyyy")` | `strftime` | 1 | Week 2, Day 3 Part 2 |
 | Flip a test with `=NOT(G2)` | `~` | 1 | Week 2, Day 4 |
