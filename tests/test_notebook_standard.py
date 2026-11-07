@@ -25,7 +25,8 @@ CODE_TEXT = re.compile(r"```.*?```|`[^`\n]*`|<code>.*?</code>|\$\$.*?\$\$", re.S
 UNFILLED = re.compile(r"\{[A-Za-z_]\w*(?:\[|\(|!r|:[,+.0-9]*[a-z%]\})")
 UNFILLED_LOOKUP = re.compile(r"\{[A-Za-z_]\w*\[['\"]")
 # Jeff 2026-11-07: from Course 4 on, notebooks follow his sample template; a day joins this set when rebuilt
-NEW_STYLE = {"01_the_ml_workflow_and_simple_regression", "0_start_here", "01_python_for_fixed_income_intro"}
+NEW_STYLE = {"01_the_ml_workflow_and_simple_regression", "0_start_here", "01_python_for_fixed_income_intro",
+             "01_part2_python_for_fixed_income_intro"}
 
 
 def ids(path: Path) -> str:

@@ -18,6 +18,12 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | `=XLOOKUP("Seniority",A1:A6,B1:B6,"not recorded")`, and `=VLOOKUP("Coupon",A1:B6,2,FALSE)` | `bond['Coupon']`, and `bond.get('Seniority', 'not recorded')` | 1 | Week 1, Day 1 |
 | `LEN`, `LEFT`, `MID`, `RIGHT`, `TRIM`, `UPPER`, `LOWER`, `SUBSTITUTE`, `VALUE`, `FIND`, `SEARCH`, and `TEXTSPLIT` | `len`, slicing, `strip()`, `upper()`, `lower()`, `replace()`, `int()`, `in`, and `split()` | 1 | Week 1, Day 1 |
 | Write a nested `IF` | Write `if`, `elif`, `else`, one test per line | 1 | Week 1, Day 1 Part 2 |
+| Compare with `=`, `<>`, `<`, `<=`, `>`, and `>=`, join tests with `=AND(A1>10,B1>100)`, `=OR(A1<=10,B1>100)`, and `=NOT(A1<=10)`, and ask whether a range holds a value with `=COUNTIF(A1:A4,"DNMR")>0` | `==`, `!=`, `<`, `<=`, `>`, `>=`, `and`, `or`, `not`, `in`, and `not in` | 1 | Week 1, Day 1 Part 2 |
+| Test an empty cell with `=ISBLANK(A1)`, where `=A1+1` counts the blank as 0 | Test for `None` with `is None`, where `None + 1` is a `TypeError` | 1 | Week 1, Day 1 Part 2 |
+| Total the cost in one cell with `=SUMPRODUCT(B2:B5,C2:C5)/100` | Keep a running total in a loop with `+=` | 1 | Week 1, Day 1 Part 2 |
+| Keep the rows that pass with `=FILTER(A2:A5,F2:F5<=10)` | Write a list comprehension with an `if` at the end | 1 | Week 1, Day 1 Part 2 |
+| Name a reusable formula `=LAMBDA(face,coupon,face*coupon/100)` in the Name Manager | Write a function with `def` and `return` | 1 | Week 1, Day 1 Part 2 |
+| Sort with `=SORT(A1:A4,1,-1)` and `=SORTBY(A1:A4,C1:C4,-1)`, or with the Sort buttons on the Data tab | `sorted(price_list, reverse=True)`, and `sorted(holdings, key=price_of)` | 1 | Week 1, Day 1 Part 2 |
 | Show a workbook's path with `CELL("filename",A1)`, and split a column with Text to Columns | `os.getcwd()`, and `split(',')` | 1 | Week 1, Day 2 |
 | See `#N/A`, `#DIV/0!`, or `#NAME?` in a cell | Read an error that names the line and the cause | 1 | Week 1, Day 3 |
 | Put an `IF` beside a total that shows OK or CHECK | Write an `assert` that stops the run when the total is wrong | 1 | Week 1, Day 3 |
