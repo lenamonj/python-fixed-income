@@ -25,7 +25,7 @@ CODE_TEXT = re.compile(r"```.*?```|`[^`\n]*`|<code>.*?</code>|\$\$.*?\$\$", re.S
 UNFILLED = re.compile(r"\{[A-Za-z_]\w*(?:\[|\(|!r|:[,+.0-9]*[a-z%]\})")
 UNFILLED_LOOKUP = re.compile(r"\{[A-Za-z_]\w*\[['\"]")
 # Jeff 2026-11-07: from Course 4 on, notebooks follow his sample template; a day joins this set when rebuilt
-NEW_STYLE = {"01_the_ml_workflow_and_simple_regression"}
+NEW_STYLE = {"01_the_ml_workflow_and_simple_regression", "0_start_here"}
 
 
 def ids(path: Path) -> str:
@@ -179,6 +179,11 @@ def test_case_study_opens_with_the_problem_definition(path):
 @pytest.mark.parametrize("path", [p for p in TEACHING if not is_case_study(p) and not is_project(p)], ids=ids)
 def test_hands_on_notebook_has_a_scenario_before_its_first_section(path):
     sources = markdown(path)
+    if path.stem in NEW_STYLE and in_course_1(path):
+        # sources[0] is the banner, sources[1] the title; a scenario cell sits before the first numbered section
+        first_section = next(i for i, source in enumerate(sources) if re.match(rf"## {number(path)}\.\d", source))
+        assert sources[1].startswith("# ") and first_section >= 3, "no scenario between the title and section 1"
+        return
     if path.stem in NEW_STYLE:
         # sources[0] is the banner, sources[1] the title; the new style has no install section
         start = next(i for i, source in enumerate(sources) if source.startswith("# Problem Statement"))
