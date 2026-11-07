@@ -163,7 +163,10 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Tilt labels with a Custom angle in Format Axis | `rotation=45` | 1 | Week 3, Day 1 |
 | Measure a correlation with `=CORREL(M2:M201,L2:L201)`, build a table with the Analysis ToolPak's Correlation, and shade it with Conditional Formatting, Color Scales | `.corr()`, then `sns.heatmap(corr_table, annot=True)` | 1 | Week 3, Day 1 |
 | Draw a Scatter chart for each pair of columns, six for four columns | `sns.pairplot` | 1 | Week 3, Day 1 |
-| Use `AVERAGEIF` on a column of 0s and 1s to get a rate by group | Group, then take the mean and the count together | 1 | Week 4, Day 1 |
+| Count, total, and average one group with `=COUNTIF(C2:C30001,1)`, `=SUMIF(C2:C30001,1,Y2:Y30001)`, and `=AVERAGEIF(C2:C30001,1,Y2:Y30001)` on a column of 0s and 1s | `groupby(column)['default'].agg(accounts='count', defaults='sum', rate_pct='mean')`, with a rough margin of error beside each rate | 1 | Week 4, Day 1 |
+| Take a rate with `=AVERAGE(Y2:Y30001)` on a column of 0s and 1s, formatted as a percentage: the same as `=SUM(Y2:Y30001)/COUNT(Y2:Y30001)` | `cards['default'].mean()` | 1 | Week 4, Day 1 |
+| Count codes a page never lists with `=COUNTIF(D2:D30001,"<1")+COUNTIF(D2:D30001,">4")`, and label codes with `=IFERROR(VLOOKUP(D2,codes,2,FALSE),"not documented")`, where `#N/A` marks a code missing from the list | `~isin([1, 2, 3, 4])`, then `map()` with a dictionary, which leaves a gap with no error, and `fillna('not documented')` | 1 | Week 4, Day 1 |
+| Take a share of one outcome group with `=COUNTIFS(Y2:Y30001,1,B2:B30001,"<100000")/COUNTIF(Y2:Y30001,1)` | `sns.histplot(..., hue=, stat='percent', common_norm=False)` | 1 | Week 4, Day 1 |
 | Use `FIND`, `SUBSTITUTE`, `TRIM`, and Find and Replace on text | Search and clean text with patterns, across every row at once | 1 | Week 4, Day 2 and Day 2 Part 2 |
 | Find a word with `=FIND("Inflation",A2)`, which counts from 1, test for it with `=ISNUMBER(FIND(...))`, or use `SEARCH` to ignore capitals | `text.find('Inflation')`, which counts from 0, and `'inflation' in text` | 1 | Week 4, Day 2 |
 | Count a piece of text with `=(LEN(A2)-LEN(SUBSTITUTE(A2,"rate","")))/LEN("rate")`, and the words with `=COUNTA(TEXTSPLIT(A2," "))` in Microsoft 365 and Excel 2024 | `text.count('rate')` and `len(text.split())` | 1 | Week 4, Day 2 |
@@ -172,10 +175,12 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Split a bond description with `=TEXTSPLIT(TRIM(A2)," ")` and `=VALUE(C2)`, or type one and let Flash Fill (Ctrl+E) copy it as values | A pattern with three groups, `float()`, and `pd.to_datetime(format='%m/%d/%Y')` | 1 | Week 4, Day 2 |
 | Count words from a list with `SUMPRODUCT`, and standardize with `STANDARDIZE` | Score every document against a word list and compare the scores | 1 | Week 4, Day 3 |
 | Paste next month's rows into last month's workbook and re-point every range | Keep the steps as functions in one file and run them on the new file | 1 | Week 4, Day 4 |
-| Cap a value with `=MAX(-0.5,MIN(1.5,AK2))` | `.clip()` | 1 | Week 4, Day 1 |
-| Sort on a `=RAND()` helper column, which does not repeat | `.sample()` with a seed, which does | 1 | Week 4, Day 1 |
-| Build one Scatter per pair of columns | `sns.pairplot()` | 1 | Week 4, Day 1 |
+| Band a column with `=VLOOKUP(F2,bands,2,TRUE)` on a table of lower edges, and find a quartile edge with `=PERCENTILE.INC(B2:B30001,0.25)` | `pd.cut()`, and `pd.qcut()` for bands of equal counts, which ties on an edge can unbalance | 1 | Week 4, Day 1 |
+| Count and average one cell of a two-way table with `=COUNTIFS(G2:G30001,2,B2:B30001,"<=50000")` and `=AVERAGEIFS(Y2:Y30001,G2:G30001,2,B2:B30001,"<=50000")` | Two `pd.pivot_table()` calls, `aggfunc='mean'` and `aggfunc='count'`, drawn side by side | 1 | Week 4, Day 1 |
+| Divide by a zero bill with `=S2/M2`, which shows `#DIV/0!`, and guard it with `=IF(M2>0,S2/M2,"")` | pandas returns `inf` with no error; `np.isinf()` finds it and `np.where()` guards it | 1 | Week 4, Day 1 |
 | Fix the range of Data Bars under More Rules | `vmin` and `vmax` on `.bar()` | 1 | Week 4, Day 1 |
+| Count the months with a delay across a row with `=COUNTIF(G2:L2,">=1")` | `(cards[pay_columns] >= 1).sum(axis=1)` | 1 | Week 4, Day 1 |
+| Correlate a column with an outcome of 0s and 1s with `=CORREL(B2:B30001,Y2:Y30001)` | `.corr()`, read beside the rates it cannot show | 1 | Week 4, Day 1 |
 | Compare two word lists with `UNIQUE` and `=SUMPRODUCT(COUNTIF(B2:B5,A2:A4))` | `set()` and a Jaccard score | 1 | Week 4, Day 2 Part 2 |
 | Hold a cut-off in one cell with `=IF(E2>=$H$1,...)` | A `cutoff=0.05` default | 1 | Week 4, Day 3 |
 | Count above and below a cut-off with `=COUNTIF($E$2:$E$47,">="&H2)` | Try five cut-offs in a loop | 1 | Week 4, Day 3 |
