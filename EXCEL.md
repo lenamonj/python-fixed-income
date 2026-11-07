@@ -81,9 +81,12 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Take a change with `=B3-B2` and a return with `=B3/B2-1` | `np.diff`, and a simple return on the whole array | 1 | Week 2, Day 1 |
 | Take a log return with `=LN(B3/B2)`, and undo it with `=EXP()` | `np.log` and `np.exp` on whole arrays | 1 | Week 2, Day 1 |
 | Test a cell with `=ISNUMBER(F2)` | `np.isfinite` | 1 | Week 2, Day 1 Part 2 |
+| Label with `=IF(C2>100,"Premium","Discount")`, count with `=COUNTIF(C2:C5,"<100")`, total with `=SUMIF(C2:C5,"<100",B2:B5)`, and keep rows with `=FILTER(A2:A5,C2:C5<100)` | `np.where`, and a boolean mask: `(prices < 100).sum()`, `faces[prices < 100].sum()`, `tickers[prices < 100]` | 1 | Week 2, Day 1 Part 2 |
+| Price from cash flows with `=SUMPRODUCT(B2:B15,C2:C15)`, or in one step with `=PV(5.51%/2,14,-2.625,-100)` | `(cash_flows * discount_factors).sum()` | 1 | Week 2, Day 1 Part 2 |
 | Use the Scientific number format | Read `1.5e+06` in an output | 1 | Week 2, Day 1 Part 2 |
+| Put `=SUM()` under each column, or at the end of each row | `sum(axis=0)` and `sum(axis=1)` | 1 | Week 2, Day 1 Part 2 |
 | Reshape a row with `=WRAPROWS(A1:L1,4)` | `reshape` | 1 | Week 2, Day 1 Part 2 |
-| Multiply matrices with `=MMULT(TRANSPOSE(B2:B4),C2:F4)/100`, and build an identity with `=MUNIT(3)` | `@`, and `np.eye(3)` | 1 | Week 2, Day 1 Part 2 |
+| Value a book with `=SUMPRODUCT(B2:B4,C2:C4)/100` for one day or `=MMULT(TRANSPOSE(B2:B4),C2:F4)/100` for every day, turn a grid with `=TRANSPOSE(C2:F4)`, and build an identity with `=MUNIT(3)` | `@`, `.T`, and `np.eye(3)` | 1 | Week 2, Day 1 Part 2 |
 | Save As CSV | `np.savetxt` | 1 | Week 2, Day 1 Part 2 |
 | Open a file with Data, From Text/CSV | `pd.read_csv` | 1 | Week 2, Day 2 |
 | Set a pivot to Show Values As, % of Grand Total | `value_counts(normalize=True)` | 1 | Week 2, Day 2 Part 2 |
