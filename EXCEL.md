@@ -214,13 +214,6 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Summarize a month with `MINIFS`, `MAXIFS`, and `AVERAGEIFS` | `GROUP BY substr(date, 1, 7)` | 3 | Week 3, Day 2 |
 | Take a month label with `=TEXT(DATE(2026,9,30),"yyyy-mm")` | `substr(date, 1, 7)` | 3 | Week 3, Day 2 |
 | See text dates compare wrongly with `="09/30/2026"<"10/02/2025"` | SQL text comparison | 3 | Week 3, Day 2 |
-| Fit `SLOPE`, `INTERCEPT`, and `RSQ` on a training sheet, and score a test sheet with `AVERAGE(ABS(...))` and `SQRT(SUMXMY2(...)/COUNT(...))` | Split the rows, fit on the training rows, and measure the error in bp on rows the model never saw | 4 | Week 1, Day 1 |
-| `MEDIAN`, `AVERAGE`, `QUARTILE.INC`, and `MAX` of the OAS column | pandas `median`, `mean`, `quantile`, and `max` | 4 | Week 1, Day 1 |
-| `=CORREL(A2:A822,C2:C822)`, one per column | `corr` against OAS | 4 | Week 1, Day 1 |
-| `=AVERAGE(ABS((A2:A207-C2:C207)/A2:A207))*100` | MAPE in `regression_table` | 4 | Week 1, Day 1 |
-| `=1-(1-E3)*(COUNT(A2:A616)-1)/(COUNT(A2:A616)-2)` | Adjusted R-squared | 4 | Week 1, Day 1 |
-| `=COUNTIF(C2:C207,"<0")` | `(fitted_test < 0).sum()`, fitted spreads below zero | 4 | Week 1, Day 1 |
-| Clustered column, scatter, and line-with-markers charts, from the Insert menu | matplotlib charts | 4 | Week 1, Day 1 |
 | Build dummy columns with `=--(D2="AAA")`, fit them with `LINEST`, and score the test rows with `TREND` | Encode ratings with a named reference level and fit a multiple regression | 4 | Week 1, Day 2 |
 | `=COUNTIF(D2:D616,"A")` | `value_counts` of the rating column | 4 | Week 1, Day 2 |
 | `AVERAGEIF` for BBB minus `AVERAGEIF` for A | Difference of two group means | 4 | Week 1, Day 2 |
@@ -292,7 +285,7 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Build a `COVARIANCE.S` grid, and score each date with `MMULT` of the centred changes | Find level, slope, and curvature with PCA on the Treasury curve | 4 | Week 3, Day 4 |
 | `=SUMPRODUCT(B2:B9,B2:B9)` and `=SUM(C2:C9)` | A loading's length and the sign rule | 4 | Week 3, Day 4 |
 | Check the capstone's results workbook with `COUNTIFS` against its threshold | Compare three models on a new file, test once, and write the results to Excel | 4 | Week 3, Day 5 |
-| Chart a comparison of models as a clustered column or line chart, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 4 | Week 1, Day 1 to Week 3, Day 4 |
+| Chart a comparison of models as a clustered column or line chart, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 4 | Week 1, Day 2 to Week 3, Day 4 |
 | Compute the share a sample leaves out with `=(1-1/n)^n`, count pasted positions with `FREQUENCY` and `COUNTIF`, and see `RANDARRAY` redraw on every recalculation | Draw a seeded bootstrap, count its rows, and measure how ten trees on ten samples disagree | 5 | Week 1, Day 1 |
 | `=1-AVERAGE(Q2:Q6001)` on the pasted validation outcomes | `1 - y_valid.mean()` | 5 | Week 1, Day 1 |
 | `=COUNTIF(M2:M6001,">=0.5")` on the ten-tree average | `(average_full >= 0.5).sum()` | 5 | Week 1, Day 1 |

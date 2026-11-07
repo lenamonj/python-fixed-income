@@ -24,6 +24,8 @@ WITHIN_TITLE = re.compile(r"\b(with|from|into|over)\b")
 CODE_TEXT = re.compile(r"```.*?```|`[^`\n]*`|<code>.*?</code>|\$\$.*?\$\$", re.S)
 UNFILLED = re.compile(r"\{[A-Za-z_]\w*(?:\[|\(|!r|:[,+.0-9]*[a-z%]\})")
 UNFILLED_LOOKUP = re.compile(r"\{[A-Za-z_]\w*\[['\"]")
+# Jeff 2026-11-07: from Course 4 on, notebooks follow his sample template; a day joins this set when rebuilt
+NEW_STYLE = {"01_the_ml_workflow_and_simple_regression"}
 
 
 def ids(path: Path) -> str:
@@ -36,6 +38,10 @@ def is_project(path: Path) -> bool:
 
 def in_course_1(path: Path) -> bool:
     return "course01" in str(path)
+
+
+def course_number(path: Path) -> int:
+    return int(re.match(r"course(\d+)", path.relative_to(REPO).parts[0]).group(1))
 
 
 def is_case_study(path: Path) -> bool:
@@ -172,6 +178,12 @@ def test_case_study_opens_with_the_problem_definition(path):
 @pytest.mark.parametrize("path", [p for p in TEACHING if not is_case_study(p) and not is_project(p)], ids=ids)
 def test_hands_on_notebook_has_a_scenario_before_its_first_section(path):
     sources = markdown(path)
+    if path.stem in NEW_STYLE:
+        install = next(i for i, source in enumerate(sources) if source.startswith("## Before You Start"))
+        assert sources[install + 1].startswith("# Problem Statement")
+        after = re.findall(r"^## (.+)$", "\n".join(sources[install + 1:]), re.M)
+        assert after[:3] == ["Business Context", "Objectives", "Data Dictionary"]
+        return
     first_section = next(i for i, source in enumerate(sources) if re.match(rf"## {number(path)}\.\d", source))
     install = next(i for i, source in enumerate(sources) if source.startswith("## Before You Start"))
     assert first_section - install >= 2, "no scenario between the install section and section 1"
@@ -191,7 +203,8 @@ def test_predict_cells_run_from_day_5(path):
     assert [int(n) for n in found] == list(range(1, len(found) + 1))
 
 
-@pytest.mark.parametrize("path", [p for p in TEACHING if not is_project(p)], ids=ids)
+# Jeff 2026-11-07: no Excel from Course 4 on
+@pytest.mark.parametrize("path", [p for p in TEACHING if not is_project(p) and course_number(p) < 4], ids=ids)
 def test_excel_comparisons_use_one_label(path):
     text = "\n".join(markdown(path))
     assert "**Excel side by side.**" in text
