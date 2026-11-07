@@ -11,8 +11,12 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | `=2+3*4` and `=(2+3)*4`: multiply before add, brackets first | `2 + 3 * 4` and `(2 + 3) * 4`: the same order | 1 | Week 1, Day 0 |
 | Fill a formula down a column | Write the formula once, in a loop or on a whole array | 1 | Week 1, Day 1 Part 2 and Week 2, Day 1 |
 | Wrap a number in `TEXT` and join it to a sentence with `&` | Write an f-string with a format code | 1 | Week 1, Day 1 |
-| Type `=1.025^10` for a power, and use `QUOTIENT`, `MOD`, and `ROUND` | Write `1.025 ** 10`, `//`, `%`, and `round()`, and see why `^` is not a power in Python and `round(2.5)` gives 2 | 1 | Week 1, Day 1 |
+| Type `=1/(1+0.05/2)^10` for a power, and use `QUOTIENT`, `MOD`, and `ROUND` | Write `1 / (1 + 0.05 / 2) ** 10`, `//`, `%`, and `round()`, and see why `^` is not a power in Python and `round(2.5)` gives 2 | 1 | Week 1, Day 1 |
 | Name a cell in the Name Box: no leading digit, no space, and case ignored | Name a variable: no leading digit, no space, and case matters | 1 | Week 1, Day 1 |
+| A number stored as text, flagged with a green triangle and skipped by `=SUM(A1:A4)`, and `=TRUE+TRUE+FALSE`, which gives 2 | Quotes make text, `type()` names the type, and `True + True + False` gives 2 | 1 | Week 1, Day 1 |
+| `=A1*A2/100` for a cost, and `COUNTA`, `MIN`, `MAX`, `SUM`, and `AVERAGE` on a column | `face * price / 100`, and `len`, `min`, `max`, and `sum` on a list | 1 | Week 1, Day 1 |
+| `=XLOOKUP("Seniority",A1:A6,B1:B6,"not recorded")`, and `=VLOOKUP("Coupon",A1:B6,2,FALSE)` | `bond['Coupon']`, and `bond.get('Seniority', 'not recorded')` | 1 | Week 1, Day 1 |
+| `LEN`, `LEFT`, `MID`, `RIGHT`, `TRIM`, `UPPER`, `LOWER`, `SUBSTITUTE`, `VALUE`, `FIND`, `SEARCH`, and `TEXTSPLIT` | `len`, slicing, `strip()`, `upper()`, `lower()`, `replace()`, `int()`, `in`, and `split()` | 1 | Week 1, Day 1 |
 | Write a nested `IF` | Write `if`, `elif`, `else`, one test per line | 1 | Week 1, Day 1 Part 2 |
 | Show a workbook's path with `CELL("filename",A1)`, and split a column with Text to Columns | `os.getcwd()`, and `split(',')` | 1 | Week 1, Day 2 |
 | See `#N/A`, `#DIV/0!`, or `#NAME?` in a cell | Read an error that names the line and the cause | 1 | Week 1, Day 3 |
