@@ -113,7 +113,8 @@ def test_opening(path):
     assert "colab.research.google.com" in title
 
 
-@pytest.mark.parametrize("path", TEACHING, ids=ids)
+# Jeff, 2026-11-07: the new style has no install cell; requirements.txt and Colab cover it
+@pytest.mark.parametrize("path", [p for p in TEACHING if p.stem not in NEW_STYLE], ids=ids)
 def test_first_section_is_the_install_section(path):
     assert headings(path, 2)[0] in INSTALL_HEADINGS
 
