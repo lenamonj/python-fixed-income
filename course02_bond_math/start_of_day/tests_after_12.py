@@ -306,9 +306,9 @@ def test_dv01_close_to_bump():
 
 
 def test_convexity_matches_excel_finite_difference():
-    for row in REFERENCE:
-        if row["coupnum"] == "1":
-            continue  # final period: Excel prices it with simple interest, so its curvature is not comparable
+    # the final period is simple interest, so Excel's curvature there is another formula's
+    rows = [row for row in REFERENCE if row["coupnum"] != "1"]
+    for row in rows:
         # Excel: (PRICE(y+h) + PRICE(y-h) - 2 PRICE(y)) / ((PRICE(y) + accrued) h^2), with h = 1 bp
         result = bondmath.convexity(*bond_inputs(row))
         assert result == pytest.approx(float(row["convexity_fd"]), abs=1e-3), row["case_id"]

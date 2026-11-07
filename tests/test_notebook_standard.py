@@ -38,7 +38,9 @@ NEW_STYLE = {"01_the_ml_workflow_and_simple_regression", "0_start_here", "01_pyt
              "16_case_study_consumer_credit", "17_analyzing_text", "17_part2_analyzing_text",
              "18_case_study_statement_sentiment", "19_from_notebook_to_module", "course1_project",
              # Course 2 as redesigned
-             "01_time_value_of_money", "02_cash_flows_and_price_from_yield"}
+             "01_time_value_of_money", "02_cash_flows_and_price_from_yield", "06_dates_and_coupon_schedules",
+             "08_clean_and_dirty_price", "09_duration_and_dv01", "12_spread_over_the_curve",
+             "13_spread_duration_and_dts"}
 
 
 def ids(path: Path) -> str:

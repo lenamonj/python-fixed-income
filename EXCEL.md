@@ -257,7 +257,7 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Read date serial numbers, and use `EDATE`, `EOMONTH`, `COUPPCD`, `COUPNCD`, and `COUPNUM` | Work with `date` values, add months, and build a coupon schedule back from maturity | 2 | Week 2, Day 1 |
 | Use `COUPDAYBS`, `COUPDAYS`, `COUPDAYSNC`, `ACCRINT`, and `YEARFRAC` beside `DAYS360` | Count days on US 30/360 and actual/actual, and compute accrued interest | 2 | Week 2, Day 2 |
 | Use `PRICE` between coupon dates, add accrued for the dirty price, use `YIELD`, and write the price out cell by cell | Write `price`, `dirty_price`, and `yield_to_maturity`, and invoice a month of trades | 2 | Week 2, Day 3 |
-| Use `DURATION` and `MDURATION`, build DV01 from cells, and bump the yield in two `PRICE` cells | Write duration and DV01 functions, and check DV01 by bumping the yield | 2 | Week 2, Day 4 |
+| Use `DURATION` and `MDURATION`, build DV01 from cells with `=B4*(B1+B2)/10000` and a position with `=B5*5000000/100`, and bump the yield in two `PRICE` cells with `=(B8-B9)/2` | Write `macaulay_duration`, `modified_duration`, and `dv01`, and check DV01 by bumping the yield | 2 | Week 2, Day 4 |
 | Estimate convexity from three `PRICE` cells, and total a book's DV01 with `SUMPRODUCT` | Write `convexity`, and reprice a whole book with its DV01 and duration | 2 | Week 2, Day 5 |
 | Take apart a date with `YEAR`, `MONTH`, and `DAY` | `.year`, `.month`, and `.day` | 2 | Week 2, Day 1 |
 | Read a date with `=DATEVALUE("2031-09-30")` | `date.fromisoformat` | 2 | Week 2, Day 1 |
@@ -265,31 +265,43 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Compare dates with `<`, and take the latest with `MAX` | `<` and `max` on dates | 2 | Week 2, Day 1 |
 | Find a month's length with `=DAY(EOMONTH(DATE(2027,2,1),0))` | `calendar.monthrange(...)[1]` | 2 | Week 2, Day 1 |
 | Split months into years with `QUOTIENT` and `MOD` | `divmod(n, 12)` | 2 | Week 2, Day 1 |
-| Test for month end with `=E2=EOMONTH(E2,0)` | `.dt.is_month_end` | 2 | Week 2, Day 1 |
-| Group by month in a PivotTable | `groupby` with `agg` | 2 | Week 2, Day 1 |
+| Set a date cell to General to see its serial, 46356, and subtract two dates | `(settlement - date(1899, 12, 30)).days`, and `(settlement - issue).days` | 2 | Week 2, Day 1 |
+| See `=DATE(1900,2,29)` return 60, a day that never was | `date(1900, 2, 29)` raises `ValueError` | 2 | Week 2, Day 1 |
+| Move by months with `=EDATE(DATE(2031,8,31),-6)` | `bondmath.add_months(date(2031, 8, 31), -6)` | 2 | Week 2, Day 1 |
+| Fill `=EDATE(A1,-6)` down from the cell above, against `=EDATE($A$1,-6*C2)` from maturity | `add_months(stepped[-1], -6)` against `add_months(maturity, -6 * k)` | 2 | Week 2, Day 1 |
+| Move to a month end with `=EOMONTH(DATE(2031,9,30),-6)` | the month-end rule in `coupon_dates` | 2 | Week 2, Day 1 |
+| Find the previous coupon, the next, and the coupons left with `COUPPCD`, `COUPNCD`, and `COUPNUM` | `coupon_dates(settlement, maturity)[0]`, `[1]`, and `len(...) - 1` | 2 | Week 2, Day 1 |
+| Test for month end with `=DATE(2031,9,30)=EOMONTH(DATE(2031,9,30),0)` | `d.day == calendar.monthrange(d.year, d.month)[1]`, and `.dt.is_month_end` on a column | 2 | Week 2, Day 1 |
+| Name the weekday with `=TEXT(DATE(2026,11,30),"dddd")` | `settlement.strftime('%A')` | 2 | Week 2, Day 1 |
 | Write the 30/360 formula with `YEAR`, `MONTH`, `DAY`, and `MIN(DAY(A1),30)` | `count_30_360`, one rule at a time | 2 | Week 2, Day 2 |
 | Count 30/360 days with `=YEARFRAC(DATE(2026,9,30),DATE(2026,11,30),0)*360` | `days_30_360` | 2 | Week 2, Day 2 |
 | Work accrued on basis 1 with `COUPNCD` less `COUPPCD` | `accrued_interest(..., "ACT/ACT")` | 2 | Week 2, Day 2 |
 | Check a period with `COUPDAYBS` plus `COUPDAYSNC` | A plus DSC | 2 | Week 2, Day 2 |
-| Look up a CUSIP with `XLOOKUP` | `merge` | 2 | Week 2, Day 3 |
-| Total by side with `SUMIFS` | `groupby('side')` | 2 | Week 2, Day 3 |
+| Price the invoice in one cell, `=-PV(5.4/100/2,COUPNUM(...),5.25/2,100)*(1+5.4/100/2)^(COUPDAYBS(...)/COUPDAYS(...))` | The issue-date price grown by A / E of a period | 2 | Week 2, Day 3 |
+| Price the final coupon period with simple interest, `=(100+5/2)/(1+(COUPDAYS(...)-COUPDAYBS(...))/COUPDAYS(...)*6/100/2)` less accrued, equal to `PRICE` | `price` with one coupon left | 2 | Week 2, Day 3 |
+| Count the days left two ways, `=YEARFRAC(DATE(2026,12,15),DATE(2027,2,28),0)*360` (73) against `COUPDAYS` less `COUPDAYBS` (75) | The DSR that `YIELD` uses against the E - A that `PRICE` uses | 2 | Week 2, Day 3 |
+| Invoice a trade, `=500000*(103.053+100*6.625/100/2*COUPDAYBS(DATE(2026,9,2),DATE(2033,5,9),2,0)/COUPDAYS(DATE(2026,9,2),DATE(2033,5,9),2,0))/100` | `principal + accrued_dollars` on all 374 trades | 2 | Week 2, Day 3 |
 | Weight the time with `=SUMPRODUCT(B2:B11,D2:D11)/SUM(D2:D11)` | Macaulay duration, as weighted time | 2 | Week 2, Day 4 |
 | Sign a short position with `*-2000000/100` | A short position's DV01 | 2 | Week 2, Day 4 |
+| Divide `DURATION` by one plus the period yield, `=DURATION(...)/(1+5.4/100/2)`, equal to `MDURATION` | Modified duration from Macaulay duration | 2 | Week 2, Day 4 |
+| Give `DURATION` a zero coupon, `=DURATION(DATE(2026,11,30),DATE(2031,9,30),0,5.4/100,2,0)`, 4.833333, the time to the one payment | `macaulay_duration` with a coupon of 0 | 2 | Week 2, Day 4 |
 | Check a gap with `=ABS(A2-B2)` and `MAX` | A gap check over the book | 2 | Week 2, Day 5 |
 | Find the largest with `=LARGE(G2:G201,1)` | `nlargest` | 2 | Week 2, Day 5 |
 | Interpolate a curve with `FORECAST.LINEAR`, `INDEX`, and `MATCH`, and chart it as a Scatter | Write `interpolate_yield`, with flat ends, and compare it with `numpy.interp` | 2 | Week 3, Day 1 |
-| Use `YEARFRAC` for years to maturity, and subtract the curve yield for a spread | Measure every bond's spread to the curve, and reproduce the file's spread column | 2 | Week 3, Day 2 |
+| Use `=YEARFRAC(D2,E2,0)` for years to maturity on 30/360, where `=DAYS360` gives 1620 against `YEARFRAC`'s 1621 days from 28 February 2027 to 31 August 2031 | `bondmath.years_to_maturity(as_of, maturity)`, equal to `YEARFRAC` on all 200 bonds | 2 | Week 3, Day 2 |
 | Divide two bumped `PRICE` cells for spread duration, multiply for DTS, and total buckets with `SUMIFS` | Write `spread_duration` and `dts`, and group each bond's share of the book's DTS | 2 | Week 3, Day 3 |
 | Add a calculated field to a pivot table, and run a What-If Data Table over a whole-book reprice | Group by sector and rating, and reprice the book under rate and spread scenarios | 2 | Week 3, Day 4 |
 | Check a risk report workbook with `SUM` and `SUMPRODUCT`, and price a month-end and a final-period bond with the `COUP` functions, `PRICE`, and `YIELD` | Clean, recompute, and reconcile a month-end extract, and write the risk report to Excel | 2 | Week 3, Day 5 |
 | Build a fine grid of years with `=SEQUENCE(401,1,0,0.1)` | `np.linspace(0, 40, 401)` | 2 | Week 3, Day 1 |
 | Write a curve as `=ROUND(3.55+1.05*(1-EXP(-A2/7)),3)` | `round(3.55 + 1.05 * (1 - math.exp(-t / 7)), 3)` | 2 | Week 3, Day 1 |
 | Measure a gap with `MAX` and `AVERAGE` over a column of differences | `gap_bp.max()` and `gap_bp.mean()` | 2 | Week 3, Day 1 |
-| Summarize by bucket with `COUNTIFS`, `MINIFS`, `MAXIFS`, and `MEDIAN(FILTER(...))` | `groupby('bucket').agg(...)` | 2 | Week 3, Day 2 |
-| Bring in a rating with `XLOOKUP` | `merge` | 2 | Week 3, Day 2 |
-| Size a reconciliation with `=MAX(ABS(N2:N201))`, `AVERAGE(ABS(...))`, and `COUNTIF` | `.abs().max()`, `.abs().mean()`, and `(gap > 0).sum()` | 2 | Week 3, Day 2 |
-| Find the top ten with `LARGE`, and their share with `=SUM(LARGE(O2:O201,{1,...,10}))/SUM(O2:O201)` | `nlargest(10, ...)` | 2 | Week 3, Day 3 |
-| Mark the largest with Conditional Formatting, Top 10 Items, set to 1 | `highlight_max` | 2 | Week 3, Days 3 and 4 |
+| Read the file's curve at each bond's own years with `=ROUND(3.55+1.05*(1-EXP(-G2/7)),3)` | `round(3.55 + 1.05 * (1 - math.exp(-years / 7)), 3)` | 2 | Week 3, Day 2 |
+| Take the spread to that curve with `=(F2-J2)*100`, the yield typed in percent, so no `/100` | `bondmath.spread_to_curve_bp(y, t, [t], [c])` on a one-point curve, which rebuilds the `oas` column to 2.3e-13 bp | 2 | Week 3, Day 2 |
+| Take the spread to the ten-tenor table with `=(F2-H2)*100`, the straight line from `FORECAST.LINEAR` in H2 | `bondmath.spread_to_curve_bp(y, t, curve_tenors, curve_yields)`: 147.41 bp where the file says 147 | 2 | Week 3, Day 2 |
+| Measure spread duration in cells with `=(B2-B3)/(2*0.0001)/(B1+B4)`, two `PRICE` cells 1 bp each side over the dirty price, and set it beside `=MDURATION(...)` | `bondmath.spread_duration(...)`, 2.78e-07 years above `modified_duration` for Bezane | 2 | Week 3, Day 3 |
+| Move the spread inside `PRICE` as `(4.136+(147+1)/100)/100`, which gives the price of the yield moved 1 bp, `=B11-B3` returning 0 | `bondmath.price(..., curve_pct + (spread_bp + 1) / 100)` | 2 | Week 3, Day 3 |
+| Total the book's DTS with `=SUMPRODUCT(G2:G201,M2:M201)/SUM(G2:G201)` and each bucket's with `=SUMIFS(O2:O201,B2:B201,"BBB")` | `(market_value * dts_bm).sum() / total_value`, and `groupby('bucket')` | 2 | Week 3, Day 3 |
+| Mark the largest with Conditional Formatting, Top 10 Items, set to 1 | `highlight_max` | 2 | Week 3, Day 4 |
 | Find the largest weight with `=MAX(T2:T201)` | `weight_pct.max()` | 2 | Week 3, Day 4 |
 | Build a request URL in cells with `&` and `ENCODEURL`, and load a web CSV with Power Query From Web | Build the request in code, and read the key from `.env` so it is never typed into a cell or a file | 3 | Week 1, Day 1 |
 | Load JSON with Power Query, and turn FRED's `.` into `#N/A` with `IFERROR(VALUE(...),NA())` | Parse FRED's JSON, reading `.` as missing and never as 0 | 3 | Week 1, Day 2 |
