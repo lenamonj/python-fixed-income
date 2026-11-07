@@ -197,7 +197,11 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Look up a word's rating with `=XLOOKUP("strong",lexicon!A:A,lexicon!B:B,0)`, in Microsoft 365 and Excel 2021 on | `analyzer.lexicon.get('strong', 0)` | 1 | Week 4, Day 3 |
 | Standardize with `=STANDARDIZE(D2,AVERAGE($D$2:$D$47),STDEV.S($D$2:$D$47))`, correlate with `=CORREL(D2:D47,E2:E47)`, and take each change with `=D3-D2` filled down | `(scores - scores.mean()) / scores.std()`, `scores.corr()`, and `scores.diff()` | 1 | Week 4, Day 3 |
 | Bring each statement date's yield change across with `=XLOOKUP(A2,yields!$A$2:$A$2941,yields!$P$2:$P$2941)`, where a missing date gives `#N/A` | `changes.join(yield_changes, how='left')`, where a missing date gives `NaN` | 1 | Week 4, Day 3 |
-| Paste next month's rows into last month's workbook and re-point every range | Keep the steps as functions in one file and run them on the new file | 1 | Week 4, Day 4 |
+| Re-point every range for next month's file: `=SUM(S2:S205)` on the 204-row extract, `=SUM(S2:S201)` on the 200-row file | Change the file name and run the module's same lines | 1 | Week 4, Day 4 |
+| Point a Power Query at a new file: Data, Get Data, Data Source Settings, Change Source, then Refresh (Excel 2016 and later) | A loop over the file names, each through `load_holdings`, `clean_holdings`, and `check_totals` | 1 | Week 4, Day 4 |
+| Check the control totals with `=COUNTA(B2:B201)`, `=SUM(R2:R201)`, and `=SUM(S2:S201)`, where an `IF` check cell only shows a mismatch | `check_totals()`, which raises `ValueError` and stops the run | 1 | Week 4, Day 4 |
+| Total a workbook's second sheet with `=COUNTA(book!B2:B201)`, `=SUM(book!R2:R201)`, and `=SUM(book!S2:S201)` | `write_report()` with `pd.ExcelWriter`, then `check_totals()` on the sheet read back | 1 | Week 4, Day 4 |
+| Try a formula on a sheet of made-up rows with known answers before it meets the real ones | `test_clean_holdings()` on a seven-row table worked by hand | 1 | Week 4, Day 4 |
 | Band a column with `=VLOOKUP(F2,bands,2,TRUE)` on a table of lower edges, and find a quartile edge with `=PERCENTILE.INC(B2:B30001,0.25)` | `pd.cut()`, and `pd.qcut()` for bands of equal counts, which ties on an edge can unbalance | 1 | Week 4, Day 1 |
 | Count and average one cell of a two-way table with `=COUNTIFS(G2:G30001,2,B2:B30001,"<=50000")` and `=AVERAGEIFS(Y2:Y30001,G2:G30001,2,B2:B30001,"<=50000")` | Two `pd.pivot_table()` calls, `aggfunc='mean'` and `aggfunc='count'`, drawn side by side | 1 | Week 4, Day 1 |
 | Divide by a zero bill with `=S2/M2`, which shows `#DIV/0!`, and guard it with `=IF(M2>0,S2/M2,"")` | pandas returns `inf` with no error; `np.isinf()` finds it and `np.where()` guards it | 1 | Week 4, Day 1 |
@@ -213,8 +217,9 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Take one year's share of statements holding a word with `=COUNTIFS(D2:D47,2026,E2:E47,TRUE)/COUNTIF(D2:D47,2026)` | The mean of a True and False column by year: `holds.groupby(year).mean()` | 1 | Week 4, Day 2 Part 2 |
 | Hold a cut-off in one cell with `=IF(E2>=$H$1,...)` | A `cutoff=0.05` default | 1 | Week 4, Day 3 |
 | Count above and below a cut-off with `=COUNTIF($E$2:$E$47,">="&H2)` | Try five cut-offs in a loop | 1 | Week 4, Day 3 |
-| Open Insert Function with Shift+F3 | `help()` | 1 | Week 4, Day 4 |
-| Save a `LAMBDA` in Name Manager | Save a function in a module | 1 | Week 4, Day 4 |
+| Type `=SUM` in a cell, then Ctrl+A, for the Function Arguments box | `help()`, which prints the signature and the docstring | 1 | Week 4, Day 4 |
+| Save `=LAMBDA(oas, oas / 100)` in Formulas, Name Manager, for that workbook only (Microsoft 365, Excel 2024) | Write a function into a module any notebook can import | 1 | Week 4, Day 4 |
+| Keep macros in the Personal Macro Workbook, PERSONAL.XLSB, which Excel opens hidden at start-up | `import desk_tools` | 1 | Week 4, Day 4 |
 | Use `FV` and `PV`, and read the minus sign `PV` returns | Write `future_value` and `present_value` and test them against Excel's values | 2 | Week 1, Day 1 |
 | Price a bond on a coupon date with `NPV` over a column of cash flows, `-PV` with a payment, or `PRICE` | List the cash flows and discount them in one function | 2 | Week 1, Day 2 |
 | Fill a column of `PRICE` formulas down a range of yields and chart it as a Scatter with Straight Lines | Price a grid of yields and plot the price-yield curve | 2 | Week 1, Day 3 |
