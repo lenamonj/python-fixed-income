@@ -61,7 +61,7 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Save the sheet with File, Save As, CSV (Comma delimited), and open it again | Write the table with `to_csv()`, and read it back with `read_csv()` | 1 | Week 1, Day 5 |
 | Filter with AutoFilter, and sort with Data, Sort, which reorders the sheet, or with `=SORT(A2:S201,13,-1)` in Excel 2021 and Microsoft 365, which spills a sorted copy | `holdings[is_energy]`, and `sort_values('oas', ascending=False)`, which hands back a sorted copy | 1 | Week 2, Day 2 Part 2 |
 | Use `SUMIF` and `COUNTIF` | Filter, then sum or count | 1 | Week 2, Day 2 Part 2 and Day 5 |
-| Use `COUNTBLANK` and Remove Duplicates | Count missing values and repeated rows in one line each | 1 | Week 2, Day 4 |
+| Count blanks with `=COUNTBLANK(E2:E201)`, and use Data, Remove Duplicates, which deletes the copies and says how many | `isna().sum()` per column, and `duplicated().sum()`, which marks only the second copy and deletes nothing | 1 | Week 2, Day 4 |
 | Bring a column across with `=VLOOKUP(B2,issuers!A:C,3,FALSE)` filled down, once per column wanted; `=XLOOKUP(B2,issuers!A:A,issuers!C:C)` in Excel 2021 or later and Microsoft 365; `INDEX` and `MATCH` in any version | `pd.merge(positions, issuer_details, on='ticker')`: every column wanted in one line | 1 | Week 2, Day 3 and Day 5 |
 | Build a pivot table | Group by a column and summarize | 1 | Week 2, Day 3, Day 3 Part 2, and Day 5 |
 | Save a workbook with File, Save As, Excel Workbook, put two tables on two sheets, and open one sheet by its tab | `to_excel(sheet_name=)`, `pd.ExcelWriter` for several sheets, and `read_excel(sheet_name=)`, or `sheet_name=None` for every sheet | 1 | Week 2, Day 3 Part 2 and Day 5 |
@@ -116,8 +116,9 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Work out years left with `=(H2-A2)/365.25`, three years on with `=EDATE(A2,36)`, and count early maturities with `=COUNTIF(H:H,"<"&DATE(2028,1,1))` | `(book['maturity'] - as_of).dt.days / 365.25`, and a date column compared with `pd.Timestamp` | 1 | Week 2, Day 3 Part 2 |
 | Bucket with a nested `IF`, or `VLOOKUP` approximate on a table of edges | `pd.cut(years, bins=edges, labels=names)` | 1 | Week 2, Day 3 Part 2 |
 | Keep a digit-only CUSIP's zeros with Data, From Text/CSV (Excel 2016 and later), Data Type Detection set to Do not detect data types | `read_csv(..., dtype={'cusip': str})` | 1 | Week 2, Day 3 Part 2 |
-| Flip a test with `=NOT(G2)` | `~` | 1 | Week 2, Day 4 |
-| Test for repeats with `=COUNTA(UNIQUE(A2:A201))=COUNTA(A2:A201)` | `is_unique` | 1 | Week 2, Day 4 |
+| Test each key with `=COUNTIF(issuers!A:A,B2)>0` filled down, ask whether all passed with `=AND(G2:G201)`, flip one with `=NOT(G2)`, and count the misses with `=COUNTIF(G2:G201,FALSE)` | `positions['ticker'].isin(issuers['ticker'])`, then `.all()`, `~`, and `(~found).sum()` | 1 | Week 2, Day 4 |
+| Test a key for repeats with `=COUNTA(UNIQUE(A2:A201))=COUNTA(A2:A201)` in Excel 2021 and Microsoft 365 | `positions['cusip'].is_unique` | 1 | Week 2, Day 4 |
+| Flag rows with helper columns such as `=IF(E2<100,1,0)`, add across with `=SUM(G2:I2)` and down with `=SUM(G2:G201)` | A DataFrame of True and False flags, `flags.sum(axis=1)` across and `flags.sum()` down | 1 | Week 2, Day 4 |
 | Drag a second pivot field from Rows to Columns | `groupby` on two labels, then `unstack()` | 1 | Week 2, Day 5 |
 | Insert a chart: Column, Line, Scatter, Histogram, Box and Whisker | Draw the same chart in a few lines of code | 1 | Week 3, Day 1 |
 | Add a trendline, and use `SLOPE`, `INTERCEPT`, and `RSQ` | Fit the line and print its numbers with units | 1 | Week 3, Day 2 |
