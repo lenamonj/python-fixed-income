@@ -59,7 +59,7 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Subtract par with `=I2-100`, fill it down, and insert a Column Chart | Points from par by a comprehension, one colour per bar with `color=` | 1 | Week 1, Day 5 |
 | Total with `=SUM(H2:H7)` | `df['Face'].sum()`, with no loop | 1 | Week 1, Day 5 |
 | Save the sheet with File, Save As, CSV (Comma delimited), and open it again | Write the table with `to_csv()`, and read it back with `read_csv()` | 1 | Week 1, Day 5 |
-| Turn on AutoFilter and sort a sheet | Filter and sort a table by condition | 1 | Week 2, Day 2 Part 2 |
+| Filter with AutoFilter, and sort with Data, Sort, which reorders the sheet, or with `=SORT(A2:S201,13,-1)` in Excel 2021 and Microsoft 365, which spills a sorted copy | `holdings[is_energy]`, and `sort_values('oas', ascending=False)`, which hands back a sorted copy | 1 | Week 2, Day 2 Part 2 |
 | Use `SUMIF` and `COUNTIF` | Filter, then sum or count | 1 | Week 2, Day 2 Part 2 and Day 5 |
 | Use `COUNTBLANK` and Remove Duplicates | Count missing values and repeated rows in one line each | 1 | Week 2, Day 4 |
 | Use `VLOOKUP` or `INDEX` and `MATCH` | Merge two tables on a shared column | 1 | Week 2, Day 3 and Day 5 |
@@ -97,6 +97,10 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Count distinct values with `=COUNTA(UNIQUE(C2:C201))` | `nunique()` | 1 | Week 2, Day 2 Part 2 |
 | Count several labels with `=SUM(COUNTIF(F:F,{"A+","A","A-"}))` | `isin().sum()` | 1 | Week 2, Day 2 Part 2 |
 | Take the largest or smallest with `LARGE` and `SMALL` | `nlargest` and `nsmallest` | 1 | Week 2, Day 2 Part 2 |
+| Label the rows that pass a test with `=IF(I2<80,"Confirm","OK")` filled down | `marks.loc[marks['price'] < 80, 'price_check'] = 'Confirm'` | 1 | Week 2, Day 2 Part 2 |
+| Change a price and watch `=R4*(I4+K4)/100` recalculate | Change a price, then rerun the line that computes market value: a column holds values, not formulas | 1 | Week 2, Day 2 Part 2 |
+| Set Format Cells to 2 decimal places, or Custom `#,##0" bp"`, while the cell keeps every digit | `.style.format({'price': '{:.2f}', 'oas': '{:,.0f} bp'})`, display only | 1 | Week 2, Day 2 Part 2 |
+| Shade with Conditional Formatting, Color Scales, mark the top price with Top 10 Items set to 1, and add Data Bars | `.background_gradient()`, `.highlight_max()`, and `.bar()` on a Styler | 1 | Week 2, Day 2 Part 2 |
 | Choose a Join Kind in Power Query's Merge Queries | `how=` | 1 | Week 2, Day 3 |
 | Put ranges side by side with `HSTACK` | `concat(axis=1)` | 1 | Week 2, Day 3 |
 | Read day-first dates with Text to Columns and DMY | `dayfirst=True` | 1 | Week 2, Day 3 Part 2 |
