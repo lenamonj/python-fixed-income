@@ -14,6 +14,7 @@ On your machine the files come from the course repo; in Colab, from GitHub.
 This course is educational content created in a personal capacity. Nothing here is investment advice or a
 recommendation to buy or sell any security. All portfolio data is synthetic.
 """
+import importlib.util
 import os
 import shutil
 import subprocess
@@ -148,6 +149,9 @@ def start_day(notebook: int, after: int | None = None) -> Path:
     before (a solutions notebook passes its own number). After 0, notebook 01, there is no marketdata.py yet.
     """
     after = notebook - 1 if after is None else after
+    if ON_GITHUB and importlib.util.find_spec("dotenv") is None:
+        # Colab has requests and pytest, but may lack python-dotenv, which get_secret uses to read a .env file
+        subprocess.run([sys.executable, "-m", "pip", "install", "-q", "python-dotenv==1.2.4"], check=True)
     work = Path(tempfile.mkdtemp(prefix=f"pfi_course3_{notebook:02d}_"))
     os.chdir(work)
     # Python looks for modules in the work folder first, so import marketdata finds this folder's file

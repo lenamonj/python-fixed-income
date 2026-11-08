@@ -317,14 +317,12 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Value the book with `=SUMPRODUCT(R2:R201,I2:I201+K2:K201)/100`, and weight its spread and DTS by `market_value` with `SUMPRODUCT` over `SUM` | `holdings['market_value'].sum()`, and `weighted_average` on `oas` and `dts` | 2 | Week 3, Day 4 |
 | Reprice the book in one column at the shift in Y1, `=PRICE(A2,H2,G2/100,(L2+$Y$1/100)/100,100,2,0)`, and run every shift with a What-If Data Table, `=TABLE(,Y1)` | `reprice(...)` at four parallel shifts: +100 bp is -29,134,835.97 dollars in both | 2 | Week 3, Day 4 |
 | Weight each sector's duration with a PivotTable: a helper column `=S2*N2`, `sector` in Rows, and a calculated field `=mv_x_duration/market_value` | `groupby('sector')` sums divided after, equal in all ten sectors | 2 | Week 3, Day 4 |
-| Build a request URL in cells with `&` and `ENCODEURL`, and load a web CSV with Power Query From Web | Build the request in code, and read the key from `.env` so it is never typed into a cell or a file | 3 | Week 1, Day 1 |
+| Build a request URL in cells with `&` and `ENCODEURL`, `=ENCODEURL("a b&c=d/e?f")` giving `a%20b%26c%3Dd%2Fe%3Ff`, and load FRED's key-free `fredgraph.csv` with Power Query From Web, where `=WEBSERVICE` shows `#VALUE!` | Build the request in code, `quote(..., safe='')` equal to `ENCODEURL`, and read the key from outside the code so it is never typed into a cell or a file | 3 | Week 1, Day 1 |
+| Hide a key in column B and save as `.xlsx`: it stays in `xl/sharedStrings.xml` and is back in B1 on reopening | Never type the key: `get_secret` reads it from the environment, Colab's Secrets panel, or `.env` | 3 | Week 1, Day 1 |
 | Load JSON with Power Query, and turn FRED's `.` into `#N/A` with `IFERROR(VALUE(...),NA())` | Parse FRED's JSON, reading `.` as missing and never as 0 | 3 | Week 1, Day 2 |
 | Use `WEEKDAY`, `WORKDAY`, and `NETWORKDAYS` with a holiday list, and see `XLOOKUP` return `#N/A` on a date with no row | Take the market calendar from the data's own dates, and join two series inner or outer | 3 | Week 1, Day 3 |
 | Find a month's last market date with `EOMONTH` and `MAXIFS`, look up a value as of a date with `XLOOKUP` match mode -1, and group a pivot table by month | Take the last observation of each week or month, labelled by its own date, and the as-of value | 3 | Week 1, Day 4 |
 | Append and merge files with Power Query, and check a sheet with `SUMPRODUCT`, `UNIQUE`, and `COUNTBLANK` | Build one checked daily dataset from two files, and cache a download | 3 | Week 1, Day 5 |
-| Measure a text's length with `=LEN(B1)` | `len(FAKE_KEY)` | 3 | Week 1, Day 1 |
-| Count a year's rows with `COUNTIFS` on two dates | Rows per year | 3 | Week 1, Day 1 |
-| See a Line chart read text `.` as 0 and an empty cell as a gap | A chart of `.` as 0 against `NaN` | 3 | Week 1, Day 1 |
 | Keep an old copy of a workbook, which still holds a deleted key | The commit history | 3 | Week 1, Day 1 |
 | Separate rows from numbers with `COUNTA`, `COUNT`, and `=COUNTIF(...,".")` | Rows against numbers | 3 | Week 1, Day 2 |
 | Compare `AVERAGE` with `SUM/ROWS` when a cell is text | `mean` with `NaN` left out, and with `fillna(0)` | 3 | Week 1, Day 2 |
