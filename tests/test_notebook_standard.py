@@ -25,7 +25,7 @@ CODE_TEXT = re.compile(r"```.*?```|`[^`\n]*`|<code>.*?</code>|\$\$.*?\$\$", re.S
 UNFILLED = re.compile(r"\{[A-Za-z_]\w*(?:\[|\(|!r|:[,+.0-9]*[a-z%]\})")
 UNFILLED_LOOKUP = re.compile(r"\{[A-Za-z_]\w*\[['\"]")
 # Jeff 2026-11-07: from Course 4 on, notebooks follow his sample template; a day joins this set when rebuilt
-NEW_STYLE = {"01_the_ml_workflow_and_simple_regression", "0_start_here", "01_python_for_fixed_income_intro",
+NEW_STYLE = {"01_the_ml_workflow_and_simple_regression", "02_multiple_regression_and_dummy_variables", "0_start_here", "01_python_for_fixed_income_intro",
              "01_part2_python_for_fixed_income_intro", "02_files_and_folders",
              "03_debugging", "04_classes_a_bond_object", "05_case_study_a_small_portfolio",
              "06_numpy", "06_part2_numpy",
@@ -72,6 +72,11 @@ def course_number(path: Path) -> int:
 
 def is_case_study(path: Path) -> bool:
     return "case_study" in path.stem
+
+
+def new_style_ml(path: Path) -> bool:
+    """Course 4 on, rebuilt on Course 4 Day 1's ladder (Jeff's sample template): case studies and the capstone too."""
+    return path.stem in NEW_STYLE and course_number(path) >= 4
 
 
 def number(path: Path) -> int:
@@ -194,7 +199,7 @@ def test_last_exercise_is_an_ai_check(path):
     assert all(re.fullmatch(r"Exercise \d+(: AI check)?", heading) for heading in exercises)
 
 
-@pytest.mark.parametrize("path", [p for p in TEACHING if is_case_study(p)], ids=ids)
+@pytest.mark.parametrize("path", [p for p in TEACHING if is_case_study(p) and not new_style_ml(p)], ids=ids)
 def test_case_study_opens_with_the_problem_definition(path):
     assert "Problem Definition" in headings(path, 2)
     level_three = headings(path, 3)
@@ -202,7 +207,8 @@ def test_case_study_opens_with_the_problem_definition(path):
     assert level_three[start:start + 4] == ["Context", "Objective", "The Data", "How We Will Work"]
 
 
-@pytest.mark.parametrize("path", [p for p in TEACHING if not is_case_study(p) and not is_project(p)], ids=ids)
+@pytest.mark.parametrize("path", [p for p in TEACHING if not is_case_study(p) and not is_project(p) and not new_style_ml(p)],
+                         ids=ids)
 def test_hands_on_notebook_has_a_scenario_before_its_first_section(path):
     sources = markdown(path)
     # Courses 1 to 3 as redesigned: no install section, so the scenario sits between the title and section 1
@@ -211,16 +217,26 @@ def test_hands_on_notebook_has_a_scenario_before_its_first_section(path):
         first_section = next(i for i, source in enumerate(sources) if re.match(rf"## {number(path)}\.\d", source))
         assert sources[1].startswith("# ") and first_section >= 3, "no scenario between the title and section 1"
         return
-    if path.stem in NEW_STYLE:
-        # sources[0] is the banner, sources[1] the title; the new style has no install section
-        start = next(i for i, source in enumerate(sources) if source.startswith("# Problem Statement"))
-        assert start == 2
-        after = re.findall(r"^## (.+)$", "\n".join(sources[start:]), re.M)
-        assert after[:3] == ["Business Context", "Objectives", "Data Dictionary"]
-        return
     first_section = next(i for i, source in enumerate(sources) if re.match(rf"## {number(path)}\.\d", source))
     install = next(i for i, source in enumerate(sources) if source.startswith("## Before You Start"))
     assert first_section - install >= 2, "no scenario between the install section and section 1"
+
+
+# Course 4 on, as redesigned: Day 1's ladder. The title, then # Problem Statement with Business Context, Objectives
+# and Data Dictionary; unnumbered headings; no install section and no Excel; # Wrapping Up last of the # topics, over
+# the ending that test_ending, test_last_exercise_is_an_ai_check and test_predict_cells_run_from_day_5 check (the
+# capstone ends on its closing: test_project_ends_on_the_closing).
+@pytest.mark.parametrize("path", [p for p in TEACHING if new_style_ml(p)], ids=ids)
+def test_new_style_ml_follows_day_1s_ladder(path):
+    sources = markdown(path)
+    # sources[0] is the banner, sources[1] the title
+    assert sources[1].startswith("# ") and sources[2].startswith("# Problem Statement")
+    assert re.findall(r"^## (.+)$", "\n".join(sources[2:]), re.M)[:3] == ["Business Context", "Objectives", "Data Dictionary"]
+    assert [h for h in headings(path, 1) + headings(path, 2) + headings(path, 3) if re.match(r"\d+\.\d", h)] == []
+    assert [h for h in headings(path, 2) if h.startswith("Before You Start")] == []
+    assert not re.search(r"\bExcel\b", "\n".join(sources))
+    if not is_project(path):
+        assert headings(path, 1)[-1] == "Wrapping Up"
 
 
 @pytest.mark.parametrize("path", [p for p in TEACHING if not is_project(p)], ids=ids)
