@@ -382,14 +382,22 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Weight OAS by market value per sector with `=SUMPRODUCT(($C$2:$C$201=J2)*$E$2:$E$201*$F$2:$F$201)/SUMIFS($F$2:$F$201,$C$2:$C$201,J2)` | `SUM(oas * market_value) / SUM(market_value)` and `bondmath.weighted_average`: all ten sectors equal | 3 | Week 3, Day 1 |
 | Look up each bond's grade with `XLOOKUP`, then weight by grade with `SUMPRODUCT` over `SUMIFS`; `AVERAGEIFS` by grade gives the simple average, 99.3359375 and 339.375 | The AI check's `AVG(oas)` bug, fixed to a market-value weighted average | 3 | Week 3, Day 1 |
 | Join with `XLOOKUP` or Power Query Merge, and find repeated keys with `COUNTIF` | Join tables in SQL, catch a join that duplicates rows, and use window functions for daily changes and month ends | 3 | Week 3, Day 2 |
-| Check a suggested formula, `PERCENTRANK.INC`, against `COUNTIF` over `COUNT`, and a DV01 built from cells | Test code written in the style of an AI assistant against your own functions and Excel's values | 3 | Week 3, Day 3 |
-| Open the snapshot workbook and check its numbers with `SUMIFS`, `STANDARDIZE`, and `COUNTIF` | Write a daily market snapshot to HTML and Excel from one function that runs on any date | 3 | Week 3, Day 4 |
+| Fill `=(D262-B262)*100` and `=STDEV.S(F242:F262)` down the reference sheet | Test an assistant's 2s10s and 21-row volatility against Excel's values, and its volatility against `rolling_vol_bp` from the first row | 3 | Week 3, Day 3 |
+| Check a suggested `=PERCENTRANK.INC(D200:D451,D451)` against `=COUNTIF(D200:D451,"<="&D451)/COUNT(D200:D451)*100`, which differ on 172 of 190 rows of 2026 | Test a suggested formula against your own `rolling_percentile_rank` and Excel's reference rows | 3 | Week 3, Day 3 |
+| Drop the accrued from the DV01 cell, `=B4*B1/10000` beside `=B4*(B1+B2)/10000`, and see it run low between coupons | Test an assistant's DV01 against `bondmath.dv01` and Excel on a settlement between coupons | 3 | Week 3, Day 3 |
+| Tie the 10 Yr's z-score and rank on 2 October with `=STANDARDIZE(A252,AVERAGE(A1:A252),STDEV.S(A1:A252))` and `=COUNTIF(A1:A252,"<="&A252)/COUNT(A1:A252)*100` | `snapshot_tables`' levels table, within 4.6e-13 of Excel's reference row | 3 | Week 3, Day 4 |
+| Open the snapshot workbook: five sheets in General format, a 9-digit total shown as `4.89E+08`, and `=(D2-C2)*100` beside the curve's change | `write_snapshot_excel`, read back with `pd.read_excel(sheet_name=None)` | 3 | Week 3, Day 4 |
+| Total the book's DV01 and what-if by sector and by rating with `=SUMIFS(G2:G19,B2:B19,"sector")` and `"rating bucket"` | The book table's control totals, to the cent | 3 | Week 3, Day 4 |
 | Test a pasted extract's dates and units with `DATE`, `WEEKDAY`, `COUNTIF`, and `IFERROR(VALUE(...),NA())` | Clean a vendor extract with checks that stop, reconcile it, and run the snapshot on two dates | 3 | Week 3, Day 5 |
-| Unpivot with Power Query's `Table.UnpivotOtherColumns`, then filter the blanks | `melt` and `dropna` | 3 | Week 3, Day 1 |
+| Unpivot with Power Query's `Table.UnpivotOtherColumns` (41,160 rows), then Remove Empty (35,728) | `melt` and `dropna` | 3 | Week 3, Day 2 |
 | Test a date range with two tests in `COUNTIFS` | `BETWEEN` | 3 | Week 3, Day 2 |
 | Summarize a month with `MINIFS`, `MAXIFS`, and `AVERAGEIFS` | `GROUP BY substr(date, 1, 7)` | 3 | Week 3, Day 2 |
 | Take a month label with `=TEXT(DATE(2026,9,30),"yyyy-mm")` | `substr(date, 1, 7)` | 3 | Week 3, Day 2 |
 | See text dates compare wrongly with `="09/30/2026"<"10/02/2025"` | SQL text comparison | 3 | Week 3, Day 2 |
+| See `XLOOKUP` take the first match on a repeated key: 178 of 374 trades get another bond's cusip, no `#N/A` | A join on a repeated key that adds rows, and `validate='many_to_one'` | 3 | Week 3, Day 2 |
+| Find the rows with no match with Power Query's Merge Queries, Left Anti | `LEFT JOIN ... WHERE ... IS NULL` and `indicator=True` | 3 | Week 3, Day 2 |
+| Find each month's last market date with `=MAXIFS($A$2:$A$2941,$A$2:$A$2941,"<="&EOMONTH(D2,0))`, then its yield with `XLOOKUP` | `ROW_NUMBER() OVER (PARTITION BY ... ORDER BY date DESC)` | 3 | Week 3, Day 2 |
+| Fill `=(B3-B2)*100` down | `LAG()` | 3 | Week 3, Day 2 |
 | Build dummy columns with `=--(D2="AAA")`, fit them with `LINEST`, and score the test rows with `TREND` | Encode ratings with a named reference level and fit a multiple regression | 4 | Week 1, Day 2 |
 | `=COUNTIF(D2:D616,"A")` | `value_counts` of the rating column | 4 | Week 1, Day 2 |
 | `AVERAGEIF` for BBB minus `AVERAGEIF` for A | Difference of two group means | 4 | Week 1, Day 2 |
