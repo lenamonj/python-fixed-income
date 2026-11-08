@@ -319,14 +319,16 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Weight each sector's duration with a PivotTable: a helper column `=S2*N2`, `sector` in Rows, and a calculated field `=mv_x_duration/market_value` | `groupby('sector')` sums divided after, equal in all ten sectors | 2 | Week 3, Day 4 |
 | Build a request URL in cells with `&` and `ENCODEURL`, `=ENCODEURL("a b&c=d/e?f")` giving `a%20b%26c%3Dd%2Fe%3Ff`, and load FRED's key-free `fredgraph.csv` with Power Query From Web, where `=WEBSERVICE` shows `#VALUE!` | Build the request in code, `quote(..., safe='')` equal to `ENCODEURL`, and read the key from outside the code so it is never typed into a cell or a file | 3 | Week 1, Day 1 |
 | Hide a key in column B and save as `.xlsx`: it stays in `xl/sharedStrings.xml` and is back in B1 on reopening | Never type the key: `get_secret` reads it from the environment, Colab's Secrets panel, or `.env` | 3 | Week 1, Day 1 |
-| Load JSON with Power Query, and turn FRED's `.` into `#N/A` with `IFERROR(VALUE(...),NA())` | Parse FRED's JSON, reading `.` as missing and never as 0 | 3 | Week 1, Day 2 |
+| Load FRED's JSON with Power Query (`Json.Document`, `Table.FromRecords`): 43 rows, every value text, `.` on 2026-09-07; `=VALUE(".")` shows `#VALUE!`, `=IFERROR(VALUE(B2),NA())` `#N/A`, and `Table.SelectRows(..., each [value] <> ".")` before typing leaves 42 numbers | Parse the answer with `json.loads`, read `.` as `NaN` with `errors='coerce'`, and drop it with `dropna`, never as 0 | 3 | Week 1, Day 2 |
 | Use `WEEKDAY`, `WORKDAY`, and `NETWORKDAYS` with a holiday list, and see `XLOOKUP` return `#N/A` on a date with no row | Take the market calendar from the data's own dates, and join two series inner or outer | 3 | Week 1, Day 3 |
 | Find a month's last market date with `EOMONTH` and `MAXIFS`, look up a value as of a date with `XLOOKUP` match mode -1, and group a pivot table by month | Take the last observation of each week or month, labelled by its own date, and the as-of value | 3 | Week 1, Day 4 |
 | Append and merge files with Power Query, and check a sheet with `SUMPRODUCT`, `UNIQUE`, and `COUNTBLANK` | Build one checked daily dataset from two files, and cache a download | 3 | Week 1, Day 5 |
 | Keep an old copy of a workbook, which still holds a deleted key | The commit history | 3 | Week 1, Day 1 |
-| Separate rows from numbers with `COUNTA`, `COUNT`, and `=COUNTIF(...,".")` | Rows against numbers | 3 | Week 1, Day 2 |
-| Compare `AVERAGE` with `SUM/ROWS` when a cell is text | `mean` with `NaN` left out, and with `fillna(0)` | 3 | Week 1, Day 2 |
-| Find the first run over a rate limit with `=INT(120/11)+1` | The first run over the limit | 3 | Week 1, Day 2 |
+| Separate rows from numbers with `=COUNTA(B2:B44)` 43, `=COUNT(B2:B44)` 42, and `=COUNTIF(B2:B44,".")` 1 | `len(obs)`, and the dots counted with `(obs['value'] == '.').sum()` | 3 | Week 1, Day 2 |
+| Compare `=AVERAGE(B2:B44)` 4.8367, the text skipped, with `=SUM(B2:B44)/ROWS(B2:B44)` 4.7242 | `mean` with the dot dropped, and with `fillna(0.0)`: 11.2 bp apart | 3 | Week 1, Day 2 |
+| Find the first run over FRED's 120 requests a minute with `=INT(120/11)+1`, 11 | Count 11 requests a run, and see run 11 pass the limit at 121 | 3 | Week 1, Day 2 |
+| Type the column in Power Query with `Table.TransformColumnTypes`: the dot loads as an empty cell, `=(D28-D27)*100` reads it as 0 and gives 480, and `=(D28-D26)*100` from Friday gives 2 | `fillna(0.0)` then `.diff()` invents a 480 bp move; with the dot dropped first, Tuesday's change is 2 bp from Friday | 3 | Week 1, Day 2 |
+| See a line chart plot the text `.` at 0 and leave an empty cell as a gap, by default | Two panels: the dot as `NaN`, a gap, and as 0, a fall to zero and back | 3 | Week 1, Day 2 |
 | Count calendar days with `=A2941-A2+1` | `len(pd.date_range(...))` | 3 | Week 1, Day 3 |
 | Count a weekday with `=SUMPRODUCT(--(WEEKDAY(...,2)=1))` | `day_name().value_counts()` | 3 | Week 1, Day 3 |
 | Fill `=A3-A2` down and count gaps with `COUNTIF` | Gaps between rows | 3 | Week 1, Day 3 |

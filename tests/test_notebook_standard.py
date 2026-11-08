@@ -45,7 +45,7 @@ NEW_STYLE = {"01_the_ml_workflow_and_simple_regression", "0_start_here", "01_pyt
              "11_treasury_curve_interpolation", "12_spread_over_the_curve",
              "13_spread_duration_and_dts", "14_portfolio_aggregation_and_scenarios", "course2_capstone",
              # Course 3 as redesigned, a stem added as each notebook is pushed
-             "01_apis_keys_and_secrets", "08_z_scores_and_percentile_ranks"}
+             "01_apis_keys_and_secrets", "02_json_and_the_fred_api", "08_z_scores_and_percentile_ranks"}
 
 
 def ids(path: Path) -> str:
