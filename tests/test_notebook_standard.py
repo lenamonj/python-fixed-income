@@ -43,7 +43,9 @@ NEW_STYLE = {"01_the_ml_workflow_and_simple_regression", "0_start_here", "01_pyt
              "06_dates_and_coupon_schedules", "07_day_counts_and_accrued_interest", "08_clean_and_dirty_price",
              "09_duration_and_dv01", "10_case_study_convexity_and_the_september_book",
              "11_treasury_curve_interpolation", "12_spread_over_the_curve",
-             "13_spread_duration_and_dts", "14_portfolio_aggregation_and_scenarios", "course2_capstone"}
+             "13_spread_duration_and_dts", "14_portfolio_aggregation_and_scenarios", "course2_capstone",
+             # Course 3 as redesigned, a stem added as each notebook is pushed
+             "08_z_scores_and_percentile_ranks"}
 
 
 def ids(path: Path) -> str:
@@ -197,8 +199,8 @@ def test_case_study_opens_with_the_problem_definition(path):
 @pytest.mark.parametrize("path", [p for p in TEACHING if not is_case_study(p) and not is_project(p)], ids=ids)
 def test_hands_on_notebook_has_a_scenario_before_its_first_section(path):
     sources = markdown(path)
-    # Courses 1 and 2 as redesigned: no install section, so the scenario sits between the title and section 1
-    if path.stem in NEW_STYLE and course_number(path) <= 2:
+    # Courses 1 to 3 as redesigned: no install section, so the scenario sits between the title and section 1
+    if path.stem in NEW_STYLE and course_number(path) <= 3:
         # sources[0] is the banner, sources[1] the title; a scenario cell sits before the first numbered section
         first_section = next(i for i, source in enumerate(sources) if re.match(rf"## {number(path)}\.\d", source))
         assert sources[1].startswith("# ") and first_section >= 3, "no scenario between the title and section 1"

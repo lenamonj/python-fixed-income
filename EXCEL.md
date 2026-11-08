@@ -339,7 +339,7 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Open a CSV of full-digit thirds and see the values change | `float_precision="round_trip"` | 3 | Week 1, Day 5 |
 | Write `=(B3-B2)*100` for a change in bp, `XLOOKUP` with `EDATE` for a one-month change, and `MAX` with `XLOOKUP` for the date of the largest move | Compute changes in bp over rows and over calendar periods, and price returns in percent | 3 | Week 2, Day 1 |
 | Fill `STDEV.S` down a fixed-size range, with `STDEV.P`, `OFFSET`, and `*SQRT(252)` beside it | Compute rolling volatility over a trailing window of rows, and test that it uses no future data | 3 | Week 2, Day 2 |
-| Use `STANDARDIZE`, and `COUNTIF` over `COUNT` for a percentile rank, beside `PERCENTRANK.INC`, `RANK.EQ`, and `RANK.AVG` | Compute rolling z-scores and percentile ranks that match Excel row for row | 3 | Week 2, Day 3 |
+| Use `STANDARDIZE` filled down, and `=COUNTIF(C3:C254,"<="&C254)/COUNT(C3:C254)*100` for a percentile rank, beside `PERCENTRANK.INC`, `RANK.EQ`, and `RANK.AVG` | Write `rolling_zscore` and `rolling_percentile_rank` and match Excel on every row of 2026 | 3 | Week 2, Day 3 |
 | Fill slope and butterfly formulas down the Treasury sheet, and weight a butterfly with `PRICE` and `MDURATION` | Compute slopes and butterflies in bp, and DV01-neutral weights from your own `bondmath` | 3 | Week 2, Day 4 |
 | Build a summary sheet for one date with `XMATCH`, `XLOOKUP`, `INDEX`, `OFFSET`, `STANDARDIZE`, and `COUNTIF` | Build every measure as of one date in one table that reads nothing after it | 3 | Week 2, Day 5 |
 | See `=(B440-B439)*100` hold more digits than it shows | `ten.iloc[-1] - ten.iloc[-2]` | 3 | Week 2, Day 1 |
@@ -355,10 +355,12 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Count rows by year with `COUNTIFS` | `groupby(index.year).size()` | 3 | Week 2, Day 2 |
 | Find the peak and its date with `MAX` and `XLOOKUP` | `max` and `idxmax` | 3 | Week 2, Day 2 |
 | Compare two windows with `=G254/K254` | `vol_ratio` | 3 | Week 2, Day 2 |
-| Find a window's extremes and dates with `MIN`, `MAX`, and `XLOOKUP` | `min` and `idxmax` | 3 | Week 2, Day 3 |
+| Find a window's extremes and the high's date with `MIN`, `MAX`, and `=XLOOKUP(MAX(C3:C254),C3:C254,A3:A254)` | `min`, `max`, and `idxmax` | 3 | Week 2, Day 3 |
 | Score a day three ways with `AVERAGE`, `STDEV.S`, and `COUNTIF` | The z-score and the rank, three ways | 3 | Week 2, Day 3 |
-| Rank ties with `=COUNTIF(H1:H10,"<="&7)` | `rank(method="max")` | 3 | Week 2, Day 3 |
-| Show a flat window with `=IFERROR(STANDARDIZE(...),NA())` | `NaN` on a flat window | 3 | Week 2, Day 3 |
+| Leave today out with `=STANDARDIZE(C254,AVERAGE(C2:C253),STDEV.S(C2:C253))` | The z-score against the 252 rows before today | 3 | Week 2, Day 3 |
+| Count `=(4.12-3.80)*100` and `=(4.13-3.81)*100` as a tie with `COUNTIF` over `COUNT`, 100 | `float(f'{value:.15g}')`, 15 significant digits | 3 | Week 2, Day 3 |
+| Rank ties with `=RANK.EQ(7,A1:A10,1)`, `=RANK.AVG(7,A1:A10,1)`, and `=COUNTIF(A1:A10,"<="&7)/COUNT(A1:A10)*100` | `rank(method='min')`, `'average'`, and `rank(pct=True, method='max')` | 3 | Week 2, Day 3 |
+| See `STANDARDIZE` over a flat window show `#NUM!`, and `=IFERROR(STANDARDIZE(...),NA())` show `#N/A` | `NaN` on a flat window | 3 | Week 2, Day 3 |
 | Find the low in 2s10s and its date with `MIN` and `XLOOKUP` | `min` and `idxmin` | 3 | Week 2, Day 4 |
 | Write a fly the other way round with `=(B+D-2*C)*100` | The other sign | 3 | Week 2, Day 4 |
 | Count inverted days with `COUNTIF` | Sign counts | 3 | Week 2, Day 4 |

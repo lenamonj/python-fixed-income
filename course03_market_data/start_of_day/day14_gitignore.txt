@@ -1,0 +1,11 @@
+# secrets: your .env holds real keys and is never committed
+.env
+# downloaded data and databases: rebuilt, never part of the record
+cache/
+*.db
+# folders Python and pytest make
+__pycache__/
+.pytest_cache/
+settings.py
+# the snapshot outputs: rebuilt by python snapshot.py, never committed
+snapshots/

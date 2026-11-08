@@ -1,0 +1,2 @@
+# the names of the secrets this folder needs, with no values. Copy it to .env and fill in the values.
+DEMO_API_KEY=
