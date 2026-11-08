@@ -49,6 +49,7 @@ NEW_STYLE = {"01_the_ml_workflow_and_simple_regression", "0_start_here", "01_pyt
              "04_resampling_and_the_as_of_value", "05_case_study_the_market_dataset",
              "06_changes_in_bp_and_percent", "07_rolling_windows_and_volatility",
              "09_slopes_and_butterflies", "10_case_study_three_years_of_curve_and_spreads",
+             "11_sql_with_sqlite3",
              "08_z_scores_and_percentile_ranks"}
 
 
