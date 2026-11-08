@@ -248,12 +248,6 @@ def test_licensed_series_not_cached(monkeypatch, tmp_path):
     assert not (tmp_path / "cache").exists()
 
 
-def read_reference() -> pd.DataFrame:
-    """The Excel reference rows in this folder: one per 2026 market date, every value computed by Excel."""
-    return pd.read_csv(HERE / "course3_excel_reference.csv", parse_dates=["date"], index_col="date",
-                       float_precision="round_trip")
-
-
 def test_change_bp_hand_series():
     dates = pd.to_datetime(["2026-09-03", "2026-09-04", "2026-09-08"])
     yields = pd.Series([4.00, 4.10, 4.05], index=dates)
@@ -278,6 +272,12 @@ def test_return_pct_hand_series():
     assert returns.iloc[2] == pytest.approx(-1.0, abs=1e-12)
 
 
+def read_reference() -> pd.DataFrame:
+    """The Excel reference rows in this folder: one per 2026 market date, every value computed by Excel."""
+    return pd.read_csv(HERE / "course3_excel_reference.csv", parse_dates=["date"], index_col="date",
+                       float_precision="round_trip")
+
+
 def test_change_since_uses_as_of_values():
     ten = read_treasury()["10 Yr"]
     # since Labor Day 2026-09-07 (no row) means since Friday 2026-09-04
@@ -297,21 +297,6 @@ def test_change_bp_matches_excel_reference():
         # the one-month as-of change: =(D_t-XLOOKUP(EDATE(A_t,-1),...,-1))*100
         month_back = day - pd.DateOffset(months=1)
         assert md.change_since_bp(ten, day, month_back) == pytest.approx(row["chg1m_10y_bp"], abs=1e-9), day
-
-
-def assert_no_lookahead(func, series, cut_dates):
-    """Check that func uses no future data: its output up to each cut date is the same whether the series
-    stops at that date or runs on past it (exact equality, no tolerance)."""
-    full = func(series)
-    for cut in cut_dates:
-        cut = pd.Timestamp(cut)
-        # the same function on the series cut at that date
-        cut_result = func(series.loc[:cut])
-        pd.testing.assert_series_equal(full.loc[:cut], cut_result, check_exact=True)
-
-
-# dates to cut the series at in the no-lookahead tests: a holiday week, a month end, and the file's last week
-CUT_DATES = ["2025-04-17", "2026-06-30", "2026-09-30"]
 
 
 def ten_year_changes() -> pd.Series:
@@ -341,6 +326,21 @@ def test_vol_annualise_factor():
     daily = md.rolling_vol_bp(changes, window=63)
     annual = md.rolling_vol_bp(changes, window=63, annualise=True)
     assert annual.iloc[-1] == pytest.approx(daily.iloc[-1] * math.sqrt(252), abs=1e-12)
+
+
+def assert_no_lookahead(func, series, cut_dates):
+    """Check that func uses no future data: its output up to each cut date is the same whether the series
+    stops at that date or runs on past it (exact equality, no tolerance)."""
+    full = func(series)
+    for cut in cut_dates:
+        cut = pd.Timestamp(cut)
+        # the same function on the series cut at that date
+        cut_result = func(series.loc[:cut])
+        pd.testing.assert_series_equal(full.loc[:cut], cut_result, check_exact=True)
+
+
+# dates to cut the series at in the no-lookahead tests: a holiday week, a month end, and the file's last week
+CUT_DATES = ["2025-04-17", "2026-06-30", "2026-09-30"]
 
 
 def test_vol_no_lookahead():
@@ -477,13 +477,6 @@ def test_summary_table_no_lookahead():
         pd.testing.assert_frame_equal(full, cut_only, check_exact=True)
 
 
-def build_database(folder: Path) -> Path:
-    """course3.db in `folder`, holding the holdings and ratings tables from this folder's CSV files."""
-    db_path = folder / "course3.db"
-    md.load_tables(db_path, {"holdings": HERE / "holdings.csv", "ratings": HERE / "ratings.csv"})
-    return db_path
-
-
 def test_load_tables_counts(tmp_path):
     counts = md.load_tables(tmp_path / "course3.db", {"holdings": HERE / "holdings.csv", "ratings": HERE / "ratings.csv"})
     assert counts == {"holdings": 200, "ratings": 18}
@@ -491,6 +484,13 @@ def test_load_tables_counts(tmp_path):
     assert md.load_tables(tmp_path / "course3.db", {"holdings": HERE / "holdings.csv"}) == {"holdings": 200}
     with pytest.raises(ValueError):
         md.load_tables(tmp_path / "course3.db", {"holdings; DROP TABLE ratings": HERE / "holdings.csv"})
+
+
+def build_database(folder: Path) -> Path:
+    """course3.db in `folder`, holding the holdings and ratings tables from this folder's CSV files."""
+    db_path = folder / "course3.db"
+    md.load_tables(db_path, {"holdings": HERE / "holdings.csv", "ratings": HERE / "ratings.csv"})
+    return db_path
 
 
 def test_run_query_params(tmp_path):

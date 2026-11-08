@@ -340,38 +340,38 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Carry a value forward with `=IF(T3="",U2,T3)`: Labor Day takes Friday's 4.78 and `=(U3-U2)*100` gives a 0 bp change on a day with no market | `.ffill()` on a displayed copy only: the filled Labor Day adds a zero change | 3 | Week 1, Day 3 |
 | Find September 2026's first, mean, and high with `XLOOKUP` match mode 1, `AVERAGEIFS`, and `MAXIFS`: 4.79, 4.989, 5.29 | The course takes the last observation: 5.29 on 2026-09-30 | 3 | Week 1, Day 4 |
 | Open a CSV of the 10 Yr divided by 3 with File, Open: 2,226 of 2,940 values change, by up to 9.8e-15 | `read_cache` with `float_precision="round_trip"`: 0 change, where pandas' default reader changes 599 | 3 | Week 1, Day 5 |
-| Write `=(B3-B2)*100` for a change in bp, `XLOOKUP` with `EDATE` for a one-month change, and `MAX` with `XLOOKUP` for the date of the largest move | Compute changes in bp over rows and over calendar periods, and price returns in percent | 3 | Week 2, Day 1 |
-| Fill `STDEV.S` down a fixed-size range, with `STDEV.P`, `OFFSET`, and `*SQRT(252)` beside it | Compute rolling volatility over a trailing window of rows, and test that it uses no future data | 3 | Week 2, Day 2 |
+| Write `=(B3-B2)*100` for a change in bp, `XLOOKUP` with `EDATE` or `A251-7` for a one-month or one-week change, and `MAX` and `MIN` with `XLOOKUP` for the dates of the largest moves | Compute changes in bp over rows and over calendar periods, and price returns in percent | 3 | Week 2, Day 1 |
+| Fill `=STDEV.S(F3:F23)` down, with `=STDEV.P(F3:F23)`, `=STDEV.S(OFFSET(F23,-20,0,21,1))`, and `=G23*SQRT(252)` beside it, and see `=STDEV.S(A1)` show `#DIV/0!` | Write `rolling_vol_bp`, match Excel on every row of 2026, and test that it uses no future data | 3 | Week 2, Day 2 |
 | Use `STANDARDIZE` filled down, and `=COUNTIF(C3:C254,"<="&C254)/COUNT(C3:C254)*100` for a percentile rank, beside `PERCENTRANK.INC`, `RANK.EQ`, and `RANK.AVG` | Write `rolling_zscore` and `rolling_percentile_rank` and match Excel on every row of 2026 | 3 | Week 2, Day 3 |
-| Fill slope and butterfly formulas down the Treasury sheet, and weight a butterfly with `PRICE` and `MDURATION` | Compute slopes and butterflies in bp, and DV01-neutral weights from your own `bondmath` | 3 | Week 2, Day 4 |
-| Build a summary sheet for one date with `XMATCH`, `XLOOKUP`, `INDEX`, `OFFSET`, `STANDARDIZE`, and `COUNTIF` | Build every measure as of one date in one table that reads nothing after it | 3 | Week 2, Day 5 |
-| See `=(B440-B439)*100` hold more digits than it shows | `ten.iloc[-1] - ten.iloc[-2]` | 3 | Week 2, Day 1 |
+| Fill `=(M2-I2)*100`, `=(O2-K2)*100` and `=(M2-E2)*100` down the Treasury file for 2s10s, 5s30s and 3m10y, and `=(2*K2-I2-M2)*100` and `=(2*M2-K2-O2)*100` for the two flies | `slope_bp` and `butterfly_bp`, equal on all 2,940 rows | 3 | Week 2, Day 4 |
+| Price three par bonds with `PRICE`, take `MDURATION`, build each DV01 with `=C3*(C1+C2)/10000`, then weight the fly with `=0.5*C4/B4` and `=0.5*C4/D4` and net it with `=C4-B6*B4-C6*D4` | DV01-neutral weights with `fly_weights` from your own `bondmath` | 3 | Week 2, Day 4 |
+| Build a summary row with `=XMATCH($H$1,$A$2:$A$2941,-1)` for the row, `XLOOKUP(...,-1)` for the level, `INDEX` for the row before, `EDATE` for a month back, and `STANDARDIZE` and `COUNTIF` over `OFFSET(C$1,H3-251,0,252,1)`, then set H1 to a holiday and a month end | `summary_table`, equal on 36 values on three dates | 3 | Week 2, Day 5 |
+| See `=(B2-B1)*100` show 10 while it holds 9.999999999999964, and `=B2/B1-1` in percent format show 2.5% | A move in bp beside `pct_change()` | 3 | Week 2, Day 1 |
 | Choose `=D440-D439` or `*100` by the column's units | `change_bp(ig, percent_units=False)` and the default | 3 | Week 2, Day 1 |
 | Step back a month with `=EDATE(DATE(2026,3,31),-1)` | `pd.DateOffset(months=1)` | 3 | Week 2, Day 1 |
-| Rank moves with `=TAKE(SORT(ROUND(ABS(C251:C440),6),,-1),6)` and `LARGE` | `nlargest` | 3 | Week 2, Day 1 |
-| Count large moves with `=SUMPRODUCT(--(ABS(C251:C440)>=10))` or two `COUNTIF`s | A threshold count | 3 | Week 2, Day 1 |
+| Measure since a date with no row: `XLOOKUP(DATE(2026,9,7),A:A,B:B,,-1)` steps back to the Friday | `change_since_bp`, as-of values at both ends | 3 | Week 2, Day 1 |
+| Count moves of 10 bp or more with `=SUMPRODUCT(--(ABS(C251:C440)>=10))`, then with `ROUND(...,6)` inside | A threshold count, before and after rounding off the binary tail | 3 | Week 2, Day 1 |
 | Fill a histogram bin with `=COUNTIFS(C251:C440,">=0.5",C251:C440,"<1.5")` | A histogram bin | 3 | Week 2, Day 1 |
-| Conditional Formatting, Data Bars and the Top 1 rule | `.bar` and `highlight_max` | 3 | Week 2, Day 1 |
+| Price a bond on two dates with `PRICE`, then `=(B2/B1-1)*100` | `bondmath.price` and `return_pct` | 3 | Week 2, Day 1 |
 | Count a calendar window with `=COUNTIFS($A$3:$A$2941,">"&A3-30,$A$3:$A$2941,"<="&A3)` | `rolling("30D").count()` | 3 | Week 2, Day 2 |
-| Fill `=AVERAGE(A$1:A1)` down | `min_periods=1` | 3 | Week 2, Day 2 |
-| Size the sample correction and the annualising factor with `=SQRT(21/20)` and `=SQRT(252)` | The ratio and the factor | 3 | Week 2, Day 2 |
-| Count rows by year with `COUNTIFS` | `groupby(index.year).size()` | 3 | Week 2, Day 2 |
-| Find the peak and its date with `MAX` and `XLOOKUP` | `max` and `idxmax` | 3 | Week 2, Day 2 |
-| Compare two windows with `=G254/K254` | `vol_ratio` | 3 | Week 2, Day 2 |
+| Fill `=AVERAGE(D2:D64)` down the whole Treasury file, and the same with `=AVERAGE(OFFSET(D64,-62,0,63,1))` | `rolling(63, min_periods=63).mean()`, within 2.7e-15 percent | 3 | Week 2, Day 2 |
+| Fill `=AVERAGE(B2:B4)` down from C4 with C2 and C3 left empty, the same window as `=AVERAGE(OFFSET(B4,-2,0,3,1))`, and a growing range with `=AVERAGE(A$1:A1)` | `rolling(3, min_periods=3).mean()` against `min_periods=1` | 3 | Week 2, Day 2 |
+| Size the sample correction with `=SQRT(21/20)`, 1.024695 | Sample over population, `sqrt(n / (n - 1))` | 3 | Week 2, Day 2 |
+| Count rows by year with `COUNTIFS` and `DATE`: 249 to 251, never 252 | `groupby(index.year).size()` | 3 | Week 2, Day 2 |
+| Find the 21-row peak and its date with `=MAX(G23:G2941)` and `=XLOOKUP(MAX(G23:G2941),G23:G2941,A23:A2941)` | `max` and `idxmax` | 3 | Week 2, Day 2 |
 | Find a window's extremes and the high's date with `MIN`, `MAX`, and `=XLOOKUP(MAX(C3:C254),C3:C254,A3:A254)` | `min`, `max`, and `idxmax` | 3 | Week 2, Day 3 |
 | Score a day three ways with `AVERAGE`, `STDEV.S`, and `COUNTIF` | The z-score and the rank, three ways | 3 | Week 2, Day 3 |
 | Leave today out with `=STANDARDIZE(C254,AVERAGE(C2:C253),STDEV.S(C2:C253))` | The z-score against the 252 rows before today | 3 | Week 2, Day 3 |
 | Count `=(4.12-3.80)*100` and `=(4.13-3.81)*100` as a tie with `COUNTIF` over `COUNT`, 100 | `float(f'{value:.15g}')`, 15 significant digits | 3 | Week 2, Day 3 |
 | Rank ties with `=RANK.EQ(7,A1:A10,1)`, `=RANK.AVG(7,A1:A10,1)`, and `=COUNTIF(A1:A10,"<="&7)/COUNT(A1:A10)*100` | `rank(method='min')`, `'average'`, and `rank(pct=True, method='max')` | 3 | Week 2, Day 3 |
 | See `STANDARDIZE` over a flat window show `#NUM!`, and `=IFERROR(STANDARDIZE(...),NA())` show `#N/A` | `NaN` on a flat window | 3 | Week 2, Day 3 |
-| Find the low in 2s10s and its date with `MIN` and `XLOOKUP` | `min` and `idxmin` | 3 | Week 2, Day 4 |
-| Write a fly the other way round with `=(B+D-2*C)*100` | The other sign | 3 | Week 2, Day 4 |
-| Count inverted days with `COUNTIF` | Sign counts | 3 | Week 2, Day 4 |
-| Count a run with `=IF(E2<0,IF(N(E1)<0,F1+1,1),0)`, then `MAX` | `cumsum` and `groupby` runs | 3 | Week 2, Day 4 |
-| Correlate changes with `=CORREL(F3:F752,G3:G752)` | `.corr` | 3 | Week 2, Day 5 |
-| Find the mean absolute move with `SUMPRODUCT(ABS())/COUNT`, and `MIN` | The mean absolute move and the largest fall | 3 | Week 2, Day 5 |
-| Count negative days with `COUNTIF` | Negative days | 3 | Week 2, Day 5 |
-| Find the same-direction share with `SUMPRODUCT`, and the gap with `MIN` and `MAX` | The share and the gap | 3 | Week 2, Day 5 |
+| Find the lowest 2s10s and its date with `=MIN(E2:E2941)` and `=XLOOKUP(MIN(E2:E2941),E2:E2941,A2:A2941)` | `min` and `idxmin` | 3 | Week 2, Day 4 |
+| Count days below zero with `=COUNTIF(E2:E2941,"<0")` and exactly zero with `=COUNTIF(E2:E2941,0)` | `(slopes['2s10s'] < 0).sum()` | 3 | Week 2, Day 4 |
+| Count a run with `=IF(E2<0,IF(N(E1)<0,F1+1,1),0)` filled down, then `=MAX(F2:F2941)` and its date with `XLOOKUP` | Notebook 03's `stale_runs` on a True/False series | 3 | Week 2, Day 4 |
+| Correlate the synthetic spreads' daily changes with `=CORREL(F3:F752,G3:G752)` | `.corr` | 3 | Week 2, Day 5 |
+| Find the typical 10 Yr day with `=SUMPRODUCT(ABS(H3:H752))/COUNT(H3:H752)`, and the largest 2 Yr fall and its date with `=MIN(I3:I752)` and `XLOOKUP` | `.abs().mean()`, `min` and `idxmin` | 3 | Week 2, Day 5 |
+| Count 2s10s days below zero with `=COUNTIF(J3:J752,"<0")` | `(shape < 0).sum()` | 3 | Week 2, Day 5 |
+| Find the share of days both synthetic spreads moved the same way with `=SUMPRODUCT(--(F3:F752*G3:G752>0))/COUNT(F3:F752)`, and the high yield less investment grade gap's range with `MIN` and `MAX` | `(a * b > 0).mean()`, `gap.min()` and `gap.max()` | 3 | Week 2, Day 5 |
 | Use `COUNTIFS`, `SUMIFS`, `AVERAGEIFS`, `FILTER`, `TAKE` with `SORTBY`, and a pivot table | Write `WHERE`, `GROUP BY`, `HAVING`, `ORDER BY`, and `LIMIT` in SQL, each checked against pandas | 3 | Week 3, Day 1 |
 | Join with `XLOOKUP` or Power Query Merge, and find repeated keys with `COUNTIF` | Join tables in SQL, catch a join that duplicates rows, and use window functions for daily changes and month ends | 3 | Week 3, Day 2 |
 | Check a suggested formula, `PERCENTRANK.INC`, against `COUNTIF` over `COUNT`, and a DV01 built from cells | Test code written in the style of an AI assistant against your own functions and Excel's values | 3 | Week 3, Day 3 |

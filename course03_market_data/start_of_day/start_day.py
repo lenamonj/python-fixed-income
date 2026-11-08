@@ -111,7 +111,9 @@ def copy_day(work: Path, notebook: int) -> list:
     fetch_text(f"{FOLDER}marketdata_after_{notebook:02d}.py", work / "marketdata.py")
     fetch_text(f"{FOLDER}tests_after_{notebook:02d}.py", work / "test_marketdata.py")
     for name, stored in DAY_FILES.get(notebook, {}).items():
-        fetch_text(FOLDER + stored, work / name)
+        # a CSV keeps the LF line ends to_csv wrote, so rewriting it the same way changes no line
+        copy = fetch if name.endswith(".csv") else fetch_text
+        copy(FOLDER + stored, work / name)
     return ["marketdata.py", "test_marketdata.py", *DAY_FILES.get(notebook, {})]
 
 

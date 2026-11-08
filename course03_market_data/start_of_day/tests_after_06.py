@@ -248,12 +248,6 @@ def test_licensed_series_not_cached(monkeypatch, tmp_path):
     assert not (tmp_path / "cache").exists()
 
 
-def read_reference() -> pd.DataFrame:
-    """The Excel reference rows in this folder: one per 2026 market date, every value computed by Excel."""
-    return pd.read_csv(HERE / "course3_excel_reference.csv", parse_dates=["date"], index_col="date",
-                       float_precision="round_trip")
-
-
 def test_change_bp_hand_series():
     dates = pd.to_datetime(["2026-09-03", "2026-09-04", "2026-09-08"])
     yields = pd.Series([4.00, 4.10, 4.05], index=dates)
@@ -276,6 +270,12 @@ def test_return_pct_hand_series():
     returns = md.return_pct(prices)
     assert returns.iloc[1] == pytest.approx(1.0, abs=1e-12)
     assert returns.iloc[2] == pytest.approx(-1.0, abs=1e-12)
+
+
+def read_reference() -> pd.DataFrame:
+    """The Excel reference rows in this folder: one per 2026 market date, every value computed by Excel."""
+    return pd.read_csv(HERE / "course3_excel_reference.csv", parse_dates=["date"], index_col="date",
+                       float_precision="round_trip")
 
 
 def test_change_since_uses_as_of_values():

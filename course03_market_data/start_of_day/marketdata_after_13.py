@@ -446,8 +446,7 @@ def rolling_percentile_rank(series: pd.Series, window: int = 252) -> pd.Series:
     Values are compared at 15 significant digits, as Excel's COUNTIF compares them: in binary arithmetic
     (4.13 - 3.81) x 100 is 31.999999999999986 and (4.12 - 3.80) x 100 is 32.00000000000003, and the two count
     as a tie at 32 bp.
-    Excel: =COUNTIF(B2:B253,"<="&B253)/COUNT(B2:B253)*100 filled down. Excel's PERCENTRANK.INC is a
-    different measure.
+    Excel: =COUNTIF(B2:B253,"<="&B253)/COUNT(B2:B253)*100 filled down.
     Raises ValueError if window is below 2, the series has missing values, or its index is not unique
     ascending dates.
     """
