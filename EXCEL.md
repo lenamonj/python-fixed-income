@@ -320,7 +320,10 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Build a request URL in cells with `&` and `ENCODEURL`, `=ENCODEURL("a b&c=d/e?f")` giving `a%20b%26c%3Dd%2Fe%3Ff`, and load FRED's key-free `fredgraph.csv` with Power Query From Web, where `=WEBSERVICE` shows `#VALUE!` | Build the request in code, `quote(..., safe='')` equal to `ENCODEURL`, and read the key from outside the code so it is never typed into a cell or a file | 3 | Week 1, Day 1 |
 | Hide a key in column B and save as `.xlsx`: it stays in `xl/sharedStrings.xml` and is back in B1 on reopening | Never type the key: `get_secret` reads it from the environment, Colab's Secrets panel, or `.env` | 3 | Week 1, Day 1 |
 | Load FRED's JSON with Power Query (`Json.Document`, `Table.FromRecords`): 43 rows, every value text, `.` on 2026-09-07; `=VALUE(".")` shows `#VALUE!`, `=IFERROR(VALUE(B2),NA())` `#N/A`, and `Table.SelectRows(..., each [value] <> ".")` before typing leaves 42 numbers | Parse the answer with `json.loads`, read `.` as `NaN` with `errors='coerce'`, and drop it with `dropna`, never as 0 | 3 | Week 1, Day 2 |
-| Use `WEEKDAY`, `WORKDAY`, and `NETWORKDAYS` with a holiday list, and see `XLOOKUP` return `#N/A` on a date with no row | Take the market calendar from the data's own dates, and join two series inner or outer | 3 | Week 1, Day 3 |
+| Count weekdays with `=NETWORKDAYS(A2,A2941)` 3,066 against `=COUNT(A2:A2941)` 2,940, 126 apart; with the seven 2026 dates in H2:H8 as the holiday list, `NETWORKDAYS` gives the file's 190 rows of 2026 and 21 in September, and `=WORKDAY(DATE(2026,9,4),1)` gives Labor Day, 2026-09-07, where `=WORKDAY(DATE(2026,9,4),1,H2:H8)` gives 2026-09-08 | `missing_weekdays` takes the market calendar from the file's own dates: 126 weekdays with no row | 3 | Week 1, Day 3 |
+| Number the day of the week with `=WEEKDAY(DATE(2026,9,7),2)` 1, Monday first, and `=WEEKDAY(DATE(2026,9,7))` 2, Sunday first | `.dayofweek` counts Monday as 0 | 3 | Week 1, Day 3 |
+| See `=XLOOKUP(DATE(2026,9,7),A2:A2941,B2:B2941)` return `#N/A` on Labor Day, a date with no row, and 4.8 on 2026-09-08 | `align` joins series inner or outer on their dates and fills nothing: an outer join leaves `NaN` | 3 | Week 1, Day 3 |
+| Flag a stale value with `=AND(C4=C3,C3=C2)` filled down D4:D2941, and count the flags with `=COUNTIF(D4:D2941,TRUE)`: 4 in the synthetic IG spread | `stale_runs` reports each run of three or more identical values: 4 IG runs, none of five or more | 3 | Week 1, Day 3 |
 | Find a month's last market date with `EOMONTH` and `MAXIFS`, look up a value as of a date with `XLOOKUP` match mode -1, and group a pivot table by month | Take the last observation of each week or month, labelled by its own date, and the as-of value | 3 | Week 1, Day 4 |
 | Append and merge files with Power Query, and check a sheet with `SUMPRODUCT`, `UNIQUE`, and `COUNTBLANK` | Build one checked daily dataset from two files, and cache a download | 3 | Week 1, Day 5 |
 | Keep an old copy of a workbook, which still holds a deleted key | The commit history | 3 | Week 1, Day 1 |
@@ -329,11 +332,8 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Find the first run over FRED's 120 requests a minute with `=INT(120/11)+1`, 11 | Count 11 requests a run, and see run 11 pass the limit at 121 | 3 | Week 1, Day 2 |
 | Type the column in Power Query with `Table.TransformColumnTypes`: the dot loads as an empty cell, `=(D28-D27)*100` reads it as 0 and gives 480, and `=(D28-D26)*100` from Friday gives 2 | `fillna(0.0)` then `.diff()` invents a 480 bp move; with the dot dropped first, Tuesday's change is 2 bp from Friday | 3 | Week 1, Day 2 |
 | See a line chart plot the text `.` at 0 and leave an empty cell as a gap, by default | Two panels: the dot as `NaN`, a gap, and as 0, a fall to zero and back | 3 | Week 1, Day 2 |
-| Count calendar days with `=A2941-A2+1` | `len(pd.date_range(...))` | 3 | Week 1, Day 3 |
-| Count a weekday with `=SUMPRODUCT(--(WEEKDAY(...,2)=1))` | `day_name().value_counts()` | 3 | Week 1, Day 3 |
-| Fill `=A3-A2` down and count gaps with `COUNTIF` | Gaps between rows | 3 | Week 1, Day 3 |
-| Carry a value forward with `=IF(T3="",U2,T3)` | `ffill` | 3 | Week 1, Day 3 |
-| Conditional Formatting, Data Bars | `.style.bar` | 3 | Week 1, Day 3 |
+| Count calendar days with `=A2941-A2+1`, 4,292 | `len(pd.date_range(first, last))` | 3 | Week 1, Day 3 |
+| Carry a value forward with `=IF(T3="",U2,T3)`: Labor Day takes Friday's 4.78 and `=(U3-U2)*100` gives a 0 bp change on a day with no market | `.ffill()` on a displayed copy only: the filled Labor Day adds a zero change | 3 | Week 1, Day 3 |
 | Find a month's first, mean, and high with `XLOOKUP`, `AVERAGEIFS`, and `MAXIFS` | First, mean, and high | 3 | Week 1, Day 4 |
 | Test a month end with `COUNTIF(dates,EOMONTH(...))` | `isin` on month ends | 3 | Week 1, Day 4 |
 | Open a CSV of full-digit thirds and see the values change | `float_precision="round_trip"` | 3 | Week 1, Day 5 |
