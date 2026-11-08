@@ -46,6 +46,7 @@ NEW_STYLE = {"01_the_ml_workflow_and_simple_regression", "0_start_here", "01_pyt
              "13_spread_duration_and_dts", "14_portfolio_aggregation_and_scenarios", "course2_capstone",
              # Course 3 as redesigned, a stem added as each notebook is pushed
              "01_apis_keys_and_secrets", "02_json_and_the_fred_api", "03_market_calendars_and_cleaning",
+             "04_resampling_and_the_as_of_value", "05_case_study_the_market_dataset",
              "08_z_scores_and_percentile_ranks"}
 
 
