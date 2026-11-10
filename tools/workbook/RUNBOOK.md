@@ -10,14 +10,20 @@ Your brief names four files: the notebook, its builder, its picture script, and 
 
 ## The job, in order
 
-1. **Read the notebook from top to bottom**, then skim Day 0 (`course01_python_foundations/week1/day0/0_start_here.ipynb`) to see the standard.
-2. **Redraw the notebook's pictures.** Run the day's picture script. It draws them in the house style at 2400 px. Open each PNG and look at it beside the picture as it was: the layout must be the same, with no word cut off or running into a box, and every mark still on the words it marks. To see a picture as it was, save the last committed one somewhere outside the repo:
+1. **Read the notebook from top to bottom**, as plain text:
 
    ```powershell
-   git -C instructor show "HEAD:_build/redesign_c1/day1_part2/pictures/p4_comprehension_sentence.png" > <a file>.png
+   .venv\Scripts\python.exe tools\workbook\check.py <path to the notebook> --text
    ```
 
-   The path after `HEAD:` is the picture's path with `instructor/` taken off the front, written with forward slashes.
+   Never open the `.ipynb` file itself: it is mostly pictures, and far too large to read. The text shows each picture as its alt text.
+2. **Redraw the notebook's pictures.** Run the day's picture script. It draws them in the house style at 2400 px. Then open each new PNG and look at it: no word cut off or running into a box, and every mark, highlight, and arrow still on the thing it points at. Then check the layout against the pictures as they were:
+
+   ```powershell
+   .venv\Scripts\python.exe tools\workbook\check.py --compare <the pictures folder> --sheet <a folder>
+   ```
+
+   Each sheet it saves shows a picture as it was, left, and as it is now, right. The colours and typefaces are meant to differ. The positions are not: every box, word, and arrow must sit where it sat.
 
    If a picture is wrong, say which and how in your report and carry on. Change a picture script only to shorten a label; never move a box or a mark.
 3. **Write the plan**: `instructor/_build/workbook_plans/<course folder>/<notebook name>.json`. The solutions notebook shares it.
@@ -35,7 +41,7 @@ Your brief names four files: the notebook, its builder, its picture script, and 
 
 Only `goals` is required. Everything else the tool reads from the notebook: title, week and day, sections, minutes, exercises, pictures, and the next notebook.
 
-A section is each numbered heading (`## 1.6 Conditional Statements`), and any unnumbered `##` heading that comes after the first numbered one and before You Can Now. The scenario at the top, You Can Now, Exercises, and Congratulations are not sections and take no goal.
+A section is each numbered heading (`## 1.6 Conditional Statements`, or `## 3 Data Quality` in a project), and any unnumbered `##` heading that comes after the first numbered one and before the ending. The scenario at the top, Summary, You Can Now, Exercises, and Congratulations are not sections and take no goal. If you are unsure of the count, write your best plan and run the builder: its message lists the sections.
 
 | Key | What it is | Who writes it |
 | --- | --- | --- |

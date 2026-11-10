@@ -80,11 +80,27 @@ def find(cells: list, pattern: str, what: str) -> int:
     return hits[0]
 
 
+NUMBERED = r"## \d+(?:\.\d+)? "  # a numbered section's heading: "## 3.1 Slicing", or "## 3 Data Quality" in a project
+
+
+def headings_start_cells(cells: list) -> None:
+    """A numbered heading must start its cell, so that its tracker can sit above it: a cell that reaches such a
+    heading after other words is cut in two there. No word of the notebook changes."""
+    i = 0
+    while i < len(cells):
+        cell = cells[i]
+        found = re.search(rf"\n+(?={NUMBERED})", cell.source) if cell.cell_type == "markdown" else None
+        if found:
+            cells.insert(i + 1, markdown_cell(cell.source[found.end():]))
+            cell.source = cell.source[:found.start()]
+        i += 1
+
+
 def section_starts(cells: list, kind: str) -> list:
     """The index of each section's heading cell. kind is "numbered" (## 3.1 ..., with any unnumbered ## section
     that follows the first of them and comes before the notebook's ending) or "h1" (# A Topic)."""
     if kind == "numbered":
-        numbered = [i for i, cell in enumerate(cells) if cell.cell_type == "markdown" and re.match(r"## \d+\.\d+ ", cell.source)]
+        numbered = [i for i, cell in enumerate(cells) if cell.cell_type == "markdown" and re.match(NUMBERED, cell.source)]
         if not numbered:
             raise PlanError('the notebook has no numbered section ("## 3.1 ..."): give the plan "sections": "h1"')
         ending = next((i for i, cell in enumerate(cells) if i > numbered[0] and cell.source.startswith(ENDINGS)), len(cells))
@@ -225,6 +241,7 @@ def apply(nb, notebook: Path, plan: dict) -> Image.Image:
 
         kind = plan.get("sections", "numbered")
         goals = plan.get("goals", [])
+        headings_start_cells(cells)
         starts = section_starts(cells, kind)
         if len(goals) != len(starts):
             raise PlanError(f"the plan gives {len(goals)} goals and the notebook has {len(starts)} sections: "
@@ -282,7 +299,7 @@ def apply(nb, notebook: Path, plan: dict) -> Image.Image:
         lesson_minutes, practice_minutes = sum(minutes), MINUTES_AN_EXERCISE * exercises
         heads = [heading_of(cells[i]) for i in section_starts(cells, kind)]
         # a section's number is its heading's when it has one, and its place when it has not
-        stops = [tuple(head.split(" ", 1)) if re.match(r"\d+\.\d+ ", head) else (str(k), head) for k, head in enumerate(heads, start=1)]
+        stops = [tuple(head.split(" ", 1)) if re.match(NUMBERED[3:], head) else (str(k), head) for k, head in enumerate(heads, start=1)]
         k = 0
         for cell in cells:
             if cell.source.startswith("![Section "):

@@ -5,6 +5,13 @@
 It prints the sections with their goals and minutes, runs the design and standard tests for this notebook and its
 solutions, and saves both notebooks' pictures, in order, as sheets to look at. The exit code is 0 only when the
 notebook is in the design system and its tests pass. Looking at the sheets is still a person's or a reviewer's job.
+
+Two helpers for the work before the check, neither of which needs a converted notebook:
+
+    python tools/workbook/check.py <notebook> --text
+        the notebook as plain text, to read: its file is mostly pictures, so never open the file itself
+    python tools/workbook/check.py --compare <pictures folder> --sheet <folder>
+        each picture of the folder as it was at the last commit, beside as it is now
 """
 import argparse
 import base64
@@ -15,11 +22,11 @@ import sys
 from pathlib import Path
 
 import nbformat
-from PIL import Image
+from PIL import Image, ImageDraw
 
 REPO = Path(__file__).resolve().parents[2]
 PICTURE = re.compile(r"!\[((?:[^\[\]]|\[[^\]]*\])*)\]\(data:image/\w+;base64,([^)]+)\)")
-SHEET_WIDTH, SHEET_HEIGHT, GAP = 1200, 5200, 24
+SHEET_WIDTH, SHEET_HEIGHT, GAP = 1200, 2400, 24  # a sheet is short enough to be read in one look
 
 
 def pictures(notebook: Path) -> list:
@@ -54,12 +61,64 @@ def save_sheets(found: list, folder: Path, stem: str) -> list:
     return sheets
 
 
+def as_text(notebook: Path) -> str:
+    """The notebook as plain text: each cell numbered, each picture as its alt text, each output cut short."""
+    lines = []
+    for i, cell in enumerate(nbformat.read(notebook, as_version=4).cells):
+        source = PICTURE.sub(lambda found: f"[picture: {found.group(1)}]", cell.source)
+        if cell.cell_type == "markdown":
+            # an HTML table as rows of words
+            source = re.sub(r"</t[dh]>\s*<t[dh][^>]*>", " | ", source)
+            source = re.sub(r"</tr>\s*", "\n", source)
+            source = re.sub(r"</?(?:table|tr|t[dh]|br)[^>]*>", "", source)
+        tags = f" {cell.metadata['tags']}" if cell.metadata.get("tags") else ""
+        lines += [f"--- cell {i}, {cell.cell_type}{tags}", source.strip()]
+        for output in cell.get("outputs", []):
+            data = output.get("data", {})
+            words = output.get("text") or data.get("text/plain") or "\n".join(output.get("traceback", []))
+            words = re.sub(r"\x1b\[[0-9;]*m", "", "".join(words) if isinstance(words, list) else words).strip()
+            kind = ": a chart" if "image/png" in data else ": a table" if "text/html" in data else ""
+            lines.append(f"[output{kind}] {words[:400]}{' ...' if len(words) > 400 else ''}")
+    return "\n".join(lines)
+
+
+def compare_sheets(folder: Path, out: Path) -> list:
+    """Each picture of a folder as it was at the last commit, left, beside as it is now, right, on sheets to look at."""
+    folder = folder.resolve()
+    root = Path(subprocess.run(["git", "-C", str(folder), "rev-parse", "--show-toplevel"],
+                               capture_output=True, text=True, check=True).stdout.strip())
+    half = (SHEET_WIDTH - GAP) // 2
+    rows = []
+    for path in sorted(folder.glob("*.png")):
+        was = subprocess.run(["git", "-C", str(root), "show", f"HEAD:{path.relative_to(root).as_posix()}"], capture_output=True)
+        pair = [Image.open(io.BytesIO(was.stdout)).convert("RGB") if was.returncode == 0 else None, Image.open(path).convert("RGB")]
+        pair = [image and image.resize((half, round(image.height * half / image.width)), Image.LANCZOS) for image in pair]
+        row = Image.new("RGB", (SHEET_WIDTH, max(image.height for image in pair if image) + 22), "#FFFFFF")
+        note = "" if pair[0] else " (no earlier picture)"
+        ImageDraw.Draw(row).text((0, 4), f"{path.name}: as it was, left{note}; as it is now, right", fill="#000000")
+        for x, image in zip((0, half + GAP), pair):
+            if image:
+                row.paste(image, (x, 22))
+        rows.append((path.name, row))
+    return save_sheets(rows, out, "compare")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Check one notebook converted to the workbook design system.")
-    parser.add_argument("notebook", type=Path)
+    parser.add_argument("notebook", type=Path, nargs="?")
     parser.add_argument("--sheet", type=Path, help="a folder for the sheets of the notebook's pictures")
+    parser.add_argument("--text", action="store_true", help="print the notebook as plain text and stop")
+    parser.add_argument("--compare", type=Path, help="a folder of pictures: save each as it was beside as it is now")
     args = parser.parse_args()
+    if args.compare:
+        for path in compare_sheets(args.compare, args.sheet or Path(".")):
+            print("sheet:", path)
+        return 0
     notebook = args.notebook.resolve()
+    if args.text:
+        sys.stdout.reconfigure(encoding="utf-8")
+        print(as_text(notebook))
+        return 0
     if notebook.stem.endswith("_solutions"):
         print(f"{notebook.name} is a solutions notebook: check its teaching notebook, and the one run covers both.")
         return 1
