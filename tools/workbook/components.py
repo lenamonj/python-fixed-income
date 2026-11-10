@@ -220,11 +220,13 @@ def arrows(width: int, height: int, *lines: tuple) -> str:
 
 
 ROUTE_LEFT, ROUTE_RIGHT = 96, 1104  # where the first and the last section's points sit on a route
+ROUTE_ROOM = 2 * ROUTE_LEFT - 8  # the widest that words centred on the first or the last point can be and stay in the picture
 
 
 def route_stop_width(count: int) -> int:
-    """How wide the words under one point of a route can be: the room between two points, up to 200 px."""
-    return min(200, (ROUTE_RIGHT - ROUTE_LEFT) // max(count - 1, 1) - 12)
+    """How wide the words under one point of a route can be: the room between two points, and never so wide
+    that the first or the last point's words leave the picture, which a route of five sections or fewer would."""
+    return min(ROUTE_ROOM, (ROUTE_RIGHT - ROUTE_LEFT) // max(count - 1, 1) - 12)
 
 
 def route_has_room(titles: list) -> bool:
@@ -253,7 +255,8 @@ def route(sections: list, flags: dict | None = None, head: str = "", total: str 
         drawn += f'<circle cx="{x:.1f}" cy="{y:.1f}" r="7" fill="{fill}" stroke="{edge}" stroke-width="2.4"/>'
         if flagged:
             drawn += f'<line x1="{x:.1f}" x2="{x:.1f}" y1="{y - 12:.1f}" y2="{y - 24:.1f}" stroke="#A97A1F" stroke-width="1.2"/>'
-            stops += f'<div class="flag" style="left:{x - 110:.1f}px;top:{y - 44:.1f}px">{escape(flags[i + 1])}</div>'
+            stops += (f'<div class="flag" style="left:{x - ROUTE_ROOM / 2:.1f}px;top:{y - 44:.1f}px;width:{ROUTE_ROOM}px">'
+                      f'{escape(flags[i + 1])}</div>')
         name = f'<span class="name">{escape(title)}</span>' if names else ""
         stops += (f'<div class="stop" style="left:{x - wide / 2:.1f}px;width:{wide}px"><span class="no">{escape(number)}</span>'
                   f'{name}<span class="min">{minutes} MIN</span></div>')

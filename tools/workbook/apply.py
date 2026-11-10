@@ -37,6 +37,13 @@ class PlanError(ValueError):
     """The plan and the notebook disagree. The message says what to change."""
 
 
+def check_goal(goal: str) -> None:
+    """A goal is read at a glance on its tracker: one sentence, eight words or fewer, ending in a full stop."""
+    if len(goal.split()) > 8 or not goal.endswith(".") or ". " in goal:
+        raise PlanError(f'the goal "{goal}" has {len(goal.split())} words: a goal is one sentence of eight words or fewer, '
+                        f"ending in a full stop")
+
+
 # ---------------------------------------------------------------- reading the notebook
 def teaching_notebooks(course: Path) -> list:
     """A course's teaching notebooks in the order they are taken."""
@@ -222,6 +229,8 @@ def apply(nb, notebook: Path, plan: dict) -> Image.Image:
         if len(goals) != len(starts):
             raise PlanError(f"the plan gives {len(goals)} goals and the notebook has {len(starts)} sections: "
                             f"{[heading_of(cells[i]) for i in starts]}")
+        for goal in goals:
+            check_goal(goal)
         exercises = count_exercises(cells)
 
         # 1. every picture the notebook already had becomes a numbered figure. The route will be Figure 1.

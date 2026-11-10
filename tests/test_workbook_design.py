@@ -163,8 +163,22 @@ def test_tracker_marks_the_sections_done_now_and_to_come():
     assert "<i " not in components.tracker("EXERCISES", "Six short jobs.", 18)
 
 
+@pytest.mark.parametrize("path", DESIGNED, ids=ids)
+def test_a_section_goal_is_one_short_sentence(path):
+    from workbook.apply import check_goal
+    goals = re.findall(r"!\[Section \d+ of \d+\. (.*?) About \d+ minutes?\.\]", "\n".join(markdown(path)))
+    assert goals
+    for goal in goals:
+        check_goal(goal)
+
+
 def test_apply_refuses_a_plan_it_cannot_follow():
-    from workbook.apply import PlanError, apply
+    from workbook.apply import PlanError, apply, check_goal
+    # nine words: one too many to read at a glance
+    with pytest.raises(PlanError, match="9 words"):
+        check_goal("Build a list in one line, then draw it.")
+    with pytest.raises(PlanError, match="full stop"):
+        check_goal("Understand .py files")
     nb = nbformat.read(DESIGNED[0], as_version=4)
     with pytest.raises(PlanError, match="does not know"):
         apply(nb, DESIGNED[0], {"gaols": []})
@@ -179,6 +193,20 @@ def test_a_route_sets_titles_under_its_points_only_when_they_fit():
     # fifteen points leave 60 px each: room for a short word or two, not for a real title
     assert not components.route_has_room([f"Pandas Group Number {n}" for n in range(15)])
     assert "class=\"name\"" not in components.route([("1.1", "A Title", 3), ("1.2", "Another", 4)], names=False)
+
+
+def test_a_route_of_any_length_stays_inside_the_picture(tmp_path):
+    # the first and the last point sit 96 px from the picture's edges, so their words can never be wider than that allows
+    assert all(components.route_stop_width(count) <= 2 * components.ROUTE_LEFT for count in range(1, 30))
+    pytest.importorskip("playwright", reason="the studio needs the author tools in requirements-dev.txt")
+    with components.Studio() as studio:
+        for count in (1, 2, 4, 5, 6, 12):
+            sections = [(f"1.{n}", "Conditional Statements", 9) for n in range(1, count + 1)]
+            flags = {1: "ANSWER 1 · THE COUPON", count: "ANSWER 2 · THE CHART"}
+            names = components.route_has_room([title for number, title, minutes in sections])
+            drawn = components.route(sections, flags, "DAY 1, PART 2 · THE ROUTE", "LESSON · ABOUT 40 MIN", names)
+            # the studio refuses a picture with a part outside it or words wider than their box
+            studio.png(components.figure(drawn, 1, "The sections, in order.", flush=True), tmp_path / f"route{count}.png")
 
 
 def test_a_slide_holds_its_strip_title_content_and_number():

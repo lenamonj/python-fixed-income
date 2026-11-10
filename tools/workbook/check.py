@@ -3,7 +3,7 @@
     python tools/workbook/check.py course01_python_foundations/week1/day1/01_python_for_fixed_income_intro.ipynb --sheet <folder>
 
 It prints the sections with their goals and minutes, runs the design and standard tests for this notebook and its
-solutions, and saves the notebook's pictures, in order, as sheets to look at. The exit code is 0 only when the
+solutions, and saves both notebooks' pictures, in order, as sheets to look at. The exit code is 0 only when the
 notebook is in the design system and its tests pass. Looking at the sheets is still a person's or a reviewer's job.
 """
 import argparse
@@ -60,12 +60,17 @@ def main() -> int:
     parser.add_argument("--sheet", type=Path, help="a folder for the sheets of the notebook's pictures")
     args = parser.parse_args()
     notebook = args.notebook.resolve()
+    if notebook.stem.endswith("_solutions"):
+        print(f"{notebook.name} is a solutions notebook: check its teaching notebook, and the one run covers both.")
+        return 1
     found = pictures(notebook)
     trackers = [alt for alt, image in found if alt.startswith("Section ")]
     if not trackers:
         print(f"{notebook.name} is not in the design system: it has no section trackers. Give it a plan and run its builder.")
         return 1
-    narrow = [alt[:60] for alt, image in found if image.width != 2400]
+    solutions = notebook.with_name(notebook.stem + "_solutions.ipynb")
+    answers = pictures(solutions) if solutions.exists() else []
+    narrow = [alt[:60] for alt, image in found + answers if image.width != 2400]
     figures = sum(1 for alt, image in found if alt.startswith("Figure "))
     print(f"{notebook.name}: {len(trackers)} sections, {figures} figures, {len(found)} pictures, {notebook.stat().st_size / 1024:.0f} KB")
     for alt in trackers:
@@ -73,7 +78,7 @@ def main() -> int:
     if narrow:
         print("NOT 2400 px wide:", narrow)
     if args.sheet:
-        for path in save_sheets(found, args.sheet, notebook.stem):
+        for path in save_sheets(found, args.sheet, notebook.stem) + (save_sheets(answers, args.sheet, solutions.stem) if answers else []):
             print("sheet:", path)
     tests = subprocess.run([sys.executable, "-m", "pytest", "tests/test_workbook_design.py", "tests/test_notebook_standard.py",
                             "-q", "-p", "no:cacheprovider", "-k", notebook.stem], cwd=REPO, capture_output=True, text=True)

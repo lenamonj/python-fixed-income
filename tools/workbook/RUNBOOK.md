@@ -6,24 +6,36 @@ How to put one built notebook into the workbook design system. `README.md` besid
 
 A converted notebook has the cover, the route, a tracker above each section, every picture as a numbered figure, the exercises strip, and the card to the next notebook. You do not draw any of that and you do not edit the notebook's builder. You write one small plan, run the builder, and read what comes out.
 
+Your brief names four files: the notebook, its builder, its picture script, and the plan to write. Run everything from the repo root with `.venv\Scripts\python.exe`.
+
 ## The job, in order
 
 1. **Read the notebook from top to bottom**, then skim Day 0 (`course01_python_foundations/week1/day0/0_start_here.ipynb`) to see the standard.
-2. **Redraw the notebook's pictures.** Run the day's picture script. It draws them in the house style at 2400 px. Open each PNG and look at it: the layout must be as it was, with no word cut off or running into a box.
+2. **Redraw the notebook's pictures.** Run the day's picture script. It draws them in the house style at 2400 px. Open each PNG and look at it beside the picture as it was: the layout must be the same, with no word cut off or running into a box, and every mark still on the words it marks. To see a picture as it was, save the last committed one somewhere outside the repo:
+
+   ```powershell
+   git -C instructor show "HEAD:_build/redesign_c1/day1_part2/pictures/p4_comprehension_sentence.png" > <a file>.png
+   ```
+
+   The path after `HEAD:` is the picture's path with `instructor/` taken off the front, written with forward slashes.
+
+   If a picture is wrong, say which and how in your report and carry on. Change a picture script only to shorten a label; never move a box or a mark.
 3. **Write the plan**: `instructor/_build/workbook_plans/<course folder>/<notebook name>.json`. The solutions notebook shares it.
-4. **Run the notebook's builder.** If it stops, the message says what to fix. See "What the messages mean".
+4. **Run the notebook's builder.** If it stops, the message says what to fix. See "What the messages mean". If nothing there fixes it, stop and report the message as it was printed. The notebook on disk is then half built, with no cover: say so and leave it, because the next build that succeeds puts it right.
 5. **Run the check** and open the sheets it saves:
 
    ```powershell
    .venv\Scripts\python.exe tools\workbook\check.py <path to the notebook> --sheet <a folder>
    ```
 
-   The last line must say `passed` with no `failed`. Then look at every picture on the sheets, in order.
+   The last line must say `passed` with no `failed`. `1 skipped` is expected: it is the overview PDF, which is a separate job. One run covers the solutions notebook too, and its pictures get a sheet of their own. Then look at every picture on the sheets, in order.
 6. **Stop there.** Do not commit, push, or start the next notebook. Report: the plan you wrote, the check's last line, and anything you were unsure of.
 
 ## The plan
 
 Only `goals` is required. Everything else the tool reads from the notebook: title, week and day, sections, minutes, exercises, pictures, and the next notebook.
+
+A section is each numbered heading (`## 1.6 Conditional Statements`), and any unnumbered `##` heading that comes after the first numbered one and before You Can Now. The scenario at the top, You Can Now, Exercises, and Congratulations are not sections and take no goal.
 
 | Key | What it is | Who writes it |
 | --- | --- | --- |
@@ -44,7 +56,7 @@ A minimal plan:
 {
   "goals": [
     "Store a bond's facts under names.",
-    "Show a number the way the desk reads it."
+    "Show numbers the way the desk reads them."
   ]
 }
 ```
@@ -80,7 +92,7 @@ Each `in`, `after`, and third item of an ask is a pattern that must match exactl
 
 A goal is what the section is for, said to the student. It is the only writing every notebook needs, so it has to be right.
 
-- One sentence, a command, eight words or fewer, ending in a full stop.
+- One sentence, a command, eight words or fewer, ending in a full stop. Count the words: the build refuses a ninth.
 - It says what the student will do or be able to do, in the notebook's own words.
 - It uses no term the notebook has not taught by the end of that section.
 - It does not repeat the section's title.
@@ -119,6 +131,7 @@ These take judgment about what the notebook has taught, so one editor writes the
 | The build says | Do this |
 | --- | --- |
 | `the plan gives N goals and the notebook has M sections: [...]` | Write one goal for each section it lists, in that order. |
+| `the goal "..." has N words` | Rewrite that goal as one sentence of eight words or fewer, ending in a full stop. |
 | `... does not fit: "..." runs outside the picture` or `is wider than its box` | Shorten those words in the plan. For a picture script, shorten the label there. |
 | `... reaches the foot of the picture` | The title and subtitle are too long for the cover. Report it; do not change the title. |
 | `the pattern '...' matches 0 cells` or `2 cells` | Make the pattern longer or more exact until it matches one cell. |
