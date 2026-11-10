@@ -1,32 +1,15 @@
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/wordmark-dark.png">
-  <img src="assets/readme/wordmark-light.png" alt="Python for Fixed Income" width="325">
-</picture>
+<img src="assets/readme/landing/hero.png" width="830" alt="Python for Fixed Income, the series: 12 courses and a bonus, from zero. From your first line of code to your own AI agents. Every lesson is a fixed income problem. The courses sit on one curve in four stages: Foundations, Machine learning, Language models and agents, Build and ship. 183 notebooks, 35 weeks, free. Created by Jeff Lenamon.">
 
-<h3>From your first line of code to your own AI agents.<br>Taught entirely through the work of a credit desk.</h3>
+**[Start here](#start-here)** &nbsp;·&nbsp; **[The courses](#the-courses)** &nbsp;·&nbsp; **[How a day works](#how-a-day-works)** &nbsp;·&nbsp; **[Coming from Excel](#coming-from-excel)**
 
-[![Courses](https://img.shields.io/badge/Courses-12_%2B_Bonus-123D2F?style=for-the-badge)](#the-courses)
-[![Notebooks](https://img.shields.io/badge/Notebooks-183-123D2F?style=for-the-badge)](#the-courses)
-[![Price](https://img.shields.io/badge/Price-Free-1C7A57?style=for-the-badge)](#start-here)
-[![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)](#run-in-google-colab-with-nothing-to-install)
-[![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](LICENSE)
-[![Content: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-22C55E?style=for-the-badge)](LICENSE-CONTENT)
+<img src="assets/readme/landing/numbers.png" width="830" alt="183 notebooks, with worked solutions. 626 Excel comparisons, formula by formula. 35 weeks, one notebook a day. $0 to take, and no key needed to run.">
 
-**[Start here: Setup, then Day 0](#start-here)** &nbsp;·&nbsp; **[The courses](#the-courses)** &nbsp;·&nbsp; **[How a day works](#how-a-day-works)** &nbsp;·&nbsp; **[Coming from Excel](#coming-from-excel)**
-
-<br>
-
-<table>
-  <tr>
-    <td align="center" valign="top" width="25%"><h2>183</h2>notebooks, every lesson<br>with worked solutions</td>
-    <td align="center" valign="top" width="25%"><h2>626</h2>Excel comparisons,<br>formula by formula</td>
-    <td align="center" valign="top" width="25%"><h2>35</h2>weeks, one notebook<br>a day</td>
-    <td align="center" valign="top" width="25%"><h2>$0</h2>to take, and no key<br>needed to run</td>
-  </tr>
-</table>
+[![Python 3.13](https://img.shields.io/badge/Python-3.13-17807F?style=for-the-badge&labelColor=0E1B2E&logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![Runs on Windows and Google Colab](https://img.shields.io/badge/Runs_on-Windows%20%7C%20Google%20Colab-17807F?style=for-the-badge&labelColor=0E1B2E)](#run-in-google-colab-with-nothing-to-install)
+[![Code: MIT](https://img.shields.io/badge/Code-MIT-17807F?style=for-the-badge&labelColor=0E1B2E)](LICENSE)
+[![Content: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-17807F?style=for-the-badge&labelColor=0E1B2E)](LICENSE-CONTENT)
 
 </div>
 
@@ -43,19 +26,18 @@ It starts at zero. No programming background is assumed, and the [Setup notebook
 
 Three notebooks, in this order. If you choose Colab, there is nothing to install.
 
-| Step | Open | What it does |
-|:---:|:---|:---|
-| **1** | **[Setup](course01_python_foundations/setup/setup_your_computer.ipynb)** | Get ready to run code: Colab in your web browser, or Python and VS Code on your own Windows computer. A picture of every step. |
-| **2** | **[Day 0: Start Here](course01_python_foundations/week1/day0/0_start_here.ipynb)** | What Python, a notebook, and a library are. Your first lines of code. |
-| **3** | **[Day 1, Part 1: Introduction to Python](course01_python_foundations/week1/day1/01_python_for_fixed_income_intro.ipynb)** | The first full lesson, on a desk of four bonds. From here, follow the [Course 1 map](course01_python_foundations/README.md#course-map), one notebook a day. |
+<p align="center">
+<a href="course01_python_foundations/setup/setup_your_computer.ipynb"><img src="assets/readme/landing/step1.png" width="32%" alt="Step 1: Setup. Colab in your browser, or Python and VS Code on Windows."></a>
+<a href="course01_python_foundations/week1/day0/0_start_here.ipynb"><img src="assets/readme/landing/step2.png" width="32%" alt="Step 2: Day 0, Start Here. Python, a notebook, a library. Your first lines of code."></a>
+<a href="course01_python_foundations/week1/day1/01_python_for_fixed_income_intro.ipynb"><img src="assets/readme/landing/step3.png" width="32%" alt="Step 3: Day 1, Introduction. The first full lesson, on a desk of four bonds."></a>
+</p>
+
+[Setup](course01_python_foundations/setup/setup_your_computer.ipynb) has a picture of every step. After Day 1, follow the [Course 1 map](course01_python_foundations/README.md#course-map), one notebook a day.
 
 ## The courses
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/path-dark.png">
-    <img src="assets/readme/path-light.png" width="720" alt="The path: Foundations (Courses 1 to 3), then Machine learning (4, 5, 5B, 5C, and 6), then Language models and agents (7 and 8), then Build and ship (9, 10, and the Bonus)">
-  </picture>
+<img src="assets/readme/landing/route.png" width="830" alt="Figure 1: twelve courses and a bonus in four stages, in the order they are taken. Stage 1, Foundations, 10 weeks: Course 1 Python Foundations, Course 2 Bond Math, Course 3 Market Data. Stage 2, Machine learning, 13 weeks: Course 4 Machine Learning, Course 5 Advanced ML, Course 5B Time Series Models, Course 5C Risk Models, Course 6 Neural Networks. Stage 3, Language models and agents, 6 weeks: Course 7 NLP, RAG, and LLMs, Course 8 Agentic AI. Stage 4, Build and ship, 6 weeks and a day: Course 9 Deployment, Course 10 Implementing RAG, and the Bonus, Your Own Coding Agent.">
 </p>
 
 | | Course | Weeks | What you build |
@@ -76,20 +58,9 @@ Three notebooks, in this order. If you choose Colab, there is nothing to install
 
 ### A look inside
 
-<table>
-  <tr>
-    <td width="50%" valign="top"><img src="assets/readme/gallery/c2_price_yield.png" alt="Price against yield for four bonds"><br><sub><b>Course 2</b> · Price and yield</sub></td>
-    <td width="50%" valign="top"><img src="assets/readme/gallery/c2_convexity.png" alt="Duration, convexity, and the full reprice"><br><sub><b>Course 2</b> · Duration and convexity</sub></td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top"><img src="assets/readme/gallery/c3_curve_slopes.png" alt="Treasury curve slopes in basis points"><br><sub><b>Course 3</b> · Treasury curve slopes</sub></td>
-    <td width="50%" valign="top"><img src="assets/readme/gallery/c4_correlation_heatmap.png" alt="Correlation of daily changes across Treasury tenors"><br><sub><b>Course 4</b> · Correlation across the curve</sub></td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top"><img src="assets/readme/gallery/c5_shap_waterfall.png" alt="One company's model output split by SHAP value"><br><sub><b>Course 5</b> · A model output, by SHAP value</sub></td>
-    <td width="50%" valign="top"><img src="assets/readme/gallery/c7_indenture_embeddings.png" alt="An indenture's sections as sentence embeddings"><br><sub><b>Course 7</b> · An indenture, as embeddings</sub></td>
-  </tr>
-</table>
+<p align="center">
+<img src="assets/readme/landing/inside.png" width="830" alt="Figure 2: six charts, each as the student's own code draws it. Course 2: price against yield for four bonds, and duration and convexity against the full reprice. Course 3: Treasury curve slopes in basis points. Course 4: correlation of daily changes across Treasury tenors. Course 5: one company's model output split by SHAP value. Course 7: an indenture's sections as sentence embeddings.">
+</p>
 
 ## How a day works
 
@@ -179,11 +150,11 @@ Every issuer, ticker, CUSIP, price, position, and trade in the portfolio files i
 
 Code is under the [MIT License](LICENSE). Written content, slide overviews, and videos are under [CC BY 4.0](LICENSE-CONTENT): share and adapt them, including commercially, with credit. Public data files keep their own terms, and the fonts in `assets/fonts` are under the SIL Open Font License.
 
----
+<p align="center">
+<a href="course01_python_foundations/setup/setup_your_computer.ipynb"><img src="assets/readme/landing/next.png" width="830" alt="Start with Step 1, Setup: get your computer ready. Colab in your browser, or Python and VS Code on Windows."></a>
+</p>
 
 <div align="center">
-
-<h3>Ready? Open <a href="course01_python_foundations/setup/setup_your_computer.ipynb">Setup</a> and get your computer ready.</h3>
 
 Created by **Jeff Lenamon**
 

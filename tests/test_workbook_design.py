@@ -209,6 +209,21 @@ def test_a_route_of_any_length_stays_inside_the_picture(tmp_path):
             studio.png(components.figure(drawn, 1, "The sections, in order.", flush=True), tmp_path / f"route{count}.png")
 
 
+def test_landing_page_says_what_the_repo_holds():
+    from workbook import landing
+    facts = landing.counts()
+    readme = (REPO / "README.md").read_text(encoding="utf-8")
+    # the pictures count the repo for themselves: the words typed beside them, and their alt text, must say the same
+    for words in (f'{facts["notebooks"]} notebooks', f'{facts["excel"]} Excel comparisons', f'{facts["weeks"]} weeks',
+                  f'All {facts["excel"]} comparisons', f'{facts["courses"]} courses and a bonus'):
+        assert words in readme, words
+    for name in ("hero", "numbers", "step1", "step2", "step3", "route", "inside", "next"):
+        assert f'src="assets/readme/landing/{name}.png"' in readme and (landing.OUT / f"{name}.png").exists(), name
+    assert "educational content created in a personal capacity" in readme
+    # GitHub strips styles from a README, so none is written: the look is in the pictures
+    assert " style=" not in readme
+
+
 def test_a_slide_holds_its_strip_title_content_and_number():
     from workbook import slides
     made = slides.slide(slides.bar("SECTION 2 OF 8", "Know what Python is.", "ABOUT 2 MIN", index=2, count=8),

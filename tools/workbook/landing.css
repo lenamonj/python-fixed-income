@@ -1,0 +1,71 @@
+/* The series' landing page (the repo's README.md): the workbook design system at 830 px, the width of the column
+   GitHub shows a README in. Loaded after design.css, so every token and the badge come from there. */
+
+body { width: 830px; }
+.pfi.land { width: 830px; }
+
+/* ------------------------------------------------------------------ hero: the series' cover */
+.hero { height: 548px; background: var(--navy); color: var(--on-navy); border: 1px solid var(--navy-rule); }
+.hero .motif { position: absolute; left: 0; top: 0; }
+.hero header {
+  position: absolute; left: 40px; right: 40px; top: 28px; padding-bottom: 18px;
+  display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--navy-rule);
+}
+.hero .brand { display: flex; align-items: center; gap: 14px; }
+.hero .series { font: 600 12px/16px var(--sans); letter-spacing: .24em; }
+.hero .kind { font: 500 11.5px/16px var(--sans); letter-spacing: .2em; color: var(--on-navy-soft); }
+.hero main { position: absolute; left: 40px; right: 40px; top: 130px; }
+.hero .plate { font: 500 12.5px/16px var(--mono); letter-spacing: .16em; color: var(--teal-bright); }
+.hero h1 { margin-top: 12px; font: 500 64px/68px var(--serif); letter-spacing: -.024em; font-variation-settings: "opsz" 72; white-space: nowrap; }
+.hero .sub { margin-top: 12px; font: italic 400 24px/33px var(--serif); color: var(--on-navy-soft); font-variation-settings: "opsz" 32; }
+.hero footer {
+  position: absolute; left: 40px; right: 40px; bottom: 22px; padding-top: 15px;
+  display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--navy-rule);
+  font: 400 13.5px/18px var(--sans); color: var(--on-navy-soft);
+}
+.hero footer b { font-weight: 600; color: var(--on-navy); }
+.hero .meta { font: 500 11.5px/18px var(--mono); letter-spacing: .14em; color: var(--on-navy-soft); }
+.hero .meta span + span::before { content: "/"; margin: 0 12px; color: var(--navy-rule); }
+
+/* ------------------------------------------------------------------ numbers: four facts on one plate */
+.numbers { display: flex; background: var(--ivory); border: 1px solid var(--rule); border-top: 2px solid var(--teal); }
+.numbers .fact { flex: 1; padding: 22px 24px 24px; }
+.numbers .fact + .fact { border-left: 1px solid var(--rule); }
+.numbers .n { display: block; font: 500 50px/54px var(--serif); letter-spacing: -.02em; font-variation-settings: "opsz" 60; color: var(--ink); }
+.numbers .what { display: block; margin-top: 8px; font: 600 11px/16px var(--sans); letter-spacing: .2em; color: var(--teal); }
+.numbers .more { display: block; margin-top: 4px; font: 400 13.5px/19px var(--sans); color: var(--slate); }
+
+/* ------------------------------------------------------------------ step: one of the three cards under Start here */
+.pfi.land.step { width: 270px; height: 176px; padding: 20px 22px; background: var(--navy); color: var(--on-navy);
+  border: 1px solid var(--navy-rule); border-bottom: 2px solid var(--teal-dim); }
+.step .plate { display: block; font: 500 11.5px/16px var(--mono); letter-spacing: .16em; color: var(--teal-bright); }
+.step .title { display: block; margin-top: 12px; font: 500 25px/30px var(--serif); letter-spacing: -.012em; font-variation-settings: "opsz" 32; white-space: nowrap; }
+.step .line { display: block; margin-top: 9px; width: 200px; font: 400 13px/19px var(--sans); color: var(--on-navy-mute); }
+.step .go { position: absolute; right: 20px; bottom: 18px; width: 30px; height: 30px; border: 1.5px solid var(--teal-bright); border-radius: 50%; }
+.step .go svg { position: absolute; left: 0; top: 0; }
+
+/* ------------------------------------------------------------------ series: the courses in their four stages */
+.series-map { padding: 54px 24px 6px; position: relative; }
+.series-map .head { position: absolute; left: 24px; top: 20px; font: 600 11px/16px var(--sans); letter-spacing: .22em; color: var(--slate); }
+.series-map .head.right { left: auto; right: 24px; font: 500 11.5px/16px var(--mono); letter-spacing: .16em; color: var(--teal); }
+.series-map .row { display: flex; align-items: center; padding: 16px 0; border-top: 1px solid var(--rule); }
+.series-map .stage-name { width: 166px; padding-right: 14px; flex: none; }
+.series-map .stage-name .no { display: block; font: 500 11px/16px var(--mono); letter-spacing: .16em; color: var(--teal); }
+.series-map .stage-name .name { display: block; margin-top: 4px; font: 500 20px/23px var(--serif); letter-spacing: -.01em; font-variation-settings: "opsz" 24; color: var(--ink); }
+.series-map .stage-name .weeks { display: block; margin-top: 5px; font: 500 10.5px/16px var(--mono); letter-spacing: .12em; color: var(--mist); }
+.series-map .cards { flex: 1; display: flex; align-items: stretch; }
+.series-map .card { flex: 1 1 0; max-width: 188px; min-height: 76px; padding: 10px 11px 11px; background: var(--paper); border: 1.5px solid var(--ink); }
+.series-map .card .label { display: block; font: 500 10px/14px var(--mono); letter-spacing: .14em; color: var(--teal); white-space: nowrap; }
+.series-map .card .name { display: block; margin-top: 5px; font: 600 13px/17px var(--sans); color: var(--ink); }
+.series-map .then { flex: none; width: 24px; align-self: center; height: 12px; }
+
+/* ------------------------------------------------------------------ inside: six charts as the notebooks draw them */
+.inside { display: grid; grid-template-columns: 371px 371px; gap: 26px 32px; padding: 28px 27px 26px; }
+.inside .chart img { display: block; width: 369px; height: 250px; object-fit: contain; background: #FFFFFF; border: 1px solid var(--rule); box-sizing: content-box; }
+.inside .chart .label { display: block; margin-top: 9px; font: 400 13.5px/18px var(--sans); color: var(--slate); }
+.inside .chart .label b { font: 500 11px/18px var(--mono); letter-spacing: .16em; color: var(--teal); margin-right: 10px; }
+
+/* the closing card and a figure's caption, at this width */
+.pfi.land.next .where { width: 170px; }
+.pfi.land.next .what .title { font-size: 32px; }
+.pfi.land.figure .cap .words { font-size: 14px; }

@@ -104,6 +104,24 @@ The PDF is printed from the browser, not exported from PowerPoint, which cannot 
 4. The first slide carries the disclaimer.
 5. Leave out anything that answers a Predict: its output, the picture drawn from it, the sentence after it.
 
+## The landing page
+
+The repo's `README.md` is the series' front page, and it is the same system at 830 px, the width of the column GitHub shows a README in. `landing.py` draws its pictures into `assets/readme/landing/`, styled by `landing.css` on top of `design.css`.
+
+| Picture | What it is |
+| --- | --- |
+| `hero.png` | The series' cover: the title, the line under it, and every course as a point on the house curve, with the four stages along the foot. |
+| `numbers.png` | Four facts on one plate. |
+| `step1.png` to `step3.png` | The three cards under Start here. Each is a link. |
+| `route.png` | Figure 1: the courses in their four stages. |
+| `inside.png` | Figure 2: six charts on one plate, each as a notebook draws it. |
+| `next.png` | The card that ends the page, a link to Setup. |
+
+1. GitHub strips every style, so the README has none. Words, tables, and links are typed; a picture is an `<img>` with a width and alt text that says what the picture says.
+2. Every picture has an opaque background, so one file serves GitHub's light theme and its dark one.
+3. The numbers on the pictures are counted from the repo by `landing.counts()`. After a notebook, a course, or an Excel comparison is added, run `landing.py` and change the same numbers where they are typed; a test compares the two.
+4. A chart on the page is a notebook's own output on a plate. It is never restyled.
+
 ## The time rule
 
 Times on a cover, a route, and a tracker are estimates from one rule, so they mean the same thing in every notebook: 150 words a minute, half a minute for each code cell, half a minute for each figure, three minutes for each exercise. Section times are whole minutes; the cover's total is rounded to five. A builder checks its trackers against the rule and stops if they have drifted.
