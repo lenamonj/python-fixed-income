@@ -4,6 +4,9 @@ __pycache__/
 .ipynb_checkpoints/
 .env
 
+# the file a student makes while running Day 0 (section 0.5)
+course01_python_foundations/week1/day0/half_coupon.py
+
 # private recording materials: scripts and slide decks with speaker notes
 instructor/
 
