@@ -220,6 +220,8 @@ def test_landing_page_says_what_the_repo_holds():
     for name in ("hero", "numbers", "step1", "step2", "step3", "route", "inside", "next"):
         assert f'src="assets/readme/landing/{name}.png"' in readme and (landing.OUT / f"{name}.png").exists(), name
     assert "educational content created in a personal capacity" in readme
+    # the series' two lines are kept in one place, and the page's alt text says them too
+    assert all(line in readme for line in components.TAGLINE)
     # GitHub strips styles from a README, so none is written: the look is in the pictures
     assert " style=" not in readme
 

@@ -20,6 +20,8 @@ SCALE = 2     # and drawn at twice that, so it stays sharp on a high-resolution 
 
 SERIES = "Python for Fixed Income"
 AUTHOR = "Jeff Lenamon"
+# the series in two lines: under the title on the landing page and on the cover that opens a course
+TAGLINE = ("From your first line of code to your own AI agents.", "Every lesson is a fixed income problem.")
 
 # Run in the page before a component is drawn. It names anything that would be cut off or would collide:
 # a part that runs outside the picture, words wider than their own box, and a block marked data-above="<selector>"

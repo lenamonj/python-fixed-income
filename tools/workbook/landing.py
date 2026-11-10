@@ -42,7 +42,6 @@ STAGES = [
         ("Course 10", "Implementing RAG", "course10_rag"),
         ("Bonus", "Your Own Coding Agent", "course_bonus_coding_agent")]),
 ]
-TAGLINE = ("From your first line of code to your own AI agents.", "Every lesson is a fixed income problem.")
 STEPS = [
     ("STEP 1", "Setup", "Colab in your browser, or Python and VS Code on Windows."),
     ("STEP 2", "Day 0: Start Here", "Python, a notebook, a library. Your first lines of code."),
@@ -123,7 +122,7 @@ def hero(facts: dict) -> str:
             f'<header><div class="brand">{c.badge()}<span class="series">{escape(c.SERIES.upper())}</span></div>'
             f'<div class="kind">THE SERIES</div></header>'
             f'<main><div class="plate">{facts["courses"]} COURSES AND A BONUS · FROM ZERO</div><h1>{escape(c.SERIES)}</h1>'
-            f'<p class="sub">{"<br>".join(escape(part) for part in TAGLINE)}</p></main>'
+            f'<p class="sub">{"<br>".join(escape(part) for part in c.TAGLINE)}</p></main>'
             f'<footer><div>Created by <b>{escape(c.AUTHOR)}</b></div><div class="meta">{meta}</div></footer></div>')
 
 

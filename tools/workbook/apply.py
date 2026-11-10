@@ -25,7 +25,7 @@ from . import components as c
 from .cells import ENDINGS, MINUTES_AN_EXERCISE, quick_check, section_minutes
 
 REPO = Path(__file__).resolve().parents[2]
-SERIES_LINE = "From your first line of code to your own AI agents.\nTaught entirely through the work of a credit desk."
+SERIES_LINE = "\n".join(c.TAGLINE)
 COLAB = "https://colab.research.google.com/github/lenamonj/python-fixed-income/blob/main/"
 COUNT_WORDS = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"]
 PICTURE = re.compile(r"!\[((?:[^\[\]]|\[[^\]]*\])*)\]\(data:image/(\w+);base64,([^)]+)\)")
