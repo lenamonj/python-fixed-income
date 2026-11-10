@@ -26,6 +26,7 @@ assets/headers/course5c_<notebook>.png; every earlier banner is unchanged). The 
 import argparse
 import base64
 import io
+import json
 from pathlib import Path
 
 import nbformat
@@ -36,6 +37,8 @@ from plain_prose import plain_prose
 REPO = Path(__file__).resolve().parent.parent
 FONTS = REPO / "assets" / "fonts"
 HEADERS = REPO / "assets" / "headers"
+# a notebook with a plan here is put into the workbook design system (tools/workbook) each time it is built
+PLANS = REPO / "instructor" / "_build" / "workbook_plans"
 
 COURSE_NAME = "Python for Fixed Income"
 # course number: (course line on the banner, course in the alt text, prefix of the saved copy's file name)
@@ -160,17 +163,23 @@ def header_markdown(week: int, day: int, title: str, image: Image.Image, course:
     return f"![{alt}](data:image/png;base64,{encoded})"
 
 
+def workbook_plan(notebook_path: Path) -> dict | None:
+    """The notebook's plan for the workbook design system, if it has one. A solutions notebook shares its lesson's."""
+    path = notebook_path.resolve()
+    plan = PLANS / path.relative_to(REPO).parts[0] / f"{path.stem.removesuffix('_solutions')}.json"
+    return json.loads(plan.read_text(encoding="utf-8")) if plan.exists() else None
+
+
 def apply_header(notebook_path: Path, week: int, day: int, title: str, course: int | str = 1,
                  label: str | None = None, cover: Path | None = None) -> None:
     """Insert the banner as the first cell, replacing an earlier banner if there is one. label (for example
-    "SETUP") replaces WEEK n · DAY n for a notebook that is not a course day. cover is a picture drawn with the
-    workbook design system (tools/workbook): it takes the banner's place, with the same alt text and saved copy."""
+    "SETUP") replaces WEEK n · DAY n for a notebook that is not a course day.
+
+    A notebook with a plan in PLANS is put into the workbook design system instead (tools/workbook/apply.py):
+    its cover takes the banner's place and its trackers, route, and figures are drawn. cover is a ready-made cover
+    for a builder that draws the system's pictures itself."""
     if course not in COURSES:
         raise ValueError(f"course must be one of {list(COURSES)}, not {course}")
-    image = Image.open(cover) if cover else draw_banner(week, day, title, course, label)
-    HEADERS.mkdir(parents=True, exist_ok=True)
-    image.save(HEADERS / f"{COURSES[course][2]}{notebook_path.stem}.png", optimize=True)
-
     nb = nbformat.read(notebook_path, as_version=4)
     # GitHub centres markdown tables: every table becomes a left-aligned HTML table (Jeff, 2026-10-25)
     # running text loses its bullets and takes one sentence to a paragraph (Jeff, 2026-11-01)
@@ -178,6 +187,16 @@ def apply_header(notebook_path: Path, week: int, day: int, title: str, course: i
     for md_cell in nb.cells:
         if md_cell.cell_type == "markdown" and "markdown-example" not in md_cell.metadata.get("tags", []):
             md_cell.source = plain_prose(left_tables(md_cell.source))
+    plan = None if cover else workbook_plan(notebook_path)
+    if plan is not None:
+        from workbook.apply import apply
+        if nb.cells and HEADER_TAG in nb.cells[0].metadata.get("tags", []):
+            del nb.cells[0]
+        image = apply(nb, notebook_path, plan)
+    else:
+        image = Image.open(cover) if cover else draw_banner(week, day, title, course, label)
+    HEADERS.mkdir(parents=True, exist_ok=True)
+    image.save(HEADERS / f"{COURSES[course][2]}{notebook_path.stem}.png", optimize=True)
     cell = nbformat.v4.new_markdown_cell(header_markdown(week, day, title, image, course, label))
     cell.metadata["tags"] = [HEADER_TAG]
     if nb.cells and HEADER_TAG in nb.cells[0].metadata.get("tags", []):

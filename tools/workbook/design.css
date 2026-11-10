@@ -78,10 +78,18 @@ body { width: 1200px; }
 .cover footer b { font-weight: 600; color: var(--on-navy); }
 .cover .meta { font: 500 12.5px var(--mono); letter-spacing: .14em; color: var(--on-navy-soft); }
 .cover .meta span + span::before { content: "/"; margin: 0 14px; color: var(--navy-rule); }
+/* a longer title steps down in size: components.cover picks the step from the title's length */
+.cover h1.step2 { font-size: 84px; line-height: 86px; }
+.cover h1.step3 { font-size: 62px; line-height: 66px; }
+.cover h1.step4 { font-size: 48px; line-height: 54px; }
 .cover.compact { height: 420px; }
 .cover.compact main { top: 138px; }
 .cover.compact h1 { font-size: 86px; line-height: 84px; }
+.cover.compact h1.step2 { font-size: 64px; line-height: 66px; }
+.cover.compact h1.step3 { font-size: 48px; line-height: 52px; }
+.cover.compact h1.step4 { font-size: 40px; line-height: 44px; }
 .cover.compact .sub { font-size: 31px; line-height: 40px; }
+.cover.compact h1.step3 + .sub, .cover.compact h1.step4 + .sub { font-size: 25px; line-height: 32px; margin-top: 6px; }
 
 /* ------------------------------------------------------------------ section tracker */
 .tracker {
@@ -94,7 +102,7 @@ body { width: 1200px; }
 .tracker .track i.done { background: var(--teal-dim); }
 .tracker .track i.now { height: 7px; background: var(--teal-bright); }
 .tracker .goal { margin-left: 30px; padding-left: 30px; border-left: 1px solid var(--navy-rule); flex: 1;
-  font: italic 400 21px/62px var(--serif); font-variation-settings: "opsz" 24; white-space: nowrap; }
+  font: italic 400 21px/60px var(--serif); font-variation-settings: "opsz" 24; white-space: nowrap; }
 .tracker .time { font: 500 12px var(--mono); letter-spacing: .16em; color: var(--teal-bright); white-space: nowrap; }
 
 /* ------------------------------------------------------------------ figure: every ivory picture */
@@ -128,12 +136,14 @@ body { width: 1200px; }
 /* ------------------------------------------------------------------ route: the day's sections on the house curve */
 .route { position: relative; height: 330px; }
 .route svg { position: absolute; left: 0; top: 0; }
-.route .stop { position: absolute; top: 226px; width: 136px; text-align: center; }
+.route .stop { position: absolute; top: 226px; text-align: center; }
 .route .stop .no { display: block; font: 500 13px var(--mono); letter-spacing: .08em; color: var(--teal); }
 .route .stop .name { display: block; margin-top: 5px; font: 600 14.5px/1.25 var(--sans); color: var(--ink); min-height: 36px; }
 .route .stop .min { display: block; margin-top: 5px; font: 500 11.5px var(--mono); letter-spacing: .1em; color: var(--mist); }
 .route .flag { position: absolute; width: 220px; text-align: center; font: 600 10.5px var(--sans); letter-spacing: .2em; color: var(--brass); white-space: nowrap; }
 .route .head { position: absolute; left: 28px; top: 22px; font: 600 11.5px var(--sans); letter-spacing: .22em; color: var(--slate); }
+.route.bare { height: 290px; }
+.figure.strip { border: none; }
 .route .head.right { left: auto; right: 28px; color: var(--teal); font: 500 12px var(--mono); letter-spacing: .16em; }
 
 /* ------------------------------------------------------------------ note: the scenario as an object on the desk */
@@ -142,7 +152,7 @@ body { width: 1200px; }
 .note .head .from { font: 600 11.5px/16px var(--sans); letter-spacing: .22em; color: var(--brass); }
 .note .head .state { font: 500 12px/16px var(--mono); letter-spacing: .16em; color: var(--slate); }
 .note .words { padding: 28px 60px 6px 26px; font: 400 31px/42px var(--serif); font-variation-settings: "opsz" 32; color: var(--ink); }
-.note .tasks { display: flex; gap: 44px; padding: 20px 26px 24px; }
+.note .tasks { display: flex; flex-wrap: wrap; gap: 10px 44px; padding: 20px 26px 24px; }
 .note .task { display: flex; align-items: center; gap: 12px; font: 400 16px/22px var(--sans); color: var(--slate); white-space: nowrap; }
 .note .task .tick { position: relative; width: 18px; height: 18px; border: 1.5px solid var(--slate); flex: none; }
 .note .task.done { color: var(--ink); }

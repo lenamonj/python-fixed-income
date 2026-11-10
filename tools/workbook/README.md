@@ -119,11 +119,18 @@ Times on a cover, a route, and a tracker are estimates from one rule, so they me
 7. Outputs are never restyled. A chart looks the way the student's own code will make it look; a house chart style arrives in the notebook that teaches styling, as code the student runs.
 8. Colour carries one meaning each: teal is place, brass is the scenario, rust is a mistake.
 
-## Building a notebook in the system
+## Putting a notebook into the system
 
-1. Install the author tools once: `pip install -r requirements-dev.txt`, then `python -m playwright install chromium`.
-2. Write a pictures script for the day that calls `components.py` and saves PNGs. Keep the day's facts in it (sections, goals, captions, alt text) so the pictures and the notebook cannot disagree.
-3. In the builder, embed each picture with `cells.picture`, put a tracker cell above each numbered heading, and pass the cover to `notebook_header.apply_header(..., cover=...)`.
-4. Run `pytest tests/test_workbook_design.py tests/test_notebook_standard.py`, and add the notebook to `DESIGNED` in the first of those.
-5. Open the built notebook in VS Code and in JupyterLab, in a light theme and a dark one, and read it from the cover to the last card.
-6. Write the day's overview script with `slides.py`, look at each slide's preview, and print the PDF beside the notebook.
+No builder draws any of this itself. `notebook_header.apply_header`, which every builder already calls, hands a notebook to `apply.py` when the notebook has a plan, and `apply.py` reads the rest from the notebook: title, week and day, sections, minutes, exercises, pictures and their alt text, and the notebook that comes next.
+
+| File | What it does |
+| --- | --- |
+| `apply.py` | Puts a built notebook into the system from its plan, on every rebuild. |
+| `check.py` | Checks one converted notebook: its sections and minutes, its tests, and a sheet of every picture. |
+| `RUNBOOK.md` | The job of converting one notebook, step by step, with every key of a plan. |
+
+A plan is a small JSON file, `instructor/_build/workbook_plans/<course folder>/<notebook name>.json`. It holds what a person has to write: one goal for each section, and the optional pieces that take judgment (the scenario's note, mistake plates, quick checks).
+
+The pictures a notebook already has are drawn by its own picture script in the house style, which carries this system's palette, typefaces, and 2400 px width; `apply.py` sets each one on the plate with its numbered caption. Every drawn component refuses words that do not fit, so a plan that is wrong stops the build with a sentence that says what to change.
+
+Install the author tools once: `pip install -r requirements-dev.txt`, then `python -m playwright install chromium`.

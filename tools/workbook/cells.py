@@ -41,17 +41,19 @@ def minutes(cells: list) -> float:
     return words / READING_WORDS_A_MINUTE + code * MINUTES_A_CODE_CELL + figures * MINUTES_A_FIGURE
 
 
-def section_minutes(cells: list, notebook_number: int) -> dict:
-    """Whole minutes for each numbered section, at least one each, keyed by the section's number ("0.3")."""
-    found, current = {}, None
+ENDINGS = ("![Exercises. ", "## You Can Now", "## Summary", "## Tidying Up", "# Wrapping Up", "## Exercises", "## Congratulations!")
+
+
+def section_minutes(cells: list) -> dict:
+    """Whole minutes for each section of a notebook in the design system, at least one each, keyed by the section's
+    place from 1. A section runs from the cell after its tracker to the next tracker or to the notebook's ending."""
+    found, current = {}, 0
     for cell in cells:
-        opening = re.match(rf"## ({notebook_number}\.\d+) ", cell.source) if cell.cell_type == "markdown" else None
-        ending = cell.cell_type == "markdown" and re.match(r"## (?!\d)", cell.source)
-        if opening:
-            current = opening.group(1)
+        if cell.cell_type == "markdown" and cell.source.startswith("![Section "):
+            current = len(found) + 1
             found[current] = []
-        elif ending:
-            current = None
-        if current:
+        elif cell.cell_type == "markdown" and cell.source.startswith(ENDINGS):
+            current = 0
+        elif current:
             found[current].append(cell)
-    return {number: max(1, round(minutes(run))) for number, run in found.items()}
+    return {place: max(1, round(minutes(run))) for place, run in found.items()}

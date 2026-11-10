@@ -21,6 +21,31 @@ SCALE = 2     # and drawn at twice that, so it stays sharp on a high-resolution 
 SERIES = "Python for Fixed Income"
 AUTHOR = "Jeff Lenamon"
 
+# Run in the page before a component is drawn. It names anything that would be cut off or would collide:
+# a part that runs outside the picture, words wider than their own box, and a block marked data-above="<selector>"
+# that reaches the block it must stay above. Shapes inside an <svg> are placed by number and are not checked.
+FIT_CHECK = """() => {
+  const root = document.querySelector('.pfi');
+  const box = root.getBoundingClientRect();
+  const say = (el) => '"' + (el.textContent.trim() || el.className).slice(0, 48) + '"';
+  const found = new Set();
+  for (const el of root.querySelectorAll('*')) {
+    if (el.closest('svg')) continue;
+    const r = el.getBoundingClientRect();
+    if (r.width === 0 || r.height === 0) continue;
+    if (r.right > box.right + 0.5 || r.left < box.left - 0.5 || r.bottom > box.bottom + 0.5 || r.top < box.top - 0.5)
+      found.add(say(el) + ' runs outside the picture');
+    else if (el.children.length === 0 && el.clientWidth > 0 && el.scrollWidth > el.clientWidth + 1)
+      found.add(say(el) + ' is wider than its box');
+  }
+  for (const el of root.querySelectorAll('[data-above]')) {
+    const under = root.querySelector(el.dataset.above);
+    if (el.getBoundingClientRect().bottom + 12 > under.getBoundingClientRect().top)
+      found.add(say(el.lastElementChild || el) + ' reaches the foot of the picture');
+  }
+  return [...found].slice(0, 4);
+}"""
+
 
 class Studio:
     """A headless browser that draws components. Use it as a context manager and draw as many as you like."""
@@ -53,6 +78,9 @@ class Studio:
         if height != int(height):
             # a part-pixel edge would be drawn as a faint line: give the component whole-pixel line heights
             raise ValueError(f"{out.name} is {height} px tall: its height must be a whole number of pixels")
+        faults = self._page.evaluate(FIT_CHECK)
+        if faults:
+            raise ValueError(f"{out.name} does not fit: " + "; ".join(faults) + ". Shorten the words; never shrink the type.")
         block.screenshot(path=str(out))
         image = Image.open(out).convert("RGB")
         image.quantize(colors=colors, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE).save(out, optimize=True)
@@ -119,9 +147,11 @@ def cover(course_line: str, plate: str, title: str, subtitle: str = "", statemen
     """The first picture of a notebook: series, course, week and day, the title, and where the day sits in the course.
 
     statement is one or two short lines under the title; meta is a few facts for the foot, such as "ABOUT 45 MIN".
-    compact is the shorter cover: every notebook's but a course's first, and every solutions notebook's."""
+    compact is the shorter cover: every notebook's but a course's first, and every solutions notebook's.
+    The title's size steps down as the title gets longer, so no one sets it by hand."""
     height = 420 if compact else 600
     motif = course_curve(WIDTH, height, 742, 1144, height - 132, 132 if compact else 150, progress, weeks)
+    step = 1 if len(title) <= 14 else 2 if len(title) <= 22 else 3 if len(title) <= 36 else 4
     sub = f'<p class="sub">{escape(subtitle)}</p>' if subtitle else ""
     lines = f'<p class="statement">{"<br>".join(escape(line) for line in statement.splitlines())}</p>' if statement else ""
     facts = "".join(f"<span>{escape(fact)}</span>" for fact in meta)
@@ -129,7 +159,7 @@ def cover(course_line: str, plate: str, title: str, subtitle: str = "", statemen
         f'<div class="pfi cover{" compact" if compact else ""}">{motif}'
         f'<header><div class="brand">{badge()}<span class="series">{escape(SERIES.upper())}</span></div>'
         f'<div class="course">{escape(course_line)}</div></header>'
-        f'<main><div class="plate">{escape(plate)}</div><h1>{escape(title)}</h1>{sub}{lines}</main>'
+        f'<main data-above="footer"><div class="plate">{escape(plate)}</div><h1 class="step{step}">{escape(title)}</h1>{sub}{lines}</main>'
         f'<footer><div>Created by <b>{escape(AUTHOR)}</b></div><div class="meta">{facts}</div></footer></div>')
 
 
@@ -146,6 +176,12 @@ def figure(body: str, number: int, caption: str, flush: bool = False) -> str:
     """An ivory plate with a numbered caption: the frame of every diagram, screenshot, and chart of the course."""
     return (f'<div class="pfi figure"><div class="body{" flush" if flush else ""}">{body}</div>'
             f'<div class="cap"><span class="no">FIGURE {number}</span><span class="words">{escape(caption)}</span></div></div>')
+
+
+def caption_strip(number: int, caption: str) -> str:
+    """A figure's caption on its own, for apply.py to set under a picture the notebook already had."""
+    return (f'<div class="pfi figure strip"><div class="cap"><span class="no">FIGURE {number}</span>'
+            f'<span class="words">{escape(caption)}</span></div></div>')
 
 
 def screenshot(path: Path, width: int) -> str:
@@ -183,16 +219,32 @@ def arrows(width: int, height: int, *lines: tuple) -> str:
             f'<path d="M0 0 L10 5 L0 10 z" fill="#17807F"/></marker></defs>{drawn}</svg>')
 
 
-def route(sections: list, flags: dict | None = None, head: str = "", total: str = "") -> str:
+ROUTE_LEFT, ROUTE_RIGHT = 96, 1104  # where the first and the last section's points sit on a route
+
+
+def route_stop_width(count: int) -> int:
+    """How wide the words under one point of a route can be: the room between two points, up to 200 px."""
+    return min(200, (ROUTE_RIGHT - ROUTE_LEFT) // max(count - 1, 1) - 12)
+
+
+def route_has_room(titles: list) -> bool:
+    """Whether every section title can be set under its point in two lines, with no word wider than a line."""
+    letters = int(route_stop_width(len(titles)) / 7.9)  # 14.5 px semibold runs about 7.9 px a letter
+    return all(len(title) <= 2 * letters and max(len(word) for word in title.split()) <= letters for title in titles)
+
+
+def route(sections: list, flags: dict | None = None, head: str = "", total: str = "", names: bool = True) -> str:
     """The day's sections as points on the house curve. sections holds (number, title, minutes) for each one;
-    flags maps a section's position (from 1) to a few words set above its point, for the moments that matter."""
+    flags maps a section's position (from 1) to a few words set above its point, for the moments that matter.
+    names=False leaves the titles out, for a notebook whose titles have no room under the points (route_has_room)."""
     flags = flags or {}
-    left, right, low, high, floor = 96, 1104, 190, 78, 216
+    left, right, low, high, floor = ROUTE_LEFT, ROUTE_RIGHT, 190, 78, 216
     count = len(sections)
+    wide = route_stop_width(count)
     drawn = f'<path d="{curve_path(left, right, low, high)}" fill="none" stroke="#17807F" stroke-width="2.4" stroke-linecap="round"/>'
     stops = ""
     for i, (number, title, minutes) in enumerate(sections):
-        t = i / (count - 1)
+        t = i / max(count - 1, 1)
         x, y = left + (right - left) * t, low + (high - low) * curve(t)
         flagged = (i + 1) in flags
         drawn = (f'<line x1="{x:.1f}" x2="{x:.1f}" y1="{y + 9:.1f}" y2="{floor}" stroke="#D8D0BE" stroke-width="1" stroke-dasharray="2 4"/>'
@@ -202,10 +254,12 @@ def route(sections: list, flags: dict | None = None, head: str = "", total: str 
         if flagged:
             drawn += f'<line x1="{x:.1f}" x2="{x:.1f}" y1="{y - 12:.1f}" y2="{y - 24:.1f}" stroke="#A97A1F" stroke-width="1.2"/>'
             stops += f'<div class="flag" style="left:{x - 110:.1f}px;top:{y - 44:.1f}px">{escape(flags[i + 1])}</div>'
-        stops += (f'<div class="stop" style="left:{x - 68:.1f}px"><span class="no">{escape(number)}</span>'
-                  f'<span class="name">{escape(title)}</span><span class="min">{minutes} MIN</span></div>')
+        name = f'<span class="name">{escape(title)}</span>' if names else ""
+        stops += (f'<div class="stop" style="left:{x - wide / 2:.1f}px;width:{wide}px"><span class="no">{escape(number)}</span>'
+                  f'{name}<span class="min">{minutes} MIN</span></div>')
     heads = (f'<div class="head">{escape(head)}</div>' if head else "") + (f'<div class="head right">{escape(total)}</div>' if total else "")
-    return f'<div class="route">{heads}<svg width="{WIDTH}" height="330" viewBox="0 0 {WIDTH} 330">{drawn}</svg>{stops}</div>'
+    return (f'<div class="route{"" if names else " bare"}">{heads}<svg width="{WIDTH}" height="330" viewBox="0 0 {WIDTH} 330">'
+            f'{drawn}</svg>{stops}</div>')
 
 
 def note(sender: str, state: str, tasks: list, text: str = "") -> str:
