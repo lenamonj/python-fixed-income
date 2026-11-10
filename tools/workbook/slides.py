@@ -47,7 +47,19 @@ class Press:
         # content that needs more room than its slide has would be cut off in print: measure it, slide by slide
         over = self._page.evaluate(
             "[...document.querySelectorAll('.slide .content')].map(b => [b.scrollHeight - b.clientHeight, b.scrollWidth - b.clientWidth])")
-        return [f"slide {i + 2}: {tall} px too tall, {wide} px too wide" for i, (tall, wide) in enumerate(over) if tall > 0 or wide > 0]
+        faults = [f"slide {i + 2}: {tall} px too tall, {wide} px too wide" for i, (tall, wide) in enumerate(over) if tall > 0 or wide > 0]
+        # the front has no content box: its title and subtitle must end above the line at its foot
+        low = self._page.evaluate(
+            "[...document.querySelectorAll('.slide.front')].map(f => f.querySelector('main').getBoundingClientRect().bottom"
+            " - f.querySelector('footer').getBoundingClientRect().top)")
+        return [f"slide 1: the title and subtitle reach the foot by {round(gap) + 12} px" for gap in low if gap > -12] + faults
+
+    def fill(self) -> list:
+        """For each content slide of the deck that was last laid out, the share of its height that its parts take."""
+        return self._page.evaluate(
+            "[...document.querySelectorAll('.slide .content')].map(b => { const kids = [...b.children];"
+            " const used = kids.reduce((sum, k) => sum + k.getBoundingClientRect().height, 0) + 18 * Math.max(kids.length - 1, 0);"
+            " return used / b.clientHeight })")
 
     def pdf(self, slides: list, out: Path, title: str) -> Path:
         """Print the slides to one PDF, a page each. A slide that does not fit stops the print."""
@@ -78,10 +90,11 @@ def front(course_line: str, plate: str, title: str, subtitle: str = "", statemen
     sub = f'<p class="sub">{escape(subtitle)}</p>' if subtitle else ""
     lines = f'<p class="lines">{"<br>".join(escape(line) for line in statement.splitlines())}</p>' if statement else ""
     facts = "".join(f"<span>{escape(fact)}</span>" for fact in meta)
+    step = 1 if len(title) <= 14 else 2 if len(title) <= 22 else 3 if len(title) <= 36 else 4
     return (f'<section class="slide front">{course_curve(PAGE_WIDTH, PAGE_HEIGHT, 800, 1220, 532, 190, progress, weeks)}'
             f'<header><div class="brand">{badge()}<span class="series">{escape(SERIES.upper())}</span></div>'
             f'<div class="course">{escape(course_line)}</div></header>'
-            f'<main><div class="plate">{escape(plate)}</div><h1>{escape(title)}</h1>{sub}{lines}</main>'
+            f'<main><div class="plate">{escape(plate)}</div><h1 class="s{step}">{escape(title)}</h1>{sub}{lines}</main>'
             f'<footer><div>Created by <b>{escape(AUTHOR)}</b></div><div class="meta">{facts}</div></footer>'
             f'<p class="disclaimer">{escape(DISCLAIMER)}</p></section>')
 
@@ -94,9 +107,9 @@ def bar(label: str, goal: str, mark: str, index: int = 0, count: int = 0) -> str
             f'<span class="goal">{escape(goal)}</span><span class="mark">{escape(mark)}</span></div>')
 
 
-def slide(top: str, title: str, body: str, foot: str, number: int) -> str:
+def slide(top: str, title: str, body: str, foot: str, number: int, kind: str = "") -> str:
     """A content slide: the strip, the title, the body, and the foot with the slide's number."""
-    return (f'<section class="slide">{top}<h2>{title}</h2><div class="content">{body}</div>'
+    return (f'<section class="slide {kind}">{top}<h2>{title}</h2><div class="content">{body}</div>'
             f'<div class="foot"><span>{escape(foot)}</span><span>{number}</span></div></section>')
 
 

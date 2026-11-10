@@ -132,7 +132,9 @@ def test_overview_pdf_is_the_same_system_at_16_9(path):
     assert "educational content created in a personal capacity" in text[0]
     # spaced capitals are read back with their spaces, so compare with every space taken out
     squashed = re.sub(r"\s+", "", "\n".join(text))
-    sections = re.findall(rf"^## ({notebook_number(path)}\.\d+ .+)$", "\n".join(markdown(path)), re.M)
+    # a section is whatever the notebook gives a tracker to: its heading is the first line of the cell under the tracker
+    cells = markdown(path)
+    sections = [cells[i + 1].split("\n")[0].lstrip("# ") for i, source in enumerate(cells) if source.startswith("![Section ")]
     assert len(pages) >= len(sections) + 3
     for place, heading in enumerate(sections, start=1):
         assert f"SECTION{place}OF{len(sections)}" in squashed, heading

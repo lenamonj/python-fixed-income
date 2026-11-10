@@ -32,6 +32,12 @@ body { width: 1280px; }
 /* a file name in a title is set in the title's own face: a monospaced full stop leaves a hole in the line */
 .slide h2 code { font: inherit; }
 .slide .content { position: absolute; left: 40px; right: 40px; top: 140px; bottom: 54px; display: flex; flex-direction: column; gap: 18px; }
+/* a slide built by overview.py: what room its parts leave is shared above and below them */
+.slide.settled .content { justify-content: center; }
+/* a picture alone in the column sits in the middle of the slide, not at its left edge */
+.slide.settled .content > img.shot { align-self: center; }
+/* the part of a slide that takes the room that is left, with what it holds in the middle of it */
+.slide .content > .middle { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 18px; }
 .slide .foot { position: absolute; left: 40px; right: 40px; bottom: 19px; display: flex; justify-content: space-between;
   font: 500 10.5px var(--mono); letter-spacing: .16em; color: var(--mist); }
 
@@ -92,6 +98,11 @@ ul.can li::before { content: ""; position: absolute; left: 2px; top: 15px; width
 .slide.front main { position: absolute; left: 60px; top: 176px; width: 720px; }
 .slide.front .plate { font: 500 15px var(--mono); letter-spacing: .16em; color: var(--teal-bright); }
 .slide.front h1 { margin-top: 14px; font: 500 128px/124px var(--serif); letter-spacing: -.024em; font-variation-settings: "opsz" 72; }
+/* the title steps down as it gets longer, as it does on a notebook's cover */
+.slide.front h1.s2 { font-size: 96px; line-height: 98px; }
+.slide.front h1.s3 { font-size: 76px; line-height: 80px; }
+.slide.front h1.s4 { font-size: 60px; line-height: 66px; }
+.slide.front h1.s2 + .sub, .slide.front h1.s3 + .sub, .slide.front h1.s4 + .sub { margin-top: 10px; }
 .slide.front .sub { margin-top: 2px; font: italic 400 40px/50px var(--serif); color: var(--on-navy-soft); font-variation-settings: "opsz" 40; }
 .slide.front .lines { margin-top: 28px; font: 400 18.5px/30px var(--sans); color: var(--on-navy-mute); }
 .slide.front footer { position: absolute; left: 60px; right: 60px; bottom: 84px; padding-top: 17px;

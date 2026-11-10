@@ -98,7 +98,9 @@ A slide's content is 1200 px wide, as a drawn component is, so `note`, `route`, 
 
 The PDF is printed from the browser, not exported from PowerPoint, which cannot draw the system's typefaces. The text stays text, the diagrams stay sharp at any size, and the typefaces travel inside the file.
 
-1. One slide for each section, with the scenario and the route before them and You Can Now after: 12 to 14 slides.
+A day's overview is written as a short script on `overview.py`: `Deck(notebook)` opens the built notebook, reads each section's goal and minutes from its trackers, and gives a reader for everything a slide can show (a cell's lines, what it printed, a table, a chart, a figure, a sentence). `RUNBOOK_OVERVIEW.md` is that job, step by step.
+
+1. One slide for each section, two for a section with two big ideas, with the scenario and the route before them and You Can Now after: 9 to 16 slides.
 2. Every code line, output, table, and sentence is read from the built notebook, never typed again. A pattern that no longer finds its cell stops the build.
 3. A slide whose content does not fit is refused. Look at every slide's preview before printing.
 4. The first slide carries the disclaimer.

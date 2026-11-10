@@ -237,7 +237,8 @@ def apply(nb, notebook: Path, plan: dict) -> Image.Image:
         if solutions:
             if way_on:
                 cells.append(markdown_cell(way_on))
-            facts = (f"{count_exercises(cells)} WORKED ANSWERS",)
+            answers = count_exercises(cells)
+            facts = (f"{answers} WORKED ANSWER{'' if answers == 1 else 'S'}",)
             return Image.open(io.BytesIO(draw.png(c.cover(course_line, plate, title, subtitle, "", facts, progress, weeks, True), "cover")))
 
         kind = plan.get("sections", "numbered")
