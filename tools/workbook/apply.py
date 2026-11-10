@@ -80,6 +80,7 @@ def find(cells: list, pattern: str, what: str) -> int:
     return hits[0]
 
 
+CAPTION_LIMIT = 120  # characters in a figure's caption: one sentence that says what the figure shows
 NUMBERED = r"## \d+(?:\.\d+)? "  # a numbered section's heading: "## 3.1 Slicing", or "## 3 Data Quality" in a project
 
 
@@ -256,10 +257,15 @@ def apply(nb, notebook: Path, plan: dict) -> Image.Image:
         route_number = None
         captions = plan.get("captions", {})
 
+        too_long = {}
+
         def framed(found) -> str:
             nonlocal number
             number += 1
             caption = captions.get(str(number), re.sub(r"^Figure \d+: ", "", found.group(1))).rstrip(".") + "."
+            if len(caption) > CAPTION_LIMIT:
+                too_long[number] = len(caption)
+                return found.group(0)
             return as_markdown(draw.figure(base64.b64decode(found.group(3)), found.group(2), number, caption), f"Figure {number}: {caption}")
 
         for i, cell in enumerate(cells):
@@ -273,6 +279,10 @@ def apply(nb, notebook: Path, plan: dict) -> Image.Image:
         if stray:
             raise PlanError(f"the plan captions figures {sorted(stray)}, and the notebook's own pictures are figures "
                             f"{', '.join(own) or 'none'} (the route is Figure {route_number})")
+        if too_long:
+            sizes = ", ".join(f"figure {n} ({size} characters)" for n, size in too_long.items())
+            raise PlanError(f"a caption is one sentence of {CAPTION_LIMIT} characters or fewer, and these run over: {sizes}. "
+                            f'Give each one under "captions" in the plan')
 
         # 2. the pieces that take judgment, each found by a pattern that must match one cell
         done_note = scenario(draw, cells, plan["note"]) if plan.get("note") else ""

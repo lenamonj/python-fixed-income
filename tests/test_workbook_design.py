@@ -95,6 +95,14 @@ def test_figures_are_numbered_in_order_and_cited_ones_exist(path):
 
 
 @pytest.mark.parametrize("path", DESIGNED, ids=ids)
+def test_a_figure_caption_is_one_short_sentence(path):
+    from workbook.apply import CAPTION_LIMIT
+    for number, caption in re.findall(r"!\[Figure (\d+): ([^\]]*)\]\(", "\n".join(markdown(path))):
+        assert len(caption) <= CAPTION_LIMIT, f"Figure {number}'s caption runs to {len(caption)} characters"
+        assert caption.endswith("."), f"Figure {number}'s caption does not end in a full stop"
+
+
+@pytest.mark.parametrize("path", DESIGNED, ids=ids)
 def test_quick_checks_fold_their_answers(path):
     for source in (source for source in markdown(path) if "**Quick check.**" in source):
         assert source.startswith("**Quick check.** ") and "<details>\n<summary>Show the answer</summary>" in source

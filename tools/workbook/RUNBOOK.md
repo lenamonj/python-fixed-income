@@ -113,7 +113,7 @@ If the build says a goal does not fit, shorten the goal. Never touch the type si
 
 ## Captions
 
-A caption says what the figure shows, in one sentence. The default, the picture's alt text, is usually right. Give a caption in the plan only when the alt text is longer than about 120 characters or is not a sentence. Where the notebook's text says "the first picture" or "the picture above", that is the builder's text: report it, do not edit it.
+A caption says what the figure shows, in one sentence of 120 characters or fewer. The default is the picture's alt text, which describes the picture in full for a reader who cannot see it and is usually far too long for a caption. So for every figure whose alt text runs past 120 characters or is not one sentence, write a caption in the plan, and count its characters: the build refuses the 121st. Say what the picture shows with the notebook's own numbers and names ("Inner, left, right, and outer joins of the same five tickers keep 3, 4, 4, and 5 rows."), not what kind of picture it is ("A diagram of four joins."). Where the notebook's text says "the first picture" or "the picture above", that is the builder's text: report it, do not edit it.
 
 ## The editor's pieces
 
@@ -138,6 +138,7 @@ These take judgment about what the notebook has taught, so one editor writes the
 | --- | --- |
 | `the plan gives N goals and the notebook has M sections: [...]` | Write one goal for each section it lists, in that order. |
 | `the goal "..." has N words` | Rewrite that goal as one sentence of eight words or fewer, ending in a full stop. |
+| `a caption is one sentence of 120 characters or fewer, and these run over: ...` | Write a caption under `captions` for each figure it names, or shorten the one you wrote. |
 | `the plan captions figures [...]` | Key each caption by its figure's number. The message lists the numbers the notebook's own pictures have; the route's caption is not yours to write. |
 | `... does not fit: "..." runs outside the picture` or `is wider than its box` | Shorten those words in the plan. For a picture script, shorten the label there. |
 | `... reaches the foot of the picture` | The title and subtitle are too long for the cover. Report it; do not change the title. |
