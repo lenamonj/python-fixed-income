@@ -161,12 +161,13 @@ def header_markdown(week: int, day: int, title: str, image: Image.Image, course:
 
 
 def apply_header(notebook_path: Path, week: int, day: int, title: str, course: int | str = 1,
-                 label: str | None = None) -> None:
+                 label: str | None = None, cover: Path | None = None) -> None:
     """Insert the banner as the first cell, replacing an earlier banner if there is one. label (for example
-    "SETUP") replaces WEEK n · DAY n for a notebook that is not a course day."""
+    "SETUP") replaces WEEK n · DAY n for a notebook that is not a course day. cover is a picture drawn with the
+    workbook design system (tools/workbook): it takes the banner's place, with the same alt text and saved copy."""
     if course not in COURSES:
         raise ValueError(f"course must be one of {list(COURSES)}, not {course}")
-    image = draw_banner(week, day, title, course, label)
+    image = Image.open(cover) if cover else draw_banner(week, day, title, course, label)
     HEADERS.mkdir(parents=True, exist_ok=True)
     image.save(HEADERS / f"{COURSES[course][2]}{notebook_path.stem}.png", optimize=True)
 

@@ -2,3 +2,5 @@ pillow==12.3.0
 nbformat==5.11.1
 nbconvert==7.17.1
 xlrd==2.0.2
+# draws the workbook design system (tools/workbook); then once: python -m playwright install chromium
+playwright==1.61.0

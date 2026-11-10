@@ -1,0 +1,179 @@
+/* Python for Fixed Income: the workbook design system.
+   Tokens first, then one block per drawn component. components.py fills the HTML; README.md says when to use each. */
+
+@font-face { font-family: "Newsreader"; src: url("../../assets/fonts/Newsreader-Variable.ttf"); font-weight: 200 800; font-style: normal; }
+@font-face { font-family: "Newsreader"; src: url("../../assets/fonts/Newsreader-Italic-Variable.ttf"); font-weight: 200 800; font-style: italic; }
+@font-face { font-family: "Plex Sans"; src: url("../../assets/fonts/IBMPlexSans-Variable.ttf"); font-weight: 100 700; }
+@font-face { font-family: "Plex Mono"; src: url("../../assets/fonts/IBMPlexMono-Medium.ttf"); font-weight: 500; }
+@font-face { font-family: "Plex Mono"; src: url("../../assets/fonts/IBMPlexMono-Bold.ttf"); font-weight: 700; }
+
+:root {
+  /* midnight navy: covers, section trackers, the next-step card */
+  --navy: #0E1B2E;
+  --navy-raised: #16273F;
+  --navy-rule: #2A3D5C;
+  --on-navy: #F7F3EA;
+  --on-navy-soft: #C5CEDB;
+  --on-navy-mute: #8E9BB0;
+  /* warm ivory: figures, the scenario note, the route */
+  --ivory: #F7F3EA;
+  --ivory-deep: #EEE8DA;
+  --paper: #FFFDF8;
+  --rule: #D8D0BE;
+  /* graphite text on ivory */
+  --ink: #1B2430;
+  --slate: #55606E;
+  --mist: #8C95A3;
+  /* one accent, two strengths: teal on ivory, bright teal on navy */
+  --teal: #17807F;
+  --teal-bright: #5CC8C2;
+  --teal-dim: #2C6E73;
+  /* instructional colours, used sparingly: brass for the scenario and its answers, rust for a mistake */
+  --brass: #A97A1F;
+  --rust: #A4472F;
+
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --sans: "Plex Sans", "Segoe UI", Arial, sans-serif;
+  --mono: "Plex Mono", Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: transparent; }
+body { width: 1200px; }
+
+/* every component is one 1200 px wide block, drawn at twice that size */
+.pfi {
+  position: relative; width: 1200px; overflow: hidden;
+  font-family: var(--sans); color: var(--ink);
+  -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision;
+}
+.caps { font: 600 12px var(--sans); letter-spacing: .2em; text-transform: uppercase; }
+.mono { font-family: var(--mono); font-weight: 500; }
+
+/* ------------------------------------------------------------------ the pfi badge */
+.badge { position: relative; width: 50px; height: 50px; border-radius: 9px; background: var(--on-navy); flex: none; }
+.badge b { position: absolute; left: 0; right: 0; top: 9px; text-align: center; font: 700 20px var(--mono); letter-spacing: -.02em; color: var(--navy); }
+.badge svg { position: absolute; left: 0; top: 0; }
+
+/* ------------------------------------------------------------------ cover */
+.cover { height: 600px; background: var(--navy); color: var(--on-navy); }
+.cover .motif { position: absolute; left: 0; top: 0; }
+.cover header {
+  position: absolute; left: 56px; right: 56px; top: 34px; padding-bottom: 20px;
+  display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--navy-rule);
+}
+.cover .brand { display: flex; align-items: center; gap: 16px; }
+.cover .series { font: 600 13px var(--sans); letter-spacing: .24em; }
+.cover .course { font: 500 12.5px var(--sans); letter-spacing: .2em; color: var(--on-navy-soft); }
+.cover main { position: absolute; left: 56px; top: 156px; width: 700px; }
+.cover .plate { font: 500 15px var(--mono); letter-spacing: .16em; color: var(--teal-bright); }
+.cover h1 { margin-top: 14px; font: 500 116px/112px var(--serif); letter-spacing: -.024em; font-variation-settings: "opsz" 72; }
+.cover .sub { margin-top: 2px; font: italic 400 37px/46px var(--serif); color: var(--on-navy-soft); font-variation-settings: "opsz" 40; }
+.cover .statement { margin-top: 28px; font: 400 17.5px/28px var(--sans); color: var(--on-navy-mute); }
+.cover footer {
+  position: absolute; left: 56px; right: 56px; bottom: 28px; padding-top: 17px;
+  display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--navy-rule);
+  font: 400 14.5px var(--sans); color: var(--on-navy-soft);
+}
+.cover footer b { font-weight: 600; color: var(--on-navy); }
+.cover .meta { font: 500 12.5px var(--mono); letter-spacing: .14em; color: var(--on-navy-soft); }
+.cover .meta span + span::before { content: "/"; margin: 0 14px; color: var(--navy-rule); }
+.cover.compact { height: 420px; }
+.cover.compact main { top: 138px; }
+.cover.compact h1 { font-size: 86px; line-height: 84px; }
+.cover.compact .sub { font-size: 31px; line-height: 40px; }
+
+/* ------------------------------------------------------------------ section tracker */
+.tracker {
+  height: 62px; padding: 0 28px; background: var(--navy); color: var(--on-navy);
+  display: flex; align-items: center; border-bottom: 2px solid var(--teal-dim);
+}
+.tracker .count { font: 600 11.5px var(--sans); letter-spacing: .22em; color: var(--on-navy-soft); white-space: nowrap; }
+.tracker .track { display: flex; align-items: center; gap: 5px; margin-left: 22px; }
+.tracker .track i { display: block; width: 26px; height: 3px; background: var(--navy-rule); }
+.tracker .track i.done { background: var(--teal-dim); }
+.tracker .track i.now { height: 7px; background: var(--teal-bright); }
+.tracker .goal { margin-left: 30px; padding-left: 30px; border-left: 1px solid var(--navy-rule); flex: 1;
+  font: italic 400 21px/62px var(--serif); font-variation-settings: "opsz" 24; white-space: nowrap; }
+.tracker .time { font: 500 12px var(--mono); letter-spacing: .16em; color: var(--teal-bright); white-space: nowrap; }
+
+/* ------------------------------------------------------------------ figure: every ivory picture */
+.figure { background: var(--ivory); border: 1px solid var(--rule); }
+.figure .body { padding: 34px 40px 32px; display: flex; justify-content: center; }
+.figure .body.flush { padding: 0; display: block; }
+.figure .cap { display: flex; align-items: baseline; gap: 18px; padding: 12px 24px 13px; border-top: 1px solid var(--rule); background: var(--ivory-deep); }
+.figure .cap .no { font: 500 11.5px/22px var(--mono); letter-spacing: .18em; color: var(--teal); white-space: nowrap; }
+.figure .cap .words { font: 400 15px/22px var(--sans); color: var(--slate); }
+.figure img.shot { display: block; box-sizing: content-box; border: 1px solid var(--ink); }
+
+/* diagram primitives, placed by x, y, width, height inside a stage */
+.stage { position: relative; }
+.stage .box { position: absolute; border: 1.5px solid var(--ink); background: var(--paper); }
+.stage .box.tint { background: #D9ECE8; border-color: var(--teal); }
+.stage .box.code { background: var(--ivory-deep); }
+.stage .box.soft { border: 1px solid var(--mist); }
+.stage .box.file { border: 1.5px dashed var(--slate); background: transparent; }
+.stage .box.cell { border: 1px solid var(--mist); background: var(--paper); }
+.stage .t { position: absolute; text-align: center; font: 400 15px/1.3 var(--sans); color: var(--ink); white-space: nowrap; }
+.stage .t.b { font-weight: 600; }
+.stage .t.h { font-weight: 600; font-size: 16.5px; }
+.stage .t.m { font: 500 14px/1.3 var(--mono); }
+.stage .t.m.b { font-weight: 700; }
+.stage .t.m.s { font-size: 12.5px; color: var(--slate); }
+.stage .t.s { font-size: 13px; color: var(--slate); }
+.stage .t.step { font: 600 12px/1.3 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--teal); }
+.stage .t.left { text-align: left; }
+.stage svg { position: absolute; left: 0; top: 0; }
+
+/* ------------------------------------------------------------------ route: the day's sections on the house curve */
+.route { position: relative; height: 330px; }
+.route svg { position: absolute; left: 0; top: 0; }
+.route .stop { position: absolute; top: 226px; width: 136px; text-align: center; }
+.route .stop .no { display: block; font: 500 13px var(--mono); letter-spacing: .08em; color: var(--teal); }
+.route .stop .name { display: block; margin-top: 5px; font: 600 14.5px/1.25 var(--sans); color: var(--ink); min-height: 36px; }
+.route .stop .min { display: block; margin-top: 5px; font: 500 11.5px var(--mono); letter-spacing: .1em; color: var(--mist); }
+.route .flag { position: absolute; width: 220px; text-align: center; font: 600 10.5px var(--sans); letter-spacing: .2em; color: var(--brass); white-space: nowrap; }
+.route .head { position: absolute; left: 28px; top: 22px; font: 600 11.5px var(--sans); letter-spacing: .22em; color: var(--slate); }
+.route .head.right { left: auto; right: 28px; color: var(--teal); font: 500 12px var(--mono); letter-spacing: .16em; }
+
+/* ------------------------------------------------------------------ note: the scenario as an object on the desk */
+.note { background: var(--paper); border: 1px solid var(--rule); border-left: 6px solid var(--brass); }
+.note .head { display: flex; justify-content: space-between; align-items: baseline; padding: 15px 28px 14px 26px; border-bottom: 1px solid var(--rule); }
+.note .head .from { font: 600 11.5px/16px var(--sans); letter-spacing: .22em; color: var(--brass); }
+.note .head .state { font: 500 12px/16px var(--mono); letter-spacing: .16em; color: var(--slate); }
+.note .words { padding: 28px 60px 6px 26px; font: 400 31px/42px var(--serif); font-variation-settings: "opsz" 32; color: var(--ink); }
+.note .tasks { display: flex; gap: 44px; padding: 20px 26px 24px; }
+.note .task { display: flex; align-items: center; gap: 12px; font: 400 16px/22px var(--sans); color: var(--slate); white-space: nowrap; }
+.note .task .tick { position: relative; width: 18px; height: 18px; border: 1.5px solid var(--slate); flex: none; }
+.note .task.done { color: var(--ink); }
+.note .task.done .tick { border-color: var(--brass); background: var(--brass); }
+.note .task.done .tick::after { content: ""; position: absolute; left: 5px; top: 1px; width: 5px; height: 10px;
+  border: solid var(--paper); border-width: 0 2px 2px 0; transform: rotate(40deg); }
+.note .task b { font: 500 15px/22px var(--mono); color: var(--brass); margin-left: 2px; }
+.note.strip .tasks { padding: 18px 26px 19px; }
+
+/* ------------------------------------------------------------------ mistake: typed, got, type this instead */
+.mistake { background: var(--paper); border: 1px solid var(--rule); border-left: 6px solid var(--rust); }
+.mistake .head { display: flex; justify-content: space-between; align-items: baseline; padding: 15px 28px 14px 26px; border-bottom: 1px solid var(--rule); }
+.mistake .head .what { font: 600 11.5px/16px var(--sans); letter-spacing: .22em; color: var(--rust); }
+.mistake .head .name { font: 500 12px/16px var(--mono); letter-spacing: .16em; color: var(--slate); }
+.mistake .sides { display: flex; }
+.mistake .side { flex: 1; padding: 22px 26px 24px; }
+.mistake .side + .side { border-left: 1px solid var(--rule); }
+.mistake .label { display: block; font: 600 11px/16px var(--sans); letter-spacing: .2em; color: var(--mist); }
+.mistake .line { display: flex; align-items: baseline; gap: 16px; margin-top: 12px; font: 500 28px/38px var(--mono); color: var(--ink); white-space: nowrap; }
+.mistake .line .gives { font: italic 400 19px/38px var(--serif); color: var(--mist); }
+.mistake .wrong .out { color: var(--rust); }
+.mistake .right .out { color: var(--teal); }
+.mistake p { margin-top: 10px; font: 400 15px/22px var(--sans); color: var(--slate); }
+
+/* ------------------------------------------------------------------ next: the way on */
+.next { height: 128px; padding: 0 34px 0 28px; background: var(--navy); color: var(--on-navy); display: flex; align-items: center; border-bottom: 2px solid var(--teal-dim); }
+.next .where { width: 250px; }
+.next .where .label { display: block; font: 600 11.5px var(--sans); letter-spacing: .24em; color: var(--teal-bright); }
+.next .where .plate { display: block; margin-top: 9px; font: 500 12.5px var(--mono); letter-spacing: .14em; color: var(--on-navy-soft); }
+.next .what { flex: 1; padding-left: 34px; border-left: 1px solid var(--navy-rule); }
+.next .what .title { display: block; font: 500 36px/1.1 var(--serif); letter-spacing: -.012em; font-variation-settings: "opsz" 40; }
+.next .what .line { display: block; margin-top: 8px; font: 400 15.5px var(--sans); color: var(--on-navy-mute); }
+.next .go { width: 54px; height: 54px; border: 1.5px solid var(--teal-bright); border-radius: 50%; position: relative; flex: none; }
+.next .go svg { position: absolute; left: 0; top: 0; }
