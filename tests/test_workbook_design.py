@@ -104,6 +104,25 @@ def test_notebook_ends_with_the_way_on(path):
     assert (path.parent / link.group(1)).exists(), link.group(1)
 
 
+@pytest.mark.parametrize("path", DESIGNED, ids=ids)
+def test_overview_pdf_is_the_same_system_at_16_9(path):
+    pypdf = pytest.importorskip("pypdf", reason="reading the overview PDF needs pypdf, in requirements.txt")
+    pages = pypdf.PdfReader(path.with_name(path.stem + "_overview.pdf")).pages
+    text = [page.extract_text() for page in pages]
+    # 1280 x 720 px slides are 960 x 540 points
+    assert all((float(page.mediabox.width), float(page.mediabox.height)) == (960, 540) for page in pages)
+    assert "educational content created in a personal capacity" in text[0]
+    # spaced capitals are read back with their spaces, so compare with every space taken out
+    squashed = re.sub(r"\s+", "", "\n".join(text))
+    sections = re.findall(rf"^## ({notebook_number(path)}\.\d+ .+)$", "\n".join(markdown(path)), re.M)
+    assert len(pages) >= len(sections) + 3
+    for place, heading in enumerate(sections, start=1):
+        assert f"SECTION{place}OF{len(sections)}" in squashed, heading
+        assert re.sub(r"[`\s]", "", heading) in squashed, heading
+    # a ligature would be saved as one odd character, which breaks search and copy
+    assert "ﬁ" not in squashed and "ﬂ" not in squashed
+
+
 # ---------------------------------------------------------------- the helpers
 def test_time_rule_counts_words_code_cells_and_figures():
     run = [new_markdown_cell("## 9.1 A Section\n\n" + "word " * 148), new_code_cell("1 + 1"),
@@ -130,6 +149,26 @@ def test_tracker_marks_the_sections_done_now_and_to_come():
     assert html.count('class="done"') == 2 and html.count('class="now"') == 1 and html.count("<i ") == 8
     assert "Do the desk&#x27;s first sum." in html and "ABOUT 11 MIN" in html
     assert "<i " not in components.tracker("EXERCISES", "Six short jobs.", 18)
+
+
+def test_a_slide_holds_its_strip_title_content_and_number():
+    from workbook import slides
+    made = slides.slide(slides.bar("SECTION 2 OF 8", "Know what Python is.", "ABOUT 2 MIN", index=2, count=8),
+                        "0.2 What Python Is", slides.panel("Excel side by side", "Python is only the engine."), "FOOT", 5)
+    assert made.count('class="done"') == 1 and made.count('class="now"') == 1
+    assert "<h2>0.2 What Python Is</h2>" in made and '<div class="content">' in made and "<span>5</span>" in made
+    # words become a paragraph; a block of HTML goes into a panel as it is
+    assert "<p>Python is only the engine.</p>" in made
+    assert "<p><div" not in slides.panel("", slides.codebox(["1 + 1"], "2"))
+
+
+def test_press_refuses_a_slide_that_does_not_fit(tmp_path):
+    pytest.importorskip("playwright", reason="the press needs the author tools in requirements-dev.txt")
+    from workbook import slides
+    tall = slides.slide("", "Too Much", "".join(slides.panel("", "A line.") for _ in range(20)), "FOOT", 2)
+    with slides.Press() as press:
+        with pytest.raises(ValueError, match="does not fit"):
+            press.pdf([tall], tmp_path / "deck.pdf", "test")
 
 
 def test_studio_draws_a_component_at_twice_its_size(tmp_path):

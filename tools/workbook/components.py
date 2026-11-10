@@ -83,15 +83,10 @@ def badge() -> str:
             f'stroke-linecap="round"/></svg></span>')
 
 
-def cover(course_line: str, plate: str, title: str, subtitle: str = "", statement: str = "", meta: tuple = (),
-          progress: float = 0.0, weeks: int = 4, compact: bool = False) -> str:
-    """The first picture of a notebook: series, course, week and day, the title, and where the day sits in the course.
-
-    progress runs from 0 (the course's first notebook) to 1 (its last) and places the marker on the curve.
-    statement is one or two short lines under the title; meta is a few facts for the foot, such as "ABOUT 45 MIN".
-    compact is the shorter cover, for a solutions notebook."""
-    height = 420 if compact else 600
-    left, right, base, top = 742, 1144, height - 132, 150 if not compact else 132
+def course_curve(width: int, height: int, left: int, right: int, base: int, top: int,
+                 progress: float = 0.0, weeks: int = 4) -> str:
+    """The house curve as the picture on a cover: the weeks of the course along the foot, and a marker where
+    this notebook falls. progress runs from 0 (the course's first notebook) to 1 (its last)."""
     grid = "".join(f'<line x1="{left}" x2="{right}" y1="{y}" y2="{y}"/>'
                    for y in (base - (base - top) * k / 4 for k in range(1, 5)))
     ticks = ""
@@ -105,8 +100,8 @@ def cover(course_line: str, plate: str, title: str, subtitle: str = "", statemen
     here_y = base - 22 + (top + 14 - (base - 22)) * curve(progress)
     line = curve_path(left, right, base - 22, top + 14)
     area = f"{line} L{right} {base} L{left} {base} Z"
-    motif = (
-        f'<svg class="motif" width="{WIDTH}" height="{height}" viewBox="0 0 {WIDTH} {height}">'
+    return (
+        f'<svg class="motif" width="{width}" height="{height}" viewBox="0 0 {width} {height}">'
         f'<g stroke="#2A3D5C" stroke-width="1" stroke-dasharray="2 6" opacity=".8">{grid}</g>'
         f'<path d="{area}" fill="#5CC8C2" opacity=".055"/>'
         f'<g stroke="#2A3D5C" stroke-width="1"><line x1="{left}" x2="{right}" y1="{base}" y2="{base}"/>{ticks}</g>'
@@ -117,6 +112,16 @@ def cover(course_line: str, plate: str, title: str, subtitle: str = "", statemen
         f'<text x="{here_x + (24 if progress < 0.6 else -24):.1f}" y="{here_y + 4:.1f}" fill="#5CC8C2" font-family="Plex Mono" '
         f'font-weight="500" font-size="10.5" letter-spacing="1.6" text-anchor="{"start" if progress < 0.6 else "end"}">'
         f'YOU ARE HERE</text></svg>')
+
+
+def cover(course_line: str, plate: str, title: str, subtitle: str = "", statement: str = "", meta: tuple = (),
+          progress: float = 0.0, weeks: int = 4, compact: bool = False) -> str:
+    """The first picture of a notebook: series, course, week and day, the title, and where the day sits in the course.
+
+    statement is one or two short lines under the title; meta is a few facts for the foot, such as "ABOUT 45 MIN".
+    compact is the shorter cover: every notebook's but a course's first, and every solutions notebook's."""
+    height = 420 if compact else 600
+    motif = course_curve(WIDTH, height, 742, 1144, height - 132, 132 if compact else 150, progress, weeks)
     sub = f'<p class="sub">{escape(subtitle)}</p>' if subtitle else ""
     lines = f'<p class="statement">{"<br>".join(escape(line) for line in statement.splitlines())}</p>' if statement else ""
     facts = "".join(f"<span>{escape(fact)}</span>" for fact in meta)

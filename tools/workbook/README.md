@@ -82,6 +82,28 @@ Each function in `components.py` returns the HTML of one component. `Studio.png`
 
 The typed helpers are in `cells.py`: `picture` and `linked_picture` embed a drawn component, `quick_check` writes a knowledge check, and `minutes` and `section_minutes` apply the time rule.
 
+## The overview PDF
+
+Each notebook's overview PDF is the same system at 16:9, built by `slides.py` and styled by `slides.css` on top of `design.css`.
+
+| Function | What it makes |
+| --- | --- |
+| `front(course_line, plate, title, subtitle, statement, meta, progress, weeks)` | The first slide: the notebook's cover, with the disclaimer at its foot. |
+| `bar(label, goal, mark, index, count)` | The strip at the top of a slide: the notebook's tracker for that section. |
+| `slide(top, title, content, foot, number)` | A content slide. |
+| `row`, `col`, `panel`, `codebox`, `grid`, `takeaway`, `statement`, `facts`, `shot`, `scaled`, `pushed`, `can_list` | What goes on a slide. |
+| `Press.pdf(slides, out, title)` | Prints the slides to one PDF. `Press.previews` saves a PNG of each for looking at first. |
+
+A slide's content is 1200 px wide, as a drawn component is, so `note`, `route`, `mistake`, `next_step`, and any diagram go on a slide as they stand, and `scaled` shrinks one that is too tall.
+
+The PDF is printed from the browser, not exported from PowerPoint, which cannot draw the system's typefaces. The text stays text, the diagrams stay sharp at any size, and the typefaces travel inside the file.
+
+1. One slide for each section, with the scenario and the route before them and You Can Now after: 12 to 14 slides.
+2. Every code line, output, table, and sentence is read from the built notebook, never typed again. A pattern that no longer finds its cell stops the build.
+3. A slide whose content does not fit is refused. Look at every slide's preview before printing.
+4. The first slide carries the disclaimer.
+5. Leave out anything that answers a Predict: its output, the picture drawn from it, the sentence after it.
+
 ## The time rule
 
 Times on a cover, a route, and a tracker are estimates from one rule, so they mean the same thing in every notebook: 150 words a minute, half a minute for each code cell, half a minute for each figure, three minutes for each exercise. Section times are whole minutes; the cover's total is rounded to five. A builder checks its trackers against the rule and stops if they have drifted.
@@ -104,3 +126,4 @@ Times on a cover, a route, and a tracker are estimates from one rule, so they me
 3. In the builder, embed each picture with `cells.picture`, put a tracker cell above each numbered heading, and pass the cover to `notebook_header.apply_header(..., cover=...)`.
 4. Run `pytest tests/test_workbook_design.py tests/test_notebook_standard.py`, and add the notebook to `DESIGNED` in the first of those.
 5. Open the built notebook in VS Code and in JupyterLab, in a light theme and a dark one, and read it from the cover to the last card.
+6. Write the day's overview script with `slides.py`, look at each slide's preview, and print the PDF beside the notebook.
