@@ -20,7 +20,6 @@ Your brief names three files: the notebook, the script to write, and a folder fo
 2. **Look at a finished deck**, so you know what a finished slide looks like: full, ordered, and easy to read. This prints the slides of Day 1, Part 1 into a folder of its own, with contact sheets, and writes no PDF. Open the sheets. Do not read or copy that script.
 
    ```powershell
-   .venv\Scripts\python.exe instructor\_build
    .venv\Scripts\python.exe instructor\_build\redesign_c1\day1\make_overview.py --preview <your folder>\reference --look
    ```
 3. **Choose the slides.** The front, the scenario, the route, the sections, the closing: 9 to 16 slides. A section takes one slide. A section with two separate big ideas may take two, the second under a title of your own; never three.
@@ -73,17 +72,20 @@ Every reader takes a pattern, a regular expression matched against each line of 
 | --- | --- |
 | `deck.lines(pattern, comments=False, keep="")` | A code cell's lines, for `s.codebox`. `keep` is a pattern for the lines to keep, when the cell is longer than the slide needs. |
 | `deck.output(pattern, keep="", first=0)` | What that cell printed, as text. `first=6` keeps six lines; `keep` keeps the lines that match. |
-| `deck.error(pattern)` | The last line of the error a cell raised, for `s.codebox(..., bad=True)`. |
-| `deck.frame(pattern, rows=0, columns=0)` | The table a cell showed, for `s.grid`. `rows` and `columns` keep that many. |
+| `deck.error(pattern)` | The last line of the error a cell raised, for `s.codebox(..., bad=True)`. A long one needs a wide column: it cannot be cut. |
+| `deck.frame(pattern, rows=0, columns=0)` | The table a cell showed, for `s.grid`. `rows` and `columns` keep that many; the row labels count as the first column. |
 | `deck.chart(pattern, width)` | The chart a cell drew, exactly as the notebook shows it. |
 | `deck.figure(number, width)` | A figure from the notebook, on its plate with its caption. |
 | `deck.markdown(pattern)` | A text cell's words, to take lines from. |
 | `line(pattern, text)` | The whole line of that text that the pattern matches a part of. Wrap it in `inline(...)` to keep its `code` and **bold**. |
-| `last_bold(text)` | The bold line that closes a cell: the usual takeaway. |
+| `last_bold(text)` | The bold line that closes a cell: the usual takeaway. To find that cell, match words inside the line, not `^` and the stars. |
+| `deck.excel(pattern)` | A cell's Excel side by side, without its bold lead-in, for a panel labelled "Excel side by side". |
 | `deck.quote(pattern)` | A cell's quoted lines (the desk lead's note), for `s.statement`. |
-| `deck.table(pattern)` | The table in a text cell, for `s.grid`. The pattern matches a sentence in the same cell as the table, not a row of it. |
+| `deck.table(pattern)` | The table in a text cell, as rows: wrap it, `s.grid(deck.table(...))`. The pattern matches a sentence in the same cell as the table, not a row of it. |
 | `deck.heading(number)` | A section's heading. A section's slide uses it unless you give `title=`. |
 | `deck.sections` | The sections as the notebook's trackers count them: number, title, goal, minutes. An unnumbered section's number is its place, as text: `"6"`. |
+| `deck.section(number, *parts, title="")` | A section's slide. `title=` names a section's second slide. |
+| `deck.closing(*parts, card=True)` | The last slide: the You Can Now list, your parts if any (the closing cell's table of answers is a good one), and the card to the next notebook. |
 | `deck.scenario(pattern, *parts)` | The scenario's slide, whole: the cell's heading, the desk lead's quoted note set large, your parts if any, and the day's facts. |
 
 ## Laying out a slide
@@ -109,6 +111,8 @@ How much fits:
 - A slide must be full enough: the build refuses one whose parts take less than 60 percent of its height (`SPARSE`). Fill it with what the section has: show its figure or chart larger, add its second-best example as another panel, add its Excel comparison, or set two short code cells one under the other. Never fill a slide with words of your own, and never repeat something another slide shows.
 - If the build says a slide is too tall, take a part off it or show a picture smaller. Do not use `small=True` to rescue a crowded slide: take something off.
 - Parts in a row are as tall as the tallest, so put parts of like height side by side.
+- A column must hold its longest line of code. A row that is "too wide" nearly always has a code line longer than its column: give that column more width, or show fewer lines with `keep`. Beside a 680 px figure a column has 502 px, about 50 letters of code.
+- When you cut a cell with `keep`, cut its output the same way, so each line shown still has its answer under it, and keep a loop's `for` line with its body.
 
 ## Rules
 

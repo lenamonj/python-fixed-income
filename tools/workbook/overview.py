@@ -40,10 +40,16 @@ FULL_ENOUGH = 0.6  # the share of a slide's height that its parts must take, or 
 def inline(text: str) -> str:
     """A line of the notebook's markdown as HTML: code spans, bold, italics, and links kept as their words."""
     text = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", text)
-    html = escape(text, quote=False)
-    html = re.sub(r"`([^`]+)`", r"<code>\1</code>", html)
+    spans = []
+
+    def keep(found) -> str:
+        spans.append(f"<code>{escape(found.group(1), quote=False)}</code>")
+        return f"\x00{len(spans) - 1}\x00"
+
+    html = escape(re.sub(r"`([^`]+)`", keep, text), quote=False)
     html = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", html)
-    return re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])", r"<i>\1</i>", html)
+    html = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])", r"<i>\1</i>", html)
+    return re.sub(r"\x00(\d+)\x00", lambda found: spans[int(found.group(1))], html)
 
 
 def line(pattern: str, text: str) -> str:
@@ -130,7 +136,8 @@ class Deck:
         """The last line of the error a code cell raised."""
         for out in self.code_cell(pattern).outputs:
             if out.output_type == "error":
-                return f"{out.ename}: {out.evalue}"
+                # a SyntaxError's message ends with the cell's temporary file name, which says nothing
+                return f"{out.ename}: " + re.sub(r"\s*\([\w<>.-]+, line \d+\)$", "", out.evalue)
         raise LookupError(f"the cell matching {pattern} raised no error")
 
     def frame(self, pattern: str, rows: int = 0, columns: int = 0) -> list:
@@ -167,6 +174,11 @@ class Deck:
         if not quoted:
             raise LookupError(f"the cell matching {pattern} has no quoted line")
         return " ".join(quoted)
+
+    def excel(self, pattern: str) -> str:
+        """The Excel side by side of the markdown cell matching the pattern, as HTML, without its bold lead-in."""
+        found = line(r"^\*\*Excel side by side\.\*\*", self.markdown(pattern))
+        return inline(re.sub(r"^\*\*Excel side by side\.\*\*\s*", "", found))
 
     def table(self, pattern: str) -> list:
         """The table in the markdown cell matching the pattern, as rows for slides.grid: an HTML table or a pipe one."""
@@ -237,13 +249,13 @@ class Deck:
         caption = next(alt for alt in (found.group(1) for c in self.cells for found in EMBEDDED.finditer(c.source))
                        if "sections, in order" in alt)
         number = int(re.match(r"Figure (\d+): ", caption).group(1))
-        names = "| Section |" not in cell
-        body = [self.figure(number, 1200 if names else 900)]
+        names = not re.search(r"<table|^[|]", cell, re.M)  # the notebook lists the sections under a route with no room for them
+        body = [self.figure(number, 1200)]
         if not names:
             rows = self.table(r"^## Your Route Through ")
-            half = (len(rows) - 1 + 1) // 2 + 1
-            body = [s.row(s.col(self.figure(number, 660), width=660),
-                          s.col(s.grid(rows[:half], kind="tight")), s.col(s.grid([rows[0]] + rows[half:], kind="tight")))]
+            half = len(rows) // 2 + 1
+            body = [self.figure(number, 820),
+                    s.row(s.col(s.grid(rows[:half], kind="tight")), s.col(s.grid([rows[0]] + rows[half:], kind="tight")))]
         self.add("THE ROUTE", re.sub(r"^Figure \d+: ", "", caption), line(r"^## .+$", cell)[3:], *body,
                  s.takeaway(inline(line(r"^\*\*Time\.\*\*.+$", cell))))
 
@@ -264,6 +276,7 @@ class Deck:
         if card and any(re.search(r"\[!\[Next: ", cell.source) for cell in self.cells if cell.cell_type == "markdown"):
             parts.append(self.drawn(r"^Next: ", 1200))
         self.add("YOU CAN NOW", re.sub(r"[*`]", "", lead), "You Can Now", *parts)
+        self._light.add(len(self.slides))
 
     def press(self, argv: list | None = None, out: Path | None = None) -> int:
         """Print the PDF beside the notebook. With `--preview <folder>` on the command line, also save a PNG of each
