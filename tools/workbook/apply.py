@@ -250,8 +250,10 @@ def apply(nb, notebook: Path, plan: dict) -> Image.Image:
             check_goal(goal)
         exercises = count_exercises(cells)
 
-        # 1. every picture the notebook already had becomes a numbered figure. The route will be Figure 1.
-        number = 1
+        # 1. every picture the notebook already had becomes a numbered figure, in the order a reader meets them.
+        # The route goes in above the first section, so it takes the number after any picture that opens the notebook.
+        number = 0
+        route_number = None
         captions = plan.get("captions", {})
 
         def framed(found) -> str:
@@ -260,12 +262,17 @@ def apply(nb, notebook: Path, plan: dict) -> Image.Image:
             caption = captions.get(str(number), re.sub(r"^Figure \d+: ", "", found.group(1))).rstrip(".") + "."
             return as_markdown(draw.figure(base64.b64decode(found.group(3)), found.group(2), number, caption), f"Figure {number}: {caption}")
 
-        for cell in cells:
+        for i, cell in enumerate(cells):
+            if i == starts[0]:
+                number += 1
+                route_number = number
             if cell.cell_type == "markdown":
                 cell.source = PICTURE.sub(framed, cell.source)
-        stray = set(captions) - {str(n) for n in range(2, number + 1)}
+        own = [str(n) for n in range(1, number + 1) if n != route_number]
+        stray = set(captions) - set(own)
         if stray:
-            raise PlanError(f"the plan captions figures {sorted(stray)}, and the notebook's pictures are figures 2 to {number}")
+            raise PlanError(f"the plan captions figures {sorted(stray)}, and the notebook's own pictures are figures "
+                            f"{', '.join(own) or 'none'} (the route is Figure {route_number})")
 
         # 2. the pieces that take judgment, each found by a pattern that must match one cell
         done_note = scenario(draw, cells, plan["note"]) if plan.get("note") else ""
@@ -312,7 +319,7 @@ def apply(nb, notebook: Path, plan: dict) -> Image.Image:
                 alt = f"Exercises. {goal} About {practice_minutes} minutes."
                 cell.source = as_markdown(draw.png(c.tracker("EXERCISES", goal, practice_minutes), "exercises"), alt)
             elif cell.source == "ROUTE":
-                cell.source = route_cell(draw, plan, stops, minutes, label, practice_minutes, exercises)
+                cell.source = route_cell(draw, plan, stops, minutes, label, practice_minutes, exercises, route_number)
 
         total = 5 * round((lesson_minutes + practice_minutes) / 5)
         facts = (f"ABOUT {total} MIN" + (" WITH EXERCISES" if exercises else ""), f"{len(goals)} SECTIONS")
@@ -364,9 +371,9 @@ def scenario(draw: Drawer, cells: list, note: dict) -> str:
     return as_markdown(done_card, f"{sender}, with every box ticked: {text} " + " ".join(f"{a}: {b}." for a, b in full))
 
 
-def route_cell(draw: Drawer, plan: dict, stops: list, minutes: list, label: str, practice: int, exercises: int) -> str:
+def route_cell(draw: Drawer, plan: dict, stops: list, minutes: list, label: str, practice: int, exercises: int, figure: int) -> str:
     """The route cell: its heading, an optional line, the figure, the sections as a table when the figure has no
-    room for their titles, and the time."""
+    room for their titles, and the time. figure is the route's number: 1, unless a picture opens the notebook."""
     from left_tables import left_tables
     flags = {int(place): words for place, words in plan.get("route_flags", {}).items()}
     titles = [re.sub(r"`", "", title) for number, title in stops]
@@ -376,7 +383,7 @@ def route_cell(draw: Drawer, plan: dict, stops: list, minutes: list, label: str,
     lesson = sum(minutes)
     drawn = c.route([(number, title, spent) for (number, _), title, spent in zip(stops, titles, minutes)], flags,
                     f"{label.upper()} · THE ROUTE", f"LESSON · ABOUT {lesson} MIN", names)
-    picture = as_markdown(draw.png(c.figure(drawn, 1, caption, flush=True), "route"), f"Figure 1: {caption}")
+    picture = as_markdown(draw.png(c.figure(drawn, figure, caption, flush=True), "route"), f"Figure {figure}: {caption}")
     table = ""
     if not names:
         rows = "\n".join(f"| {number} | {title} | {spent} min |" for (number, title), spent in zip(stops, minutes))

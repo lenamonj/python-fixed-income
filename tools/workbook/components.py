@@ -128,6 +128,10 @@ def course_curve(width: int, height: int, left: int, right: int, base: int, top:
         for week in range(weeks))
     here_x = left + (right - left) * progress
     here_y = base - 22 + (top + 14 - (base - 22)) * curve(progress)
+    # the label sits where the curve is not: beside the marker while the curve climbs away from it, and above the
+    # marker once the curve has flattened, where a label beside it would lie on the line
+    label = (f'x="{here_x + 24:.1f}" y="{here_y + 4:.1f}" text-anchor="start"' if progress < 0.4 else
+             f'x="{here_x + 13:.1f}" y="{here_y - 22:.1f}" text-anchor="end"')
     line = curve_path(left, right, base - 22, top + 14)
     area = f"{line} L{right} {base} L{left} {base} Z"
     return (
@@ -139,8 +143,7 @@ def course_curve(width: int, height: int, left: int, right: int, base: int, top:
         f'<path d="{line}" fill="none" stroke="#5CC8C2" stroke-width="2.4" stroke-linecap="round"/>'
         f'<circle cx="{here_x:.1f}" cy="{here_y:.1f}" r="13" fill="none" stroke="#5CC8C2" stroke-width="1" opacity=".55"/>'
         f'<circle cx="{here_x:.1f}" cy="{here_y:.1f}" r="5.5" fill="#F7F3EA" stroke="#5CC8C2" stroke-width="2.4"/>'
-        f'<text x="{here_x + (24 if progress < 0.6 else -24):.1f}" y="{here_y + 4:.1f}" fill="#5CC8C2" font-family="Plex Mono" '
-        f'font-weight="500" font-size="10.5" letter-spacing="1.6" text-anchor="{"start" if progress < 0.6 else "end"}">'
+        f'<text {label} fill="#5CC8C2" font-family="Plex Mono" font-weight="500" font-size="10.5" letter-spacing="1.6">'
         f'YOU ARE HERE</text></svg>')
 
 

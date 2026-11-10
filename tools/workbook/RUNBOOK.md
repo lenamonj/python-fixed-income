@@ -16,7 +16,7 @@ Your brief names four files: the notebook, its builder, its picture script, and 
    .venv\Scripts\python.exe tools\workbook\check.py <path to the notebook> --text
    ```
 
-   Never open the `.ipynb` file itself: it is mostly pictures, and far too large to read. The text shows each picture as its alt text.
+   Never open the `.ipynb` file itself: it is mostly pictures, and far too large to read. The text shows each picture as its alt text. A long notebook's text is too much for one screen: send it to a file (`> <a folder>\notebook.txt`) and read the file in parts, all of it.
 2. **Redraw the notebook's pictures.** Run the day's picture script. It draws them in the house style at 2400 px. Then open each new PNG and look at it: no word cut off or running into a box, and every mark, highlight, and arrow still on the thing it points at. Then check the layout against the pictures as they were:
 
    ```powershell
@@ -48,7 +48,7 @@ A section is each numbered heading (`## 1.6 Conditional Statements`, or `## 3 Da
 | `goals` | A list with one goal for each section, in order. | Anyone |
 | `sections` | `"numbered"` (the default: `## 3.1 ...` headings, and any unnumbered `##` section among them) or `"h1"` (a notebook whose sections are `# Topic` headings). | Anyone |
 | `exercises` | One short sentence for the strip above the exercises. Default: "Practice, with a worked answer for each." | Anyone |
-| `captions` | `{"3": "A caption for figure 3."}`. A figure's caption is its picture's alt text unless you give one here. | Anyone |
+| `captions` | `{"3": "A caption for figure 3."}`. A figure's caption is its picture's alt text unless you give one here. Figures are numbered in the order they appear, and the route is one of them: it is Figure 1 unless a picture comes before the first section. Read each figure's number from the built notebook's `--text`. | Anyone |
 | `next_line` | The sentence on the card to the next notebook. Default: what the closing cell says comes next, or the next notebook's purpose line. | Anyone |
 | `route_line` | One sentence above the route. | Editor |
 | `route_flags` | `{"3": "ANSWER 1 · THE COUPON"}`: a few words above a section's point on the route. | Editor |
@@ -138,6 +138,7 @@ These take judgment about what the notebook has taught, so one editor writes the
 | --- | --- |
 | `the plan gives N goals and the notebook has M sections: [...]` | Write one goal for each section it lists, in that order. |
 | `the goal "..." has N words` | Rewrite that goal as one sentence of eight words or fewer, ending in a full stop. |
+| `the plan captions figures [...]` | Key each caption by its figure's number. The message lists the numbers the notebook's own pictures have; the route's caption is not yours to write. |
 | `... does not fit: "..." runs outside the picture` or `is wider than its box` | Shorten those words in the plan. For a picture script, shorten the label there. |
 | `... reaches the foot of the picture` | The title and subtitle are too long for the cover. Report it; do not change the title. |
 | `the pattern '...' matches 0 cells` or `2 cells` | Make the pattern longer or more exact until it matches one cell. |
