@@ -116,11 +116,13 @@ The repo's `README.md` is the series' front page, and it is the same system at 8
 | `route.png` | Figure 1: the courses in their four stages. |
 | `inside.png` | Figure 2: six charts on one plate, each as a notebook draws it. |
 | `next.png` | The card that ends the page, a link to Setup. |
+| `<course folder>.png` | A course's cover, at the top of its own README: its name, its length, and its point on the same curve, marked. It is a link back to the series. |
 
 1. GitHub strips every style, so the README has none. Words, tables, and links are typed; a picture is an `<img>` with a width and alt text that says what the picture says.
 2. Every picture has an opaque background, so one file serves GitHub's light theme and its dark one.
 3. The numbers on the pictures are counted from the repo by `landing.counts()`. After a notebook, a course, or an Excel comparison is added, run `landing.py` and change the same numbers where they are typed; a test compares the two.
 4. A chart on the page is a notebook's own output on a plate. It is never restyled.
+5. `landing.py` also sets the top of every course README on each run: the cover, then the badges in the system's two colours. A course's title is read from its README's own heading (`## Course 2: Bond Math`), so it is typed once. Everything below the top of a course page stays as it was written.
 
 ## The time rule
 

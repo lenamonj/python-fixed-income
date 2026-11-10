@@ -27,6 +27,12 @@ body { width: 830px; }
 .hero .meta { font: 500 11.5px/18px var(--mono); letter-spacing: .14em; color: var(--on-navy-soft); }
 .hero .meta span + span::before { content: "/"; margin: 0 12px; color: var(--navy-rule); }
 
+/* a course's cover: shorter, with no line under the title, and a title that steps down as it gets longer */
+.hero.course { height: 452px; }
+.hero.course h1 { font-size: 62px; line-height: 66px; }
+.hero.course h1.s2 { font-size: 54px; line-height: 58px; }
+.hero.course h1.s3 { font-size: 47px; line-height: 52px; }
+
 /* ------------------------------------------------------------------ numbers: four facts on one plate */
 .numbers { display: flex; background: var(--ivory); border: 1px solid var(--rule); border-top: 2px solid var(--teal); }
 .numbers .fact { flex: 1; padding: 22px 24px 24px; }

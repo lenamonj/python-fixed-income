@@ -226,6 +226,20 @@ def test_landing_page_says_what_the_repo_holds():
     assert " style=" not in readme
 
 
+def test_every_course_page_opens_with_its_own_cover():
+    from workbook import landing
+    listed = landing.courses()
+    assert len(listed) == 13
+    for course in listed:
+        readme = (REPO / course["folder"] / "README.md").read_text(encoding="utf-8")
+        # the cover is a link back to the series, and its alt text says the course's own title and length
+        assert f'<a href="../README.md"><img src="../assets/readme/landing/{course["folder"]}.png"' in readme, course["folder"]
+        assert (landing.OUT / f'{course["folder"]}.png').exists(), course["folder"]
+        assert f'{course["label"]}: {course["title"]}.' in readme and f'{course["notebooks"]} notebook' in readme, course["folder"]
+        assert "wordmark" not in readme and " style=" not in readme, course["folder"]
+        assert "educational content created in a personal capacity" in readme, course["folder"]
+
+
 def test_a_slide_holds_its_strip_title_content_and_number():
     from workbook import slides
     made = slides.slide(slides.bar("SECTION 2 OF 8", "Know what Python is.", "ABOUT 2 MIN", index=2, count=8),

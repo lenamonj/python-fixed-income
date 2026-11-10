@@ -1,16 +1,11 @@
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../assets/readme/wordmark-dark.png">
-  <img src="../assets/readme/wordmark-light.png" alt="Python for Fixed Income" width="325">
-</picture>
+<a href="../README.md"><img src="../assets/readme/landing/course01_python_foundations.png" width="830" alt="Python for Fixed Income. Course 1: Python Foundations. 4 weeks, 27 notebooks, free. Stage 1 of 4, Foundations. Created by Jeff Lenamon."></a>
 
-[![Course 1](https://img.shields.io/badge/Course_1-Python_Foundations-123D2F?style=for-the-badge)](../README.md)
-[![Length](https://img.shields.io/badge/4_weeks-24_notebooks_%2B_project-1C7A57?style=for-the-badge)](#course-map)
-[![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)](../README.md#run-in-google-colab-with-nothing-to-install)
-[![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](../LICENSE)
-[![Content: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-22C55E?style=for-the-badge)](../LICENSE-CONTENT)
+[![Python](https://img.shields.io/badge/Python-3.13-17807F?style=for-the-badge&labelColor=0E1B2E&logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-17807F?style=for-the-badge&labelColor=0E1B2E)](../README.md#run-in-google-colab-with-nothing-to-install)
+[![Code: MIT](https://img.shields.io/badge/Code-MIT-17807F?style=for-the-badge&labelColor=0E1B2E)](../LICENSE)
+[![Content: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-17807F?style=for-the-badge&labelColor=0E1B2E)](../LICENSE-CONTENT)
 
 **[Before you start](#before-you-start)** &nbsp;·&nbsp; **[The four weeks](#the-four-weeks)** &nbsp;·&nbsp; **[Course map](#course-map)** &nbsp;·&nbsp; **[The project](#the-project)** &nbsp;·&nbsp; **[What it uses](#what-it-uses)** &nbsp;·&nbsp; **[Series front page](../README.md)**
 

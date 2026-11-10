@@ -1,16 +1,11 @@
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../assets/readme/wordmark-dark.png">
-  <img src="../assets/readme/wordmark-light.png" alt="Python for Fixed Income" width="325">
-</picture>
+<a href="../README.md"><img src="../assets/readme/landing/course_bonus_coding_agent.png" width="830" alt="Python for Fixed Income. Bonus: Build Your Own Coding Agent. 1 day, 1 notebook, free. Stage 4 of 4, Build and ship. Created by Jeff Lenamon."></a>
 
-[![Bonus](https://img.shields.io/badge/Bonus-Build_Your_Own_Coding_Agent-123D2F?style=for-the-badge)](../README.md)
-[![Length](https://img.shields.io/badge/1_notebook-2_or_3_sittings-1C7A57?style=for-the-badge)](#course-map)
-[![Python](https://img.shields.io/badge/Python-3.13-1C7A57?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-0EA5E9?style=for-the-badge)](../README.md#run-in-google-colab-with-nothing-to-install)
-[![Code: MIT](https://img.shields.io/badge/Code-MIT-22C55E?style=for-the-badge)](../LICENSE)
-[![Content: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-22C55E?style=for-the-badge)](../LICENSE-CONTENT)
+[![Python](https://img.shields.io/badge/Python-3.13-17807F?style=for-the-badge&labelColor=0E1B2E&logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Google%20Colab-17807F?style=for-the-badge&labelColor=0E1B2E)](../README.md#run-in-google-colab-with-nothing-to-install)
+[![Code: MIT](https://img.shields.io/badge/Code-MIT-17807F?style=for-the-badge&labelColor=0E1B2E)](../LICENSE)
+[![Content: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-17807F?style=for-the-badge&labelColor=0E1B2E)](../LICENSE-CONTENT)
 
 **[Start here](#start-here)** &nbsp;&middot;&nbsp; **[The lesson](#the-lesson)** &nbsp;&middot;&nbsp; **[Course map](#course-map)** &nbsp;&middot;&nbsp; **[The app](#the-app)** &nbsp;&middot;&nbsp; **[What it uses](#what-it-uses)** &nbsp;&middot;&nbsp; **[The data](#the-data)** &nbsp;&middot;&nbsp; **[Course 9](../course09_deployment/README.md)** &nbsp;&middot;&nbsp; **[Series front page](../README.md)**
 
