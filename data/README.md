@@ -29,7 +29,6 @@ Every issuer, ticker, CUSIP, price, position, trade, and counterparty in the por
 | `data/course3_capstone_extract.csv` | The Course 3 capstone's vendor extract: 69 rows, 2026-07-01 to 2026-10-02, four Treasury tenors and the two synthetic spreads, with data problems planted in it |
 | `data/course3_capstone_cover_note.txt` | The cover note that comes with the Course 3 extract, with its control figures |
 | `data/course3_capstone_answer_key.md` | Every problem planted in the Course 3 extract. Read it after you finish |
-| `data/course4_excel_reference.csv` | 294 values computed by desktop Excel for Course 4's tests: `LINEST` statistics, p-values, intervals, and VIFs on the benchmark, Breusch-Pagan by hand, ridge in closed form, Solver's logistic fits on the card file, `COUNTIFS` confusion counts, and a trapezoid ROC AUC, each with its formula |
 
 The data is built to behave like a real portfolio.
 
@@ -37,7 +36,7 @@ The data is built to behave like a real portfolio.
 |:---|:---|
 | **Price and yield always agree** | Each yield is a synthetic Treasury yield plus a spread, and each price is calculated from that yield. |
 | **One convention throughout** | Fixed-rate bullet bonds, semiannual coupons, 30/360 day count, modified duration. |
-| **Identical for every student** | Seeded scripts generate every file: `tools/make_holdings.py` for the portfolio, `tools/make_blotter.py` for the trades, `tools/make_project_data.py` for the project extract, `tools/make_course2_data.py` for the Course 2 curve and capstone, `tools/make_course3_data.py` for the Course 3 spreads, FRED-format samples, and capstone, and `tools/make_cohort.py` for the Course 5C firm cohort. `tools/make_excel_reference.py`, `tools/make_course3_excel_reference.py`, and `tools/make_course4_excel_reference.py` wrote the Excel values once, through desktop Excel on Windows. |
+| **Identical for every student** | Seeded scripts generate every file: `tools/make_holdings.py` for the portfolio, `tools/make_blotter.py` for the trades, `tools/make_project_data.py` for the project extract, `tools/make_course2_data.py` for the Course 2 curve and capstone, `tools/make_course3_data.py` for the Course 3 spreads, FRED-format samples, and capstone, and `tools/make_cohort.py` for the Course 5C firm cohort. `tools/make_excel_reference.py` and `tools/make_course3_excel_reference.py` wrote the Excel values once, through desktop Excel on Windows. |
 | **Checked** | `python -m pytest` confirms the identifiers are valid and that each bond's price, accrued interest, and duration match its yield. |
 | **No real CUSIPs** | Every CUSIP uses an issuer number in the range reserved for internal use, with a valid check digit. |
 
