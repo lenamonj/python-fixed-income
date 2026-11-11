@@ -141,7 +141,8 @@ class Deck:
         # a chart's output also carries its name as text ("<Figure size ...>"), which the notebook does not show
         shown = [out.get("text") or out.get("data", {}).get("text/plain", "") for out in self.code_cell(pattern).outputs
                  if "image/png" not in out.get("data", {})]
-        rows = "".join(shown).strip().split("\n")
+        # pytest and git colour their words with escape codes, which the notebook draws as colour, not as text
+        rows = re.sub(r"\x1b\[[0-9;]*[A-Za-z]", "", "".join(shown)).strip().split("\n")
         rows = [row for row in rows if not keep or re.search(keep, row)]
         return "\n".join(rows[:first] if first else rows)
 

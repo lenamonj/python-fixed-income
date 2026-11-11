@@ -289,7 +289,7 @@ def test_a_deck_reads_tables_by_what_they_are():
     deck = overview.Deck.__new__(overview.Deck)
     deck.cells = [new_markdown_cell("**Excel side by side.** `=SUM(F:F)` adds the column."), new_markdown_cell(cell),
                   new_code_cell("book.plot()\nprint('drawn')", outputs=[
-                      nbformat.v4.new_output("stream", name="stdout", text="drawn\n"),
+                      nbformat.v4.new_output("stream", name="stdout", text="\x1b[32mdrawn\x1b[0m\n"),
                       nbformat.v4.new_output("display_data", data={"image/png": "AAAA", "text/plain": "<Figure size 800x450 with 1 Axes>"})]),
                   new_code_cell("by_sector", outputs=[nbformat.v4.new_output("execute_result", data={"text/html": (
                       "<table><thead><tr><th></th><th>bonds</th><th>value</th></tr><tr><th>sector</th><th></th><th></th></tr></thead>"
@@ -304,7 +304,8 @@ def test_a_deck_reads_tables_by_what_they_are():
     assert deck.excel(r"adds the column") == "<code>=SUM(F:F)</code> adds the column."
     with pytest.raises(LookupError, match="deck.excel_table"):
         deck.excel(r"^Value and income")
-    # a named index goes over the row labels, columns are kept by name, and a chart's name is not its output
+    # a named index goes over the row labels, columns are kept by name, and neither a chart's name nor a
+    # colour code is part of what a cell printed
     assert deck.frame(r"^by_sector") == [["sector", "bonds", "value"], ["Energy", "17", "12.5"]]
     assert deck.frame(r"^by_sector", columns=["value"]) == [["sector", "value"], ["Energy", "12.5"]]
     with pytest.raises(LookupError, match="has no column"):

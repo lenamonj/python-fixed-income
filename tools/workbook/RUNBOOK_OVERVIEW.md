@@ -95,7 +95,7 @@ Every reader takes a pattern, a regular expression matched against each line of 
 Three things about patterns and rows:
 
 - **A line that opens with bold stars** (a takeaway, an Excel lead-in) is not found by `^` and its first word. Match words inside the line: `r"Names are settled"`, not `r"^Names are settled"`. A figure's caption is a picture's, not text: no pattern finds it.
-- **Rows are a plain list of lists**, the header first, whichever reader gave them. Cutting one to fit is not retyping: `rows[:5]` keeps the header and four rows, and `[[row[0], row[2]] for row in rows]` keeps two columns.
+- **Rows are a plain list of lists**, the header first, whichever reader gave them. Cutting one to fit is not retyping: `rows[:5]` keeps the header and four rows, and `[[row[0], row[2]] for row in rows]` keeps two columns. An Excel table often has four columns (the job, the Python, the Excel, the result) and is too wide beside a figure: keep the job and the Excel.
 - **Not every section ends on a bold line.** When its last cell has none, the takeaway is the sentence that closes the section, `s.takeaway(inline(line(r"...", deck.markdown(r"..."))))`, and a slide may go without one.
 
 ## Laying out a slide
@@ -123,7 +123,7 @@ How much fits:
 - Beside a 680 px figure a column holds 50 letters of code, 60 with `small=True`. When a section's code lines are longer than that, do not shrink the picture to make room. Set the code under the picture, across the slide; or give the picture a slide with its takeaway and the code the section's second slide; or show the output alone.
 - A slide must be full enough: the build refuses one whose parts take less than 60 percent of its height (`SPARSE`). Fill it with what the section has: show its figure or chart larger, add its second-best example as another panel, add its Excel comparison, or set two short code cells one under the other. Never fill a slide with words of your own, and never repeat something another slide shows.
 - If the build says a slide is too tall, take a part off it or show a picture smaller. Do not use `small=True` to rescue a crowded slide: take something off.
-- Parts in a row are as tall as the tallest, so put parts of like height side by side.
+- Parts in a row are as tall as the tallest, so put parts of like height side by side. A figure is wide and short (about 290 px tall at 760 px wide), so a figure with a panel across the slide under it often fills a slide better than a figure beside a narrow column.
 - A column must hold its longest line of code and its widest table. Give that column more width, show fewer lines with `keep`, or keep fewer columns of the table. A table of four columns with long formulas needs about 620 px: beside a 680 px figure, keep two or three of its columns, or set it under the figure.
 - When you cut a cell with `keep`, cut its output the same way, so each line shown still has its answer under it, and keep a loop's `for` line with its body.
 
