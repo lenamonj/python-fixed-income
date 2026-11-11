@@ -83,7 +83,7 @@ Every reader takes a pattern, a regular expression matched against each line of 
 | `deck.excel_table(pattern)` | A cell's Excel side by side when it is a table, which most are, as rows: wrap it, `s.grid(deck.excel_table(...), kind="tight")`. The pattern may match anything in that cell; a formula from the table is the surest. |
 | `deck.block(pattern, keep="")` | The fenced block in a text cell (commands, a note, a file's text), as lines for `s.codebox`. |
 | `deck.items(pattern)` | The bulleted or numbered list in a text cell, for `s.can_list`. |
-| `deck.questions(number, keep="")` | In a project: what a section asks, as rows for `s.grid`. `keep` is a pattern for the question headings to keep. |
+| `deck.questions(number, keep="", sentences=0)` | In a project: what a section asks, as rows for `s.grid`. `keep` is a pattern for the question headings to keep. `sentences=1` keeps each question's first sentence, without its lines on where to store the answer. |
 | `deck.quote(pattern)` | A cell's quoted lines (the desk lead's note), for `s.statement`. |
 | `deck.table(pattern, which=1)` | A table in a text cell, as rows: wrap it, `s.grid(deck.table(...))`. The pattern matches a sentence in the same cell as the table. `which=2` is that cell's second table. |
 | `deck.heading(number)` | A section's heading. A section's slide uses it unless you give `title=`. |
@@ -154,6 +154,7 @@ From Course 4 on, a notebook has no desk lead's note and no numbered headings. I
 - **One large chart beats two small ones.** A chart under about 520 px wide is hard to read: where two do not fit side by side at a readable size, show the better one large.
 - **Code is shown in whole statements.** When `keep` cuts a long function, keep the short functions whole and leave the long one out; never end on a line with an open bracket.
 - **There is no Excel comparison** from Course 4 on.
+- **A capstone on this ladder** is still an assignment, so everything under "A project or a capstone" about never showing an empty cell or the solutions holds. It opens with `deck.problem()` and has no slide for a picture of the whole assignment. A section's slide shows what the section asks, `s.grid(deck.questions("3", sentences=1), kind="wide")`: a question's heading is the `##` heading above it, or its Predict. Four or five questions fill a slide; where a section asks more, `keep` names the headings to show (`keep=r"^(Missing Values|Copies|Extremes)"`). A section whose cells are given (Setting Up, a chart the notebook draws for the student, a figure) shows those beside or above its questions, and the closing slide is `deck.closing()` as in any notebook with a You Can Now list.
 
 Count before you write: the front, the problem, the route, a slide for each section, and the closing. A notebook with twelve sections is already sixteen slides, so none of its sections takes a second one.
 

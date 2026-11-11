@@ -247,19 +247,32 @@ class Deck:
             raise LookupError(f"the cell matching {pattern} holds no list")
         return [inline(text) for text in found]
 
-    def questions(self, number: str, keep: str = "") -> list:
+    def questions(self, number: str, keep: str = "", sentences: int = 0) -> list:
         """What a section of a project asks, as rows for slides.grid: each question's heading beside its `Q.` line.
-        `keep` is a pattern for the headings to keep, when the section asks more than one slide holds."""
+        `keep` is a pattern for the headings to keep, when the section asks more than one slide holds, and
+        `sentences=1` keeps each question's first sentence, without the lines on where to store the answer.
+
+        In a notebook whose sections are `#` main topics (Course 4 on), a question's heading is the `##` or `###`
+        heading above it, or its Predict; a heading shown once is not repeated beside the next question under it."""
         index = [section[0] for section in self.sections].index(number)
+        first = self._at[index] + 1
         stop = self._at[index + 1] if index + 1 < len(self._at) else len(self.cells)
-        rows = [["Question", "What it asks"]]
-        for cell in self.cells[self._at[index] + 1:stop]:
-            head = ""
+        topics = self.cells[first].source.startswith("# ")
+        rows, head, last = [["Question", "What it asks"]], "", None
+        for cell in self.cells[first:stop]:
+            if topics and cell is not self.cells[first] and cell.cell_type == "markdown" and cell.source.startswith("# "):
+                break   # the last topic ends where Wrapping Up begins
+            head = head if topics else ""
             for text in cell.source.split("\n") if cell.cell_type == "markdown" else ():
-                if text.startswith("### "):
-                    head = text[4:]
+                predict = topics and re.fullmatch(r"\*\*(Predict \d+)\*\*", text.strip())
+                if text.startswith("### ") or (topics and text.startswith("## ")):
+                    head = text.split(" ", 1)[1]
+                elif predict:
+                    head = predict.group(1)
                 elif text.startswith("Q. ") and (not keep or re.search(keep, head)):
-                    rows.append([inline(head), inline(text[3:])])
+                    asked = " ".join(re.split(r"(?<=[.?!])\s+", text[3:])[:sentences]) if sentences else text[3:]
+                    rows.append(["" if topics and head == last else inline(head), inline(asked)])
+                    last = head
         if len(rows) == 1:
             raise LookupError(f"section {number} asks no question" + (f" under a heading that matches {keep}" if keep else ""))
         return rows

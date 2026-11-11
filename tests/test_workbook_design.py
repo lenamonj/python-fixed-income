@@ -322,6 +322,29 @@ def test_a_deck_opens_a_problem_statement_notebook_on_its_problem():
     assert "11 SECTIONS" in made and deck._light == {1}
 
 
+def test_a_deck_reads_a_projects_questions_under_either_ladder():
+    from workbook import overview
+    deck = overview.Deck.__new__(overview.Deck)
+    # Courses 1 to 3: a numbered section, each question under its own ### heading
+    deck.cells = [new_markdown_cell("tracker"), new_markdown_cell("## 2. Check the File"),
+                  new_markdown_cell("### 2.1 Rows\n\nQ. How many rows? Store it in `rows`."),
+                  new_markdown_cell("Q. A line with no heading above it in its cell.")]
+    deck.sections, deck._at = [("2", "Check the File", "", 5)], [0]
+    assert deck.questions("2") == [["Question", "What it asks"], ["2.1 Rows", "How many rows? Store it in <code>rows</code>."],
+                                   ["", "A line with no heading above it in its cell."]]
+    # Course 4 on: a # main topic, questions under ## headings and Predicts, ending where Wrapping Up begins
+    deck.cells = [new_markdown_cell("tracker"),
+                  new_markdown_cell("# Data Overview\n\n## Shape\n\nQ. How many rows? Store it in `rows`.\n\nQ. Draw them."),
+                  new_markdown_cell("**Predict 1**\n\nQ. Write down a share."),
+                  new_markdown_cell("## Gaps\n\nQ. How many cells are empty?"),
+                  new_markdown_cell("# Wrapping Up"), new_markdown_cell("## Exercises\n\nQ. An exercise.")]
+    assert deck.questions("2", sentences=1) == [["Question", "What it asks"], ["Shape", "How many rows?"], ["", "Draw them."],
+                                                ["Predict 1", "Write down a share."], ["Gaps", "How many cells are empty?"]]
+    assert deck.questions("2", keep=r"^Gaps") == [["Question", "What it asks"], ["Gaps", "How many cells are empty?"]]
+    with pytest.raises(LookupError, match="asks no question"):
+        deck.questions("2", keep=r"^Nothing")
+
+
 def test_a_deck_reads_tables_by_what_they_are():
     from workbook import overview, slides
     cell = ("Value and income, by sector.\n\n| Sector | Value |\n| --- | --- |\n| Energy | 12 |\n\n"
