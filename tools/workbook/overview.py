@@ -162,7 +162,7 @@ class Deck:
             table = re.search(r"<table.*?</table>", out.get("data", {}).get("text/html", ""), re.S)
             if table:
                 found = [row for row in html_rows(table.group(0)) if row]
-                found = [[re.sub(r"<[^>]+>", "", cell) for cell in row] for row in found]
+                found = [[re.sub(r"<[^>]+>|&nbsp;", "", cell).strip() for cell in row] for row in found]
                 # pandas gives a named index a header row of its own: the name belongs over the row labels
                 if len(found) > 1 and found[1][0] and not any(found[1][1:]) and not found[0][0] and "<thead>" in table.group(0) \
                         and table.group(0).split("</thead>")[0].count("<tr") == 2:
