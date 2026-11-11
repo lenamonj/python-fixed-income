@@ -86,7 +86,7 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
-| 1 | [Logistic Regression and Odds](week2/day1/06_logistic_regression_and_odds.ipynb) | Why a line fails on a 0/1 outcome, the logistic curve, odds and odds ratios with units, statsmodels and scikit-learn side by side, and a logistic fit by Excel's Solver with its non-negative trap | Ready |
+| 1 | [Logistic Regression and Odds](week2/day1/06_logistic_regression_and_odds.ipynb) | Why a straight line fails on a 0/1 outcome, probability, odds and log odds, the S curve fitted by eye and then by maximum likelihood, odds ratios read with their units, one account scored step by step, statsmodels and scikit-learn side by side, and a 19-column pipeline scored on validation accounts | Ready |
 | 2 | [Confusion Matrix, Precision, and Recall](week2/day2/07_confusion_matrix_precision_and_recall.ipynb) | The all-zero model's accuracy, the confusion matrix by `COUNTIFS`, precision, recall, and F1 for the default class, and what a threshold trades | Ready |
 | 3 | [ROC Curves and Choosing a Threshold](week2/day3/08_roc_curves_and_choosing_a_threshold.ipynb) | ROC and precision-recall curves, AUC and average precision, a threshold for a recall the desk asks for, chosen on validation rows, Youden's J, and one calibration chart | Ready |
 | 4 | [Decision Trees](week2/day4/09_decision_trees.ipynb) | A tree as questions, Gini by hand, the default tree, class weights, pre-pruning and post-pruning, a tree read as nested `IF`, and what feature importance does not mean | Ready |
