@@ -150,6 +150,9 @@ From Course 4 on, a notebook has no desk lead's note and no numbered headings. I
 - **A main topic holds several parts**, each under a `##` heading. Its slide shows the one or two that carry it: a chart the notebook draws (`deck.chart(pattern, width)`), the cell that draws or fits it, and the bold line that closes the topic, as the takeaway. Model Building is the long one, and the one to give a second slide if any topic gets one.
 - **A cell with a slider or a dropdown** cannot be shown. Show the still the next cell draws, with `deck.chart` on that cell.
 - **Setting Up and Loading the Data are short.** Fill their slides from what the student meets there: the cell that reads the file with the rows it shows, or the Data Dictionary's list (`deck.items(r"^## Data Dictionary")`), each on one slide only.
+- **Insights and Conclusion** lists the day's findings, and most of them answer a Predict. Show the bold line that closes it, as the takeaway, over a chart from earlier in the notebook that no other slide shows and that answers no Predict, with the lines or the output that go with it. Never fill this slide, or any slide, with an exercise's cell.
+- **One large chart beats two small ones.** A chart under about 520 px wide is hard to read: where two do not fit side by side at a readable size, show the better one large.
+- **Code is shown in whole statements.** When `keep` cuts a long function, keep the short functions whole and leave the long one out; never end on a line with an open bracket.
 - **There is no Excel comparison** from Course 4 on.
 
 Count before you write: the front, the problem, the route, a slide for each section, and the closing. A notebook with twelve sections is already sixteen slides, so none of its sections takes a second one.
@@ -157,7 +160,7 @@ Count before you write: the front, the problem, the route, a slide for each sect
 ## Rules
 
 1. The only words you type are a panel's label (a few words: "The code", "What it prints", "Excel side by side"), the title of a section's second slide, and patterns. Everything else is read from the notebook.
-2. Never answer a Predict. A student sees the overview before the notebook, so nothing on a slide may give a Predict's answer away: not the output of the cell it asks about, not the picture drawn from it, not the sentence after it, and not a later line or figure that states the result. Show the section's next best example. When you are not sure, leave it out.
+2. Never answer a Predict. A student sees the overview before the notebook, so nothing on a slide may give a Predict's answer away: not the output of the cell it asks about, not the picture drawn from it, not the sentence after it, and not a later line or figure that states the result. Show the section's next best example. When you are not sure, leave it out. An answer also leaks sideways. Before you choose a slide's parts, write down for each Predict the fact it tests, in plain words ("duration says almost nothing about spread"), and keep every statement of that fact off the slides: a column of a later table, a finding in the conclusion, a chart that shows the same thing another way. A table that holds one such column can be shown without it: `deck.frame(pattern, columns=[...])`.
 3. Outputs are never restyled. A chart looks the way the notebook shows it.
 4. A slide carries one idea. Three panels side by side is the most a slide holds.
 5. Slides follow the notebook's order.
