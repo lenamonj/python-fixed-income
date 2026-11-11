@@ -80,6 +80,9 @@ Every reader takes a pattern, a regular expression matched against each line of 
 | `line(pattern, text)` | The whole line of that text that the pattern matches a part of. Wrap it in `inline(...)` to keep its `code` and **bold**. |
 | `last_bold(text)` | The bold line that closes a cell: the usual takeaway. To find that cell, match words inside the line, not `^` and the stars. |
 | `deck.excel(pattern)` | A cell's Excel side by side, without its bold lead-in, for a panel labelled "Excel side by side". |
+| `deck.block(pattern, keep="")` | The fenced block in a text cell (commands, a note, a file's text), as lines for `s.codebox`. |
+| `deck.items(pattern)` | The bulleted or numbered list in a text cell, for `s.can_list`. |
+| `deck.questions(number, keep="")` | In a project: what a section asks, as rows for `s.grid`. `keep` is a pattern for the question headings to keep. |
 | `deck.quote(pattern)` | A cell's quoted lines (the desk lead's note), for `s.statement`. |
 | `deck.table(pattern)` | The table in a text cell, as rows: wrap it, `s.grid(deck.table(...))`. The pattern matches a sentence in the same cell as the table, not a row of it. |
 | `deck.heading(number)` | A section's heading. A section's slide uses it unless you give `title=`. |
@@ -99,6 +102,7 @@ A slide's content is 1200 px wide and 526 px tall, with 18 px between parts.
 | `s.panel("Label", part, ...)` | A paper panel with a small label. A part that is words becomes a paragraph. |
 | `s.codebox(lines, output="", bad=False, small=False)` | Code as typed, with what it showed under a rule. Leave the output out for code that shows nothing. |
 | `s.grid(rows, kind="")` | A table; the first row is the header. `kind="tight"` is smaller, `kind="wide"` spans the slide. |
+| `s.can_list(items)` | A list in two columns, for `deck.items`. Put it in a panel. |
 | `s.takeaway(html)` | The one line the slide leaves behind. At most one a slide, last. |
 | `s.statement(words)` | A sentence set large, for the scenario. |
 | `s.pushed(part)` | A part pushed to the foot of the slide. |
@@ -113,6 +117,19 @@ How much fits:
 - Parts in a row are as tall as the tallest, so put parts of like height side by side.
 - A column must hold its longest line of code. A row that is "too wide" nearly always has a code line longer than its column: give that column more width, or show fewer lines with `keep`. Beside a 680 px figure a column has 502 px, about 50 letters of code.
 - When you cut a cell with `keep`, cut its output the same way, so each line shown still has its answer under it, and keep a loop's `for` line with its body.
+
+## A project or a capstone
+
+A course's last notebook is an assignment: the student writes the code. Its code cells hold `# your code here` and print `not attempted yet`, so there is no worked example to show. Never show one of those cells, and never show a cell of the solutions notebook. The deck says what the work is:
+
+- **The scenario** is the desk lead's note: `deck.scenario(r"^### The Desk Lead's Note")`.
+- **One slide before the route** shows the picture of the whole assignment, the notebook's Figure 1, under the heading that stands above it: `deck.whole("THE PROJECT")`, or `"THE CAPSTONE"`. If the build says it is too tall, give a width: `deck.whole("THE PROJECT", 1100)`.
+
+- **A section's slide** shows what the section asks: `s.grid(deck.questions("3"), kind="wide")`. Five questions fill a slide. A section that asks more takes two slides, each with `keep` naming its questions (`keep=r"^3\.[1-5] "`), the second under a title of your own.
+- **A section that asks one or two questions** is thin. Fill its slide from the notebook: the section's own figure or table if it has one; if not, a picture, a table, a list, or a fenced block from the cells before the route that the section works on (the data's columns, the rules, the cover note), each shown on one slide only; and the bold line that closes the section's first cell, as the takeaway.
+- **The closing slide** shows the list that ends the Congratulations cell. Give it that cell's table: `deck.closing(s.grid(deck.table(r"^The note is answered")))`. If it is too tall with the card, leave the table out.
+
+Count before you write: the front, the scenario, the picture, the route, a slide for each section, and the closing may already be 15. Sixteen is the most, so at most one section takes a second slide; if two need one, leave out the slide with the picture.
 
 ## Rules
 

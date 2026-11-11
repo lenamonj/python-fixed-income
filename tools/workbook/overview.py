@@ -92,7 +92,7 @@ class Deck:
         self.statement = a.SERIES_LINE if place == 0 else ""
         self.foot = f"PYTHON FOR FIXED INCOME · {self.course_line.split(' · ')[0]} · {self.plate}"
         # the sections, from each tracker and the heading under it: number, title, goal, minutes
-        self.sections, self._heads = [], {}
+        self.sections, self._heads, self._at = [], {}, []
         for i, cell in enumerate(self.cells):
             found = cell.cell_type == "markdown" and EMBEDDED.match(cell.source)
             tracker = found and TRACKER.match(found.group(1))
@@ -101,6 +101,7 @@ class Deck:
                 number, title = head.split(" ", 1) if re.match(a.NUMBERED[3:], head) else (tracker.group(1), head)
                 self.sections.append((number, title, tracker.group(3), int(tracker.group(4))))
                 self._heads[number] = head
+                self._at.append(i)
         if not self.sections:
             raise LookupError(f"{self.notebook.name} is not in the design system: convert the notebook first")
         self.exercises = a.count_exercises(self.cells)
@@ -173,7 +174,8 @@ class Deck:
         quoted = [text[2:].strip() for text in self.markdown(pattern).split("\n") if text.startswith("> ") and text[2:].strip()]
         if not quoted:
             raise LookupError(f"the cell matching {pattern} has no quoted line")
-        return " ".join(quoted)
+        # the statement is set as plain words, so a code span or a bold run gives up its marks
+        return re.sub(r"`([^`]+)`|\*\*(.+?)\*\*", lambda found: found.group(1) or found.group(2), " ".join(quoted))
 
     def excel(self, pattern: str) -> str:
         """The Excel side by side of the markdown cell matching the pattern, as HTML, without its bold lead-in."""
@@ -191,6 +193,39 @@ class Deck:
         if not piped:
             raise LookupError(f"the cell matching {pattern} holds no table")
         return piped
+
+    def block(self, pattern: str, keep: str = "") -> list:
+        """The fenced block of the markdown cell matching the pattern (commands, a note, a file's text), as lines
+        for slides.codebox. `keep` is a pattern for the lines to keep."""
+        found = re.search(r"^```[^\n]*\n(.*?)^```", self.markdown(pattern), re.S | re.M)
+        if not found:
+            raise LookupError(f"the cell matching {pattern} holds no fenced block")
+        return [text for text in found.group(1).rstrip("\n").split("\n") if not keep or re.search(keep, text)]
+
+    def items(self, pattern: str) -> list:
+        """The bulleted or numbered list in the markdown cell matching the pattern, each item as HTML, for
+        slides.can_list."""
+        found = re.findall(r"^(?:[*-]|\d+\.) (.+)$", self.markdown(pattern), re.M)
+        if not found:
+            raise LookupError(f"the cell matching {pattern} holds no list")
+        return [inline(text) for text in found]
+
+    def questions(self, number: str, keep: str = "") -> list:
+        """What a section of a project asks, as rows for slides.grid: each question's heading beside its `Q.` line.
+        `keep` is a pattern for the headings to keep, when the section asks more than one slide holds."""
+        index = [section[0] for section in self.sections].index(number)
+        stop = self._at[index + 1] if index + 1 < len(self._at) else len(self.cells)
+        rows = [["Question", "What it asks"]]
+        for cell in self.cells[self._at[index] + 1:stop]:
+            head = ""
+            for text in cell.source.split("\n") if cell.cell_type == "markdown" else ():
+                if text.startswith("### "):
+                    head = text[4:]
+                elif text.startswith("Q. ") and (not keep or re.search(keep, head)):
+                    rows.append([inline(head), inline(text[3:])])
+        if len(rows) == 1:
+            raise LookupError(f"section {number} asks no question" + (f" under a heading that matches {keep}" if keep else ""))
+        return rows
 
     def heading(self, number: str) -> str:
         """A section's heading as the notebook has it, with its number, as HTML."""
@@ -243,6 +278,17 @@ class Deck:
         self.slides.append(s.slide(s.bar(label, goal, self.plate), title, "".join(body), self.foot, len(self.slides) + 1, "settled"))
         self.titles.append(re.sub(r"<[^>]+>", "", title))
 
+    def whole(self, label: str, width: int = 1180) -> None:
+        """A project's slide before the route: Figure 1, its picture of the whole assignment, under the heading
+        that stands above it in the notebook, with the bold line under it as the goal."""
+        at = next(i for i, cell in enumerate(self.cells) if cell.cell_type == "markdown" and "![Figure 1: " in cell.source)
+        before, _, after = self.cells[at].source.partition("![Figure 1: ")
+        heads = re.findall(r"^#+ (.+)$", before, re.M) or re.findall(r"^#+ (.+)$", self.cells[at - 1].source, re.M)
+        goal = re.search(r"^\*\*(.+)\*\*", EMBEDDED.sub("", after), re.M)
+        if not heads or not goal:
+            raise LookupError("Figure 1 has no heading above it or no bold line under it: lay this slide out with deck.add")
+        self.add(label, re.sub(r"[*`]", "", goal.group(1)), inline(heads[-1]), self.figure(1, width))
+
     def route(self) -> None:
         """The route, as the notebook draws it, with the sections as a table when the route has no room for names."""
         cell = self.markdown(r"^## Your Route Through ")
@@ -254,7 +300,8 @@ class Deck:
         if not names:
             rows = self.table(r"^## Your Route Through ")
             half = len(rows) // 2 + 1
-            body = [self.figure(number, 820),
+            # the table grows a row for every two sections past ten, and the figure gives up that room
+            body = [self.figure(number, max(700, 820 - 120 * max(0, half - 6))),
                     s.row(s.col(s.grid(rows[:half], kind="tight")), s.col(s.grid([rows[0]] + rows[half:], kind="tight")))]
         self.add("THE ROUTE", re.sub(r"^Figure \d+: ", "", caption), line(r"^## .+$", cell)[3:], *body,
                  s.takeaway(inline(line(r"^\*\*Time\.\*\*.+$", cell))))
@@ -268,11 +315,20 @@ class Deck:
         self.titles.append(re.sub(r"<[^>]+>", "", title or self.heading(number)))
 
     def closing(self, *body: str, card: bool = True) -> None:
-        """The last slide: the You Can Now list, anything given, and the card to the next notebook."""
-        can = self.markdown(r"^## You Can Now")
+        """The last slide: the You Can Now list, anything given, and the card to the next notebook. A project has
+        no such cell: its slide shows the list that ends its Congratulations cell, under the sentences that lead to it."""
+        project = not any(cell.cell_type == "markdown" and re.search(r"^## You Can Now", cell.source, re.M) for cell in self.cells)
+        can = self.markdown(r"^## Congratulations!" if project else r"^## You Can Now")
         items = [inline(text) for text in re.findall(r"^[*-] (.+)$", can, re.M)]
         lead = next((text for text in can.split("\n")[1:] if text.strip() and not text.startswith(("*", "-", "#"))), "You can now:")
         parts = [s.panel("", s.can_list(items)), *body]
+        if project:
+            # the sentences between the cell's table and its list say where the student started
+            said = []
+            for text in can[:re.search(r"^[*-] ", can, re.M).start()].split("\n")[1:]:
+                said = [] if text.lstrip().startswith(("<", "|")) else said + [text] if text.strip() else said
+            lead = "What the course has taught you."
+            parts = [s.panel("", *([inline(" ".join(said))] if said else []), s.can_list(items)), *body]
         if card and any(re.search(r"\[!\[Next: ", cell.source) for cell in self.cells if cell.cell_type == "markdown"):
             parts.append(self.drawn(r"^Next: ", 1200))
         self.add("YOU CAN NOW", re.sub(r"[*`]", "", lead), "You Can Now", *parts)
