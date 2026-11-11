@@ -399,10 +399,6 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Find the rows with no match with Power Query's Merge Queries, Left Anti | `LEFT JOIN ... WHERE ... IS NULL` and `indicator=True` | 3 | Week 3, Day 2 |
 | Find each month's last market date with `=MAXIFS($A$2:$A$2941,$A$2:$A$2941,"<="&EOMONTH(D2,0))`, then its yield with `XLOOKUP` | `ROW_NUMBER() OVER (PARTITION BY ... ORDER BY date DESC)` | 3 | Week 3, Day 2 |
 | Fill `=(B3-B2)*100` down | `LAG()` | 3 | Week 3, Day 2 |
-| Take `LN` and `EXP` of spreads, run Breusch-Pagan by hand with `LINEST` and `CHISQ.DIST.RT`, and compute Q-Q points with `NORM.S.INV` | Check a regression's assumptions with residual plots and tests, and model log spreads | 4 | Week 1, Day 4 |
-| `=SKEW.P(A2:A616)`, where `SKEW` gives a different 4.44 | `scipy.stats.skew` | 4 | Week 1, Day 4 |
-| `=100*(EXP(INDEX(LINEST(...),1,10))-1)` | `percent_effect` of a log-model coefficient | 4 | Week 1, Day 4 |
-| `=AVERAGE(EXP(AI2:AI616))` | Mean of `exp(residual)`, the retransformation factor | 4 | Week 1, Day 4 |
 | Standardize with `STANDARDIZE` and `STDEV.P`, and solve ridge in closed form with `MMULT`, `MINVERSE`, and `MUNIT` | Fit ridge and lasso inside a pipeline that scales on the training rows only | 4 | Week 1, Day 5 |
 | `=SUMSQ(S2:U2)` | Sum of squared coefficients, the ridge penalty | 4 | Week 1, Day 5 |
 | `=10^SEQUENCE(13,1,-3,0.5)` | `np.logspace(-3, 3, 13)`, the alpha grid | 4 | Week 1, Day 5 |
@@ -459,7 +455,7 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Build a `COVARIANCE.S` grid, and score each date with `MMULT` of the centred changes | Find level, slope, and curvature with PCA on the Treasury curve | 4 | Week 3, Day 4 |
 | `=SUMPRODUCT(B2:B9,B2:B9)` and `=SUM(C2:C9)` | A loading's length and the sign rule | 4 | Week 3, Day 4 |
 | Check the capstone's results workbook with `COUNTIFS` against its threshold | Compare three models on a new file, test once, and write the results to Excel | 4 | Week 3, Day 5 |
-| Chart a comparison of models as a clustered column or line chart, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 4 | Week 1, Day 4 to Week 3, Day 4 |
+| Chart a comparison of models as a clustered column or line chart, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 4 | Week 1, Day 5 to Week 3, Day 4 |
 | Compute the share a sample leaves out with `=(1-1/n)^n`, count pasted positions with `FREQUENCY` and `COUNTIF`, and see `RANDARRAY` redraw on every recalculation | Draw a seeded bootstrap, count its rows, and measure how ten trees on ten samples disagree | 5 | Week 1, Day 1 |
 | `=1-AVERAGE(Q2:Q6001)` on the pasted validation outcomes | `1 - y_valid.mean()` | 5 | Week 1, Day 1 |
 | `=COUNTIF(M2:M6001,">=0.5")` on the ten-tree average | `(average_full >= 0.5).sum()` | 5 | Week 1, Day 1 |
