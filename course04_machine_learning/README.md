@@ -96,7 +96,7 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
-| 1 | [Dated Data and Walk-Forward Validation](week3/day1/11_dated_data_and_walk_forward_validation.ipynb) | Why a random split flatters a model on dated rows, walk-forward splits and `TimeSeriesSplit`, a relationship that drifts, ridge and lasso on collinear tenors, and lookahead in a feature | Ready |
+| 1 | [Dated Data and Walk-Forward Validation](week3/day1/11_dated_data_and_walk_forward_validation.ipynb) | Why shuffled folds flatter a model on dated rows, walk-forward folds with `TimeSeriesSplit`, a tree and a line scored fold by fold, new levels and a relationship that drifts, ridge and lasso on near-copy tenors, a feature built from later dates caught by a cut test, and misses that run | Ready |
 | 2 | [Scaling and K-Means](week3/day2/12_scaling_and_k_means.ipynb) | Distance and why units decide it, K-means by hand and with scikit-learn, the elbow and the silhouette, choosing k as a judgement, and clusters described, never ranked | Ready |
 | 3 | [Hierarchical Clustering and Cluster Profiling](week3/day3/13_hierarchical_clustering_and_cluster_profiling.ipynb) | Linkages, the dendrogram and where to cut it, cophenetic correlation, profiles in the data's own units, and a pivot table beside `MEDIAN(IF(...))` | Ready |
 | 4 | [PCA and t-SNE](week3/day4/14_pca_and_t_sne.ipynb) | Level, slope, and curvature from PCA on the Treasury curve, scores as history, PCA inside a pipeline only, scaling on mixed units, and t-SNE as a picture | Ready |
