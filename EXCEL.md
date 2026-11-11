@@ -399,15 +399,10 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Find the rows with no match with Power Query's Merge Queries, Left Anti | `LEFT JOIN ... WHERE ... IS NULL` and `indicator=True` | 3 | Week 3, Day 2 |
 | Find each month's last market date with `=MAXIFS($A$2:$A$2941,$A$2:$A$2941,"<="&EOMONTH(D2,0))`, then its yield with `XLOOKUP` | `ROW_NUMBER() OVER (PARTITION BY ... ORDER BY date DESC)` | 3 | Week 3, Day 2 |
 | Fill `=(B3-B2)*100` down | `LAG()` | 3 | Week 3, Day 2 |
-| Count clusters with a pivot table, and take medians with `MEDIAN(IF(...))`, which a pivot table cannot give | Build a hierarchical clustering, cut it, and profile the clusters in their own units | 4 | Week 3, Day 3 |
-| `COUNTIF`, `SUMIF`, and `MEDIAN(IF(...))` on the ticker column | `groupby().agg()` | 4 | Week 3, Day 3 |
-| `=CORREL(A2:A11176,B2:B11176)` | `cophenet` | 4 | Week 3, Day 3 |
-| `=AVERAGEIF($H$2:$H$151,1,$G$2:$G$151)` | `groupby().mean()` | 4 | Week 3, Day 3 |
-| `=CORREL(B2:B151,F2:F151)` and `=CORREL(D2:D151,E2:E151)` | `.corr()` | 4 | Week 3, Day 3 |
 | Build a `COVARIANCE.S` grid, and score each date with `MMULT` of the centred changes | Find level, slope, and curvature with PCA on the Treasury curve | 4 | Week 3, Day 4 |
 | `=SUMPRODUCT(B2:B9,B2:B9)` and `=SUM(C2:C9)` | A loading's length and the sign rule | 4 | Week 3, Day 4 |
 | Check the capstone's results workbook with `COUNTIFS` against its threshold | Compare three models on a new file, test once, and write the results to Excel | 4 | Week 3, Day 5 |
-| Chart a comparison of models as a clustered column or line chart, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 4 | Week 3, Day 3 to Week 3, Day 4 |
+| Chart a comparison of models as a clustered column or line chart, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 4 | Week 3, Day 4 to Week 3, Day 4 |
 | Compute the share a sample leaves out with `=(1-1/n)^n`, count pasted positions with `FREQUENCY` and `COUNTIF`, and see `RANDARRAY` redraw on every recalculation | Draw a seeded bootstrap, count its rows, and measure how ten trees on ten samples disagree | 5 | Week 1, Day 1 |
 | `=1-AVERAGE(Q2:Q6001)` on the pasted validation outcomes | `1 - y_valid.mean()` | 5 | Week 1, Day 1 |
 | `=COUNTIF(M2:M6001,">=0.5")` on the ten-tree average | `(average_full >= 0.5).sum()` | 5 | Week 1, Day 1 |
