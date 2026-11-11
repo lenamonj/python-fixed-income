@@ -25,7 +25,7 @@ CODE_TEXT = re.compile(r"```.*?```|`[^`\n]*`|<code>.*?</code>|\$\$.*?\$\$", re.S
 UNFILLED = re.compile(r"\{[A-Za-z_]\w*(?:\[|\(|!r|:[,+.0-9]*[a-z%]\})")
 UNFILLED_LOOKUP = re.compile(r"\{[A-Za-z_]\w*\[['\"]")
 # Jeff 2026-11-07: from Course 4 on, notebooks follow his sample template; a day joins this set when rebuilt
-NEW_STYLE = {"04_regression_assumptions_and_log_spreads", "03_coefficients_p_values_and_multicollinearity", "01_the_ml_workflow_and_simple_regression", "02_multiple_regression_and_dummy_variables", "0_start_here", "01_python_for_fixed_income_intro",
+NEW_STYLE = {"05_case_study_ridge_lasso_and_the_spread_cross_section", "04_regression_assumptions_and_log_spreads", "03_coefficients_p_values_and_multicollinearity", "01_the_ml_workflow_and_simple_regression", "02_multiple_regression_and_dummy_variables", "0_start_here", "01_python_for_fixed_income_intro",
              "01_part2_python_for_fixed_income_intro", "02_files_and_folders",
              "03_debugging", "04_classes_a_bond_object", "05_case_study_a_small_portfolio",
              "06_numpy", "06_part2_numpy",
