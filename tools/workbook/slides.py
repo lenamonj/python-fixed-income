@@ -44,10 +44,26 @@ class Press:
                              f'{links}</head><body>{"".join(slides)}</body></html>', encoding="utf-8")
         self._page.goto(page_file.as_uri())
         self._page.evaluate("document.fonts.ready")
-        # content that needs more room than its slide has would be cut off in print: measure it, slide by slide
+        # content that needs more room than its slide has would be cut off in print: measure it, slide by slide.
+        # A code line longer than its box, or a table or picture wider than its panel, spills onto its neighbour
+        # without widening the slide, so each is measured against its own box, and the message names it.
         over = self._page.evaluate(
-            "[...document.querySelectorAll('.slide .content')].map(b => [b.scrollHeight - b.clientHeight, b.scrollWidth - b.clientWidth])")
-        faults = [f"slide {i + 2}: {tall} px too tall, {wide} px too wide" for i, (tall, wide) in enumerate(over) if tall > 0 or wide > 0]
+            "[...document.querySelectorAll('.slide .content')].map(b => { const size = e => e.getBoundingClientRect();"
+            " const spills = [];"
+            " for (const e of b.querySelectorAll('.codebox')) { const long = e.scrollWidth - e.clientWidth;"
+            "   const letters = Math.floor((e.clientWidth - 34) / (parseFloat(getComputedStyle(e).fontSize) * 0.6));"
+            "   if (long > 1) spills.push(`a code line is ${long} px too long for its box, which holds ${letters} letters`); }"
+            " for (const e of b.querySelectorAll('.grid, .shot')) { const holder = e.closest('.panel, .col') || b;"
+            "   const past = Math.round(size(e).right - size(holder).right);"
+            "   if (past > 1) spills.push(`a ${e.classList.contains('grid') ? 'table' : 'picture'} is ${past} px wider than the room it has`); }"
+            " const parts = [...b.children].map(e => (e.classList[0] || e.tagName.toLowerCase()) + ' ' + Math.round(size(e).height));"
+            " return [b.scrollHeight - b.clientHeight, b.scrollWidth - b.clientWidth, spills, parts.join(' + '), b.clientHeight] })")
+        faults = []
+        for number, (tall, wide, spills, parts, room) in enumerate(over, start=2):
+            said = [f"{tall} px too tall (its parts, in px of height: {parts}, with 18 between them; the slide holds {room})"] if tall > 0 else []
+            said += [f"{wide} px too wide"] if wide > 0 else []
+            if said or spills:
+                faults.append(f"slide {number}: " + "; ".join(said + spills))
         # the front has no content box: its title and subtitle must end above the line at its foot
         low = self._page.evaluate(
             "[...document.querySelectorAll('.slide.front')].map(f => f.querySelector('main').getBoundingClientRect().bottom"
@@ -133,8 +149,11 @@ def panel(label: str, *parts: str, kind: str = "") -> str:
 
 
 def codebox(lines: list, output: str = "", bad: bool = False, small: bool = False) -> str:
-    """Code as it is typed, with what it showed under a rule. A comment line is drawn dimmer."""
-    typed = "\n".join(f'<span class="cm">{escape(line)}</span>' if line.lstrip().startswith("#") else escape(line) for line in lines)
+    """Code as it is typed, with what it showed under a rule. A comment line is drawn dimmer. With no lines, the
+    box holds the output alone."""
+    if isinstance(lines, str):
+        raise TypeError("codebox takes a list of lines: deck.lines(...) for the code, and output=deck.output(...) for what it showed")
+    typed ="\n".join(f'<span class="cm">{escape(line)}</span>' if line.lstrip().startswith("#") else escape(line) for line in lines)
     shown = f'<span class="out{" bad" if bad else ""}">{escape(output)}</span>' if output else ""
     return f'<div class="codebox{" small" if small else ""}">{typed}{shown}</div>'
 

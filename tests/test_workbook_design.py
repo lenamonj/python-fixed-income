@@ -268,6 +268,50 @@ def test_press_refuses_a_slide_that_does_not_fit(tmp_path):
     with slides.Press() as press:
         with pytest.raises(ValueError, match="does not fit"):
             press.pdf([tall], tmp_path / "deck.pdf", "test")
+        # the message says how tall each part is; a code line that spills onto its neighbour is refused too,
+        # though the slide is no wider for it, and so is a table wider than its column
+        spilled = slides.slide("", "Spilled", slides.row(
+            slides.col(slides.codebox(["x = 1" + " + 1" * 12]), width=300),
+            slides.col(slides.grid([["Job", "Excel"], ["Total", "<code>=SUMIF(C2:C201,&quot;Energy&quot;,F2:F201)</code>"]]), width=200),
+            slides.col(slides.panel("", "A line."))), "FOOT", 3)
+        fits = slides.slide("", "Fits", slides.row(slides.col(slides.codebox(["x = 1"]), width=300), slides.col(slides.panel("", "A line."))), "FOOT", 4)
+        said = press._load([tall, spilled, fits], "test")
+    assert len(said) == 2
+    assert re.match(r"slide 2: \d+ px too tall \(its parts, in px of height: panel \d+ \+ panel \d+", said[0])
+    assert re.match(r"slide 3: a code line is \d+ px too long for its box, which holds 28 letters; a table is \d+ px wider than", said[1])
+
+
+def test_a_deck_reads_tables_by_what_they_are():
+    from workbook import overview, slides
+    cell = ("Value and income, by sector.\n\n| Sector | Value |\n| --- | --- |\n| Energy | 12 |\n\n"
+            "**Excel side by side.**\n\n<table><tr><th>Job</th><th>Excel</th></tr>"
+            "<tr><td>Total</td><td><code>=SUMIF(C:C,\"Energy\",F:F)</code></td></tr></table>\n")
+    deck = overview.Deck.__new__(overview.Deck)
+    deck.cells = [new_markdown_cell("**Excel side by side.** `=SUM(F:F)` adds the column."), new_markdown_cell(cell),
+                  new_code_cell("book.plot()\nprint('drawn')", outputs=[
+                      nbformat.v4.new_output("stream", name="stdout", text="drawn\n"),
+                      nbformat.v4.new_output("display_data", data={"image/png": "AAAA", "text/plain": "<Figure size 800x450 with 1 Axes>"})]),
+                  new_code_cell("by_sector", outputs=[nbformat.v4.new_output("execute_result", data={"text/html": (
+                      "<table><thead><tr><th></th><th>bonds</th><th>value</th></tr><tr><th>sector</th><th></th><th></th></tr></thead>"
+                      "<tbody><tr><th>Energy</th><td>17</td><td>12.5</td></tr></tbody></table>")})])]
+    # a cell's tables in order, and the one under the Excel lead-in found by a formula inside it
+    assert deck.table(r"^Value and income")[1] == ["Energy", "12"]
+    assert deck.table(r"^Value and income", which=2)[0] == ["Job", "Excel"]
+    assert deck.excel_table(r"SUMIF")[1][0] == "Total"
+    with pytest.raises(LookupError, match="holds 2 tables, not 3"):
+        deck.table(r"^Value and income", which=3)
+    # a comparison that is a sentence is read as words; one that is a table says which reader to use
+    assert deck.excel(r"adds the column") == "<code>=SUM(F:F)</code> adds the column."
+    with pytest.raises(LookupError, match="deck.excel_table"):
+        deck.excel(r"^Value and income")
+    # a named index goes over the row labels, columns are kept by name, and a chart's name is not its output
+    assert deck.frame(r"^by_sector") == [["sector", "bonds", "value"], ["Energy", "17", "12.5"]]
+    assert deck.frame(r"^by_sector", columns=["value"]) == [["sector", "value"], ["Energy", "12.5"]]
+    with pytest.raises(LookupError, match="has no column"):
+        deck.frame(r"^by_sector", columns=["price"])
+    assert deck.output(r"^book\.plot") == "drawn"
+    with pytest.raises(TypeError, match="list of lines"):
+        slides.codebox(deck.output(r"^book\.plot"))
 
 
 def test_studio_draws_a_component_at_twice_its_size(tmp_path):

@@ -74,6 +74,16 @@ def html_rows(table: str) -> list:
             for found in re.findall(r"<tr[^>]*>(.*?)</tr>", table, re.S)]
 
 
+def tables(text: str) -> list:
+    """Every table in a markdown cell's text, in the order they appear, each as rows: HTML tables and pipe tables."""
+    found = [(block.start(), html_rows(block.group(0))) for block in re.finditer(r"<table.*?</table>", text, re.S)]
+    for run in re.finditer(r"(?:^[ \t]*\|.*(?:\n|$))+", text, re.M):
+        rows = [row.strip().strip("|").split("|") for row in run.group(0).strip().split("\n")]
+        found.append((run.start(), [[inline(cell.strip()) for cell in row] for row in rows
+                                    if not all(set(cell.strip()) <= set(":-") for cell in row)]))
+    return [rows for _, rows in sorted(found, key=lambda pair: pair[0])]
+
+
 class Deck:
     """One notebook's overview. The notebook must be in the design system: its trackers give each section's goal
     and minutes, and its cover's facts are worked out the same way."""
@@ -128,7 +138,9 @@ class Deck:
     def output(self, pattern: str, keep: str = "", first: int = 0) -> str:
         """What a code cell printed or showed, as text. `keep` is a pattern for the lines to keep; `first` keeps
         that many lines from the top."""
-        shown = [out.get("text") or out.get("data", {}).get("text/plain", "") for out in self.code_cell(pattern).outputs]
+        # a chart's output also carries its name as text ("<Figure size ...>"), which the notebook does not show
+        shown = [out.get("text") or out.get("data", {}).get("text/plain", "") for out in self.code_cell(pattern).outputs
+                 if "image/png" not in out.get("data", {})]
         rows = "".join(shown).strip().split("\n")
         rows = [row for row in rows if not keep or re.search(keep, row)]
         return "\n".join(rows[:first] if first else rows)
@@ -141,16 +153,27 @@ class Deck:
                 return f"{out.ename}: " + re.sub(r"\s*\([\w<>.-]+, line \d+\)$", "", out.evalue)
         raise LookupError(f"the cell matching {pattern} raised no error")
 
-    def frame(self, pattern: str, rows: int = 0, columns: int = 0) -> list:
-        """The table a code cell showed (a DataFrame), as rows for slides.grid: the header first. `rows` and
-        `columns` keep that many from the top and from the left."""
+    def frame(self, pattern: str, rows: int = 0, columns=0) -> list:
+        """The table a code cell showed (a DataFrame), as rows for slides.grid: the header first. `rows` keeps that
+        many from the top. `columns` keeps that many from the left, the row labels counted as the first, or, given
+        a list of the header's names, the row labels and those columns in that order."""
         for out in self.code_cell(pattern).outputs:
             table = re.search(r"<table.*?</table>", out.get("data", {}).get("text/html", ""), re.S)
             if table:
                 found = [row for row in html_rows(table.group(0)) if row]
                 found = [[re.sub(r"<[^>]+>", "", cell) for cell in row] for row in found]
+                # pandas gives a named index a header row of its own: the name belongs over the row labels
+                if len(found) > 1 and found[1][0] and not any(found[1][1:]) and not found[0][0] and "<thead>" in table.group(0) \
+                        and table.group(0).split("</thead>")[0].count("<tr") == 2:
+                    found = [[found[1][0]] + found[0][1:]] + found[2:]
                 found = found[:rows + 1] if rows else found
-                return [row[:columns] for row in found] if columns else found
+                if isinstance(columns, int):
+                    return [row[:columns] for row in found] if columns else found
+                missing = [name for name in columns if name not in found[0]]
+                if missing:
+                    raise LookupError(f"the table of the cell matching {pattern} has no column {missing}: it has {found[0][1:]}")
+                keep = [0] + [found[0].index(name) for name in columns]
+                return [[row[i] for i in keep] for row in found]
         raise LookupError(f"the cell matching {pattern} showed no table")
 
     def chart(self, pattern: str, width: int) -> str:
@@ -178,21 +201,34 @@ class Deck:
         return re.sub(r"`([^`]+)`|\*\*(.+?)\*\*", lambda found: found.group(1) or found.group(2), " ".join(quoted))
 
     def excel(self, pattern: str) -> str:
-        """The Excel side by side of the markdown cell matching the pattern, as HTML, without its bold lead-in."""
+        """The Excel side by side of the markdown cell matching the pattern, when it is a sentence: its words as
+        HTML, without the bold lead-in. A comparison that is a table is read with excel_table."""
         found = line(r"^\*\*Excel side by side\.\*\*", self.markdown(pattern))
-        return inline(re.sub(r"^\*\*Excel side by side\.\*\*\s*", "", found))
+        words = re.sub(r"^\*\*Excel side by side\.\*\*\s*", "", found)
+        if not words:
+            raise LookupError(f"the Excel side by side of the cell matching {pattern} is a table, not a sentence: "
+                              "read it with deck.excel_table")
+        return inline(words)
 
-    def table(self, pattern: str) -> list:
-        """The table in the markdown cell matching the pattern, as rows for slides.grid: an HTML table or a pipe one."""
-        text = self.markdown(pattern)
-        block = re.search(r"<table.*?</table>", text, re.S)
-        if block:
-            return html_rows(block.group(0))
-        piped = [row.strip().strip("|").split("|") for row in text.split("\n") if row.strip().startswith("|")]
-        piped = [[inline(cell.strip()) for cell in row] for row in piped if not all(set(cell.strip()) <= set(":-") for cell in row)]
-        if not piped:
-            raise LookupError(f"the cell matching {pattern} holds no table")
-        return piped
+    def excel_table(self, pattern: str) -> list:
+        """The table of an Excel side by side, as rows for slides.grid: the first table under the bold lead-in, in
+        the first markdown cell that has both and matches the pattern. A formula from the table is a good pattern."""
+        for cell in self.cells:
+            text = EMBEDDED.sub("", cell.source) if cell.cell_type == "markdown" else ""
+            lead = re.search(r"^\*\*Excel side by side\.\*\*", text, re.M)
+            found = lead and re.search(pattern, text, re.M) and tables(text[lead.start():])
+            if found:
+                return found[0]
+        raise LookupError(f"no markdown cell matching {pattern} has a table under an Excel side by side")
+
+    def table(self, pattern: str, which: int = 1) -> list:
+        """A table in the markdown cell matching the pattern, as rows for slides.grid: an HTML table or a pipe one.
+        `which=2` is the cell's second table."""
+        found = tables(self.markdown(pattern))
+        if len(found) < which:
+            raise LookupError(f"the cell matching {pattern} holds {len(found) or 'no'} table{'' if len(found) == 1 else 's'}"
+                              + (f", not {which}" if found else ""))
+        return found[which - 1]
 
     def block(self, pattern: str, keep: str = "") -> list:
         """The fenced block of the markdown cell matching the pattern (commands, a note, a file's text), as lines
