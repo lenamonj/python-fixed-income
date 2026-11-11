@@ -104,6 +104,8 @@ ul.can li::before { content: ""; position: absolute; left: 2px; top: 15px; width
 .slide.front h1.s4 { font-size: 60px; line-height: 66px; }
 .slide.front h1.s2 + .sub, .slide.front h1.s3 + .sub, .slide.front h1.s4 + .sub { margin-top: 10px; }
 .slide.front .sub { margin-top: 2px; font: italic 400 40px/50px var(--serif); color: var(--on-navy-soft); font-variation-settings: "opsz" 40; }
+/* a hyphenated word in the title stays whole: "K-Means" moves to the next line, it does not end one on its hyphen */
+.slide.front .nb { white-space: nowrap; }
 .slide.front .lines { margin-top: 28px; font: 400 18.5px/30px var(--sans); color: var(--on-navy-mute); }
 .slide.front footer { position: absolute; left: 60px; right: 60px; bottom: 84px; padding-top: 17px;
   display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--navy-rule);

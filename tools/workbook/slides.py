@@ -7,6 +7,7 @@ the diagrams stay sharp at any size, and the typefaces travel inside the file.
 
 Needs the author tools in requirements-dev.txt (playwright) and, once, `python -m playwright install chromium`.
 """
+import re
 import tempfile
 from html import escape
 from pathlib import Path
@@ -100,17 +101,22 @@ class Press:
 
 
 # ---------------------------------------------------------------- slides
+def unbroken(words: str) -> str:
+    """A title's words, with each hyphenated word kept on one line: "K-Means" never ends a line on its hyphen."""
+    return re.sub(r"\S+-\S+", lambda word: f'<span class="nb">{word.group(0)}</span>', escape(words))
+
+
 def front(course_line: str, plate: str, title: str, subtitle: str = "", statement: str = "", meta: tuple = (),
           progress: float = 0.0, weeks: int = 4) -> str:
     """The first slide: the notebook's cover at 16:9, with the disclaimer at its foot."""
-    sub = f'<p class="sub">{escape(subtitle)}</p>' if subtitle else ""
+    sub = f'<p class="sub">{unbroken(subtitle)}</p>' if subtitle else ""
     lines = f'<p class="lines">{"<br>".join(escape(line) for line in statement.splitlines())}</p>' if statement else ""
     facts = "".join(f"<span>{escape(fact)}</span>" for fact in meta)
     step = 1 if len(title) <= 14 else 2 if len(title) <= 22 else 3 if len(title) <= 36 else 4
     return (f'<section class="slide front">{course_curve(PAGE_WIDTH, PAGE_HEIGHT, 800, 1220, 532, 190, progress, weeks)}'
             f'<header><div class="brand">{badge()}<span class="series">{escape(SERIES.upper())}</span></div>'
             f'<div class="course">{escape(course_line)}</div></header>'
-            f'<main><div class="plate">{escape(plate)}</div><h1 class="s{step}">{escape(title)}</h1>{sub}{lines}</main>'
+            f'<main><div class="plate">{escape(plate)}</div><h1 class="s{step}">{unbroken(title)}</h1>{sub}{lines}</main>'
             f'<footer><div>Created by <b>{escape(AUTHOR)}</b></div><div class="meta">{facts}</div></footer>'
             f'<p class="disclaimer">{escape(DISCLAIMER)}</p></section>')
 

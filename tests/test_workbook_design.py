@@ -261,6 +261,16 @@ def test_a_slide_holds_its_strip_title_content_and_number():
     assert "<p><div" not in slides.panel("", slides.codebox(["1 + 1"], "2"))
 
 
+def test_the_front_never_ends_a_line_on_a_titles_hyphen():
+    from workbook import slides
+    made = slides.front("COURSE 4", "WEEK 3", "Scaling and K-Means", subtitle="Ridge & the Cross-Section")
+    assert '<h1 class="s2">Scaling and <span class="nb">K-Means</span></h1>' in made
+    assert 'Ridge &amp; the <span class="nb">Cross-Section</span>' in made
+    # a title with no hyphen is set exactly as before
+    assert "<h1 class=\"s1\">Bond Math</h1>" in slides.front("COURSE 2", "WEEK 1", "Bond Math")
+    assert "white-space: nowrap" in (REPO / "tools" / "workbook" / "slides.css").read_text(encoding="utf-8")
+
+
 def test_press_refuses_a_slide_that_does_not_fit(tmp_path):
     pytest.importorskip("playwright", reason="the press needs the author tools in requirements-dev.txt")
     from workbook import slides
