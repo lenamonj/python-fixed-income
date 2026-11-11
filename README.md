@@ -4,7 +4,7 @@
 
 **[Start here](#start-here)** &nbsp;·&nbsp; **[The courses](#the-courses)** &nbsp;·&nbsp; **[How a day works](#how-a-day-works)** &nbsp;·&nbsp; **[Coming from Excel](#coming-from-excel)**
 
-<img src="assets/readme/landing/numbers.png" width="830" alt="183 notebooks, with worked solutions. 555 Excel comparisons, formula by formula. 35 weeks, one notebook a day. $0 to take, and no key needed to run.">
+<img src="assets/readme/landing/numbers.png" width="830" alt="183 notebooks, with worked solutions. 554 Excel comparisons, formula by formula. 35 weeks, one notebook a day. $0 to take, and no key needed to run.">
 
 [![Python 3.13](https://img.shields.io/badge/Python-3.13-17807F?style=for-the-badge&labelColor=0E1B2E&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![Runs on Windows and Google Colab](https://img.shields.io/badge/Runs_on-Windows%20%7C%20Google%20Colab-17807F?style=for-the-badge&labelColor=0E1B2E)](#run-in-google-colab-with-nothing-to-install)
@@ -85,7 +85,7 @@ You keep everything you know. The difference is that code keeps the steps, not j
 | Build a pivot table | Group by a column and summarize | 1 |
 | Goal Seek a yield, or use `RATE` and `YIELD` | Write a loop that solves the yield from a price | 2 |
 
-**[All 555 comparisons, course by course](EXCEL.md)**
+**[All 554 comparisons, course by course](EXCEL.md)**
 
 ## Setup details
 
