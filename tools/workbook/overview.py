@@ -310,6 +310,21 @@ class Deck:
         self.add("THE SCENARIO", f"{self.label}: what the desk asks for.", inline(title), middle, s.facts(*self.facts))
         self._light.add(len(self.slides))
 
+    def problem(self, *body: str) -> None:
+        """The slide of a notebook that opens with a Problem Statement where another has a desk lead's note: what
+        its Business Context says beside its Objectives, anything given under them, and the day's facts at the foot."""
+        def said(pattern: str) -> list:
+            lines = [text for text in self.markdown(pattern).split("\n") if text.strip() and not text.startswith("#")]
+            item = r"(?:[*-]|\d+\.) "
+            listed = [inline(re.sub(item, "", text, count=1)) for text in lines if re.match(item, text)]
+            return [inline(text) for text in lines if not re.match(item, text)] + ([s.can_list(listed)] if listed else [])
+        both = s.row(s.col(s.panel("Business Context", *said(r"^## Business Context")), width=680),
+                     s.col(s.panel("Objectives", *said(r"^## Objectives"))))
+        middle = f'<div class="middle">{both}{"".join(body)}</div>'
+        self.add("THE PROBLEM", f"{self.label}: the question the day answers.", "Problem Statement", middle,
+                 s.facts(*self.facts))
+        self._light.add(len(self.slides))
+
     def add(self, label: str, goal: str, title: str, *body: str) -> None:
         """A slide that is not a section's: the scenario, or anything before the route."""
         self.slides.append(s.slide(s.bar(label, goal, self.plate), title, "".join(body), self.foot, len(self.slides) + 1, "settled"))

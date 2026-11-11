@@ -296,6 +296,22 @@ def test_a_capstone_whose_closing_has_no_list_closes_on_its_sentences():
     assert 'class="can"' not in made and "Open Day 1" not in made and "The note is answered" not in made
 
 
+def test_a_deck_opens_a_problem_statement_notebook_on_its_problem():
+    from workbook import overview
+    deck = overview.Deck.__new__(overview.Deck)
+    deck.cells = [new_markdown_cell("# Problem Statement\n\n## Business Context\n\nA credit team has 821 bonds.\n"
+                                    "It asks what the rating says about spread."),
+                  new_markdown_cell("## Objectives\n\n- Fit a line of `oas` on the rating.\n- Score it on unseen bonds.")]
+    deck.slides, deck.titles, deck._light, deck.plate, deck.foot = [], [], set(), "WEEK 1 · DAY 1", "FOOT"
+    deck.label, deck.facts = "Day 1", ("ABOUT 45 MIN", "11 SECTIONS")
+    deck.problem()
+    made = deck.slides[0]
+    assert "<p>A credit team has 821 bonds.</p><p>It asks what the rating says about spread.</p>" in made
+    assert "Problem Statement" in made and "# Problem" not in made and "## " not in made
+    assert 'class="can"' in made and "<code>oas</code>" in made and "- Fit" not in made
+    assert "11 SECTIONS" in made and deck._light == {1}
+
+
 def test_a_deck_reads_tables_by_what_they_are():
     from workbook import overview, slides
     cell = ("Value and income, by sector.\n\n| Sector | Value |\n| --- | --- |\n| Energy | 12 |\n\n"

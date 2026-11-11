@@ -91,6 +91,7 @@ Every reader takes a pattern, a regular expression matched against each line of 
 | `deck.section(number, *parts, title="")` | A section's slide. `title=` names a section's second slide. |
 | `deck.closing(*parts, card=True)` | The last slide: the You Can Now list, your parts if any (the closing cell's table of answers is a good one), and the card to the next notebook. |
 | `deck.scenario(pattern, *parts)` | The scenario's slide, whole: the cell's heading, the desk lead's quoted note set large, your parts if any, and the day's facts. |
+| `deck.problem(*parts)` | The same slide for a notebook that opens with a Problem Statement: its Business Context beside its Objectives, your parts if any, and the day's facts. |
 
 Three things about patterns and rows:
 
@@ -139,6 +140,19 @@ A course's last notebook is an assignment: the student writes the code. Its code
 - **The closing slide** shows the list that ends the Congratulations cell, or the cell's closing sentences when it has no list. Give it that cell's table: `deck.closing(s.grid(deck.table(r"^The note is answered")))`. If it is too tall with the card, leave the table out.
 
 Count before you write: the front, the scenario, the picture, the route, a slide for each section, and the closing may already be 15. Sixteen is the most, so at most one section takes a second slide; if two need one, leave out the slide with the picture.
+
+## A notebook that opens with a Problem Statement
+
+From Course 4 on, a notebook has no desk lead's note and no numbered headings. It opens with `# Problem Statement` and its sections are its `#` main topics (Setting Up, Loading the Data, and so on to Insights and Conclusion).
+
+- **The slide after the front** is `deck.problem()`, in place of `deck.scenario(...)`.
+- **A section's number is its place**, as text: `deck.section("6", ...)`. `deck.sections` lists them.
+- **A main topic holds several parts**, each under a `##` heading. Its slide shows the one or two that carry it: a chart the notebook draws (`deck.chart(pattern, width)`), the cell that draws or fits it, and the bold line that closes the topic, as the takeaway. Model Building is the long one, and the one to give a second slide if any topic gets one.
+- **A cell with a slider or a dropdown** cannot be shown. Show the still the next cell draws, with `deck.chart` on that cell.
+- **Setting Up and Loading the Data are short.** Fill their slides from what the student meets there: the cell that reads the file with the rows it shows, or the Data Dictionary's list (`deck.items(r"^## Data Dictionary")`), each on one slide only.
+- **There is no Excel comparison** from Course 4 on.
+
+Count before you write: the front, the problem, the route, a slide for each section, and the closing. A notebook with twelve sections is already sixteen slides, so none of its sections takes a second one.
 
 ## Rules
 
