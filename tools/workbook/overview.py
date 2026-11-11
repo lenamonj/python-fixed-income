@@ -333,15 +333,23 @@ class Deck:
                        if "sections, in order" in alt)
         number = int(re.match(r"Figure (\d+): ", caption).group(1))
         names = not re.search(r"<table|^[|]", cell, re.M)  # the notebook lists the sections under a route with no room for them
-        body = [self.figure(number, 1200)]
-        if not names:
-            rows = self.table(r"^## Your Route Through ")
-            half = len(rows) // 2 + 1
-            # the table grows a row for every two sections past ten, and the figure gives up that room
-            body = [self.figure(number, max(700, 820 - 120 * max(0, half - 6))),
-                    s.row(s.col(s.grid(rows[:half], kind="tight")), s.col(s.grid([rows[0]] + rows[half:], kind="tight")))]
-        self.add("THE ROUTE", re.sub(r"^Figure \d+: ", "", caption), line(r"^## .+$", cell)[3:], *body,
-                 s.takeaway(inline(line(r"^\*\*Time\.\*\*.+$", cell))))
+        rows = [] if names else self.table(r"^## Your Route Through ")
+        half = len(rows) // 2 + 1
+        # the table grows a row for every two sections past ten, and the figure gives up that room
+        width = 1200 if names else max(700, 820 - 120 * max(0, half - 6))
+        at = len(self.slides)
+
+        def drawn(width: int) -> None:
+            body = [self.figure(number, width)]
+            if not names:
+                body.append(s.row(s.col(s.grid(rows[:half], kind="tight")), s.col(s.grid([rows[0]] + rows[half:], kind="tight"))))
+            del self.slides[at:], self.titles[at:]
+            self.add("THE ROUTE", re.sub(r"^Figure \d+: ", "", caption), line(r"^## .+$", cell)[3:], *body,
+                     s.takeaway(inline(line(r"^\*\*Time\.\*\*.+$", cell))))
+
+        drawn(width)
+        # a section name that wraps makes the table taller than this allows for: press() then asks for less
+        self._route = None if names else (at, width, drawn)
 
     def section(self, number: str, *body: str, title: str = "") -> None:
         """A section's slide: its tracker as the strip, its heading as the title unless another is given."""
@@ -360,12 +368,17 @@ class Deck:
         lead = next((text for text in can.split("\n")[1:] if text.strip() and not text.startswith(("*", "-", "#"))), "You can now:")
         parts = [s.panel("", s.can_list(items)), *body]
         if project:
-            # the sentences between the cell's table and its list say where the student started
-            said = []
-            for text in can[:re.search(r"^[*-] ", can, re.M).start()].split("\n")[1:]:
+            # the sentences after the cell's table say where the student started: they lead to its list, or,
+            # in a cell with no list, they are what the slide says, up to the card
+            listed, said = re.search(r"^[*-] ", can, re.M), []
+            for text in can[:listed.start() if listed else len(can)].split("\n")[1:]:
+                if text.lstrip().startswith("["):
+                    break
                 said = [] if text.lstrip().startswith(("<", "|")) else said + [text] if text.strip() else said
             lead = "What the course has taught you."
             parts = [s.panel("", *([inline(" ".join(said))] if said else []), s.can_list(items)), *body]
+            if not listed:
+                parts = [s.panel("", *[inline(text) for text in said]), *body]
         if card and any(re.search(r"\[!\[Next: ", cell.source) for cell in self.cells if cell.cell_type == "markdown"):
             parts.append(self.drawn(r"^Next: ", 1200))
         self.add("YOU CAN NOW", re.sub(r"[*`]", "", lead), "You Can Now", *parts)
@@ -379,6 +392,14 @@ class Deck:
         out = out or self.notebook.with_name(self.notebook.stem + "_overview.pdf")
         title = f"{self.title}{': ' + self.subtitle if self.subtitle else ''}. Overview"
         with s.Press() as press:
+            if getattr(self, "_route", None):
+                # the route's figure gives up 40 px at a time until its slide holds the table under it
+                at, width, drawn = self._route
+                after = self.slides[at + 1:], self.titles[at + 1:]
+                while width > 700 and press._load([self.slides[at]], title):
+                    width -= 40
+                    drawn(width)
+                self.slides[at + 1:], self.titles[at + 1:] = after
             if "--preview" in argv:
                 folder = Path(argv[argv.index("--preview") + 1])
                 for number, name in enumerate(self.titles, start=1):

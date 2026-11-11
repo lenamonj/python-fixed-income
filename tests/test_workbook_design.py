@@ -281,6 +281,21 @@ def test_press_refuses_a_slide_that_does_not_fit(tmp_path):
     assert re.match(r"slide 3: a code line is \d+ px too long for its box, which holds 28 letters; a table is \d+ px wider than", said[1])
 
 
+def test_a_capstone_whose_closing_has_no_list_closes_on_its_sentences():
+    from workbook import overview
+    deck = overview.Deck.__new__(overview.Deck)
+    deck.cells = [new_markdown_cell(
+        "## Congratulations!\n\nThe note is answered:\n\n<table><tr><th>The note asked</th><th>Answer</th></tr>"
+        "<tr><td>One page</td><td>10.3</td></tr></table>\n<br clear=\"left\">\n\n"
+        "Today your module is 29 functions and 55 tests.\n\nBe proud: you proved every row.\n\n"
+        "[Open Day 1 in Colab](https://colab.research.google.com/)")]
+    deck.slides, deck.titles, deck._light, deck.plate, deck.foot = [], [], set(), "WEEK 3 · DAY 5", "FOOT"
+    deck.closing(card=False)
+    made = deck.slides[0]
+    assert "<p>Today your module is 29 functions and 55 tests.</p><p>Be proud: you proved every row.</p>" in made
+    assert 'class="can"' not in made and "Open Day 1" not in made and "The note is answered" not in made
+
+
 def test_a_deck_reads_tables_by_what_they_are():
     from workbook import overview, slides
     cell = ("Value and income, by sector.\n\n| Sector | Value |\n| --- | --- |\n| Energy | 12 |\n\n"

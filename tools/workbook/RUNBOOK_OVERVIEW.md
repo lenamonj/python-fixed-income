@@ -136,7 +136,7 @@ A course's last notebook is an assignment: the student writes the code. Its code
 
 - **A section's slide** shows what the section asks: `s.grid(deck.questions("3"), kind="wide")`. Five questions fill a slide. A section that asks more takes two slides, each with `keep` naming its questions (`keep=r"^3\.[1-5] "`), the second under a title of your own.
 - **A section that asks one or two questions** is thin. Fill its slide from the notebook: the section's own figure or table if it has one; if not, a picture, a table, a list, or a fenced block from the cells before the route that the section works on (the data's columns, the rules, the cover note), each shown on one slide only; and the bold line that closes the section's first cell, as the takeaway.
-- **The closing slide** shows the list that ends the Congratulations cell. Give it that cell's table: `deck.closing(s.grid(deck.table(r"^The note is answered")))`. If it is too tall with the card, leave the table out.
+- **The closing slide** shows the list that ends the Congratulations cell, or the cell's closing sentences when it has no list. Give it that cell's table: `deck.closing(s.grid(deck.table(r"^The note is answered")))`. If it is too tall with the card, leave the table out.
 
 Count before you write: the front, the scenario, the picture, the route, a slide for each section, and the closing may already be 15. Sixteen is the most, so at most one section takes a second slide; if two need one, leave out the slide with the picture.
 
@@ -148,6 +148,7 @@ Count before you write: the front, the scenario, the picture, the route, a slide
 4. A slide carries one idea. Three panels side by side is the most a slide holds.
 5. Slides follow the notebook's order.
 6. No em dashes or en dashes, and no emojis, in anything you type.
+7. A live cell asks a data service for something and needs the student's own key: its code sits under `if fred_key is None:`, and in the saved notebook it printed only that it was skipped. Never show that message as an output. Show the cell's working lines, the ones under `else:`, with `keep`, and beside them what the notebook's text says a student with a key sees. Never look for a key yourself: no `.env` file, no environment variable.
 
 ## What you must not do
 
