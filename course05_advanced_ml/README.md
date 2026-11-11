@@ -78,7 +78,7 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
-| 1 | [Tree Instability and the Bootstrap](week1/day1/01_tree_instability_and_the_bootstrap.ipynb) | Course 4's split rebuilt with its test rows closed, the bootstrap and the share of rows it leaves out, ten trees on ten samples whose leaves move while the root stays, and averaging named, beside `FREQUENCY`, `COUNTIF`, and `STDEV.P` | Ready |
+| 1 | [Tree Instability and the Bootstrap](week1/day1/01_tree_instability_and_the_bootstrap.ipynb) | Course 4's rows and trees rebuilt, the bootstrap and the share of rows it leaves out, ten trees on ten samples that share a root and split on most accounts, and their average set against every single tree | Ready |
 | 2 | [Bagging and Out-of-Bag Scores](week1/day2/02_bagging_and_out_of_bag_scores.ipynb) | Bagging by hand and with scikit-learn, how many trees, the out-of-bag score as an accuracy and the out-of-bag ROC AUC beside it, bagging a stable model, and what bagging cannot fix | Ready |
 | 3 | [Random Forests](week1/day3/03_random_forests.ipynb) | A random subset of columns at each split, tree correlation, leaf size against tree count, class weights and the model's score, a small search on training folds, and extra trees, beside `INT(SQRT(19))`, `COMBIN`, and `CORREL` | Ready |
 | 4 | [Impurity and Permutation Importance](week1/day4/04_impurity_and_permutation_importance.ipynb) | A column of random numbers that impurity importance ranks second and permutation importance ranks near last, correlated columns sharing importance, training rows against validation rows, and ROC AUC from ranks by `RANK.AVG` and `SUMIF` | Ready |

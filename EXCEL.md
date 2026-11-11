@@ -399,11 +399,6 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Find the rows with no match with Power Query's Merge Queries, Left Anti | `LEFT JOIN ... WHERE ... IS NULL` and `indicator=True` | 3 | Week 3, Day 2 |
 | Find each month's last market date with `=MAXIFS($A$2:$A$2941,$A$2:$A$2941,"<="&EOMONTH(D2,0))`, then its yield with `XLOOKUP` | `ROW_NUMBER() OVER (PARTITION BY ... ORDER BY date DESC)` | 3 | Week 3, Day 2 |
 | Fill `=(B3-B2)*100` down | `LAG()` | 3 | Week 3, Day 2 |
-| Compute the share a sample leaves out with `=(1-1/n)^n`, count pasted positions with `FREQUENCY` and `COUNTIF`, and see `RANDARRAY` redraw on every recalculation | Draw a seeded bootstrap, count its rows, and measure how ten trees on ten samples disagree | 5 | Week 1, Day 1 |
-| `=1-AVERAGE(Q2:Q6001)` on the pasted validation outcomes | `1 - y_valid.mean()` | 5 | Week 1, Day 1 |
-| `=COUNTIF(M2:M6001,">=0.5")` on the ten-tree average | `(average_full >= 0.5).sum()` | 5 | Week 1, Day 1 |
-| `=COUNTIFS(Q2:Q6001,1,M2:M6001,">=0.5")`, then `=R3/R2` for precision | Precision from `mlkit.classification_metrics` | 5 | Week 1, Day 1 |
-| `=STDEV.P(B2:K2)`, `=COUNTIF(B2:K2,">=0.5")`, and `=AVERAGE(B2:K2)` across ten trees | `ten.std(axis=1, ddof=0)`, `(ten >= 0.5).sum(axis=1)`, and `proba_ten.mean(axis=1)` | 5 | Week 1, Day 1 |
 | Average pasted tree columns with `AVERAGE`, and score a vote with `SUMPRODUCT` | Bag trees by hand and with scikit-learn, and read the out-of-bag score as the accuracy it is | 5 | Week 1, Day 2 |
 | Count columns per split with `INT(SQRT(19))`, the chance one is tried with `COMBIN`, and two trees' agreement with `CORREL` | Fit a random forest, measure tree correlation, and summarise a search's fold scores | 5 | Week 1, Day 3 |
 | `=ROWS(A2:A18001)/(2*COUNTIF(A2:A18001,1))` for a class weight, and `AVERAGE` and `STDEV.P` of the fold scores | `compute_class_weight("balanced")` and `cv_results_` | 5 | Week 1, Day 3 |
@@ -454,7 +449,7 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | `=1/(1+EXP(-(B1+B47)))-1/(1+EXP(-B1))` for one contribution in probability terms | The difference of two `logistic_probability` calls | 5 | Week 3, Day 4 |
 | `COUNTIFS` and `AVERAGEIFS` by band of a ratio, where the criterion `""` matches empty cells | Mask counts and means by band | 5 | Week 3, Day 4 |
 | Check the capstone's confusion matrix with `COUNTIFS`, its interval with `PERCENTILE.INC`, and a SHAP row with `SUM` | Compare four models on a new file, test once, describe the chosen one with SHAP values, and write the results to Excel | 5 | Week 3, Day 5 |
-| Chart a comparison of models as a clustered column, bar, line, or scatter chart, add custom error bars for a spread of fold scores, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 5 | Week 1, Day 1 to Week 3, Day 4 |
+| Chart a comparison of models as a clustered column, bar, line, or scatter chart, add custom error bars for a spread of fold scores, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 5 | Week 1, Day 2 to Week 3, Day 4 |
 | Use `COUNTBLANK` on each column, and `NETWORKDAYS` less `ROWS` to count absent dates | Count blanks per column and the absent market dates, then find each gap's run and kind | 5B | Week 1, Day 1 |
 | Fill a blank with the cell above, `=IF(B3="",C2,B3)` | Forward fill with `ffill`, and stop it at a long outage with `limit=` | 5B | Week 1, Day 1 |
 | Interpolate a gap by row position, and by date, with a few cells of arithmetic | `interpolate` linear and by time, compared against the true values held back | 5B | Week 1, Day 1 |
