@@ -399,15 +399,6 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Find the rows with no match with Power Query's Merge Queries, Left Anti | `LEFT JOIN ... WHERE ... IS NULL` and `indicator=True` | 3 | Week 3, Day 2 |
 | Find each month's last market date with `=MAXIFS($A$2:$A$2941,$A$2:$A$2941,"<="&EOMONTH(D2,0))`, then its yield with `XLOOKUP` | `ROW_NUMBER() OVER (PARTITION BY ... ORDER BY date DESC)` | 3 | Week 3, Day 2 |
 | Fill `=(B3-B2)*100` down | `LAG()` | 3 | Week 3, Day 2 |
-| Rank two importance columns with `RANK.EQ`, and compute a ROC AUC from `RANK.AVG` and `SUMIF` | Compare impurity and permutation importance, and catch a column of noise that one of them ranks second | 5 | Week 1, Day 4 |
-| `=AVERAGE(A2:A18001)` and `=STDEV.S(A2:A18001)` on the noise column | `X_train["noise"].mean()` and `.std()` | 5 | Week 1, Day 4 |
-| `=CORREL(A2:A18001,B2:B18001)` for the noise column against the outcome | `np.corrcoef(X_train["noise"], y_train)` | 5 | Week 1, Day 4 |
-| `=COUNTA(UNIQUE(A2:A18001))` for the distinct values in a column | `X_train.nunique()` | 5 | Week 1, Day 4 |
-| `=RANK.AVG(B2,$B$2:$B$21,1)` filled down, then `=CORREL(E2:E21,F2:F21)` on the ranks | `.corr(method="spearman")` | 5 | Week 1, Day 4 |
-| `=AVERAGE(A2:A6)` and `=STDEV.P(A2:A6)` of five group shuffles | `np.mean(group_drops)` and `np.std(group_drops)` | 5 | Week 1, Day 4 |
-| `=SUM(B2:B7)` of the six bills' permutation drops | `table.loc[bills, "permutation"].sum()` | 5 | Week 1, Day 4 |
-| `=1-((B2/A2)^2+(C2/A2)^2)` for a node's Gini impurity | `tiny_tree.tree_.impurity` | 5 | Week 1, Day 4 |
-| `=(A2*D2-A3*D3-A6*D6)/$A$2` for one split's credit, then `=(F3+F6)/(F2+F3+F6)` for a column's share | `split_credits(tiny_tree, tiny_columns)` and `tiny_tree.feature_importances_` | 5 | Week 1, Day 4 |
 | Turn a fitted log spread into bp with `EXP`, average the misses with `AVERAGE(ABS(...))`, and compute R-squared with `SUMXMY2` and `DEVSQ` | Score OLS, a tree, and a forest on the spread cross-section by cross-validation and by issuer | 5 | Week 1, Day 5 |
 | `=COUNTIF(C2:C616,C2)` for the bonds in one leaf | `same_leaf.sum()` | 5 | Week 1, Day 5 |
 | `=AVERAGEIF(C2:C616,C2,B2:B616)`, then `=EXP(E2)` for the leaf's fitted spread in bp | `y[same_leaf].mean()` and `np.exp(fitted_log[0])` | 5 | Week 1, Day 5 |
@@ -446,7 +437,7 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | `=1/(1+EXP(-(B1+B47)))-1/(1+EXP(-B1))` for one contribution in probability terms | The difference of two `logistic_probability` calls | 5 | Week 3, Day 4 |
 | `COUNTIFS` and `AVERAGEIFS` by band of a ratio, where the criterion `""` matches empty cells | Mask counts and means by band | 5 | Week 3, Day 4 |
 | Check the capstone's confusion matrix with `COUNTIFS`, its interval with `PERCENTILE.INC`, and a SHAP row with `SUM` | Compare four models on a new file, test once, describe the chosen one with SHAP values, and write the results to Excel | 5 | Week 3, Day 5 |
-| Chart a comparison of models as a clustered column, bar, line, or scatter chart, add custom error bars for a spread of fold scores, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 5 | Week 1, Day 4 to Week 3, Day 4 |
+| Chart a comparison of models as a clustered column, bar, line, or scatter chart, add custom error bars for a spread of fold scores, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 5 | Week 1, Day 5 to Week 3, Day 4 |
 | Use `COUNTBLANK` on each column, and `NETWORKDAYS` less `ROWS` to count absent dates | Count blanks per column and the absent market dates, then find each gap's run and kind | 5B | Week 1, Day 1 |
 | Fill a blank with the cell above, `=IF(B3="",C2,B3)` | Forward fill with `ffill`, and stop it at a long outage with `limit=` | 5B | Week 1, Day 1 |
 | Interpolate a gap by row position, and by date, with a few cells of arithmetic | `interpolate` linear and by time, compared against the true values held back | 5B | Week 1, Day 1 |
