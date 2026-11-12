@@ -399,11 +399,6 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Find the rows with no match with Power Query's Merge Queries, Left Anti | `LEFT JOIN ... WHERE ... IS NULL` and `indicator=True` | 3 | Week 3, Day 2 |
 | Find each month's last market date with `=MAXIFS($A$2:$A$2941,$A$2:$A$2941,"<="&EOMONTH(D2,0))`, then its yield with `XLOOKUP` | `ROW_NUMBER() OVER (PARTITION BY ... ORDER BY date DESC)` | 3 | Week 3, Day 2 |
 | Fill `=(B3-B2)*100` down | `LAG()` | 3 | Week 3, Day 2 |
-| Turn a fitted log spread into bp with `EXP`, average the misses with `AVERAGE(ABS(...))`, and compute R-squared with `SUMXMY2` and `DEVSQ` | Score OLS, a tree, and a forest on the spread cross-section by cross-validation and by issuer | 5 | Week 1, Day 5 |
-| `=COUNTIF(C2:C616,C2)` for the bonds in one leaf | `same_leaf.sum()` | 5 | Week 1, Day 5 |
-| `=AVERAGEIF(C2:C616,C2,B2:B616)`, then `=EXP(E2)` for the leaf's fitted spread in bp | `y[same_leaf].mean()` and `np.exp(fitted_log[0])` | 5 | Week 1, Day 5 |
-| `=COUNTIFS(A2:A18001,1,B2:B18001,">="&E1)/COUNTIF(A2:A18001,1)` for recall at a threshold | `(oof_log >= threshold_log)[y_train == 1].mean()` | 5 | Week 1, Day 5 |
-| `=AVERAGEIF(A2:A616,"High Yield",B2:B616)` and the same for "Investment Grade" | `residuals.abs().groupby(grade).mean()` | 5 | Week 1, Day 5 |
 | Run an AdaBoost round with `SUMPRODUCT`, `LN`, and `EXP`, and see `LOG` return base 10 | Run three AdaBoost rounds by hand and match scikit-learn's stump weights | 5 | Week 2, Day 1 |
 | `=COUNTIF(A2:A18001,"<=1.5")` and `=AVERAGEIFS(B2:B18001,A2:A18001,"<=1.5")` on each side of a stump's split | `(X_train["PAY_0"] <= 1.5).sum()` and `y_train[yes_side].mean()` | 5 | Week 2, Day 1 |
 | `=COUNTIFS(C2:C18001,1,A2:A18001,"<=1.5")` for the misses on one side | `((missed == 1) & yes_side).sum()` | 5 | Week 2, Day 1 |
@@ -437,7 +432,7 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | `=1/(1+EXP(-(B1+B47)))-1/(1+EXP(-B1))` for one contribution in probability terms | The difference of two `logistic_probability` calls | 5 | Week 3, Day 4 |
 | `COUNTIFS` and `AVERAGEIFS` by band of a ratio, where the criterion `""` matches empty cells | Mask counts and means by band | 5 | Week 3, Day 4 |
 | Check the capstone's confusion matrix with `COUNTIFS`, its interval with `PERCENTILE.INC`, and a SHAP row with `SUM` | Compare four models on a new file, test once, describe the chosen one with SHAP values, and write the results to Excel | 5 | Week 3, Day 5 |
-| Chart a comparison of models as a clustered column, bar, line, or scatter chart, add custom error bars for a spread of fold scores, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 5 | Week 1, Day 5 to Week 3, Day 4 |
+| Chart a comparison of models as a clustered column, bar, line, or scatter chart, add custom error bars for a spread of fold scores, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 5 | Week 2, Day 1 to Week 3, Day 4 |
 | Use `COUNTBLANK` on each column, and `NETWORKDAYS` less `ROWS` to count absent dates | Count blanks per column and the absent market dates, then find each gap's run and kind | 5B | Week 1, Day 1 |
 | Fill a blank with the cell above, `=IF(B3="",C2,B3)` | Forward fill with `ffill`, and stop it at a long outage with `limit=` | 5B | Week 1, Day 1 |
 | Interpolate a gap by row position, and by date, with a few cells of arithmetic | `interpolate` linear and by time, compared against the true values held back | 5B | Week 1, Day 1 |
