@@ -8,6 +8,7 @@ Needs the author tools in requirements-dev.txt (playwright, Pillow) and, once, `
 """
 import base64
 import math
+import re
 import tempfile
 from html import escape
 from pathlib import Path
@@ -228,26 +229,55 @@ ROUTE_LEFT, ROUTE_RIGHT = 96, 1104  # where the first and the last section's poi
 ROUTE_ROOM = 2 * ROUTE_LEFT - 8  # the widest that words centred on the first or the last point can be and stay in the picture
 
 
-def route_stop_width(count: int) -> int:
-    """How wide the words under one point of a route can be: the room between two points, and never so wide
-    that the first or the last point's words leave the picture, which a route of five sections or fewer would."""
-    return min(ROUTE_ROOM, (ROUTE_RIGHT - ROUTE_LEFT) // max(count - 1, 1) - 12)
+def route_stop_width(count: int, tight: bool = False) -> int:
+    """How wide the words under one point of a route can be: the room between two points less a gutter (12 px,
+    or 10 in the small type), and never so wide that the first or the last point's words leave the picture."""
+    return min(ROUTE_ROOM, (ROUTE_RIGHT - ROUTE_LEFT) // max(count - 1, 1) - (10 if tight else 12))
 
 
-def route_has_room(titles: list) -> bool:
-    """Whether every section title can be set under its point in two lines, with no word wider than a line."""
+def wraps_into(title: str, letters: int, lines: int) -> bool:
+    """Whether the title, wrapped word by word into lines of at most `letters` letters, needs no more than `lines`."""
+    used, filled = 1, 0
+    for word in re.findall(r"[^\s-]+-?|-", title):  # a browser may break a line after a hyphen
+        if len(word) > letters:
+            return False
+        if filled and filled + 1 + len(word) > letters:
+            used, filled = used + 1, len(word)
+        else:
+            filled += (1 if filled else 0) + len(word)
+    return used <= lines
+
+
+def route_lines(titles: list) -> int:
+    """How many lines the route's names need: 2 in the house type (14.5 px), else 3 or 4 in the small type (13 px).
+    0 means some title fits in neither: route_misfits names them."""
     letters = int(route_stop_width(len(titles)) / 7.9)  # 14.5 px semibold runs about 7.9 px a letter
-    return all(len(title) <= 2 * letters and max(len(word) for word in title.split()) <= letters for title in titles)
+    if all(wraps_into(title, letters, 2) for title in titles):
+        return 2
+    letters = int(route_stop_width(len(titles), tight=True) / 7.1)  # 13 px semibold runs about 7.1 px a letter
+    for lines in (3, 4):
+        if all(wraps_into(title, letters, lines) for title in titles):
+            return lines
+    return 0
 
 
-def route(sections: list, flags: dict | None = None, head: str = "", total: str = "", names: bool = True) -> str:
-    """The day's sections as points on the house curve. sections holds (number, title, minutes) for each one;
-    flags maps a section's position (from 1) to a few words set above its point, for the moments that matter.
-    names=False leaves the titles out, for a notebook whose titles have no room under the points (route_has_room)."""
+def route_misfits(titles: list) -> list:
+    """The titles too long to set under their points even in four lines of the small type."""
+    letters = int(route_stop_width(len(titles), tight=True) / 7.1)
+    return [title for title in titles if not wraps_into(title, letters, 4)]
+
+
+def route(sections: list, flags: dict | None = None, head: str = "", total: str = "") -> str:
+    """The day's sections as points on the house curve, each with its title and minutes under it. sections holds
+    (number, title, minutes) for each one; flags maps a section's position (from 1) to a few words set above its
+    point, for the moments that matter. Titles that need it are set smaller, in up to four lines (route_lines)."""
     flags = flags or {}
     left, right, low, high, floor = ROUTE_LEFT, ROUTE_RIGHT, 190, 78, 216
     count = len(sections)
-    wide = route_stop_width(count)
+    lines = route_lines([title for _, title, _ in sections])
+    if not lines:
+        raise ValueError(f"these route titles fit under no point: {route_misfits([title for _, title, _ in sections])}")
+    wide = route_stop_width(count, tight=lines > 2)
     drawn = f'<path d="{curve_path(left, right, low, high)}" fill="none" stroke="#17807F" stroke-width="2.4" stroke-linecap="round"/>'
     stops = ""
     for i, (number, title, minutes) in enumerate(sections):
@@ -262,11 +292,11 @@ def route(sections: list, flags: dict | None = None, head: str = "", total: str 
             drawn += f'<line x1="{x:.1f}" x2="{x:.1f}" y1="{y - 12:.1f}" y2="{y - 24:.1f}" stroke="#A97A1F" stroke-width="1.2"/>'
             stops += (f'<div class="flag" style="left:{x - ROUTE_ROOM / 2:.1f}px;top:{y - 44:.1f}px;width:{ROUTE_ROOM}px">'
                       f'{escape(flags[i + 1])}</div>')
-        name = f'<span class="name">{escape(title)}</span>' if names else ""
         stops += (f'<div class="stop" style="left:{x - wide / 2:.1f}px;width:{wide}px"><span class="no">{escape(number)}</span>'
-                  f'{name}<span class="min">{minutes} MIN</span></div>')
+                  f'<span class="name">{escape(title)}</span><span class="min">{minutes} MIN</span></div>')
     heads = (f'<div class="head">{escape(head)}</div>' if head else "") + (f'<div class="head right">{escape(total)}</div>' if total else "")
-    return (f'<div class="route{"" if names else " bare"}">{heads}<svg width="{WIDTH}" height="330" viewBox="0 0 {WIDTH} 330">'
+    look = {2: "", 3: " tight", 4: " tight four"}[lines]
+    return (f'<div class="route{look}">{heads}<svg width="{WIDTH}" height="330" viewBox="0 0 {WIDTH} 330">'
             f'{drawn}</svg>{stops}</div>')
 
 

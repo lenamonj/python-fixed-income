@@ -30,7 +30,7 @@ COLAB = "https://colab.research.google.com/github/lenamonj/python-fixed-income/b
 COUNT_WORDS = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"]
 PICTURE = re.compile(r"!\[((?:[^\[\]]|\[[^\]]*\])*)\]\(data:image/(\w+);base64,([^)]+)\)")
 IVORY, RULE, INK = "#F7F3EA", "#D8D0BE", "#1B2430"
-KEYS = {"goals", "sections", "exercises", "route_line", "route_flags", "captions", "next_line", "note", "mistakes", "quick_checks"}
+KEYS = {"goals", "sections", "exercises", "route_line", "route_flags", "route_names", "captions", "next_line", "note", "mistakes", "quick_checks"}
 
 
 class PlanError(ValueError):
@@ -383,23 +383,25 @@ def scenario(draw: Drawer, cells: list, note: dict) -> str:
 
 
 def route_cell(draw: Drawer, plan: dict, stops: list, minutes: list, label: str, practice: int, exercises: int, figure: int) -> str:
-    """The route cell: its heading, an optional line, the figure, the sections as a table when the figure has no
-    room for their titles, and the time. figure is the route's number: 1, unless a picture opens the notebook."""
-    from left_tables import left_tables
+    """The route cell: its heading, an optional line, the figure with every section's title under its point, and the
+    time. figure is the route's number: 1, unless a picture opens the notebook. The plan's route_names give a short
+    label, by section position from 1, for a title too long to set under its point; the heading itself is unchanged."""
     flags = {int(place): words for place, words in plan.get("route_flags", {}).items()}
-    titles = [re.sub(r"`", "", title) for number, title in stops]
-    names = c.route_has_room(titles)
+    short = {int(place): words for place, words in plan.get("route_names", {}).items()}
+    stray = set(short) - set(range(1, len(stops) + 1))
+    if stray:
+        raise PlanError(f'"route_names" names sections {sorted(stray)}, and the notebook has sections 1 to {len(stops)}')
+    titles = [short.get(k, re.sub(r"`", "", title)) for k, (number, title) in enumerate(stops, start=1)]
+    if not c.route_lines(titles):
+        raise PlanError(f"these section titles are too long to set under their points on the route: {c.route_misfits(titles)}. "
+                        f'Give each a short label under "route_names" in the plan, keyed by its section number from 1')
     count = COUNT_WORDS[len(stops)].capitalize() if len(stops) < len(COUNT_WORDS) else str(len(stops))
     caption = f"{count} sections, in order, with about how long each takes."
     lesson = sum(minutes)
     drawn = c.route([(number, title, spent) for (number, _), title, spent in zip(stops, titles, minutes)], flags,
-                    f"{label.upper()} · THE ROUTE", f"LESSON · ABOUT {lesson} MIN", names)
+                    f"{label.upper()} · THE ROUTE", f"LESSON · ABOUT {lesson} MIN")
     picture = as_markdown(draw.png(c.figure(drawn, figure, caption, flush=True), "route"), f"Figure {figure}: {caption}")
-    table = ""
-    if not names:
-        rows = "\n".join(f"| {number} | {title} | {spent} min |" for (number, title), spent in zip(stops, minutes))
-        table = "\n\n" + left_tables(f"| | Section | About |\n| --- | --- | --- |\n{rows}")
     many = COUNT_WORDS[exercises] if exercises < len(COUNT_WORDS) else str(exercises)
     time = f"**Time.** About {lesson} minutes for the lesson" + (f", then about {practice} for the {many} exercises." if exercises else ".")
     lead = f"{plan['route_line']}\n\n" if plan.get("route_line") else ""
-    return f"## Your Route Through {label}\n\n{lead}{picture}{table}\n\n{time}"
+    return f"## Your Route Through {label}\n\n{lead}{picture}\n\n{time}"

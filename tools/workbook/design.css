@@ -142,7 +142,9 @@ body { width: 1200px; }
 .route .stop .min { display: block; margin-top: 5px; font: 500 11.5px var(--mono); letter-spacing: .1em; color: var(--mist); }
 .route .flag { position: absolute; text-align: center; font: 600 10.5px var(--sans); letter-spacing: .2em; color: var(--brass); white-space: nowrap; }
 .route .head { position: absolute; left: 28px; top: 22px; font: 600 11.5px var(--sans); letter-spacing: .22em; color: var(--slate); }
-.route.bare { height: 290px; }
+.route.tight .stop .name { font: 600 13px/16px var(--sans); min-height: 48px; }
+.route.tight.four { height: 350px; }
+.route.tight.four .stop .name { min-height: 64px; }
 .figure.strip { border: none; }
 .route .head.right { left: auto; right: 28px; color: var(--teal); font: 500 12px var(--mono); letter-spacing: .16em; }
 

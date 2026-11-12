@@ -52,6 +52,7 @@ A section is each numbered heading (`## 1.6 Conditional Statements`, or `## 3 Da
 | `next_line` | The sentence on the card to the next notebook. Default: what the closing cell says comes next, or the next notebook's purpose line. | Anyone |
 | `route_line` | One sentence above the route. | Editor |
 | `route_flags` | `{"3": "ANSWER 1 · THE COUPON"}`: a few words above a section's point on the route. | Editor |
+| `route_names` | `{"7": "Collinearity"}`: a short label under a section's point, for a title too long to set there (the build stops and names it). The heading is unchanged. | Editor |
 | `note` | The scenario as a note with boxes that get ticked. | Editor |
 | `mistakes` | Common-mistake plates. | Editor |
 | `quick_checks` | Questions with a folded answer. | Editor |

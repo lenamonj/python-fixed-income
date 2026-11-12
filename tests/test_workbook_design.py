@@ -197,26 +197,62 @@ def test_apply_refuses_a_plan_it_cannot_follow():
         apply(nb, DESIGNED[0], {"goals": []})
 
 
-def test_a_route_sets_titles_under_its_points_only_when_they_fit():
-    assert components.route_has_room(["Your First Cell", "What Python Is", "Python as a Calculator"])
-    assert not components.route_has_room(["A Copy That Gives Back Every Digit: `write_cache` and `read_cache`", "Short"])
-    # fifteen points leave 60 px each: room for a short word or two, not for a real title
-    assert not components.route_has_room([f"Pandas Group Number {n}" for n in range(15)])
-    assert "class=\"name\"" not in components.route([("1.1", "A Title", 3), ("1.2", "Another", 4)], names=False)
+def test_a_route_sets_every_title_under_its_point_in_two_three_or_four_lines():
+    assert components.route_lines(["Your First Cell", "What Python Is", "Python as a Calculator"]) == 2
+    # twelve points leave 91 px each, 81 of it for words in the small type: long titles drop to the small type, in three or four lines
+    assert components.route_lines(["Does the Stack Beat Its Best Member?"] * 12) == 4
+    assert components.route_lines(["Assumptions of Linear Regression"] * 12) == 3
+    # a browser breaks a line after a hyphen, so a hyphenated pair is two words
+    assert components.wraps_into("The Precision-Recall Curve", 12, 4)
+    # a word wider than its slot fits in no number of lines
+    assert components.route_lines(["Multicollinearity"] * 11) == 0
+    assert components.route_misfits(["Multicollinearity", "Short"] + ["Fine"] * 9) == ["Multicollinearity"]
+    with pytest.raises(ValueError, match="fit under no point"):
+        components.route([(str(n), "Multicollinearity", 3) for n in range(1, 12)])
+
+
+class Recorder:
+    """Stands in for apply.Drawer: keeps the HTML it is asked to draw."""
+
+    def png(self, html: str, name: str) -> bytes:
+        self.html = html
+        return b"png"
+
+
+def test_a_plans_route_names_set_a_short_label_and_a_title_that_fits_nowhere_stops_the_build():
+    from workbook.apply import PlanError, route_cell
+    stops = [(str(n), f"Section {n}") for n in range(1, 12)]
+    stops[7] = ("8", "Multicollinearity")
+    with pytest.raises(PlanError, match="Multicollinearity"):
+        route_cell(Recorder(), {}, stops, [3] * 11, "Day 3", 30, 6, 1)
+    draw = Recorder()
+    cell = route_cell(draw, {"route_names": {"8": "Collinearity"}}, stops, [3] * 11, "Day 3", 30, 6, 1)
+    assert "Collinearity" in draw.html and "Multicollinearity" not in draw.html
+    assert "<table" not in cell and cell.startswith("## Your Route Through Day 3")
+    with pytest.raises(PlanError, match="sections 1 to 11"):
+        route_cell(Recorder(), {"route_names": {"12": "Extra"}}, stops, [3] * 11, "Day 3", 30, 6, 1)
+
+
+@pytest.mark.parametrize("notebook", DESIGNED, ids=ids)
+def test_every_route_names_its_sections_on_the_line_with_no_table(notebook):
+    route = next((text for text in markdown(notebook) if text.startswith("## Your Route Through ")), None)
+    if route is not None:
+        assert "<table" not in route and not re.search(r"^[|]", route, re.M), "the route falls back to a table"
 
 
 def test_a_route_of_any_length_stays_inside_the_picture(tmp_path):
     # the first and the last point sit 96 px from the picture's edges, so their words can never be wider than that allows
-    assert all(components.route_stop_width(count) <= 2 * components.ROUTE_LEFT for count in range(1, 30))
+    assert all(components.route_stop_width(count, tight) <= 2 * components.ROUTE_LEFT for count in range(1, 30) for tight in (False, True))
     pytest.importorskip("playwright", reason="the studio needs the author tools in requirements-dev.txt")
     with components.Studio() as studio:
-        for count in (1, 2, 4, 5, 6, 12):
-            sections = [(f"1.{n}", "Conditional Statements", 9) for n in range(1, count + 1)]
+        for count, title in ((1, "Conditional Statements"), (2, "Conditional Statements"), (4, "Conditional Statements"),
+                             (5, "Conditional Statements"), (6, "Conditional Statements"), (12, "Conditional Statements"),
+                             (12, "Does the Stack Beat Its Best Member?"), (9, "Why the bp Model Fans, and the Cure")):
+            sections = [(f"1.{n}", title, 9) for n in range(1, count + 1)]
             flags = {1: "ANSWER 1 · THE COUPON", count: "ANSWER 2 · THE CHART"}
-            names = components.route_has_room([title for number, title, minutes in sections])
-            drawn = components.route(sections, flags, "DAY 1, PART 2 · THE ROUTE", "LESSON · ABOUT 40 MIN", names)
+            drawn = components.route(sections, flags, "DAY 1, PART 2 · THE ROUTE", "LESSON · ABOUT 40 MIN")
             # the studio refuses a picture with a part outside it or words wider than their box
-            studio.png(components.figure(drawn, 1, "The sections, in order.", flush=True), tmp_path / f"route{count}.png")
+            studio.png(components.figure(drawn, 1, "The sections, in order.", flush=True), tmp_path / f"route{count}_{len(title)}.png")
 
 
 def test_landing_page_says_what_the_repo_holds():
