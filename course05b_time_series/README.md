@@ -87,7 +87,7 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 
 | Day | Notebook | You learn | Status |
 |:---:|:---|:---|:---:|
-| 1 | [Exponential Smoothing](week2/day1/06_exponential_smoothing.ipynb) | EWMA by hand and in one Excel formula, alpha swept in panels, simple, Holt, and damped smoothing, every setting of `ExponentialSmoothing`, and EWMA of squared changes | Ready |
+| 1 | [Exponential Smoothing](week2/day1/06_exponential_smoothing.ipynb) | The EWMA by hand and as a weighted average, alpha chosen on training misses, simple, Holt and damped smoothing with every setting of `ExponentialSmoothing`, five series scored walk-forward against the last value, and an EWMA of the size of a change with RiskMetrics beside it | Ready |
 | 2 | [Volatility Clustering and GARCH](week2/day2/07_volatility_clustering_and_garch.ipynb) | Squared changes and their ACF, rolling, EWMA, and GARCH(1,1) volatility on one chart, persistence and the half-life of a shock, every setting of `arch_model`, and fitted volatility scored walk-forward | Ready |
 | 3 | [Lag Features and Gradient Boosting](week2/day3/08_lag_features_and_gradient_boosting.ipynb) | `lag_features` built with no leak, LightGBM on lags walk-forward against the baselines, ARIMA, and smoothing, the settings that matter for a series, and a leak shown on purpose | Ready |
 | 4 | [Two Series: Cointegration and Mean Reversion](week2/day4/09_two_series_cointegration_and_mean_reversion.ipynb) | Levels against changes, Engle-Granger on the 5 Yr and 10 Yr and on the synthetic IG and HY spreads, the hedge ratio, the half-life of mean reversion, and a rolling hedge ratio, described, never traded | Ready |
