@@ -140,7 +140,7 @@ The card accounts describe people, so the four columns about them (sex, educatio
 
 ## What comes next
 
-[Course 5 is Advanced Machine Learning](../course05_advanced_ml/README.md): three weeks of bagging, random forests, AdaBoost, gradient boosting, XGBoost, LightGBM, stacking, honest tuning, feature engineering on financial ratios, rare events, and SHAP values, on Course 4's datasets with its test rows kept closed, and a four-model capstone on a new public file of company ratios. Each of its notebooks writes the helper files it starts from, so you carry nothing over from this course.
+[Course 5 is Advanced Machine Learning](../course05_advanced_ml/README.md): three weeks of bagging, random forests, AdaBoost, gradient boosting, XGBoost, LightGBM, stacking, honest tuning, feature engineering on financial ratios, rare events, and SHAP values, on Course 4's datasets with its test rows kept closed, and a four-model capstone on a new public file of company ratios. Like this course, it uses the libraries directly, so you carry no files over.
 
 ---
 
