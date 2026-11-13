@@ -399,7 +399,6 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Find the rows with no match with Power Query's Merge Queries, Left Anti | `LEFT JOIN ... WHERE ... IS NULL` and `indicator=True` | 3 | Week 3, Day 2 |
 | Find each month's last market date with `=MAXIFS($A$2:$A$2941,$A$2:$A$2941,"<="&EOMONTH(D2,0))`, then its yield with `XLOOKUP` | `ROW_NUMBER() OVER (PARTITION BY ... ORDER BY date DESC)` | 3 | Week 3, Day 2 |
 | Fill `=(B3-B2)*100` down | `LAG()` | 3 | Week 3, Day 2 |
-| Get an autocorrelation at lag k as `CORREL` of two offset ranges, or by `SUMPRODUCT` and `DEVSQ`; take Ljung-Box Q with `CHISQ.DIST.RT` and the lag-2 PACF with `LINEST` | `acf_by_hand` against `acf` and `pacf`, the confidence band, and the identification grid | 5B | Week 1, Day 4 |
 | Fit AR(1) with `SLOPE` and `INTERCEPT`, find the level it pulls toward, and score its one-step values with `SUMPRODUCT`; Excel has no ARIMA fitter | AR, MA, and ARIMA walk-forward against the last value, with an AIC and BIC grid | 5B | Week 1, Day 5 |
 | Write the EWMA as one recursive formula, find the half-life of its weights, and run the RiskMetrics variance recursion; `FORECAST.ETS` is named and not used | `ewma`, simple and Holt smoothing scored walk-forward, and an EWMA volatility | 5B | Week 2, Day 1 |
 | Write the GARCH(1,1) variance as one recursive formula and take persistence, half-life, and long-run volatility from it; Excel has no GARCH fitter | `arch_model`, `garch_half_life`, and walk-forward GARCH against a constant size | 5B | Week 2, Day 2 |
