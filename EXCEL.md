@@ -399,11 +399,6 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Find the rows with no match with Power Query's Merge Queries, Left Anti | `LEFT JOIN ... WHERE ... IS NULL` and `indicator=True` | 3 | Week 3, Day 2 |
 | Find each month's last market date with `=MAXIFS($A$2:$A$2941,$A$2:$A$2941,"<="&EOMONTH(D2,0))`, then its yield with `XLOOKUP` | `ROW_NUMBER() OVER (PARTITION BY ... ORDER BY date DESC)` | 3 | Week 3, Day 2 |
 | Fill `=(B3-B2)*100` down | `LAG()` | 3 | Week 3, Day 2 |
-| Use `COUNTBLANK` on each column, and `NETWORKDAYS` less `ROWS` to count absent dates | Count blanks per column and the absent market dates, then find each gap's run and kind | 5B | Week 1, Day 1 |
-| Fill a blank with the cell above, `=IF(B3="",C2,B3)` | Forward fill with `ffill`, and stop it at a long outage with `limit=` | 5B | Week 1, Day 1 |
-| Interpolate a gap by row position, and by date, with a few cells of arithmetic | `interpolate` linear and by time, compared against the true values held back | 5B | Week 1, Day 1 |
-| Fill blanks from a second sheet with `XLOOKUP` | `combine_first` from a second source, and `update` from a corrections table, with a change log | 5B | Week 1, Day 1 |
-| Flag a wrong print with `AND` and `IFERROR`: a jump that reverses the next day | The same jump-and-back rule on every column at once | 5B | Week 1, Day 1 |
 | Point at the cell one row up for a lag, and take `=B3-B2` for a change in bp; score the last value with `SUMPRODUCT`, the training mean, and the drift | `shift` and `diff`, three baselines scored walk-forward, and MAE, RMSE, and a MASE of 1 for the last value | 5B | Week 1, Day 2 |
 | Take a trailing `AVERAGE` and `STDEV.S`, fit AR(1) with `SLOPE` and `INTERCEPT`, and get the Dickey-Fuller statistic from `LINEST`; Excel has no ADF or KPSS test | ADF and KPSS on levels and changes, and the spurious regression of two random walks seen in `RSQ` | 5B | Week 1, Day 3 |
 | Get an autocorrelation at lag k as `CORREL` of two offset ranges, or by `SUMPRODUCT` and `DEVSQ`; take Ljung-Box Q with `CHISQ.DIST.RT` and the lag-2 PACF with `LINEST` | `acf_by_hand` against `acf` and `pacf`, the confidence band, and the identification grid | 5B | Week 1, Day 4 |
