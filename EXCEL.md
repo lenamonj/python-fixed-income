@@ -399,9 +399,6 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Find the rows with no match with Power Query's Merge Queries, Left Anti | `LEFT JOIN ... WHERE ... IS NULL` and `indicator=True` | 3 | Week 3, Day 2 |
 | Find each month's last market date with `=MAXIFS($A$2:$A$2941,$A$2:$A$2941,"<="&EOMONTH(D2,0))`, then its yield with `XLOOKUP` | `ROW_NUMBER() OVER (PARTITION BY ... ORDER BY date DESC)` | 3 | Week 3, Day 2 |
 | Fill `=(B3-B2)*100` down | `LAG()` | 3 | Week 3, Day 2 |
-| Blend two pasted probability columns with `AVERAGE`, and apply a stack's logistic layer with `EXP` | Stack models on out-of-fold outputs and check whether the stack beats its best member | 5 | Week 2, Day 4 |
-| `=COUNTIFS(A2:A6001,1,C2:C6001,">=0.5")/COUNTIF(A2:A6001,1)` for recall | `(proba_light[y_valid == 1] >= 0.5).mean()` | 5 | Week 2, Day 4 |
-| `=CORREL(A2:A18001,B2:B18001)` on two out-of-fold columns | `inputs.corr()` | 5 | Week 2, Day 4 |
 | Read a bootstrap interval with `PERCENTILE.INC`, and find the chosen model with `INDEX` and `MATCH` | Compare six models with bootstrap intervals and paired differences, and write the results to Excel | 5 | Week 2, Day 5 |
 | Summarise five fold scores with `AVERAGE` and `STDEV.P`, not `STDEV.S` | Read a randomized search's results and report a nested score beside its best score | 5 | Week 3, Day 1 |
 | `=2^3*5` and `=5^3*5` for a grid's model count | `len(ParameterGrid(...)) * 5` | 5 | Week 3, Day 1 |
@@ -422,7 +419,7 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | `=1/(1+EXP(-(B1+B47)))-1/(1+EXP(-B1))` for one contribution in probability terms | The difference of two `logistic_probability` calls | 5 | Week 3, Day 4 |
 | `COUNTIFS` and `AVERAGEIFS` by band of a ratio, where the criterion `""` matches empty cells | Mask counts and means by band | 5 | Week 3, Day 4 |
 | Check the capstone's confusion matrix with `COUNTIFS`, its interval with `PERCENTILE.INC`, and a SHAP row with `SUM` | Compare four models on a new file, test once, describe the chosen one with SHAP values, and write the results to Excel | 5 | Week 3, Day 5 |
-| Chart a comparison of models as a clustered column, bar, line, or scatter chart, add custom error bars for a spread of fold scores, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 5 | Week 2, Day 4 to Week 3, Day 4 |
+| Chart a comparison of models as a clustered column, bar, line, or scatter chart, add custom error bars for a spread of fold scores, and shade a table with a conditional formatting color scale | Draw every comparison as a chart and show it as a formatted table with the best value in each column marked | 5 | Week 2, Day 5 to Week 3, Day 4 |
 | Use `COUNTBLANK` on each column, and `NETWORKDAYS` less `ROWS` to count absent dates | Count blanks per column and the absent market dates, then find each gap's run and kind | 5B | Week 1, Day 1 |
 | Fill a blank with the cell above, `=IF(B3="",C2,B3)` | Forward fill with `ffill`, and stop it at a long outage with `limit=` | 5B | Week 1, Day 1 |
 | Interpolate a gap by row position, and by date, with a few cells of arithmetic | `interpolate` linear and by time, compared against the true values held back | 5B | Week 1, Day 1 |
