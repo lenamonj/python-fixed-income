@@ -9,7 +9,7 @@ import re
 
 DISCLAIMER = "educational content created in a personal capacity"
 ABBREVIATIONS = {"e.g", "i.e", "vs", "cf", "al", "approx", "Mr", "Mrs", "Ms", "Dr", "St", "Inc", "Corp", "Co", "Ltd",
-                 "U.S", "Fig", "Eq", "Jan", "Feb", "Mar", "Apr", "Jun", "Jul", "Aug", "Sep", "Sept", "Oct", "Nov", "Dec"}
+                 "U.S", "J.P", "Fig", "Eq", "Jan", "Feb", "Mar", "Apr", "Jun", "Jul", "Aug", "Sep", "Sept", "Oct", "Nov", "Dec"}
 BOUNDARY = re.compile(r"[.?!][\"')]?\s+(?=[A-Z0-9\"'`$(*\[])")
 # code, bold, links, and quotes are masked first: a period inside one of them does not end a sentence
 MASK = re.compile(r"`[^`]*`|\*\*.+?\*\*|\[[^\]]*\]\([^)]*\)|\"[^\"]*\"|(?<!\w)'[^']*'(?!\w)")
@@ -27,7 +27,7 @@ def sentences(line: str) -> list[str]:
         words = masked[:match.start()].split()
         word = words[-1].lstrip("(\"'") if words else ""
         if masked[match.start()] == "." and (word in ABBREVIATIONS or (len(word) == 1 and word.isupper())
-                                             or (word == "No" and masked[match.end()].isdigit())):
+                                             or (word in ("No", "p") and masked[match.end()].isdigit())):
             continue
         out.append(line[start:match.end()].rstrip())
         start = match.end()

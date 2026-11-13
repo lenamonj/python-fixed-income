@@ -50,6 +50,12 @@ def test_no_ends_a_sentence_unless_a_number_follows():
     assert sentences("See Item No. 5 here.") == ["See Item No. 5 here."]
 
 
+def test_a_citation_stays_whole_and_p_ends_a_sentence_unless_a_page_follows():
+    line = "(J.P. Morgan and Reuters, December 1996, section 5.3.2, p. 97, the document)."
+    assert sentences(line) == [line]
+    assert sentences("It slides with p. The next row.") == ["It slides with p.", "The next row."]
+
+
 def test_a_quoted_prompt_stays_whole():
     line = "For example: 'I have a list of prices. Write a loop that totals them.'"
     assert sentences(line) == [line]
