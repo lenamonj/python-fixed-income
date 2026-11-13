@@ -399,7 +399,6 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Find the rows with no match with Power Query's Merge Queries, Left Anti | `LEFT JOIN ... WHERE ... IS NULL` and `indicator=True` | 3 | Week 3, Day 2 |
 | Find each month's last market date with `=MAXIFS($A$2:$A$2941,$A$2:$A$2941,"<="&EOMONTH(D2,0))`, then its yield with `XLOOKUP` | `ROW_NUMBER() OVER (PARTITION BY ... ORDER BY date DESC)` | 3 | Week 3, Day 2 |
 | Fill `=(B3-B2)*100` down | `LAG()` | 3 | Week 3, Day 2 |
-| Write the GARCH(1,1) variance as one recursive formula and take persistence, half-life, and long-run volatility from it; Excel has no GARCH fitter | `arch_model`, `garch_half_life`, and walk-forward GARCH against a constant size | 5B | Week 2, Day 2 |
 | Build lag features with `AVERAGE`, `STDEV.S`, a `SUMPRODUCT` mean of absolute values, `WEEKDAY`, and `MONTH`, and see a leaky mean beat the honest one; Excel has no boosted trees | `lag_features` shift first then roll, and LightGBM on lags walk-forward | 5B | Week 2, Day 3 |
 | Take a hedge ratio with `SLOPE`, the gap as one filled column, `STDEV.S`, a `SUMPRODUCT` count beyond 2 sd, and a half-life as `=LN(0.5)/LN(b)`; Excel has no Engle-Granger test | `hedge_ratio`, `coint`, and `half_life` on two pairs | 5B | Week 2, Day 4 |
 | Forward fill with `IF`, `CORREL`, `SLOPE`, and `INTERCEPT`, score the last value and an AR(1) on held-out changes with `SUMPRODUCT`, and average the last 20 sizes | The whole workflow on two series, with the held-out years opened once | 5B | Week 2, Day 5 |
