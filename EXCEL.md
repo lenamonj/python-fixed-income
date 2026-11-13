@@ -399,8 +399,6 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Find the rows with no match with Power Query's Merge Queries, Left Anti | `LEFT JOIN ... WHERE ... IS NULL` and `indicator=True` | 3 | Week 3, Day 2 |
 | Find each month's last market date with `=MAXIFS($A$2:$A$2941,$A$2:$A$2941,"<="&EOMONTH(D2,0))`, then its yield with `XLOOKUP` | `ROW_NUMBER() OVER (PARTITION BY ... ORDER BY date DESC)` | 3 | Week 3, Day 2 |
 | Fill `=(B3-B2)*100` down | `LAG()` | 3 | Week 3, Day 2 |
-| Forward fill with `IF`, `CORREL`, `SLOPE`, and `INTERCEPT`, score the last value and an AR(1) on held-out changes with `SUMPRODUCT`, and average the last 20 sizes | The whole workflow on two series, with the held-out years opened once | 5B | Week 2, Day 5 |
-| Check the capstone's results workbook with `AVERAGE`, a ratio of means, `SUMPRODUCT` over a comparison, and `COUNTIF` | Write the results with `pd.ExcelWriter` and read every sheet back | 5B | Week 2, Day 5 |
 | Multiply PD, LGD, and EAD in one cell, `=E1*E2*E3` | The exact expected loss, then a simulation that has to find it on its own | 5C | Week 1, Day 1 |
 | Draw with `RAND()`, turn it into a normal draw with `NORM.S.INV`, and mirror it with `NORM.S.INV(1-A2)` | `default_rng(SEED)`, `norm.ppf`, and antithetic pairs with `antithetic_normals` | 5C | Week 1, Day 1 |
 | Simulate one year per row with `IF`, take `AVERAGE` and `STDEV.S` over `SQRT(COUNT(...))`, and repeat a sheet with a one-variable Data Table | `mc_mean`: a Monte Carlo mean with its standard error | 5C | Week 1, Day 1 |
