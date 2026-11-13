@@ -7,34 +7,44 @@
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-17807F?style=for-the-badge&labelColor=0E1B2E)](../LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/Content-CC_BY_4.0-17807F?style=for-the-badge&labelColor=0E1B2E)](../LICENSE-CONTENT)
 
-**[Before you start](#before-you-start)** &nbsp;·&nbsp; **[The two weeks](#the-two-weeks)** &nbsp;·&nbsp; **[Course map](#course-map)** &nbsp;·&nbsp; **[The capstone](#the-capstone)** &nbsp;·&nbsp; **[What it uses](#what-it-uses)** &nbsp;·&nbsp; **[Course 5](../course05_advanced_ml/README.md)** &nbsp;·&nbsp; **[Course 6](../course06_neural_networks/README.md)** &nbsp;·&nbsp; **[Series front page](../README.md)**
+**[Before you start](#before-you-start)** &nbsp;·&nbsp; **[The two weeks](#the-two-weeks)** &nbsp;·&nbsp; **[Course map](#course-map)** &nbsp;·&nbsp; **[The capstone](#the-capstone)** &nbsp;·&nbsp; **[What it uses](#what-it-uses)** &nbsp;·&nbsp; **[Course 5](../course05_advanced_ml/README.md)** &nbsp;·&nbsp; **[Course 5C](../course05c_risk_models/README.md)** &nbsp;·&nbsp; **[Series front page](../README.md)**
 
 ## Course 5B: Time Series Models
 
-**Two weeks from a gap in a dated table to ARIMA, exponential smoothing, GARCH, and gradient boosting on lags, every model scored walk-forward against carrying the last value forward, and every result described, never forecast.**
+**Two weeks from a gap in a dated table to ARIMA, exponential smoothing, GARCH, and LightGBM on lag features, every model scored walk-forward against carrying the last value forward, and every result described, never forecast.**
 
 </div>
 
-On day one you take the U.S. Treasury's daily yield curve, find every gap in it, tell a market holiday from an outage from a tenor that had not started yet, correct wrong values with a change log, and fill gaps on purpose with the method that suits each one. Two weeks later you set a frequency and build lags with no lookahead; test a series for stationarity and difference it; read an ACF and a PACF and pick an order from them; fit AR and ARIMA, exponential smoothing, and GARCH with statsmodels and arch and read every setting; build lag features for LightGBM with no leak; test two series for cointegration and measure a half-life of mean reversion; and say plainly, with numbers, which model beat carrying the last value forward and which did not.
+On day one you take a copy of the U.S. Treasury's daily par yield curve with blank days, a feed outage, and wrong prints planted in it, and you find, correct, and fill each problem with a change log, checking every repair against the true values.
+Two weeks later you set the development and held-out years before reading a value; build lags and changes and prove with the cut test that each reads only earlier dates; score the last value carried forward, the training mean, and drift over five walk-forward folds; run ADF and KPSS and difference a series; read an ACF and a PACF and name an order; fit AR and ARIMA, exponential smoothing, GARCH, and LightGBM on lag features; and test two series for cointegration and measure the half-life of their gap.
+Then the capstone hands you a damaged copy of the curve and a synthetic HY spread, and you repair it, choose your models on the development years by a rule written first, open the held-out years once, and write what the models show and where they miss.
 
 **That is the course: classical time series models, fitted and scored honestly, on data that is described, never forecast.**
 
-Course 3 got dated data, cleaned it, and described it, and fitted no model. Course 5B models a series, so it needs the regression of Course 4 and the boosting of Course 5.
+Course 3 got dated data, cleaned it, and described it, and fitted no model.
+Course 5B models a series, so it needs the regression and walk-forward folds of Course 4 and the boosting of Course 5.
 
-Every model in this course describes the past. A model's output is a fitted change, the model's one-step value for a date inside the file, or a fitted volatility, and it is never a forecast, a projection, or a view on rates. Every value is for a date from 2015-01-02 to 2026-10-02, from a model fitted on earlier dates only. The honest finding of the course, that nothing fitted on past daily changes of the 10 Yr beats carrying the last value forward by more than the folds disagree, while the size of a change is far from random, is taught as the lesson.
+Every model in this course describes the past.
+A model's output is a fitted change, a one-step value for a date inside the file, or a fitted volatility, from a model fitted on earlier dates only.
+Textbooks call these forecasting models; here every value is for a date from 2015 to 2026 that has already happened, scored against what happened, and never a forecast, a projection, or a view on rates or spreads.
+The half-life of a gap between two series says how fast that gap closed over those years, never a trade.
 
-Every function goes into a module of your own, `tskit.py`, beside the `mlkit.py` and `ensemblekit.py` you built in Courses 4 and 5. It imports `mlkit` and never changes it, with a test file that grows every day.
+Each notebook is one problem worked from start to finish: a problem statement, the data, the charts, the models, their scores on dates they never saw, and what they show.
+Nothing is built outside the notebook.
+The few functions a day reuses are defined on the page, where you can read every line.
 
-Four habits run through all of it.
+Five habits run through all of it.
 
 | Habit | What it means |
 |:---|:---|
-| **The past only** | Every lag, change, rolling statistic, and fill is checked to use only earlier dates. Models are fitted and scored walk-forward inside the development years, 2015 to 2022, and the held-out years, 2023 to 2026, are opened once, in the capstone. |
-| **Excel as the bridge** | Excel has no ADF test, no ARIMA, and no GARCH fitter, and each notebook says so where it applies. Then it shows what Excel can do, with the formula beside the Python: a forward fill as one `IF`, interpolation by hand, a lag as the cell one row up, an autocorrelation as `CORREL` of two offset ranges, AR(1) as `SLOPE` and `INTERCEPT`, EWMA and the GARCH(1,1) variance as one recursive formula each. |
-| **The same answer on every run** | One seed, `SEED = 42`, and one thread for the maths libraries, so a rerun prints the same digits, and a run on every core prints them too. |
-| **Describe, never forecast** | Every model output has a plain name and a list of names it is never given. Case studies end with "What the model shows, and where it fails" instead of recommendations. |
+| **The past only** | The cut at 2022-12-30 is set on Day 2 before a value is read. Every model is fitted, scored, and chosen on the development years, 2015 to 2022, and the held-out years, 2023 to 2026, are opened once, in the capstone. Every lag, change, trailing statistic, and fill a model reads passes the cut test, and dated rows are never shuffled. |
+| **One bar, five folds** | Day 2 cuts the development years into five walk-forward folds of 252 dates and scores the last value carried forward on them. Every later model is scored on the same folds, as MASE against that bar, and is called better only when its edge is larger than the folds disagree. |
+| **Predict, then run** | Four times a notebook stops and asks you to write down a number or sketch a chart before the cell that answers it. The answer is never on the page before the question. |
+| **The same answer on every run** | One seed, `SEED = 42`, one generator for every simulated series, one thread for the maths libraries, and `n_jobs=1` on LightGBM, so a rerun prints the same numbers. |
+| **Describe, never forecast** | Every output has a plain name, said once: a fitted change, a one-step value, a fitted volatility, a residual. Case studies end with where the models miss, not with a recommendation. |
 
-You need Course 5, or the same ground: walk-forward splits from Course 4, regression, and LightGBM. Each notebook writes the reference `mlkit.py` and the `tskit.py` it starts from into its work folder, so a missing or unfinished module never stops it. Course 5B sits between Course 5 and [Course 6](../course06_neural_networks/README.md), whose sequence networks on the Treasury curve come after it.
+You need Course 5, or the same ground: Course 3's dated data and its cut test, Course 4's regression with statsmodels and its walk-forward folds on dated rows, and Course 5's LightGBM.
+Course 5B sits between Course 5 and Course 5C in [Python for Fixed Income](../README.md).
 
 Status: <!-- count:ready -->9<!-- /count --> of <!-- count:total -->9<!-- /count --> notebooks and the capstone are ready.
 
@@ -42,32 +52,35 @@ Status: <!-- count:ready -->9<!-- /count --> of <!-- count:total -->9<!-- /count
 
 ## Before you start
 
-Setup is on the [series front page](../README.md#start-here). Course 5B runs in the same `.venv` as Courses 1 to 5.
+Setup is on the [series front page](../README.md#start-here).
+Course 5B runs in the same `.venv` as Courses 1 to 5.
 
 | Step | What to do |
 |:---|:---|
-| **Install the course's packages** | With the course's `.venv` active, run the install line below. It adds `arch`, the GARCH library, to Course 5's pins, and changes none of them. |
-| **No API key** | This course needs no key and no account. Every dataset is in the repo. An optional exercise later in the course shows a student with Course 3's FRED key how to run the same workflow on a licensed spread series on their own screen, never saved. |
-| **Keep your folder** | Your `my_bondmath` folder, in your `projects` folder beside the course repo, gains `tskit.py` and its tests beside `mlkit.py` and `ensemblekit.py`. If you skipped the earlier courses, create it with the last line below. |
-| **Or use Colab** | Open any notebook in the [course map](#course-map) and click the **Open in Colab** badge. Colab's library versions can differ from the pins, so a printed number may differ in its last digits; the setup cell says so when it happens. At the end of each day, download your files from the Colab file browser. |
+| **Install the course's packages** | With the course's `.venv` active, run the install line below. It adds `arch`, the GARCH library, to the libraries of Courses 4 and 5, and changes none of their versions. |
+| **No API key** | This course needs no key and no account. Every dataset is in the repo. An optional exercise on Day 9 and in the capstone shows a student with Course 3's FRED key how to run the same steps on licensed ICE BofA spread series on their own screen, never saved. |
+| **Or use Colab** | Open any notebook in the [course map](#course-map) and click the **Open in Colab** badge. Colab's library versions can differ from the pins, so a printed number may differ in its last digits. |
 
 ```powershell
 Set-Location "$HOME\projects\python-fixed-income"
 .venv\Scripts\Activate.ps1
 python -m pip install -r course05b_time_series\requirements.txt
-New-Item -ItemType Directory -Force "$HOME\projects\my_bondmath" | Out-Null
 ```
 
-Each notebook works in a fresh work folder in your temp folder, prints its name, and writes nothing into the course repo. Each day's "Bring It Home" section shows the PowerShell steps that move the day's functions and tests into `my_bondmath`, run the tests, and commit.
+Each notebook reads its data from the repo's `data` folder, or from GitHub in Colab, and writes no file.
 
-Each day's folder holds three files with the same name: the notebook, a short overview PDF to read first, and a solutions notebook. [How a day works](../README.md#how-a-day-works) explains the pattern. As in Courses 2 to 6, every notebook ends in the same order: Excel side by side, save the day with Git, bring it home, then the exercises, with the AI check last. Every section that teaches a method opens with a short "How it works" paragraph, every estimator's settings are read from the installed library into a table, and every lesson is drawn: small multiples with one thing changed per panel, and every comparison as a chart and a formatted table with the best value marked.
+Each day's folder holds three files with the same name: the notebook, a short overview PDF to read first, and a solutions notebook.
+[How a day works](../README.md#how-a-day-works) explains the pattern.
+Every notebook in this course follows Course 4's ladder: a problem statement (the business context, the objectives, and the data dictionary), then numbered sections from Setting Up to Insights and Conclusion, then what you can now do and the exercises, with the AI check last: an answer written in the style of an AI assistant that runs and has one bug to find.
+Every model is shown, not only printed: ten or more charts and pictures on a teaching day, among them fill strips against the held-back true values, a calendar heatmap, a filmstrip of simulated series as one setting climbs to 1, ACF and PACF bars with their band, the identification grid, a root map on the unit circle, a weight decay under a timeline, a news-impact curve, partial dependence with ICE lines, and a vector field of a pair's moves.
+Every teaching day has a slider to move, with a still picture under it for where a widget cannot run.
 
 ## The two weeks
 
 | Week | Theme | By the end you can |
 |:---:|:---|:---|
-| 1 | A series, its gaps, and its memory | Find, diagnose, correct, and fill every gap in a dated table with a change log; build lags and changes with no lookahead and score the naive baselines walk-forward; test for stationarity and difference; read an ACF and a PACF; and fit AR and ARIMA against the baselines |
-| 2 | Beyond ARIMA | Fit exponential smoothing, describe volatility with GARCH and its half-life, build lag features for LightGBM with no leak, test two series for cointegration and measure a half-life of mean reversion, and open the held-out years once in the capstone |
+| 1 | A series, its gaps, and its memory | Find, correct, and fill the gaps in a dated table with a change log; set the cut, build lags and changes from earlier dates only, and score the naive baselines over five walk-forward folds; run ADF and KPSS and difference a series; read an ACF and a PACF and name an order; and fit AR and ARIMA and score them against the last value |
+| 2 | Beyond ARIMA, and the capstone | Fit simple, Holt, and damped exponential smoothing and an EWMA of the size of a change; fit GARCH with arch and read its persistence and half-life; build lag features for LightGBM, catch a leak, and read importance against planted noise; test two series for cointegration and measure the half-life of their gap; and run the whole workflow on two series, opening the held-out years once |
 
 ## Course map
 
@@ -97,33 +110,55 @@ Each day's folder holds three files with the same name: the notebook, a short ov
 
 ## The capstone
 
-Day 5 of week 2 is yours. You run the course's workflow on two series, 2s10s and the synthetic high yield spread: repair the planted gaps with a change log, set the development and held-out years, test stationarity, read the ACF and PACF, fit the baselines, ARIMA, exponential smoothing, and LightGBM on lags walk-forward on the development years, describe volatility with GARCH, choose on development, open the held-out years once, and write "What the models show, and where they fail". A worked version sits beside it.
+Day 5 of week 2 is yours.
+A colleague hands you a copy of the 2 Yr and 10 Yr yields and a synthetic HY spread, with blank days and a few wrong prints planted in it by a seeded generator, as on Day 1, and the true values kept aside to check your repair.
+You repair the copy with a corrections table, a change log, and a capped fill, build the 2s10s slope and the HY in bp, and ask the course's two questions of each: does any model of the change get closer than the last value carried forward, and does any rule for the size of a change get closer than a constant?
+
+You test both series for a unit root and read the memory in the change and in its size.
+You score ARIMA, exponential smoothing, and LightGBM on lag features for the change, and an EWMA and GARCH for the size, all on Day 2's five folds, and you write the choice rule down before a held-out value is read.
+Then you open the held-out years once, refit every model block by block as a fold was refitted, score each one there, and read where the misses fall with a Bland-Altman plot, a hanging rootogram, and a wedge plot.
+
+| File | What it is |
+|:---|:---|
+| [`course5b_capstone.ipynb`](week2/day5/course5b_capstone.ipynb) | The brief, the questions, and a check line for every answer that can be checked. A check compares a fingerprint of your answer with a stored one, so it says correct or not yet and no answer is on the page |
+| [`course5b_capstone_overview.pdf`](week2/day5/course5b_capstone_overview.pdf) | The brief as slides: the problem, the two series, and what each part of the work asks |
+| [`course5b_capstone_solutions.ipynb`](week2/day5/course5b_capstone_solutions.ipynb) | The worked version, with every decision stated. Open it after you finish |
+
+What you write describes the past of a real Treasury slope and a synthetic spread.
+Nothing you build is a forecast, a view on rates or spreads, or a trade.
 
 ## What it uses
 
 | Tool | Used for | First appears |
 |:---|:---|:---|
-| pandas | Dated tables, gaps, corrections, fills, lags, and changes | Week 1, Day 1 |
-| statsmodels | ADF and KPSS tests, ACF and PACF, ARIMA, exponential smoothing, Ljung-Box, and cointegration | Week 1, Day 3 |
-| arch | GARCH volatility models | Week 2, Day 2 |
+| pandas, matplotlib, and seaborn | Dated tables, gaps, corrections, fills, lags, and changes, and every chart | Week 1, Day 1 |
+| ipywidgets | The sliders | Week 1, Day 1 |
+| scikit-learn | The walk-forward folds (`TimeSeriesSplit`) and MAE and RMSE; later permutation importance and partial dependence | Week 1, Day 2 |
+| statsmodels | The ADF test, least squares, ACF and PACF, Ljung-Box, AR and ARIMA, exponential smoothing, and the Engle-Granger test | Week 1, Day 3 |
+| arch | The KPSS test, then GARCH and its variants | Week 1, Day 3 |
+| scipy | The chi-squared, normal, and Student's t distributions behind Ljung-Box, the tails, and the Q-Q plots | Week 1, Day 4 |
 | LightGBM | Gradient boosting on lag features | Week 2, Day 3 |
-| pytest and Git | Testing `tskit.py` every day, and keeping the change log and each model's results beside the code | Week 1, Day 1 |
-| matplotlib and `plotkit.py` | Every chart, and formatted comparison tables with pandas' Styler; `plotkit.py` is Course 4's helper file, written unchanged into every work folder | Week 1, Day 1 |
-| scikit-learn and scipy | Metrics and Course 4's `mlkit.py`, which imports them | Week 1, Day 1 |
-| XGBoost, CatBoost, Optuna, imbalanced-learn, SHAP, ipywidgets | Not used; kept from Course 5's pins so one environment runs Courses 4 to 6 | |
 
-Exact versions are pinned in [`requirements.txt`](requirements.txt): `arch` 8.0.0 on top of Course 5's pins, among them numpy 2.5.3, pandas 3.0.6, statsmodels 0.15.0, scikit-learn 1.9.1, LightGBM 4.7.0, and pytest 9.1.1. Git is installed separately (see [Course 2](../course02_bond_math/README.md#before-you-start)).
+Exact versions are pinned in [`requirements.txt`](requirements.txt).
+The file also pins a few libraries from Course 5 that no notebook here imports, so one environment runs Courses 4 to 6.
 
 | Data | Kind | Used in |
 |:---|:---|:---|
-| Daily Treasury par yield curve rates, 2015-01-02 to 2026-10-02 | Real, public: U.S. Department of the Treasury, public domain | Every day |
-| 2,940 daily investment grade and high yield spreads in bp | Synthetic: invented for Course 3, not ICE, Moody's, or any index | Days 3, 4, 6, and 9, and the capstone |
+| Daily Treasury par yield curve rates, 2015-01-02 to 2026-10-02, 14 tenors | Real, public: U.S. Department of the Treasury, public domain | Every day |
+| 2,940 daily investment grade and high yield spreads in bp, one per date of the Treasury file | Synthetic: invented for Course 3 by its generator, not ICE, Moody's, or any index | Days 2 to 9, and the capstone |
 
-Day 1's gaps, outage, and wrong values are planted in a copy of the Treasury file by a seeded generator inside the notebook, and the notebook says so; the published file is kept aside to check every repair against. Course 5B adds no data file. Sources and terms for every file are in [the data page](../data/README.md).
+The course's five series, all in bp, are the 2 Yr and 10 Yr yields, the 2s10s slope, and the synthetic IG and HY spreads.
+Day 2 cuts them at 2022-12-30.
+The 2,001 rows from 2015 to 2022 are the development years, where every model is fitted, scored, and chosen on five walk-forward folds of 252 dates with the last value carried forward as the bar.
+The 939 rows from 2023 on are the held-out years, opened once, in the capstone.
+Day 1's blanks, outage, and wrong prints, and the capstone's blanks and wrong prints, are planted in a copy by a seeded generator inside the notebook, and the notebook says so; the true values are kept aside to check every repair against.
+Course 5B adds no data file.
+Sources and terms for every file are in [the data page](../data/README.md).
 
 ## What comes next
 
-[Course 6 is Neural Networks](../course06_neural_networks/README.md): three weeks from one neuron worked out by hand to dense, recurrent, and convolutional networks, ending with sequence models on the same Treasury curve, scored walk-forward against the same last value carried forward.
+[Course 5C is Risk Models](../course05c_risk_models/README.md): two weeks of Monte Carlo and VaR, correlated defaults, survival and hazard models, screens for unusual data, and the population stability index.
+[Course 6, Neural Networks](../course06_neural_networks/README.md), follows it, ending with sequence models on the same Treasury curve.
 
 ---
 
