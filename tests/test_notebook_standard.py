@@ -52,6 +52,12 @@ NEW_STYLE = {"14_shap_values", "13_resampling_smote_and_class_weights", "12_feat
              "11_sql_with_sqlite3", "12_sql_joins_and_time_series", "13_working_with_an_ai_assistant",
              "14_the_daily_market_snapshot", "course3_capstone",
              "08_z_scores_and_percentile_ranks"}
+# A course mid-pass joins notebook by notebook: each rebuilt notebook is held to the standard from its release
+IN_PASS = ["course05b_time_series"]
+TEACHING += sorted(
+    path for course in IN_PASS for path in (REPO / course).glob("week*/day*/*.ipynb")
+    if path.stem in NEW_STYLE
+)
 
 
 def ids(path: Path) -> str:
