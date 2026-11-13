@@ -10,9 +10,11 @@ numpy==2.5.3
 openpyxl==3.1.5
 optuna==5.0.0
 pandas==3.0.6
+plotly==7.1.0
 pytest==9.1.1
 scikit-learn==1.9.1
 scipy==1.18.1
+seaborn==0.13.2
 shap==0.52.0
 statsmodels==0.15.0
 xgboost==3.4.1
