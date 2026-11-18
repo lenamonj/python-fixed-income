@@ -26,6 +26,7 @@ pyyaml==6.0.3
 requests==2.34.2
 scikit-learn==1.9.1
 scipy==1.18.1
+seaborn==0.13.2
 sentence-transformers==6.1.0
 shap==0.52.0
 statsmodels==0.15.0
