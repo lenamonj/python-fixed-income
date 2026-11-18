@@ -19,9 +19,11 @@ sys.path.insert(0, str(REPO / "tools"))
 from plain_prose import plain_prose  # noqa: E402
 from workbook import cells, components  # noqa: E402
 
-DESIGNED = sorted(path for path in REPO.glob("course*/week*/day*/*.ipynb")
+# Course 1's Setup is in the system too; it has no solutions notebook
+DESIGNED = sorted(path for path in [*REPO.glob("course*/week*/day*/*.ipynb"), *REPO.glob("course*/setup/*.ipynb")]
                   if not path.stem.endswith("_solutions") and "![Section 1 of " in path.read_text(encoding="utf-8"))
-WITH_SOLUTIONS = DESIGNED + [path.with_name(path.stem + "_solutions.ipynb") for path in DESIGNED]
+WITH_SOLUTIONS = DESIGNED + [path.with_name(path.stem + "_solutions.ipynb") for path in DESIGNED
+                             if path.with_name(path.stem + "_solutions.ipynb").exists()]
 STYLED = re.compile(r"<img|<[a-z][^>]*\sstyle=")  # an HTML picture, or a style attribute on any tag
 PICTURE = re.compile(r"!\[([^\]]*(?:\[[^\]]*\][^\]]*)*)\]\(data:image/(\w+);base64,([^)]+)\)")
 ONLY_A_PICTURE = re.compile(r"!\[[^\n]*\]\(data:image/png;base64,[^)\s]+\)")
