@@ -5,7 +5,9 @@ workbook design system.
 
 GitHub shows a README in a column 830 px wide and strips every style, so a page keeps the system's one rule:
 words are typed, structure is drawn. This file draws the structure into assets/readme/landing/, 830 px wide and
-saved at twice that. The words, the tables, and every link are typed in the README itself.
+saved at twice that. The words, the tables, and every link are typed in the README itself, but for the route under
+"The courses": it is cut into one picture a course, each a link to that course's page, and set between the
+README's route:start and route:end comments on every run.
 
 The numbers on the pictures are counted from the repo, never typed: run this file again when a notebook, a course,
 or an Excel comparison is added, and change the same numbers where README.md types them (a test compares the two).
@@ -211,6 +213,48 @@ def series_map(facts: dict) -> str:
     return land(c.figure(body, 1, "Twelve courses and a bonus in four stages, in the order they are taken.", flush=True))
 
 
+ROUTE_BLOCK = re.compile(r"(<!-- route:start -->\n).*?(<!-- route:end -->)", re.S)
+
+
+def route_links(studio, picture: Path) -> None:
+    """Cut the route, drawn last by the studio, into one picture a course and set them in README.md, each a link
+    to its course's page. GitHub links a bare picture to its own file and strips image maps, so a box that should
+    lead somewhere has to be a picture of its own. Every cut runs through blank plate, the pictures of a row sit
+    with no space between them, and align="top" closes the gap a line of text would leave under each row."""
+    drawn = c.Image.open(picture)
+    wide, high = drawn.width // c.SCALE, drawn.height // c.SCALE
+    rows, cards, listed = studio.boxes(".series-map .row"), iter(studio.boxes(".series-map .card")), iter(courses())
+    # a row's picture starts on the rule above it; the first also takes the heading, the last the caption
+    tops = [0] + [row[1] for row in rows[1:]] + [high]
+    if any(top != int(top) for top in tops):
+        raise ValueError(f"the route's rows start at {tops}: each must be a whole pixel, or a rule is cut in two")
+    folder = OUT / "route"
+    folder.mkdir(exist_ok=True)
+    lines = []
+    for place, (stage, short, held, held_courses) in enumerate(STAGES):
+        lefts = [next(cards)[0] for held_course in held_courses]
+        # a cut falls just left of a card, after the arrow that points at it
+        cuts = [0] + [int(left) - 2 for left in lefts[1:]] + [wide]
+        line = ""
+        for left, right in zip(cuts, cuts[1:]):
+            course = next(listed)
+            box = (left * c.SCALE, int(tops[place]) * c.SCALE, right * c.SCALE, int(tops[place + 1]) * c.SCALE)
+            drawn.crop(box).save(folder / f'{course["folder"]}.png', optimize=True)
+            # rounded down, so a row never comes to more than the page's width and wraps
+            share = int((right - left) / wide * 1e6) / 1e4
+            alt = (f"Stage {place + 1}: {stage}. " if left == 0 else "") + f'{course["label"]}: {course["title"]}'
+            line += (f'<a href="{course["folder"]}/README.md"><img src="assets/readme/landing/route/{course["folder"]}.png" '
+                     f'width="{share}%" align="top" alt="{escape(alt)}"></a>')
+        lines.append(line)
+    path = REPO / "README.md"
+    text = path.read_text(encoding="utf-8")
+    if not ROUTE_BLOCK.search(text):
+        raise ValueError("README.md has no route:start and route:end comments to set the route between")
+    block = '<p align="center">\n' + "<br>\n".join(lines) + "\n</p>\n"
+    path.write_text(ROUTE_BLOCK.sub(lambda found: found.group(1) + block + found.group(2), text), encoding="utf-8", newline="\n")
+    picture.unlink()
+
+
 def inside() -> str:
     """Six charts as six notebooks draw them, on one plate. A chart is never restyled: it is what the student's code draws."""
     charts = "".join(
@@ -255,13 +299,15 @@ def draw() -> dict:
     """Draw every picture of the landing pages, set each course page's top, and return the numbers they carry."""
     facts = counts()
     OUT.mkdir(parents=True, exist_ok=True)
-    pictures = {"hero": hero(facts), "numbers": numbers(facts), "route": series_map(facts), "inside": inside(), "next": closing()}
+    pictures = {"hero": hero(facts), "numbers": numbers(facts), "inside": inside(), "next": closing()}
     pictures.update({f"step{place}": step(*parts) for place, parts in enumerate(STEPS, start=1)})
     pictures.update({course["folder"]: course_hero(place) for place, course in enumerate(courses())})
     with c.Studio() as studio:
         for name, html in pictures.items():
             path = studio.png(STYLE + html, OUT / f"{name}.png")
             print(path.name, c.Image.open(path).size, f"{path.stat().st_size / 1024:.0f} KB")
+        route_links(studio, studio.png(STYLE + series_map(facts), OUT / "route.png"))
+        print("set the route in README.md, a picture a course")
     for place, course in enumerate(courses()):
         if course_page(place):
             print("set the top of", f'{course["folder"]}/README.md')

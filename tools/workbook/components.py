@@ -89,6 +89,17 @@ class Studio:
         image.quantize(colors=colors, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE).save(out, optimize=True)
         return out
 
+    def boxes(self, selector: str) -> list:
+        """Where each match of a selector sits in the component drawn last: (left, top, width, height) in px."""
+        return self._page.evaluate(
+            """selector => {
+                const origin = document.querySelector('.pfi').getBoundingClientRect();
+                return [...document.querySelectorAll(selector)].map(found => {
+                    const box = found.getBoundingClientRect();
+                    return [box.left - origin.left, box.top - origin.top, box.width, box.height];
+                });
+            }""", selector)
+
 
 def data_uri(path: Path) -> str:
     """A picture file as a data URI, ready for a markdown image link."""

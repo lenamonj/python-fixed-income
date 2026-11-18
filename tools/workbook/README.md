@@ -115,7 +115,7 @@ The repo's `README.md` is the series' front page, and it is the same system at 8
 | `hero.png` | The series' cover: the title, the line under it, and every course as a point on the house curve, with the four stages along the foot. |
 | `numbers.png` | Four facts on one plate. |
 | `step1.png` to `step3.png` | The three cards under Start here. Each is a link. |
-| `route.png` | Figure 1: the courses in their four stages. |
+| `route/<course folder>.png` | Figure 1: the courses in their four stages, cut into one picture a course so each box is a link to its course's page. |
 | `inside.png` | Figure 2: six charts on one plate, each as a notebook draws it. |
 | `next.png` | The card that ends the page, a link to Setup. |
 | `<course folder>.png` | A course's cover, at the top of its own README: its name, its length, and its point on the same curve, marked. It is a link back to the series. |

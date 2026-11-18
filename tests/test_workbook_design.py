@@ -263,8 +263,12 @@ def test_landing_page_says_what_the_repo_holds():
     for words in (f'{facts["notebooks"]} notebooks', f'{facts["excel"]} Excel comparisons', f'{facts["weeks"]} weeks',
                   f'All {facts["excel"]} comparisons', f'{facts["courses"]} courses and a bonus'):
         assert words in readme, words
-    for name in ("hero", "numbers", "step1", "step2", "step3", "route", "inside", "next"):
+    for name in ("hero", "numbers", "step1", "step2", "step3", "inside", "next"):
         assert f'src="assets/readme/landing/{name}.png"' in readme and (landing.OUT / f"{name}.png").exists(), name
+    # the route is one picture a course, each a link to that course's page: a bare picture would open its own file
+    for course in landing.courses():
+        tile = f'<a href="{course["folder"]}/README.md"><img src="assets/readme/landing/route/{course["folder"]}.png"'
+        assert tile in readme and (landing.OUT / "route" / f'{course["folder"]}.png').exists(), course["folder"]
     assert "educational content created in a personal capacity" in readme
     # the series' two lines are kept in one place, and the page's alt text says them too
     assert all(line in readme for line in components.TAGLINE)
