@@ -243,7 +243,7 @@ def apply(nb, notebook: Path, plan: dict) -> Image.Image:
                 cells.append(markdown_cell(way_on))
             answers = count_exercises(cells)
             facts = (f"{answers} WORKED ANSWER{'' if answers == 1 else 'S'}",)
-            return Image.open(io.BytesIO(draw.png(c.cover(course_line, plate, title, subtitle, "", facts, progress, weeks, True), "cover")))
+            return Image.open(io.BytesIO(cover_png(draw, course_line, plate, title, subtitle, "", facts, progress, weeks, True)))
 
         kind = plan.get("sections", "numbered")
         goals = plan.get("goals", [])
@@ -340,8 +340,19 @@ def apply(nb, notebook: Path, plan: dict) -> Image.Image:
         facts = (f"ABOUT {total} MIN" + (" WITH EXERCISES" if exercises else ""), f"{len(goals)} SECTIONS")
         facts += (f"{exercises} EXERCISES",) if exercises else ()
         first = place == 0  # a course's first notebook takes the tall cover with the series line
-        cover = c.cover(course_line, plate, title, subtitle, SERIES_LINE if first else "", facts, progress, weeks, not first)
-        return Image.open(io.BytesIO(draw.png(cover, "cover")))
+        return Image.open(io.BytesIO(cover_png(draw, course_line, plate, title, subtitle, SERIES_LINE if first else "", facts,
+                                               progress, weeks, not first)))
+
+
+def cover_png(draw: Drawer, course_line, plate, title, subtitle, statement, facts, progress, weeks, compact) -> bytes:
+    """The cover at its title's own size; a title that wraps into its subtitle (a solutions cover's "Solutions")
+    steps down a size at a time, never below the longest titles' size. A cover that fits is drawn as before."""
+    for step in range(c.title_step(title), 4):
+        try:
+            return draw.png(c.cover(course_line, plate, title, subtitle, statement, facts, progress, weeks, compact, step), "cover")
+        except ValueError:
+            continue
+    return draw.png(c.cover(course_line, plate, title, subtitle, statement, facts, progress, weeks, compact, 4), "cover")
 
 
 def next_card(draw: Drawer, cells: list, after: Path, plan: dict, notebook: Path) -> str:

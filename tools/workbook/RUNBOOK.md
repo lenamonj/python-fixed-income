@@ -142,7 +142,7 @@ These take judgment about what the notebook has taught, so one editor writes the
 | `a caption is one sentence of 120 characters or fewer, and these run over: ...` | Write a caption under `captions` for each figure it names, or shorten the one you wrote. |
 | `the plan captions figures [...]` | Key each caption by its figure's number. The message lists the numbers the notebook's own pictures have; the route's caption is not yours to write. |
 | `... does not fit: "..." runs outside the picture` or `is wider than its box` | Shorten those words in the plan. For a picture script, shorten the label there. |
-| `... reaches the foot of the picture` | The title and subtitle are too long for the cover. Report it; do not change the title. |
+| `... reaches the foot of the picture` | The title and subtitle are too long for the cover even at the longest titles' size (a cover that does not fit at its own size steps down a size at a time first). Report it; do not change the title. |
 | `the pattern '...' matches 0 cells` or `2 cells` | Make the pattern longer or more exact until it matches one cell. |
 | `the plan has keys this tool does not know` | Fix the spelling of the key. |
 | `the notebook has no numbered section` | Give the plan `"sections": "h1"`. |

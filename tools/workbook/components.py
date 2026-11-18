@@ -159,8 +159,13 @@ def course_curve(width: int, height: int, left: int, right: int, base: int, top:
         f'YOU ARE HERE</text></svg>')
 
 
+def title_step(title: str) -> int:
+    """The cover title's size step, from its length: 1 is the largest, 4 the size of the longest titles."""
+    return 1 if len(title) <= 14 else 2 if len(title) <= 22 else 3 if len(title) <= 36 else 4
+
+
 def cover(course_line: str, plate: str, title: str, subtitle: str = "", statement: str = "", meta: tuple = (),
-          progress: float = 0.0, weeks: int = 4, compact: bool = False) -> str:
+          progress: float = 0.0, weeks: int = 4, compact: bool = False, step: int = 0) -> str:
     """The first picture of a notebook: series, course, week and day, the title, and where the day sits in the course.
 
     statement is one or two short lines under the title; meta is a few facts for the foot, such as "ABOUT 45 MIN".
@@ -168,7 +173,7 @@ def cover(course_line: str, plate: str, title: str, subtitle: str = "", statemen
     The title's size steps down as the title gets longer, so no one sets it by hand."""
     height = 420 if compact else 600
     motif = course_curve(WIDTH, height, 742, 1144, height - 132, 132 if compact else 150, progress, weeks)
-    step = 1 if len(title) <= 14 else 2 if len(title) <= 22 else 3 if len(title) <= 36 else 4
+    step = step or title_step(title)
     sub = f'<p class="sub">{escape(subtitle)}</p>' if subtitle else ""
     lines = f'<p class="statement">{"<br>".join(escape(line) for line in statement.splitlines())}</p>' if statement else ""
     facts = "".join(f"<span>{escape(fact)}</span>" for fact in meta)
