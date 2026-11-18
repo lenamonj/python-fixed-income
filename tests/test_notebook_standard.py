@@ -53,7 +53,7 @@ NEW_STYLE = {"course5b_capstone", "09_two_series_cointegration_and_mean_reversio
              "14_the_daily_market_snapshot", "course3_capstone",
              "08_z_scores_and_percentile_ranks"}
 # A course mid-pass joins notebook by notebook: each rebuilt notebook is held to the standard from its release
-IN_PASS = ["course05b_time_series"]
+IN_PASS = ["course05b_time_series", "course05c_risk_models"]
 TEACHING += sorted(
     path for course in IN_PASS for path in (REPO / course).glob("week*/day*/*.ipynb")
     if path.stem in NEW_STYLE
