@@ -399,8 +399,6 @@ Every Excel comparison in the series, course by course. Each notebook introduces
 | Find the rows with no match with Power Query's Merge Queries, Left Anti | `LEFT JOIN ... WHERE ... IS NULL` and `indicator=True` | 3 | Week 3, Day 2 |
 | Find each month's last market date with `=MAXIFS($A$2:$A$2941,$A$2:$A$2941,"<="&EOMONTH(D2,0))`, then its yield with `XLOOKUP` | `ROW_NUMBER() OVER (PARTITION BY ... ORDER BY date DESC)` | 3 | Week 3, Day 2 |
 | Fill `=(B3-B2)*100` down | `LAG()` | 3 | Week 3, Day 2 |
-| Build a Kaplan-Meier table with `COUNTIF` for the firms at risk, `COUNTIFS` for the defaults, and a running product filled down; Excel has no Kaplan-Meier function and no log-rank test | `kaplan_meier` by hand on ten firms, then on the cohort with statsmodels' `SurvfuncRight` | 5C | Week 1, Day 4 |
-| Take a flat hazard as two `SUM`s and its survival as `EXP(-h*t)`, and the credit triangle as `=s/(1-R)` | A flat hazard beside the Kaplan-Meier curve, and hazards from invented spreads | 5C | Week 1, Day 4 |
 | Check a fitted hazard with `1/(1+EXP(-SUMPRODUCT(...)))`, a hazard ratio with `EXP`, and its interval with `NORM.S.INV(0.975)`; Excel has no Cox model | A Cox model with covariates that change year by year, and a logistic hazard on firm-years | 5C | Week 1, Day 5 |
 | Chain ten yearly hazards into survival with `PRODUCT(1-G1:G10)`, and read a decile's observed default rate with `AVERAGEIFS`; Excel has no AUC | `hazard_to_survival`, and a walk-forward hazard model scored by AUC and calibration by decile | 5C | Week 1, Day 5 |
 | Divide two `SUM`s for defaults counted over the model's count, and read the chance of so few with `POISSON.DIST(x,mean,TRUE)` | A frozen hazard model's count checked year by year | 5C | Week 2, Day 4 |
