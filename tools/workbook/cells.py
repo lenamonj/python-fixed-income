@@ -41,7 +41,7 @@ def minutes(cells: list) -> float:
     return words / READING_WORDS_A_MINUTE + code * MINUTES_A_CODE_CELL + figures * MINUTES_A_FIGURE
 
 
-ENDINGS = ("![Exercises. ", "## You Can Now", "## Summary", "## Tidying Up", "# Wrapping Up", "## Exercises", "## Congratulations!")
+ENDINGS = ("![Exercises. ", "## You Can Now", "## Summary", "## Tidying Up", "# Wrapping Up", "## Exercises", "## Congratulations!", "## You Are Ready")
 
 
 def section_minutes(cells: list) -> dict:

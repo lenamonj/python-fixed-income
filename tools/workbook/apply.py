@@ -46,8 +46,9 @@ def check_goal(goal: str) -> None:
 
 # ---------------------------------------------------------------- reading the notebook
 def teaching_notebooks(course: Path) -> list:
-    """A course's teaching notebooks in the order they are taken."""
-    return sorted(path.resolve() for path in course.glob("week*/day*/*.ipynb") if not path.stem.endswith("_solutions"))
+    """A course's teaching notebooks in the order they are taken: Course 1's Setup first, then the weeks."""
+    setup = sorted(path.resolve() for path in course.glob("setup/*.ipynb"))
+    return setup + sorted(path.resolve() for path in course.glob("week*/day*/*.ipynb") if not path.stem.endswith("_solutions"))
 
 
 def title_cell(cells: list):
@@ -59,7 +60,10 @@ def title_cell(cells: list):
 
 def where(cells: list) -> tuple:
     """The plate ("WEEK 1 · DAY 1, PART 2") and the spoken label ("Day 1, Part 2"), from the purpose line."""
-    found = re.search(r"^Week (\d+), Day (\d+)(?:, Part (\d+))?\.", title_cell(cells).source, re.M)
+    title = title_cell(cells).source
+    if re.search(r"^Before week 1\.", title, re.M):
+        return "BEFORE WEEK 1 · SETUP", "Setup"
+    found = re.search(r"^Week (\d+), Day (\d+)(?:, Part (\d+))?\.", title, re.M)
     if not found:
         raise PlanError("the title cell has no purpose line starting 'Week W, Day D.'")
     week, day, part = found.groups()
