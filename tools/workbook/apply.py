@@ -232,7 +232,7 @@ def apply(nb, notebook: Path, plan: dict) -> Image.Image:
     plate, label = where(cells)
     title, _, subtitle = heading_of(title_cell(cells)).partition(": ")
     course_line = course_line_of(course)
-    weeks = len({path.parts[-3] for path in order})
+    weeks = len({path.parts[-3] for path in order if path.parts[-3].startswith("week")})
     progress = place / (len(order) - 1) if len(order) > 1 else 0.0
     after = next_notebook(order, place, course)
 

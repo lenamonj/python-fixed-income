@@ -97,7 +97,7 @@ class Deck:
         self.plate, self.label = a.where(self.cells)
         self.title, _, self.subtitle = a.heading_of(a.title_cell(self.cells)).partition(": ")
         self.course_line = a.course_line_of(course)
-        self.weeks = len({path.parts[-3] for path in order})
+        self.weeks = len({path.parts[-3] for path in order if path.parts[-3].startswith("week")})
         self.progress = place / (len(order) - 1) if len(order) > 1 else 0.0
         self.statement = a.SERIES_LINE if place == 0 else ""
         self.foot = f"PYTHON FOR FIXED INCOME · {self.course_line.split(' · ')[0]} · {self.plate}"
